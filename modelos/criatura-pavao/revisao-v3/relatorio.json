@@ -1,0 +1,21 @@
+{
+  "pecas": 10,
+  "volumes": 2,
+  "planos": 8,
+  "ossos": 12,
+  "atlas": [
+    64,
+    64
+  ],
+  "validacao_geometria": {
+    "erros": 0,
+    "avisos": 0,
+    "mensagens": []
+  },
+  "validacao_animacoes": {
+    "erros": 0,
+    "avisos": 0,
+    "mensagens": []
+  },
+  "gabarito": "the-digimod/blockbench/babies2/koromon.bbmodel (só a construção; nada copiado)"
+}

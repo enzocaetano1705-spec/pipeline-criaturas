@@ -1,0 +1,26 @@
+{
+  "modo": "analogia",
+  "ancora": "corpo",
+  "referencia": {
+    "arquivo": "C:\\Users\\enzoc\\Downloads\\referencias-criaturas\\the-digimod\\blockbench\\babies2\\koromon.bbmodel",
+    "partes": {
+      "corpo": {
+        "tipo": "solido"
+      },
+      "ornamentos": {
+        "tipo": "plano"
+      }
+    }
+  },
+  "candidato": {
+    "arquivo": "C:\\Users\\enzoc\\dev\\pipeline-criaturas\\modelos\\criatura-pavao\\revisao-v3\\criatura-pavao-e1-v3.bbmodel",
+    "partes": {
+      "corpo": {
+        "tipo": "solido"
+      },
+      "ornamentos": {
+        "tipo": "plano"
+      }
+    }
+  }
+}

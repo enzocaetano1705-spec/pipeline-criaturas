@@ -1,0 +1,407 @@
+{
+ "operations": [
+  {
+   "op": "remove_node",
+   "target": "body_cube"
+  },
+  {
+   "op": "remove_node",
+   "target": "body_cube_2"
+  },
+  {
+   "op": "remove_node",
+   "target": "feather_left_1_cube"
+  },
+  {
+   "op": "remove_node",
+   "target": "feather_left_2_cube"
+  },
+  {
+   "op": "remove_node",
+   "target": "feather_left_3_cube"
+  },
+  {
+   "op": "remove_node",
+   "target": "feather_right_1_cube"
+  },
+  {
+   "op": "remove_node",
+   "target": "feather_right_2_cube"
+  },
+  {
+   "op": "remove_node",
+   "target": "feather_right_3_cube"
+  },
+  {
+   "op": "set_model_properties",
+   "resolution": {
+    "width": 64,
+    "height": 64
+   }
+  },
+  {
+   "op": "update_node",
+   "target": "feather_left_1",
+   "origin": [
+    -1.5,
+    11,
+    -2.5
+   ],
+   "rotation": [
+    -8,
+    0,
+    0
+   ]
+  },
+  {
+   "op": "update_node",
+   "target": "feather_left_2",
+   "origin": [
+    -6.5,
+    16,
+    -2.5
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "op": "update_node",
+   "target": "feather_left_3",
+   "origin": [
+    -9.5,
+    16,
+    4.5
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "op": "update_node",
+   "target": "feather_right_1",
+   "origin": [
+    1.5,
+    11,
+    -2.5
+   ],
+   "rotation": [
+    -8,
+    0,
+    0
+   ]
+  },
+  {
+   "op": "update_node",
+   "target": "feather_right_2",
+   "origin": [
+    6.5,
+    16,
+    -2.5
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "op": "update_node",
+   "target": "feather_right_3",
+   "origin": [
+    9.5,
+    16,
+    4.5
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "op": "update_node",
+   "target": "eye_left",
+   "origin": [
+    -4.5,
+    7,
+    -5.01
+   ]
+  },
+  {
+   "op": "update_node",
+   "target": "eye_right",
+   "origin": [
+    4.5,
+    7,
+    -5.01
+   ]
+  },
+  {
+   "op": "update_node",
+   "target": "mouth",
+   "origin": [
+    0,
+    3.5,
+    -6.01
+   ]
+  },
+  {
+   "op": "update_node",
+   "target": "forehead_gem",
+   "origin": [
+    0,
+    9,
+    -5.01
+   ]
+  },
+  {
+   "op": "update_node",
+   "target": "loc_eye_left",
+   "position": [
+    -4.5,
+    7,
+    -5.11
+   ]
+  },
+  {
+   "op": "update_node",
+   "target": "loc_eye_right",
+   "position": [
+    4.5,
+    7,
+    -5.11
+   ]
+  },
+  {
+   "op": "update_node",
+   "target": "loc_top",
+   "position": [
+    0,
+    15,
+    0
+   ]
+  },
+  {
+   "op": "update_node",
+   "target": "loc_center",
+   "position": [
+    0,
+    5.5,
+    0
+   ]
+  },
+  {
+   "op": "add_cube",
+   "name": "body_lower",
+   "parent": "body",
+   "from": [
+    -7.5,
+    0,
+    -6
+   ],
+   "to": [
+    7.5,
+    4,
+    6
+   ],
+   "box_uv": true,
+   "uv_offset": [
+    0,
+    35
+   ]
+  },
+  {
+   "op": "add_cube",
+   "name": "body_upper",
+   "parent": "body",
+   "from": [
+    -7.5,
+    4,
+    -5
+   ],
+   "to": [
+    7.5,
+    11,
+    6
+   ],
+   "box_uv": true,
+   "uv_offset": [
+    0,
+    0
+   ]
+  },
+  {
+   "op": "add_cube",
+   "name": "feather_left_rise",
+   "parent": "feather_left_1",
+   "from": [
+    -7,
+    11,
+    -2.5
+   ],
+   "to": [
+    -1,
+    16,
+    -2.5
+   ],
+   "box_uv": true,
+   "uv_offset": [
+    32,
+    58
+   ],
+   "inflate": 0.01
+  },
+  {
+   "op": "add_cube",
+   "name": "feather_left_top",
+   "parent": "feather_left_2",
+   "from": [
+    -12,
+    16,
+    -2.5
+   ],
+   "to": [
+    -4,
+    16,
+    4.5
+   ],
+   "box_uv": true,
+   "uv_offset": [
+    0,
+    51
+   ],
+   "inflate": 0.01
+  },
+  {
+   "op": "add_cube",
+   "name": "feather_left_eye",
+   "parent": "feather_left_3",
+   "from": [
+    -13,
+    11,
+    4.5
+   ],
+   "to": [
+    -5,
+    17,
+    4.5
+   ],
+   "box_uv": true,
+   "uv_offset": [
+    0,
+    58
+   ],
+   "inflate": 0.01
+  },
+  {
+   "op": "add_cube",
+   "name": "feather_left_side",
+   "parent": "feather_left_3",
+   "from": [
+    -7.5,
+    11,
+    -1.5
+   ],
+   "to": [
+    -7.5,
+    17,
+    9.5
+   ],
+   "box_uv": true,
+   "uv_offset": [
+    0,
+    18
+   ],
+   "inflate": 0.01
+  },
+  {
+   "op": "add_cube",
+   "name": "feather_right_rise",
+   "parent": "feather_right_1",
+   "from": [
+    1,
+    11,
+    -2.5
+   ],
+   "to": [
+    7,
+    16,
+    -2.5
+   ],
+   "box_uv": true,
+   "uv_offset": [
+    44,
+    58
+   ],
+   "inflate": 0.01
+  },
+  {
+   "op": "add_cube",
+   "name": "feather_right_top",
+   "parent": "feather_right_2",
+   "from": [
+    4,
+    16,
+    -2.5
+   ],
+   "to": [
+    12,
+    16,
+    4.5
+   ],
+   "box_uv": true,
+   "uv_offset": [
+    30,
+    51
+   ],
+   "inflate": 0.01
+  },
+  {
+   "op": "add_cube",
+   "name": "feather_right_eye",
+   "parent": "feather_right_3",
+   "from": [
+    5,
+    11,
+    4.5
+   ],
+   "to": [
+    13,
+    17,
+    4.5
+   ],
+   "box_uv": true,
+   "uv_offset": [
+    16,
+    58
+   ],
+   "inflate": 0.01
+  },
+  {
+   "op": "add_cube",
+   "name": "feather_right_side",
+   "parent": "feather_right_3",
+   "from": [
+    7.5,
+    11,
+    -1.5
+   ],
+   "to": [
+    7.5,
+    17,
+    9.5
+   ],
+   "box_uv": true,
+   "uv_offset": [
+    22,
+    18
+   ],
+   "inflate": 0.01
+  }
+ ]
+}

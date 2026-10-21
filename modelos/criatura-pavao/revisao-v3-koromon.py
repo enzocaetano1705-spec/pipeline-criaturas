@@ -1,0 +1,252 @@
+"""Pavão e1 v3: construção do Koromon como gabarito, medidas e pintura próprias.
+
+Gabarito (estudo em referencias-criaturas/estudos/koromon): 2 volumes de mesma largura, o de baixo avança 1 unidade
+e forma a mandíbula; antenas em tira dobrada de planos (sobe, vai para trás, desce, avança para trás) inclinada
+−17,5° em X; rosto só pintado; atlas 64×64 a 1 texel por unidade, Box UV.
+
+Adaptação ao pavão (prancha de 21/10, medida em pixels):
+- largura/altura 1,41 e profundidade/altura 1,19 → corpo 15 × 11 × 12 (Koromon 12 × 11 × 11).
+- olhos a 0,35 da altura a partir do topo, centros a ±0,2 da largura; boca a 0,42 da altura a partir do chão;
+  gema entre os olhos, acima deles.
+- penas: raiz perto do centro do topo, abrem até ±0,7 da largura, sobem ~4 unidades e passam ~4 atrás das costas.
+  A tira dobrada é dividida em esquerda e direita para manter os ossos e os clipes idle/walk aprovados no ensaio.
+Nada do arquivo do Koromon é copiado: cubos, UV e pintura são gerados aqui.
+"""
+
+import json
+import math
+import shutil
+import sys
+from pathlib import Path
+
+import numpy as np
+from PIL import Image
+
+from criaturas import animar, bbmodelo, motor, ops, render, texturizar
+
+ROOT = Path(__file__).resolve().parent
+SOURCE = ROOT / "estudo-referencias" / "pavao-planos-animado.bbmodel"  # ossos e clipes aprovados
+DEST = ROOT / "revisao-v3"
+FILE = DEST / "criatura-pavao-e1-v3.bbmodel"
+TILT = -8  # o gabarito usa −17,5°; o perfil da prancha pede ~8° (pico a +3,75 sobre o topo)
+
+P = {k: np.frombuffer(bytes.fromhex(v[1:]), dtype=np.uint8) for k, v in {
+    "main": "#4bbbba", "light": "#72d3cb", "shade": "#3a9fa2", "deep": "#25747c", "dark": "#13363e",
+    "amber": "#d08a2c", "amber_dark": "#8a4a14", "pupil": "#2b1407", "white": "#ffffff",
+    "gold": "#efc04e", "gold_dark": "#a8741e", "gold_light": "#fff0b0", "tooth": "#f6f2e2",
+    "f_blue": "#2a6976", "f_teal": "#3f9a9a", "f_green": "#4fae7f", "f_green_l": "#8fd09a",
+    "oc_navy": "#193652", "oc_blue": "#2d5f8f", "rachis": "#1f4d5e",
+}.items()}
+
+
+def cubos() -> list[dict]:
+    c = [
+        {"nome": "body_lower", "osso": "body", "from": [-7.5, 0, -6], "to": [7.5, 4, 6]},
+        {"nome": "body_upper", "osso": "body", "from": [-7.5, 4, -5], "to": [7.5, 11, 6]},
+    ]
+    for lado, s in (("left", -1), ("right", 1)):
+        def x(a, b):
+            return sorted([s * a, s * b])
+        xs = x(1, 7)
+        c.append({"nome": f"feather_{lado}_rise", "osso": f"feather_{lado}_1", "from": [xs[0], 11, -2.5], "to": [xs[1], 16, -2.5]})
+        xs = x(4, 12)
+        c.append({"nome": f"feather_{lado}_top", "osso": f"feather_{lado}_2", "from": [xs[0], 16, -2.5], "to": [xs[1], 16, 4.5]})
+        xs = x(5, 13)
+        c.append({"nome": f"feather_{lado}_eye", "osso": f"feather_{lado}_3", "from": [xs[0], 11, 4.5], "to": [xs[1], 17, 4.5]})
+        # plano complementar virado para o lado: a pena aparece no perfil como na vista de lado da prancha
+        c.append({"nome": f"feather_{lado}_side", "osso": f"feather_{lado}_3", "from": [s * 7.5, 11, -1.5], "to": [s * 7.5, 17, 9.5]})
+    return c
+
+
+def ossos() -> list[dict]:
+    o = []
+    for lado, s in (("left", -1), ("right", 1)):
+        o += [{"op": "update_node", "target": f"feather_{lado}_1", "origin": [s * 1.5, 11, -2.5], "rotation": [TILT, 0, 0]},
+              {"op": "update_node", "target": f"feather_{lado}_2", "origin": [s * 6.5, 16, -2.5], "rotation": [0, 0, 0]},
+              {"op": "update_node", "target": f"feather_{lado}_3", "origin": [s * 9.5, 16, 4.5], "rotation": [0, 0, 0]}]
+    o += [{"op": "update_node", "target": "eye_left", "origin": [-4.5, 7, -5.01]},
+          {"op": "update_node", "target": "eye_right", "origin": [4.5, 7, -5.01]},
+          {"op": "update_node", "target": "mouth", "origin": [0, 3.5, -6.01]},
+          {"op": "update_node", "target": "forehead_gem", "origin": [0, 9, -5.01]},
+          {"op": "update_node", "target": "loc_eye_left", "position": [-4.5, 7, -5.11]},
+          {"op": "update_node", "target": "loc_eye_right", "position": [4.5, 7, -5.11]},
+          {"op": "update_node", "target": "loc_top", "position": [0, 15, 0]},
+          {"op": "update_node", "target": "loc_center", "position": [0, 5.5, 0]}]
+    return o
+
+
+def _h(*v) -> float:
+    """Ruído determinístico 0..1 por texel (mesma textura a cada execução)."""
+    n = 0
+    for q in v:
+        n = (n * 1000003) ^ int(round(q * 8) + 4096)
+    return ((n * 2654435761) & 0xFFFFFFFF) / 0xFFFFFFFF
+
+
+# ---------- corpo ----------
+# olho 5×5 como o espectador vê (esquerda→direita = x maior→menor); "_" deixa a cor do corpo
+OLHO = ["_KKK_", "KWWAK", "KWPAK", "KAPDK", "_KKK_"]
+CORES_OLHO = {"K": "dark", "A": "amber", "D": "amber_dark", "P": "pupil", "W": "white"}
+
+
+def cor_corpo(cubo: str, face: str, x: float, y: float, z: float):
+    # base por face, como as faces chapadas do gabarito, com borda escura embaixo e topo claro
+    base = {"north": "main", "south": "main", "east": "main", "west": "main", "up": "light", "down": "deep"}[face]
+    cor = base
+    if face in ("north", "south", "east", "west"):
+        if cubo == "body_lower" and y < 1:
+            cor = "shade"
+        elif cubo == "body_upper" and y > 10:
+            cor = "light"
+        if face in ("east", "west") and z > 4.5:
+            cor = "shade"
+    r = _h(x, y, z)
+    if face != "down" and cor in ("main", "light") and r > 0.93:
+        cor = "light" if cor == "main" else "main"  # tufos de pelo
+    if face in ("up", "north", "east", "west", "south") and y > 5 and r < (0.02 if face == "south" else 0.035):
+        cor = "gold"  # pintinhas douradas do conceito
+    # rosto
+    if face == "north" and cubo == "body_upper":
+        ix = int(math.floor(x + 7.5))  # 0..14, coluna 7 é o centro
+        for x0 in (1, 9):  # olhos: colunas 1-5 e 9-13, linhas y 5..9
+            if x0 <= ix < x0 + 5 and 5 <= y < 10:
+                k = OLHO[int(9 - math.floor(y))][4 - (ix - x0)]
+                if k != "_":
+                    return CORES_OLHO[k]
+        if ix in (0, 14) and 9 <= y < 10:
+            return "dark"  # cílio de fora
+        gema = {10: [7], 9: [6, 7, 8], 8: [7]}.get(int(math.floor(y)), [])
+        if ix in gema:
+            return "gold_light" if (ix, int(y)) in ((7, 10), (8, 9)) else ("gold_dark" if int(y) == 8 or ix == 6 else "gold")
+        if ix in (1, 13) and 4 <= y < 5:
+            return "dark"  # cantos do sorriso sobem
+        if 5 <= y and r < 0.035:
+            return "main"  # sem pintinha em cima do rosto
+    if face == "north" and cubo == "body_lower":
+        ix = int(math.floor(x + 7.5))
+        if 3 <= y < 4 and 1 <= ix <= 13:
+            return "dark"  # boca
+        if 2 <= y < 3 and ix in (2, 4, 10, 12):
+            return "tooth"
+        if 1 <= y < 2 and 6 <= ix <= 8:
+            return "shade"  # linha do queixo
+        if r < 0.035:
+            return "main"
+    if face == "up" and cubo == "body_lower" and z < -5:
+        return "light"  # lábio: a faixa de 1 unidade que avança
+    if face in ("east", "west") and cubo == "body_upper" and z < -3 and 5 <= y < 10:
+        iz, iy = int(math.floor(z + 5)), int(9 - math.floor(y))
+        if 5 <= y < 10:
+            return ("dark", "amber", "amber", "amber_dark", "dark")[iy] if iz == 0 else (None, "dark", "dark", "dark", None)[iy] or cor
+    if face in ("east", "west") and cubo == "body_lower" and z < -4 and 3 <= y < 4:
+        return "dark"  # boca continua na lateral
+    return cor
+
+
+# ---------- penas (coordenadas locais do plano; |x| cresce para fora) ----------
+def _faixa(p, linha):
+    """(distância até a polilinha, posição 0..1 ao longo dela)."""
+    pts = np.array(linha, float)
+    seg = pts[1:] - pts[:-1]
+    comp = np.linalg.norm(seg, axis=1)
+    total, acum, melhor = comp.sum(), 0.0, (1e9, 0.0)
+    for a, d, l in zip(pts[:-1], seg, comp):
+        k = float(np.clip(np.dot(np.asarray(p) - a, d) / (l * l), 0, 1))
+        dist = float(np.linalg.norm(np.asarray(p) - (a + k * d)))
+        if dist < melhor[0]:
+            melhor = (dist, (acum + k * l) / total)
+        acum += l
+    return melhor
+
+
+def _pena(p, linha, largura, ocelo, r):
+    """Pena de pavão num plano: lâmina ao longo da linha (raque escura), que termina num ocelo."""
+    d, u = _faixa(p, linha)
+    e = ((p[0] - ocelo[0]) / 1.7) ** 2 + ((p[1] - ocelo[1]) / 1.35) ** 2
+    if e < 0.3:
+        return "oc_navy"
+    if e < 0.65:
+        return "oc_blue"
+    if e < 1.0:
+        return "f_teal" if r > 0.2 else "f_green_l"
+    w = largura(u)
+    if d < w + (0.25 if r > 0.6 else 0):  # borda serrilhada das barbas
+        if d < 0.35 and u < 0.7:
+            return "rachis"
+        if u > 0.55:
+            return "f_green" if r > 0.25 else "f_green_l"
+        return "f_blue" if r < 0.55 else "f_teal"
+    return None
+
+
+def cor_pena(cubo: str, x: float, y: float, z: float):
+    t = abs(x)
+    parte = cubo.rsplit("_", 1)[1]
+    r = _h(t, y, z)
+    sem_ocelo = (99, 99)
+    if parte == "rise":  # haste que sai do alto da cabeça, sobe e abre para fora (vista de frente)
+        return _pena((t, y), [(1.5, 11), (2.4, 13.4), (4.3, 15.2), (7, 16)], lambda u: 0.5 + 1.0 * u, sem_ocelo, r)
+    if parte == "top":  # lâmina vista de cima: diagonal de dentro-frente para fora-trás
+        return _pena((t, z), [(5, -2.5), (7.5, 0.5), (10, 4.5)], lambda u: 1.0 + 1.6 * math.sin(math.pi * u), sem_ocelo, r)
+    if parte == "eye":  # ponta em folha com o ocelo perto da extremidade (frente e costas)
+        return _pena((t, y), [(5, 16.2), (8, 15.6), (11, 14.4), (12.8, 12.8)],
+                     lambda u: 0.6 + 2.0 * math.sin(math.pi * min(u, 0.95)) ** 0.7, (10.2, 14.6), r)
+    if parte == "side":  # perfil: sobe da frente para trás e cai no ocelo
+        return _pena((z, y), [(-1.5, 11.3), (1, 13.8), (4, 15.6), (7, 16.1), (9.3, 14.4)],
+                     lambda u: 0.5 + 2.0 * math.sin(math.pi * min(u, 0.95)) ** 0.8, (6.8, 15.0), r)
+    raise ValueError(cubo)
+
+
+def pintar(modelo: bbmodelo.Modelo, res: int) -> np.ndarray:
+    tex = np.zeros((res, res, 4), np.uint8)
+    ident = np.eye(4)
+    for c in modelo.cubos:
+        for face in ("north", "south", "east", "west", "up", "down"):
+            r = texturizar.texels_da_face(c, face, ident)
+            if r is None:
+                continue
+            uv, pts = r
+            for (u, v), (x, y, z) in zip(uv, pts):
+                cor = cor_corpo(c.nome, face, x, y, z) if c.nome.startswith("body") else cor_pena(c.nome, x, y, z)
+                if cor is not None:
+                    tex[int(v) % res, int(u) % res, :3] = P[cor]
+                    tex[int(v) % res, int(u) % res, 3] = 255
+    return tex
+
+
+def main():
+    if DEST.exists() and "--refazer" not in sys.argv:
+        raise SystemExit("revisao-v3 já existe; use --refazer para gerar de novo (só a v3 é sobrescrita).")
+    DEST.mkdir(exist_ok=True)
+    shutil.copy2(SOURCE, FILE)
+    lista = cubos()
+    offsets, (res, _) = ops.distribuir_uv(lista, margem=0)
+    antigo = bbmodelo.ler(FILE)
+    lote = [{"op": "remove_node", "target": c.nome} for c in antigo.cubos]
+    lote.append({"op": "set_model_properties", "resolution": {"width": res, "height": res}})
+    lote += ossos()
+    for c in lista:
+        lote.append({"op": "add_cube", "name": c["nome"], "parent": c["osso"], "from": c["from"], "to": c["to"],
+                     "box_uv": True, "uv_offset": offsets[c["nome"]],
+                     **({"inflate": 0.01} if "feather" in c["nome"] else {})})
+    (DEST / "geometria.ops.json").write_text(json.dumps({"operations": lote}, ensure_ascii=False, indent=1), encoding="utf-8")
+    motor.editar(FILE, lote)
+    modelo = bbmodelo.ler(FILE)
+    tex = pintar(modelo, res)
+    Image.fromarray(tex).save(DEST / "textura.png")
+    texturizar.aplicar_no_modelo(FILE, tex, modelo, [])
+    modelo = bbmodelo.ler(FILE)
+    render.folha(modelo, lado_px=360, titulo="Pavão e1 | v3 (gabarito Koromon)").save(DEST / "folha.png")
+    geo = motor.resumo_validacao(motor.validar(FILE))
+    aerr, awarn, amsg = animar.validar_animacoes(FILE)
+    rel = {"pecas": len(modelo.cubos), "volumes": 2, "planos": len(modelo.cubos) - 2, "ossos": len(modelo.ossos),
+           "atlas": [res, res], "validacao_geometria": {"erros": geo[0], "avisos": geo[1], "mensagens": geo[2]},
+           "validacao_animacoes": {"erros": aerr, "avisos": awarn, "mensagens": amsg},
+           "gabarito": "the-digimod/blockbench/babies2/koromon.bbmodel (só a construção; nada copiado)"}
+    (DEST / "relatorio.json").write_text(json.dumps(rel, ensure_ascii=False, indent=2), encoding="utf-8")
+    print(f"{FILE.name}: {len(modelo.cubos)} peças, atlas {res}², geometria {geo[0]} erros/{geo[1]} avisos, "
+          f"animações {aerr} erros/{awarn} avisos")
+
+
+if __name__ == "__main__":
+    main()
