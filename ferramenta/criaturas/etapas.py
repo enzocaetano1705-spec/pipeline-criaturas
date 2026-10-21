@@ -15,7 +15,7 @@ def etapa(nome: str):
 
 def carregar() -> None:
     """Importa os módulos que registram etapas com @etapa."""
-    from criaturas import classificar, ficha, preparar  # noqa: F401
+    from criaturas import classificar, ficha, medir, preparar  # noqa: F401
 
 
 def opcoes(nome: str, parser) -> None:

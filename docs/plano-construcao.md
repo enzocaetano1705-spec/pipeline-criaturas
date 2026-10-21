@@ -96,7 +96,7 @@ Qualquer IA continua daqui. Siga as fases em ordem. Cada fase entrega a **versã
   - olhar só as versões com grade;
   - nunca inventar parte;
   - incerteza → prompt → faixa da categoria, marcada "da tabela".
-- [ ] 3.3 `medir`:
+- [x] 3.3 `medir`:
   - Encosta cada caixa nas bordas reais da máscara, dentro de uma margem.
   - Combina frente (x, y) e lado (z, y) em caixas 3D, em unidades, na escala da altura alvo (da ficha, ou a mediana do estágio e nicho).
   - Sem vista lateral: profundidade pela razão da categoria, marcada "estimada".
