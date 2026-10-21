@@ -44,7 +44,7 @@ Escreva a pergunta no topo da nota da sessão e pare.
 ## Comandos (existem a partir da Fase 1)
 - Ajuda da ferramenta: `uv run criaturas --help`
 - Testes: `uv run pytest -q`
-- Motor headless do Blockbench sem MCP: `externos/blockbench-mcp-plugin/node_modules/bun/bin/bun.exe run externos/blockbench-mcp-plugin/headless/call.ts --root modelos <ferramenta> @args.json` (exemplo completo em `referencia/exemplo-headless/`)
+- Motor headless do Blockbench sem MCP: `externos/blockbench-mcp-plugin/node_modules/bun/bin/bun.exe run externos/blockbench-mcp-plugin/headless/call.ts --root modelos <ferramenta> @args.json` (exemplo completo em `referencia/exemplo-headless/`). O `call.ts` sobe o servidor chamando `bun` pelo nome: ponha `externos/blockbench-mcp-plugin/node_modules/bun/bin` no PATH antes, senão sai "MCP error -32000: Connection closed". A ponte Python (`motor.py`) faz isso sozinha.
 
 ## Ambiente
 Windows 10/11 nativo (Git Bash ou PowerShell), Node 23.6 ou mais novo, uv, Git e GitHub CLI. O motor headless roda a partir do clone fixado em `externos/blockbench-mcp-plugin` (item 0.3 do plano), tanto pelo MCP quanto pelo `call.ts`. Abra a IA sempre na raiz do repositório: os caminhos do `.mcp.json` são relativos a ela.

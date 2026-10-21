@@ -34,7 +34,7 @@ Qualquer IA continua daqui. Siga as fases em ordem. Cada fase entrega a **versã
   - Conferir `git config user.name` e `user.email`. Se faltar, **PARE**: não invente identidade.
   - Commit inicial do kit, sem as pastas de criatura que o usuário já tenha começado em `docs/criaturas/` (entram só `LEIA-ME.md`, `_modelo/` e `_testes/`).
   - `gh repo create pipeline-criaturas --private --source . --remote origin --push`.
-- [ ] 0.3 Motor headless local:
+- [x] 0.3 Motor headless local:
   - `git clone https://github.com/jasonjgardner/blockbench-mcp-plugin externos/blockbench-mcp-plugin`
   - `git -C externos/blockbench-mcp-plugin checkout 141ef78fa59eb697895ab73d4757d874ab8a2711`
   - `npm install --omit=dev` dentro dele (isso traz o Bun).
