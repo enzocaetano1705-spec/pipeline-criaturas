@@ -91,3 +91,25 @@ Ele também exportou `modelos/criatura-pavao/model.animation.json` e `textura.pn
 - A 1 texel por unidade, a "vida" vem da combinação: degradê de volume pontilhado + ruído de baixa frequência + marcas pequenas espalhadas sem grade visível.
 - Fileiras regulares viram tijolo.
 - Proteger o que o usuário pintou: repintar só por face e por região, e conferir os pixels dele depois.
+
+## Quarta rodada: plumagem com padrão de pena
+
+**Retorno do usuário:** ficou melhor, mas penas não são tão sem padrão assim. Os 10% que faltavam no rosto são justamente essa textura do resto do corpo.
+
+**Feito:**
+- **Desenho da pena:** penas de 4 texels em fileiras de 2, cada fileira deslocada meia pena, como telhas. Cada pena tem o alto claro, o miolo na cor da pena, as laterais um tom abaixo e a ponta escura que cai entre as duas penas de baixo. É isso que forma o recorte em escama.
+- **Irregularidade controlada:**
+  - tom sorteado por pena;
+  - pontas que às vezes faltam ou se alongam;
+  - fileiras com um desvio ocasional;
+  - ruído suave de cor (mais fraco que na rodada anterior);
+  - pontilhado leve sobre o degradê de volume.
+- **Rosto:** a mesma plumagem no fundo, com contraste de um tom. Agora o rosto é refeito a partir do desenho (olhos, gema, boca, dentes e queixo de `cor_corpo`) e só o fundo recebe a plumagem.
+
+**Problema encontrado:** o Blockbench do usuário estava com o arquivo antigo aberto. Ao salvar a correção da boca, ele regravou `uv_offset [0, -1]` no volume de cima, o que deslocou a textura da cabeça 1 linha. A gema e o alto dos olhos apareciam cortados no render.
+- `--penugem` agora reposiciona o UV quando encontra isso.
+- O usuário precisa fechar e reabrir o `.bbmodel` antes de editar de novo.
+
+O lábio pintado pelo usuário e as penas foram conferidos pixel a pixel: estão iguais.
+
+**Lição:** antes de qualquer pintura por código, ler o UV real do arquivo salvo. Uma edição à mão feita sobre o arquivo antigo aberto desfaz mudanças de UV sem aviso.

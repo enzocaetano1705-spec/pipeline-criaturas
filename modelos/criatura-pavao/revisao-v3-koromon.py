@@ -243,59 +243,60 @@ def _ruido(a: float, b: float, escala: float, semente: float) -> float:
     return (c[0][0] * (1 - ta) + c[1][0] * ta) * (1 - tb) + (c[0][1] * (1 - ta) + c[1][1] * ta) * tb
 
 
-# tufo de pena (b cresce para baixo): brilho em cima, miolo, "v" de sombra embaixo
-TUFO = {(0, -1): +1, (-1, 0): -1, (1, 0): -1, (0, 1): -1}
 BAYER = [[0.0, 0.5], [0.75, 0.25]]
 
 
 def penugem(cubo: str, face: str, x: float, y: float, z: float, suave: bool = False) -> np.ndarray:
-    """Penugem em pixel art sem padrão fixo: tufos espalhados em grade irregular, degradê de volume com
-    pontilhado e manchas suaves de cor (um pouco mais verdes ou mais claras) em pontos aleatórios.
+    """Plumagem em pixel art: penas de 4 texels de largura em fileiras de 2, cada fileira deslocada meia pena,
+    como telhas. Cada pena tem o alto claro, o miolo na cor da pena e a ponta escura que cai entre as duas penas
+    de baixo — isso desenha o recorte em escama. A irregularidade vem de tons sorteados por pena, pontas que
+    às vezes faltam ou se alongam, fileiras com pequeno desvio e manchas suaves de cor (ruído) sobre o degradê
+    de volume.
 
-    `suave`: só o degradê e metade dos tufos, um tom de contraste, para o fundo do rosto.
+    `suave` (fundo do rosto): o mesmo desenho, com contraste de um tom só.
     """
     a, b = _plano_da_face(face, x, y, z)
     ia, ib = math.floor(a), math.floor(b)
     k = ord(face[0])
+    fila = ib // 2
+    v = ib - 2 * fila
+    desloc = (fila % 2) * 2 + (1 if _h(fila, k, 7.1) > 0.8 else 0)  # meia pena por fileira, às vezes 1 a mais
+    col = (ia + desloc) // 4
+    u = (ia + desloc) - 4 * col
+    tom = _h(col, fila, k)  # sorteio por pena
     # volume: claro em cima, escuro embaixo, sombra sob o volume de cima, costas mais escuras
-    valor = 0.0
     if face == "up":
-        valor = 1.0
+        valor = 0.8
     elif face == "down":
         valor = -2.0
     else:
-        valor = (y - 5.5) / 6.0  # -0,9 embaixo .. +0,9 no alto
+        valor = (y - 5.5) / 7.0
         if cubo == "body_lower" and y > 3:
-            valor -= 0.8
+            valor -= 0.7
         if face in ("east", "west") and z > 4:
-            valor -= 0.35
-    valor += (_ruido(a, b, 5, k) - 0.5) * 1.1  # manchas leves de tom
-    rampa = RAMPAS[1 if _ruido(a, b, 6, k + 50) > 0.68 else 0]  # áreas um pouco mais verdes
+            valor -= 0.3
+    valor += (_ruido(a, b, 6, k) - 0.5) * 0.6 + (0.45 if tom > 0.85 else -0.45 if tom < 0.12 else 0)
+    rampa = RAMPAS[1 if _ruido(a, b, 7, k + 50) > 0.66 else 0]
+    nivel = BASE + math.floor(valor + 0.5 + (BAYER[ib % 2][ia % 2] - 0.375) * 0.35)
+    # desenho da pena
+    if v == 0 and u in (0, 3):
+        # ponta da pena da fileira de cima (fica entre duas penas desta fileira)
+        de_cima = ((ia + ((fila - 1) % 2) * 2) // 4, fila - 1)
+        if _h(*de_cima, k, 3.1) > 0.12:  # às vezes a ponta falta
+            nivel -= 2
+    elif v == 0:
+        nivel += 1 if (u == 1) == (tom > 0.5) else 0  # brilho no alto, de um lado ou do outro
+    elif u in (0, 3):
+        nivel -= 1  # lateral da pena
+        if _h(col, fila, k, 4.4) < 0.15:
+            nivel -= 1  # ponta alongada
     if suave:
-        valor *= 0.4
-    nivel = BASE + math.floor(valor + BAYER[ib % 2][ia % 2])  # pontilhado entre os tons
-    # tufos: no máximo um por célula 3×3, posição sorteada, ~60% das células
-    for ca in range(math.floor((ia - 1) / 3), math.floor((ia + 1) / 3) + 1):
-        for cb in range(math.floor((ib - 1) / 3), math.floor((ib + 1) / 3) + 1):
-            if _h(ca, cb, k, 1.7) > (0.3 if suave else 0.6):
-                continue
-            sa, sb = ca * 3 + math.floor(_h(ca, cb, k, 2.9) * 3), cb * 3 + math.floor(_h(ca, cb, k, 4.3) * 3)
-            d = TUFO.get((ia - sa, ib - sb))
-            if d is not None:
-                if suave and d > 0:
-                    continue
-                nivel += d
-                if d > 0 and face != "down" and y > 5 and _h(ca, cb, k, 8.8) < 0.1 and not suave:
-                    return np.frombuffer(bytes.fromhex("e9be55"), np.uint8)  # pintinha dourada no brilho de alguns tufos
-                break
-        else:
-            continue
-        break
-    lim = (BASE - 1, BASE) if suave else (0, len(rampa) - 1)
-    return rampa[int(np.clip(nivel, *lim))]
+        nivel = int(np.clip(nivel, BASE - 1, BASE + 1))
+    elif (v == 0 and u in (1, 2) and face != "down" and y > 5 and z > -2 and _h(col, fila, k, 8.8) < 0.07):
+        return np.frombuffer(bytes.fromhex("e9be55"), np.uint8)  # pintinha dourada no alto de algumas penas
+    return rampa[int(np.clip(nivel, 0, len(rampa) - 1))]
 
 
-RAMPA_FRENTE = {tuple(RAMPAS[i][j]) for i in (0, 1) for j in (BASE - 1, BASE)}  # para poder repintar
 
 
 def protegido(cubo: str, face: str, x: float, y: float, z: float) -> bool:
@@ -319,9 +320,15 @@ def so_penugem():
     modelo = bbmodelo.ler(FILE)
     res = int(modelo.bruto["resolution"]["width"])
     tex = np.array(modelo.textura.convert("RGBA"))
+    # o Blockbench com o arquivo antigo aberto pode salvar de volta o uv_offset [0, -1] (linha fora da textura)
+    fora = [c.nome for c in modelo.cubos if c.nome.startswith("body") and any(
+        min(f["uv"][1], f["uv"][3]) < 0 for f in c.faces.values() if "uv" in f)]
+    if fora:
+        motor.editar(FILE, [{"op": "update_node", "target": n, "uv_offset": [0, 0]} for n in fora])
+        modelo = bbmodelo.ler(FILE)
+        print(f"UV reposicionado: {fora}")
     ident = np.eye(4)
     pintados = 0
-    fundo = {tuple(P["main"]), tuple(P["light"])}  # no rosto, só o fundo liso recebe a penugem suave
     for c in modelo.cubos:
         if not c.nome.startswith("body"):
             continue
@@ -333,8 +340,11 @@ def so_penugem():
                 if not (0 <= u < res and 0 <= v < res):
                     continue
                 if face == "north":
-                    if tuple(tex[int(v), int(u), :3]) in fundo or tuple(tex[int(v), int(u), :3]) in RAMPA_FRENTE:
-                        tex[int(v), int(u), :3] = penugem(c.nome, face, x, y, z, suave=True)                             if not (c.nome == "body_upper" and y > 10) else P["light"]
+                    # rosto refeito a partir do desenho: traços de cor_corpo, fundo com a plumagem suave
+                    traco = cor_corpo(c.nome, face, x, y, z)
+                    tex[int(v), int(u), :3] = penugem(c.nome, face, x, y, z, suave=True)                         if traco in ("main", "light") else P[traco]
+                    tex[int(v), int(u), 3] = 255
+                    pintados += 1
                     continue
                 if not protegido(c.nome, face, x, y, z):
                     tex[int(v), int(u), :3] = penugem(c.nome, face, x, y, z)
