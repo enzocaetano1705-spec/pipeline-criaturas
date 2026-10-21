@@ -17,7 +17,7 @@ Qualquer IA continua daqui. Siga as fases em ordem. Cada fase entrega a **versã
 | 1 | Contratos, CLI, criaturas sintéticas e renderizador | Sonnet | ☑ |
 | 2 | Preparo de imagem e classificação | Opus | ☑ |
 | 3 | Leitura semântica e medição | Opus | ☑ |
-| 4 | Cubificador e folha de vistas | Opus | ☐ |
+| 4 | Cubificador e folha de vistas | Opus | ☑ |
 | 5 | Textura | Opus | ☐ |
 | 6 | Rig, locators e animações | Sonnet | ☐ |
 | 7 | Validação da linhagem | Sonnet | ☐ |
