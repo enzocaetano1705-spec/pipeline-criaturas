@@ -18,10 +18,11 @@ Você conduz o pipeline; o código faz a parte espacial. A IA só faz duas coisa
 - Trabalhe na raiz do repositório (onde estão `pyproject.toml` e `AGENTS.md`).
 - O motor headless precisa existir em `externos/blockbench-mcp-plugin` (item 0.3 do plano). Sem ele, as etapas falham com "motor headless não instalado".
 - Só a exportação para o Roblox precisa do Blockbench desktop aberto com o plugin MCP. O resto roda sem abrir app nenhum.
-- `<pasta>` é a pasta da criatura (`docs/criaturas/<nome>`). As saídas vão para `modelos/<nome>/eN/`.
+- `<pasta>` é a pasta da criatura (`docs/criaturas/<nome>`). As saídas vão para `modelos/<nome da pasta>/eN/`. Nas sintéticas de teste a pasta é `modelos/_sinteticos/fichas/_sint-<nome>` e a saída vai para `modelos/_sint-<nome>/`.
+- **Nota da sessão:** `docs/sessoes/AAAA-MM-DD-<nome>.md`, no formato de `docs/sessoes/_modelo.md`. Perguntas e pedidos ao usuário vão no topo dela.
 
 ## Passo a passo (para cada estágio: e1, e2…)
-O atalho `uv run criaturas tudo <pasta> --estagio eN` roda as etapas de código em ordem e **para sozinho** onde precisa de você (checklist, leitura, categoria, folha). Rode-o, faça o que ele pedir e rode de novo. Os passos abaixo detalham o que cada parada pede.
+O atalho `uv run criaturas tudo <pasta> --estagio eN` roda as etapas de código em ordem e **para sozinho** onde precisa de você (checklist, leitura, categoria, folha). Rode-o, faça o que ele pedir e rode de novo. Ele mostra uma linha por etapa: para ver os avisos de uma etapa, rode-a sozinha (`uv run criaturas <etapa> <pasta> --estagio eN`) ou leia `avisos` em `modelos/<nome>/eN/relatorio.json`. Nas sintéticas o `tudo` não para na folha: abra `folha.png` uma vez assim mesmo.
 
 1. **Ficha.** `uv run criaturas ficha <pasta>`
    - Corrija só o que você criou. Erro na ficha do usuário vira pergunta para ele (nota da sessão).
@@ -33,7 +34,7 @@ O atalho `uv run criaturas tudo <pasta> --estagio eN` roda as etapas de código 
    - **PARE** (criatura real): mostre as 3 sugestões ao usuário e espere `Categoria confirmada` na ficha. Se ele escolher diferente da sugestão 1: `--registrar-escolha "plano › nicho"`.
 4. **Leitura.** Siga `ler.md` (nesta pasta): olhe `frente-grade.png` e `lado-grade.png`, escreva `modelos/<nome>/eN/leitura.json`.
 5. **Medição.** `uv run criaturas medir <pasta> --estagio eN`
-   - Aviso de "diferença entre vistas" numa parte: confira só a caixa dessa parte e rode de novo.
+   - Aviso de "diferença entre vistas" numa parte: confira só a caixa dessa parte. Se ela está certa e a diferença é porque a parte fica escondida numa vista (corpo atrás da cabeça, de frente), o aviso é esperado: siga e cite-o numa linha da nota.
 6. **Cubos.** `uv run criaturas cubificar <pasta> --estagio eN`, depois `uv run criaturas validar <pasta> --estagio eN`.
    - `validar` tem que dar 0 erros. Avisos que ficarem precisam de uma explicação na nota.
 7. **Folha de vistas.** `uv run criaturas folha <pasta> --estagio eN` → `modelos/<nome>/eN/folha.png` (768 × 384).
@@ -75,7 +76,7 @@ Nas criaturas sintéticas (`modelos/_sinteticos/fichas/_sint-*`) e em `docs/cria
 | `eN/<nome>-eN.bbmodel` | `cubificar` (+ textura, locators e animações pelas etapas seguintes) |
 | `eN/textura.png`, `eN/textura-roblox.png`, `eN/folha.png`, `eN/animacoes.json`, `eN/validacao.json` | as etapas de mesmo nome |
 | `eN/relatorio.json` | todas: resultado, avisos e hash do `.bbmodel` |
-| `export/roblox/*.glb`, `export/minecraft/*`, `export/geckolib/*` | `exportar` |
+| `export/roblox/*.glb` (+ a cópia `*.<hash>.bbmodel` com a textura ×8), `export/minecraft/*`, `export/geckolib/*` | `exportar` |
 | `linhagem.json`, `linhagem.png` | `linhagem` |
 
 ## Problemas comuns

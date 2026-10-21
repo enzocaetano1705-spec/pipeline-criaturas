@@ -22,7 +22,7 @@ Qualquer IA continua daqui. Siga as fases em ordem. Cada fase entrega a **versã
 | 6 | Rig, locators e animações | Sonnet | ☑ |
 | 7 | Validação da linhagem | Sonnet | ☑ |
 | 8 | Exportação Roblox e Minecraft | Sonnet | ☑ |
-| 9 | Skill e documentação | Sonnet | ☐ |
+| 9 | Skill e documentação | Sonnet | ☑ |
 | 10 | Primeira criatura real (com o usuário) | Opus | ☐ |
 
 ---
@@ -178,7 +178,7 @@ Qualquer IA continua daqui. Siga as fases em ordem. Cada fase entrega a **versã
   Os arquivos de apoio (`classificar.md`, `ler.md`) ficam na mesma pasta.
 - [x] 9.2 `scripts/sincronizar-skills.py`: copia `skills/` para `.claude/skills/` (Claude Code) e `.agents/skills/` (Codex e Antigravity). Edite só `skills/`.
 - [x] 9.3 Versão para o chat do claude.ai, em ZIP: só ficha, classificação e a checagem "pronta para modelagem", sem modelagem.
-- [ ] 9.4 Ensaio: uma sessão nova, sem contexto, roda o pipeline numa criatura sintética seguindo só a skill.
+- [x] 9.4 Ensaio: uma sessão nova, sem contexto, roda o pipeline numa criatura sintética seguindo só a skill.
 
 **Aceite:** ensaio sem intervenção; documentação atualizada.
 

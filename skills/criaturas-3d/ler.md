@@ -1,7 +1,7 @@
 # Protocolo de leitura semântica (a parte da IA)
 
 Entrada: `modelos/<nome>/eN/preparo/<vista>-grade.png` (frente e lado), a ficha e a categoria confirmada.
-Saída: `modelos/<nome>/eN/leitura.json` (contrato `ferramenta/criaturas/contratos/leitura.schema.json`).
+Saída: `modelos/<nome>/eN/leitura.json`. O contrato `ferramenta/criaturas/contratos/leitura.schema.json` pode ser lido: ele diz quais campos são obrigatórios (`id`, `pai`, `tipo`, `simetria`, `caixas`) e quais são opcionais (`espelho`, `rotacao_repouso`, `papel_cor`, `segmentos`; no topo, `papeis_cor` e `incertezas`).
 A IA diz **o que** é cada parte e **onde** ela está na grade. O código (`criaturas medir`) encosta as caixas na silhueta real e calcula as medidas em 3D.
 
 ## Regras
@@ -22,14 +22,15 @@ A IA diz **o que** é cada parte e **onde** ela está na grade. O código (`cria
 9. **Simetria:** liste o lado esquerdo (`_left`, `simetria: esquerda`, `espelho: <id>_right`). O direito pode ficar de fora: o código espelha. Liste o direito só se ele for diferente.
 10. **Correntes** (cauda, pescoço, tentáculo): uma parte por segmento visível (`tail_1`, `tail_2`…), cada uma com sua caixa. Se a cauda é uma peça só, use `tail_1` com `segmentos: N` (o cubificador divide).
 11. **Rotação de repouso** (`rotacao_repouso`, graus X, Y, Z): só para partes visivelmente inclinadas (cauda erguida, orelhas abertas). Aproximada, de 15 em 15 graus.
-12. **Papéis de cor:** dê nome às 3 a 5 cores base (`primaria`, `barriga`, `escura`…) e às 1 ou 2 de destaque, com o hex lido da imagem. Cada parte recebe `papel_cor`.
+12. **Papéis de cor:** dê nome às 3 a 5 cores base (`primaria`, `barriga`, `escura`…) e às 1 ou 2 de destaque. Para o hex, não chute a olho: amostre pixels de `preparo/<vista>-recorte.png` com um trecho de Python (Pillow) e use a cor mais comum da região. Cada parte recebe `papel_cor`.
+13. **Peças que aparecem em uma vista só** (focinho, ponta da cauda, crista vistos só de perfil) entram como parte própria com caixa só nessa vista. O código completa a largura.
 
 ## Depois
 1. Grave `modelos/<nome>/eN/leitura.json`.
 2. Rode `uv run criaturas medir <pasta> --estagio eN`. Ele imprime as partes medidas e os avisos (diferença maior que 10% entre vistas, profundidade estimada).
 3. Se um aviso apontar uma caixa errada, corrija só essa caixa e rode de novo. Não reabra as imagens sem necessidade.
 
-## Exemplo (trecho)
+## Exemplo (trecho, de uma raposa; os números são ilustrativos)
 ```json
 {
   "vistas": {"frente": {"imagem": "preparo/frente-grade.png"}, "lado": {"imagem": "preparo/lado-grade.png"}},
