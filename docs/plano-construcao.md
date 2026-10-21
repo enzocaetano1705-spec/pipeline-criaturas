@@ -20,7 +20,7 @@ Qualquer IA continua daqui. Siga as fases em ordem. Cada fase entrega a **versã
 | 4 | Cubificador e folha de vistas | Opus | ☑ |
 | 5 | Textura | Opus | ☑ |
 | 6 | Rig, locators e animações | Sonnet | ☑ |
-| 7 | Validação da linhagem | Sonnet | ☐ |
+| 7 | Validação da linhagem | Sonnet | ☑ |
 | 8 | Exportação Roblox e Minecraft | Sonnet | ☐ |
 | 9 | Skill e documentação | Sonnet | ☐ |
 | 10 | Primeira criatura real (com o usuário) | Opus | ☐ |
@@ -149,8 +149,8 @@ Qualquer IA continua daqui. Siga as fases em ordem. Cada fase entrega a **versã
 **Aceite:** `idle`, `walk` e `blink` com 0 erros nas 3 sintéticas.
 
 ## Fase 7 — Validação da linhagem
-- [ ] 7.1 `linhagem`: compara os estágios com `assinatura_evolucao` em `referencia/medidas.json` (altura ×, Δ cabeça, cubos ×, Δ olho, andar ×, postura) e dá OK, aviso ou erro, mais uma imagem com os estágios lado a lado na mesma escala.
-- [ ] 7.2 Motivos que atravessam a linhagem: sobreposição de paleta entre estágios, com aviso abaixo de 50%.
+- [x] 7.1 `linhagem`: compara os estágios com `assinatura_evolucao` em `referencia/medidas.json` (altura ×, Δ cabeça, cubos ×, Δ olho, andar ×, postura) e dá OK, aviso ou erro, mais uma imagem com os estágios lado a lado na mesma escala.
+- [x] 7.2 Motivos que atravessam a linhagem: sobreposição de paleta entre estágios, com aviso abaixo de 50%.
 
 **Aceite:** uma linhagem sintética invertida dá erro; uma linhagem normal passa.
 

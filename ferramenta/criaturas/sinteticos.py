@@ -275,3 +275,58 @@ def comparar_com_verdade(nome: str, medidas: dict, tolerancia: float = 1.0, rela
             ok &= e_tam <= limite and e_cen <= limite
         resultado[pid] = {"ok": bool(ok), "erros": erros}
     return resultado
+
+
+# ---------- linhagem sintética (Fase 7) ----------
+
+# (escala do corpo, escala relativa da cabeça) por estágio: cresce ~1,7× e a cabeça perde peso
+ESTAGIOS_LINHAGEM = {"e1": (1.0, 1.0), "e2": (2.0, 0.72), "e3": (3.6, 0.52)}
+COBBLEMON = {"e1": "1º de 3", "e2": "2º de 3", "e3": "3º de 3"}
+
+
+def _escalar(definicao: dict, corpo: float, cabeca: float) -> dict:
+    """Escala a criatura inteira por `corpo` e a subárvore da cabeça por `cabeca` em torno do pivô dela."""
+    d = json.loads(json.dumps(definicao))
+    filhos = {}
+    for p in d["partes"]:
+        filhos.setdefault(p["pai"], []).append(p["id"])
+    da_cabeca, fila = set(), ["head"]
+    while fila:
+        o = fila.pop()
+        da_cabeca.add(o)
+        fila += filhos.get(o, [])
+    piv = np.array(next(p["pivo"] for p in d["partes"] if p["id"] == "head"), float) * corpo
+    for p in d["partes"]:
+        for k in ("from", "to", "pivo"):
+            v = np.array(p[k], float) * corpo
+            if p["id"] in da_cabeca:
+                v = piv + (v - piv) * cabeca
+            p[k] = [round(float(x)) if k != "pivo" else round(float(x), 2) for x in v]
+        for eixo in range(3):  # tamanho mínimo 1 fora dos eixos finos
+            if p["to"][eixo] - p["from"][eixo] == 0 and p["tipo"] == "volume":
+                p["to"][eixo] = p["from"][eixo] + 1
+    return d
+
+
+def construir_linhagem(invertida: bool = False, base: str = "quadrupede") -> dict[str, Path]:
+    """Três estágios da sintética em modelos/_sinteticos/_linhagem[-invertida]/eN/. Devolve {eN: .bbmodel}."""
+    definicao = carregar(base)
+    pasta = SAIDA / ("_linhagem-invertida" if invertida else "_linhagem")
+    escalas = dict(ESTAGIOS_LINHAGEM)
+    if invertida:  # o "final" é o menor e com a cabeça maior
+        escalas = {"e1": ESTAGIOS_LINHAGEM["e3"], "e2": ESTAGIOS_LINHAGEM["e2"], "e3": ESTAGIOS_LINHAGEM["e1"]}
+    saida = {}
+    for eid, (corpo, cabeca) in escalas.items():
+        d = _escalar(definicao, corpo, cabeca)
+        d["nome"] = f"{base}-{eid}"
+        saida[eid] = construir_definicao(d, pasta / eid)
+    return saida
+
+
+def construir_definicao(definicao: dict, pasta: Path) -> Path:
+    plano = plano_cubos(definicao)
+    lote = ops.gerar_ops(plano)
+    arquivo = Path(pasta) / f"{definicao['nome']}.bbmodel"
+    motor.criar(arquivo, definicao["nome"], plano["resolucao"]["largura"], plano["resolucao"]["altura"])
+    motor.editar(arquivo, lote)
+    return arquivo
