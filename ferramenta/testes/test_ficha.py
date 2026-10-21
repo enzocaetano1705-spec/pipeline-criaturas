@@ -56,7 +56,8 @@ def pasta_ok(tmp_path):
 def test_modelo_aponta_o_que_falta():
     entrada = ler_ficha(MODELO)
     codigos = {e["codigo"] for e in entrada["erros"]}
-    assert {"nome_modelo", "sem_conceito", "sem_prompt"} <= codigos
+    assert {"nome_modelo", "sem_conceito"} <= codigos
+    assert "sem_prompt" in {a["codigo"] for a in entrada["avisos"]}
     assert len(entrada["estagios"]) == 3
     assert contratos.problemas("entrada", entrada) == []
 

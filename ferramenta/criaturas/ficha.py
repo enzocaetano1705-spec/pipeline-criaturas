@@ -201,7 +201,8 @@ def ler_ficha(pasta: Path) -> dict:
 
         prompt = _prompt(secao)
         if not prompt:
-            erros.append(msg("sem_prompt", f"{eid}: falta o prompt usado na imagem principal"))
+            # o prompt só completa o que a imagem não mostra: sem ele, a classificação usa só a imagem
+            avisos.append(msg("sem_prompt", f"{eid}: falta o prompt usado na imagem principal"))
         for campo, rotulo in (("nao_mostra", "O que a imagem não mostra bem"), ("partes_finas", "Partes finas"),
                               ("rosto", "Rosto"), ("movimento", "Jeito de se mover")):
             if not campos.get(campo):

@@ -30,6 +30,8 @@ MARGEM_GRADE = 34  # espaço para os rótulos, em px
 ALTURA_COMUM = 1024  # altura da silhueta nos recortes, em px
 TOLERANCIA_FUNDO = 28.0  # distância de cor (0–441) até a cor do fundo
 MIN_COMPONENTE = 0.002  # componentes menores que isso (fração da silhueta) viram fundo
+SATURACAO_SOMBRA = 0.12  # sombra de chão: cinza quase sem cor…
+BRILHO_SOMBRA = 0.45  # …e não tão escura quanto o contorno preto do desenho
 
 
 # ---------- máscara ----------
@@ -60,6 +62,13 @@ def _fundo_pelas_bordas(rgb: np.ndarray) -> tuple[np.ndarray, np.ndarray]:
     borda = np.concatenate([rgb[0], rgb[-1], rgb[:, 0], rgb[:, -1]]).astype(float)
     cor = np.median(borda, axis=0)
     parecido = np.linalg.norm(rgb.astype(float) - cor, axis=2) < TOLERANCIA_FUNDO
+    # sombra no chão: cinza de pouca saturação, mais escuro que o fundo, na parte de baixo e ligado a ele
+    f = rgb.astype(float) / 255
+    brilho, saturacao = f.max(2), f.max(2) - f.min(2)
+    baixo = np.zeros(parecido.shape, bool)
+    baixo[int(parecido.shape[0] * 0.6):] = True
+    sombra = baixo & (saturacao < SATURACAO_SOMBRA) & (brilho > BRILHO_SOMBRA) & (brilho < cor.max() / 255)
+    parecido |= sombra
     semente = np.zeros_like(parecido)
     semente[0, :], semente[-1, :], semente[:, 0], semente[:, -1] = parecido[0, :], parecido[-1, :], parecido[:, 0], parecido[:, -1]
     rot, _ = _rotulos(parecido)

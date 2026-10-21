@@ -308,7 +308,10 @@ def regras_nicho_categoricas(t: dict) -> dict[str, list[tuple[float, str]]]:
     add("morcego", -1.5, "penas ou bico", pena or _tem(t, "bico"))
     add("peixe/aquático", 2.5, "nadadeiras", (t.get("nadadeiras") or 0) >= 1)
     add("peixe/aquático", 0.4, "escamas", escama)
-    add("serpente/verme", 1.5, "sem pernas", pernas == 0 and not t.get("nadadeiras"))
+    cabeca_domina = (t.get("cranio_alt") or 0) >= 0.5
+    # sem pernas só aponta para serpente se o corpo não é a própria cabeça (bola de pelo, blob)
+    add("serpente/verme", 1.5, "sem pernas", pernas == 0 and not t.get("nadadeiras") and not cabeca_domina)
+    add("serpente/verme", -1.5, "o corpo é a cabeça", cabeca_domina)
     add("serpente/verme", 0.4, "escamas", escama)
     add("serpente/verme", -1.5, "nadadeiras", (t.get("nadadeiras") or 0) >= 1)
     add("inseto/artrópode", 2.0, "antenas", _tem(t, "antena"))
@@ -323,6 +326,7 @@ def regras_nicho_categoricas(t: dict) -> dict[str, list[tuple[float, str]]]:
     add("humanoide", 0.6, "pele", _cobertura(t, "pele"))
     add("humanoide", 1.0, "de pé com braços", bracos >= 2 and pernas == 2)
     add("fada/fofo", 0.5, "flutua", _tem(t, "flutua"))
+    add("fada/fofo", 1.0, "cabeça e olhos grandes", cabeca_domina and (t.get("olho_alt") or 0) >= 0.13)
     add("outros", -1.0, "categoria de reserva")
     # quem tem marca registrada própria e não mostrou nenhuma perde um pouco
     for n, marca in (("ave", pena or _tem(t, "bico")), ("peixe/aquático", (t.get("nadadeiras") or 0) >= 1),
