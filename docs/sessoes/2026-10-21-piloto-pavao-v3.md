@@ -42,3 +42,31 @@ A largura do corpo, a largura das penas e a área de perfil divergem de propósi
 Arte ainda **não aprovada**: aguarda o usuário.
 
 **Próximo:** ajustar pelo retorno do usuário. Depois, registrar a correspondência pavão↔Koromon como o primeiro caso do piloto de 12 (ficha de construção por parte) e passar para um caso com gabarito oculto.
+
+## Retorno do usuário e segunda rodada (mesma data)
+
+**Nota do usuário:** a v2 tinha nota 4 e a v3 subiu para 6. Com as correções dele no modelo foi para 7, e ele espera 8,5–9 com a textura certa. As animações estão ótimas.
+
+**O que o usuário corrigiu à mão no modelo** (guardado em `revisao-v3/historico/20261021-2031-antes-da-textura.bbmodel`):
+- a cabeça e o corpo ficaram 1 px mais estreitos de cada lado (largura 13);
+- o corpo ganhou 1 px para trás;
+- os planos laterais das penas saíram;
+- os planos dos ocelos foram girados e reposicionados;
+- as penas da direita passaram a espelhar a ilha de UV das penas da esquerda.
+
+Ele também exportou `modelos/criatura-pavao/model.animation.json` e `textura.png`.
+
+**Defeitos de textura que ele apontou, e a correção** (`revisao-v3-koromon.py --so-textura`, que repinta só o corpo e mantém a geometria e as penas dele):
+1. **Olho:** havia um pedaço na lateral enquanto o olho fechava inteiro na frente. Agora o olho tem 6×5 e é desenrolado na quina como no gabarito: 4 colunas na frente e 2 na lateral, com o contorno fechando na lateral. A pupila fica no meio da parte da frente e o brilho fica no alto, à esquerda de quem olha.
+2. **Boca:** estava descontínua e o topo do lábio ficava na cor do corpo. Agora a boca é uma faixa escura contínua: o topo do degrau da mandíbula, a linha da frente e a dobra na lateral. Os dentes ficam pendurados logo abaixo.
+3. **Manchas aleatórias:** saíram. As faces são chapadas, com o topo claro e a base escura.
+
+**Ajuste de UV:** a ilha do volume de cima tinha ficado com v = −1, ou seja, uma linha fora da textura, depois da edição. Ela voltou para [0, 0]. Mudou só o UV, não a forma.
+
+**Validação:** 0 erros. Os 2 avisos vêm de penas que se interpenetram, o que é esperado em planos cruzados e vem da edição do usuário.
+
+**Lições para o método** (vão para o caso pavão↔Koromon do piloto):
+- Traço que dobra a quina (olho, boca) é pintado numa coordenada desenrolada. O contorno fecha num lado só.
+- A boca no degrau da mandíbula ocupa o topo do degrau, além da frente.
+- Na escala de 1 texel por unidade, ruído aleatório lê como sujeira. Detalhe só onde tem intenção.
+- Proporção: a prancha pedia uma cabeça mais estreita do que a minha medida (o pelo engana a largura). Penas: planos girados resolvem melhor que a tira lateral complementar.

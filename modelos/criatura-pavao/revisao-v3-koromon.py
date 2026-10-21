@@ -41,8 +41,8 @@ P = {k: np.frombuffer(bytes.fromhex(v[1:]), dtype=np.uint8) for k, v in {
 
 def cubos() -> list[dict]:
     c = [
-        {"nome": "body_lower", "osso": "body", "from": [-7.5, 0, -6], "to": [7.5, 4, 6]},
-        {"nome": "body_upper", "osso": "body", "from": [-7.5, 4, -5], "to": [7.5, 11, 6]},
+        {"nome": "body_lower", "osso": "body", "from": [-MEIA, 0, FRENTE_INF], "to": [MEIA, 4, 7]},
+        {"nome": "body_upper", "osso": "body", "from": [-MEIA, 4, FRENTE_SUP], "to": [MEIA, 11, 7]},
     ]
     for lado, s in (("left", -1), ("right", 1)):
         def x(a, b):
@@ -84,62 +84,62 @@ def _h(*v) -> float:
 
 
 # ---------- corpo ----------
-# olho 5×5 como o espectador vê (esquerda→direita = x maior→menor); "_" deixa a cor do corpo
-OLHO = ["_KKK_", "KWWAK", "KWPAK", "KAPDK", "_KKK_"]
+# Medidas do corpo depois da correção à mão do usuário (21/10): cabeça 1 px mais estreita de cada lado, 1 px mais
+# funda para trás. MEIA = meia largura; frentes do volume de cima e de baixo (o de baixo avança 1: mandíbula).
+MEIA, FRENTE_SUP, FRENTE_INF = 6.5, -5, -6
+
+# Olho 6×5 desenrolado na quina, como no gabarito: 4 colunas na frente e 2 na lateral, e o contorno fecha
+# na lateral (não na frente). Colunas de dentro para fora; a pupila fica no meio da parte da frente e o brilho W
+# sempre no alto à esquerda do espectador, como no conceito — por isso um padrão para cada olho.
+OLHO_DIR = ["_KKKK_", "KWAAAK", "KPPAAK", "KDPDAK", "_KKKK_"]  # olho à direita do espectador (x < 0)
+OLHO_ESQ = ["_KKKK_", "KAWAAK", "KPPAAK", "KDPDAK", "_KKKK_"]  # olho à esquerda do espectador (x > 0)
 CORES_OLHO = {"K": "dark", "A": "amber", "D": "amber_dark", "P": "pupil", "W": "white"}
 
 
+def _olho(x: float, y: float, q: float):
+    """q: coordenada desenrolada (negativa na frente a partir da quina, positiva na lateral)."""
+    if not (5 <= y < 10 and -4 < q < 2):
+        return None
+    k = (OLHO_DIR if x < 0 else OLHO_ESQ)[int(9 - math.floor(y))][int(math.floor(q + 4))]
+    return None if k == "_" else CORES_OLHO[k]
+
+
 def cor_corpo(cubo: str, face: str, x: float, y: float, z: float):
-    # base por face, como as faces chapadas do gabarito, com borda escura embaixo e topo claro
-    base = {"north": "main", "south": "main", "east": "main", "west": "main", "up": "light", "down": "deep"}[face]
-    cor = base
+    # faces chapadas como no gabarito: topo claro, base escura; sem pintinhas soltas
+    cor = {"up": "light", "down": "deep"}.get(face, "main")
     if face in ("north", "south", "east", "west"):
-        if cubo == "body_lower" and y < 1:
-            cor = "shade"
-        elif cubo == "body_upper" and y > 10:
+        if cubo == "body_upper" and y > 10:
             cor = "light"
-        if face in ("east", "west") and z > 4.5:
+        elif cubo == "body_lower" and y < 1:
             cor = "shade"
-    r = _h(x, y, z)
-    if face != "down" and cor in ("main", "light") and r > 0.93:
-        cor = "light" if cor == "main" else "main"  # tufos de pelo
-    if face in ("up", "north", "east", "west", "south") and y > 5 and r < (0.02 if face == "south" else 0.035):
-        cor = "gold"  # pintinhas douradas do conceito
-    # rosto
-    if face == "north" and cubo == "body_upper":
-        ix = int(math.floor(x + 7.5))  # 0..14, coluna 7 é o centro
-        for x0 in (1, 9):  # olhos: colunas 1-5 e 9-13, linhas y 5..9
-            if x0 <= ix < x0 + 5 and 5 <= y < 10:
-                k = OLHO[int(9 - math.floor(y))][4 - (ix - x0)]
-                if k != "_":
-                    return CORES_OLHO[k]
-        if ix in (0, 14) and 9 <= y < 10:
-            return "dark"  # cílio de fora
-        gema = {10: [7], 9: [6, 7, 8], 8: [7]}.get(int(math.floor(y)), [])
-        if ix in gema:
-            return "gold_light" if (ix, int(y)) in ((7, 10), (8, 9)) else ("gold_dark" if int(y) == 8 or ix == 6 else "gold")
-        if ix in (1, 13) and 4 <= y < 5:
-            return "dark"  # cantos do sorriso sobem
-        if 5 <= y and r < 0.035:
-            return "main"  # sem pintinha em cima do rosto
-    if face == "north" and cubo == "body_lower":
-        ix = int(math.floor(x + 7.5))
-        if 3 <= y < 4 and 1 <= ix <= 13:
-            return "dark"  # boca
-        if 2 <= y < 3 and ix in (2, 4, 10, 12):
-            return "tooth"
-        if 1 <= y < 2 and 6 <= ix <= 8:
-            return "shade"  # linha do queixo
-        if r < 0.035:
-            return "main"
-    if face == "up" and cubo == "body_lower" and z < -5:
-        return "light"  # lábio: a faixa de 1 unidade que avança
-    if face in ("east", "west") and cubo == "body_upper" and z < -3 and 5 <= y < 10:
-        iz, iy = int(math.floor(z + 5)), int(9 - math.floor(y))
-        if 5 <= y < 10:
-            return ("dark", "amber", "amber", "amber_dark", "dark")[iy] if iz == 0 else (None, "dark", "dark", "dark", None)[iy] or cor
-    if face in ("east", "west") and cubo == "body_lower" and z < -4 and 3 <= y < 4:
-        return "dark"  # boca continua na lateral
+    ix = int(math.floor(x + MEIA))  # coluna na frente; a do meio é MEIA - 0,5
+    meio = int(MEIA - 0.5)
+    if cubo == "body_upper":
+        if face == "north":
+            olho = _olho(x, y, -(MEIA - abs(x)))
+        elif face in ("east", "west"):
+            olho = _olho(x, y, z - FRENTE_SUP)
+        else:
+            olho = None
+        if olho:
+            return olho
+        if face == "north":
+            gema = {10: [meio], 9: [meio - 1, meio, meio + 1], 8: [meio]}.get(int(math.floor(y)), [])
+            if ix in gema:
+                return "gold_light" if (ix, int(y)) in ((meio, 10), (meio + 1, 9)) else (
+                    "gold_dark" if int(y) == 8 or ix == meio - 1 else "gold")
+    if cubo == "body_lower":
+        if face == "up" and z < FRENTE_SUP:
+            return "dark"  # a boca é a faixa de 1 unidade que avança (sem quebra entre frente e topo)
+        if face == "north":
+            if 3 <= y < 4:
+                return "dark"  # a boca vista de frente continua a faixa escura do topo
+            if 2 <= y < 3 and ix in (2, 4, 2 * meio - 4, 2 * meio - 2):
+                return "tooth"  # dentes pendurados logo abaixo da boca
+            if 1 <= y < 2 and meio - 1 <= ix <= meio + 1:
+                return "shade"  # linha do queixo
+        if face in ("east", "west") and z < FRENTE_SUP and 3 <= y < 4:
+            return "dark"  # a boca dobra a quina
     return cor
 
 
@@ -214,7 +214,60 @@ def pintar(modelo: bbmodelo.Modelo, res: int) -> np.ndarray:
     return tex
 
 
+def so_textura():
+    """Repinta só o corpo no .bbmodel atual (com as edições à mão do usuário), sem mexer na geometria.
+
+    Os pixels das penas ficam como estão. Antes, guarda o modelo e a textura em revisao-v3/historico/.
+    Se uma ilha do corpo sai da textura (v < 0), ela volta para dentro: é mudança de UV, não de forma.
+    """
+    import datetime
+    hist = DEST / "historico"
+    hist.mkdir(exist_ok=True)
+    carimbo = datetime.datetime.now().strftime("%Y%m%d-%H%M")
+    shutil.copy2(FILE, hist / f"{carimbo}-antes-da-textura.bbmodel")
+    externa = ROOT / "textura.png"  # o .bbmodel aponta para ../textura.png
+    if externa.exists():
+        shutil.copy2(externa, hist / f"{carimbo}-textura-externa.png")
+    modelo = bbmodelo.ler(FILE)
+    res = int(modelo.bruto["resolution"]["width"])
+    corrigir = []
+    for c in modelo.cubos:
+        if c.nome.startswith("body") and any(min(f["uv"][1], f["uv"][3]) < 0 or min(f["uv"][0], f["uv"][2]) < 0
+                                             for f in c.faces.values() if "uv" in f):
+            corrigir.append({"op": "update_node", "target": c.nome, "uv_offset": [0, 0]})
+    if corrigir:
+        motor.editar(FILE, corrigir)
+        modelo = bbmodelo.ler(FILE)
+    tex = np.array(modelo.textura.convert("RGBA")) if modelo.textura is not None else np.zeros((res, res, 4), np.uint8)
+    ident = np.eye(4)
+    for c in modelo.cubos:
+        if not c.nome.startswith("body"):
+            continue
+        for face in ("north", "south", "east", "west", "up", "down"):
+            r = texturizar.texels_da_face(c, face, ident)
+            if r is None:
+                continue
+            for (u, v), (x, y, z) in zip(*r):
+                if 0 <= u < res and 0 <= v < res:
+                    tex[int(v), int(u), :3] = P[cor_corpo(c.nome, face, x, y, z)]
+                    tex[int(v), int(u), 3] = 255
+    Image.fromarray(tex).save(DEST / "textura.png")
+    Image.fromarray(tex).save(externa)
+    # a textura do usuário foi renomeada para "textura.png": troca pelo nome, não pelo índice
+    nome = modelo.bruto["textures"][0].get("name") or "textura"
+    motor.editar(FILE, [{"op": "update_texture", "target": nome, "source": texturizar._data_url(tex), "width": res, "height": res,
+                               "material": None}])  # o Blockbench grava group "" e o motor lê como material
+    modelo = bbmodelo.ler(FILE)
+    render.folha(modelo, lado_px=360, titulo="Pavão e1 | v3 + edições do usuário").save(DEST / "folha.png")
+    geo = motor.resumo_validacao(motor.validar(FILE))
+    aerr, awarn, _ = animar.validar_animacoes(FILE)
+    print(f"textura do corpo repintada ({len(corrigir)} ilha(s) de UV reposicionada(s)); "
+          f"geometria {geo[0]} erros/{geo[1]} avisos, animações {aerr} erros/{awarn} avisos")
+
+
 def main():
+    if "--so-textura" in sys.argv:
+        return so_textura()
     if DEST.exists() and "--refazer" not in sys.argv:
         raise SystemExit("revisao-v3 já existe; use --refazer para gerar de novo (só a v3 é sobrescrita).")
     DEST.mkdir(exist_ok=True)
