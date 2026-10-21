@@ -1,0 +1,15 @@
+{
+  "criatura": "raposa-de-fogo",
+  "estagio": "e1",
+  "hashes": {"raposa-de-fogo-e1.bbmodel": "9f2c0d1e"},
+  "etapas": {
+    "cubificar": {
+      "ok": true,
+      "quando": "2026-10-21T13:00:00",
+      "erros": [],
+      "avisos": [],
+      "arquivos": ["plano-cubos.json", "ops.json", "raposa-de-fogo-e1.bbmodel"],
+      "resumo": {"cubos": 2}
+    }
+  }
+}

@@ -55,7 +55,7 @@ Qualquer IA continua daqui. Siga as fases em ordem. Cada fase entrega a **versã
 **Aceite:** repositório privado no GitHub com o kit; fumaça headless com 0 erros; `uv run criaturas --help` funcionando.
 
 ## Fase 1 — Contratos, CLI, criaturas sintéticas e renderizador
-- [ ] 1.1 Esquemas JSON em `ferramenta/criaturas/contratos/` para `entrada`, `checklist`, `classificacao`, `leitura`, `medidas`, `plano_cubos` e `relatorio`, com exemplos válidos em `ferramenta/testes/exemplos/`.
+- [x] 1.1 Esquemas JSON em `ferramenta/criaturas/contratos/` para `entrada`, `checklist`, `classificacao`, `leitura`, `medidas`, `plano_cubos` e `relatorio`, com exemplos válidos em `ferramenta/testes/exemplos/`.
 - [ ] 1.2 CLI `criaturas` com os subcomandos `ficha`, `preparar`, `classificar`, `medir`, `cubificar`, `texturizar`, `rig`, `animar`, `validar`, `folha`, `linhagem`, `exportar`, `medidas` e `tudo`.
   - Podem nascer como esboço que avisa "ainda não implementado".
   - Todos recebem `<pasta-da-criatura> [--estagio eN]`, imprimem um resumo de até 20 linhas e gravam JSON.

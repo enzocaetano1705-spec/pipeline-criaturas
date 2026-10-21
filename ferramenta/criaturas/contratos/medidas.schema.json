@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "medidas.schema.json",
+  "title": "Medidas tiradas da silhueta (modelos/<nome>/eN/medidas.json)",
+  "type": "object",
+  "required": ["altura_alvo_unidades", "unidades_por_celula", "partes"],
+  "properties": {
+    "altura_alvo_unidades": {"type": "number", "exclusiveMinimum": 0},
+    "fonte_altura": {"enum": ["ficha", "tabela"]},
+    "unidades_por_celula": {"type": "number", "exclusiveMinimum": 0},
+    "partes": {
+      "type": "array", "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "pai", "tipo", "from", "to"],
+        "properties": {
+          "id": {"type": "string"},
+          "pai": {"type": ["string", "null"]},
+          "tipo": {"$ref": "comum.schema.json#/$defs/tipo_parte"},
+          "simetria": {"$ref": "comum.schema.json#/$defs/simetria"},
+          "espelho": {"type": ["string", "null"]},
+          "from": {"$ref": "comum.schema.json#/$defs/vec3"},
+          "to": {"$ref": "comum.schema.json#/$defs/vec3"},
+          "rotacao_repouso": {"$ref": "comum.schema.json#/$defs/vec3"},
+          "profundidade": {"enum": ["lado", "estimada", "tabela"]},
+          "papel_cor": {"type": "string"},
+          "segmentos": {"type": "integer", "minimum": 1}
+        }
+      }
+    },
+    "avisos": {"type": "array", "items": {"$ref": "comum.schema.json#/$defs/mensagem"}}
+  }
+}

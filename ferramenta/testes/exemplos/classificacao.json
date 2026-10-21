@@ -1,0 +1,10 @@
+{
+  "sugestoes": [
+    {"plano": "quadrúpede", "nicho": "canídeo", "confianca": 0.7, "tracos": ["4 patas", "focinho médio", "orelhas grandes"]},
+    {"plano": "quadrúpede", "nicho": "felino", "confianca": 0.2, "tracos": ["cabeça grande", "cauda longa"]},
+    {"plano": "quadrúpede", "nicho": "roedor/pequeno mamífero", "confianca": 0.1, "tracos": ["tamanho pequeno"]}
+  ],
+  "estagio_aparente": {"estagio_tabela": "inicial", "cabeca_alt": 0.45, "olho_alt": 0.18},
+  "conflitos": [],
+  "categoria_usada": {"plano": "quadrúpede", "nicho": "canídeo", "fonte": "confirmada"}
+}

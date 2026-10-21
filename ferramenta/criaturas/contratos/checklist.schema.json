@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "checklist.schema.json",
+  "title": "Checklist morfológico (docs/pesquisa/categorias-criaturas.md, Passo de classificação)",
+  "type": "object",
+  "required": ["itens"],
+  "properties": {
+    "estagio": {"$ref": "comum.schema.json#/$defs/estagio_id"},
+    "itens": {
+      "type": "object",
+      "required": ["postura", "pernas", "bracos", "asas", "cauda", "nadadeiras", "pescoco", "cabeca", "focinho", "orelhas", "olhos", "cobertura", "extras"],
+      "additionalProperties": {"$ref": "#/$defs/item"}
+    },
+    "conflitos": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["item", "imagem", "prompt"],
+        "properties": {"item": {"type": "string"}, "imagem": {}, "prompt": {}, "nota": {"type": "string"}}
+      }
+    }
+  },
+  "$defs": {
+    "item": {
+      "type": "object",
+      "required": ["valor", "certeza", "fonte"],
+      "properties": {
+        "valor": {},
+        "certeza": {"enum": ["visível", "incerto", "oculto"]},
+        "fonte": {"enum": ["imagem", "prompt", "tabela"]},
+        "nota": {"type": "string"}
+      },
+      "additionalProperties": false
+    }
+  }
+}

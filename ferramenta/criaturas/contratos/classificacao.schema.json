@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "classificacao.schema.json",
+  "title": "Classificação (modelos/<nome>/eN/classificacao.json)",
+  "type": "object",
+  "required": ["sugestoes", "estagio_aparente"],
+  "properties": {
+    "sugestoes": {
+      "type": "array", "minItems": 1, "maxItems": 3,
+      "items": {
+        "type": "object",
+        "required": ["plano", "nicho", "confianca", "tracos"],
+        "properties": {
+          "plano": {"type": "string"},
+          "nicho": {"type": "string"},
+          "confianca": {"type": "number", "minimum": 0, "maximum": 1},
+          "tracos": {"type": "array", "items": {"type": "string"}, "maxItems": 3}
+        }
+      }
+    },
+    "estagio_aparente": {
+      "type": "object",
+      "required": ["estagio_tabela"],
+      "properties": {
+        "estagio_tabela": {"$ref": "comum.schema.json#/$defs/estagio_tabela"},
+        "cabeca_alt": {"type": ["number", "null"]},
+        "olho_alt": {"type": ["number", "null"]},
+        "nota": {"type": "string"}
+      }
+    },
+    "conflitos": {"type": "array", "items": {"type": "object"}},
+    "categoria_usada": {
+      "oneOf": [
+        {"type": "null"},
+        {
+          "type": "object",
+          "required": ["plano", "nicho", "fonte"],
+          "properties": {
+            "plano": {"type": "string"},
+            "nicho": {"type": "string"},
+            "fonte": {"enum": ["confirmada", "verdade", "sugestao_1"]}
+          }
+        }
+      ]
+    }
+  }
+}

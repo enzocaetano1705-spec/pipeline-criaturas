@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "relatorio.schema.json",
+  "title": "Relatório (modelos/<nome>/eN/relatorio.json): a última execução de cada etapa",
+  "type": "object",
+  "required": ["criatura", "etapas"],
+  "properties": {
+    "criatura": {"type": "string"},
+    "estagio": {"type": ["string", "null"]},
+    "hashes": {"type": "object", "additionalProperties": {"type": "string"}, "description": "sha256 dos .bbmodel gerados, para detectar edição à mão"},
+    "etapas": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": ["ok", "quando"],
+        "properties": {
+          "ok": {"type": "boolean"},
+          "quando": {"type": "string"},
+          "erros": {"type": "array", "items": {"$ref": "comum.schema.json#/$defs/mensagem"}},
+          "avisos": {"type": "array", "items": {"$ref": "comum.schema.json#/$defs/mensagem"}},
+          "arquivos": {"type": "array", "items": {"type": "string"}},
+          "resumo": {"type": "object"}
+        }
+      }
+    }
+  }
+}

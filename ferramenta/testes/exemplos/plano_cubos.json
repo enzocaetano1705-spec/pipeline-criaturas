@@ -1,0 +1,16 @@
+{
+  "nome": "raposa-de-fogo-e1",
+  "formato": "bedrock",
+  "resolucao": {"largura": 64, "altura": 64},
+  "ossos": [
+    {"nome": "root", "pai": null, "pivo": [0, 0, 0]},
+    {"nome": "body", "pai": "root", "pivo": [0, 5, 0]},
+    {"nome": "head", "pai": "body", "pivo": [0, 7, -3]}
+  ],
+  "cubos": [
+    {"nome": "body_main", "osso": "body", "parte": "body", "tipo": "volume", "from": [-3, 2, -4], "to": [3, 7, 4], "uv_offset": [0, 0], "cor": "#e0682a"},
+    {"nome": "head_main", "osso": "head", "parte": "head", "tipo": "volume", "from": [-3, 7, -6], "to": [3, 13, 0], "uv_offset": [0, 13]}
+  ],
+  "locators": [{"nome": "loc_mouth", "osso": "head", "posicao": [0, 9, -6]}],
+  "orcamento": {"cubos": 2, "p75": 61, "limite": 79.3}
+}

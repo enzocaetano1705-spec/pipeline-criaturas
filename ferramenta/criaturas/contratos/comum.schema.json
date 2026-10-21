@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "comum.schema.json",
+  "title": "Tipos comuns",
+  "$defs": {
+    "vec3": {"type": "array", "items": {"type": "number"}, "minItems": 3, "maxItems": 3},
+    "caixa2d": {
+      "description": "Caixa na grade da vista: [x0, y0, x1, y1]. Origem no canto superior esquerdo da imagem recortada; 1 célula = 1/32 da altura da silhueta; y cresce para baixo (32 = chão).",
+      "type": "array", "items": {"type": "number"}, "minItems": 4, "maxItems": 4
+    },
+    "estagio_id": {"type": "string", "pattern": "^e[1-9]$"},
+    "nome": {"type": "string", "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"},
+    "cor": {"type": "string", "pattern": "^#[0-9a-fA-F]{6}$"},
+    "estagio_tabela": {"enum": ["inicial", "meio", "final", "único", "lendário"]},
+    "categoria": {
+      "type": "object",
+      "required": ["plano", "nicho"],
+      "properties": {"plano": {"type": "string"}, "nicho": {"type": "string"}},
+      "additionalProperties": false
+    },
+    "tipo_parte": {"enum": ["volume", "plano", "adesivo"]},
+    "simetria": {"enum": ["central", "esquerda", "direita"]},
+    "mensagem": {
+      "type": "object",
+      "required": ["codigo", "texto"],
+      "properties": {
+        "codigo": {"type": "string"},
+        "texto": {"type": "string"},
+        "parte": {"type": "string"}
+      }
+    }
+  }
+}

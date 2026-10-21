@@ -1,0 +1,11 @@
+{
+  "altura_alvo_unidades": 13,
+  "fonte_altura": "ficha",
+  "unidades_por_celula": 0.40625,
+  "partes": [
+    {"id": "body", "pai": null, "tipo": "volume", "simetria": "central", "from": [-2.5, 2, -4], "to": [2.5, 7, 4], "profundidade": "lado"},
+    {"id": "head", "pai": "body", "tipo": "volume", "simetria": "central", "from": [-3, 7, -6], "to": [3, 13, 0], "profundidade": "lado"},
+    {"id": "ear_left", "pai": "head", "tipo": "plano", "simetria": "esquerda", "espelho": "ear_right", "from": [-3, 12.6, -2], "to": [-1.5, 14.6, -2], "profundidade": "tabela"}
+  ],
+  "avisos": [{"codigo": "diferenca_vistas", "texto": "head: altura difere 12% entre frente e lado", "parte": "head"}]
+}

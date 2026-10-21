@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "entrada.schema.json",
+  "title": "Ficha normalizada (modelos/<nome>/entrada.json)",
+  "type": "object",
+  "required": ["nome", "status", "destino", "estilo", "pasta", "estagios"],
+  "properties": {
+    "nome": {"$ref": "comum.schema.json#/$defs/nome"},
+    "titulo": {"type": "string"},
+    "status": {"enum": ["rascunho", "pronta-para-modelagem", "em-modelagem", "modelada"]},
+    "destino": {"type": "array", "items": {"enum": ["roblox", "minecraft"]}, "minItems": 1},
+    "estilo": {"enum": ["cobblemon", "digimod"]},
+    "pasta": {"type": "string"},
+    "ideia": {"type": "string"},
+    "motivos": {"type": "string"},
+    "imagem_linhagem": {"type": ["string", "null"]},
+    "estagios": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "estagio", "estagio_tabela", "imagens"],
+        "properties": {
+          "id": {"$ref": "comum.schema.json#/$defs/estagio_id"},
+          "nome": {"type": "string"},
+          "estagio": {"type": "string", "description": "Como na ficha: 1 de 3, bebê (pré-estágio), lendário…"},
+          "estagio_tabela": {"oneOf": [{"$ref": "comum.schema.json#/$defs/estagio_tabela"}, {"type": "null"}]},
+          "estagio_cobblemon": {"type": ["string", "null"]},
+          "categoria_palpite": {"type": ["string", "null"]},
+          "categoria_confirmada": {"oneOf": [{"$ref": "comum.schema.json#/$defs/categoria"}, {"type": "null"}]},
+          "altura_blocos": {"type": ["number", "null"]},
+          "imagens": {
+            "type": "object",
+            "properties": {
+              "conceito": {"type": ["string", "null"]},
+              "frente": {"type": ["string", "null"]},
+              "lado": {"type": ["string", "null"]},
+              "costas": {"type": ["string", "null"]}
+            }
+          },
+          "nao_mostra": {"type": "string"},
+          "partes_finas": {"type": "string"},
+          "rosto": {"type": "string"},
+          "movimento": {"type": "string"},
+          "prompt": {"type": "string"}
+        }
+      }
+    },
+    "erros": {"type": "array", "items": {"$ref": "comum.schema.json#/$defs/mensagem"}},
+    "avisos": {"type": "array", "items": {"$ref": "comum.schema.json#/$defs/mensagem"}}
+  }
+}

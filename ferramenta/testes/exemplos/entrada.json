@@ -1,0 +1,31 @@
+{
+  "nome": "raposa-de-fogo",
+  "titulo": "Raposa de fogo",
+  "status": "pronta-para-modelagem",
+  "destino": ["roblox"],
+  "estilo": "cobblemon",
+  "pasta": "docs/criaturas/raposa-de-fogo",
+  "ideia": "Uma raposa pequena com a ponta da cauda em chamas.",
+  "motivos": "ponta da cauda em chama; orelhas grandes; mancha clara no peito",
+  "imagem_linhagem": "linhagem.png",
+  "estagios": [
+    {
+      "id": "e1",
+      "nome": "Faísca",
+      "estagio": "1 de 3",
+      "estagio_tabela": "inicial",
+      "estagio_cobblemon": "1º de 3",
+      "categoria_palpite": "quadrúpede › canídeo",
+      "categoria_confirmada": {"plano": "quadrúpede", "nicho": "canídeo"},
+      "altura_blocos": 0.8,
+      "imagens": {"conceito": "e1-conceito.png", "frente": "e1-frente.png", "lado": "e1-lado.png", "costas": null},
+      "nao_mostra": "a cauda fica atrás do corpo na vista frontal",
+      "partes_finas": "orelhas, chama da cauda",
+      "rosto": "olhos grandes, boca pequena",
+      "movimento": "trota",
+      "prompt": "small fox creature with a flame-tipped tail, full body, plain background"
+    }
+  ],
+  "erros": [],
+  "avisos": [{"codigo": "sem_costas", "texto": "e1 não tem e1-costas.png (opcional)."}]
+}

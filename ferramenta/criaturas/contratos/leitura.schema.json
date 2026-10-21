@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "leitura.schema.json",
+  "title": "Leitura semântica feita pela IA (modelos/<nome>/eN/leitura.json)",
+  "type": "object",
+  "required": ["vistas", "partes"],
+  "properties": {
+    "vistas": {
+      "type": "object",
+      "description": "Vistas usadas e a imagem com grade de cada uma.",
+      "properties": {
+        "frente": {"$ref": "#/$defs/vista"},
+        "lado": {"$ref": "#/$defs/vista"},
+        "costas": {"$ref": "#/$defs/vista"},
+        "conceito": {"$ref": "#/$defs/vista"}
+      },
+      "minProperties": 1
+    },
+    "partes": {
+      "type": "array", "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "pai", "tipo", "simetria", "caixas"],
+        "properties": {
+          "id": {"type": "string", "pattern": "^[a-z][a-z0-9_]*$"},
+          "pai": {"type": ["string", "null"]},
+          "tipo": {"$ref": "comum.schema.json#/$defs/tipo_parte"},
+          "simetria": {"$ref": "comum.schema.json#/$defs/simetria"},
+          "espelho": {"type": ["string", "null"], "description": "id da parte do outro lado"},
+          "caixas": {
+            "type": "object",
+            "description": "Caixa por vista, na grade. Frente: x horizontal como na imagem; lado: a frente da criatura fica à esquerda da imagem.",
+            "properties": {
+              "frente": {"$ref": "comum.schema.json#/$defs/caixa2d"},
+              "lado": {"$ref": "comum.schema.json#/$defs/caixa2d"},
+              "costas": {"$ref": "comum.schema.json#/$defs/caixa2d"}
+            },
+            "minProperties": 1
+          },
+          "rotacao_repouso": {"$ref": "comum.schema.json#/$defs/vec3"},
+          "papel_cor": {"type": "string"},
+          "segmentos": {"type": "integer", "minimum": 1}
+        }
+      }
+    },
+    "papeis_cor": {"type": "object", "additionalProperties": {"$ref": "comum.schema.json#/$defs/cor"}},
+    "incertezas": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["parte", "item", "resolucao"],
+        "properties": {
+          "parte": {"type": "string"},
+          "item": {"type": "string"},
+          "resolucao": {"enum": ["imagem", "prompt", "tabela"]},
+          "nota": {"type": "string"}
+        }
+      }
+    }
+  },
+  "$defs": {
+    "vista": {
+      "type": "object",
+      "required": ["imagem"],
+      "properties": {
+        "imagem": {"type": "string"},
+        "celulas_largura": {"type": "number"},
+        "celulas_altura": {"const": 32}
+      }
+    }
+  }
+}
