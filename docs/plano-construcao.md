@@ -56,10 +56,10 @@ Qualquer IA continua daqui. Siga as fases em ordem. Cada fase entrega a **versã
 
 ## Fase 1 — Contratos, CLI, criaturas sintéticas e renderizador
 - [x] 1.1 Esquemas JSON em `ferramenta/criaturas/contratos/` para `entrada`, `checklist`, `classificacao`, `leitura`, `medidas`, `plano_cubos` e `relatorio`, com exemplos válidos em `ferramenta/testes/exemplos/`.
-- [ ] 1.2 CLI `criaturas` com os subcomandos `ficha`, `preparar`, `classificar`, `medir`, `cubificar`, `texturizar`, `rig`, `animar`, `validar`, `folha`, `linhagem`, `exportar`, `medidas` e `tudo`.
+- [x] 1.2 CLI `criaturas` com os subcomandos `ficha`, `preparar`, `classificar`, `medir`, `cubificar`, `texturizar`, `rig`, `animar`, `validar`, `folha`, `linhagem`, `exportar`, `medidas` e `tudo`.
   - Podem nascer como esboço que avisa "ainda não implementado".
   - Todos recebem `<pasta-da-criatura> [--estagio eN]`, imprimem um resumo de até 20 linhas e gravam JSON.
-- [ ] 1.3 `criaturas medidas <plano|nicho> [estagio]` completo: lê `referencia/medidas.json` e imprime as faixas.
+- [x] 1.3 `criaturas medidas <plano|nicho> [estagio]` completo: lê `referencia/medidas.json` e imprime as faixas.
 - [ ] 1.4 `criaturas ficha <pasta>` completo: lê o `ficha.md` (frontmatter e seções), confere as imagens obrigatórias e os tamanhos e grava `modelos/<nome>/entrada.json`, com erros claros quando faltar algo.
 - [ ] 1.5 Ponte Python para o motor (`ferramenta/criaturas/motor.py`): chama o `call.ts` com os argumentos num arquivo, devolve JSON e trata erros. Teste: recriar o modelo de fumaça pela ponte.
 - [ ] 1.6 Três criaturas sintéticas em `ferramenta/testes/sinteticos/` (quadrúpede, bípede com cauda, alado), feitas com ops próprios e com a verdade conhecida (medidas de cada parte).
