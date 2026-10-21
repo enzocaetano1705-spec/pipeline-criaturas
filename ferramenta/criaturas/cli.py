@@ -125,6 +125,14 @@ def montar_parser() -> argparse.ArgumentParser:
     referencias.opcoes(p)
     p.set_defaults(func=referencias.cmd_referencias)
 
+    from criaturas import comparar_referencias
+
+    p = sub.add_parser("comparar-referencias", help="compara proporções e UV por partes mapeadas em dois .bbmodel",
+                       description="Diagnóstico por analogia ou reconstrução; não aprova qualidade artística.")
+    p.add_argument("caso", help="JSON com modo, âncora e seletores de referência/candidato")
+    p.add_argument("--saida", required=True, help="relatório agregado JSON; preserva os modelos")
+    p.set_defaults(func=comparar_referencias.cmd_comparar)
+
     p = sub.add_parser("medidas", help="faixas de referencia/medidas.json para um plano ou nicho",
                        description="Faixas [p25, mediana, p75] de um plano de corpo ou nicho, opcionalmente de um estágio.")
     p.add_argument("categoria", help="plano de corpo ou nicho (ex.: quadrúpede, dragão, roedor)")

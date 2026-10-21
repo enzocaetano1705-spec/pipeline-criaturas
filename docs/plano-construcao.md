@@ -196,6 +196,8 @@ Começa quando `docs/criaturas/<nome>/ficha.md` estiver com `status: pronta-para
 
 **Ajuste solicitado durante a fase 10:**
 - [x] Estudar referências por estrutura (ilustração, vistas reais, atlas, JSON e animações), acrescentar consulta local e estratégia `poucas_formas`, testar e registrar na skill. Decisão [[0005-estudar-referencias-por-estrutura]]. O ensaio técnico do pavão não conclui a revisão artística nem a importação no Roblox.
+- [x] Auditar acervo e acrescentar diagnóstico por partes (`comparar-referencias`) com teste no pavão v2 rejeitado. Método e limites em [[aprendizado-por-gabaritos]], decisão [[0006-comparacao-por-partes-e-gabaritos]]. Não equivale a um gerador treinado.
+- [ ] Curar piloto de exemplos com conceitos, correspondências e landmarks; medir reconstrução e extrapolação em casos reservados antes de decidir treinamento.
 
 ---
 

@@ -7,6 +7,10 @@ ia: codex
 
 # Sessão 2026-10-21 — criatura-pavao
 
+**Estado artístico atual:** o usuário rejeitou o modelo e a textura da revisão v2. Solicitou melhorar o método usando exemplos reais como perguntas/gabaritos e soluções por partes. A v2 não está aguardando aprovação nem deve ser exportada como resultado aprovado. Diagnóstico e próximos aceites em [[aprendizado-por-gabaritos]]; sessão em [[2026-10-21-metodo-gabaritos]].
+
+**Revisão v2 executada:** `modelos/criatura-pavao/revisao-arte-v2.py` gerou uma cópia independente em `revisao-v2/criatura-pavao-e1-v2.bbmodel`, com 3 volumes sólidos, 6 planos de penas, atlas original 128×128 com recortes alfa e rosto pintado em maior resolução. Os grupos, pivôs compatíveis e as animações `idle`/`walk` do ensaio foram preservados. Validação do motor: 0 erros de geometria e 6 avisos; animações: 0 erros e 0 avisos. A versão principal e o ensaio anterior ficaram intactos; exportação Roblox/Minecraft ainda pendente de aprovação da folha.
+
 **Revisão atual:** workflow de estudo por referências implementado e ensaio separado em `modelos/criatura-pavao/estudo-referencias/pavao-planos-animado.bbmodel`: 2 volumes, 6 planos e movimentos próprios `idle`/`walk`. O modelo principal `e1` foi preservado. Exportação e teste no Roblox ainda não concluídos.
 
 **Feito:** vistas separadas da prancha original, ficha criada e imagens preparadas. Checklist segue somente a imagem. Usuário confirmou estágio 1 de 3. Nome provisório criatura-pavao. Prompt original não fornecido.

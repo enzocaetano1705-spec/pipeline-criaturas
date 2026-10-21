@@ -49,6 +49,16 @@ Registre a estratégia em `leitura.json`, sem coordenadas ou chaves copiadas de 
 
 Adapte **a solução**: família estrutural, número e função dos volumes, uso de planos, estratégia de pintura, organização dos ossos e ritmo do movimento. Crie operações e textura próprias para a criatura. Para modelos já corrigidos ou pintados, use `aplicar`; não rode `cubificar` para reconstruir tudo apenas para adicionar a estratégia.
 
+## Comparação por partes e gabaritos
+
+Se o usuário estabeleceu uma referência dominante, explicite a correspondência: quais volumes sustentam mandíbula/rosto, onde ficam olhos/boca, como planos e alfa constroem os apêndices. Uma contagem igual de cubos não preserva essa solução. Meça antes de trocar a construção ou aumentar o atlas.
+
+`uv run criaturas comparar-referencias caso.json --saida comparacao.json` compara papéis mapeados em dois `.bbmodel` sem alterá-los. O caso informa modo (`analogia` ou `reconstrucao`), parte âncora e seletores por tipo/osso/elemento. Leia formato, limites e protocolo em [aprendizado-por-gabaritos](../../docs/pesquisa/aprendizado-por-gabaritos.md). A saída contém apenas metadados/medidas; não aprova a arte.
+
+Para cada revisão, conferir também olhos em frente/perfil, posição da boca, espaço em pixels para cada motivo e visibilidade dos planos em 3/4. Corrigir defeitos demonstráveis (motivo cortado, detalhe ausente, proporção incompatível) antes de pedir aprovação. O corpo quadrado em si não é erro quando a linguagem escolhida é cubificada.
+
+Em produção, consultar referências desde o começo. Num exercício de avaliação, congelar a tentativa antes de revelar o modelo alvo e retirar variantes/parentes próximos do conjunto de consulta. Não apresentar uma adaptação que já consultou o gabarito como prova de generalização.
+
 ## Conferir movimentos reaproveitáveis
 
 - Faça um mapa de papéis, por exemplo raiz→raiz e corpo→corpo; confira também pivôs, eixos, escala e pose de repouso.
