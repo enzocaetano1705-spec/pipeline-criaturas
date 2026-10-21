@@ -1,0 +1,16 @@
+# Texto com fim de linha LF em qualquer sistema (evita diffs falsos no Windows)
+* text=auto eol=lf
+*.ps1 text eol=crlf
+*.bat text eol=crlf
+*.cmd text eol=crlf
+
+# Binários
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.webp binary
+*.gif binary
+*.glb binary
+*.fbx binary
+*.blend binary
+*.zip binary

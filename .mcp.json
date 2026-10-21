@@ -1,0 +1,17 @@
+{
+  "mcpServers": {
+    "bbmodel": {
+      "type": "stdio",
+      "command": "node",
+      "args": [
+        "externos/blockbench-mcp-plugin/bin/blockbench-mcp-headless.mjs",
+        "--root",
+        "./modelos"
+      ]
+    },
+    "blockbench": {
+      "type": "http",
+      "url": "http://localhost:3000/bb-mcp"
+    }
+  }
+}

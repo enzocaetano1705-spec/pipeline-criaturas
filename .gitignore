@@ -1,0 +1,34 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+
+# Node / ferramentas externas (clonadas e fixadas na Fase 0, nunca versionadas)
+node_modules/
+externos/
+
+# Saídas temporárias do pipeline e testes de fumaça
+modelos/**/_cache/
+modelos/**/tmp/
+modelos/_fumaca/
+referencia/prototipo-forja/saida/
+*.log
+
+# Obsidian: estado da janela muda o tempo todo
+docs/.obsidian/workspace.json
+docs/.obsidian/workspace-mobile.json
+docs/.obsidian/cache
+docs/.trash/
+
+# Pessoal / segredos
+.claude/settings.local.json
+CLAUDE.local.md
+.env
+.env.*
+
+# Sistema
+Thumbs.db
+desktop.ini
+.DS_Store
