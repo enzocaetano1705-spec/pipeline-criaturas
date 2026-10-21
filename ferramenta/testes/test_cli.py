@@ -22,11 +22,14 @@ def test_sem_argumentos_mostra_ajuda(capsys):
 
 
 def test_esboco_avisa_e_grava_relatorio(capsys, tmp_path):
+    import argparse
+
     pasta = tmp_path / "_teste-esboco"
     pasta.mkdir()
     destino = MODELOS / "_teste-esboco"
     try:
-        assert cli.main(["exportar", str(pasta), "--estagio", "e2"]) == 2
+        args = argparse.Namespace(pasta=str(pasta), estagio="e2", comando="exportar")
+        assert cli.ainda_nao_implementado(args) == 2
         assert "ainda não implementado" in capsys.readouterr().out
         rel = json.loads((destino / "e2" / "relatorio.json").read_text(encoding="utf-8"))
         assert rel["etapas"]["exportar"]["ok"] is False
