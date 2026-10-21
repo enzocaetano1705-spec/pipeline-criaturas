@@ -29,7 +29,7 @@ Qualquer IA continua daqui. Siga as fases em ordem. Cada fase entrega a **versã
 
 ## Fase 0 — Ambiente, GitHub e motor headless
 - [x] 0.1 Conferir e registrar versões na nota da sessão: `git --version`, `gh auth status`, `node --version` (23.6 ou mais para render), `uv --version` e, no Claude Code, `claude mcp list`. Se faltar algo: **PARE** e passe o comando de instalação de `PRIMEIROS-PASSOS.md`.
-- [ ] 0.2 Repositório:
+- [x] 0.2 Repositório:
   - `git init -b main`, se a pasta ainda não for um repositório.
   - Conferir `git config user.name` e `user.email`. Se faltar, **PARE**: não invente identidade.
   - Commit inicial do kit, sem as pastas de criatura que o usuário já tenha começado em `docs/criaturas/` (entram só `LEIA-ME.md`, `_modelo/` e `_testes/`).
