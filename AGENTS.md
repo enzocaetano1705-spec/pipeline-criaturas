@@ -41,9 +41,12 @@ Leia `docs/pesquisa/` só quando a tarefa pedir, e procure por assunto (grep) em
 
 Escreva a pergunta no topo da nota da sessão e pare.
 
-## Comandos (existem a partir da Fase 1)
-- Ajuda da ferramenta: `uv run criaturas --help`
-- Testes: `uv run pytest -q`
+## Comandos
+- Modelar uma criatura: siga `skills/criaturas-3d/SKILL.md` (passos, pontos de parada e regras de tokens).
+- Ajuda da ferramenta: `uv run criaturas --help`; atalho: `uv run criaturas tudo <pasta> --estagio eN`.
+- Testes: `uv run pytest -q` (cerca de 3 min; o teste do Roblox é pulado com o Blockbench fechado).
+- Depois de editar `skills/`: `uv run python scripts/sincronizar-skills.py` e `uv run python scripts/empacotar-skill-chat.py`.
+- Dependências JS (validador glTF): `npm install --omit=dev` em `ferramenta/js`.
 - Motor headless do Blockbench sem MCP: `externos/blockbench-mcp-plugin/node_modules/bun/bin/bun.exe run externos/blockbench-mcp-plugin/headless/call.ts --root modelos <ferramenta> @args.json` (exemplo completo em `referencia/exemplo-headless/`). O `call.ts` sobe o servidor chamando `bun` pelo nome: ponha `externos/blockbench-mcp-plugin/node_modules/bun/bin` no PATH antes, senão sai "MCP error -32000: Connection closed". A ponte Python (`motor.py`) faz isso sozinha.
 
 ## Ambiente

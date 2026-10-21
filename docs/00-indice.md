@@ -11,6 +11,8 @@ Conceito livre (imagens + prompt) → modelo cubificado no estilo Cobblemon/Digi
 - [[convencoes]]: unidades, eixos, nomes de ossos, locators, animações e pastas.
 - `decisoes/`: o que foi decidido e por quê ([[0001-decisoes-iniciais]]).
 - `sessoes/`: diário curto de cada sessão de IA.
+- Skill de modelagem: `skills/criaturas-3d/SKILL.md` (fora do cofre, na raiz do repositório), com os protocolos `classificar.md` e `ler.md`.
+- [[0002-exportacao-roblox]]: como o .glb do Roblox é exportado e verificado.
 
 ## Criaturas
 - [[criaturas/LEIA-ME|Como preparar uma criatura]]: requisitos das imagens, números de evolução e checklist.
