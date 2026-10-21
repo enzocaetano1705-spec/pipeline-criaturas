@@ -63,7 +63,7 @@ Qualquer IA continua daqui. Siga as fases em ordem. Cada fase entrega a **versã
 - [x] 1.4 `criaturas ficha <pasta>` completo: lê o `ficha.md` (frontmatter e seções), confere as imagens obrigatórias e os tamanhos e grava `modelos/<nome>/entrada.json`, com erros claros quando faltar algo.
 - [x] 1.5 Ponte Python para o motor (`ferramenta/criaturas/motor.py`): chama o `call.ts` com os argumentos num arquivo, devolve JSON e trata erros. Teste: recriar o modelo de fumaça pela ponte.
 - [x] 1.6 Três criaturas sintéticas em `ferramenta/testes/sinteticos/` (quadrúpede, bípede com cauda, alado), feitas com ops próprios e com a verdade conhecida (medidas de cada parte).
-- [ ] 1.7 Renderizador próprio mínimo: porte do `render.py` da Forja lendo `.bbmodel`. Vistas ortográficas de frente, lado, costas e 3/4, fundo liso e luz chapada. Serve para as imagens de teste e como reserva da folha de vistas.
+- [x] 1.7 Renderizador próprio mínimo: porte do `render.py` da Forja lendo `.bbmodel`. Vistas ortográficas de frente, lado, costas e 3/4, fundo liso e luz chapada. Serve para as imagens de teste e como reserva da folha de vistas.
 
 **Aceite:** `uv run pytest -q` verde; `criaturas medidas dragão final` imprime as faixas; `criaturas ficha docs/criaturas/_modelo` aponta os campos que faltam; as sintéticas têm vistas renderizadas.
 

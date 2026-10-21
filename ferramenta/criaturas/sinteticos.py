@@ -7,6 +7,8 @@ As do lado direito saem espelhadas em X. Uma parte vira um osso (pivô na junta)
 import json
 from pathlib import Path
 
+import numpy as np
+
 from criaturas import motor, ops, relatorio
 from criaturas.caminhos import MODELOS, RAIZ
 
@@ -70,6 +72,26 @@ def cores_por_cubo(plano: dict) -> dict[str, str]:
     return {c["nome"]: c["cor"] for c in plano["cubos"] if c.get("cor")}
 
 
+def renderizar_conceito(arquivo: Path, plano: dict, pasta: Path, lado_maior: int = 1024) -> dict[str, Path]:
+    """Imagens de "conceito" da sintética (e1-frente/lado/costas/conceito.png), na mesma escala.
+
+    Fazem o papel das imagens do usuário nos testes das Fases 2 e 3.
+    """
+    from criaturas import bbmodelo, render
+
+    modelo = bbmodelo.ler(arquivo)
+    lo, hi = bbmodelo.limites(modelo)
+    maior = max(float(np.max(hi - lo)) * 1.15, 1.0)
+    escala = (lado_maior - 2 * 48) / maior
+    saidas = {}
+    for vista, nome_arq in (("frente", "e1-frente.png"), ("lado", "e1-lado.png"), ("costas", "e1-costas.png"), ("3/4", "e1-conceito.png")):
+        im, _, _, _ = render.renderizar(modelo, vista, escala=escala, margem=48, cores=cores_por_cubo(plano), limites=(lo, hi))
+        pasta.mkdir(parents=True, exist_ok=True)
+        im.save(pasta / nome_arq)
+        saidas[vista] = pasta / nome_arq
+    return saidas
+
+
 def construir(nome: str, destino: Path | None = None) -> Path:
     """Gera plano-cubos.json, ops.json, verdade.json e o .bbmodel da sintética. Devolve o .bbmodel."""
     definicao = carregar(nome)
@@ -83,3 +105,26 @@ def construir(nome: str, destino: Path | None = None) -> Path:
     motor.criar(arquivo, nome, plano["resolucao"]["largura"], plano["resolucao"]["altura"])
     motor.editar(arquivo, lote)
     return arquivo
+
+
+def construir_todas() -> list[str]:
+    """Constrói as sintéticas em modelos/_sinteticos/<nome>/e1/ com folha de vistas e imagens de conceito."""
+    from criaturas import bbmodelo, render
+
+    linhas = []
+    for nome in NOMES:
+        arquivo = construir(nome)
+        pasta = arquivo.parent
+        plano = json.loads((pasta / "plano-cubos.json").read_text(encoding="utf-8"))
+        render.folha(bbmodelo.ler(arquivo), cores=cores_por_cubo(plano), titulo=nome).save(pasta / "vistas.png")
+        renderizar_conceito(arquivo, plano, pasta.parent / "conceito")
+        linhas.append(f"{nome}: {len(plano['cubos'])} cubos -> {pasta.relative_to(RAIZ).as_posix()}/vistas.png")
+    return linhas
+
+
+if __name__ == "__main__":
+    import sys
+
+    for fluxo in (sys.stdout,):
+        fluxo.reconfigure(encoding="utf-8", errors="replace")
+    print("\n".join(construir_todas()))
