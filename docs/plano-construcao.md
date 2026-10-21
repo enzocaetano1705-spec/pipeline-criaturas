@@ -43,7 +43,7 @@ Qualquer IA continua daqui. Siga as fases em ordem. Cada fase entrega a **versã
   - Funcionou: registre.
   - Falhou: registre o erro. A folha de vistas usa o renderizador próprio (item 1.7).
   - Em qualquer caso, confira no render o lado direito (+X) e corrija `docs/convencoes.md` se preciso.
-- [ ] 0.5 MCPs no Claude Code:
+- [x] 0.5 MCPs no Claude Code:
   - `bbmodel` usa o clone do item 0.3, então só conecta numa sessão aberta depois dele (ou ao reconectar em `/mcp`). Nesta sessão, use o `call.ts`. Anote na nota da sessão que o usuário deve conferir com `/mcp` na próxima abertura.
   - `blockbench` só conecta com o app aberto e o plugin carregado. Se não estiver, anote e siga: só bloqueia na Fase 8.
 - [ ] 0.6 Python:
