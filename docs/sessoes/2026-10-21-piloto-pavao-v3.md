@@ -113,3 +113,9 @@ Ele também exportou `modelos/criatura-pavao/model.animation.json` e `textura.pn
 O lábio pintado pelo usuário e as penas foram conferidos pixel a pixel: estão iguais.
 
 **Lição:** antes de qualquer pintura por código, ler o UV real do arquivo salvo. Uma edição à mão feita sobre o arquivo antigo aberto desfaz mudanças de UV sem aviso.
+
+## Fechamento
+
+O usuário fez os últimos retoques à mão (31 px de boca e queixo) e aprovou: **nota 8,5** ("100%"). A cópia da versão aprovada está em `revisao-v3/historico/20261021-2051-aprovada-8-5.bbmodel`. Ficha do caso: [[piloto-01-pavao-koromon]].
+
+O `--penugem` deixou de repor o UV sozinho: a versão aprovada tem `[0, −1]`, e para repor agora é preciso pedir com `--repor-uv`.

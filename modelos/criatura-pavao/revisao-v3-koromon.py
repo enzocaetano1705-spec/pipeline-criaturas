@@ -323,10 +323,13 @@ def so_penugem():
     # o Blockbench com o arquivo antigo aberto pode salvar de volta o uv_offset [0, -1] (linha fora da textura)
     fora = [c.nome for c in modelo.cubos if c.nome.startswith("body") and any(
         min(f["uv"][1], f["uv"][3]) < 0 for f in c.faces.values() if "uv" in f)]
-    if fora:
+    if fora and "--repor-uv" in sys.argv:
         motor.editar(FILE, [{"op": "update_node", "target": n, "uv_offset": [0, 0]} for n in fora])
         modelo = bbmodelo.ler(FILE)
         print(f"UV reposicionado: {fora}")
+    elif fora:
+        # a versão aprovada pelo usuário (8,5) tem [0, -1]: não mexer sem pedido (--repor-uv)
+        print(f"aviso: UV com linha fora da textura em {fora}; mantido como o usuário salvou")
     ident = np.eye(4)
     pintados = 0
     for c in modelo.cubos:

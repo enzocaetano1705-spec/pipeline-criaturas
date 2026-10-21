@@ -160,7 +160,7 @@ Consultar assets no chat não treina automaticamente o modelo de linguagem. O ga
 
 - [x] Auditar acervo e distinguir assets de pares ilustração/modelo.
 - [x] Implementar comparação agregada por partes e aplicá-la ao pavão rejeitado.
-- [ ] Anotar landmarks e fichas de soluções em um piloto curado.
+- [ ] Anotar landmarks e fichas de soluções em um piloto curado. (caso 1 feito: [[piloto-01-pavao-koromon]], nota 8,5)
 - [ ] Gerar um candidato pavão que use a solução estrutural dominante e confrontá-lo com a v2 sob as mesmas câmeras.
 - [ ] Executar tentativas com gabaritos ocultos e registrar resultados de casos reservados.
 - [ ] Medir benefício antes de decidir treinar componentes ou ampliar o dataset.
