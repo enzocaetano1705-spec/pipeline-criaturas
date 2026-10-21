@@ -21,7 +21,7 @@ Qualquer IA continua daqui. Siga as fases em ordem. Cada fase entrega a **versã
 | 5 | Textura | Opus | ☑ |
 | 6 | Rig, locators e animações | Sonnet | ☑ |
 | 7 | Validação da linhagem | Sonnet | ☑ |
-| 8 | Exportação Roblox e Minecraft | Sonnet | ☐ |
+| 8 | Exportação Roblox e Minecraft | Sonnet | ☑ |
 | 9 | Skill e documentação | Sonnet | ☐ |
 | 10 | Primeira criatura real (com o usuário) | Opus | ☐ |
 
@@ -165,7 +165,7 @@ Qualquer IA continua daqui. Siga as fases em ordem. Cada fase entrega a **versã
   - validador glTF da Khronos (pacote npm `gltf-validator`) sem erros;
   - até 20 mil triângulos;
   - nomes de ossos e locators preservados.
-- [ ] 8.4 Pedido ao usuário, no topo da nota da sessão: importar um `.glb` no Roblox Studio (Importador 3D, rig Custom) e contar o resultado. Não bloqueia: siga para a Fase 9 e ajuste quando o retorno vier.
+- [x] 8.4 Pedido ao usuário, no topo da nota da sessão: importar um `.glb` no Roblox Studio (Importador 3D, rig Custom) e contar o resultado. Não bloqueia: siga para a Fase 9 e ajuste quando o retorno vier.
 
 **Aceite:** `.glb` válido. A confirmação no Roblox fica pendente até o usuário testar.
 
