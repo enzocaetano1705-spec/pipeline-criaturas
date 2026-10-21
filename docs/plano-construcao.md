@@ -101,7 +101,7 @@ Qualquer IA continua daqui. Siga as fases em ordem. Cada fase entrega a **versã
   - Combina frente (x, y) e lado (z, y) em caixas 3D, em unidades, na escala da altura alvo (da ficha, ou a mediana do estágio e nicho).
   - Sem vista lateral: profundidade pela razão da categoria, marcada "estimada".
   - Diferença de mais de 10% entre vistas gera aviso.
-- [ ] 3.4 Teste de ida e volta: para cada sintética, renderizar as vistas, gerar a `leitura` a partir da verdade com ruído de ±1 célula da grade (simulando a IA), rodar `medir` e comparar com a verdade.
+- [x] 3.4 Teste de ida e volta: para cada sintética, renderizar as vistas, gerar a `leitura` a partir da verdade com ruído de ±1 célula da grade (simulando a IA), rodar `medir` e comparar com a verdade.
 
 **Aceite:** erro de até 1 unidade ou 10% por dimensão em pelo menos 90% das partes das 3 sintéticas.
 
