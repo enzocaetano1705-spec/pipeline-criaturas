@@ -1,0 +1,20 @@
+{
+  "erros": [],
+  "avisos": [],
+  "resumo": {
+    "validador": {
+      "erros": 0,
+      "avisos": 0
+    },
+    "triangulos": 96,
+    "nos": 17,
+    "animacoes": 2
+  },
+  "locators": [
+    "loc_eye_left",
+    "loc_eye_right",
+    "loc_center",
+    "loc_top",
+    "loc_ground"
+  ]
+}

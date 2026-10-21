@@ -126,8 +126,10 @@ def copia_roblox(arquivo: Path, textura_roblox: Path, destino: Path, base: str) 
     copia = destino / f"{base}.{marca}.bbmodel"
     if not copia.exists():
         shutil.copy(arquivo, copia)
-        motor.editar(copia, [{"op": "update_texture", "target": 0, "source": _data_url(tex), "width": tex.shape[1], "height": tex.shape[0]},
-                             {"op": "set_model_properties", "name": copia.stem}])
+        op = {"op": "update_texture", "target": 0, "source": _data_url(tex), "width": tex.shape[1], "height": tex.shape[0]}
+        if (json.loads(arquivo.read_text(encoding="utf-8")).get("textures") or [{}])[0].get("group") == "":
+            op["material"] = None  # o Blockbench desktop grava group "" e o motor o lê como um material sem nome
+        motor.editar(copia, [op, {"op": "set_model_properties", "name": copia.stem}])
     return copia
 
 
