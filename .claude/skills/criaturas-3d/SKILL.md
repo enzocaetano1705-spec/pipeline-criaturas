@@ -1,11 +1,11 @@
 ---
 name: criaturas-3d
-description: Transforma o conceito de uma criatura (imagens + prompt numa ficha em docs/criaturas/<nome>/) em modelo 3D cubificado estilo Cobblemon/Digimod, com textura, ossos, locators e animações, exportado para Roblox (.glb) e Minecraft (Bedrock/GeckoLib). Use ao modelar, revisar ou exportar uma criatura deste repositório, ou para checar se uma ficha está pronta.
+description: Modela, revisa e exporta criaturas deste repositório no estilo Cobblemon/Digimod a partir de imagens e fichas. Inclui estudo de referências reais por estrutura, textura e animação, conferência de fichas e exportação para Roblox e Minecraft.
 ---
 
 # Criaturas 3D — pipeline
 
-Você conduz o pipeline; o código faz a parte espacial. A IA só faz duas coisas que exigem olhar imagens: o **checklist** de classificação e a **leitura** das partes. Todo o resto é `uv run criaturas …`.
+Você conduz o pipeline; o código faz a parte espacial. A IA escolhe referências estruturais, compara imagem/modelo/atlas, preenche o **checklist** e a **leitura** e confere o resultado. Os scripts fazem as transformações e as edições em lote.
 
 ## Quando usar
 - **O usuário anexou imagens de uma criatura no chat, ou mandou um print pedindo um ajuste no modelo: siga `chat.md` (nesta pasta).**
@@ -33,7 +33,7 @@ O atalho `uv run criaturas tudo <pasta> --estagio eN` roda as etapas de código 
    - Siga `classificar.md` (nesta pasta): olhe `frente-grade.png`, escreva `modelos/<nome>/eN/checklist.json`.
    - `uv run criaturas classificar <pasta> --estagio eN`
    - **PARE** (criatura real): mostre as 3 sugestões ao usuário e espere `Categoria confirmada` na ficha. Se ele escolher diferente da sugestão 1: `--registrar-escolha "plano › nicho"`.
-4. **Leitura.** Siga `ler.md` (nesta pasta): olhe `frente-grade.png` e `lado-grade.png`, escreva `modelos/<nome>/eN/leitura.json`.
+4. **Referências e leitura.** Para a primeira geometria ou uma solução de forma/movimento ainda incerta, siga [referencias.md](referencias.md): escolha casos próximos por estrutura, consulte modelo real, atlas e código e registre a estratégia. Depois siga `ler.md`: olhe `frente-grade.png` e `lado-grade.png`, escreva `modelos/<nome>/eN/leitura.json`. Use `modelagem.abordagem: poucas_formas` quando a tradução pedir grandes volumes e detalhes pintados, evitando fatias automáticas.
 5. **Medição.** `uv run criaturas medir <pasta> --estagio eN`
    - Aviso de "diferença entre vistas" numa parte: confira só a caixa dessa parte. Se ela está certa e a diferença é porque a parte fica escondida numa vista (corpo atrás da cabeça, de frente), o aviso é esperado: siga e cite-o numa linha da nota.
 6. **Cubos.** `uv run criaturas cubificar <pasta> --estagio eN`, depois `uv run criaturas validar <pasta> --estagio eN`.
@@ -66,6 +66,7 @@ Nas criaturas sintéticas (`modelos/_sinteticos/fichas/_sint-*`) e em `docs/cria
 - Não abra inteiros `referencia/medidas.json`, `.bbmodel` ou texturas. Para faixas da categoria: `uv run criaturas medidas <plano|nicho> [estágio]`.
 - Nunca monte o modelo cubo a cubo por MCP: o código gera os lotes (`ops.json`) para o motor.
 - Não refaça pesquisa: as regras estão em `docs/` e no código.
+- Consulte primeiro o catálogo de referências e estudos existentes. Renderize somente os poucos casos que resolvem uma dúvida; guarde as folhas na biblioteca externa.
 
 ## Arquivos de uma criatura (`modelos/<nome>/`)
 Além destes: `eN/ver.png`, `eN/quadro-*.png`, `eN/correcoes/*.json` (lotes do `aplicar`), `eN/historico.jsonl` (quem mudou o quê) e `eN/.estado/` (último estado conhecido).
@@ -89,4 +90,4 @@ Além destes: `eN/ver.png`, `eN/quadro-*.png`, `eN/correcoes/*.json` (lotes do `
 - **`medir` erra uma parte escondida**: desenhe a caixa só onde a parte aparece; o código completa pelo espelho, pela parte irmã ou pela tabela.
 
 ## Referência
-`docs/convencoes.md` (eixos, nomes, pastas) · `docs/plano-construcao.md` (fases e aceites) · `AGENTS.md` (regras de Git e de parada).
+`referencias.md` (comparação ilustração/modelo/atlas/código) · `docs/convencoes.md` (eixos, nomes, pastas) · `docs/plano-construcao.md` (fases e aceites) · `AGENTS.md` (regras de Git e de parada).

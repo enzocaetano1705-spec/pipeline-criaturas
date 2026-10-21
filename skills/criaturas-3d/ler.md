@@ -4,6 +4,8 @@ Entrada: `modelos/<nome>/eN/preparo/<vista>-grade.png` (frente e lado), a ficha 
 Saída: `modelos/<nome>/eN/leitura.json`. O contrato `ferramenta/criaturas/contratos/leitura.schema.json` pode ser lido: ele diz quais campos são obrigatórios (`id`, `pai`, `tipo`, `simetria`, `caixas`) e quais são opcionais (`espelho`, `rotacao_repouso`, `papel_cor`, `segmentos`; no topo, `papeis_cor` e `incertezas`).
 A IA diz **o que** é cada parte e **onde** ela está na grade. O código (`criaturas medir`) encosta as caixas na silhueta real e calcula as medidas em 3D.
 
+Antes da primeira geometria, use `referencias.md` para decidir a simplificação. O campo opcional `modelagem` guarda abordagem (`poucas_formas` ou `silhueta_fatiada`), justificativa e referências por papel. Em `poucas_formas`, cada volume descrito gera um cubo; a curvatura do desenho não é convertida automaticamente em fatias. Detalhes pintados não pedem uma parte geométrica só para existir no checklist.
+
 ## Regras
 1. **Olhe só as versões com grade.** No máximo `frente-grade.png` e `lado-grade.png` (2 imagens de 768 px). As costas só se tiverem detalhe que muda a forma.
 2. **Nunca invente parte.** Toda parte listada aparece em pelo menos uma vista. Nada de "deve ter garras", "provavelmente tem língua".

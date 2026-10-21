@@ -45,11 +45,13 @@ class Rig:
     pescoco: list = field(default_factory=list)
     nadadeiras: list = field(default_factory=list)
     tentaculos: list = field(default_factory=list)
+    penas: list = field(default_factory=list)
 
     @classmethod
     def do_modelo(cls, modelo: bbmodelo.Modelo) -> "Rig":
         r = cls()
         nomes = set(modelo.ossos)
+        com_geometria = _ossos_com_geometria(modelo)
         r.body = "body" if "body" in nomes else None
         r.head = "head" if "head" in nomes else None
         r.jaw = "jaw" if "jaw" in nomes else None
@@ -64,10 +66,12 @@ class Rig:
                 r.asas.append(n)
             elif n.startswith("ear_"):
                 r.orelhas.append(n)
-            elif re.match(r"^eye_(left|right)$", n):
+            elif re.match(r"^eye_(left|right)$", n) and n in com_geometria:
                 r.olhos.append(n)
-            elif n.startswith("eyelid_"):
+            elif n.startswith("eyelid_") and n in com_geometria:
                 r.palpebras.append(n)
+            elif n.startswith("feather_") and n in com_geometria:
+                r.penas.append(n)
             elif re.match(r"^tail_\d+$", n):
                 r.cauda.append(n)
             elif re.match(r"^neck_\d+$", n):
@@ -79,6 +83,26 @@ class Rig:
         r.cauda.sort(key=num)
         r.pescoco.sort(key=num)
         return r
+
+
+def _ossos_com_geometria(modelo: bbmodelo.Modelo) -> set[str]:
+    """Ossos que movem ao menos um cubo/plano visível, inclusive pelos filhos."""
+    elementos = {e.get("uuid"): e for e in modelo.bruto.get("elements", [])}
+    grupos = {g.get("name"): g for g in modelo.bruto.get("groups", [])}
+    saida = set()
+    for cubo in modelo.cubos:
+        if elementos.get(cubo.uuid, {}).get("visibility") is False:
+            continue
+        if np.count_nonzero(np.abs(cubo.tamanho) > 1e-8) < 2:
+            continue  # um ponto ou linha não fornece superfície para animar
+        caminho, nome = [], cubo.osso
+        while nome in modelo.ossos and nome not in caminho:
+            caminho.append(nome)
+            nome = modelo.ossos[nome].pai
+        if any(grupos.get(n, {}).get("visibility") is False for n in caminho):
+            continue
+        saida.update(caminho)
+    return saida
 
 
 def _lado(nome: str) -> int:
@@ -149,6 +173,18 @@ def balanco_corrente(c: Clip, corrente: list, periodo: float, amp: float, eixo: 
 
 # ---------- clipes por plano ----------
 
+def balanco_penas(clip: Clip, penas: list[str], periodo: float, amplitude: float) -> None:
+    """Movimento secundário discreto; penas ornamentais não são asas de voo."""
+    for pena in penas:
+        sufixo = re.search(r"_(\d+)$", pena)
+        segmento = int(sufixo.group(1)) if sufixo else 1
+        amp = amplitude / np.sqrt(max(segmento, 1))
+        atraso, lado = 0.08 * (segmento - 1), _lado(pena)
+        clip.rot(pena, lambda t, a=amp, f=atraso, s=lado:
+                 (0.6 * a * np.sin(_fase(t, periodo, f)), 0,
+                  -s * a * np.sin(_fase(t, periodo, f))))
+
+
 def idle(rig: Rig, plano: str, periodo: float = 2.4) -> Clip:
     c = Clip("idle", periodo)
     # respiração: o peito alarga (escala em x e z; em y afundaria as pernas filhas do corpo)
@@ -167,6 +203,7 @@ def idle(rig: Rig, plano: str, periodo: float = 2.4) -> Clip:
         c.rot(o, lambda t, s=s: (0, 0, -s * 3 * np.sin(_fase(t, periodo, 0.3))))
     for n in rig.nadadeiras:
         c.rot(n, lambda t: (0, 8 * np.sin(_fase(t, periodo / 2)), 0))
+    balanco_penas(c, rig.penas, periodo, 2.0)
     return c
 
 
@@ -207,6 +244,7 @@ def walk(rig: Rig, plano: str, periodo: float, nome: str = "walk", amp: float = 
     for a in rig.asas:
         s = _lado(a)
         c.rot(a, lambda t, s=s: (0, 0, -s * 5 * np.sin(2 * _fase(t, periodo))))
+    balanco_penas(c, rig.penas, periodo, 3.0)
     return c
 
 
@@ -360,7 +398,7 @@ def clipes(rig: Rig, plano: str, estagio: str | None, quais=BASE + EXTRAS) -> tu
         c = fabrica[nome]()
         if c is None:
             if nome == "blink":
-                avisos.append(msg("sem_olhos", "blink: o modelo não tem ossos de olho ou pálpebra (olho pintado?)"))
+                avisos.append(msg("sem_olhos", "blink omitido: olhos/pálpebras sem geometria visível para animar (olho pintado?)"))
             continue
         saida.append(c)
     return saida, avisos
@@ -372,6 +410,8 @@ def animar(arquivo: Path, plano: str, estagio: str | None, quais=BASE + EXTRAS) 
     lista, avisos = clipes(rig, plano, estagio, quais)
     existentes = {a.get("name") for a in modelo.animacoes}
     lote, resumo = [], {}
+    if "blink" in quais and "blink" in existentes and not any(c.nome == "blink" for c in lista):
+        lote.append({"op": "remove_animation", "animation": "blink"})
     for c in lista:
         chaves = assar(c, modelo)
         lote += ops_do_clipe(c, chaves, existentes)

@@ -261,18 +261,20 @@ def pivo(p: dict, pai: dict | None) -> list[float]:
 
 
 def plano_de_cubos(medidas: dict, nome: str, papeis_cor: dict | None = None, categoria: dict | None = None,
-                   estagio: str | None = None, estagio_cobblemon: str | None = None) -> tuple[dict, list]:
-    """(plano-cubos, avisos) a partir das medidas."""
+                   estagio: str | None = None, estagio_cobblemon: str | None = None,
+                   *, poucas_formas: bool = False) -> tuple[dict, list]:
+    """(plano-cubos, avisos) a partir das medidas; poucas_formas evita fatiar volumes."""
     avisos = []
     partes = [dict(p) for p in medidas["partes"]]
     partes = dividir_correntes(partes, categoria, estagio, avisos)
     arredondar(partes)
     resolver_contatos(partes, avisos)
     arredondar(partes)  # o contato pode ter deixado meia unidade
-    for p in partes:
-        cs = cubos_das_fatias(p)
-        if cs:
-            p["_cubos"] = cs
+    if not poucas_formas:
+        for p in partes:
+            cs = cubos_das_fatias(p)
+            if cs:
+                p["_cubos"] = cs
     colar_adesivos(partes)
     por_id = {p["id"]: p for p in partes}
     cores = papeis_cor or {}
@@ -371,7 +373,8 @@ def cmd_cubificar(args) -> int:
     base = f"{ctx['entrada'].get('nome') or nome}-{args.estagio}"
     try:
         plano, avisos = plano_de_cubos(medidas, base, leitura.get("papeis_cor"), ctx["categoria"],
-                                       ctx["estagio"].get("estagio_tabela"), ctx["estagio"].get("estagio_cobblemon"))
+                                       ctx["estagio"].get("estagio_tabela"), ctx["estagio"].get("estagio_cobblemon"),
+                                       poucas_formas=leitura.get("modelagem", {}).get("abordagem") == "poucas_formas")
         relatorio.gravar_json(destino / "plano-cubos.json", plano, "plano_cubos")
         arquivo, aviso_versao, hash_ = construir(plano, destino, base, ctx["relatorio"].get("hashes", {}))
     except (ValueError, motor.MotorErro, contratos.ContratoInvalido) as e:

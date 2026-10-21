@@ -24,6 +24,9 @@ Conceito livre (imagens + prompt) → modelo cubificado no estilo Cobblemon/Digi
 - [[pipeline-assets-3d]]: geradores imagem→3D, custos, licenças, Roblox (importação, animação, combate).
 - [[estilo-blocky-referencias]]: técnicas de estilo medidas, regras por estágio, escolha do MCP.
 - [[categorias-criaturas]]: taxonomia, regras por categoria e protocolo de classificação.
+- [[animacoes-e-mecanismos-reutilizaveis]]: clipes, posers, quirks, movimentos procedurais e o que precisa ser convertido para Roblox.
+- [[0005-estudar-referencias-por-estrutura]]: consulta por anatomia e comparação de ilustração, modelo, atlas e código antes de modelar.
+- Biblioteca local externa: `~/Downloads/referencias-criaturas/INDICE.md`. O estudo visual de Koromon fica em `estudos/koromon/` dessa biblioteca.
 
 ## Fora do cofre (no repositório)
 - `referencia/medidas.json`: faixas numéricas por estágio, plano, nicho e assinatura de evolução, lidas pelo código.

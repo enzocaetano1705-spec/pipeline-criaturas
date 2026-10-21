@@ -118,6 +118,13 @@ def montar_parser() -> argparse.ArgumentParser:
         chat.opcoes(nome, p)
         p.set_defaults(func=etapas.FUNCOES[nome])
 
+    from criaturas import referencias
+
+    p = sub.add_parser("referencias", help="busca e inspeciona modelos reais da biblioteca externa",
+                       description="Consulta referências por estrutura, estágio, UV e animações sem alterar os modelos.")
+    referencias.opcoes(p)
+    p.set_defaults(func=referencias.cmd_referencias)
+
     p = sub.add_parser("medidas", help="faixas de referencia/medidas.json para um plano ou nicho",
                        description="Faixas [p25, mediana, p75] de um plano de corpo ou nicho, opcionalmente de um estágio.")
     p.add_argument("categoria", help="plano de corpo ou nicho (ex.: quadrúpede, dragão, roedor)")

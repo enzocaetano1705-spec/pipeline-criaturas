@@ -16,7 +16,7 @@ Leia `docs/pesquisa/` só quando a tarefa pedir, e procure por assunto (grep) em
 1. **A forma vem da imagem do usuário.** A IA não inventa partes nem proporções. O prompt é contexto secundário: só preenche o que a imagem não mostra. Se o prompt contradiz a imagem, vale a imagem, e o conflito entra no relatório.
 2. **Estágio e categoria são entradas obrigatórias.** As faixas de `referencia/medidas.json` preenchem medidas que a imagem não mostra e geram avisos. Elas nunca forçam a forma.
 3. **Código primeiro.** Escreva e rode scripts; leia relatórios curtos. Nunca monte um modelo cubo a cubo por chamadas de MCP: edições sempre em lote (`ops.json` → `bbmodel_edit`).
-4. **Nada de Cobblemon ou Digimod no repositório além de números agregados** (`referencia/medidas.json`). Nunca copie geometria, textura, animação ou código desses mods. As criaturas são originais.
+4. **Bibliotecas Cobblemon/Digimod ficam fora do repositório.** Podem ser abertas, renderizadas e estudadas para comparar ilustração, volumes, UV, ossos e mecanismos. No repositório entram ferramentas de consulta, conclusões, metadados e números agregados; nunca os arquivos de geometria, textura, animação ou código desses mods. As criaturas são originais. Siga `skills/criaturas-3d/referencias.md`.
 5. **O servidor MCP do Blockbench é GPL-3.0.** Use-o como programa separado (MCP ou `externos/blockbench-mcp-plugin/headless/call.ts`). Não copie código dele para `ferramenta/`.
 6. **Nunca sobrescreva um `.bbmodel` editado à mão.** Grave uma versão nova e avise.
 
@@ -43,6 +43,7 @@ Escreva a pergunta no topo da nota da sessão e pare.
 
 ## Comandos
 - Modelar uma criatura: siga `skills/criaturas-3d/SKILL.md` (passos, pontos de parada e regras de tokens).
+- Buscar/inspecionar referências: `uv run criaturas referencias --help`. Biblioteca padrão: `~/Downloads/referencias-criaturas/`; estudos visuais e catálogos detalhados permanecem nela.
 - Ajuda da ferramenta: `uv run criaturas --help`; atalho: `uv run criaturas tudo <pasta> --estagio eN`.
 - Testes: `uv run pytest -q` (cerca de 3 min; o teste do Roblox é pulado com o Blockbench fechado).
 - Depois de editar `skills/`: `uv run python scripts/sincronizar-skills.py` e `uv run python scripts/empacotar-skill-chat.py`.

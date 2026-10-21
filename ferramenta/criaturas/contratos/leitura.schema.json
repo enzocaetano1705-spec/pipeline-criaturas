@@ -5,6 +5,29 @@
   "type": "object",
   "required": ["vistas", "partes"],
   "properties": {
+    "modelagem": {
+      "type": "object",
+      "description": "Estratégia artística declarada antes da cubificação. Referências são metadados de consulta, não geometria de terceiros.",
+      "required": ["abordagem"],
+      "properties": {
+        "abordagem": {"enum": ["poucas_formas", "silhueta_fatiada"]},
+        "justificativa": {"type": "string"},
+        "referencias": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["nome", "papel", "caminho"],
+            "properties": {
+              "nome": {"type": "string"},
+              "papel": {"type": "string"},
+              "caminho": {"type": "string"}
+            },
+            "additionalProperties": false
+          }
+        }
+      },
+      "additionalProperties": false
+    },
     "vistas": {
       "type": "object",
       "description": "Vistas usadas e a imagem com grade de cada uma.",
