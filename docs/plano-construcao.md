@@ -72,7 +72,7 @@ Qualquer IA continua daqui. Siga as fases em ordem. Cada fase entrega a **versã
   - Fundo: usa o alfa se houver; senão segmenta o fundo liso a partir das bordas; `rembg` só como extra opcional.
   - Recorta na silhueta e iguala a escala entre as vistas pela altura.
 - [x] 2.2 Contrato do checklist morfológico com os itens de `docs/pesquisa/categorias-criaturas.md` (seção "Passo de classificação"). Cada item tem valor, certeza (visível, incerto ou oculto) e fonte (imagem ou prompt).
-- [ ] 2.3 Protocolo da IA, escrito em `skills/criaturas-3d/classificar.md`:
+- [x] 2.3 Protocolo da IA, escrito em `skills/criaturas-3d/classificar.md`:
   1. Só a imagem com grade, com o prompt escondido → checklist.
   2. Lê o prompt e preenche apenas os itens incertos ou ocultos.
   3. Lista os conflitos.
