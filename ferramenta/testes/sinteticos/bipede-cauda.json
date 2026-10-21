@@ -1,0 +1,18 @@
+{
+ "nome": "bipede-cauda",
+ "descricao": "Bípede com cauda estilo dinossauroide, estágio meio. Frente em -Z; o lado esquerdo (-X) é definido e o direito sai espelhado.",
+ "categoria": {"plano": "bípede com cauda", "nicho": "dinossauroide/kaiju"},
+ "estagio_tabela": "meio",
+ "papeis_cor": {"primaria": "#4f8f4a", "barriga": "#d8d29a", "escura": "#2d4f2a", "olho": "#e8b020"},
+ "partes": [
+  {"id": "body", "pai": null, "tipo": "volume", "from": [-4, 9, -3], "to": [4, 18, 4], "pivo": [0, 10, 0], "papel_cor": "primaria"},
+  {"id": "head", "pai": "body", "tipo": "volume", "from": [-3, 18, -5], "to": [3, 24, 2], "pivo": [0, 18, 0], "papel_cor": "primaria"},
+  {"id": "jaw", "pai": "head", "tipo": "volume", "from": [-2, 18, -9], "to": [2, 21, -5], "pivo": [0, 20, -5], "papel_cor": "barriga"},
+  {"id": "eye_left", "pai": "head", "tipo": "adesivo", "from": [-3, 21, -5.01], "to": [-1, 23, -5.01], "pivo": [-2, 22, -5], "papel_cor": "olho"},
+  {"id": "arm_left", "pai": "body", "tipo": "volume", "from": [-6, 12, -3], "to": [-4, 17, -1], "pivo": [-4, 17, -2], "papel_cor": "escura"},
+  {"id": "leg_left", "pai": "body", "tipo": "volume", "from": [-4, 0, -2], "to": [-1, 9, 2], "pivo": [-2, 9, 0], "papel_cor": "escura"},
+  {"id": "tail_1", "pai": "body", "tipo": "volume", "from": [-2, 10, 4], "to": [2, 14, 9], "pivo": [0, 12, 4], "papel_cor": "primaria"},
+  {"id": "tail_2", "pai": "tail_1", "tipo": "volume", "from": [-1, 10, 9], "to": [1, 13, 14], "pivo": [0, 11, 9], "papel_cor": "primaria"},
+  {"id": "tail_3", "pai": "tail_2", "tipo": "volume", "from": [-1, 10, 14], "to": [1, 12, 19], "pivo": [0, 11, 14], "papel_cor": "escura"}
+ ]
+}

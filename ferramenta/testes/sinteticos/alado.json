@@ -1,0 +1,16 @@
+{
+ "nome": "alado",
+ "descricao": "Ave pequena de asas abertas, estágio inicial. Frente em -Z; o lado esquerdo (-X) é definido e o direito sai espelhado. Asas e leque da cauda são planos.",
+ "categoria": {"plano": "alado", "nicho": "ave"},
+ "estagio_tabela": "inicial",
+ "papeis_cor": {"primaria": "#3d7fd1", "barriga": "#f0f0f0", "destaque": "#f2b233", "olho": "#141414"},
+ "partes": [
+  {"id": "body", "pai": null, "tipo": "volume", "from": [-3, 4, -4], "to": [3, 10, 4], "pivo": [0, 7, 0], "papel_cor": "primaria"},
+  {"id": "head", "pai": "body", "tipo": "volume", "from": [-3, 10, -5], "to": [3, 16, 1], "pivo": [0, 10, -2], "papel_cor": "primaria"},
+  {"id": "beak", "pai": "head", "tipo": "volume", "from": [-1, 12, -7], "to": [1, 14, -5], "pivo": [0, 13, -5], "papel_cor": "destaque"},
+  {"id": "eye_left", "pai": "head", "tipo": "adesivo", "from": [-3, 13, -5.01], "to": [-2, 15, -5.01], "pivo": [-2, 14, -5], "papel_cor": "olho"},
+  {"id": "wing_left", "pai": "body", "tipo": "plano", "from": [-14, 5, 0], "to": [-2, 10, 0], "pivo": [-3, 9, 0], "papel_cor": "primaria"},
+  {"id": "leg_left", "pai": "body", "tipo": "volume", "from": [-2, 0, -1], "to": [-1, 4, 1], "pivo": [-1, 4, 0], "papel_cor": "destaque"},
+  {"id": "tail_1", "pai": "body", "tipo": "plano", "from": [-2, 5, 3], "to": [2, 5, 9], "pivo": [0, 5, 4], "papel_cor": "primaria"}
+ ]
+}

@@ -1,0 +1,18 @@
+{
+ "nome": "quadrupede",
+ "descricao": "Quadrúpede pequeno estilo canídeo, estágio inicial. Frente em -Z; o lado esquerdo (-X) é definido e o direito sai espelhado.",
+ "categoria": {"plano": "quadrúpede", "nicho": "canídeo"},
+ "estagio_tabela": "inicial",
+ "papeis_cor": {"primaria": "#d9772b", "barriga": "#f2d7b0", "escura": "#5a3520", "olho": "#1c1c24"},
+ "partes": [
+  {"id": "body", "pai": null, "tipo": "volume", "from": [-3, 5, -5], "to": [3, 11, 6], "pivo": [0, 8, 0], "papel_cor": "primaria"},
+  {"id": "head", "pai": "body", "tipo": "volume", "from": [-4, 8, -12], "to": [4, 15, -5], "pivo": [0, 10, -5], "papel_cor": "primaria"},
+  {"id": "snout", "pai": "head", "tipo": "volume", "from": [-2, 8, -15], "to": [2, 11, -12], "pivo": [0, 9, -12], "papel_cor": "barriga"},
+  {"id": "ear_left", "pai": "head", "tipo": "plano", "from": [-4, 14, -9], "to": [-1, 19, -9], "pivo": [-2, 15, -9], "papel_cor": "escura"},
+  {"id": "eye_left", "pai": "head", "tipo": "adesivo", "from": [-3, 12, -12.01], "to": [-1, 14, -12.01], "pivo": [-2, 13, -12], "papel_cor": "olho"},
+  {"id": "leg_front_left", "pai": "body", "tipo": "volume", "from": [-3, 0, -4], "to": [-1, 5, -2], "pivo": [-2, 5, -3], "papel_cor": "escura"},
+  {"id": "leg_back_left", "pai": "body", "tipo": "volume", "from": [-3, 0, 3], "to": [-1, 5, 5], "pivo": [-2, 5, 4], "papel_cor": "escura"},
+  {"id": "tail_1", "pai": "body", "tipo": "volume", "from": [-1, 8, 6], "to": [1, 10, 10], "pivo": [0, 9, 6], "papel_cor": "primaria"},
+  {"id": "tail_2", "pai": "tail_1", "tipo": "volume", "from": [-1, 8, 10], "to": [1, 10, 14], "pivo": [0, 9, 10], "papel_cor": "barriga"}
+ ]
+}
