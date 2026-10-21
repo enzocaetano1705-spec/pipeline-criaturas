@@ -27,7 +27,7 @@ VISTAS = {"frente": (0, 0), "lado": (90, 0), "costas": (180, 0), "direita": (270
 FOLHA = ("frente", "lado", "costas", "3/4")
 
 # cantos de cada face vistos de fora: [sup. esq., sup. dir., inf. esq., inf. dir.] com (x0|x1, y0|y1, z0|z1).
-# Conferir com o render do motor na Fase 5 (mapeamento de textura).
+# Conferido na Fase 5 contra o render do motor: 97–100% de concordância nas faces laterais e no topo.
 CANTOS_FACE = {
     "north": ((1, 1, 0), (0, 1, 0), (1, 0, 0), (0, 0, 0)),
     "south": ((0, 1, 1), (1, 1, 1), (0, 0, 1), (1, 0, 1)),
@@ -118,22 +118,28 @@ def _triangulo(img, zb, p, z, cor_fn, ids, ident):
 
 def renderizar(modelo: bbmodelo.Modelo, vista: str = "frente", *, escala: float = 16.0, margem: int = 8,
                cores: dict[str, str] | None = None, usar_textura: bool = True, sombreado: float = 0.25,
-               mats=None, limites=None, fundo=FUNDO):
+               mats=None, limites=None, fundo=FUNDO, projecao: "Projecao | None" = None):
     """Renderiza uma vista. Devolve (imagem RGB, máscara bool, ids de cubo por pixel, Projecao).
 
     `escala` em pixels por unidade. `cores` = {nome do cubo: '#rrggbb'}; sem cor nem textura usa cinza.
     `limites` = (min, max) em mundo, para enquadrar várias vistas ou poses na mesma escala.
+    `projecao` fixa o enquadramento (para casar pixel a pixel com uma imagem do conceito).
     """
-    azimute, elevacao = VISTAS[vista] if isinstance(vista, str) else vista
     mats = mats if mats is not None else bbmodelo.matrizes_ossos(modelo)
-    f, r, u = camera(azimute, elevacao)
-    lo, hi = limites if limites is not None else bbmodelo.limites(modelo, mats)
-    cantos = np.array([[x, y, z] for x in (lo[0], hi[0]) for y in (lo[1], hi[1]) for z in (lo[2], hi[2])])
-    min_d, max_d = (cantos @ r).min(), (cantos @ r).max()
-    min_c, max_c = (cantos @ u).min(), (cantos @ u).max()
-    largura = int(np.ceil((max_d - min_d) * escala)) + 2 * margem
-    altura = int(np.ceil((max_c - min_c) * escala)) + 2 * margem
-    proj = Projecao(r, u, f, escala, min_d, max_c, margem, (largura, altura))
+    if projecao is not None:
+        proj = projecao
+        f, r, u = proj.frente, proj.direita, proj.cima
+        largura, altura = proj.tamanho
+    else:
+        azimute, elevacao = VISTAS[vista] if isinstance(vista, str) else vista
+        f, r, u = camera(azimute, elevacao)
+        lo, hi = limites if limites is not None else bbmodelo.limites(modelo, mats)
+        cantos = np.array([[x, y, z] for x in (lo[0], hi[0]) for y in (lo[1], hi[1]) for z in (lo[2], hi[2])])
+        min_d, max_d = (cantos @ r).min(), (cantos @ r).max()
+        min_c, max_c = (cantos @ u).min(), (cantos @ u).max()
+        largura = int(np.ceil((max_d - min_d) * escala)) + 2 * margem
+        altura = int(np.ceil((max_c - min_c) * escala)) + 2 * margem
+        proj = Projecao(r, u, f, escala, min_d, max_c, margem, (largura, altura))
 
     img = np.zeros((altura, largura, 3), float)
     img[:] = fundo

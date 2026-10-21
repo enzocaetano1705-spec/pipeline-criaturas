@@ -15,7 +15,7 @@ def etapa(nome: str):
 
 def carregar() -> None:
     """Importa os módulos que registram etapas com @etapa."""
-    from criaturas import classificar, cubificar, ficha, folha, medir, preparar, validar  # noqa: F401
+    from criaturas import classificar, cubificar, ficha, folha, medir, preparar, texturizar, validar  # noqa: F401
 
 
 def opcoes(nome: str, parser) -> None:
@@ -28,5 +28,7 @@ def opcoes(nome: str, parser) -> None:
                             help="registra a categoria escolhida pelo usuário (se diferente da sugestão 1)")
     if nome == "folha":
         parser.add_argument("--motor", action="store_true", help="vistas pelo render headless do motor (precisa de GPU)")
+    if nome == "texturizar":
+        parser.add_argument("--olho-pintado", action="store_true", help="estilo Digimod: tira os adesivos do olho e deixa o olho pintado na cabeça")
     if nome == "tudo":
         parser.add_argument("--ate", help="para depois desta etapa")

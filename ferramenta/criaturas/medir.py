@@ -171,7 +171,9 @@ def medir(leitura: dict, mascaras: dict[str, np.ndarray], altura_alvo: float, *,
         cols = np.nonzero(mascaras[vista].any(0))[0]
         return (cols.min() + cols.max() + 1) / 2 / (mascaras[vista].shape[0] / CELULAS)
 
-    cx = {v: centro_x(v) for v in ("frente", "costas") if caixas[v]}
+    cx = {v: centro_x(v) for v in ("frente", "costas") if caixas[v] or v in mascaras}
+    if "costas" in mascaras and not caixas["costas"]:
+        fator["costas"] = 1.0  # sem caixas nas costas: mesma altura de silhueta que a frente
     cz = None
     if caixas["lado"]:
         c = caixas["lado"].get("body")
@@ -291,8 +293,19 @@ def medir(leitura: dict, mascaras: dict[str, np.ndarray], altura_alvo: float, *,
             avisos.append(msg("profundidade_estimada", f"{pid}: profundidade estimada (não aparece no lado)", pid))
     if not caixas["lado"]:
         avisos.append(msg("sem_lado", "sem vista lateral: profundidades estimadas pela categoria"))
+    # mapeamento mundo -> grade de cada vista, para a textura (Fase 5):
+    #   frente: x_cel = centro - x/(u·fator); costas: x_cel = centro + x/(u·fator); lado: z_cel = centro + z/(u·fator)
+    #   y_cel = 32 - y/(u·fator) nas três
+    mapeamento = {}
+    if "frente" in cx:
+        mapeamento["frente"] = {"centro": round(cx["frente"], 4), "fator": 1.0}
+    if "costas" in cx:
+        mapeamento["costas"] = {"centro": round(cx["costas"], 4), "fator": round(fator["costas"], 5)}
+    if cz is not None:
+        mapeamento["lado"] = {"centro": round(cz, 4), "fator": round(fator["lado"], 5)}
     return {"altura_alvo_unidades": round(altura_alvo, 3), "unidades_por_celula": round(u, 4),
-            "fator_vistas": {k: round(v, 4) for k, v in fator.items()}, "partes": saida, "avisos": avisos}
+            "fator_vistas": {k: round(v, 4) for k, v in fator.items()}, "mapeamento": mapeamento,
+            "partes": saida, "avisos": avisos}
 
 
 def _ordem_hierarquia(partes: dict) -> list[str]:

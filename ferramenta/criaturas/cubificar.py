@@ -254,7 +254,7 @@ def plano_de_cubos(medidas: dict, nome: str, papeis_cor: dict | None = None, cat
             cubo["mirror_uv"] = True
             cubo["espelho_de"] = f"{p['espelho']}_cube"
         cubos.append(cubo)
-    offsets, (largura, altura) = ops.distribuir_uv(cubos, margem=0)
+    offsets, (largura, altura) = ops.distribuir_uv(cubos, margem=1)  # 1 texel entre ilhas: margem da versão Roblox
     for c in cubos:
         c["uv_offset"] = offsets[c["nome"]]
         c.pop("espelho_de", None)

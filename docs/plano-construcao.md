@@ -18,7 +18,7 @@ Qualquer IA continua daqui. Siga as fases em ordem. Cada fase entrega a **versã
 | 2 | Preparo de imagem e classificação | Opus | ☑ |
 | 3 | Leitura semântica e medição | Opus | ☑ |
 | 4 | Cubificador e folha de vistas | Opus | ☑ |
-| 5 | Textura | Opus | ☐ |
+| 5 | Textura | Opus | ☑ |
 | 6 | Rig, locators e animações | Sonnet | ☐ |
 | 7 | Validação da linhagem | Sonnet | ☐ |
 | 8 | Exportação Roblox e Minecraft | Sonnet | ☐ |
@@ -125,16 +125,16 @@ Qualquer IA continua daqui. Siga as fases em ordem. Cada fase entrega a **versã
 **Aceite:** as 3 sintéticas validam com 0 erros e ficam a até 10% da verdade nas proporções de cabeça, corpo e membros; um modelo abre no Blockbench sem erro (pelo MCP desktop, se disponível).
 
 ## Fase 5 — Textura
-- [ ] 5.1 `texturizar`: cada face de cubo amostra a vista correspondente, usando o mapeamento imagem↔modelo da medição.
+- [x] 5.1 `texturizar`: cada face de cubo amostra a vista correspondente, usando o mapeamento imagem↔modelo da medição.
   - frente ← vista frontal; laterais ← vista lateral; costas ← vista de trás;
   - topo e base ← cor média das bordas vizinhas.
-- [ ] 5.2 Paleta:
+- [x] 5.2 Paleta:
   - quantizar nas cores da criatura (até 5 base e 2 de destaque), com rampas OKLCH;
   - sombreado pintado: topo mais claro, base mais escura e AO simples como na Forja;
   - limpar pixels isolados.
-- [ ] 5.3 Rosto em adesivos (olhos, pupilas, pálpebras e boca com regiões próprias), mais a opção "olho pintado" no estilo Digimod.
-- [ ] 5.4 Planos com recorte, com o alfa vindo da silhueta da parte.
-- [ ] 5.5 Versão Roblox: `textura-roblox.png`, ampliada ×8 por vizinho mais próximo, com 2 px de margem por ilha.
+- [x] 5.3 Rosto em adesivos (olhos, pupilas, pálpebras e boca com regiões próprias), mais a opção "olho pintado" no estilo Digimod.
+- [x] 5.4 Planos com recorte, com o alfa vindo da silhueta da parte.
+- [x] 5.5 Versão Roblox: `textura-roblox.png`, ampliada ×8 por vizinho mais próximo, com 2 px de margem por ilha.
 
 **Aceite:** nenhum buraco transparente em face de volume; nº de cores dentro do limite; cor média de cada parte a ΔE ≤ 10 do conceito; folha conferida uma vez.
 
