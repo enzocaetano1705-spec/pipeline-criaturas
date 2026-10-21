@@ -7,6 +7,12 @@ status: vigente
 
 Fonte única para nomes, unidades e formatos. Mudou algo aqui? Registre o motivo em `docs/decisoes/`.
 
+## Direção artística
+- Use pouquíssimos cubos e planos grandes para preservar a identidade visual e as proporções gerais da criatura. Não voxelize o arredondamento da imagem com fatias ou camadas só para reproduzir o contorno literalmente.
+- Numa criatura simples, comece com 1–2 volumes para o corpo; rosto, pelo e marcas ficam principalmente na textura. Isso é um ponto de partida, não uma contagem universal.
+- Membros e apêndices recebem apenas a geometria que ajuda a silhueta ou a animação. Detalhes pequenos não exigem cubos próprios.
+- Os orçamentos das tabelas de referência servem como teto ou aviso, nunca como meta de quantidade de peças.
+
 ## Unidades e eixos
 - 1 bloco do Minecraft = 16 unidades do Blockbench.
 - Box UV com 1 pixel de textura por unidade.
