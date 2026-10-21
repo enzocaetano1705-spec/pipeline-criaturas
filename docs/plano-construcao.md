@@ -177,7 +177,7 @@ Qualquer IA continua daqui. Siga as fases em ordem. Cada fase entrega a **versã
   - regras de tokens.
   Os arquivos de apoio (`classificar.md`, `ler.md`) ficam na mesma pasta.
 - [x] 9.2 `scripts/sincronizar-skills.py`: copia `skills/` para `.claude/skills/` (Claude Code) e `.agents/skills/` (Codex e Antigravity). Edite só `skills/`.
-- [ ] 9.3 Versão para o chat do claude.ai, em ZIP: só ficha, classificação e a checagem "pronta para modelagem", sem modelagem.
+- [x] 9.3 Versão para o chat do claude.ai, em ZIP: só ficha, classificação e a checagem "pronta para modelagem", sem modelagem.
 - [ ] 9.4 Ensaio: uma sessão nova, sem contexto, roda o pipeline numa criatura sintética seguindo só a skill.
 
 **Aceite:** ensaio sem intervenção; documentação atualizada.
