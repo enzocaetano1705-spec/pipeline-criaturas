@@ -147,3 +147,20 @@ def _png_vermelho() -> bytes:
     buf = io.BytesIO()
     Image.new("RGBA", (64, 64), (255, 0, 0, 255)).save(buf, "PNG")
     return buf.getvalue()
+
+
+def test_nova_aceita_prancha(tmp_path, capsys):
+    from test_prancha import prancha_sintetica
+
+    arq = tmp_path / "prancha.webp"
+    prancha_sintetica().save(arq, lossless=True)
+    antigo = chat.CRIATURAS
+    chat.CRIATURAS = tmp_path / "criaturas"
+    try:
+        assert cli.main(["nova", "zz-prancha", "--prancha", str(arq), "--estagio-texto", "1 de 3"]) == 0
+    finally:
+        chat.CRIATURAS = antigo
+    pasta = tmp_path / "criaturas" / "zz-prancha"
+    for v in ("conceito", "frente", "lado", "costas", "3-4"):
+        assert (pasta / f"e1-{v}.png").exists()
+    assert "e1-3-4.png" in (pasta / "ficha.md").read_text(encoding="utf-8")

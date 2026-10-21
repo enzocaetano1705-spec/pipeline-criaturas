@@ -3,11 +3,13 @@
 O usuário não cria pastas nem renomeia arquivos: isso é seu. Ele anexa imagens e pede em texto. Nunca peça que ele mova arquivos.
 
 ## 1. Nova criatura
-- O usuário anexa o **conceito** (3/4) e as vistas de **frente** e **lado** (geradas no Gemini ou no ChatGPT com o mesmo design). Costas é opcional.
+- **Formato padrão (desde 21/10):** o usuário anexa **uma prancha** com o conceito à esquerda e, à direita, frente | lado em cima e costas | 3/4 embaixo, cada quadro rotulado. Use `--prancha <caminho>`: o `nova` corta os 5 quadros e apaga os rótulos. Confira os recortes antes de seguir (`docs/criaturas/<nome>/e1-*.png`).
+- Formato antigo: imagens soltas de **conceito**, **frente** e **lado** (costas opcional), com `--conceito/--frente/--lado/--costas`. Uma vista avulsa substitui o quadro da prancha.
 - Cada imagem anexada aparece na conversa com `source: <caminho>`. Olhe as imagens para saber qual é qual (conceito 3/4, frente reta, lado reto). Se não der para saber, pergunte.
 - Pergunte só o que faltar: nome, estágio (`1 de 3`…) e o prompt. Categoria e altura são opcionais (o pipeline pergunta a categoria depois).
 - Crie a criatura:
   ```
+  uv run criaturas nova <nome> --prancha <caminho>
   uv run criaturas nova <nome> --conceito <caminho> --frente <caminho> --lado <caminho> [--costas <caminho>] --estagio-texto "1 de 3" --prompt "<prompt>" [--categoria "plano › nicho"] [--altura 0.8] [--destino roblox,minecraft]
   ```
   Para um novo estágio da mesma criatura, use `--estagio e2` (o e1 continua na ficha).

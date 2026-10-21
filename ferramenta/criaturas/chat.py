@@ -16,7 +16,7 @@ from pathlib import Path
 import numpy as np
 from PIL import Image
 
-from criaturas import bbmodelo, estado, folha, motor, relatorio, render
+from criaturas import bbmodelo, estado, folha, motor, prancha, relatorio, render
 from criaturas.caminhos import RAIZ, chave, relativo
 from criaturas.cubificar import contexto
 from criaturas.etapas import etapa
@@ -40,7 +40,7 @@ def escrever_ficha(pasta: Path, nome: str, estagios: dict[str, dict], destino: l
               "**Motivos que atravessam a linhagem (2 ou 3 traços que nunca somem):**", ""]
     for eid, e in sorted(estagios.items()):
         n = eid[1:]
-        imagens = ", ".join(f"{eid}-{v}.png" for v in VISTAS if (pasta / f"{eid}-{v}.png").exists())
+        imagens = ", ".join(f"{eid}-{v}.png" for v in (*VISTAS, "3-4") if (pasta / f"{eid}-{v}.png").exists())
         linhas += [f"## Estágio {n} — {e.get('nome') or nome}",
                    f"- **Estágio:** {e.get('estagio') or f'{n} de {max(len(estagios), 1)}'}",
                    f"- **Categoria (seu palpite):** {e.get('categoria') or ''}",
@@ -80,12 +80,15 @@ def cmd_nova(args) -> int:
             return 1
     eid = args.estagio
     imagens = {v: getattr(args, v) for v in VISTAS if getattr(args, v)}
+    if args.prancha:  # prancha padrão: conceito + frente, lado, costas e 3/4 numa imagem só
+        quadros = prancha.cortar(args.prancha)
+        imagens = {**{v: quadros[v] for v in VISTAS}, **imagens, "3-4": quadros["3-4"]}
     if "conceito" not in imagens and "frente" not in imagens:
-        print("nova: preciso pelo menos do conceito ou da frente (--conceito/--frente <arquivo>)")
+        print("nova: preciso pelo menos do conceito ou da frente (--prancha/--conceito/--frente <arquivo>)")
         return 1
     pasta.mkdir(parents=True, exist_ok=True)
     for vista, origem in imagens.items():
-        with Image.open(origem) as im:
+        with (origem.copy() if isinstance(origem, Image.Image) else Image.open(origem)) as im:
             im = im.convert("RGBA")
             if max(im.size) > 1536:  # requisito: lado maior até 1536 px
                 f = 1536 / max(im.size)
@@ -284,6 +287,7 @@ def cmd_adotar(args) -> int:
 
 def opcoes(nome: str, parser: argparse.ArgumentParser) -> None:
     if nome == "nova":
+        parser.add_argument("--prancha", help="prancha padrão (conceito | frente, lado / costas, 3/4); as vistas avulsas têm prioridade")
         for v in VISTAS:
             parser.add_argument(f"--{v}", help=f"imagem da vista {v} (qualquer formato; vira PNG)")
         parser.add_argument("--estagio-texto", help="como na ficha: '1 de 3', '2 de 3'…")
