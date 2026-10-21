@@ -92,7 +92,7 @@ Qualquer IA continua daqui. Siga as fases em ordem. Cada fase entrega a **versã
   - rotação de repouso aproximada;
   - papéis de cor;
   - incertezas, com como foram resolvidas.
-- [ ] 3.2 Protocolo da IA para a leitura, em `skills/criaturas-3d/ler.md`:
+- [x] 3.2 Protocolo da IA para a leitura, em `skills/criaturas-3d/ler.md`:
   - olhar só as versões com grade;
   - nunca inventar parte;
   - incerteza → prompt → faixa da categoria, marcada "da tabela".
