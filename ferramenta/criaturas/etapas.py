@@ -15,10 +15,13 @@ def etapa(nome: str):
 
 def carregar() -> None:
     """Importa os módulos que registram etapas com @etapa."""
-    from criaturas import ficha  # noqa: F401
+    from criaturas import ficha, preparar  # noqa: F401
 
 
 def opcoes(nome: str, parser) -> None:
     """Opções extras de cada subcomando."""
+    if nome == "preparar":
+        parser.add_argument("--espelhar-lado", action="store_true",
+                            help="espelha a vista lateral (use se a frente da criatura aponta para a direita)")
     if nome == "tudo":
         parser.add_argument("--ate", help="para depois desta etapa")

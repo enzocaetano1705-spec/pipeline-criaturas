@@ -107,8 +107,55 @@ def construir(nome: str, destino: Path | None = None) -> Path:
     return arquivo
 
 
+FICHAS = SAIDA / "fichas"
+ESTAGIO_FICHA = {"inicial": "1 de 3", "meio": "2 de 3", "final": "3 de 3"}
+
+
+def pasta_ficha(nome: str) -> Path:
+    """Pasta que faz o papel de docs/criaturas/<nome>/ para a sintética (o pipeline grava em modelos/_sint-<nome>/)."""
+    return FICHAS / f"_sint-{nome}"
+
+
+def escrever_ficha(definicao: dict, pasta: Path, altura_blocos: float) -> Path:
+    cat = definicao["categoria"]
+    texto = f"""---
+tipo: ficha-criatura
+nome: sint-{definicao['nome']}
+status: pronta-para-modelagem
+destino: [roblox, minecraft]
+estilo: cobblemon
+estagios: 1
+---
+
+# Sintética {definicao['nome']}
+
+**Ideia em uma frase:** {definicao['descricao']}
+
+**Motivos que atravessam a linhagem (2 ou 3 traços que nunca somem):** cores de {', '.join(definicao['papeis_cor'])}
+
+## Estágio 1 — {definicao['nome']}
+- **Estágio:** {ESTAGIO_FICHA[definicao['estagio_tabela']]}
+- **Categoria (seu palpite):** {cat['plano']} › {cat['nicho']}
+- **Categoria confirmada:** {cat['plano']} › {cat['nicho']}
+- **Altura no jogo (blocos):** {altura_blocos:.3f}
+- **Imagens:** e1-conceito.png, e1-frente.png, e1-lado.png, e1-costas.png
+- **O que a imagem não mostra bem:** nada; é sintética
+- **Partes finas (viram planos):** {', '.join(p['id'] for p in definicao['partes'] if p['tipo'] == 'plano') or 'nenhuma'}
+- **Rosto:** olhos em adesivo
+- **Jeito de se mover:** padrão do plano de corpo
+
+### Prompt usado
+```text
+synthetic {cat['plano']} {cat['nicho']} test creature, full body, plain white background
+```
+"""
+    pasta.mkdir(parents=True, exist_ok=True)
+    (pasta / "ficha.md").write_text(texto, encoding="utf-8")
+    return pasta / "ficha.md"
+
+
 def construir_todas() -> list[str]:
-    """Constrói as sintéticas em modelos/_sinteticos/<nome>/e1/ com folha de vistas e imagens de conceito."""
+    """Constrói as sintéticas: verdade em modelos/_sinteticos/<nome>/e1/ e ficha com imagens em fichas/_sint-<nome>/."""
     from criaturas import bbmodelo, render
 
     linhas = []
@@ -116,9 +163,13 @@ def construir_todas() -> list[str]:
         arquivo = construir(nome)
         pasta = arquivo.parent
         plano = json.loads((pasta / "plano-cubos.json").read_text(encoding="utf-8"))
-        render.folha(bbmodelo.ler(arquivo), cores=cores_por_cubo(plano), titulo=nome).save(pasta / "vistas.png")
-        renderizar_conceito(arquivo, plano, pasta.parent / "conceito")
-        linhas.append(f"{nome}: {len(plano['cubos'])} cubos -> {pasta.relative_to(RAIZ).as_posix()}/vistas.png")
+        modelo = bbmodelo.ler(arquivo)
+        render.folha(modelo, cores=cores_por_cubo(plano), titulo=nome).save(pasta / "vistas.png")
+        ficha = pasta_ficha(nome)
+        renderizar_conceito(arquivo, plano, ficha)
+        lo, hi = bbmodelo.limites(modelo)
+        escrever_ficha(carregar(nome), ficha, float(hi[1] - lo[1]) / 16)
+        linhas.append(f"{nome}: {len(plano['cubos'])} cubos -> {pasta.relative_to(RAIZ).as_posix()}/vistas.png; ficha em {ficha.relative_to(RAIZ).as_posix()}")
     return linhas
 
 

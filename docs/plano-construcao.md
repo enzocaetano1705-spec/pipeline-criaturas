@@ -68,7 +68,7 @@ Qualquer IA continua daqui. Siga as fases em ordem. Cada fase entrega a **versã
 **Aceite:** `uv run pytest -q` verde; `criaturas medidas dragão final` imprime as faixas; `criaturas ficha docs/criaturas/_modelo` aponta os campos que faltam; as sintéticas têm vistas renderizadas.
 
 ## Fase 2 — Preparo de imagem e classificação
-- [ ] 2.1 `preparar`: lê as imagens do estágio e grava em `modelos/<nome>/eN/preparo/` a imagem recortada, a versão de até 768 px, a versão de até 768 px com grade numerada (linhas a cada 1/32 da altura, rótulos de 0 a 32) e a máscara.
+- [x] 2.1 `preparar`: lê as imagens do estágio e grava em `modelos/<nome>/eN/preparo/` a imagem recortada, a versão de até 768 px, a versão de até 768 px com grade numerada (linhas a cada 1/32 da altura, rótulos de 0 a 32) e a máscara.
   - Fundo: usa o alfa se houver; senão segmenta o fundo liso a partir das bordas; `rembg` só como extra opcional.
   - Recorta na silhueta e iguala a escala entre as vistas pela altura.
 - [ ] 2.2 Contrato do checklist morfológico com os itens de `docs/pesquisa/categorias-criaturas.md` (seção "Passo de classificação"). Cada item tem valor, certeza (visível, incerto ou oculto) e fonte (imagem ou prompt).
