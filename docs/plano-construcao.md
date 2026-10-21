@@ -155,13 +155,13 @@ Qualquer IA continua daqui. Siga as fases em ordem. Cada fase entrega a **versã
 **Aceite:** uma linhagem sintética invertida dá erro; uma linhagem normal passa.
 
 ## Fase 8 — Exportação Roblox e Minecraft
-- [ ] 8.1 Minecraft: `bbmodel_export_bedrock_geometry`, animações Bedrock (exportador próprio simples se o motor não tiver) e textura. GeckoLib quando pedido, com as regras do validador.
-- [ ] 8.2 Roblox:
+- [x] 8.1 Minecraft: `bbmodel_export_bedrock_geometry`, animações Bedrock (exportador próprio simples se o motor não tiver) e textura. GeckoLib quando pedido, com as regras do validador.
+- [x] 8.2 Roblox:
   - Fazer uma cópia do modelo com a textura ampliada.
   - Exportar pelo servidor desktop com `export_model`, codec `gltf` e opções `encoding: "binary"`, `embed_textures: true`, `armature: true` e `animations: true` → `.glb`.
   - Chamar por script: um cliente MCP HTTP próprio, usando o SDK do MCP que está em `externos/`. Se o app estiver fechado, abrir com `blockbench_launch` e `wait_for_mcp_ms`.
   - Plano B se falhar: exportador glTF próprio.
-- [ ] 8.3 Verificações:
+- [x] 8.3 Verificações:
   - validador glTF da Khronos (pacote npm `gltf-validator`) sem erros;
   - até 20 mil triângulos;
   - nomes de ossos e locators preservados.

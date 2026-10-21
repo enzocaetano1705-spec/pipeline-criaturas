@@ -1,0 +1,9 @@
+{
+  "name": "criaturas-js",
+  "private": true,
+  "description": "Ferramentas JS do pipeline: cliente MCP do Blockbench desktop e validação glTF.",
+  "type": "module",
+  "dependencies": {
+    "gltf-validator": "2.0.0-dev.3.10"
+  }
+}
