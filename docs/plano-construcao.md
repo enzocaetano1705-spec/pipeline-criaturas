@@ -170,7 +170,7 @@ Qualquer IA continua daqui. Siga as fases em ordem. Cada fase entrega a **versã
 **Aceite:** `.glb` válido. A confirmação no Roblox fica pendente até o usuário testar.
 
 ## Fase 9 — Skill e documentação
-- [ ] 9.1 `skills/criaturas-3d/SKILL.md` com menos de 200 linhas e `name` e `description` no frontmatter. Conteúdo:
+- [x] 9.1 `skills/criaturas-3d/SKILL.md` com menos de 200 linhas e `name` e `description` no frontmatter. Conteúdo:
   - quando usar;
   - passos com os comandos exatos;
   - pontos de parada;
