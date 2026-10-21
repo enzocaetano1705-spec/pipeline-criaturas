@@ -46,7 +46,7 @@ Qualquer IA continua daqui. Siga as fases em ordem. Cada fase entrega a **versã
 - [x] 0.5 MCPs no Claude Code:
   - `bbmodel` usa o clone do item 0.3, então só conecta numa sessão aberta depois dele (ou ao reconectar em `/mcp`). Nesta sessão, use o `call.ts`. Anote na nota da sessão que o usuário deve conferir com `/mcp` na próxima abertura.
   - `blockbench` só conecta com o app aberto e o plugin carregado. Se não estiver, anote e siga: só bloqueia na Fase 8.
-- [ ] 0.6 Python:
+- [x] 0.6 Python:
   - `pyproject.toml` na raiz, pacote em `ferramenta/criaturas/`, testes em `ferramenta/testes/`, Python 3.12.
   - Dependências mínimas: numpy, pillow, pyyaml, jsonschema e pytest. Cada dependência pesada nova ganha uma nota de decisão.
   - `uv sync`; `uv run criaturas --help` responde.
