@@ -13,7 +13,7 @@ Qualquer IA continua daqui. Siga as fases em ordem. Cada fase entrega a **versã
 
 | Fase | Entrega | Modelo | Status |
 |---|---|---|---|
-| 0 | Ambiente, GitHub e motor headless | Sonnet | ☐ |
+| 0 | Ambiente, GitHub e motor headless | Sonnet | ☑ |
 | 1 | Contratos, CLI, criaturas sintéticas e renderizador | Sonnet | ☐ |
 | 2 | Preparo de imagem e classificação | Opus | ☐ |
 | 3 | Leitura semântica e medição | Opus | ☐ |
@@ -50,7 +50,7 @@ Qualquer IA continua daqui. Siga as fases em ordem. Cada fase entrega a **versã
   - `pyproject.toml` na raiz, pacote em `ferramenta/criaturas/`, testes em `ferramenta/testes/`, Python 3.12.
   - Dependências mínimas: numpy, pillow, pyyaml, jsonschema e pytest. Cada dependência pesada nova ganha uma nota de decisão.
   - `uv sync`; `uv run criaturas --help` responde.
-- [ ] 0.7 Nota da sessão, tag `fase-0`, push.
+- [x] 0.7 Nota da sessão, tag `fase-0`, push.
 
 **Aceite:** repositório privado no GitHub com o kit; fumaça headless com 0 erros; `uv run criaturas --help` funcionando.
 
