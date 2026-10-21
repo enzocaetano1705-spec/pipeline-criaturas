@@ -19,7 +19,7 @@ Qualquer IA continua daqui. Siga as fases em ordem. Cada fase entrega a **versã
 | 3 | Leitura semântica e medição | Opus | ☑ |
 | 4 | Cubificador e folha de vistas | Opus | ☑ |
 | 5 | Textura | Opus | ☑ |
-| 6 | Rig, locators e animações | Sonnet | ☐ |
+| 6 | Rig, locators e animações | Sonnet | ☑ |
 | 7 | Validação da linhagem | Sonnet | ☐ |
 | 8 | Exportação Roblox e Minecraft | Sonnet | ☐ |
 | 9 | Skill e documentação | Sonnet | ☐ |
@@ -139,12 +139,12 @@ Qualquer IA continua daqui. Siga as fases em ordem. Cada fase entrega a **versã
 **Aceite:** nenhum buraco transparente em face de volume; nº de cores dentro do limite; cor média de cada parte a ΔE ≤ 10 do conceito; folha conferida uma vez.
 
 ## Fase 6 — Rig, locators e animações
-- [ ] 6.1 Locators padrão posicionados a partir das partes.
-- [ ] 6.2 Biblioteca procedural por plano de corpo, adaptando `referencia/prototipo-forja/forja/anim.py` aos nomes padrão.
+- [x] 6.1 Locators padrão posicionados a partir das partes.
+- [x] 6.2 Biblioteca procedural por plano de corpo, adaptando `referencia/prototipo-forja/forja/anim.py` aos nomes padrão.
   - Primeiro: `idle` (respiração), `walk` (marcha do plano, ciclo pelo estágio) e `blink`.
   - Depois: `run`, `cry`, `hurt`, `faint`, `sleep`, `fly` e `swim`.
-- [ ] 6.3 Chaves assadas (sem Molang), loop sem emenda, interpolação catmullrom.
-- [ ] 6.4 Validar com `bbmodel_validate_animations` (ground_sink, detachment) e `bbmodel_sample_pose`. O walk do protótipo afunda o pé 0,6 unidade: o teste tem que pegar isso.
+- [x] 6.3 Chaves assadas (sem Molang), loop sem emenda, interpolação catmullrom.
+- [x] 6.4 Validar com `bbmodel_validate_animations` (ground_sink, detachment) e `bbmodel_sample_pose`. O walk do protótipo afunda o pé 0,6 unidade: o teste tem que pegar isso.
 
 **Aceite:** `idle`, `walk` e `blink` com 0 erros nas 3 sintéticas.
 

@@ -139,7 +139,11 @@ def _em_torno(pivo, rot) -> np.ndarray:
 
 
 def matrizes_ossos(modelo: Modelo, pose: dict | None = None) -> dict[str, np.ndarray]:
-    """Matriz 4×4 de mundo de cada osso. `pose` = {osso: {'rotacao': [x,y,z], 'posicao': [x,y,z]}} somada ao repouso."""
+    """Matriz 4×4 de mundo de cada osso.
+
+    `pose` = {osso: {'rotacao': [x,y,z], 'posicao': [x,y,z], 'escala': [x,y,z]}} somada ao repouso
+    (escala em torno do pivô, antes da rotação), como numa chave de animação do Blockbench.
+    """
     pose = pose or {}
     feitas: dict[str, np.ndarray] = {}
 
@@ -150,6 +154,11 @@ def matrizes_ossos(modelo: Modelo, pose: dict | None = None) -> dict[str, np.nda
         extra = pose.get(nome, {})
         rot = o.rotacao + np.asarray(extra.get("rotacao", (0, 0, 0)), float)
         local = _em_torno(o.origem, rot)
+        if "escala" in extra:
+            s = np.eye(4)
+            s[:3, :3] = np.diag(np.asarray(extra["escala"], float))
+            s[:3, 3] = o.origem - s[:3, :3] @ o.origem
+            local = local @ s
         if "posicao" in extra:
             t = np.eye(4)
             t[:3, 3] = np.asarray(extra["posicao"], float)

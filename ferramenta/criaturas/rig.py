@@ -83,3 +83,46 @@ def locators(partes: list[dict]) -> list[dict]:
         add("loc_top", "head" if head else "body", [ref[0], topo + 2, ref[2]])
         add("loc_ground", "body", [c[0], 0.0, c[2]])
     return saida
+
+
+# ---------- `criaturas rig` ----------
+
+def partes_do_modelo(modelo) -> list[dict]:
+    """Partes {id, from, to} a partir dos cubos (caixa em mundo, pose de repouso), uma por osso."""
+    from criaturas import bbmodelo
+
+    mats = bbmodelo.matrizes_ossos(modelo)
+    por_osso = {}
+    for c in modelo.cubos:
+        if not c.osso:
+            continue
+        lo, hi = bbmodelo.caixa_mundo(modelo, c, mats)
+        if c.osso in por_osso:
+            a, b = por_osso[c.osso]
+            lo, hi = np.minimum(a, lo), np.maximum(b, hi)
+        por_osso[c.osso] = (lo, hi)
+    return [{"id": o, "from": lo.tolist(), "to": hi.tolist()} for o, (lo, hi) in por_osso.items()]
+
+
+def sincronizar(arquivo) -> dict:
+    """Recalcula os locators padrão pelos cubos atuais e atualiza o .bbmodel (troca os que mudaram)."""
+    from criaturas import bbmodelo, motor
+
+    modelo = bbmodelo.ler(arquivo)
+    novos = locators(partes_do_modelo(modelo))
+    atuais = {loc.nome: loc for loc in modelo.locators}
+    lote, criados, trocados = [], [], []
+    for loc in novos:
+        velho = atuais.get(loc["nome"])
+        if velho is not None:
+            if velho.osso == loc["osso"] and np.allclose(velho.posicao, loc["posicao"], atol=0.05):
+                continue
+            lote.append({"op": "remove_node", "target": loc["nome"]})
+            trocados.append(loc["nome"])
+        else:
+            criados.append(loc["nome"])
+        lote.append({"op": "add_locator", "name": loc["nome"], "parent": loc["osso"], "position": loc["posicao"]})
+    if lote:
+        motor.editar(arquivo, lote)
+    return {"locators": [l["nome"] for l in novos], "criados": criados, "trocados": trocados,
+            "extras": sorted(set(atuais) - {l["nome"] for l in novos})}

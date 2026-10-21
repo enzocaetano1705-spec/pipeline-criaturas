@@ -79,8 +79,15 @@ def criar(arquivo, nome: str, largura: int = 64, altura: int = 64, raiz: Path = 
                                      "resolution": {"width": largura, "height": altura}, "overwrite": True}, raiz)
 
 
-def editar(arquivo, operacoes: list[dict], raiz: Path = MODELOS) -> dict:
-    return chamar("bbmodel_edit", {"file": relativo(arquivo, raiz), "operations": operacoes}, raiz)
+MAX_OPS = 500  # limite do bbmodel_edit por chamada
+
+
+def editar(arquivo, operacoes: list[dict], raiz: Path = MODELOS, lote: int = 450) -> dict:
+    """bbmodel_edit em lotes de até `lote` operações (cada lote é atômico; o conjunto, não)."""
+    resultado = {}
+    for i in range(0, max(len(operacoes), 1), lote):
+        resultado = chamar("bbmodel_edit", {"file": relativo(arquivo, raiz), "operations": operacoes[i:i + lote]}, raiz)
+    return resultado
 
 
 def validar(arquivo, raiz: Path = MODELOS, **extras) -> dict:
