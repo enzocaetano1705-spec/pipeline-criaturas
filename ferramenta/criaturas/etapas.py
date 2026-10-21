@@ -15,7 +15,7 @@ def etapa(nome: str):
 
 def carregar() -> None:
     """Importa os módulos que registram etapas com @etapa."""
-    from criaturas import classificar, ficha, medir, preparar  # noqa: F401
+    from criaturas import classificar, cubificar, ficha, folha, medir, preparar, validar  # noqa: F401
 
 
 def opcoes(nome: str, parser) -> None:
@@ -26,5 +26,7 @@ def opcoes(nome: str, parser) -> None:
     if nome == "classificar":
         parser.add_argument("--registrar-escolha", metavar="'plano › nicho'",
                             help="registra a categoria escolhida pelo usuário (se diferente da sugestão 1)")
+    if nome == "folha":
+        parser.add_argument("--motor", action="store_true", help="vistas pelo render headless do motor (precisa de GPU)")
     if nome == "tudo":
         parser.add_argument("--ate", help="para depois desta etapa")

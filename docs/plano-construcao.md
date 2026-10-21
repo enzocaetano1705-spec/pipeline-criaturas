@@ -106,21 +106,21 @@ Qualquer IA continua daqui. Siga as fases em ordem. Cada fase entrega a **versã
 **Aceite:** erro de até 1 unidade ou 10% por dimensão em pelo menos 90% das partes das 3 sintéticas.
 
 ## Fase 4 — Cubificador e folha de vistas
-- [ ] 4.1 `cubificar`: leitura + medidas + categoria + estágio → `plano-cubos.json` → `ops.json` → `.bbmodel` pelo motor (formato bedrock, Box UV, tamanhos inteiros).
-- [ ] 4.2 Regras:
+- [x] 4.1 `cubificar`: leitura + medidas + categoria + estágio → `plano-cubos.json` → `ops.json` → `.bbmodel` pelo motor (formato bedrock, Box UV, tamanhos inteiros).
+- [x] 4.2 Regras:
   - hierarquia e nomes de `docs/convencoes.md`, com pivôs nas juntas;
   - correntes (cauda, pescoço, tentáculos) com o nº de segmentos da categoria, afinando como a silhueta e com a rotação de repouso seguindo a linha central;
   - espelhamento da esquerda para a direita com `mirror_uv`;
   - planos para as partes do tipo plano;
   - locators padrão;
   - orçamento de cubos do estágio (aviso acima do p75 × 1,3).
-- [ ] 4.3 Nunca sobrescrever um `.bbmodel` editado à mão: o hash fica em `relatorio.json`, e se o arquivo mudou a saída nova vai para `.v2`.
-- [ ] 4.4 `validar`: `bbmodel_validate` com 0 erros e avisos explicados, mais verificações próprias:
+- [x] 4.3 Nunca sobrescrever um `.bbmodel` editado à mão: o hash fica em `relatorio.json`, e se o arquivo mudou a saída nova vai para `.v2`.
+- [x] 4.4 `validar`: `bbmodel_validate` com 0 erros e avisos explicados, mais verificações próprias:
   - tamanhos inteiros e simetria;
   - orçamento de cubos;
   - todas as partes da leitura presentes;
   - fração de cabeça do modelo comparada com a da imagem, não com a tabela.
-- [ ] 4.5 `folha`: as 4 vistas do modelo (render headless ou renderizador próprio) ao lado do conceito, numa única imagem de até 768 px.
+- [x] 4.5 `folha`: as 4 vistas do modelo (render headless ou renderizador próprio) ao lado do conceito, numa única imagem de até 768 px.
 
 **Aceite:** as 3 sintéticas validam com 0 erros e ficam a até 10% da verdade nas proporções de cabeça, corpo e membros; um modelo abre no Blockbench sem erro (pelo MCP desktop, se disponível).
 
