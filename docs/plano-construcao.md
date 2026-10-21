@@ -39,7 +39,7 @@ Qualquer IA continua daqui. Siga as fases em ordem. Cada fase entrega a **versã
   - `git -C externos/blockbench-mcp-plugin checkout 141ef78fa59eb697895ab73d4757d874ab8a2711`
   - `npm install --omit=dev` dentro dele (isso traz o Bun).
   - Rodar o teste de fumaça de `referencia/exemplo-headless/` em `modelos/_fumaca/`: `bbmodel_validate` com 0 erros e um `.geo.json` exportado.
-- [ ] 0.4 Render headless (precisa de GPU; baixa cerca de 130 MB na primeira vez): `bbmodel_contact_sheet` do modelo de fumaça.
+- [x] 0.4 Render headless (precisa de GPU; baixa cerca de 130 MB na primeira vez): `bbmodel_contact_sheet` do modelo de fumaça.
   - Funcionou: registre.
   - Falhou: registre o erro. A folha de vistas usa o renderizador próprio (item 1.7).
   - Em qualquer caso, confira no render o lado direito (+X) e corrija `docs/convencoes.md` se preciso.

@@ -11,7 +11,7 @@ Fonte única para nomes, unidades e formatos. Mudou algo aqui? Registre o motivo
 - 1 bloco do Minecraft = 16 unidades do Blockbench.
 - Box UV com 1 pixel de textura por unidade.
 - Y para cima. A frente da criatura olha para −Z (as vistas do motor headless são relativas a essa frente).
-- Lado direito da criatura = +X (regra da mão direita com Y para cima). **Conferir na Fase 0** com o modelo de exemplo e corrigir esta linha se o render mostrar o contrário.
+- Lado direito da criatura = +X (regra da mão direita com Y para cima). Conferido na Fase 0 (21/out/2026): na vista `front` do render headless (câmera em −Z), um braço em −X aparece à direita da imagem, ou seja, é o lado esquerdo da criatura. A exportação Bedrock espelha X (`leg_front_left` sai com X positivo no `.geo.json`); isso é do formato, não muda a convenção.
 - Rotações em graus, aplicadas na ordem Z·Y·X em torno do pivô (igual ao `bbmodel_edit`).
 - O código do pipeline nunca escreve `.bbmodel` à mão: tudo passa por operações do `bbmodel_edit`, que cuida das convenções do formato 5.0. O exportador do protótipo Forja (formato 4.10) é só referência.
 
