@@ -81,6 +81,34 @@ def _eixo_contato(c, pai):
 ESPESSURA_ADESIVO = 0.01
 
 
+def cubos_das_fatias(p: dict) -> list[tuple[list, list]] | None:
+    """Cubos inteiros das fatias de uma parte arredondada, dentro da caixa final dela (simétricos em x = 0)."""
+    fs = p.get("fatias")
+    if not fs:
+        return None
+    de, ate = _caixa(p)
+    fs = sorted(fs, key=lambda f: f["y"][0])
+    y_lo, y_hi = fs[0]["y"][0], fs[-1]["y"][1]
+    escala = (ate[1] - de[1]) / max(y_hi - y_lo, 1e-6)
+    # bordas em y inteiras, distribuídas na altura final
+    bordas = sorted({int(round(de[1] + (f["y"][0] - y_lo) * escala)) for f in fs} | {int(round(ate[1]))})
+    bordas[0] = int(round(de[1]))
+    cubos = []
+    largura_max, prof_max = ate[0] - de[0], ate[2] - de[2]
+    lmax_fatias = max(f["x"][1] - f["x"][0] for f in fs)
+    for i, (a, b) in enumerate(zip(bordas, bordas[1:])):
+        if b <= a:
+            continue
+        f = min(fs, key=lambda f: abs((f["y"][0] - y_lo) * escala + de[1] - a))
+        frac = (f["x"][1] - f["x"][0]) / max(lmax_fatias, 1e-6)
+        w = max(1, int(round(largura_max * frac)))
+        d = max(1, int(round(prof_max * frac)))
+        cz = (de[2] + ate[2]) / 2
+        z0 = math.floor(cz - d / 2 + 0.5)
+        cubos.append(([-w / 2, a, z0], [w / 2, b, z0 + d]))
+    return cubos if len(cubos) >= 2 else None
+
+
 def colar_adesivos(partes: list[dict]) -> None:
     """Adesivo (olho, boca, marca) fica 0,01 à frente da face do pai e dentro dela (o pai pode ter mudado no arredondamento)."""
     por_id = {p["id"]: p for p in partes}
@@ -90,6 +118,11 @@ def colar_adesivos(partes: list[dict]) -> None:
             continue
         de, ate = _caixa(p)
         p0, p1 = _caixa(pai)
+        if pai.get("_cubos"):
+            # pai em fatias: a face é a da fatia na altura do centro do adesivo
+            yc = (de[1] + ate[1]) / 2
+            cubo = min(pai["_cubos"], key=lambda c: 0 if c[0][1] <= yc <= c[1][1] else min(abs(yc - c[0][1]), abs(yc - c[1][1])))
+            p0, p1 = np.asarray(cubo[0], float), np.asarray(cubo[1], float)
         fino = int(np.argmin(ate - de))
         frente = (de[fino] + ate[fino]) / 2 <= (p0[fino] + p1[fino]) / 2
         valor = p0[fino] - ESPESSURA_ADESIVO if frente else p1[fino] + ESPESSURA_ADESIVO
@@ -236,6 +269,10 @@ def plano_de_cubos(medidas: dict, nome: str, papeis_cor: dict | None = None, cat
     arredondar(partes)
     resolver_contatos(partes, avisos)
     arredondar(partes)  # o contato pode ter deixado meia unidade
+    for p in partes:
+        cs = cubos_das_fatias(p)
+        if cs:
+            p["_cubos"] = cs
     colar_adesivos(partes)
     por_id = {p["id"]: p for p in partes}
     cores = papeis_cor or {}
@@ -247,13 +284,15 @@ def plano_de_cubos(medidas: dict, nome: str, papeis_cor: dict | None = None, cat
         if p.get("rotacao_repouso") and any(p["rotacao_repouso"]):
             osso["rotacao"] = [round(float(r), 1) for r in p["rotacao_repouso"]]
         ossos.append(osso)
-        cubo = {"nome": f"{p['id']}_cube", "osso": p["id"], "parte": p["id"], "tipo": p["tipo"],
-                "from": [round(v, 3) for v in p["from"]], "to": [round(v, 3) for v in p["to"]],
-                "cor": cores.get(p.get("papel_cor"), COR_PADRAO)}
-        if p.get("simetria") == "direita" and p.get("espelho") in por_id:
-            cubo["mirror_uv"] = True
-            cubo["espelho_de"] = f"{p['espelho']}_cube"
-        cubos.append(cubo)
+        caixas = p.get("_cubos") or [(p["from"], p["to"])]
+        for i, (de, ate) in enumerate(caixas):
+            cubo = {"nome": f"{p['id']}_cube" + (f"_{i + 1}" if i else ""), "osso": p["id"], "parte": p["id"], "tipo": p["tipo"],
+                    "from": [round(float(v), 3) for v in de], "to": [round(float(v), 3) for v in ate],
+                    "cor": cores.get(p.get("papel_cor"), COR_PADRAO)}
+            if p.get("simetria") == "direita" and p.get("espelho") in por_id:
+                cubo["mirror_uv"] = True
+                cubo["espelho_de"] = f"{p['espelho']}_cube" + (f"_{i + 1}" if i else "")
+            cubos.append(cubo)
     offsets, (largura, altura) = ops.distribuir_uv(cubos, margem=1)  # 1 texel entre ilhas: margem da versão Roblox
     for c in cubos:
         c["uv_offset"] = offsets[c["nome"]]

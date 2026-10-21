@@ -270,7 +270,8 @@ def medir(leitura: dict, mascaras: dict[str, np.ndarray], altura_alvo: float, *,
             if p["tipo"] == "adesivo" and pai and pai["z"]:
                 f["z"] = [pai["z"][0] - ESPESSURA_ADESIVO] * 2
                 f["fonte_z"] = "estimada"
-            elif pid == "body" and corpo_compr:
+            elif pid == "body" and corpo_compr and (categoria or {}).get("plano") != "cabeça-corpo":
+                # cabeça-corpo (bola, blob) cai no else: profundidade = largura, seção redonda
                 prof = corpo_compr * altura_alvo
                 f["z"], f["fonte_z"] = [-prof / 2, prof / 2], "tabela"
             else:
@@ -287,6 +288,10 @@ def medir(leitura: dict, mascaras: dict[str, np.ndarray], altura_alvo: float, *,
         for k in ("rotacao_repouso", "papel_cor", "segmentos"):
             if k in p:
                 parte[k] = p[k]
+        if p["tipo"] == "volume" and p["simetria"] == "central" and pid in caixas["frente"]:
+            fs = fatias(caixas["frente"][pid], mascaras["frente"], cx["frente"], u, de, ate)
+            if fs:
+                parte["fatias"] = fs
         saida.append(parte)
         f["x"], f["y"], f["z"] = [de[0], ate[0]], [de[1], ate[1]], [de[2], ate[2]]
         if parte["profundidade"] != "lado" and p["tipo"] == "volume" and caixas["lado"]:
@@ -306,6 +311,52 @@ def medir(leitura: dict, mascaras: dict[str, np.ndarray], altura_alvo: float, *,
     return {"altura_alvo_unidades": round(altura_alvo, 3), "unidades_por_celula": round(u, 4),
             "fator_vistas": {k: round(v, 4) for k, v in fator.items()}, "mapeamento": mapeamento,
             "partes": saida, "avisos": avisos}
+
+
+PREENCHIMENTO_FATIAR = 0.85  # silhueta que enche menos que isso da caixa é arredondada (bola, gota)
+ALTURA_MIN_FATIAR = 6.0  # unidades
+
+
+def fatias(caixa, mascara: np.ndarray, centro_x: float, u: float, de, ate) -> list[dict] | None:
+    """Camadas horizontais que seguem a silhueta de uma parte arredondada (vista de frente).
+
+    Cada camada tem a largura da silhueta naquela altura (percentis 20–80 das bordas, para os fiapos
+    de pelo não alargarem) e a profundidade na mesma proporção largura/profundidade da parte.
+    None se a parte já é quase um retângulo ou é pequena.
+    """
+    altura_u = ate[1] - de[1]
+    largura_u = ate[0] - de[0]
+    if altura_u < ALTURA_MIN_FATIAR or largura_u < ALTURA_MIN_FATIAR:
+        return None
+    px = mascara.shape[0] / CELULAS
+    x0, y0, x1, y1 = caixa
+    r0, r1 = int(y0 * px), int(np.ceil(y1 * px))
+    c0, c1 = int(x0 * px), int(np.ceil(x1 * px))
+    recorte = mascara[r0:r1, c0:c1]
+    if recorte.size == 0 or recorte.mean() >= PREENCHIMENTO_FATIAR:
+        return None
+    n = int(np.clip(round(altura_u / 3), 3, 6))
+    proporcao_z = (ate[2] - de[2]) / max(largura_u, 1e-6)
+    centro_z = (ate[2] + de[2]) / 2
+    saida = []
+    limites = np.linspace(0, recorte.shape[0], n + 1).astype(int)
+    for a, b in zip(limites, limites[1:]):
+        inicios, fins = [], []
+        for linha in recorte[a:b]:
+            cols = np.nonzero(linha)[0]
+            if len(cols):
+                inicios.append(cols.min())
+                fins.append(cols.max() + 1)
+        if not inicios:
+            continue
+        xa = (c0 + np.percentile(inicios, 20)) / px
+        xb = (c0 + np.percentile(fins, 80)) / px
+        xs = sorted([(centro_x - xa) * u, (centro_x - xb) * u])
+        ys = [(CELULAS - (r0 + b) / px) * u, (CELULAS - (r0 + a) / px) * u]
+        prof = (xs[1] - xs[0]) * proporcao_z
+        saida.append({"x": [round(v, 2) for v in xs], "y": [round(v, 2) for v in ys],
+                      "z": [round(centro_z - prof / 2, 2), round(centro_z + prof / 2, 2)]})
+    return saida if len(saida) >= 2 else None
 
 
 def _ordem_hierarquia(partes: dict) -> list[str]:

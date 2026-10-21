@@ -90,17 +90,18 @@ def kmeans(pontos: np.ndarray, k: int, iteracoes: int = 25, semente: int = 0) ->
     return centros, rot
 
 
-def paleta(rgbs: np.ndarray, base: int = 5, destaque: int = 2, juntar: float = 0.045) -> tuple[np.ndarray, list[str]]:
+def paleta(rgbs: np.ndarray, base: int = 5, destaque: int = 2, juntar: float = 0.045, min_frac: float = 0.003) -> tuple[np.ndarray, list[str]]:
     """Paleta de até base + destaque cores. Devolve (cores RGB, papel de cada uma: 'base' ou 'destaque').
 
-    Agrupa em OKLab, junta grupos quase iguais e chama de destaque os grupos menores além das `base` maiores.
+    Agrupa em OKLab com folga (12 grupos), junta os quase iguais, fica com os `base` maiores e escolhe
+    como destaque os grupos mais diferentes deles (olho âmbar num bicho turquesa), desde que tenham
+    pelo menos `min_frac` dos pixels. Assim um detalhe pequeno e colorido não some no meio dos tons do pelo.
     """
     lab = rgb_para_oklab(np.asarray(rgbs, float))
-    centros, rot = kmeans(lab, base + destaque)
-    contagem = np.bincount(rot, minlength=len(centros)).astype(float)
-    # junta centros próximos
+    centros, rot = kmeans(lab, base + destaque + 5)
+    contagem = list(np.bincount(rot, minlength=len(centros)).astype(float))
+    centros = list(centros)
     i = 0
-    centros, contagem = list(centros), list(contagem)
     while i < len(centros):
         j = i + 1
         while j < len(centros):
@@ -112,10 +113,21 @@ def paleta(rgbs: np.ndarray, base: int = 5, destaque: int = 2, juntar: float = 0
             else:
                 j += 1
         i += 1
-    ordem = np.argsort(contagem)[::-1]
-    centros = [centros[o] for o in ordem]
-    papeis = ["base" if n < base else "destaque" for n in range(len(centros))]
-    return np.array([oklab_para_rgb(c) for c in centros]), papeis
+    ordem = list(np.argsort(contagem)[::-1])
+    escolhidos = ordem[:base]
+    total = sum(contagem)
+    resto = [o for o in ordem[base:] if contagem[o] >= min_frac * total]
+    destaques = []
+    for _ in range(destaque):
+        if not resto:
+            break
+        ref = escolhidos + destaques
+        melhor = max(resto, key=lambda o: min(np.linalg.norm(centros[o] - centros[r]) for r in ref))
+        destaques.append(melhor)
+        resto.remove(melhor)
+    finais = escolhidos + destaques
+    papeis = ["base"] * len(escolhidos) + ["destaque"] * len(destaques)
+    return np.array([oklab_para_rgb(centros[o]) for o in finais]), papeis
 
 
 def mais_proxima(rgbs: np.ndarray, paleta_rgb: np.ndarray) -> np.ndarray:

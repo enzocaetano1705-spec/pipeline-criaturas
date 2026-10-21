@@ -14,6 +14,7 @@
 
 import base64
 import io
+import warnings
 from pathlib import Path
 
 import numpy as np
@@ -53,13 +54,33 @@ class Vista:
         self.nome, self.rgb, self.alfa, self.proj, self.ids = nome, rgba[..., :3], rgba[..., 3] > 127, proj, ids
 
     def amostrar(self, pontos: np.ndarray, aceitos: set[int]) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
-        """(cores, visível, dentro da silhueta) de pontos do mundo."""
+        """(cores, visível, dentro da silhueta) de pontos do mundo.
+
+        A cor é a mediana de 3×3 pontos na área do texel (±0,35 unidade), só entre os que mostram a
+        mesma parte: um traço fino do desenho (contorno, fio de pelo) não vira um pixel preto solto.
+        """
         p = self.proj.pixel(pontos)
-        x = np.clip(np.floor(p[:, 0]).astype(int), 0, self.rgb.shape[1] - 1)
-        y = np.clip(np.floor(p[:, 1]).astype(int), 0, self.rgb.shape[0] - 1)
-        fora = (p[:, 0] < 0) | (p[:, 1] < 0) | (p[:, 0] >= self.rgb.shape[1]) | (p[:, 1] >= self.rgb.shape[0])
-        visivel = np.isin(self.ids[y, x], list(aceitos)) & ~fora & self.alfa[y, x]
-        return self.rgb[y, x], visivel, self.alfa[y, x] & ~fora
+        alt, larg = self.rgb.shape[:2]
+        x = np.clip(np.floor(p[:, 0]).astype(int), 0, larg - 1)
+        y = np.clip(np.floor(p[:, 1]).astype(int), 0, alt - 1)
+        fora = (p[:, 0] < 0) | (p[:, 1] < 0) | (p[:, 0] >= larg) | (p[:, 1] >= alt)
+        lista = list(aceitos)
+        visivel = np.isin(self.ids[y, x], lista) & ~fora & self.alfa[y, x]
+        passo = 0.35 * self.proj.escala
+        amostras, validas = [], []
+        for dx in (-passo, 0.0, passo):
+            for dy in (-passo, 0.0, passo):
+                xx = np.clip(np.floor(p[:, 0] + dx).astype(int), 0, larg - 1)
+                yy = np.clip(np.floor(p[:, 1] + dy).astype(int), 0, alt - 1)
+                amostras.append(self.rgb[yy, xx].astype(float))
+                validas.append(np.isin(self.ids[yy, xx], lista) & self.alfa[yy, xx])
+        amostras, validas = np.stack(amostras), np.stack(validas)
+        com_nan = np.where(validas[..., None], amostras, np.nan)
+        with warnings.catch_warnings():
+            warnings.simplefilter("ignore", RuntimeWarning)  # texel sem amostra válida: usa o centro
+            mediana = np.nanmedian(com_nan, axis=0)
+        cor = np.where(np.isnan(mediana), self.rgb[y, x], mediana)
+        return np.clip(np.round(cor), 0, 255).astype(np.uint8), visivel, self.alfa[y, x] & ~fora
 
 
 # ---------- texels ----------
