@@ -26,10 +26,10 @@
           "pai": {"type": ["string", "null"]},
           "tipo": {"$ref": "comum.schema.json#/$defs/tipo_parte"},
           "simetria": {"$ref": "comum.schema.json#/$defs/simetria"},
-          "espelho": {"type": ["string", "null"], "description": "id da parte do outro lado"},
+          "espelho": {"type": ["string", "null"], "description": "id da parte do outro lado; se a parte do outro lado não for listada, o medir a cria espelhando esta"},
           "caixas": {
             "type": "object",
-            "description": "Caixa por vista, na grade. Frente: x horizontal como na imagem; lado: a frente da criatura fica à esquerda da imagem.",
+            "description": "Caixa por vista, na grade de preparo/<vista>-grade.png. Frente: o lado esquerdo da criatura aparece à direita da imagem. Lado: lado esquerdo da criatura, com a frente à esquerda da imagem. Costas: o lado esquerdo aparece à esquerda. Desenhe só o que aparece; parte escondida numa vista fica sem caixa nessa vista (o medir completa pelo espelho, pela parte irmã ou pela tabela).",
             "properties": {
               "frente": {"$ref": "comum.schema.json#/$defs/caixa2d"},
               "lado": {"$ref": "comum.schema.json#/$defs/caixa2d"},

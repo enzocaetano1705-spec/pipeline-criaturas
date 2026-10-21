@@ -85,7 +85,7 @@ Qualquer IA continua daqui. Siga as fases em ordem. Cada fase entrega a **versã
 **Aceite:** testes de pontuação com checklists sintéticos, incluindo os pares que se confundem; nas imagens de `docs/criaturas/_testes/` (se houver) sai a lista de 3 sugestões; cada classificação custa cerca de uma imagem de 768 px.
 
 ## Fase 3 — Leitura semântica e medição
-- [ ] 3.1 Contrato `leitura`:
+- [x] 3.1 Contrato `leitura`:
   - vistas usadas;
   - partes com id padrão, pai, tipo (volume, plano ou adesivo), simetria e espelho;
   - caixa de cada parte por vista, em coordenadas da grade;

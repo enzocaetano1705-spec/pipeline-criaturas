@@ -11,6 +11,6 @@
   {"id": "eye_left", "pai": "head", "tipo": "adesivo", "from": [-3, 13, -5.01], "to": [-2, 15, -5.01], "pivo": [-2, 14, -5], "papel_cor": "olho"},
   {"id": "wing_left", "pai": "body", "tipo": "plano", "from": [-14, 5, 0], "to": [-2, 10, 0], "pivo": [-3, 9, 0], "papel_cor": "primaria"},
   {"id": "leg_left", "pai": "body", "tipo": "volume", "from": [-2, 0, -1], "to": [-1, 4, 1], "pivo": [-1, 4, 0], "papel_cor": "destaque"},
-  {"id": "tail_1", "pai": "body", "tipo": "plano", "from": [-2, 5, 3], "to": [2, 5, 9], "pivo": [0, 5, 4], "papel_cor": "primaria"}
+  {"id": "tail_1", "pai": "body", "tipo": "plano", "from": [0, 5, 3], "to": [0, 9, 9], "pivo": [0, 7, 4], "papel_cor": "primaria"}
  ]
 }
