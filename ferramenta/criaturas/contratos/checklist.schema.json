@@ -2,17 +2,36 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "checklist.schema.json",
   "title": "Checklist morfológico (docs/pesquisa/categorias-criaturas.md, Passo de classificação)",
+  "description": "Preenchido pela IA seguindo skills/criaturas-3d/classificar.md. Cada item tem valor, certeza (visível, incerto, oculto) e fonte (imagem, prompt, tabela). Números são medidos na grade: frações da altura total da silhueta ou razões entre partes.",
   "type": "object",
   "required": ["itens"],
   "properties": {
     "estagio": {"$ref": "comum.schema.json#/$defs/estagio_id"},
+    "vista": {"type": "string", "description": "imagem com grade usada (ex.: preparo/frente-grade.png)"},
     "itens": {
       "type": "object",
       "required": ["postura", "pernas", "bracos", "asas", "cauda", "nadadeiras", "pescoco", "cabeca", "focinho", "orelhas", "olhos", "cobertura", "extras"],
+      "properties": {
+        "postura": {"$ref": "#/$defs/item", "description": "valor: bípede | quadrúpede | rastejante | flutuante | nadando | sem membros"},
+        "pernas": {"$ref": "#/$defs/item", "description": "valor: inteiro (nº de pernas) ou {n, frac_alt} (frac_alt = comprimento da perna ÷ altura)"},
+        "bracos": {"$ref": "#/$defs/item", "description": "valor: inteiro (nº de braços; pernas da frente de quadrúpede não contam)"},
+        "asas": {"$ref": "#/$defs/item", "description": "valor: 0 ou {pares, envergadura_alt, tipo: penas | membrana | inseto}"},
+        "cauda": {"$ref": "#/$defs/item", "description": "valor: 0 ou {comprimento_alt ou comprimento: curta | média | longa | muito longa, grossura: fina | média | grossa, segmentos, leque: bool}"},
+        "nadadeiras": {"$ref": "#/$defs/item", "description": "valor: inteiro (nº de nadadeiras)"},
+        "pescoco": {"$ref": "#/$defs/item", "description": "valor: nenhum | curto | médio | longo, ou {segmentos}"},
+        "cabeca": {"$ref": "#/$defs/item", "description": "valor: pequena | média | grande | enorme, ou {frac_alt} (altura da cabeça ÷ altura total)"},
+        "focinho": {"$ref": "#/$defs/item", "description": "valor: nenhum | curto | médio | longo | bico, ou {razao_cranio} (comprimento ÷ tamanho do crânio)"},
+        "orelhas": {"$ref": "#/$defs/item", "description": "valor: nenhuma | pequenas | médias | grandes | enormes, ou {razao_cranio}"},
+        "olhos": {"$ref": "#/$defs/item", "description": "valor: pequenos | médios | grandes, ou {frac_alt} (altura do olho ÷ altura total)"},
+        "cobertura": {"$ref": "#/$defs/item", "description": "valor: pelo | escama | pena | pele | pedra | planta | gosma | metal | carapaça"},
+        "extras": {"$ref": "#/$defs/item", "description": "valor: lista, ex.: chifres, juba, carapaça, chamas, antenas, tentáculos, cascos, bigodes, bico, folhas, múltiplas cabeças, flutua"},
+        "corpo": {"$ref": "#/$defs/item", "description": "opcional; valor: curto | médio | comprido, ou {compr_alt} (comprimento do tronco ÷ altura)"}
+      },
       "additionalProperties": {"$ref": "#/$defs/item"}
     },
     "conflitos": {
       "type": "array",
+      "description": "Itens em que o prompt contradiz a imagem. A imagem vence; o conflito só é mostrado.",
       "items": {
         "type": "object",
         "required": ["item", "imagem", "prompt"],
@@ -30,7 +49,9 @@
         "fonte": {"enum": ["imagem", "prompt", "tabela"]},
         "nota": {"type": "string"}
       },
-      "additionalProperties": false
+      "additionalProperties": false,
+      "if": {"properties": {"certeza": {"const": "visível"}}},
+      "then": {"properties": {"fonte": {"const": "imagem", "description": "item visível vem da imagem; o prompt só preenche incerto ou oculto"}}}
     }
   }
 }

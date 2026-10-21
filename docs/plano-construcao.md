@@ -71,7 +71,7 @@ Qualquer IA continua daqui. Siga as fases em ordem. Cada fase entrega a **versã
 - [x] 2.1 `preparar`: lê as imagens do estágio e grava em `modelos/<nome>/eN/preparo/` a imagem recortada, a versão de até 768 px, a versão de até 768 px com grade numerada (linhas a cada 1/32 da altura, rótulos de 0 a 32) e a máscara.
   - Fundo: usa o alfa se houver; senão segmenta o fundo liso a partir das bordas; `rembg` só como extra opcional.
   - Recorta na silhueta e iguala a escala entre as vistas pela altura.
-- [ ] 2.2 Contrato do checklist morfológico com os itens de `docs/pesquisa/categorias-criaturas.md` (seção "Passo de classificação"). Cada item tem valor, certeza (visível, incerto ou oculto) e fonte (imagem ou prompt).
+- [x] 2.2 Contrato do checklist morfológico com os itens de `docs/pesquisa/categorias-criaturas.md` (seção "Passo de classificação"). Cada item tem valor, certeza (visível, incerto ou oculto) e fonte (imagem ou prompt).
 - [ ] 2.3 Protocolo da IA, escrito em `skills/criaturas-3d/classificar.md`:
   1. Só a imagem com grade, com o prompt escondido → checklist.
   2. Lê o prompt e preenche apenas os itens incertos ou ocultos.

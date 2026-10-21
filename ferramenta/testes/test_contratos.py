@@ -27,6 +27,14 @@ def test_checklist_exige_todos_os_itens():
     assert any("cauda" in p for p in contratos.problemas("checklist", dados))
 
 
+def test_checklist_item_visivel_vem_da_imagem():
+    dados = json.loads((EXEMPLOS / "checklist.json").read_text(encoding="utf-8"))
+    dados["itens"]["pernas"]["fonte"] = "prompt"
+    assert any("pernas" in p for p in contratos.problemas("checklist", dados))
+    dados["itens"]["pernas"]["certeza"] = "incerto"
+    assert contratos.problemas("checklist", dados) == []
+
+
 def test_contrato_desconhecido():
     with pytest.raises(KeyError):
         contratos.validar("nada", {})
