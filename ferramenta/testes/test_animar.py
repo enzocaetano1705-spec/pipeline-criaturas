@@ -103,12 +103,19 @@ def test_sem_olhos_nao_tem_blink():
     assert lista == [] and avisos[0]["codigo"] == "sem_olhos"
 
 
-def test_rig_reposiciona_locator_e_respeita_edicao_a_mao(cubificadas):
-    from criaturas import rig
+def test_rig_adota_edicao_a_mao_e_recria_o_que_falta(cubificadas, capsys):
+    from criaturas import estado, rig
 
     ficha, arquivo = cubificadas["bipede-cauda"]
-    motor.editar(arquivo, [{"op": "remove_node", "target": "loc_mouth"}])
-    assert cli.main(["rig", str(ficha)]) == 1  # o arquivo mudou fora do pipeline: a CLI não mexe
-    r = rig.sincronizar(arquivo)
-    assert r["criados"] == ["loc_mouth"]
-    assert "loc_mouth" in {loc.nome for loc in bbmodelo.ler(arquivo).locators}
+    # o usuário apaga um locator e move outro no Blockbench
+    motor.editar(arquivo, [{"op": "remove_node", "target": "loc_mouth"},
+                           {"op": "remove_node", "target": "loc_top"},
+                           {"op": "add_locator", "name": "loc_top", "parent": "head", "position": [0, 40, 0]}])
+    capsys.readouterr()
+    assert cli.main(["rig", str(ficha)]) == 0
+    assert "adotei a sua edição" in capsys.readouterr().out
+    locs = {loc.nome: loc for loc in bbmodelo.ler(arquivo).locators}
+    assert "loc_mouth" in locs
+    assert locs["loc_top"].posicao[1] == 40  # o que ele moveu fica onde ele pôs
+    assert any(h["origem"] == "mao" for h in estado.ler_historico(arquivo.parent))
+    assert rig.sincronizar(arquivo, reposicionar=True)["trocados"] == ["loc_top"]

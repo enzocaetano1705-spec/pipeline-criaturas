@@ -16,7 +16,7 @@ def etapa(nome: str):
 def carregar() -> None:
     """Importa os módulos que registram etapas com @etapa."""
     from criaturas import animar, classificar, cubificar, exportar, ficha, folha, linhagem, medir, preparar, rig_etapa, texturizar, validar  # noqa: F401
-    from criaturas import tudo  # noqa: F401  (depois das outras: usa FUNCOES)
+    from criaturas import chat, tudo  # noqa: F401  (depois das outras: usa FUNCOES)
 
 
 def opcoes(nome: str, parser) -> None:
@@ -36,6 +36,8 @@ def opcoes(nome: str, parser) -> None:
     if nome == "exportar":
         parser.add_argument("--destino", help="roblox, minecraft ou os dois separados por vírgula (padrão: o da ficha)")
         parser.add_argument("--geckolib", action="store_true", help="também grava os arquivos no layout do GeckoLib")
+    if nome in ("texturizar", "animar", "rig"):
+        parser.add_argument("--forcar", action="store_true", help="regera também o que foi editado à mão no Blockbench")
     if nome == "tudo":
         parser.add_argument("--ate", help="para depois desta etapa")
         parser.add_argument("--folha-aprovada", action="store_true", help="o usuário aprovou a folha de vistas: segue para a textura")

@@ -10,6 +10,9 @@ Transforma o conceito de uma criatura (imagens livres + o prompt usado) em model
 - **Ficha no chat do claude.ai:** envie `skills-chat/criaturas-3d-chat.zip` como skill
 
 ## Uso rápido
+No chat: anexe o conceito, a frente e o lado da criatura e peça "modela essa criatura". A IA cria tudo, devolve a folha de vistas e ajusta pelo que você pedir (com print). Edições suas no Blockbench são acompanhadas (`skills/criaturas-3d/chat.md`).
+
+Na linha de comando:
 ```
 uv run criaturas --help                                  # todos os comandos
 uv run criaturas tudo docs/criaturas/<nome> --estagio e1 # roda as etapas e para onde precisa da IA ou de você

@@ -19,9 +19,9 @@ from pathlib import Path
 import numpy as np
 from PIL import Image
 
-from criaturas import bbmodelo, cores, motor, relatorio, render
+from criaturas import bbmodelo, cores, estado, motor, relatorio, render
 from criaturas.caminhos import relativo
-from criaturas.cubificar import contexto, sha256
+from criaturas.cubificar import contexto
 from criaturas.etapas import etapa
 from criaturas.relatorio import msg
 from criaturas.validar import modelo_atual
@@ -428,9 +428,9 @@ def cmd_texturizar(args) -> int:
     if arquivo is None or not (destino / "medidas.json").exists():
         print("texturizar: falta o .bbmodel ou o medidas.json (rode medir e cubificar)")
         return 1
-    hashes = ctx["relatorio"].get("hashes", {})
-    if hashes.get(arquivo.name) and hashes[arquivo.name] != sha256(arquivo):
-        print(f"texturizar: {arquivo.name} foi editado à mão; rode cubificar (ele grava uma versão nova) antes")
+    estado.adotar_e_avisar(destino, arquivo, nome, args.estagio, "texturizar")
+    if estado.protegido(destino).get("textura") and not args.forcar:
+        print("texturizar: a textura foi editada à mão; não repinto. Use --forcar para repintar tudo (a pintura à mão se perde).")
         return 1
     medidas = relatorio.ler_json(destino / "medidas.json")
     plano = relatorio.ler_json(destino / "plano-cubos.json") if (destino / "plano-cubos.json").exists() else {"cubos": []}
@@ -447,7 +447,9 @@ def cmd_texturizar(args) -> int:
     ok = not r["erros"]
     relatorio.registrar(destino, nome, args.estagio, "texturizar", ok, erros=r["erros"], avisos=r["avisos"],
                         arquivos=[relativo(destino / "textura.png"), relativo(destino / "textura-roblox.png")],
-                        resumo={**r["resumo"], "paleta": r["paleta"]["paleta"]}, hashes={arquivo.name: sha256(arquivo)})
+                        resumo={**r["resumo"], "paleta": r["paleta"]["paleta"]}, hashes=estado.depois_de_escrever(destino, arquivo))
+    if args.forcar:
+        estado.liberar(destino, textura=True)
     pal = r["paleta"]
     linhas = [f"texturizar {arquivo.name}: {len(pal['paleta'])} cores "
               f"({pal['papeis'].count('base')} base, {pal['papeis'].count('destaque')} destaque): {' '.join(pal['paleta'])}",

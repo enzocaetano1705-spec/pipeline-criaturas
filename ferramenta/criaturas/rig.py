@@ -104,8 +104,11 @@ def partes_do_modelo(modelo) -> list[dict]:
     return [{"id": o, "from": lo.tolist(), "to": hi.tolist()} for o, (lo, hi) in por_osso.items()]
 
 
-def sincronizar(arquivo) -> dict:
-    """Recalcula os locators padrão pelos cubos atuais e atualiza o .bbmodel (troca os que mudaram)."""
+def sincronizar(arquivo, reposicionar: bool = False) -> dict:
+    """Cria os locators padrão que faltam; com `reposicionar`, também recoloca os que estão em outro lugar.
+
+    Sem `reposicionar`, um locator que o usuário moveu à mão fica onde ele pôs.
+    """
     from criaturas import bbmodelo, motor
 
     modelo = bbmodelo.ler(arquivo)
@@ -115,7 +118,7 @@ def sincronizar(arquivo) -> dict:
     for loc in novos:
         velho = atuais.get(loc["nome"])
         if velho is not None:
-            if velho.osso == loc["osso"] and np.allclose(velho.posicao, loc["posicao"], atol=0.05):
+            if not reposicionar or (velho.osso == loc["osso"] and np.allclose(velho.posicao, loc["posicao"], atol=0.05)):
                 continue
             lote.append({"op": "remove_node", "target": loc["nome"]})
             trocados.append(loc["nome"])

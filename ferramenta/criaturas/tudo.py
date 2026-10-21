@@ -24,7 +24,7 @@ DA_IA = {"classificar": ("checklist.json", "skills/criaturas-3d/classificar.md")
 def _args(etapa_nome: str, base) -> argparse.Namespace:
     padrao = {"pasta": base.pasta, "estagio": base.estagio, "comando": etapa_nome, "espelhar_lado": False,
               "registrar_escolha": None, "motor": False, "olho_pintado": False, "so_base": False,
-              "destino": None, "geckolib": False}
+              "destino": None, "geckolib": False, "forcar": False}
     return argparse.Namespace(**padrao)
 
 

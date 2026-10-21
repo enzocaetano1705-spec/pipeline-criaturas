@@ -25,6 +25,15 @@ ETAPAS = [
 ]
 SEM_ESTAGIO = {"ficha", "linhagem"}
 
+# fluxo pelo chat (ferramenta/criaturas/chat.py)
+CHAT = [
+    ("nova", "cria a criatura em docs/criaturas/<nome>/ a partir das imagens anexadas no chat"),
+    ("ver", "folha e lista de peças do modelo atual (para conferir um problema relatado)"),
+    ("quadro", "as 4 vistas num instante de uma animação"),
+    ("aplicar", "aplica um lote de operações (correção por código) e valida"),
+    ("adotar", "registra as edições feitas à mão no Blockbench e segue a partir delas"),
+]
+
 
 def _saida_utf8() -> None:
     # No Windows o console usa cp1252 por padrão e os acentos saem quebrados.
@@ -96,6 +105,18 @@ def montar_parser() -> argparse.ArgumentParser:
             p.add_argument("--estagio", default="e1", help="estágio (e1, e2…); padrão e1")
         etapas.opcoes(nome, p)
         p.set_defaults(func=etapas.FUNCOES.get(nome, ainda_nao_implementado))
+
+    from criaturas import chat
+
+    for nome, ajuda in CHAT:
+        p = sub.add_parser(nome, help=ajuda, description=ajuda)
+        if nome == "nova":
+            p.add_argument("nome", help="nome da criatura (vira minúsculas, sem acento, com hífen)")
+        else:
+            p.add_argument("pasta", help="pasta da criatura (ex.: docs/criaturas/raposa-de-fogo)")
+        p.add_argument("--estagio", default="e1", help="estágio (e1, e2…); padrão e1")
+        chat.opcoes(nome, p)
+        p.set_defaults(func=etapas.FUNCOES[nome])
 
     p = sub.add_parser("medidas", help="faixas de referencia/medidas.json para um plano ou nicho",
                        description="Faixas [p25, mediana, p75] de um plano de corpo ou nicho, opcionalmente de um estágio.")

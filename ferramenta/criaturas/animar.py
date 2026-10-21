@@ -15,9 +15,9 @@ from pathlib import Path
 
 import numpy as np
 
-from criaturas import bbmodelo, motor, relatorio
+from criaturas import bbmodelo, estado, motor, relatorio
 from criaturas.caminhos import relativo
-from criaturas.cubificar import contexto, sha256
+from criaturas.cubificar import contexto
 from criaturas.etapas import etapa
 from criaturas.relatorio import msg
 from criaturas.validar import modelo_atual
@@ -394,12 +394,13 @@ def cmd_animar(args) -> int:
     if arquivo is None:
         print("animar: nenhum .bbmodel (rode cubificar antes)")
         return 1
-    hashes = ctx["relatorio"].get("hashes", {})
-    if hashes.get(arquivo.name) and hashes[arquivo.name] != sha256(arquivo):
-        print(f"animar: {arquivo.name} foi editado à mão; rode cubificar (ele grava uma versão nova) antes")
-        return 1
+    estado.adotar_e_avisar(destino, arquivo, nome, args.estagio, "animar")
     plano = (ctx["categoria"] or {}).get("plano", "quadrúpede")
     quais = BASE if args.so_base else BASE + EXTRAS
+    protegidas = [] if args.forcar else [a for a in estado.protegido(destino).get("animacoes", []) if a in quais]
+    if protegidas:
+        print(f"animar: não regero {', '.join(protegidas)} (editadas à mão; --forcar regera)")
+        quais = tuple(a for a in quais if a not in protegidas)
     try:
         r = animar(arquivo, plano, ctx["estagio"].get("estagio_tabela"), quais)
         erros, n_avisos, mensagens = validar_animacoes(arquivo)
@@ -414,7 +415,9 @@ def cmd_animar(args) -> int:
     relatorio.registrar(destino, nome, args.estagio, "animar", erros == 0, erros=lista_erros, avisos=avisos,
                         arquivos=[relativo(destino / "animacoes.json")],
                         resumo={"clipes": list(r["clipes"]), "erros": erros, "avisos": n_avisos},
-                        hashes={arquivo.name: sha256(arquivo)})
+                        hashes=estado.depois_de_escrever(destino, arquivo))
+    if args.forcar:
+        estado.liberar(destino, animacoes=list(r["clipes"]))
     linhas = [f"animar {arquivo.name} ({plano}): {len(r['clipes'])} clipes — validação {erros} erros, {n_avisos} avisos"]
     for c, info in list(r["clipes"].items())[:10]:
         linhas.append(f"  {c:<7} {info['duracao']:.2f} s {info['loop']:<5} {len(info['ossos'])} ossos")

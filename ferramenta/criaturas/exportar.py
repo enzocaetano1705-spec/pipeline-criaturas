@@ -19,7 +19,7 @@ from pathlib import Path
 
 from PIL import Image
 
-from criaturas import bbmodelo, desktop, motor, relatorio
+from criaturas import bbmodelo, desktop, estado, motor, relatorio
 from criaturas.caminhos import RAIZ, pasta_modelo, relativo
 from criaturas.cubificar import contexto, sha256
 from criaturas.etapas import etapa
@@ -232,9 +232,7 @@ def cmd_exportar(args) -> int:
     if arquivo is None:
         print("exportar: nenhum .bbmodel (rode cubificar antes)")
         return 1
-    hashes = ctx["relatorio"].get("hashes", {})
-    if hashes.get(arquivo.name) and hashes[arquivo.name] != sha256(arquivo):
-        print(f"exportar: {arquivo.name} foi editado à mão; exportando assim mesmo (o arquivo é a fonte)")
+    estado.adotar_e_avisar(destino_est, arquivo, nome, args.estagio, "exportar")
     base = arquivo.stem.split(".v")[0]
     identificador = base.replace("-", "_")
     destinos = [d.strip() for d in (args.destino or ",".join(ctx["entrada"].get("destino") or ["roblox"])).split(",") if d.strip()]

@@ -8,6 +8,7 @@ description: Transforma o conceito de uma criatura (imagens + prompt numa ficha 
 Você conduz o pipeline; o código faz a parte espacial. A IA só faz duas coisas que exigem olhar imagens: o **checklist** de classificação e a **leitura** das partes. Todo o resto é `uv run criaturas …`.
 
 ## Quando usar
+- **O usuário anexou imagens de uma criatura no chat, ou mandou um print pedindo um ajuste no modelo: siga `chat.md` (nesta pasta).**
 - Uma ficha em `docs/criaturas/<nome>/ficha.md` está com `status: pronta-para-modelagem`.
 - Pedirem para refazer uma etapa (textura, animação, exportação) de uma criatura já modelada.
 - Pedirem para conferir uma linhagem (vários estágios).
@@ -67,6 +68,8 @@ Nas criaturas sintéticas (`modelos/_sinteticos/fichas/_sint-*`) e em `docs/cria
 - Não refaça pesquisa: as regras estão em `docs/` e no código.
 
 ## Arquivos de uma criatura (`modelos/<nome>/`)
+Além destes: `eN/ver.png`, `eN/quadro-*.png`, `eN/correcoes/*.json` (lotes do `aplicar`), `eN/historico.jsonl` (quem mudou o quê) e `eN/.estado/` (último estado conhecido).
+
 | Arquivo | Quem escreve |
 |---|---|
 | `entrada.json` | `ficha` |

@@ -345,6 +345,9 @@ def cmd_cubificar(args) -> int:
                         arquivos=[relativo(destino / "plano-cubos.json"), relativo(destino / "ops.json"), relativo(arquivo)],
                         resumo={"cubos": len(plano["cubos"]), "ossos": len(plano["ossos"]), "arquivo": arquivo.name},
                         hashes={arquivo.name: hash_})
+    from criaturas import estado
+
+    estado.registrar(destino, arquivo)
     orc = plano.get("orcamento", {})
     linhas = [f"cubificar {nome} {args.estagio}: {len(plano['cubos'])} cubos, {len(plano['ossos'])} ossos, "
               f"{len(plano['locators'])} locators, textura {plano['resolucao']['largura']}×{plano['resolucao']['altura']}",

@@ -2,9 +2,9 @@
 
 from pathlib import Path
 
-from criaturas import motor, relatorio
+from criaturas import estado, motor, relatorio
 from criaturas.caminhos import relativo
-from criaturas.cubificar import contexto, sha256
+from criaturas.cubificar import contexto
 from criaturas.etapas import etapa
 from criaturas.relatorio import msg
 from criaturas.rig import sincronizar
@@ -21,18 +21,15 @@ def cmd_rig(args) -> int:
     if arquivo is None:
         print("rig: nenhum .bbmodel (rode cubificar antes)")
         return 1
-    hashes = ctx["relatorio"].get("hashes", {})
-    if hashes.get(arquivo.name) and hashes[arquivo.name] != sha256(arquivo):
-        print(f"rig: {arquivo.name} foi editado à mão; rode cubificar (ele grava uma versão nova) antes")
-        return 1
+    estado.adotar_e_avisar(destino, arquivo, nome, args.estagio, "rig")
     try:
-        r = sincronizar(arquivo)
+        r = sincronizar(arquivo, reposicionar=args.forcar)
     except motor.MotorErro as e:
         print(f"rig: {e}")
         return 1
     avisos = [msg("locator_extra", f"{n}: não é padrão (mantido)") for n in r["extras"]]
     relatorio.registrar(destino, nome, args.estagio, "rig", True, avisos=avisos, arquivos=[relativo(arquivo)],
-                        resumo=r, hashes={arquivo.name: sha256(arquivo)})
+                        resumo=r, hashes=estado.depois_de_escrever(destino, arquivo))
     relatorio.imprimir([f"rig {arquivo.name}: {len(r['locators'])} locators padrão "
                         f"({len(r['criados'])} criados, {len(r['trocados'])} reposicionados)",
                         "  " + ", ".join(r["locators"])] + relatorio.linhas_mensagens("Avisos", avisos))

@@ -182,6 +182,12 @@ Qualquer IA continua daqui. Siga as fases em ordem. Cada fase entrega a **versã
 
 **Aceite:** ensaio sem intervenção; documentação atualizada.
 
+## Fase 9b — Fluxo pelo chat (pedido do usuário, decisão 0003)
+- [x] 9b.1 `nova`: criatura a partir das imagens anexadas (conceito, frente, lado), sem o usuário mexer em pastas.
+- [x] 9b.2 `ver`, `quadro` e `aplicar`: conferir um problema relatado com print e corrigir por código.
+- [x] 9b.3 `adotar`: edições à mão no Blockbench viram o estado atual; textura, animações e locators mexidos à mão ficam protegidos.
+- [x] 9b.4 `skills/criaturas-3d/chat.md` com o ciclo de ajustes e as receitas de correção.
+
 ## Fase 10 — Primeira criatura real (com o usuário)
 Começa quando `docs/criaturas/<nome>/ficha.md` estiver com `status: pronta-para-modelagem`.
 - [ ] 10.1 Rodar estágio por estágio, com as paradas na categoria e na folha de vistas.
