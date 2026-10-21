@@ -691,60 +691,60 @@
 			"box_uv": true,
 			"uv_offset": [
 				0,
-				0
+				-1
 			],
 			"faces": {
 				"north": {
 					"uv": [
 						12,
-						12,
+						11,
 						25,
-						19
+						18
 					],
 					"texture": 0
 				},
 				"east": {
 					"uv": [
 						0,
+						11,
 						12,
-						12,
-						19
+						18
 					],
 					"texture": 0
 				},
 				"south": {
 					"uv": [
 						37,
-						12,
+						11,
 						50,
-						19
+						18
 					],
 					"texture": 0
 				},
 				"west": {
 					"uv": [
 						25,
-						12,
+						11,
 						37,
-						19
+						18
 					],
 					"texture": 0
 				},
 				"up": {
 					"uv": [
 						25,
+						11,
 						12,
-						12,
-						0
+						-1
 					],
 					"texture": 0
 				},
 				"down": {
 					"uv": [
 						38,
-						0,
+						-1,
 						25,
-						12
+						11
 					],
 					"texture": 0
 				}
@@ -908,7 +908,7 @@
 			"shade": true,
 			"autouv": 0,
 			"isOpen": true,
-			"primary_selected": true
+			"primary_selected": false
 		},
 		{
 			"uuid": "29c83380-7e07-448b-ba89-f011bb421d1d",
@@ -1320,7 +1320,7 @@
 		{
 			"uuid": "997d7a8d-7ff2-409a-8b2b-ac819634e4b3",
 			"name": "textura.png",
-			"source": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAEHUlEQVR4nO2aXUgUURSAz1z2oR8KVxQEC0oUUwoU86cw68V6KNmIepYIBN8qwReLiOwl+nsLJBKLnoJItIeUQMkHTcKFoB8MDUoQFFeC6nHjzHbGs9eZnZ2dO7Z554NxZu+9c8655965cz1nDPDA5ffTSciBoYFB8MPs7V4DAkKA5gjQHAGaI0BzBGiOAM0RoDkCNEeA5gjQnMjh/sfJpoNVkG+0tcfWfrTHXLfgnxcTUFkShbsH6j1tmyOqOn9n9wJ0fSt170yAoBO8EvFy02RPb9rvpptXzPNw/S9YjT+ChuE4PDnxMGPb/3YNmOzphddnV8xjeWrcPFMnT01vg1dS56kNHbJD8oVILjftL96SuihrtMqo83Kbp90VsKneAiNji+a5vWFHxnZUT+3zFePk6EjWQQ4vz/W/WgNeth43AnNAPuO14yEhISEhISEhIbpj4J/Y82vrtsOzo7+t6w8PbqVtM6s7u632Fa1b1wkdPHM9ULkqMdDIucECWP74BoqqjsCPlRmzYvuuEqtRcW05jHd0mMqP9vUll2a+WHU/v6f+29tZWGvJKIutmmVByFXtBCEX1JzfC3vamtOM4IbRNdVhW7zHjaDk+sW4F+9LXqpJjQKCM4JPUzQIRw1HiwylMj5d+cigTDwHIZfLVOIAsAGnI//9dWjCMgyNpJEkaBq7EZRcPxjZGo3GImRk3aHaDflSJMivQxDPwnP9TMbvpzJBOUKA5gjQHAGaI0BzxEbl4DaVAypLorBZEKA5AjRHgOYInRfAnNLjtAAOXOjyeisUtrRAvmHgN0JR9i9oNvj52CHfssQRv5141rgPzk19ss5u5ZtiBjiR+BvNQVTJ3JAZkGCGqyIImUFgZNsQw1FjcwtwrCz1KZxdaIqiuhTakqO+XqCwGunk+lAPD5/50SOyaYTxPDSEDJJBg+TOq4DrlEPsqIMCqFy/cgdUd3Zbwcx4/7xtGwxs4qFqVDikE22gTpJscgLpD3QjFO+ft8LUfBbgyBQULQAeKiEdqNPJ8QTpt0vEKN0Jri6XmgcPVdOawB2kAtRB+jLBHUS2KHNAtfRcY+yeJzNkQyiWr2r6kz75eccz6qD0mR/HC7cG8nNt1znyPJ5Vpq64Pu4EAnVx3blgyDk5hDwrJzl5Zofn9jLVI27ySQdO5Ys3mq3nHzt1/+qEOcLcFrtyJzluA2LIiQ9MRiKU4CQw0YlQkpMSJLT4OdUTTvLRQHqvO01l7BDtK/hCx8vxt52crBywxEYo8S51bZflRaJ15WkjjA7IVI9kko+LHKXInNYO6hg6lafLeDk52esGzHDK251uWHsV4ZR78Tb9RjKEpqRTvZt8WuXd8oB0v5tcr/lEId9I71T+rsdr/q6XlbjVZ5JPj0Y2OLXFci9yQmCNPy0Wt5+NX9NKAAAAAElFTkSuQmCC",
+			"source": "data:image/png;base64,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",
 			"path": "",
 			"width": 64,
 			"height": 64,
@@ -3929,7 +3929,7 @@
 			"override": false,
 			"selected": false,
 			"saved": true,
-			"path": "",
+			"path": "../model.animation.json",
 			"scope": 0,
 			"anim_time_update": "",
 			"blend_weight": "",
@@ -5733,7 +5733,7 @@
 			"override": false,
 			"selected": true,
 			"saved": true,
-			"path": "",
+			"path": "../model.animation.json",
 			"scope": 0,
 			"anim_time_update": "",
 			"blend_weight": "",

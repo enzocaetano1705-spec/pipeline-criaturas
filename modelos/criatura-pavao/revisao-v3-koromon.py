@@ -214,6 +214,143 @@ def pintar(modelo: bbmodelo.Modelo, res: int) -> np.ndarray:
     return tex
 
 
+# ---------- penugem procedural (laterais, costas, topo e base) ----------
+# Rampas de valor em pixel art: uma puxada para o azul e outra para o verde; cada pena escolhe uma.
+RAMPA_AZUL = ["#163f4c", "#1f6271", "#2b8590", "#3aa4a8", "#4bbbba", "#68cdc8", "#93e0d6"]
+RAMPA_VERDE = ["#174746", "#20696a", "#2d8c8a", "#3ca7a2", "#4fbcb3", "#6dcdc2", "#98dfd2"]  # só um pouco mais verde
+RAMPAS = [[np.frombuffer(bytes.fromhex(c[1:]), np.uint8) for c in r] for r in (RAMPA_AZUL, RAMPA_VERDE)]
+BASE = 4  # índice da cor média (o "main" do conceito)
+
+
+def _plano_da_face(face: str, x: float, y: float, z: float):
+    """(a, b): coordenadas na face, com b crescendo para baixo (as penas se sobrepõem de cima para baixo)."""
+    if face in ("east", "west"):
+        return (z if face == "west" else -z), -y
+    if face == "south":
+        return x, -y
+    if face == "north":
+        return -x, -y
+    return x, z  # up/down: as penas apontam para trás
+
+
+def _ruido(a: float, b: float, escala: float, semente: float) -> float:
+    """Ruído de valor suave (0..1): manchas grandes e irregulares."""
+    fa, fb = a / escala, b / escala
+    ia, ib = math.floor(fa), math.floor(fb)
+    ta, tb = fa - ia, fb - ib
+    ta, tb = ta * ta * (3 - 2 * ta), tb * tb * (3 - 2 * tb)
+    c = [[_h(ia + i, ib + j, semente) for j in (0, 1)] for i in (0, 1)]
+    return (c[0][0] * (1 - ta) + c[1][0] * ta) * (1 - tb) + (c[0][1] * (1 - ta) + c[1][1] * ta) * tb
+
+
+# tufo de pena (b cresce para baixo): brilho em cima, miolo, "v" de sombra embaixo
+TUFO = {(0, -1): +1, (-1, 0): -1, (1, 0): -1, (0, 1): -1}
+BAYER = [[0.0, 0.5], [0.75, 0.25]]
+
+
+def penugem(cubo: str, face: str, x: float, y: float, z: float, suave: bool = False) -> np.ndarray:
+    """Penugem em pixel art sem padrão fixo: tufos espalhados em grade irregular, degradê de volume com
+    pontilhado e manchas suaves de cor (um pouco mais verdes ou mais claras) em pontos aleatórios.
+
+    `suave`: só o degradê e metade dos tufos, um tom de contraste, para o fundo do rosto.
+    """
+    a, b = _plano_da_face(face, x, y, z)
+    ia, ib = math.floor(a), math.floor(b)
+    k = ord(face[0])
+    # volume: claro em cima, escuro embaixo, sombra sob o volume de cima, costas mais escuras
+    valor = 0.0
+    if face == "up":
+        valor = 1.0
+    elif face == "down":
+        valor = -2.0
+    else:
+        valor = (y - 5.5) / 6.0  # -0,9 embaixo .. +0,9 no alto
+        if cubo == "body_lower" and y > 3:
+            valor -= 0.8
+        if face in ("east", "west") and z > 4:
+            valor -= 0.35
+    valor += (_ruido(a, b, 5, k) - 0.5) * 1.1  # manchas leves de tom
+    rampa = RAMPAS[1 if _ruido(a, b, 6, k + 50) > 0.68 else 0]  # áreas um pouco mais verdes
+    if suave:
+        valor *= 0.4
+    nivel = BASE + math.floor(valor + BAYER[ib % 2][ia % 2])  # pontilhado entre os tons
+    # tufos: no máximo um por célula 3×3, posição sorteada, ~60% das células
+    for ca in range(math.floor((ia - 1) / 3), math.floor((ia + 1) / 3) + 1):
+        for cb in range(math.floor((ib - 1) / 3), math.floor((ib + 1) / 3) + 1):
+            if _h(ca, cb, k, 1.7) > (0.3 if suave else 0.6):
+                continue
+            sa, sb = ca * 3 + math.floor(_h(ca, cb, k, 2.9) * 3), cb * 3 + math.floor(_h(ca, cb, k, 4.3) * 3)
+            d = TUFO.get((ia - sa, ib - sb))
+            if d is not None:
+                if suave and d > 0:
+                    continue
+                nivel += d
+                if d > 0 and face != "down" and y > 5 and _h(ca, cb, k, 8.8) < 0.1 and not suave:
+                    return np.frombuffer(bytes.fromhex("e9be55"), np.uint8)  # pintinha dourada no brilho de alguns tufos
+                break
+        else:
+            continue
+        break
+    lim = (BASE - 1, BASE) if suave else (0, len(rampa) - 1)
+    return rampa[int(np.clip(nivel, *lim))]
+
+
+RAMPA_FRENTE = {tuple(RAMPAS[i][j]) for i in (0, 1) for j in (BASE - 1, BASE)}  # para poder repintar
+
+
+def protegido(cubo: str, face: str, x: float, y: float, z: float) -> bool:
+    """Rosto e boca (já aprovados e retocados à mão pelo usuário) não são repintados."""
+    if face == "north":
+        return True
+    if cubo == "body_lower" and (face == "up" and z < FRENTE_SUP or face in ("east", "west") and z < FRENTE_SUP and y >= 3):
+        return True
+    if cubo == "body_upper" and face in ("east", "west") and _olho(x, y, z - FRENTE_SUP):
+        return True
+    return False
+
+
+def so_penugem():
+    """Pinta a penugem procedural no corpo, mantendo rosto, boca e penas como estão no .bbmodel."""
+    import datetime
+    hist = DEST / "historico"
+    hist.mkdir(exist_ok=True)
+    carimbo = datetime.datetime.now().strftime("%Y%m%d-%H%M")
+    shutil.copy2(FILE, hist / f"{carimbo}-antes-da-penugem.bbmodel")
+    modelo = bbmodelo.ler(FILE)
+    res = int(modelo.bruto["resolution"]["width"])
+    tex = np.array(modelo.textura.convert("RGBA"))
+    ident = np.eye(4)
+    pintados = 0
+    fundo = {tuple(P["main"]), tuple(P["light"])}  # no rosto, só o fundo liso recebe a penugem suave
+    for c in modelo.cubos:
+        if not c.nome.startswith("body"):
+            continue
+        for face in ("north", "south", "east", "west", "up", "down"):
+            r = texturizar.texels_da_face(c, face, ident)
+            if r is None:
+                continue
+            for (u, v), (x, y, z) in zip(*r):
+                if not (0 <= u < res and 0 <= v < res):
+                    continue
+                if face == "north":
+                    if tuple(tex[int(v), int(u), :3]) in fundo or tuple(tex[int(v), int(u), :3]) in RAMPA_FRENTE:
+                        tex[int(v), int(u), :3] = penugem(c.nome, face, x, y, z, suave=True)                             if not (c.nome == "body_upper" and y > 10) else P["light"]
+                    continue
+                if not protegido(c.nome, face, x, y, z):
+                    tex[int(v), int(u), :3] = penugem(c.nome, face, x, y, z)
+                    tex[int(v), int(u), 3] = 255
+                    pintados += 1
+    Image.fromarray(tex).save(DEST / "textura.png")
+    Image.fromarray(tex).save(ROOT / "textura.png")
+    nome = modelo.bruto["textures"][0].get("name") or "textura"
+    motor.editar(FILE, [{"op": "update_texture", "target": nome, "source": texturizar._data_url(tex), "width": res,
+                         "height": res, "material": None}])
+    modelo = bbmodelo.ler(FILE)
+    render.folha(modelo, lado_px=360, titulo="Pavão e1 | v3 + penugem").save(DEST / "folha.png")
+    geo = motor.resumo_validacao(motor.validar(FILE.resolve()))
+    print(f"penugem: {pintados} texels pintados; geometria {geo[0]} erros/{geo[1]} avisos")
+
+
 def so_textura():
     """Repinta só o corpo no .bbmodel atual (com as edições à mão do usuário), sem mexer na geometria.
 
@@ -266,6 +403,8 @@ def so_textura():
 
 
 def main():
+    if "--penugem" in sys.argv:
+        return so_penugem()
     if "--so-textura" in sys.argv:
         return so_textura()
     if DEST.exists() and "--refazer" not in sys.argv:

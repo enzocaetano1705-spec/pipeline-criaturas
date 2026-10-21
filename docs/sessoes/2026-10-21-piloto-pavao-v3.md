@@ -70,3 +70,24 @@ Ele também exportou `modelos/criatura-pavao/model.animation.json` e `textura.pn
 - A boca no degrau da mandíbula ocupa o topo do degrau, além da frente.
 - Na escala de 1 texel por unidade, ruído aleatório lê como sujeira. Detalhe só onde tem intenção.
 - Proporção: a prancha pedia uma cabeça mais estreita do que a minha medida (o pelo engana a largura). Penas: planos girados resolvem melhor que a tira lateral complementar.
+
+## Terceira rodada: penugem procedural
+
+**Retorno do usuário:** ele mesmo corrigiu a boca a pincel. Foram 13 pixels na faixa do lábio (linha 46 do atlas), e a frente ficou "90%". O resto do corpo estava praticamente cor sólida, com pontos de sombra sem sentido. Ele pediu algo mais natural, sem padrão bem definido, parecendo penas em pixel art, com sombras e cores levemente destoantes onde fizer sentido.
+
+**Feito** (`revisao-v3-koromon.py --penugem`):
+- Laterais, costas, topo e base receberam a penugem. Tufos espalhados numa grade irregular, no máximo um por célula 3×3 e em cerca de 60% das células. Cada tufo tem brilho em cima e um "v" de sombra embaixo.
+- Por baixo dos tufos:
+  - um degradê de volume pontilhado (Bayer 2×2): claro em cima e escuro embaixo, com sombra sob o volume de cima e costas mais escuras;
+  - manchas de tom e áreas um pouco mais verdes, feitas com ruído suave.
+- Pintinhas douradas aparecem só no brilho de alguns tufos.
+- Na frente, só o fundo liso recebeu uma versão suave, de um tom.
+- Ficaram intactos, conferido pixel a pixel contra o backup: olhos, gema, boca, dentes, a faixa do lábio pintada pelo usuário e todas as penas.
+
+**Tentativas descartadas:**
+- escamas 3×2 e 4×3 em fileiras: liam como tijolo ou faixas, padrão rígido demais.
+
+**Lições para o método:**
+- A 1 texel por unidade, a "vida" vem da combinação: degradê de volume pontilhado + ruído de baixa frequência + marcas pequenas espalhadas sem grade visível.
+- Fileiras regulares viram tijolo.
+- Proteger o que o usuário pintou: repintar só por face e por região, e conferir os pixels dele depois.
