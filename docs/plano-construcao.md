@@ -76,11 +76,11 @@ Qualquer IA continua daqui. Siga as fases em ordem. Cada fase entrega a **versã
   1. Só a imagem com grade, com o prompt escondido → checklist.
   2. Lê o prompt e preenche apenas os itens incertos ou ocultos.
   3. Lista os conflitos.
-- [ ] 2.4 `classificar` (código): pontua os 10 planos e os 19 nichos com regras tiradas das tabelas e dos "pares que se confundem".
+- [x] 2.4 `classificar` (código): pontua os 10 planos e os 19 nichos com regras tiradas das tabelas e dos "pares que se confundem".
   - Devolve até 3 sugestões (plano › nicho) com %, os 2 ou 3 traços que justificam cada uma e o estágio aparente (cabeça e olho comparados com a tabela).
   - Acrescenta a seção "Classificação sugerida" no fim da ficha.
   - **PARE** (só em criatura real): o pipeline só segue com `categoria_confirmada` preenchida na ficha. Nas sintéticas e nas imagens de `_testes/`, use a categoria verdadeira ou a sugestão 1 e continue.
-- [ ] 2.5 Registro de correções: quando o usuário escolhe algo diferente da sugestão 1, anexar checklist, sugestões e escolha em `referencia/correcoes-classificacao.jsonl` para recalibrar as regras depois.
+- [x] 2.5 Registro de correções: quando o usuário escolhe algo diferente da sugestão 1, anexar checklist, sugestões e escolha em `referencia/correcoes-classificacao.jsonl` para recalibrar as regras depois.
 
 **Aceite:** testes de pontuação com checklists sintéticos, incluindo os pares que se confundem; nas imagens de `docs/criaturas/_testes/` (se houver) sai a lista de 3 sugestões; cada classificação custa cerca de uma imagem de 768 px.
 
