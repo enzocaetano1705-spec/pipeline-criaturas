@@ -85,7 +85,9 @@ def montar_parser() -> argparse.ArgumentParser:
     parser.add_argument("--version", action="version", version=f"criaturas {__version__}")
     sub = parser.add_subparsers(dest="comando", metavar="<comando>")
 
-    from criaturas import etapas  # importa aqui para o --help não depender de numpy/Pillow
+    from criaturas import etapas
+
+    etapas.carregar()
 
     for nome, ajuda in ETAPAS:
         p = sub.add_parser(nome, help=ajuda, description=ajuda)

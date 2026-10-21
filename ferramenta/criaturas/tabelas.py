@@ -61,16 +61,19 @@ def nichos() -> list[str]:
     return list(dados()["nichos"])
 
 
-def resolver_categoria(nome: str) -> tuple[str, str]:
-    """('plano' ou 'nicho', nome oficial) a partir de um nome escrito de qualquer jeito."""
+def resolver_categoria(nome: str, tipo: str | None = None) -> tuple[str, str]:
+    """('plano' ou 'nicho', nome oficial) a partir de um nome escrito de qualquer jeito.
+
+    `tipo` restringe a busca a 'plano' ou 'nicho' (humanoide existe nos dois).
+    """
     procurado = chave(nome)
-    for tipo, grupo in (("plano", "planos_de_corpo"), ("nicho", "nichos")):
+    grupos = [(t, g) for t, g in (("plano", "planos_de_corpo"), ("nicho", "nichos")) if tipo in (None, t)]
+    for t, grupo in grupos:
         for oficial in dados()[grupo]:
             if chave(oficial) == procurado:
-                return tipo, oficial
+                return t, oficial
     # prefixo único ("roedor" -> "roedor/pequeno mamífero", "tentaculos" -> "tentáculos/multípede")
-    candidatos = [(t, o) for t, g in (("plano", "planos_de_corpo"), ("nicho", "nichos"))
-                  for o in dados()[g] if chave(o).startswith(procurado)]
+    candidatos = [(t, o) for t, g in grupos for o in dados()[g] if procurado and chave(o).startswith(procurado)]
     if len(candidatos) == 1:
         return candidatos[0]
     raise CategoriaDesconhecida(nome)

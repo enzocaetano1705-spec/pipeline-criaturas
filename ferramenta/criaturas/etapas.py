@@ -13,6 +13,11 @@ def etapa(nome: str):
     return registrar
 
 
+def carregar() -> None:
+    """Importa os módulos que registram etapas com @etapa."""
+    from criaturas import ficha  # noqa: F401
+
+
 def opcoes(nome: str, parser) -> None:
     """Opções extras de cada subcomando."""
     if nome == "tudo":

@@ -13,6 +13,7 @@ externos/
 modelos/**/_cache/
 modelos/**/tmp/
 modelos/_fumaca/
+modelos/_*/
 referencia/prototipo-forja/saida/
 *.log
 
