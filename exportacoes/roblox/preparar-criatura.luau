@@ -4,13 +4,14 @@ Rode na barra de comandos do Studio ou pelo MCP (execute_luau, datamodel Edit). 
 Ajuste a CONFIGURAÇÃO. Os valores de cada criatura estão em exportacoes/roblox/criaturas.json.
 
 O que faz:
-  1. Transparência: SurfaceAppearance com a textura e AlphaMode.Transparency (com TextureID o alfa mostra a cor da peça).
+  1. Textura: SurfaceAppearance com AlphaMode.Transparency (com TextureID o alfa mostra a cor da peça) e
+     ResampleMode.Pixelated (sem isso o Roblox borra a pixel art com filtro bilinear).
   2. Escala (Model:ScaleTo) e base no chão.
   3. Hitbox: Part invisível do tamanho da criatura, que colide e vira o PrimaryPart. A malha não colide
      (a malha animada não serve de colisão estável).
   4. Animator no AnimationController; poses das animações embaixo da Raiz (o topo não é animado pelo Roblox);
      e, se pedido, um Script de prévia que toca uma animação no Run/Play.
-  5. Confere a frente: o bico/cabeça deve estar no sentido do LookVector do PrimaryPart.
+  5. Frente: a Hitbox (PrimaryPart) olha para a cabeça; mova a criatura pelo LookVector da Hitbox.
 Tudo dentro de uma gravação do ChangeHistoryService (Ctrl+Z desfaz).
 ]]
 
@@ -34,6 +35,7 @@ assert(malha, "o Model não tem MeshPart (importou como Rig Type Custom?)")
 local sa = malha:FindFirstChildOfClass("SurfaceAppearance") or Instance.new("SurfaceAppearance")
 sa.ColorMap = malha.TextureID
 sa.AlphaMode = Enum.AlphaMode.Transparency
+pcall(function() sa.ResampleMode = Enum.ResamplerMode.Pixelated end) -- pixel art nítida (sem o borrado bilinear)
 sa.Parent = malha
 
 -- 2) escala e chão (antes da hitbox, para ela nascer do tamanho certo)
@@ -53,7 +55,15 @@ cf, tamanho = modelo:GetBoundingBox()
 hitbox = Instance.new("Part")
 hitbox.Name = "Hitbox"
 hitbox.Size = tamanho
-hitbox.CFrame = CFrame.lookAt(cf.Position, cf.Position + malha.CFrame.LookVector)
+-- frente: da cauda para a cabeça, se os ossos existirem; senão +Z da malha (o Blockbench exporta a frente em +Z)
+local cabeca = modelo:FindFirstChild(OSSO_CABECA, true)
+local cauda = modelo:FindFirstChild(OSSO_CAUDA, true)
+local frente_dir = -malha.CFrame.LookVector
+if cabeca and cauda then
+	local d = (cabeca.WorldPosition - cauda.WorldPosition) * Vector3.new(1, 0, 1)
+	if d.Magnitude > 1e-3 then frente_dir = d.Unit end
+end
+hitbox.CFrame = CFrame.lookAt(cf.Position, cf.Position + frente_dir)
 hitbox.Transparency = 1
 hitbox.CanCollide = true
 hitbox.Anchored = true
@@ -83,7 +93,6 @@ if pasta then
 			if not (#topo == 1 and topo[1].Name == malha.Name) then
 				local raiz = Instance.new("Pose")
 				raiz.Name = malha.Name
-				raiz.Weight = 0
 				for _, p in ipairs(topo) do kf:RemovePose(p); raiz:AddSubPose(p) end
 				kf:AddPose(raiz)
 			end
@@ -110,13 +119,7 @@ faixa:Play()
 end
 
 -- 5) conferência da frente
-local cabeca = modelo:FindFirstChild(OSSO_CABECA, true)
-local cauda = modelo:FindFirstChild(OSSO_CAUDA, true)
-local frente = "não conferida (sem os ossos " .. OSSO_CABECA .. "/" .. OSSO_CAUDA .. ")"
-if cabeca and cauda then
-	local d = (cabeca.WorldPosition - cauda.WorldPosition) * Vector3.new(1, 0, 1)
-	frente = (d.Magnitude > 0 and d.Unit:Dot(hitbox.CFrame.LookVector) > 0.3) and "ok" or "INVERTIDA (reexporte com a Raiz girada)"
-end
+local frente = (cabeca and cauda) and "pela cabeça (ossos)" or "assumida +Z da malha (sem ossos de cabeça/cauda)"
 
 if rec then CHS:FinishRecording(rec, Enum.FinishRecordingOperation.Commit) end
 print(("[preparar] %s: escala %.1f, %.1f x %.1f x %.1f studs, frente %s"):format(

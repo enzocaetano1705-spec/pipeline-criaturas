@@ -111,7 +111,7 @@ def exportar_minecraft(arquivo: Path, textura: Path | None, destino: Path, ident
 # ---------- Roblox ----------
 
 TEXTURA_ROBLOX = 1024  # maior lado que o Roblox guarda sem reduzir
-VERSAO_COPIA = "r3"  # muda quando a preparação da cópia muda (a cópia antiga não pode ser reaproveitada)
+VERSAO_COPIA = "r4"  # muda quando a preparação da cópia muda (a cópia antiga não pode ser reaproveitada)
 
 
 def sangrar_alfa(rgba):
@@ -162,10 +162,11 @@ def copia_roblox(arquivo: Path, textura_roblox: Path, destino: Path, base: str) 
     """Cópia do .bbmodel preparada para o Roblox (o original não muda):
 
     - textura ampliada (a resolução do projeto não muda: as UVs continuam valendo);
-    - um osso `Raiz` por cima de tudo, só com uma chave neutra em cada animação e girado 180° em Y. Sem ele, o importador do Roblox transforma
-      o osso de cima (ex.: `body`) na própria MeshPart, e a animação desse osso move a peça física: o corpo
-      descola, some e leva a colisão junto. O giro de 180° põe o bico para a frente do Roblox: o glTF/Roblox
-      usam a frente em +Z e o Blockbench em −Z (sem o giro, a criatura anda de costas).
+    - um osso `Raiz` por cima de tudo, só com uma chave neutra em cada animação. Sem ele, o importador do Roblox
+      transforma o osso de cima (ex.: `body`) na própria MeshPart, e a animação desse osso move a peça física: o
+      corpo descola, some e leva a colisão junto. A Raiz NÃO é girada: com ela girada 180° o Roblox aplicou as
+      animações dos ossos exageradas e o pescoço descolou (22/10). A frente (cabeça em +Z no Roblox) é tratada
+      no preparo, que aponta a Hitbox para a cabeça.
 
     O nome leva um pedaço do hash do conteúdo: o Blockbench reaproveita a aba de um arquivo já aberto
     sem reler o disco, então um conteúdo novo precisa de um nome novo (o mesmo conteúdo pode reaproveitar).
@@ -188,7 +189,7 @@ def copia_roblox(arquivo: Path, textura_roblox: Path, destino: Path, base: str) 
         bruto = json.loads(arquivo.read_text(encoding="utf-8"))
         topo = [n["uuid"] if isinstance(n, dict) else n for n in bruto.get("outliner", [])]
         lote = [op, {"op": "set_model_properties", "name": copia.stem},
-                {"op": "add_group", "name": "Raiz", "origin": [0, 0, 0], "rotation": [0, 180, 0]}]
+                {"op": "add_group", "name": "Raiz", "origin": [0, 0, 0]}]
         lote += [{"op": "update_node", "target": u, "parent": "Raiz"} for u in topo]
         # uma chave neutra na Raiz em cada animação: o Roblox ignora a pose do topo da KeyframeSequence (é a peça
         # raiz), então sem isto a pose do `body` ficaria no topo e o balanço do corpo não tocaria

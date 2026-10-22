@@ -39,7 +39,9 @@ ServerStorage.RBX_ANIMSAVES.<Nome>
 └─ walk                       KeyframeSequence (loop)
 ```
 
-- A `Raiz` é um osso só de exportação: está girado 180°, não tem animação e virou a MeshPart.
+- A `Raiz` é um osso só de exportação: não tem rotação nem animação (só uma chave neutra) e virou a MeshPart.
+  **Nunca gire a Raiz na exportação:** com ela girada 180°, o Roblox aplicou as animações dos ossos exageradas e o
+  pescoço descolou.
   **Nenhuma animação pode mover a MeshPart.** Se o corpo "descolar", sumir ou a colisão bugar no Play, é porque
   a animação está movendo a peça física: reexporte com a Raiz (`scripts/exportar-roblox.py` já faz isso).
 - **Poses das animações:** o Roblox não anima a pose do topo de uma KeyframeSequence, porque ela é a peça raiz.
@@ -49,21 +51,23 @@ ServerStorage.RBX_ANIMSAVES.<Nome>
 - Ossos sem nenhuma peça (alguns `feather_fan_*`) não chegam. É normal.
 - Os locators do Blockbench (`loc_*`) não chegam: o importador descarta nós sem malha. Para prender efeitos, crie
   Attachments no osso mais próximo.
-- **Frente:** a cabeça fica no sentido do `LookVector` do PrimaryPart (−Z do Roblox). Se a criatura andar de costas,
-  a frente está invertida: reexporte, não gire a malha no Studio.
+- **Frente:** o Blockbench exporta a frente em +Z, e a malha chega com a cabeça para o lado oposto ao `LookVector`
+  dela. Por isso a frente da criatura é a **`Hitbox`**: o preparo a aponta para a cabeça, medindo do osso da cauda
+  ao da cabeça. Mova e oriente a criatura sempre pelo `LookVector` da Hitbox, nunca pelo da malha.
 
 ## 4. Preparar (sempre, depois de importar)
 
 Abra `preparar-criatura.luau`, ajuste `NOME`, `ESCALA` (do `criaturas.json`) e `PREVIA`, e rode pelo MCP
 (`execute_luau`, datamodel `Edit`) ou pela barra de comandos. O script:
 
-- põe um `SurfaceAppearance` com `AlphaMode.Transparency`. Com `TextureID`, o alfa mostra a cor da peça, e
-  penas e orelhas ficam com o fundo escuro;
+- põe um `SurfaceAppearance` com `AlphaMode.Transparency` e **`ResampleMode = Pixelated`**. Com `TextureID`, o alfa
+  mostra a cor da peça e penas e orelhas ficam com o fundo escuro. Sem `Pixelated`, a pixel art fica borrada;
 - aplica `Model:ScaleTo(ESCALA)` e apoia a base no chão;
 - cria a **`Hitbox`**: uma Part invisível do tamanho da criatura, que colide, é o PrimaryPart e fica soldada à malha.
   A malha fica sem colisão (`CanCollide = false`, `Massless`);
 - cria o `Animator` e, se pedido, o Script `TocarAnimacao`, que toca uma animação em loop no Run/Play;
-- confere a frente e imprime `frente ok` ou `INVERTIDA`.
+- aponta a Hitbox para a cabeça (ossos `head` e `tail_1`; sem eles, assume +Z da malha) e imprime como decidiu;
+- embrulha as poses das animações numa pose da Raiz, para importações antigas sem a chave neutra.
 
 Tudo fica numa gravação do `ChangeHistoryService`: um Ctrl+Z desfaz.
 
@@ -89,8 +93,9 @@ Tudo fica numa gravação do `ChangeHistoryService`: um Ctrl+Z desfaz.
 
 ## 6. Texturas: por que borram e o que já foi feito
 
-- O Roblox **não tem filtro "pixelado" (nearest) em malhas**. Ele sempre usa bilinear e mipmaps, e reduz a textura
-  com a distância e com a qualidade gráfica. Não existe propriedade para desligar isso.
+- **A correção é `SurfaceAppearance.ResampleMode = Enum.ResamplerMode.Pixelated`.** Existe no Studio desde
+  2025–26 e o preparo já liga. Sem ela, o Roblox usa filtro bilinear e a pixel art borra até de perto. De longe, o
+  mipmap ainda suaviza um pouco.
 - **O que já foi feito na exportação:**
   - a textura é ampliada sem suavizar até **1024** (o máximo que o Roblox guarda sem reduzir);
   - o **alfa é sangrado**: os pixels transparentes levam a cor do vizinho opaco, o que tira o contorno escuro
@@ -109,7 +114,7 @@ uv run python scripts/exportar-roblox.py Pavao_F2   # só uma
 O exportador:
 - recusa UV fora da textura;
 - valida o `.glb` com o validador da Khronos;
-- põe a `Raiz`, gira a frente, sangra o alfa, amplia para 1024 e dá o nome à cena.
+- põe a `Raiz` (com chave neutra), sangra o alfa, amplia para 1024 e dá o nome à cena.
 
 Depois disso, importe de novo no Studio e rode o preparo.
 
@@ -121,7 +126,9 @@ Depois disso, importe de novo no Studio e rode o preparo.
 | contorno escuro fino nas bordas recortadas | `.glb` antigo, sem alfa sangrado | reexporte |
 | linha transparente numa borda | UV fora da textura no `.bbmodel` | corrija no Blockbench (o exportador já recusa) |
 | corpo descola, some ou flutua no Play | animação movendo a MeshPart (sem `Raiz`) | reexporte |
-| anda de costas ou vira para o lado errado | frente invertida | reexporte (a `Raiz` gira 180°) |
+| anda de costas ou vira para o lado errado | está sendo movida pelo LookVector da malha | mova pela `Hitbox` (o preparo a aponta para a cabeça) |
+| animação exagerada, partes descolando | `Raiz` girada na exportação | reexporte (a Raiz não pode ter rotação) |
+| textura borrada | `ResampleMode` não está `Pixelated` | rode o preparo |
 | animação não toca | sem `Animator`, ou id temporário fora do Studio | rode o preparo ou publique a animação |
 | pernas animam, mas o corpo não balança | a pose `body` está no topo da KeyframeSequence | rode o preparo (passo 4b) ou reexporte |
 | colisão estranha | malha colidindo | rode o preparo (Hitbox) |
