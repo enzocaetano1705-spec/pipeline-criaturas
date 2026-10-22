@@ -1,6 +1,7 @@
 -- Preparo de uma criatura importada do Blockbench (.glb) no Roblox Studio.
 -- Rode na barra de comandos do Studio (ou pelo MCP) depois de File › Import 3D (Rig Type: Custom).
 -- Validado com o pavão em 21/10/2026: transparência das penas, escala 3× e idle tocando no Run.
+-- Ao reimportar, apague o modelo antigo E a pasta dele em ServerStorage.RBX_ANIMSAVES (os nomes se repetem).
 local MODELO = workspace.blockbench_export -- nome que o importador dá
 local ESCALA = 3 -- 1 bloco do Blockbench vira 1 stud; 3× deixa um bebê na altura do joelho do avatar
 
@@ -30,7 +31,7 @@ s.Source = [[
 -- Prévia: toca o idle importado (id temporário, vale só nos testes do Studio).
 -- No jogo publicado, publique a animação e troque pelo id dela.
 local modelo = script.Parent
-local seq = game:GetService("ServerStorage").RBX_ANIMSAVES[modelo.Name].idle
+local seq = modelo.AnimSaves.Value.idle -- a pasta ligada a este modelo (nomes podem repetir)
 local anim = Instance.new("Animation")
 anim.AnimationId = game:GetService("KeyframeSequenceProvider"):RegisterKeyframeSequence(seq)
 local faixa = modelo.AnimationController:FindFirstChildOfClass("Animator"):LoadAnimation(anim)
