@@ -197,7 +197,7 @@ def leque(u, d, r):
     """Pena da cauda: u de 0 (base) a 1 (ponta), d = distância do eixo; haste, folha, ocelo, borda creme."""
     if u < 0 or u > 1:
         return None
-    meia = 0.45 if u < 0.35 else 0.45 + 1.9 * math.sin(math.pi * min(1.0, (u - 0.35) / 0.68)) ** 0.7
+    meia = 1.1 if u < 0.35 else 1.1 + 1.25 * math.sin(math.pi * min(1.0, (u - 0.35) / 0.68)) ** 0.7
     if abs(d) > meia + (0.3 if r > 0.6 else 0):
         return None
     e = ((u - 0.78) * 16 / 1.7) ** 2 + (d / 1.25) ** 2
@@ -208,7 +208,7 @@ def leque(u, d, r):
     if e < 1.0:
         return P["f_teal"]
     if u < 0.35:
-        return P["rachis"]
+        return P["rachis"] if abs(d) < 0.35 else (TEAL[3] if r > 0.3 else TEAL[2])  # base cheia, cor do corpo
     if d < -meia + 0.8:
         return CREME[4] if r > 0.3 else CREME[3]
     return VERDE[4] if r > 0.35 else VERDE[5]
@@ -227,14 +227,14 @@ def pintar(modelo, res):
         plano = any(c.ate[i] - c.de[i] < 1e-6 for i in range(3))
         nome = c.nome
         if plano:
-            if nome.startswith("wing_") and "feather" in nome:
+            if nome.startswith(("wing_", "leg_")) and "feather" in nome:
                 s = "left" if "left" in nome else "right"
                 e_long = int(np.argmax(c.ate - c.de))
                 e_lar = [e for e in range(3) if e != e_long and c.ate[e] - c.de[e] > 1e-6][0]
                 a_, b_ = centro(c).copy(), centro(c).copy()
                 a_[e_long], b_[e_long] = c.de[e_long], c.ate[e_long]
                 pa, pb = bbmodelo.aplicar(w, np.array([a_, b_]))
-                ombro = cw[f"upper_arm_{s}"]
+                ombro = cw[f"upper_arm_{s}"] if nome.startswith("wing_") else cw[f"thigh_{s}"]  # onde a pena prende
                 base0 = np.linalg.norm(pa - ombro) <= np.linalg.norm(pb - ombro)
                 L = c.ate[e_long] - c.de[e_long]
                 mid = (c.de[e_lar] + c.ate[e_lar]) / 2
