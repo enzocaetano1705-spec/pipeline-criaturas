@@ -52,3 +52,7 @@ Escreva a pergunta no topo da nota da sessão e pare.
 
 ## Ambiente
 Windows 10/11 nativo (Git Bash ou PowerShell), Node 23.6 ou mais novo, uv, Git e GitHub CLI. O motor headless roda a partir do clone fixado em `externos/blockbench-mcp-plugin` (item 0.3 do plano), tanto pelo MCP quanto pelo `call.ts`. Abra a IA sempre na raiz do repositório: os caminhos do `.mcp.json` são relativos a ela.
+
+## Roblox
+
+Os modelos prontos para o jogo estão em `exportacoes/roblox/` (lista em `criaturas.json`). Antes de mexer neles no Roblox Studio, leia `exportacoes/roblox/GUIA-IA-ROBLOX.md`. Para gerar de novo: `uv run python scripts/exportar-roblox.py`.

@@ -110,8 +110,62 @@ def exportar_minecraft(arquivo: Path, textura: Path | None, destino: Path, ident
 
 # ---------- Roblox ----------
 
+TEXTURA_ROBLOX = 1024  # maior lado que o Roblox guarda sem reduzir
+VERSAO_COPIA = "r2"  # muda quando a preparação da cópia muda (a cópia antiga não pode ser reaproveitada)
+
+
+def sangrar_alfa(rgba):
+    """Pixels transparentes recebem a cor do vizinho opaco mais próximo (o alfa não muda).
+
+    O Roblox filtra a textura (bilinear + mipmaps): um pixel transparente preto ao lado de um opaco vira um
+    contorno escuro em volta de tudo que tem recorte (orelhas, penas). Com a cor sangrada, a borda fica limpa.
+    """
+    import numpy as np
+
+    a = np.array(rgba, copy=True)
+    cor = a[..., :3].astype(float)
+    cheio = a[..., 3] > 0
+    if not cheio.any():
+        return a
+    h, w = cheio.shape
+    vizinhos = [(dy, dx) for dy in (-1, 0, 1) for dx in (-1, 0, 1) if dy or dx]
+    while not cheio.all():
+        soma = np.zeros_like(cor)
+        conta = np.zeros((h, w))
+        pc = np.pad(cor, ((1, 1), (1, 1), (0, 0)))
+        pm = np.pad(cheio, 1)
+        for dy, dx in vizinhos:
+            m = pm[1 + dy:1 + dy + h, 1 + dx:1 + dx + w]
+            soma += pc[1 + dy:1 + dy + h, 1 + dx:1 + dx + w] * m[..., None]
+            conta += m
+        novos = ~cheio & (conta > 0)
+        if not novos.any():
+            break
+        cor[novos] = soma[novos] / conta[novos][:, None]
+        cheio |= novos
+    a[..., :3] = np.clip(np.round(cor), 0, 255).astype(np.uint8)
+    return a
+
+
+def textura_para_roblox(img: Image.Image) -> tuple[Image.Image, int]:
+    """Alfa sangrado e ampliação sem suavizar até 1024: o Roblox não tem filtro "pixelado" em malhas, então quanto
+    mais pixels por texel, menos o bilinear borra. Devolve (imagem, fator)."""
+    import numpy as np
+
+    base = sangrar_alfa(np.asarray(img.convert("RGBA")))
+    fator = max(1, TEXTURA_ROBLOX // max(base.shape[:2]))
+    im = Image.fromarray(base)
+    return im.resize((im.width * fator, im.height * fator), Image.NEAREST), fator
+
+
 def copia_roblox(arquivo: Path, textura_roblox: Path, destino: Path, base: str) -> Path:
-    """Cópia do .bbmodel com a textura ampliada (a resolução do projeto não muda: as UVs continuam valendo).
+    """Cópia do .bbmodel preparada para o Roblox (o original não muda):
+
+    - textura ampliada (a resolução do projeto não muda: as UVs continuam valendo);
+    - um osso `Raiz` por cima de tudo, sem animação e girado 180° em Y. Sem ele, o importador do Roblox transforma
+      o osso de cima (ex.: `body`) na própria MeshPart, e a animação desse osso move a peça física: o corpo
+      descola, some e leva a colisão junto. O giro de 180° põe o bico para a frente do Roblox: o glTF/Roblox
+      usam a frente em +Z e o Blockbench em −Z (sem o giro, a criatura anda de costas).
 
     O nome leva um pedaço do hash do conteúdo: o Blockbench reaproveita a aba de um arquivo já aberto
     sem reler o disco, então um conteúdo novo precisa de um nome novo (o mesmo conteúdo pode reaproveitar).
@@ -121,7 +175,7 @@ def copia_roblox(arquivo: Path, textura_roblox: Path, destino: Path, base: str) 
     destino.mkdir(parents=True, exist_ok=True)
     with Image.open(textura_roblox) as im:
         tex = np.asarray(im.convert("RGBA"))
-    marca = sha256(arquivo)[:8]
+    marca = sha256(arquivo)[:8] + VERSAO_COPIA
     for velha in destino.glob(f"{base}.*.bbmodel"):  # cópias anteriores, feitas por aqui
         if velha.name != f"{base}.{marca}.bbmodel":
             velha.unlink()
@@ -131,8 +185,79 @@ def copia_roblox(arquivo: Path, textura_roblox: Path, destino: Path, base: str) 
         op = {"op": "update_texture", "target": 0, "source": _data_url(tex), "width": tex.shape[1], "height": tex.shape[0]}
         if (json.loads(arquivo.read_text(encoding="utf-8")).get("textures") or [{}])[0].get("group") == "":
             op["material"] = None  # o Blockbench desktop grava group "" e o motor o lê como um material sem nome
-        motor.editar(copia, [op, {"op": "set_model_properties", "name": copia.stem}])
+        bruto = json.loads(arquivo.read_text(encoding="utf-8"))
+        topo = [n["uuid"] if isinstance(n, dict) else n for n in bruto.get("outliner", [])]
+        lote = [op, {"op": "set_model_properties", "name": copia.stem},
+                {"op": "add_group", "name": "Raiz", "origin": [0, 0, 0], "rotation": [0, 180, 0]}]
+        lote += [{"op": "update_node", "target": u, "parent": "Raiz"} for u in topo]
+        motor.editar(copia, lote)
     return copia
+
+
+def renomear_glb(caminho: Path, nome: str) -> None:
+    """Nome da cena do .glb: vira o nome do Model no Roblox (sem isto, todos chegam como `blockbench_export`)."""
+    dados = caminho.read_bytes()
+    tam_json = struct.unpack("<I", dados[12:16])[0]
+    gltf = json.loads(dados[20:20 + tam_json].decode("utf-8"))
+    for cena in gltf.get("scenes", []):
+        cena["name"] = nome
+    novo = json.dumps(gltf, separators=(",", ":")).encode("utf-8")
+    novo += b" " * ((4 - len(novo) % 4) % 4)
+    resto = dados[20 + tam_json:]
+    caminho.write_bytes(b"glTF" + struct.pack("<II", 2, 12 + 8 + len(novo) + len(resto)) + struct.pack("<I", len(novo))
+                        + b"JSON" + novo + resto)
+
+
+def trocar_imagem_glb(caminho: Path, png: bytes, indice: int = 0) -> None:
+    """Substitui a imagem embutida no .glb (o exportador do Blockbench passa a textura por um canvas, que zera a cor
+    dos pixels transparentes e desfaz o alfa sangrado). Reempacota o chunk BIN com os bufferViews alinhados a 4."""
+    dados = caminho.read_bytes()
+    tam_json = struct.unpack("<I", dados[12:16])[0]
+    gltf = json.loads(dados[20:20 + tam_json].decode("utf-8"))
+    ini_bin = 20 + tam_json + 8
+    tam_bin = struct.unpack("<I", dados[20 + tam_json:24 + tam_json])[0]
+    binario = dados[ini_bin:ini_bin + tam_bin]
+    alvo = gltf["images"][indice]["bufferView"]
+    novo_bin = bytearray()
+    for i, vista in enumerate(gltf["bufferViews"]):
+        if vista.get("buffer", 0) != 0:
+            continue
+        pedaco = png if i == alvo else binario[vista.get("byteOffset", 0):vista.get("byteOffset", 0) + vista["byteLength"]]
+        novo_bin += b"\0" * ((4 - len(novo_bin) % 4) % 4)
+        vista["byteOffset"] = len(novo_bin)
+        vista["byteLength"] = len(pedaco)
+        novo_bin += pedaco
+    novo_bin += b"\0" * ((4 - len(novo_bin) % 4) % 4)
+    gltf["buffers"][0]["byteLength"] = len(novo_bin)
+    novo = json.dumps(gltf, separators=(",", ":")).encode("utf-8")
+    novo += b" " * ((4 - len(novo) % 4) % 4)
+    total = 12 + 8 + len(novo) + 8 + len(novo_bin)
+    caminho.write_bytes(b"glTF" + struct.pack("<II", 2, total) + struct.pack("<I", len(novo)) + b"JSON" + novo
+                        + struct.pack("<I", len(novo_bin)) + b"BIN\0" + bytes(novo_bin))
+
+
+def exportar_roblox(arquivo: Path, nome: str, pasta: Path) -> dict:
+    """`.bbmodel` → `<pasta>/<nome>.glb` pronto para o Roblox (raiz, frente, alfa sangrado, 1024, nome da cena).
+
+    Recusa UV fora da textura. Devolve {glb, erros, avisos, resumo}."""
+    modelo = bbmodelo.ler(arquivo)
+    fora = uv_fora_do_atlas(modelo)
+    if fora:
+        raise ValueError(f"UV fora da textura (o Roblox dá a volta no atlas): {fora[:3]}")
+    pasta.mkdir(parents=True, exist_ok=True)
+    tex, fator = textura_para_roblox(modelo.textura)
+    ampliada = pasta / f"{nome}-textura.png"
+    tex.save(ampliada)
+    trabalho = RAIZ / "modelos" / ".roblox-trabalho"  # o motor só edita dentro de modelos/
+    copia = copia_roblox(arquivo, ampliada, trabalho, nome)
+    glb = pasta / f"{nome}.glb"
+    exportar_glb(copia, glb)
+    acrescentar_locators(glb, modelo)
+    renomear_glb(glb, nome)
+    trocar_imagem_glb(glb, ampliada.read_bytes())  # devolve o alfa sangrado que o canvas do Blockbench zerou
+    erros, avisos, resumo = verificar_glb(glb, modelo)
+    resumo["textura"] = f"{modelo.textura.width}×{fator} = {tex.width}"
+    return {"glb": glb, "erros": erros, "avisos": avisos, "resumo": resumo}
 
 
 def exportar_glb(copia: Path, saida: Path) -> dict:
@@ -255,7 +380,7 @@ def verificar_glb(caminho: Path, modelo: bbmodelo.Modelo) -> tuple[list, list, d
     if tri > MAX_TRIANGULOS:
         erros.append(msg("triangulos", f"{tri} triângulos (limite do Roblox: {MAX_TRIANGULOS})"))
     nos = {n.get("name") for n in json_do_glb(caminho).get("nodes", [])}
-    ossos = set(modelo.ossos) - {"root"}
+    ossos = set(modelo.ossos) - {"root", "Raiz"}
     faltam_ossos = sorted(o for o in ossos if o not in nos)
     faltam_locs = sorted(l.nome for l in modelo.locators if l.nome not in nos)
     resumo["nos"] = len(nos)

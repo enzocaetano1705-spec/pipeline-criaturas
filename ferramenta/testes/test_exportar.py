@@ -116,3 +116,39 @@ def test_uv_do_glb_dentro_de_0_1(tmp_path):
     ruim = tmp_path / "ruim.glb"
     ruim.write_bytes(bytes(dados))
     assert exportar.uv_do_glb(ruim)[0] < -exportar.TOLERANCIA_UV
+
+
+def test_sangrar_alfa_tira_o_preto_das_bordas():
+    import numpy as np
+
+    a = np.zeros((6, 6, 4), np.uint8)
+    a[2:4, 2:4] = (200, 100, 50, 255)  # quadrado opaco no meio, resto transparente e preto
+    s = exportar.sangrar_alfa(a)
+    assert (s[..., 3] == a[..., 3]).all()  # o alfa não muda
+    assert (s[a[..., 3] == 0][:, :3] == (200, 100, 50)).all()  # a cor do vizinho opaco ocupa o transparente
+
+
+def test_trocar_imagem_glb_mantem_o_arquivo_valido(tmp_path):
+    import io
+    import shutil
+    import struct
+
+    from PIL import Image
+
+    from criaturas.caminhos import RAIZ
+
+    origem = next((RAIZ / "exportacoes" / "roblox").rglob("*.glb"), None)
+    if origem is None:
+        pytest.skip("sem .glb exportado")
+    glb = tmp_path / "x.glb"
+    shutil.copy(origem, glb)
+    buf = io.BytesIO()
+    Image.new("RGBA", (8, 8), (1, 2, 3, 0)).save(buf, "PNG")
+    exportar.trocar_imagem_glb(glb, buf.getvalue())
+    dados = glb.read_bytes()
+    assert struct.unpack("<I", dados[8:12])[0] == len(dados)
+    g = exportar.json_do_glb(glb)
+    tam_json = struct.unpack("<I", dados[12:16])[0]
+    vista = g["bufferViews"][g["images"][0]["bufferView"]]
+    ini = 20 + tam_json + 8 + vista["byteOffset"]
+    assert Image.open(io.BytesIO(dados[ini:ini + vista["byteLength"]])).size == (8, 8)

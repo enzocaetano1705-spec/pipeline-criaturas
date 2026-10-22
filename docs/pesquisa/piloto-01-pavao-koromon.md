@@ -55,5 +55,5 @@ Primeiro caso do piloto descrito em [[aprendizado-por-gabaritos]]. O registro do
 - Diagnóstico por partes: `revisao-v3/comparacao-koromon-v3.json`. Histórico das versões do usuário: `revisao-v3/historico/`.
 
 ## Exportação
-- **Roblox:** confirmado no Studio pelo usuário em 21/10/2026, com escala 3×, alfa por `SurfaceAppearance` e `idle` tocando. Arquivos em `modelos/criatura-pavao/export/roblox/` (`.glb` e `preparar-no-studio.luau`).
+- **Roblox:** confirmado no Studio pelo usuário em 21/10/2026. Hoje o arquivo é `exportacoes/roblox/pavao/Pavao_F1.glb` (veja [[GUIA-IA-ROBLOX]]).
 - **Minecraft:** não exportado ainda. O usuário considera certo que funciona, porque é o formato nativo do Blockbench.

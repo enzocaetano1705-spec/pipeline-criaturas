@@ -1,0 +1,37 @@
+{
+  "_sobre": "Criaturas exportadas para o Roblox. `nome` é o nome do Model no Studio e do arquivo .glb. `fonte` é o .bbmodel aprovado (relativo à raiz do repositório). Gere com: uv run python scripts/exportar-roblox.py [nome]",
+  "criaturas": [
+    {
+      "nome": "Pavao_F1",
+      "especie": "pavao",
+      "estagio": "1 de 3 (bebê)",
+      "fonte": "modelos/criatura-pavao/revisao-v3/criatura-pavao-e1-v3.bbmodel",
+      "escala_studio": 3,
+      "animacoes": [
+        "idle",
+        "walk"
+      ],
+      "notas": "Cabeça-corpo (2 volumes) com 2 penas de crista em planos. Aprovado com nota 8,5. O walk dele é saltitante (corpo pula), sem deslocamento definido.",
+      "arquivo": "exportacoes/roblox/pavao/Pavao_F1.glb",
+      "ids_publicados": {},
+      "walk_studs_por_s": null
+    },
+    {
+      "nome": "Pavao_F2",
+      "especie": "pavao",
+      "estagio": "2 de 3 (avinídeo)",
+      "fonte": "modelos/criatura-pavao/f2/criatura-pavao-e2.bbmodel",
+      "escala_studio": 3,
+      "animacoes": [
+        "idle",
+        "walk"
+      ],
+      "notas": "Ave bípede digitígrada; asas, crista e leque em planos com alfa. walk de avestruz (cinemática inversa).",
+      "arquivo": "exportacoes/roblox/pavao/Pavao_F2.glb",
+      "ids_publicados": {},
+      "walk_studs_por_s": 2.08,
+      "altura_studs": 8.3
+    }
+  ],
+  "_unidades": "1 unidade do Blockbench = 1/16 stud na escala 1; walk_studs_por_s vale na escala_studio."
+}
