@@ -41,3 +41,13 @@ Registro completo em [[2026-10-21-pavao-f2]]. Primeiro caso que não é recolor 
   - `finalizar-f2.py` (rig, garras, UV, textura);
   - `rodada3.py` (penas das pernas e walk por cinemática inversa);
   - `palitos.py` e `render_motor.py` (conferência).
+
+## Exportação
+- **Roblox:** `export/roblox-f2/criatura-pavao-e2.glb`, com 792 triângulos e textura de 1024. O validador da Khronos não acusou erros e o UV ficou dentro de [0, 1].
+- **No Studio, em 22/10:** o modelo chegou com 23 dos 27 ossos (os sem malha, como alguns `feather_fan_*`, não vêm) e com idle e walk.
+- **Preparo aplicado pelo MCP:**
+  - `SurfaceAppearance` com alfa recortado;
+  - escala 3×, o que dá 5,9 × 8,3 × 10,9 studs, ao lado do F1;
+  - `Animator`;
+  - script `TocarAnimacao` (walk).
+- **Teste:** no Run, o walk tocou e as pernas se moveram, sem erro no console.
