@@ -16,6 +16,9 @@ SAIDA = ROOT / "export" / "roblox"
 BASE = "criatura-pavao-e1"
 
 modelo = bbmodelo.ler(FILE)
+fora = exportar.uv_fora_do_atlas(modelo)
+if fora:  # o Roblox dá a volta no atlas: corrigir antes (revisao-v3-koromon.py --corrigir-topo)
+    raise SystemExit(f"UV fora da textura: {fora[:3]}")
 SAIDA.mkdir(parents=True, exist_ok=True)
 tex = modelo.textura.convert("RGBA")
 ampliada = SAIDA / "textura-roblox.png"

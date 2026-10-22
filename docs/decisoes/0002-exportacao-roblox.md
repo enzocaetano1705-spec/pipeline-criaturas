@@ -28,6 +28,7 @@ O usuário importou o `.glb` do pavão (File › Import 3D, Rig Type Custom). O 
 O que precisou de preparo no Studio, agora em `modelos/criatura-pavao/export/roblox/preparar-no-studio.luau`:
 - **Alfa:** com `TextureID`, o alfa mostra a cor da peça, e os planos das penas ficaram com fundo escuro. A solução é um `SurfaceAppearance` com `ColorMap` igual ao `TextureID` e `AlphaMode.Transparency`.
 - **Escala:** o modelo chega com 1 bloco = 1 stud, e o pavão media ~1,5 stud. `Model:ScaleTo(3)` levou para 4,7 × 3,2 studs.
+- **UV fora de [0, 1]:** agora o `exportar` recusa antes de exportar (`uv_fora_do_atlas`) e o `verificar_glb` confere a faixa do `.glb` (`uv_do_glb`, tolerância 0,002).
 - **Animação:** sem um `Animator` nada toca. Para a prévia, `KeyframeSequenceProvider:RegisterKeyframeSequence` gera um id temporário que só vale no Studio. O jogo publicado precisa da animação publicada.
 - **Locators:** não chegam (o importador descarta nós sem malha). Ficam para quando o jogo precisar prender efeitos.
 

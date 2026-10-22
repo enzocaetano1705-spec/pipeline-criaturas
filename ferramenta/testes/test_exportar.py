@@ -83,3 +83,36 @@ def test_exporta_roblox_glb_valido(animada):
     # a cópia para o Roblox leva a textura ×8
     copia = bbmodelo.ler(next((alvo / "export" / "roblox").glob("sint-bipede-cauda-e1.*.bbmodel")))
     assert copia.textura.size == (modelo.resolucao[0] * 8, modelo.resolucao[1] * 8)
+
+
+def test_uv_fora_do_atlas_acusa_a_linha_que_o_roblox_mostraria(tmp_path):
+    """Pavão aprovado: o Blockbench gravou uv_offset [0, -1] no topo da cabeça (linha transparente no Roblox)."""
+    from criaturas.caminhos import RAIZ
+
+    historico = RAIZ / "modelos" / "criatura-pavao" / "revisao-v3" / "historico"
+    com_erro = bbmodelo.ler(historico / "20261021-2051-aprovada-8-5.bbmodel")
+    assert sorted(f.split(" ")[0] for f in exportar.uv_fora_do_atlas(com_erro)) == ["body_upper.down", "body_upper.up"]
+    corrigido = bbmodelo.ler(RAIZ / "modelos" / "criatura-pavao" / "revisao-v3" / "criatura-pavao-e1-v3.bbmodel")
+    assert exportar.uv_fora_do_atlas(corrigido) == []
+
+
+def test_uv_do_glb_dentro_de_0_1(tmp_path):
+    from criaturas.caminhos import RAIZ
+
+    glb = next((RAIZ / "modelos" / "exemplo-roblox").glob("*.glb"))
+    menor, maior = exportar.uv_do_glb(glb)
+    assert -exportar.TOLERANCIA_UV <= menor <= maior <= 1 + exportar.TOLERANCIA_UV
+    # o mesmo .glb com um UV empurrado para fora é acusado pela faixa
+    import struct
+
+    import numpy as np
+
+    dados = bytearray(glb.read_bytes())
+    g = exportar.json_do_glb(glb)
+    acc = g["accessors"][g["meshes"][0]["primitives"][0]["attributes"]["TEXCOORD_0"]]
+    vista = g["bufferViews"][acc["bufferView"]]
+    ini = 20 + struct.unpack("<I", dados[12:16])[0] + 8 + vista.get("byteOffset", 0) + acc.get("byteOffset", 0)
+    dados[ini + 4:ini + 8] = np.float32(-0.0156).tobytes()  # v de um vértice uma linha acima (atlas 64)
+    ruim = tmp_path / "ruim.glb"
+    ruim.write_bytes(bytes(dados))
+    assert exportar.uv_do_glb(ruim)[0] < -exportar.TOLERANCIA_UV

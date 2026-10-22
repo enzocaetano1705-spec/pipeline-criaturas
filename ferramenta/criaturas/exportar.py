@@ -6,7 +6,9 @@
 8.2 Roblox: cópia do modelo com a textura ×8, aberta no Blockbench desktop e exportada pelo
     export_model (codec gltf, binário, textura embutida, armadura e animações) -> .glb.
 8.3 Verificações do .glb: validador glTF da Khronos sem erros, até 20 mil triângulos, nomes de
-    ossos e locators preservados.
+    ossos e locators preservados, UV dentro de [0, 1].
+    UV fora da textura é recusado antes de exportar: o Blockbench repete a borda (clamp), mas o
+    Roblox dá a volta no atlas e mostra a linha do outro lado (achado com o pavão, 21/10/2026).
 Saídas em modelos/<nome>/export/{minecraft,roblox,geckolib}/.
 """
 
@@ -153,6 +155,49 @@ def exportar_glb(copia: Path, saida: Path) -> dict:
     return {"bytes": saida.stat().st_size}
 
 
+TOLERANCIA_UV = 0.002  # o exportador recua as bordas em 1/4096; isto é bem menos que 1 texel de um atlas 256
+
+
+def uv_fora_do_atlas(modelo: bbmodelo.Modelo) -> list[str]:
+    """Faces cujo UV sai da textura ("cubo.face [u1, v1, u2, v2]"), no espaço de pixels do projeto."""
+    res = modelo.bruto.get("resolution") or {}
+    larg, alt = res.get("width", 16), res.get("height", 16)
+    fora = []
+    for c in modelo.cubos:
+        for face, f in c.faces.items():
+            uv = f.get("uv")
+            if uv is None or f.get("texture") is None:
+                continue
+            us, vs = (uv[0], uv[2]), (uv[1], uv[3])
+            if min(us) < 0 or min(vs) < 0 or max(us) > larg or max(vs) > alt:
+                fora.append(f"{c.nome}.{face} {uv}")
+    return fora
+
+
+def uv_do_glb(caminho: Path) -> tuple[float, float]:
+    """(menor, maior) coordenada de TEXCOORD_0 em todas as primitivas do .glb."""
+    import numpy as np
+
+    dados = caminho.read_bytes()
+    g = json_do_glb(caminho)
+    tam_json = struct.unpack("<I", dados[12:16])[0]
+    inicio_bin = 20 + tam_json + 8
+    menor, maior = float("inf"), float("-inf")
+    for malha in g.get("meshes", []):
+        for prim in malha.get("primitives", []):
+            idx = prim.get("attributes", {}).get("TEXCOORD_0")
+            if idx is None:
+                continue
+            acc = g["accessors"][idx]
+            vista = g["bufferViews"][acc["bufferView"]]
+            ini = inicio_bin + vista.get("byteOffset", 0) + acc.get("byteOffset", 0)
+            passo = vista.get("byteStride", 8)
+            uv = np.lib.stride_tricks.as_strided(np.frombuffer(dados, "<f4", offset=ini, count=(acc["count"] - 1) * passo // 4 + 2),
+                                                 shape=(acc["count"], 2), strides=(passo, 4))
+            menor, maior = min(menor, float(uv.min())), max(maior, float(uv.max()))
+    return menor, maior
+
+
 ESCALA_GLTF = 1 / 16  # o exportador glTF do Blockbench usa 1 bloco = 1 unidade
 
 
@@ -219,6 +264,10 @@ def verificar_glb(caminho: Path, modelo: bbmodelo.Modelo) -> tuple[list, list, d
     if faltam_locs:
         avisos.append(msg("locators", "locators sem nó no .glb (viram Attachments à mão no Studio): " + ", ".join(faltam_locs[:8])))
     resumo["animacoes"] = len(json_do_glb(caminho).get("animations", []))
+    menor, maior = uv_do_glb(caminho)
+    resumo["uv"] = [round(menor, 5), round(maior, 5)]
+    if menor < -TOLERANCIA_UV or maior > 1 + TOLERANCIA_UV:
+        erros.append(msg("uv_fora", f"UV de {menor:.4f} a {maior:.4f}: o Roblox dá a volta no atlas e mostra pixels do outro lado"))
     return erros, avisos, resumo
 
 
@@ -252,8 +301,13 @@ def cmd_exportar(args) -> int:
             erros.append(msg("minecraft", str(e)))
     if "roblox" in destinos:
         textura_roblox = destino_est / "textura-roblox.png"
+        fora = uv_fora_do_atlas(modelo)
         if not textura_roblox.exists():
             erros.append(msg("roblox", "falta textura-roblox.png (rode texturizar antes)"))
+        elif fora:
+            erros.append(msg("uv_fora", f"{len(fora)} face(s) com UV fora da textura, por exemplo {fora[0]}. O Blockbench repete a "
+                                        "borda, mas o Roblox dá a volta no atlas. Reponha o uv_offset do cubo dentro da textura "
+                                        "(e desloque a pintura junto) antes de exportar"))
         else:
             try:
                 copia = copia_roblox(arquivo, textura_roblox, export / "roblox", base)
