@@ -107,6 +107,24 @@ if pasta then
 		end
 	end
 end
+-- 4b2) giro na pose do topo: dependendo das opções do Import 3D, o importador grava ~180° na pose da Raiz e no
+--      body, e a criatura vira de lado no walk. Tira o giro da Raiz e compensa nas poses filhas (testado: o body
+--      volta a girar no máximo 4,7°, como no Blockbench).
+if pasta then
+	for _, seq in ipairs(pasta:GetChildren()) do
+		for _, kf in ipairs(seq:GetKeyframes()) do
+			for _, raiz in ipairs(kf:GetPoses()) do
+				local R = raiz.CFrame - raiz.CFrame.Position
+				local _, ang = R:ToAxisAngle()
+				if math.abs(ang) > 1e-3 then
+					for _, filho in ipairs(raiz:GetSubPoses()) do filho.CFrame = R:Inverse() * filho.CFrame end
+					raiz.CFrame = CFrame.new(raiz.CFrame.Position)
+				end
+			end
+		end
+	end
+end
+
 -- 4c) streaming: Persistent, o modelo inteiro sempre no cliente (com StreamingEnabled, sem isto o cliente recebia só a malha,
 --     sem Hitbox, sem animações e sem o script de prévia)
 modelo.ModelStreamingMode = Enum.ModelStreamingMode.Persistent

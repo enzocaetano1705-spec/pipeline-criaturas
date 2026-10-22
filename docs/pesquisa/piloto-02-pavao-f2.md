@@ -97,3 +97,10 @@ O corpo sobe e desce 0,08 stud (0,45 unidade × 0,1875), e a malha fica parada.
 - O resto do corpo passa porque é textura de ruído.
 
 **Proposta:** exportar a cabeça (crânio, bico e crista) com uma textura própria e pequena (64 → 1024, 16×, igual ao F1, que fica nítido). O `.glb` sai com duas malhas, e o Roblox cria duas MeshParts sobre o mesmo esqueleto.
+
+## Roblox, quinta rodada (22/10): cabeça superamostrada
+
+- **Textura separada (formato genérico):** foi descartada. O `body` girava 180° no Roblox.
+- **Superamostragem:** as faces da cabeça (crânio, bico e crista) ficam 4× maiores no próprio atlas de 256. O `.glb` continua Bedrock, com uma malha e uma textura. O render do motor da versão exportada é idêntico ao original. No Studio (print só com a `TextureID`), o olho fica nítido, com 16 texels por pixel.
+- **Importação nova com 180° na pose da `Raiz`:** depende das opções do Import 3D. O preparo agora tira o giro da `Raiz` e compensa nas poses filhas. No Play, o `body` volta a girar no máximo 4,7° e a frente fica alinhada à `Hitbox` (1,00).
+- **Criatura branca logo depois de importar:** o `SurfaceAppearance` só mostra textura aprovada na moderação, enquanto a `TextureID` aparece na hora para quem a subiu. Isso se resolve sozinho com o tempo.

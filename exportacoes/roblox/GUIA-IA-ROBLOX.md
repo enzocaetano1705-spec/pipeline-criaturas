@@ -152,7 +152,9 @@ Depois disso, importe de novo no Studio e rode o preparo.
 | corpo descola, some ou flutua no Play | animação movendo a MeshPart (sem `Raiz`) | reexporte |
 | anda de costas ou vira para o lado errado | está sendo movida pelo LookVector da malha | mova pela `Hitbox` (o preparo a aponta para a cabeça) |
 | animação exagerada, partes descolando | `Raiz` girada na exportação | reexporte (a Raiz não pode ter rotação) |
-| textura borrada | `ResampleMode` não está `Pixelated` | rode o preparo |
+| textura borrada em detalhe pequeno (olho) | poucos texels por pixel (atlas grande) | `superamostrar` as partes do rosto e reexporte |
+| criatura toda branca logo depois de importar | a textura nova ainda está em moderação: o `SurfaceAppearance` só mostra imagem aprovada (a `TextureID` aparece na hora para quem subiu) | espere (minutos a horas); para conferir antes, tire o SurfaceAppearance por um instante |
+| vira de lado no walk mesmo com o `.glb` atual | a importação gravou ~180° na pose da Raiz | rode o preparo (passo 4b2) |
 | animação não toca no Play (toca só no Run) | prévia rodando no servidor; o cliente não carrega o id temporário | rode o preparo (prévia no cliente) |
 | no cliente o modelo chega sem Hitbox nem scripts | StreamingEnabled | `ModelStreamingMode = Persistent` (o preparo faz) |
 | criatura parada, mas outra igual anima | há cópias duplicadas no Workspace e só uma foi preparada | rode o preparo em todas as cópias (busque pelo nome) |
