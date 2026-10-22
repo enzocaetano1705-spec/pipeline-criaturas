@@ -8,7 +8,8 @@ O que faz:
   2. Escala (Model:ScaleTo) e base no chão.
   3. Hitbox: Part invisível do tamanho da criatura, que colide e vira o PrimaryPart. A malha não colide
      (a malha animada não serve de colisão estável).
-  4. Animator no AnimationController e, se pedido, um Script de prévia que toca uma animação no Run/Play.
+  4. Animator no AnimationController; poses das animações embaixo da Raiz (o topo não é animado pelo Roblox);
+     e, se pedido, um Script de prévia que toca uma animação no Run/Play.
   5. Confere a frente: o bico/cabeça deve estar no sentido do LookVector do PrimaryPart.
 Tudo dentro de uma gravação do ChangeHistoryService (Ctrl+Z desfaz).
 ]]
@@ -17,7 +18,8 @@ Tudo dentro de uma gravação do ChangeHistoryService (Ctrl+Z desfaz).
 local NOME = "Pavao_F2"          -- nome do Model no Workspace (= nome do .glb)
 local ESCALA = 3                 -- escala_studio do criaturas.json
 local PREVIA = "walk"            -- "idle", "walk" ou nil (sem script de prévia)
-local OSSO_CABECA = "head"       -- osso usado para conferir a frente
+local OSSO_CABECA = "head"       -- ossos usados para conferir a frente (cabeça à frente da cauda)
+local OSSO_CAUDA = "tail_1"
 --------------------------------------------------------------------------------
 
 local CHS = game:GetService("ChangeHistoryService")
@@ -71,6 +73,23 @@ local controlador = modelo:FindFirstChildOfClass("AnimationController")
 if controlador and not controlador:FindFirstChildOfClass("Animator") then
 	Instance.new("Animator").Parent = controlador
 end
+-- 4b) o Roblox não anima a pose do topo da KeyframeSequence (é a peça raiz): se o topo não for a Raiz,
+--     embrulha as poses numa pose "Raiz" neutra para o `body` (balanço do corpo) voltar a tocar
+local pasta = modelo:FindFirstChild("AnimSaves") and modelo.AnimSaves.Value
+if pasta then
+	for _, seq in ipairs(pasta:GetChildren()) do
+		for _, kf in ipairs(seq:GetKeyframes()) do
+			local topo = kf:GetPoses()
+			if not (#topo == 1 and topo[1].Name == malha.Name) then
+				local raiz = Instance.new("Pose")
+				raiz.Name = malha.Name
+				raiz.Weight = 0
+				for _, p in ipairs(topo) do kf:RemovePose(p); raiz:AddSubPose(p) end
+				kf:AddPose(raiz)
+			end
+		end
+	end
+end
 local velho = modelo:FindFirstChild("TocarAnimacao")
 if velho then velho:Destroy() end
 if PREVIA then
@@ -92,9 +111,10 @@ end
 
 -- 5) conferência da frente
 local cabeca = modelo:FindFirstChild(OSSO_CABECA, true)
-local frente = "?"
-if cabeca and cabeca:IsA("Bone") then
-	local d = (cabeca.WorldPosition - hitbox.Position) * Vector3.new(1, 0, 1)
+local cauda = modelo:FindFirstChild(OSSO_CAUDA, true)
+local frente = "não conferida (sem os ossos " .. OSSO_CABECA .. "/" .. OSSO_CAUDA .. ")"
+if cabeca and cauda then
+	local d = (cabeca.WorldPosition - cauda.WorldPosition) * Vector3.new(1, 0, 1)
 	frente = (d.Magnitude > 0 and d.Unit:Dot(hitbox.CFrame.LookVector) > 0.3) and "ok" or "INVERTIDA (reexporte com a Raiz girada)"
 end
 

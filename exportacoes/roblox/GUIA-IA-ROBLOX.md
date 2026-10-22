@@ -42,6 +42,10 @@ ServerStorage.RBX_ANIMSAVES.<Nome>
 - A `Raiz` é um osso só de exportação: está girado 180°, não tem animação e virou a MeshPart.
   **Nenhuma animação pode mover a MeshPart.** Se o corpo "descolar", sumir ou a colisão bugar no Play, é porque
   a animação está movendo a peça física: reexporte com a Raiz (`scripts/exportar-roblox.py` já faz isso).
+- **Poses das animações:** o Roblox não anima a pose do topo de uma KeyframeSequence, porque ela é a peça raiz.
+  O exportador põe uma chave neutra na `Raiz`, para que o topo seja `Raiz > body > …`, e o preparo também conserta isso
+  em importações antigas. Sem isso, o balanço do corpo (`body`) não toca.
+- **Escala de osso não existe no Roblox:** animações de escala (como a respiração do idle do Pavao_F1) não aparecem lá.
 - Ossos sem nenhuma peça (alguns `feather_fan_*`) não chegam. É normal.
 - Os locators do Blockbench (`loc_*`) não chegam: o importador descarta nós sem malha. Para prender efeitos, crie
   Attachments no osso mais próximo.
@@ -119,6 +123,7 @@ Depois disso, importe de novo no Studio e rode o preparo.
 | corpo descola, some ou flutua no Play | animação movendo a MeshPart (sem `Raiz`) | reexporte |
 | anda de costas ou vira para o lado errado | frente invertida | reexporte (a `Raiz` gira 180°) |
 | animação não toca | sem `Animator`, ou id temporário fora do Studio | rode o preparo ou publique a animação |
+| pernas animam, mas o corpo não balança | a pose `body` está no topo da KeyframeSequence | rode o preparo (passo 4b) ou reexporte |
 | colisão estranha | malha colidindo | rode o preparo (Hitbox) |
 
 ## 9. Boas maneiras pelo MCP
