@@ -364,6 +364,55 @@ def so_penugem():
     print(f"penugem: {pintados} texels pintados; geometria {geo[0]} erros/{geo[1]} avisos")
 
 
+def corrigir_topo():
+    """Ilha de UV com linha fora da textura (uv_offset [0, -1] gravado pelo Blockbench).
+
+    O Blockbench repete a linha da borda (clamp) e o Roblox dá a volta (repeat): no Studio, a linha de trás do topo
+    da cabeça ficava transparente. Repõe a ilha em v ≥ 0 e desce a pintura dela junto, repetindo a linha da borda
+    onde antes havia clamp: o visual aprovado no Blockbench fica igual, texel a texel (conferido abaixo).
+    """
+    import datetime
+    hist = DEST / "historico"
+    hist.mkdir(exist_ok=True)
+    shutil.copy2(FILE, hist / f"{datetime.datetime.now():%Y%m%d-%H%M}-antes-de-corrigir-topo.bbmodel")
+    modelo = bbmodelo.ler(FILE)
+    res = int(modelo.bruto["resolution"]["width"])
+    tex = np.array(modelo.textura.convert("RGBA"))
+    ident = np.eye(4)
+
+    def amostras(m, t):
+        cores = {}
+        for c in m.cubos:
+            for face in ("north", "south", "east", "west", "up", "down"):
+                r = texturizar.texels_da_face(c, face, ident)
+                if r is None:
+                    continue
+                for (u, v), pt in zip(*r):
+                    cores[(c.nome, face, tuple(np.round(pt, 3)))] = tuple(t[min(max(int(v), 0), res - 1), min(max(int(u), 0), res - 1)])
+        return cores
+
+    antes = amostras(modelo, tex)  # como o Blockbench mostra (clamp)
+    fora = [c for c in modelo.cubos if any(min(f["uv"][1], f["uv"][3]) < 0 for f in c.faces.values() if "uv" in f)]
+    novo = tex.copy()
+    for c in fora:
+        dv = -int(min(min(f["uv"][1], f["uv"][3]) for f in c.faces.values() if "uv" in f))
+        u0 = int(min(min(f["uv"][0], f["uv"][2]) for f in c.faces.values()))
+        u1 = int(max(max(f["uv"][0], f["uv"][2]) for f in c.faces.values()))
+        v1 = int(max(max(f["uv"][1], f["uv"][3]) for f in c.faces.values()))
+        ilha = tex[0:v1, u0:u1].copy()
+        novo[dv:v1 + dv, u0:u1] = ilha
+        novo[0:dv, u0:u1] = ilha[0:1]  # a linha que o clamp repetia
+    motor.editar(FILE, [{"op": "update_node", "target": c.nome, "uv_offset": [0, 0]} for c in fora] + [
+        {"op": "update_texture", "target": modelo.bruto["textures"][0].get("name") or "textura",
+         "source": texturizar._data_url(novo), "width": res, "height": res, "material": None}])
+    depois_modelo = bbmodelo.ler(FILE)
+    depois = amostras(depois_modelo, np.array(depois_modelo.textura.convert("RGBA")))
+    diferentes = sum(1 for k in antes if antes[k] != depois.get(k))
+    Image.fromarray(novo).save(DEST / "textura.png")
+    Image.fromarray(novo).save(ROOT / "textura.png")
+    print(f"ilhas repostas: {[c.nome for c in fora]}; texels com cor diferente do aprovado: {diferentes} de {len(antes)}")
+
+
 def so_textura():
     """Repinta só o corpo no .bbmodel atual (com as edições à mão do usuário), sem mexer na geometria.
 
@@ -416,6 +465,8 @@ def so_textura():
 
 
 def main():
+    if "--corrigir-topo" in sys.argv:
+        return corrigir_topo()
     if "--penugem" in sys.argv:
         return so_penugem()
     if "--so-textura" in sys.argv:

@@ -119,3 +119,18 @@ O lábio pintado pelo usuário e as penas foram conferidos pixel a pixel: estão
 O usuário fez os últimos retoques à mão (31 px de boca e queixo) e aprovou: **nota 8,5** ("100%"). A cópia da versão aprovada está em `revisao-v3/historico/20261021-2051-aprovada-8-5.bbmodel`. Ficha do caso: [[piloto-01-pavao-koromon]].
 
 O `--penugem` deixou de repor o UV sozinho: a versão aprovada tem `[0, −1]`, e para repor agora é preciso pedir com `--repor-uv`.
+
+## Roblox: linha transparente atrás da cabeça
+
+**Relato do usuário:** no Studio, uma linha de pixels atrás da cabeça ficou transparente.
+
+**Causa:** o `uv_offset [0, −1]` gravado pelo Blockbench deixa a última linha do topo da cabeça fora da textura (v = −1). O Blockbench repete a linha da borda (o sampler do `.glb` também pede clamp), mas o Roblox dá a volta e lê a linha 63 do atlas, que é transparente.
+
+**Correção:** `revisao-v3-koromon.py --corrigir-topo`:
+- a ilha volta para `[0, 0]`;
+- a pintura dela desce 1 linha, e a linha que o clamp repetia foi duplicada;
+- conferido: **0 de 1744 texels** mudaram de cor em relação ao aprovado.
+
+O `.glb` foi reexportado: validador sem erros, UV em v ∈ [0,0002; 0,9998]. Restam 4 vértices com u = −0,00024, o recuo de borda do exportador, abaixo de 1/60 de texel.
+
+**Lição:** antes de exportar para o Roblox, recusar qualquer UV fora de [0, 1]. O Roblox ignora o clamp do glTF.
