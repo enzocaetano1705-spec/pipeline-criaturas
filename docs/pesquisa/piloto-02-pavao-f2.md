@@ -73,3 +73,16 @@ Registro completo em [[2026-10-21-pavao-f2]]. Primeiro caso que não é recolor 
 | tornozelo | 32,5° |
 
 O corpo sobe e desce 0,08 stud (0,45 unidade × 0,1875), e a malha fica parada.
+
+## Roblox, terceira rodada (22/10): animação parada no Play
+
+**Causas:**
+- A prévia rodava no servidor. Um id criado por `RegisterKeyframeSequence` no servidor não toca no cliente, e no Play quem desenha a tela é o cliente.
+- O lugar tinha cópias duplicadas de `Pavao_F1` e `Pavao_F2` sem preparo, porque a recuperação automática do Studio voltou com as duas importações.
+
+**Correção:**
+- prévia em `Script` com `RunContext = Client`, lendo as animações de `<Model>.Animacoes`;
+- `ModelStreamingMode = Persistent`;
+- preparo aplicado às 4 cópias.
+
+**Teste no cliente (Play):** as 4 criaturas com a faixa tocando e os ossos se movendo, sem erros no console.

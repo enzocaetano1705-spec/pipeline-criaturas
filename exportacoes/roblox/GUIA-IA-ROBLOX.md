@@ -79,8 +79,8 @@ Tudo fica numa gravação do `ChangeHistoryService`: um Ctrl+Z desfaz.
   prévia precisa rodar no cliente (`Script` com `RunContext = Client`) e ler as KeyframeSequences de um lugar que
   replica (`<Model>.Animacoes`), não do `ServerStorage`. O preparo já faz isso. Um script no servidor só aparece no
   **Run (F8)**.
-- **StreamingEnabled:** com streaming ligado, o cliente pode receber só a malha. Use `ModelStreamingMode = Atomic` nas
-  criaturas (o preparo faz), para Hitbox, animações e scripts chegarem juntos.
+- **StreamingEnabled:** com streaming ligado, o cliente pode receber só a malha. Use `ModelStreamingMode = Persistent` nas
+  criaturas (o preparo usa `Persistent`), para Hitbox, animações e scripts chegarem juntos.
 - **No jogo publicado:** publique cada KeyframeSequence pelo Animation Editor (o usuário publica). Guarde o `AnimationId`
   e use `Animator:LoadAnimation(anim)`. Registre os ids publicados no `criaturas.json` (`ids_publicados`).
 - Para tocar:
@@ -142,7 +142,8 @@ Depois disso, importe de novo no Studio e rode o preparo.
 | animação exagerada, partes descolando | `Raiz` girada na exportação | reexporte (a Raiz não pode ter rotação) |
 | textura borrada | `ResampleMode` não está `Pixelated` | rode o preparo |
 | animação não toca no Play (toca só no Run) | prévia rodando no servidor; o cliente não carrega o id temporário | rode o preparo (prévia no cliente) |
-| no cliente o modelo chega sem Hitbox nem scripts | StreamingEnabled | `ModelStreamingMode = Atomic` (o preparo faz) |
+| no cliente o modelo chega sem Hitbox nem scripts | StreamingEnabled | `ModelStreamingMode = Persistent` (o preparo faz) |
+| criatura parada, mas outra igual anima | há cópias duplicadas no Workspace e só uma foi preparada | rode o preparo em todas as cópias (busque pelo nome) |
 | animação não toca nem no Run | sem `Animator`, ou id temporário fora do Studio | rode o preparo ou publique a animação |
 | pernas animam, mas o corpo não balança | a pose `body` está no topo da KeyframeSequence | rode o preparo (passo 4b) ou reexporte |
 | colisão estranha | malha colidindo | rode o preparo (Hitbox) |

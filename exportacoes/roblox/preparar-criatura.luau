@@ -10,7 +10,7 @@ O que faz:
   3. Hitbox: Part invisível do tamanho da criatura, que colide e vira o PrimaryPart. A malha não colide
      (a malha animada não serve de colisão estável).
   4. Animator no AnimationController; poses das animações embaixo da Raiz (o topo não é animado pelo Roblox);
-     ModelStreamingMode Atomic (o modelo chega inteiro ao cliente); cópia das animações em <Model>.Animacoes e,
+     ModelStreamingMode Persistent (o modelo inteiro sempre no cliente); cópia das animações em <Model>.Animacoes e,
      se pedido, um Script de prévia que roda NO CLIENTE e toca uma animação no Play/Run.
   5. Frente: a Hitbox (PrimaryPart) olha para a cabeça; mova a criatura pelo LookVector da Hitbox.
 Tudo dentro de uma gravação do ChangeHistoryService (Ctrl+Z desfaz).
@@ -100,9 +100,9 @@ if pasta then
 		end
 	end
 end
--- 4c) streaming: o modelo chega inteiro ao cliente (com StreamingEnabled, sem isto o cliente recebia só a malha,
+-- 4c) streaming: Persistent, o modelo inteiro sempre no cliente (com StreamingEnabled, sem isto o cliente recebia só a malha,
 --     sem Hitbox, sem animações e sem o script de prévia)
-modelo.ModelStreamingMode = Enum.ModelStreamingMode.Atomic
+modelo.ModelStreamingMode = Enum.ModelStreamingMode.Persistent
 
 -- 4d) prévia NO CLIENTE: o Play desenha pelo cliente, e o cliente não carrega ids temporários criados no servidor
 --     nem enxerga o ServerStorage. As KeyframeSequences vão para <Model>.Animacoes e o script roda no cliente.
