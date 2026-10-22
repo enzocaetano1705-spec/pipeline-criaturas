@@ -1,0 +1,1329 @@
+{
+ "operations": [
+  {
+   "op": "add_group",
+   "name": "body",
+   "origin": [
+    0,
+    13,
+    0
+   ]
+  },
+  {
+   "op": "add_group",
+   "name": "neck_1",
+   "origin": [
+    0,
+    23.5,
+    -0.5
+   ],
+   "rotation": [
+    -12,
+    0,
+    0
+   ],
+   "parent": "body"
+  },
+  {
+   "op": "add_group",
+   "name": "head",
+   "origin": [
+    0,
+    27.5,
+    -1
+   ],
+   "rotation": [
+    12,
+    0,
+    0
+   ],
+   "parent": "neck_1"
+  },
+  {
+   "op": "add_group",
+   "name": "feather_left_1",
+   "origin": [
+    -1,
+    32,
+    -1
+   ],
+   "rotation": [
+    -10,
+    0,
+    0
+   ],
+   "parent": "head"
+  },
+  {
+   "op": "add_group",
+   "name": "feather_left_2",
+   "origin": [
+    -4.5,
+    37,
+    -1
+   ],
+   "rotation": [
+    0,
+    30,
+    0
+   ],
+   "parent": "feather_left_1"
+  },
+  {
+   "op": "add_group",
+   "name": "arm_left",
+   "origin": [
+    -5,
+    22.5,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    -8
+   ],
+   "parent": "body"
+  },
+  {
+   "op": "add_group",
+   "name": "forearm_left",
+   "origin": [
+    -5,
+    16.5,
+    0
+   ],
+   "rotation": [
+    -15,
+    0,
+    0
+   ],
+   "parent": "arm_left"
+  },
+  {
+   "op": "add_group",
+   "name": "wing_left",
+   "origin": [
+    -5.5,
+    22,
+    1
+   ],
+   "rotation": [
+    0,
+    28,
+    0
+   ],
+   "parent": "arm_left"
+  },
+  {
+   "op": "add_group",
+   "name": "leg_left",
+   "origin": [
+    -2.5,
+    12,
+    0
+   ],
+   "parent": "body"
+  },
+  {
+   "op": "add_group",
+   "name": "shin_left",
+   "origin": [
+    -2.5,
+    8.5,
+    0
+   ],
+   "rotation": [
+    12,
+    0,
+    0
+   ],
+   "parent": "leg_left"
+  },
+  {
+   "op": "add_group",
+   "name": "foot_left",
+   "origin": [
+    -2.5,
+    4.5,
+    0
+   ],
+   "rotation": [
+    -12,
+    0,
+    0
+   ],
+   "parent": "shin_left"
+  },
+  {
+   "op": "add_group",
+   "name": "feather_right_1",
+   "origin": [
+    1,
+    32,
+    -1
+   ],
+   "rotation": [
+    -10,
+    0,
+    0
+   ],
+   "parent": "head"
+  },
+  {
+   "op": "add_group",
+   "name": "feather_right_2",
+   "origin": [
+    4.5,
+    37,
+    -1
+   ],
+   "rotation": [
+    0,
+    -30,
+    0
+   ],
+   "parent": "feather_right_1"
+  },
+  {
+   "op": "add_group",
+   "name": "arm_right",
+   "origin": [
+    5,
+    22.5,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    8
+   ],
+   "parent": "body"
+  },
+  {
+   "op": "add_group",
+   "name": "forearm_right",
+   "origin": [
+    5,
+    16.5,
+    0
+   ],
+   "rotation": [
+    -15,
+    0,
+    0
+   ],
+   "parent": "arm_right"
+  },
+  {
+   "op": "add_group",
+   "name": "wing_right",
+   "origin": [
+    5.5,
+    22,
+    1
+   ],
+   "rotation": [
+    0,
+    -28,
+    0
+   ],
+   "parent": "arm_right"
+  },
+  {
+   "op": "add_group",
+   "name": "leg_right",
+   "origin": [
+    2.5,
+    12,
+    0
+   ],
+   "parent": "body"
+  },
+  {
+   "op": "add_group",
+   "name": "shin_right",
+   "origin": [
+    2.5,
+    8.5,
+    0
+   ],
+   "rotation": [
+    12,
+    0,
+    0
+   ],
+   "parent": "leg_right"
+  },
+  {
+   "op": "add_group",
+   "name": "foot_right",
+   "origin": [
+    2.5,
+    4.5,
+    0
+   ],
+   "rotation": [
+    -12,
+    0,
+    0
+   ],
+   "parent": "shin_right"
+  },
+  {
+   "op": "add_group",
+   "name": "tail_1",
+   "origin": [
+    0,
+    13.5,
+    3
+   ],
+   "parent": "body"
+  },
+  {
+   "op": "add_group",
+   "name": "feather_fan_1",
+   "origin": [
+    0,
+    13.75,
+    5.5
+   ],
+   "rotation": [
+    -35,
+    18,
+    0
+   ],
+   "parent": "tail_1"
+  },
+  {
+   "op": "add_group",
+   "name": "feather_fan_2",
+   "origin": [
+    0,
+    13.75,
+    5.5
+   ],
+   "rotation": [
+    -15,
+    -18,
+    0
+   ],
+   "parent": "tail_1"
+  },
+  {
+   "op": "add_group",
+   "name": "feather_fan_3",
+   "origin": [
+    0,
+    13.75,
+    5.5
+   ],
+   "rotation": [
+    5,
+    18,
+    0
+   ],
+   "parent": "tail_1"
+  },
+  {
+   "op": "add_group",
+   "name": "feather_fan_4",
+   "origin": [
+    0,
+    13.75,
+    5.5
+   ],
+   "rotation": [
+    25,
+    -18,
+    0
+   ],
+   "parent": "tail_1"
+  },
+  {
+   "op": "add_group",
+   "name": "feather_fan_5",
+   "origin": [
+    0,
+    13.75,
+    5.5
+   ],
+   "rotation": [
+    45,
+    0,
+    0
+   ],
+   "parent": "tail_1"
+  },
+  {
+   "op": "add_cube",
+   "name": "hips",
+   "parent": "body",
+   "from": [
+    -3.5,
+    11,
+    -3
+   ],
+   "to": [
+    3.5,
+    15,
+    3
+   ],
+   "box_uv": true,
+   "uv_offset": [
+    0,
+    44
+   ]
+  },
+  {
+   "op": "add_cube",
+   "name": "torso",
+   "parent": "body",
+   "from": [
+    -4,
+    15,
+    -3.5
+   ],
+   "to": [
+    4,
+    22,
+    3
+   ],
+   "box_uv": true,
+   "uv_offset": [
+    64,
+    22
+   ]
+  },
+  {
+   "op": "add_cube",
+   "name": "shoulders",
+   "parent": "body",
+   "from": [
+    -5,
+    21,
+    -3
+   ],
+   "to": [
+    5,
+    24,
+    3
+   ],
+   "box_uv": true,
+   "uv_offset": [
+    60,
+    44
+   ]
+  },
+  {
+   "op": "add_cube",
+   "name": "neck",
+   "parent": "neck_1",
+   "from": [
+    -2,
+    23,
+    -2.5
+   ],
+   "to": [
+    2,
+    28,
+    1.5
+   ],
+   "box_uv": true,
+   "uv_offset": [
+    92,
+    44
+   ]
+  },
+  {
+   "op": "add_cube",
+   "name": "skull",
+   "parent": "head",
+   "from": [
+    -3,
+    27,
+    -4
+   ],
+   "to": [
+    3,
+    32,
+    2
+   ],
+   "box_uv": true,
+   "uv_offset": [
+    93,
+    22
+   ]
+  },
+  {
+   "op": "add_cube",
+   "name": "beak",
+   "parent": "head",
+   "from": [
+    -1,
+    28,
+    -7
+   ],
+   "to": [
+    1,
+    30,
+    -4
+   ],
+   "box_uv": true,
+   "uv_offset": [
+    97,
+    54
+   ]
+  },
+  {
+   "op": "add_cube",
+   "name": "beak_tip",
+   "parent": "head",
+   "from": [
+    -1,
+    27,
+    -7
+   ],
+   "to": [
+    1,
+    28,
+    -6
+   ],
+   "box_uv": true,
+   "uv_offset": [
+    106,
+    62
+   ]
+  },
+  {
+   "op": "add_cube",
+   "name": "crest_left_rise",
+   "parent": "feather_left_1",
+   "from": [
+    -5,
+    32,
+    -1
+   ],
+   "to": [
+    -0.5,
+    37,
+    -1
+   ],
+   "box_uv": true,
+   "uv_offset": [
+    40,
+    62
+   ],
+   "inflate": 0.01
+  },
+  {
+   "op": "add_cube",
+   "name": "crest_left_eye",
+   "parent": "feather_left_2",
+   "from": [
+    -12,
+    33,
+    -1
+   ],
+   "to": [
+    -3,
+    39,
+    -1
+   ],
+   "box_uv": true,
+   "uv_offset": [
+    49,
+    54
+   ],
+   "inflate": 0.01
+  },
+  {
+   "op": "add_cube",
+   "name": "upper_arm_left",
+   "parent": "arm_left",
+   "from": [
+    -6,
+    16,
+    -1
+   ],
+   "to": [
+    -4,
+    23,
+    1
+   ],
+   "box_uv": true,
+   "uv_offset": [
+    108,
+    44
+   ]
+  },
+  {
+   "op": "add_cube",
+   "name": "lower_arm_left",
+   "parent": "forearm_left",
+   "from": [
+    -6,
+    11,
+    -1
+   ],
+   "to": [
+    -4,
+    17,
+    1
+   ],
+   "box_uv": true,
+   "uv_offset": [
+    20,
+    54
+   ]
+  },
+  {
+   "op": "add_cube",
+   "name": "hand_left",
+   "parent": "forearm_left",
+   "from": [
+    -6,
+    9,
+    -1.5
+   ],
+   "to": [
+    -4,
+    11,
+    1
+   ],
+   "box_uv": true,
+   "uv_offset": [
+    49,
+    62
+   ]
+  },
+  {
+   "op": "add_cube",
+   "name": "claw_left_0",
+   "parent": "forearm_left",
+   "from": [
+    -4.6499999999999995,
+    7.5,
+    -1.4
+   ],
+   "to": [
+    -4.05,
+    9,
+    -0.6
+   ],
+   "box_uv": true,
+   "uv_offset": [
+    88,
+    62
+   ]
+  },
+  {
+   "op": "add_cube",
+   "name": "claw_left_1",
+   "parent": "forearm_left",
+   "from": [
+    -5.3,
+    7.5,
+    -1.4
+   ],
+   "to": [
+    -4.7,
+    9,
+    -0.6
+   ],
+   "box_uv": true,
+   "uv_offset": [
+    91,
+    62
+   ]
+  },
+  {
+   "op": "add_cube",
+   "name": "claw_left_2",
+   "parent": "forearm_left",
+   "from": [
+    -5.949999999999999,
+    7.5,
+    -1.4
+   ],
+   "to": [
+    -5.35,
+    9,
+    -0.6
+   ],
+   "box_uv": true,
+   "uv_offset": [
+    94,
+    62
+   ]
+  },
+  {
+   "op": "add_cube",
+   "name": "wing_left_panel",
+   "parent": "wing_left",
+   "from": [
+    -13,
+    4,
+    1.2
+   ],
+   "to": [
+    -5,
+    22,
+    1.2
+   ],
+   "box_uv": true,
+   "uv_offset": [
+    32,
+    22
+   ],
+   "inflate": 0.01
+  },
+  {
+   "op": "add_cube",
+   "name": "thigh_left",
+   "parent": "leg_left",
+   "from": [
+    -4.5,
+    7.5,
+    -2.25
+   ],
+   "to": [
+    -0.5,
+    13,
+    2.25
+   ],
+   "box_uv": true,
+   "uv_offset": [
+    26,
+    44
+   ]
+  },
+  {
+   "op": "add_cube",
+   "name": "shank_left",
+   "parent": "shin_left",
+   "from": [
+    -3.75,
+    4,
+    -1.25
+   ],
+   "to": [
+    -1.25,
+    9,
+    1.25
+   ],
+   "box_uv": true,
+   "uv_offset": [
+    0,
+    54
+   ]
+  },
+  {
+   "op": "add_cube",
+   "name": "tarsus_left",
+   "parent": "foot_left",
+   "from": [
+    -3.25,
+    1,
+    -0.75
+   ],
+   "to": [
+    -1.75,
+    5,
+    0.75
+   ],
+   "box_uv": true,
+   "uv_offset": [
+    85,
+    54
+   ]
+  },
+  {
+   "op": "add_cube",
+   "name": "toe_left_0",
+   "parent": "foot_left",
+   "from": [
+    -3.0,
+    0,
+    -4
+   ],
+   "to": [
+    -2.0,
+    1,
+    0
+   ],
+   "box_uv": true,
+   "uv_offset": [
+    107,
+    54
+   ],
+   "rotation": [
+    0,
+    -22,
+    0
+   ],
+   "origin": [
+    -2.5,
+    0.5,
+    0
+   ]
+  },
+  {
+   "op": "add_cube",
+   "name": "toe_left_1",
+   "parent": "foot_left",
+   "from": [
+    -3.0,
+    0,
+    -4
+   ],
+   "to": [
+    -2.0,
+    1,
+    0
+   ],
+   "box_uv": true,
+   "uv_offset": [
+    117,
+    54
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "origin": [
+    -2.5,
+    0.5,
+    0
+   ]
+  },
+  {
+   "op": "add_cube",
+   "name": "toe_left_2",
+   "parent": "foot_left",
+   "from": [
+    -3.0,
+    0,
+    -4
+   ],
+   "to": [
+    -2.0,
+    1,
+    0
+   ],
+   "box_uv": true,
+   "uv_offset": [
+    0,
+    62
+   ],
+   "rotation": [
+    0,
+    22,
+    0
+   ],
+   "origin": [
+    -2.5,
+    0.5,
+    0
+   ]
+  },
+  {
+   "op": "add_cube",
+   "name": "toe_left_back",
+   "parent": "foot_left",
+   "from": [
+    -3.0,
+    0,
+    0
+   ],
+   "to": [
+    -2.0,
+    1,
+    2
+   ],
+   "box_uv": true,
+   "uv_offset": [
+    76,
+    62
+   ]
+  },
+  {
+   "op": "add_cube",
+   "name": "crest_right_rise",
+   "parent": "feather_right_1",
+   "from": [
+    0.5,
+    32,
+    -1
+   ],
+   "to": [
+    5,
+    37,
+    -1
+   ],
+   "box_uv": true,
+   "uv_offset": [
+    58,
+    62
+   ],
+   "inflate": 0.01
+  },
+  {
+   "op": "add_cube",
+   "name": "crest_right_eye",
+   "parent": "feather_right_2",
+   "from": [
+    3,
+    33,
+    -1
+   ],
+   "to": [
+    12,
+    39,
+    -1
+   ],
+   "box_uv": true,
+   "uv_offset": [
+    67,
+    54
+   ],
+   "inflate": 0.01
+  },
+  {
+   "op": "add_cube",
+   "name": "upper_arm_right",
+   "parent": "arm_right",
+   "from": [
+    4,
+    16,
+    -1
+   ],
+   "to": [
+    6,
+    23,
+    1
+   ],
+   "box_uv": true,
+   "uv_offset": [
+    116,
+    44
+   ]
+  },
+  {
+   "op": "add_cube",
+   "name": "lower_arm_right",
+   "parent": "forearm_right",
+   "from": [
+    4,
+    11,
+    -1
+   ],
+   "to": [
+    6,
+    17,
+    1
+   ],
+   "box_uv": true,
+   "uv_offset": [
+    28,
+    54
+   ]
+  },
+  {
+   "op": "add_cube",
+   "name": "hand_right",
+   "parent": "forearm_right",
+   "from": [
+    4,
+    9,
+    -1.5
+   ],
+   "to": [
+    6,
+    11,
+    1
+   ],
+   "box_uv": true,
+   "uv_offset": [
+    67,
+    62
+   ]
+  },
+  {
+   "op": "add_cube",
+   "name": "claw_right_0",
+   "parent": "forearm_right",
+   "from": [
+    4.05,
+    7.5,
+    -1.4
+   ],
+   "to": [
+    4.6499999999999995,
+    9,
+    -0.6
+   ],
+   "box_uv": true,
+   "uv_offset": [
+    97,
+    62
+   ]
+  },
+  {
+   "op": "add_cube",
+   "name": "claw_right_1",
+   "parent": "forearm_right",
+   "from": [
+    4.7,
+    7.5,
+    -1.4
+   ],
+   "to": [
+    5.3,
+    9,
+    -0.6
+   ],
+   "box_uv": true,
+   "uv_offset": [
+    100,
+    62
+   ]
+  },
+  {
+   "op": "add_cube",
+   "name": "claw_right_2",
+   "parent": "forearm_right",
+   "from": [
+    5.35,
+    7.5,
+    -1.4
+   ],
+   "to": [
+    5.949999999999999,
+    9,
+    -0.6
+   ],
+   "box_uv": true,
+   "uv_offset": [
+    103,
+    62
+   ]
+  },
+  {
+   "op": "add_cube",
+   "name": "wing_right_panel",
+   "parent": "wing_right",
+   "from": [
+    5,
+    4,
+    1.2
+   ],
+   "to": [
+    13,
+    22,
+    1.2
+   ],
+   "box_uv": true,
+   "uv_offset": [
+    48,
+    22
+   ],
+   "inflate": 0.01
+  },
+  {
+   "op": "add_cube",
+   "name": "thigh_right",
+   "parent": "leg_right",
+   "from": [
+    0.5,
+    7.5,
+    -2.25
+   ],
+   "to": [
+    4.5,
+    13,
+    2.25
+   ],
+   "box_uv": true,
+   "uv_offset": [
+    43,
+    44
+   ]
+  },
+  {
+   "op": "add_cube",
+   "name": "shank_right",
+   "parent": "shin_right",
+   "from": [
+    1.25,
+    4,
+    -1.25
+   ],
+   "to": [
+    3.75,
+    9,
+    1.25
+   ],
+   "box_uv": true,
+   "uv_offset": [
+    10,
+    54
+   ]
+  },
+  {
+   "op": "add_cube",
+   "name": "tarsus_right",
+   "parent": "foot_right",
+   "from": [
+    1.75,
+    1,
+    -0.75
+   ],
+   "to": [
+    3.25,
+    5,
+    0.75
+   ],
+   "box_uv": true,
+   "uv_offset": [
+    91,
+    54
+   ]
+  },
+  {
+   "op": "add_cube",
+   "name": "toe_right_0",
+   "parent": "foot_right",
+   "from": [
+    2.0,
+    0,
+    -4
+   ],
+   "to": [
+    3.0,
+    1,
+    0
+   ],
+   "box_uv": true,
+   "uv_offset": [
+    10,
+    62
+   ],
+   "rotation": [
+    0,
+    -22,
+    0
+   ],
+   "origin": [
+    2.5,
+    0.5,
+    0
+   ]
+  },
+  {
+   "op": "add_cube",
+   "name": "toe_right_1",
+   "parent": "foot_right",
+   "from": [
+    2.0,
+    0,
+    -4
+   ],
+   "to": [
+    3.0,
+    1,
+    0
+   ],
+   "box_uv": true,
+   "uv_offset": [
+    20,
+    62
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "origin": [
+    2.5,
+    0.5,
+    0
+   ]
+  },
+  {
+   "op": "add_cube",
+   "name": "toe_right_2",
+   "parent": "foot_right",
+   "from": [
+    2.0,
+    0,
+    -4
+   ],
+   "to": [
+    3.0,
+    1,
+    0
+   ],
+   "box_uv": true,
+   "uv_offset": [
+    30,
+    62
+   ],
+   "rotation": [
+    0,
+    22,
+    0
+   ],
+   "origin": [
+    2.5,
+    0.5,
+    0
+   ]
+  },
+  {
+   "op": "add_cube",
+   "name": "toe_right_back",
+   "parent": "foot_right",
+   "from": [
+    2.0,
+    0,
+    0
+   ],
+   "to": [
+    3.0,
+    1,
+    2
+   ],
+   "box_uv": true,
+   "uv_offset": [
+    82,
+    62
+   ]
+  },
+  {
+   "op": "add_cube",
+   "name": "tail_base",
+   "parent": "tail_1",
+   "from": [
+    -1.5,
+    12,
+    2.5
+   ],
+   "to": [
+    1.5,
+    15.5,
+    6
+   ],
+   "box_uv": true,
+   "uv_offset": [
+    36,
+    54
+   ]
+  },
+  {
+   "op": "add_cube",
+   "name": "fan_1",
+   "parent": "feather_fan_1",
+   "from": [
+    0,
+    10.75,
+    5.5
+   ],
+   "to": [
+    0,
+    16.75,
+    21.5
+   ],
+   "box_uv": true,
+   "uv_offset": [
+    0,
+    0
+   ],
+   "inflate": 0.01
+  },
+  {
+   "op": "add_cube",
+   "name": "fan_2",
+   "parent": "feather_fan_2",
+   "from": [
+    0,
+    10.75,
+    5.5
+   ],
+   "to": [
+    0,
+    16.75,
+    21.5
+   ],
+   "box_uv": true,
+   "uv_offset": [
+    32,
+    0
+   ],
+   "inflate": 0.01
+  },
+  {
+   "op": "add_cube",
+   "name": "fan_3",
+   "parent": "feather_fan_3",
+   "from": [
+    0,
+    10.75,
+    5.5
+   ],
+   "to": [
+    0,
+    16.75,
+    21.5
+   ],
+   "box_uv": true,
+   "uv_offset": [
+    64,
+    0
+   ],
+   "inflate": 0.01
+  },
+  {
+   "op": "add_cube",
+   "name": "fan_4",
+   "parent": "feather_fan_4",
+   "from": [
+    0,
+    10.75,
+    5.5
+   ],
+   "to": [
+    0,
+    16.75,
+    21.5
+   ],
+   "box_uv": true,
+   "uv_offset": [
+    96,
+    0
+   ],
+   "inflate": 0.01
+  },
+  {
+   "op": "add_cube",
+   "name": "fan_5",
+   "parent": "feather_fan_5",
+   "from": [
+    0,
+    10.75,
+    5.5
+   ],
+   "to": [
+    0,
+    16.75,
+    21.5
+   ],
+   "box_uv": true,
+   "uv_offset": [
+    0,
+    22
+   ],
+   "inflate": 0.01
+  }
+ ]
+}

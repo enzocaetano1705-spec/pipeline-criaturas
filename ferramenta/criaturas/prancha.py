@@ -1,7 +1,8 @@
 """Prancha padrão do usuário: uma imagem com o conceito à esquerda e frente, lado, costas e 3/4 numa grade 2×2 à direita.
 
 As divisórias são linhas cinza-claras (~#d3d5d9). Localizamos as linhas; se não acharmos, usamos as proporções do
-padrão (conceito = metade esquerda). O rótulo no canto superior esquerdo de cada quadro é apagado.
+padrão (conceito = metade esquerda). O rótulo no canto superior esquerdo de cada quadro é apagado, e molduras e
+fundos cinza claros (há uma variante com cada quadro emoldurado e a imagem num retângulo cinza) viram branco.
 """
 
 from pathlib import Path
@@ -69,5 +70,9 @@ def cortar(origem: Path | str) -> dict[str, Image.Image]:
             a = np.array(q)
             rh, rw = round(a.shape[0] * ROTULO[1]), round(a.shape[1] * ROTULO[0])
             a[:rh, :rw, :3] = 255
+            # molduras, traço sob o rótulo e o fundo cinza claro de cada imagem viram branco: o preparar acha o
+            # fundo pela cor das bordas e precisa de uma cor só (a criatura tem contorno escuro e cores saturadas)
+            mx, mn = a[..., :3].max(axis=-1), a[..., :3].min(axis=-1)
+            a[(mn >= 195) & (mx - mn <= 14), :3] = 255
             saida[nome] = Image.fromarray(a)
         return saida
