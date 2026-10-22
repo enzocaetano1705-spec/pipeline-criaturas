@@ -1,0 +1,28 @@
+{
+ "criatura": "greenagumo",
+ "estagio": null,
+ "etapas": {
+  "ficha": {
+   "ok": true,
+   "quando": "2026-10-21T15:37:08",
+   "erros": [],
+   "avisos": [
+    {
+     "codigo": "sem_lado",
+     "texto": "e1: falta e1-lado.png (a profundidade será estimada pela tabela)"
+    },
+    {
+     "codigo": "sem_prompt",
+     "texto": "e1: falta o prompt usado na imagem principal"
+    }
+   ],
+   "arquivos": [
+    "modelos/greenagumo/entrada.json"
+   ],
+   "resumo": {
+    "estagios": 1,
+    "status": "pronta-para-modelagem"
+   }
+  }
+ }
+}

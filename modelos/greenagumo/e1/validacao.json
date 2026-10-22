@@ -1,0 +1,19 @@
+{
+ "arquivo": "greenagumo-e1.bbmodel",
+ "motor": {
+  "erros": 0,
+  "avisos": 0
+ },
+ "cubos": 9,
+ "ossos": 8,
+ "erros": [],
+ "avisos": [],
+ "resumo": {
+  "orcamento": {
+   "cubos": 9,
+   "p75": 52,
+   "limite": 67.6
+  }
+ },
+ "ok": true
+}

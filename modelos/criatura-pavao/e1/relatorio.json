@@ -1,0 +1,189 @@
+{
+ "criatura": "criatura-pavao",
+ "estagio": "e1",
+ "etapas": {
+  "preparar": {
+   "ok": true,
+   "quando": "2026-10-21T15:48:23",
+   "erros": [],
+   "avisos": [],
+   "arquivos": [
+    "modelos/criatura-pavao/e1/preparo/preparo.json"
+   ],
+   "resumo": {
+    "vistas": [
+     "conceito",
+     "frente",
+     "lado",
+     "costas"
+    ]
+   }
+  },
+  "classificar": {
+   "ok": true,
+   "quando": "2026-10-21T15:50:56",
+   "erros": [],
+   "avisos": [],
+   "arquivos": [
+    "modelos/criatura-pavao/e1/classificacao.json"
+   ],
+   "resumo": {
+    "sugestao_1": "cabeça-corpo › fada/fofo",
+    "parar": false
+   }
+  },
+  "medir": {
+   "ok": true,
+   "quando": "2026-10-21T15:51:34",
+   "erros": [],
+   "avisos": [
+    {
+     "codigo": "diferenca_vistas",
+     "texto": "mouth: altura 1.9 na frente e 2.3 no lado (16%); parte escondida numa vista?",
+     "parte": "mouth"
+    },
+    {
+     "codigo": "diferenca_vistas",
+     "texto": "forehead_gem: altura 2.0 na frente e 1.6 no lado (19%); parte escondida numa vista?",
+     "parte": "forehead_gem"
+    }
+   ],
+   "arquivos": [
+    "modelos/criatura-pavao/e1/medidas.json"
+   ],
+   "resumo": {
+    "partes": 11,
+    "altura": 16.0
+   }
+  },
+  "cubificar": {
+   "ok": true,
+   "quando": "2026-10-21T15:54:29",
+   "erros": [],
+   "avisos": [],
+   "arquivos": [
+    "C:\\Users\\enzoc\\dev\\pipeline-criaturas\\modelos\\criatura-pavao\\e1\\criatura-pavao-e1.bbmodel"
+   ],
+   "resumo": {
+    "arquivo": "criatura-pavao-e1.bbmodel",
+    "cubos": 38,
+    "refino": "corpo em três eixos e penas em diagonal"
+   }
+  },
+  "validar": {
+   "ok": true,
+   "quando": "2026-10-21T16:04:49",
+   "erros": [],
+   "avisos": [
+    {
+     "codigo": "motor",
+     "texto": "[warning] interpenetration: body_cube and feather_left_1_cube (different groups) interpenetrate by 1 units."
+    },
+    {
+     "codigo": "motor",
+     "texto": "[warning] interpenetration: body_cube and feather_right_1_cube (different groups) interpenetrate by 1 units."
+    },
+    {
+     "codigo": "motor",
+     "texto": "[warning] interpenetration: feather_left_1_cube and feather_left_2_cube (different groups) interpenetrate by 1 units."
+    },
+    {
+     "codigo": "motor",
+     "texto": "[warning] interpenetration: feather_right_1_cube and feather_right_2_cube (different groups) interpenetrate by 1 units."
+    }
+   ],
+   "arquivos": [
+    "modelos/criatura-pavao/e1/validacao.json"
+   ],
+   "resumo": {
+    "motor": {
+     "erros": 0,
+     "avisos": 4
+    },
+    "orcamento": {
+     "cubos": 8,
+     "p75": 54,
+     "limite": 70.2
+    }
+   }
+  },
+  "folha": {
+   "ok": true,
+   "quando": "2026-10-21T16:05:54",
+   "erros": [],
+   "avisos": [],
+   "arquivos": [
+    "modelos/criatura-pavao/e1/folha.png"
+   ],
+   "resumo": {
+    "tamanho": [
+     768,
+     384
+    ],
+    "render": "próprio"
+   }
+  },
+  "aplicar": {
+   "ok": true,
+   "quando": "2026-10-21T16:04:48",
+   "erros": [],
+   "avisos": [
+    {
+     "codigo": "motor",
+     "texto": "[warning] interpenetration: body_cube and feather_left_1_cube (different groups) interpenetrate by 1 units."
+    },
+    {
+     "codigo": "motor",
+     "texto": "[warning] interpenetration: body_cube and feather_right_1_cube (different groups) interpenetrate by 1 units."
+    },
+    {
+     "codigo": "motor",
+     "texto": "[warning] interpenetration: feather_left_1_cube and feather_left_2_cube (different groups) interpenetrate by 1 units."
+    },
+    {
+     "codigo": "motor",
+     "texto": "[warning] interpenetration: feather_right_1_cube and feather_right_2_cube (different groups) interpenetrate by 1 units."
+    }
+   ],
+   "arquivos": [],
+   "resumo": {
+    "operacoes": 8,
+    "motivo": "UVs independentes para as duas penas e pintura original em pixels"
+   }
+  },
+  "texturizar": {
+   "ok": true,
+   "quando": "2026-10-21T16:04:48",
+   "erros": [],
+   "avisos": [],
+   "arquivos": [
+    "C:\\Users\\enzoc\\dev\\pipeline-criaturas\\modelos\\criatura-pavao\\e1\\textura.png"
+   ],
+   "resumo": {
+    "estilo": "pixel art original; oito peças e rosto pintado",
+    "paleta_base": [
+     "#2cb8ae",
+     "#53c9bb",
+     "#208f91",
+     "#155e6c",
+     "#112f45",
+     "#59aa88",
+     "#e8a62f",
+     "#fff0c3",
+     "#54321b"
+    ],
+    "resolucao": [
+     64,
+     64
+    ]
+   }
+  }
+ },
+ "hashes": {
+  "criatura-pavao-e1.bbmodel": "6e89ff52c5d3b1917d16af6674b33c6538445f878c36f773904ab0c0619ef3d3"
+ },
+ "protegido": {
+  "animacoes": [],
+  "textura": false
+ }
+}

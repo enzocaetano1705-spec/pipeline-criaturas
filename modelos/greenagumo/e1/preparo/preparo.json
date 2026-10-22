@@ -1,0 +1,59 @@
+{
+ "estagio": "e1",
+ "celulas_altura": 32,
+ "altura_silhueta_px": 1024,
+ "vistas": {
+  "conceito": {
+   "origem": "docs/criaturas/greenagumo/e1-conceito.png",
+   "metodo_fundo": "bordas",
+   "tamanho_original": [
+    1376,
+    768
+   ],
+   "caixa_original": [
+    158,
+    34,
+    1249,
+    721
+   ],
+   "fator_escala": 1.49054,
+   "espelhada": false,
+   "celulas_largura": 50.812,
+   "px_por_celula_grade": 14.367,
+   "margem_grade_px": 34,
+   "recorte": "conceito-recorte.png",
+   "grade": "conceito-grade.png",
+   "img768": "conceito-768.png",
+   "mascara": "conceito-mascara.png"
+  },
+  "frente": {
+   "origem": "docs/criaturas/greenagumo/e1-frente.png",
+   "metodo_fundo": "bordas",
+   "tamanho_original": [
+    1376,
+    768
+   ],
+   "caixa_original": [
+    158,
+    34,
+    1249,
+    721
+   ],
+   "fator_escala": 1.49054,
+   "espelhada": false,
+   "celulas_largura": 50.812,
+   "px_por_celula_grade": 14.367,
+   "margem_grade_px": 34,
+   "recorte": "frente-recorte.png",
+   "grade": "frente-grade.png",
+   "img768": "frente-768.png",
+   "mascara": "frente-mascara.png"
+  }
+ },
+ "avisos": [
+  {
+   "codigo": "sem_lado",
+   "texto": "e1: sem vista lateral; a profundidade será estimada"
+  }
+ ]
+}

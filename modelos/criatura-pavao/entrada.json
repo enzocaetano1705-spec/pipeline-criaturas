@@ -1,0 +1,62 @@
+{
+ "nome": "criatura-pavao",
+ "titulo": "Criatura Pavao",
+ "status": "pronta-para-modelagem",
+ "destino": [
+  "roblox"
+ ],
+ "estilo": "cobblemon",
+ "pasta": "docs/criaturas/criatura-pavao",
+ "ideia": "primeiro estágio de uma linhagem avinídea; corpo redondo turquesa com duas penas de pavão, olhos âmbar e detalhes dourados.",
+ "motivos": "penas de pavão, turquesa e dourado. Segundo estágio avinídeo; terceiro avinídeo humanoide, conforme o usuário.",
+ "imagem_linhagem": null,
+ "estagios": [
+  {
+   "id": "e1",
+   "nome": "criatura-pavao",
+   "estagio": "1 de 3",
+   "estagio_tabela": "inicial",
+   "estagio_cobblemon": "1º de 3",
+   "categoria_palpite": "cabeça-corpo > ave",
+   "categoria_confirmada": {
+    "plano": "cabeça-corpo",
+    "nicho": "ave"
+   },
+   "altura_blocos": 1.0,
+   "imagens": {
+    "conceito": "e1-conceito.png",
+    "frente": "e1-frente.png",
+    "lado": "e1-lado.png",
+    "costas": "e1-costas.png"
+   },
+   "nao_mostra": "Sem membros visíveis; corpo e cabeça fundidos numa bola. Duas penas de pavão arqueadas no topo; não são asas nem orelhas. Prompt original não fornecido: usar somente a imagem.",
+   "partes_finas": "Duas penas de pavão no topo, em três segmentos cada.",
+   "rosto": "Olhos âmbar grandes, gema dourada central e sorriso com dentes pequenos.",
+   "movimento": "Ainda não definido pelo usuário; corpo sem membros visíveis.",
+   "prompt": ""
+  }
+ ],
+ "erros": [],
+ "avisos": [
+  {
+   "codigo": "tamanho_imagem",
+   "texto": "e1: e1-conceito.png tem lado maior 788 px (recomendado 1024–1536)"
+  },
+  {
+   "codigo": "tamanho_imagem",
+   "texto": "e1: e1-frente.png tem lado maior 391 px (recomendado 1024–1536)"
+  },
+  {
+   "codigo": "tamanho_imagem",
+   "texto": "e1: e1-lado.png tem lado maior 389 px (recomendado 1024–1536)"
+  },
+  {
+   "codigo": "tamanho_imagem",
+   "texto": "e1: e1-costas.png tem lado maior 391 px (recomendado 1024–1536)"
+  },
+  {
+   "codigo": "sem_prompt",
+   "texto": "e1: falta o prompt usado na imagem principal"
+  }
+ ]
+}

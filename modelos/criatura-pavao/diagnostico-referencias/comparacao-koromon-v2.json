@@ -1,0 +1,445 @@
+{
+  "versao": 1,
+  "modo": "analogia",
+  "aprovacao_artistica": "nao_avaliada",
+  "referencia": {
+    "arquivo": "C:\\Users\\enzoc\\Downloads\\referencias-criaturas\\the-digimod\\blockbench\\babies2\\koromon.bbmodel",
+    "sha256": "a75fbafd5bd767f08359a776078870ea8a15d60d88a7e2947bb83599d0400309",
+    "ancora": "corpo",
+    "resolucao_uv": [
+      64,
+      64
+    ],
+    "textura_incorporada_px": [
+      64,
+      64
+    ],
+    "unidade_densidade": "pixels reais",
+    "unidade_area_textura": "pixels quadrados",
+    "partes": {
+      "corpo": {
+        "elementos_selecionados": [
+          {
+            "nome": "cube",
+            "uuid": "1e623bfa-89cb-abe0-dc18-1c0704ee7e44"
+          },
+          {
+            "nome": "cube",
+            "uuid": "72a91eea-e041-0920-d283-1bc43d6e15a3"
+          }
+        ],
+        "pecas": 2,
+        "solidos": 2,
+        "planos": 0,
+        "dimensoes_por_altura_ancora": {
+          "largura": 1.0909090909090908,
+          "altura": 1.0,
+          "profundidade": 1.0
+        },
+        "centro_relativo_ancora": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 0.0
+        },
+        "area_planos_projetada_por_altura_ancora_quadrada": {
+          "frente": 0.0,
+          "lado": 0.0,
+          "cima": 0.0
+        },
+        "textura": {
+          "texels_por_altura_ancora_mediana": 11.0,
+          "maior_face_north_texels_area": 84.0,
+          "fracao_alfa_opaca_por_face": 0.8795180722891566,
+          "faces_sem_uv_explicito": 0
+        }
+      },
+      "ornamentos": {
+        "elementos_selecionados": [
+          {
+            "nome": "cube",
+            "uuid": "2c2baedf-4baf-4a03-48a5-a4f767de64fb"
+          },
+          {
+            "nome": "cube",
+            "uuid": "bda30f0b-5668-dbc5-f2c3-a1cc5eeee26b"
+          },
+          {
+            "nome": "cube",
+            "uuid": "8bc9f554-b0af-70f0-db88-366198c78b55"
+          },
+          {
+            "nome": "cube",
+            "uuid": "ff0a7145-31d3-0437-f702-49a85f1c25c1"
+          }
+        ],
+        "pecas": 4,
+        "solidos": 0,
+        "planos": 4,
+        "dimensoes_por_altura_ancora": {
+          "largura": 1.2727272727272727,
+          "altura": 0.4514628589795083,
+          "profundidade": 0.9490260823631899
+        },
+        "centro_relativo_ancora": {
+          "x": 0.0,
+          "y": 0.7257314294897541,
+          "z": -0.01658854050138854
+        },
+        "area_planos_projetada_por_altura_ancora_quadrada": {
+          "frente": 0.913013372717971,
+          "lado": 0.0,
+          "cima": 1.1396784004224838
+        },
+        "textura": {
+          "texels_por_altura_ancora_mediana": 11.0,
+          "maior_face_north_texels_area": 42.0,
+          "fracao_alfa_opaca_por_face": 0.48484848484848486,
+          "faces_sem_uv_explicito": 0
+        }
+      }
+    }
+  },
+  "candidato": {
+    "arquivo": "C:\\Users\\enzoc\\dev\\pipeline-criaturas\\modelos\\criatura-pavao\\revisao-v2\\criatura-pavao-e1-v2.bbmodel",
+    "sha256": "d84e7bf53ead78f889a0381ffa2c5366fb3e8bef345cc4689f94f9186b5b90b7",
+    "ancora": "corpo",
+    "resolucao_uv": [
+      128,
+      128
+    ],
+    "textura_incorporada_px": [
+      128,
+      128
+    ],
+    "unidade_densidade": "pixels reais",
+    "unidade_area_textura": "pixels quadrados",
+    "partes": {
+      "corpo": {
+        "elementos_selecionados": [
+          {
+            "nome": "body_cube",
+            "uuid": "843767cd-5eff-464f-a8cf-e8c543f28bec"
+          },
+          {
+            "nome": "body_crown",
+            "uuid": "ce28f7ac-a6b7-46e7-9a0d-150b91742f3c"
+          },
+          {
+            "nome": "body_cube_2",
+            "uuid": "6a958286-09c7-42e8-88a2-06a044745d2b"
+          }
+        ],
+        "pecas": 3,
+        "solidos": 3,
+        "planos": 0,
+        "dimensoes_por_altura_ancora": {
+          "largura": 1.1851851851851851,
+          "altura": 1.0,
+          "profundidade": 0.8888888888888888
+        },
+        "centro_relativo_ancora": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 0.0
+        },
+        "area_planos_projetada_por_altura_ancora_quadrada": {
+          "frente": 0.0,
+          "lado": 0.0,
+          "cima": 0.0
+        },
+        "textura": {
+          "texels_por_altura_ancora_mediana": 27.100559007287334,
+          "maior_face_north_texels_area": 608.0,
+          "fracao_alfa_opaca_por_face": 1.0,
+          "faces_sem_uv_explicito": 0
+        }
+      },
+      "ornamentos": {
+        "elementos_selecionados": [
+          {
+            "nome": "feather_left_1_cube",
+            "uuid": "e554d8ba-4b4f-4eab-ac91-d363adc3b99c"
+          },
+          {
+            "nome": "feather_left_2_cube",
+            "uuid": "234be97b-4131-47b6-aefd-a4e770ad7521"
+          },
+          {
+            "nome": "feather_left_3_cube",
+            "uuid": "3fd21bb3-3a86-4bc5-8808-9d52c91ca2f4"
+          },
+          {
+            "nome": "feather_right_1_cube",
+            "uuid": "1d1ca4ab-d285-41dd-9e34-aec32e774d12"
+          },
+          {
+            "nome": "feather_right_2_cube",
+            "uuid": "72fcf143-0b98-45a3-a6fd-bd2cd443154e"
+          },
+          {
+            "nome": "feather_right_3_cube",
+            "uuid": "62ebf057-660d-470e-8f8c-29f7339e479a"
+          }
+        ],
+        "pecas": 6,
+        "solidos": 0,
+        "planos": 6,
+        "dimensoes_por_altura_ancora": {
+          "largura": 2.203668589891047,
+          "altura": 0.7315469701905377,
+          "profundidade": 0.9252330046398427
+        },
+        "centro_relativo_ancora": {
+          "x": 0.0,
+          "y": 0.7030450950702487,
+          "z": 0.41301587587685334
+        },
+        "area_planos_projetada_por_altura_ancora_quadrada": {
+          "frente": 0.871459624526309,
+          "lado": 0.7846657703657658,
+          "cima": 0.08200069648801865
+        },
+        "textura": {
+          "texels_por_altura_ancora_mediana": 28.48688791235986,
+          "maior_face_north_texels_area": 176.0,
+          "fracao_alfa_opaca_por_face": 0.38266384778012685,
+          "faces_sem_uv_explicito": 0
+        }
+      }
+    }
+  },
+  "diferencas": [
+    {
+      "metrica": "corpo.pecas",
+      "referencia": 2,
+      "candidato": 3,
+      "delta": 1,
+      "variacao_relativa": 0.5
+    },
+    {
+      "metrica": "corpo.solidos",
+      "referencia": 2,
+      "candidato": 3,
+      "delta": 1,
+      "variacao_relativa": 0.5
+    },
+    {
+      "metrica": "corpo.planos",
+      "referencia": 0,
+      "candidato": 0,
+      "delta": 0,
+      "variacao_relativa": null
+    },
+    {
+      "metrica": "corpo.dimensoes_por_altura_ancora.largura",
+      "referencia": 1.0909090909090908,
+      "candidato": 1.1851851851851851,
+      "delta": 0.09427609427609429,
+      "variacao_relativa": 0.08641975308641978
+    },
+    {
+      "metrica": "corpo.dimensoes_por_altura_ancora.altura",
+      "referencia": 1.0,
+      "candidato": 1.0,
+      "delta": 0.0,
+      "variacao_relativa": 0.0
+    },
+    {
+      "metrica": "corpo.dimensoes_por_altura_ancora.profundidade",
+      "referencia": 1.0,
+      "candidato": 0.8888888888888888,
+      "delta": -0.11111111111111116,
+      "variacao_relativa": -0.11111111111111116
+    },
+    {
+      "metrica": "corpo.centro_relativo_ancora.x",
+      "referencia": 0.0,
+      "candidato": 0.0,
+      "delta": 0.0,
+      "variacao_relativa": null
+    },
+    {
+      "metrica": "corpo.centro_relativo_ancora.y",
+      "referencia": 0.0,
+      "candidato": 0.0,
+      "delta": 0.0,
+      "variacao_relativa": null
+    },
+    {
+      "metrica": "corpo.centro_relativo_ancora.z",
+      "referencia": 0.0,
+      "candidato": 0.0,
+      "delta": 0.0,
+      "variacao_relativa": null
+    },
+    {
+      "metrica": "corpo.area_planos_projetada_por_altura_ancora_quadrada.frente",
+      "referencia": 0.0,
+      "candidato": 0.0,
+      "delta": 0.0,
+      "variacao_relativa": null
+    },
+    {
+      "metrica": "corpo.area_planos_projetada_por_altura_ancora_quadrada.lado",
+      "referencia": 0.0,
+      "candidato": 0.0,
+      "delta": 0.0,
+      "variacao_relativa": null
+    },
+    {
+      "metrica": "corpo.area_planos_projetada_por_altura_ancora_quadrada.cima",
+      "referencia": 0.0,
+      "candidato": 0.0,
+      "delta": 0.0,
+      "variacao_relativa": null
+    },
+    {
+      "metrica": "corpo.textura.texels_por_altura_ancora_mediana",
+      "referencia": 11.0,
+      "candidato": 27.100559007287334,
+      "delta": 16.100559007287334,
+      "variacao_relativa": 1.4636871824806668
+    },
+    {
+      "metrica": "corpo.textura.maior_face_north_texels_area",
+      "referencia": 84.0,
+      "candidato": 608.0,
+      "delta": 524.0,
+      "variacao_relativa": 6.238095238095238
+    },
+    {
+      "metrica": "corpo.textura.fracao_alfa_opaca_por_face",
+      "referencia": 0.8795180722891566,
+      "candidato": 1.0,
+      "delta": 0.12048192771084343,
+      "variacao_relativa": 0.1369863013698631
+    },
+    {
+      "metrica": "corpo.textura.faces_sem_uv_explicito",
+      "referencia": 0,
+      "candidato": 0,
+      "delta": 0,
+      "variacao_relativa": null
+    },
+    {
+      "metrica": "ornamentos.pecas",
+      "referencia": 4,
+      "candidato": 6,
+      "delta": 2,
+      "variacao_relativa": 0.5
+    },
+    {
+      "metrica": "ornamentos.solidos",
+      "referencia": 0,
+      "candidato": 0,
+      "delta": 0,
+      "variacao_relativa": null
+    },
+    {
+      "metrica": "ornamentos.planos",
+      "referencia": 4,
+      "candidato": 6,
+      "delta": 2,
+      "variacao_relativa": 0.5
+    },
+    {
+      "metrica": "ornamentos.dimensoes_por_altura_ancora.largura",
+      "referencia": 1.2727272727272727,
+      "candidato": 2.203668589891047,
+      "delta": 0.9309413171637744,
+      "variacao_relativa": 0.7314538920572513
+    },
+    {
+      "metrica": "ornamentos.dimensoes_por_altura_ancora.altura",
+      "referencia": 0.4514628589795083,
+      "candidato": 0.7315469701905377,
+      "delta": 0.28008411121102944,
+      "variacao_relativa": 0.620392365928251
+    },
+    {
+      "metrica": "ornamentos.dimensoes_por_altura_ancora.profundidade",
+      "referencia": 0.9490260823631899,
+      "candidato": 0.9252330046398427,
+      "delta": -0.023793077723347156,
+      "variacao_relativa": -0.025071047219376218
+    },
+    {
+      "metrica": "ornamentos.centro_relativo_ancora.x",
+      "referencia": 0.0,
+      "candidato": 0.0,
+      "delta": 0.0,
+      "variacao_relativa": null
+    },
+    {
+      "metrica": "ornamentos.centro_relativo_ancora.y",
+      "referencia": 0.7257314294897541,
+      "candidato": 0.7030450950702487,
+      "delta": -0.022686334419505405,
+      "variacao_relativa": -0.031259958570976694
+    },
+    {
+      "metrica": "ornamentos.centro_relativo_ancora.z",
+      "referencia": -0.01658854050138854,
+      "candidato": 0.41301587587685334,
+      "delta": 0.42960441637824187,
+      "variacao_relativa": 25.897662084393858
+    },
+    {
+      "metrica": "ornamentos.area_planos_projetada_por_altura_ancora_quadrada.frente",
+      "referencia": 0.913013372717971,
+      "candidato": 0.871459624526309,
+      "delta": -0.04155374819166202,
+      "variacao_relativa": -0.04551274869935332
+    },
+    {
+      "metrica": "ornamentos.area_planos_projetada_por_altura_ancora_quadrada.lado",
+      "referencia": 0.0,
+      "candidato": 0.7846657703657658,
+      "delta": 0.7846657703657658,
+      "variacao_relativa": null
+    },
+    {
+      "metrica": "ornamentos.area_planos_projetada_por_altura_ancora_quadrada.cima",
+      "referencia": 1.1396784004224838,
+      "candidato": 0.08200069648801865,
+      "delta": -1.0576777039344651,
+      "variacao_relativa": -0.9280492668303438
+    },
+    {
+      "metrica": "ornamentos.textura.texels_por_altura_ancora_mediana",
+      "referencia": 11.0,
+      "candidato": 28.48688791235986,
+      "delta": 17.48688791235986,
+      "variacao_relativa": 1.5897170829418057
+    },
+    {
+      "metrica": "ornamentos.textura.maior_face_north_texels_area",
+      "referencia": 42.0,
+      "candidato": 176.0,
+      "delta": 134.0,
+      "variacao_relativa": 3.1904761904761907
+    },
+    {
+      "metrica": "ornamentos.textura.fracao_alfa_opaca_por_face",
+      "referencia": 0.48484848484848486,
+      "candidato": 0.38266384778012685,
+      "delta": -0.10218463706835801,
+      "variacao_relativa": -0.21075581395348839
+    },
+    {
+      "metrica": "ornamentos.textura.faces_sem_uv_explicito",
+      "referencia": 0,
+      "candidato": 0,
+      "delta": 0,
+      "variacao_relativa": null
+    }
+  ],
+  "limites": [
+    "Diferença de uma referência não é defeito: a imagem da criatura decide as proporções.",
+    "Caixas e áreas ignoram inflate, recorte alfa, oclusão e animação; não são silhuetas visíveis.",
+    "Alfa mede texels por face (inclui faces internas e UVs compartilhados), não buracos externos.",
+    "Não mede expressão, posição de olhos/boca, qualidade de pixel art ou aprovação artística.",
+    "Inclui todos os cubos selecionados, mesmo ocultos/não exportáveis; selecione apenas as peças relevantes."
+  ],
+  "metricas_nao_comparaveis": []
+}

@@ -1,0 +1,16 @@
+{
+ "vistas": {"frente": {"imagem": "preparo/frente-grade.png", "celulas_largura": 50.8, "celulas_altura": 32}},
+ "partes": [
+  {"id": "body", "pai": null, "tipo": "volume", "simetria": "central", "caixas": {"frente": [10, 8.5, 41, 32]}, "papel_cor": "pelo"},
+  {"id": "feather_left", "pai": "body", "tipo": "plano", "simetria": "esquerda", "espelho": "feather_right", "caixas": {"frente": [26, 0, 49, 10.8]}, "papel_cor": "pena"},
+  {"id": "eye_left", "pai": "body", "tipo": "adesivo", "simetria": "esquerda", "espelho": "eye_right", "caixas": {"frente": [27, 14.2, 34, 19.8]}, "papel_cor": "olho"},
+  {"id": "mouth", "pai": "body", "tipo": "adesivo", "simetria": "central", "caixas": {"frente": [11.5, 19.5, 37.5, 24]}, "papel_cor": "boca"},
+  {"id": "gem", "pai": "body", "tipo": "adesivo", "simetria": "central", "caixas": {"frente": [23, 11.8, 26, 15.3]}, "papel_cor": "gema"}
+ ],
+ "papeis_cor": {"pelo": "#48b8b8", "pena": "#48a8a8", "olho": "#b07020", "boca": "#1a2a2a", "gema": "#e8b858", "pena_olho": "#183858"},
+ "incertezas": [
+  {"parte": "body", "item": "profundidade", "resolucao": "tabela", "nota": "sem vista de lado; bola: profundidade igual à largura"},
+  {"parte": "feather_left", "item": "posição em z e inclinação", "resolucao": "tabela", "nota": "sem vista de lado; plano no meio da cabeça, de pé"},
+  {"parte": "body", "item": "costas e base", "resolucao": "tabela", "nota": "não aparecem; preenchidas pela cor do pelo"}
+ ]
+}

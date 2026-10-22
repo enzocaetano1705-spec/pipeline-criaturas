@@ -1,0 +1,168 @@
+{
+  "vistas": {
+    "frente": {
+      "imagem": "preparo/frente-grade.png"
+    },
+    "lado": {
+      "imagem": "preparo/lado-grade.png"
+    }
+  },
+  "partes": [
+    {
+      "id": "body",
+      "pai": null,
+      "tipo": "volume",
+      "simetria": "central",
+      "caixas": {
+        "frente": [
+          6.9,
+          7.1,
+          38.3,
+          32
+        ],
+        "lado": [
+          0.1,
+          6.5,
+          28.5,
+          32
+        ]
+      },
+      "papel_cor": "primaria"
+    },
+    {
+      "id": "eye_left",
+      "pai": "body",
+      "tipo": "adesivo",
+      "simetria": "esquerda",
+      "espelho": "eye_right",
+      "caixas": {
+        "frente": [
+          25,
+          14.3,
+          31.9,
+          20.5
+        ],
+        "lado": [
+          2.8,
+          14,
+          8,
+          20.2
+        ]
+      },
+      "papel_cor": "ambar"
+    },
+    {
+      "id": "mouth",
+      "pai": "body",
+      "tipo": "adesivo",
+      "simetria": "central",
+      "caixas": {
+        "frente": [
+          10.2,
+          20.4,
+          35.2,
+          24.2
+        ],
+        "lado": [
+          0.2,
+          19.6,
+          11.7,
+          24.2
+        ]
+      },
+      "papel_cor": "escura"
+    },
+    {
+      "id": "forehead_gem",
+      "pai": "body",
+      "tipo": "adesivo",
+      "simetria": "central",
+      "caixas": {
+        "frente": [
+          21.1,
+          11.2,
+          23.8,
+          15.1
+        ],
+        "lado": [
+          2.3,
+          11.8,
+          4.5,
+          15
+        ]
+      },
+      "papel_cor": "dourada"
+    },
+    {
+      "id": "feather_left_1",
+      "pai": "body",
+      "tipo": "plano",
+      "simetria": "esquerda",
+      "espelho": "feather_right_1",
+      "caixas": {
+        "frente": [
+          23.8,
+          3.8,
+          30.2,
+          10.1
+        ]
+      },
+      "papel_cor": "escura"
+    },
+    {
+      "id": "feather_left_2",
+      "pai": "feather_left_1",
+      "tipo": "plano",
+      "simetria": "esquerda",
+      "espelho": "feather_right_2",
+      "caixas": {
+        "frente": [
+          28.3,
+          0.2,
+          38.2,
+          5.1
+        ]
+      },
+      "papel_cor": "primaria"
+    },
+    {
+      "id": "feather_left_3",
+      "pai": "feather_left_2",
+      "tipo": "plano",
+      "simetria": "esquerda",
+      "espelho": "feather_right_3",
+      "caixas": {
+        "frente": [
+          36,
+          0.7,
+          46.4,
+          9.7
+        ]
+      },
+      "papel_cor": "verde"
+    }
+  ],
+  "papeis_cor": {
+    "primaria": "#30c0b8",
+    "escura": "#005878",
+    "verde": "#003060",
+    "dourada": "#e09810",
+    "ambar": "#f0b030",
+    "creme": "#f8f8f8",
+    "azul": "#003060"
+  },
+  "incertezas": [
+    {
+      "parte": "feather_left_1",
+      "item": "profundidade",
+      "resolucao": "imagem",
+      "nota": "As duas penas se sobrepõem de perfil. Arco frontal dividido em três planos recortáveis por lado; profundidade ajustável na revisão geométrica."
+    },
+    {
+      "parte": "body",
+      "item": "altura no jogo",
+      "resolucao": "tabela",
+      "nota": "Altura inicial da tabela de ave; não altera as proporções da imagem."
+    }
+  ]
+}

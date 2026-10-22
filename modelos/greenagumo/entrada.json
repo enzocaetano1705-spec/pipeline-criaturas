@@ -1,0 +1,50 @@
+{
+ "nome": "greenagumo",
+ "titulo": "Greenagumo",
+ "status": "pronta-para-modelagem",
+ "destino": [
+  "roblox"
+ ],
+ "estilo": "cobblemon",
+ "pasta": "docs/criaturas/greenagumo",
+ "ideia": "bebê bola de pelo turquesa com penas de pavão na cabeça; a forma final será ave/humanoide.",
+ "motivos": "## Estágio 1 — greenagumo",
+ "imagem_linhagem": null,
+ "estagios": [
+  {
+   "id": "e1",
+   "nome": "greenagumo",
+   "estagio": "bebê (pré-estágio)",
+   "estagio_tabela": "inicial",
+   "estagio_cobblemon": "bebê",
+   "categoria_palpite": "cabeça-corpo › ave",
+   "categoria_confirmada": {
+    "plano": "cabeça-corpo",
+    "nicho": "ave"
+   },
+   "altura_blocos": 0.86,
+   "imagens": {
+    "conceito": "e1-conceito.png",
+    "frente": "e1-frente.png",
+    "lado": null,
+    "costas": null
+   },
+   "nao_mostra": "perfil e costas: profundidade estimada como bola; de onde as penas saem atrás",
+   "partes_finas": "as duas penas de pavão",
+   "rosto": "olhos grandes âmbar, sorriso largo com dentes, gema dourada na testa",
+   "movimento": "quica (bebê sem pernas)",
+   "prompt": ""
+  }
+ ],
+ "erros": [],
+ "avisos": [
+  {
+   "codigo": "sem_lado",
+   "texto": "e1: falta e1-lado.png (a profundidade será estimada pela tabela)"
+  },
+  {
+   "codigo": "sem_prompt",
+   "texto": "e1: falta o prompt usado na imagem principal"
+  }
+ ]
+}

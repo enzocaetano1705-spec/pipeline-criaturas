@@ -1,0 +1,538 @@
+{
+  "operations": [
+    {
+      "op": "remove_node",
+      "target": "body_cube"
+    },
+    {
+      "op": "remove_node",
+      "target": "body_cube_2"
+    },
+    {
+      "op": "remove_node",
+      "target": "feather_left_1_cube"
+    },
+    {
+      "op": "remove_node",
+      "target": "feather_left_2_cube"
+    },
+    {
+      "op": "remove_node",
+      "target": "feather_left_3_cube"
+    },
+    {
+      "op": "remove_node",
+      "target": "feather_right_1_cube"
+    },
+    {
+      "op": "remove_node",
+      "target": "feather_right_2_cube"
+    },
+    {
+      "op": "remove_node",
+      "target": "feather_right_3_cube"
+    },
+    {
+      "op": "set_model_properties",
+      "resolution": {
+        "width": 128,
+        "height": 128
+      }
+    },
+    {
+      "op": "update_node",
+      "target": "feather_left_1",
+      "origin": [
+        -2.4,
+        13.1,
+        0
+      ],
+      "rotation": [
+        4,
+        42,
+        0
+      ]
+    },
+    {
+      "op": "update_node",
+      "target": "feather_left_2",
+      "origin": [
+        -5.5,
+        19.3,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "op": "update_node",
+      "target": "feather_left_3",
+      "origin": [
+        -12.0,
+        20.0,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "op": "update_node",
+      "target": "feather_right_1",
+      "origin": [
+        2.4,
+        13.1,
+        0
+      ],
+      "rotation": [
+        4,
+        -42,
+        0
+      ]
+    },
+    {
+      "op": "update_node",
+      "target": "feather_right_2",
+      "origin": [
+        5.5,
+        19.3,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "op": "update_node",
+      "target": "feather_right_3",
+      "origin": [
+        12.0,
+        20.0,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "op": "add_cube",
+      "name": "body_cube",
+      "parent": "body",
+      "from": [
+        -8,
+        2.5,
+        -6
+      ],
+      "to": [
+        8,
+        12,
+        6
+      ],
+      "box_uv": false,
+      "mirror_uv": false,
+      "faces": {
+        "down": {
+          "uv": [
+            0,
+            0,
+            32,
+            24
+          ]
+        },
+        "up": {
+          "uv": [
+            33,
+            0,
+            65,
+            24
+          ]
+        },
+        "north": {
+          "uv": [
+            54,
+            25,
+            86,
+            44
+          ]
+        },
+        "south": {
+          "uv": [
+            87,
+            25,
+            119,
+            44
+          ]
+        },
+        "east": {
+          "uv": [
+            0,
+            48,
+            24,
+            67
+          ]
+        },
+        "west": {
+          "uv": [
+            25,
+            48,
+            49,
+            67
+          ]
+        }
+      }
+    },
+    {
+      "op": "add_cube",
+      "name": "body_crown",
+      "parent": "body",
+      "from": [
+        -6.5,
+        11.7,
+        -5.5
+      ],
+      "to": [
+        6.5,
+        14,
+        5.5
+      ],
+      "box_uv": false,
+      "mirror_uv": false,
+      "faces": {
+        "down": {
+          "uv": [
+            0,
+            25,
+            26,
+            47
+          ]
+        },
+        "up": {
+          "uv": [
+            27,
+            25,
+            53,
+            47
+          ]
+        },
+        "north": {
+          "uv": [
+            56,
+            80,
+            82,
+            85
+          ]
+        },
+        "south": {
+          "uv": [
+            83,
+            80,
+            109,
+            85
+          ]
+        },
+        "east": {
+          "uv": [
+            48,
+            86,
+            70,
+            91
+          ]
+        },
+        "west": {
+          "uv": [
+            71,
+            86,
+            93,
+            91
+          ]
+        }
+      }
+    },
+    {
+      "op": "add_cube",
+      "name": "body_cube_2",
+      "parent": "body",
+      "from": [
+        -6.7,
+        0.5,
+        -5.7
+      ],
+      "to": [
+        6.7,
+        3,
+        5.7
+      ],
+      "box_uv": false,
+      "mirror_uv": false,
+      "faces": {
+        "down": {
+          "uv": [
+            66,
+            0,
+            93,
+            23
+          ]
+        },
+        "up": {
+          "uv": [
+            94,
+            0,
+            121,
+            23
+          ]
+        },
+        "north": {
+          "uv": [
+            0,
+            80,
+            27,
+            85
+          ]
+        },
+        "south": {
+          "uv": [
+            28,
+            80,
+            55,
+            85
+          ]
+        },
+        "east": {
+          "uv": [
+            0,
+            86,
+            23,
+            91
+          ]
+        },
+        "west": {
+          "uv": [
+            24,
+            86,
+            47,
+            91
+          ]
+        }
+      }
+    },
+    {
+      "op": "add_cube",
+      "name": "feather_left_1_cube",
+      "parent": "feather_left_1",
+      "from": [
+        -5.8,
+        11.8,
+        0
+      ],
+      "to": [
+        -1.5,
+        20.0,
+        0
+      ],
+      "box_uv": false,
+      "mirror_uv": false,
+      "faces": {
+        "north": {
+          "uv": [
+            50,
+            48,
+            59,
+            65
+          ]
+        },
+        "south": {
+          "uv": [
+            60,
+            48,
+            69,
+            65
+          ]
+        }
+      }
+    },
+    {
+      "op": "add_cube",
+      "name": "feather_left_2_cube",
+      "parent": "feather_left_2",
+      "from": [
+        -12.8,
+        17.5,
+        0
+      ],
+      "to": [
+        -5.1,
+        21.7,
+        0
+      ],
+      "box_uv": false,
+      "mirror_uv": false,
+      "faces": {
+        "north": {
+          "uv": [
+            34,
+            68,
+            50,
+            77
+          ]
+        },
+        "south": {
+          "uv": [
+            51,
+            68,
+            67,
+            77
+          ]
+        }
+      }
+    },
+    {
+      "op": "add_cube",
+      "name": "feather_left_3_cube",
+      "parent": "feather_left_3",
+      "from": [
+        -19.4,
+        16.5,
+        0
+      ],
+      "to": [
+        -11.8,
+        21.7,
+        0
+      ],
+      "box_uv": false,
+      "mirror_uv": false,
+      "faces": {
+        "north": {
+          "uv": [
+            90,
+            48,
+            106,
+            59
+          ]
+        },
+        "south": {
+          "uv": [
+            107,
+            48,
+            123,
+            59
+          ]
+        }
+      }
+    },
+    {
+      "op": "add_cube",
+      "name": "feather_right_1_cube",
+      "parent": "feather_right_1",
+      "from": [
+        1.5,
+        11.8,
+        0
+      ],
+      "to": [
+        5.8,
+        20.0,
+        0
+      ],
+      "box_uv": false,
+      "mirror_uv": false,
+      "faces": {
+        "north": {
+          "uv": [
+            70,
+            48,
+            79,
+            65
+          ]
+        },
+        "south": {
+          "uv": [
+            80,
+            48,
+            89,
+            65
+          ]
+        }
+      }
+    },
+    {
+      "op": "add_cube",
+      "name": "feather_right_2_cube",
+      "parent": "feather_right_2",
+      "from": [
+        5.1,
+        17.5,
+        0
+      ],
+      "to": [
+        12.8,
+        21.7,
+        0
+      ],
+      "box_uv": false,
+      "mirror_uv": false,
+      "faces": {
+        "north": {
+          "uv": [
+            68,
+            68,
+            84,
+            77
+          ]
+        },
+        "south": {
+          "uv": [
+            85,
+            68,
+            101,
+            77
+          ]
+        }
+      }
+    },
+    {
+      "op": "add_cube",
+      "name": "feather_right_3_cube",
+      "parent": "feather_right_3",
+      "from": [
+        11.8,
+        16.5,
+        0
+      ],
+      "to": [
+        19.4,
+        21.7,
+        0
+      ],
+      "box_uv": false,
+      "mirror_uv": false,
+      "faces": {
+        "north": {
+          "uv": [
+            0,
+            68,
+            16,
+            79
+          ]
+        },
+        "south": {
+          "uv": [
+            17,
+            68,
+            33,
+            79
+          ]
+        }
+      }
+    }
+  ]
+}

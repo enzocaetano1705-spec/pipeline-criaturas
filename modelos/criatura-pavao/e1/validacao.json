@@ -1,0 +1,36 @@
+{
+ "arquivo": "criatura-pavao-e1.bbmodel",
+ "motor": {
+  "erros": 0,
+  "avisos": 4
+ },
+ "cubos": 8,
+ "ossos": 12,
+ "erros": [],
+ "avisos": [
+  {
+   "codigo": "motor",
+   "texto": "[warning] interpenetration: body_cube and feather_left_1_cube (different groups) interpenetrate by 1 units."
+  },
+  {
+   "codigo": "motor",
+   "texto": "[warning] interpenetration: body_cube and feather_right_1_cube (different groups) interpenetrate by 1 units."
+  },
+  {
+   "codigo": "motor",
+   "texto": "[warning] interpenetration: feather_left_1_cube and feather_left_2_cube (different groups) interpenetrate by 1 units."
+  },
+  {
+   "codigo": "motor",
+   "texto": "[warning] interpenetration: feather_right_1_cube and feather_right_2_cube (different groups) interpenetrate by 1 units."
+  }
+ ],
+ "resumo": {
+  "orcamento": {
+   "cubos": 8,
+   "p75": 54,
+   "limite": 70.2
+  }
+ },
+ "ok": true
+}

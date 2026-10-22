@@ -1,0 +1,20 @@
+{
+ "estagio": "e1",
+ "vista": "preparo/frente-grade.png",
+ "itens": {
+  "postura": {"valor": "sem membros", "certeza": "visível", "fonte": "imagem", "nota": "bola de pelo apoiada no chão"},
+  "pernas": {"valor": {"n": 0}, "certeza": "incerto", "fonte": "imagem", "nota": "o pelo cobre a base; não aparece pata"},
+  "bracos": {"valor": 0, "certeza": "visível", "fonte": "imagem"},
+  "asas": {"valor": 0, "certeza": "visível", "fonte": "imagem"},
+  "cauda": {"valor": 0, "certeza": "oculto", "fonte": "imagem", "nota": "a frente não mostra as costas"},
+  "nadadeiras": {"valor": 0, "certeza": "visível", "fonte": "imagem"},
+  "pescoco": {"valor": "nenhum", "certeza": "visível", "fonte": "imagem"},
+  "cabeca": {"valor": {"frac_alt": 0.73}, "certeza": "visível", "fonte": "imagem", "nota": "o corpo é a cabeça: células 8,5 a 32"},
+  "focinho": {"valor": "nenhum", "certeza": "visível", "fonte": "imagem"},
+  "orelhas": {"valor": "nenhuma", "certeza": "visível", "fonte": "imagem", "nota": "as penas saem do topo como antenas"},
+  "olhos": {"valor": {"frac_alt": 0.16}, "certeza": "visível", "fonte": "imagem"},
+  "cobertura": {"valor": "pelo", "certeza": "visível", "fonte": "imagem"},
+  "extras": {"valor": ["penas de pavão na cabeça", "gema na testa", "dentes"], "certeza": "visível", "fonte": "imagem"}
+ },
+ "conflitos": []
+}

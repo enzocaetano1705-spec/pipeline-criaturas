@@ -1,0 +1,470 @@
+{
+ "nome": "criatura-pavao-e1",
+ "formato": "bedrock",
+ "resolucao": {
+  "largura": 128,
+  "altura": 128
+ },
+ "ossos": [
+  {
+   "nome": "root",
+   "pai": null,
+   "pivo": [
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "nome": "body",
+   "pai": "root",
+   "pivo": [
+    0.0,
+    6.5,
+    0.0
+   ]
+  },
+  {
+   "nome": "eye_left",
+   "pai": "body",
+   "pivo": [
+    -2.5,
+    8.5,
+    -6.01
+   ]
+  },
+  {
+   "nome": "mouth",
+   "pai": "body",
+   "pivo": [
+    0.0,
+    5.0,
+    -7.01
+   ]
+  },
+  {
+   "nome": "forehead_gem",
+   "pai": "body",
+   "pivo": [
+    0.0,
+    9.0,
+    -6.01
+   ]
+  },
+  {
+   "nome": "feather_left_1",
+   "pai": "body",
+   "pivo": [
+    -2.5,
+    12.5,
+    0.0
+   ]
+  },
+  {
+   "nome": "feather_left_2",
+   "pai": "feather_left_1",
+   "pivo": [
+    -5.5,
+    14.5,
+    0.0
+   ]
+  },
+  {
+   "nome": "feather_left_3",
+   "pai": "feather_left_2",
+   "pivo": [
+    -9.5,
+    13.0,
+    0.0
+   ]
+  },
+  {
+   "nome": "eye_right",
+   "pai": "body",
+   "pivo": [
+    2.5,
+    8.5,
+    -6.01
+   ]
+  },
+  {
+   "nome": "feather_right_1",
+   "pai": "body",
+   "pivo": [
+    2.5,
+    12.5,
+    0.0
+   ]
+  },
+  {
+   "nome": "feather_right_2",
+   "pai": "feather_right_1",
+   "pivo": [
+    5.5,
+    14.5,
+    0.0
+   ]
+  },
+  {
+   "nome": "feather_right_3",
+   "pai": "feather_right_2",
+   "pivo": [
+    9.5,
+    13.0,
+    0.0
+   ]
+  }
+ ],
+ "cubos": [
+  {
+   "nome": "body_cube",
+   "osso": "body",
+   "parte": "body",
+   "tipo": "volume",
+   "from": [
+    -7.0,
+    0.0,
+    -6.0
+   ],
+   "to": [
+    7.0,
+    3.0,
+    7.0
+   ],
+   "cor": "#30c0b8",
+   "uv_offset": [
+    0,
+    19
+   ]
+  },
+  {
+   "nome": "body_cube_2",
+   "osso": "body",
+   "parte": "body",
+   "tipo": "volume",
+   "from": [
+    -8.0,
+    3.0,
+    -7.0
+   ],
+   "to": [
+    8.0,
+    7.0,
+    7.0
+   ],
+   "cor": "#30c0b8",
+   "uv_offset": [
+    0,
+    0
+   ]
+  },
+  {
+   "nome": "body_cube_3",
+   "osso": "body",
+   "parte": "body",
+   "tipo": "volume",
+   "from": [
+    -7.5,
+    7.0,
+    -6.0
+   ],
+   "to": [
+    7.5,
+    10.0,
+    7.0
+   ],
+   "cor": "#30c0b8",
+   "uv_offset": [
+    61,
+    0
+   ]
+  },
+  {
+   "nome": "body_cube_4",
+   "osso": "body",
+   "parte": "body",
+   "tipo": "volume",
+   "from": [
+    -6.0,
+    10.0,
+    -5.0
+   ],
+   "to": [
+    6.0,
+    13.0,
+    5.0
+   ],
+   "cor": "#30c0b8",
+   "uv_offset": [
+    55,
+    19
+   ]
+  },
+  {
+   "nome": "eye_left_cube",
+   "osso": "eye_left",
+   "parte": "eye_left",
+   "tipo": "adesivo",
+   "from": [
+    -4.0,
+    7.0,
+    -6.01
+   ],
+   "to": [
+    -1.0,
+    10.0,
+    -6.01
+   ],
+   "cor": "#f0b030",
+   "uv_offset": [
+    0,
+    36
+   ]
+  },
+  {
+   "nome": "mouth_cube",
+   "osso": "mouth",
+   "parte": "mouth",
+   "tipo": "adesivo",
+   "from": [
+    -6.0,
+    4.0,
+    -7.01
+   ],
+   "to": [
+    6.0,
+    6.0,
+    -7.01
+   ],
+   "cor": "#005878",
+   "uv_offset": [
+    14,
+    36
+   ]
+  },
+  {
+   "nome": "forehead_gem_cube",
+   "osso": "forehead_gem",
+   "parte": "forehead_gem",
+   "tipo": "adesivo",
+   "from": [
+    -0.5,
+    8.0,
+    -6.01
+   ],
+   "to": [
+    0.5,
+    10.0,
+    -6.01
+   ],
+   "cor": "#e09810",
+   "uv_offset": [
+    39,
+    36
+   ]
+  },
+  {
+   "nome": "feather_left_1_cube",
+   "osso": "feather_left_1",
+   "parte": "feather_left_1",
+   "tipo": "plano",
+   "from": [
+    -4.0,
+    11.0,
+    0.0
+   ],
+   "to": [
+    -1.0,
+    14.0,
+    0.0
+   ],
+   "cor": "#005878",
+   "uv_offset": [
+    7,
+    36
+   ]
+  },
+  {
+   "nome": "feather_left_2_cube",
+   "osso": "feather_left_2",
+   "parte": "feather_left_2",
+   "tipo": "plano",
+   "from": [
+    -8.0,
+    13.0,
+    0.0
+   ],
+   "to": [
+    -3.0,
+    16.0,
+    0.0
+   ],
+   "cor": "#30c0b8",
+   "uv_offset": [
+    111,
+    19
+   ]
+  },
+  {
+   "nome": "feather_left_3_cube",
+   "osso": "feather_left_3",
+   "parte": "feather_left_3",
+   "tipo": "plano",
+   "from": [
+    -12.0,
+    11.0,
+    0.0
+   ],
+   "to": [
+    -7.0,
+    15.0,
+    0.0
+   ],
+   "cor": "#003060",
+   "uv_offset": [
+    100,
+    19
+   ]
+  },
+  {
+   "nome": "eye_right_cube",
+   "osso": "eye_right",
+   "parte": "eye_right",
+   "tipo": "adesivo",
+   "from": [
+    1.0,
+    7.0,
+    -6.01
+   ],
+   "to": [
+    4.0,
+    10.0,
+    -6.01
+   ],
+   "cor": "#f0b030",
+   "mirror_uv": true,
+   "uv_offset": [
+    0,
+    36
+   ]
+  },
+  {
+   "nome": "feather_right_1_cube",
+   "osso": "feather_right_1",
+   "parte": "feather_right_1",
+   "tipo": "plano",
+   "from": [
+    1.0,
+    11.0,
+    0.0
+   ],
+   "to": [
+    4.0,
+    14.0,
+    0.0
+   ],
+   "cor": "#005878",
+   "mirror_uv": true,
+   "uv_offset": [
+    7,
+    36
+   ]
+  },
+  {
+   "nome": "feather_right_2_cube",
+   "osso": "feather_right_2",
+   "parte": "feather_right_2",
+   "tipo": "plano",
+   "from": [
+    3.0,
+    13.0,
+    0.0
+   ],
+   "to": [
+    8.0,
+    16.0,
+    0.0
+   ],
+   "cor": "#30c0b8",
+   "mirror_uv": true,
+   "uv_offset": [
+    111,
+    19
+   ]
+  },
+  {
+   "nome": "feather_right_3_cube",
+   "osso": "feather_right_3",
+   "parte": "feather_right_3",
+   "tipo": "plano",
+   "from": [
+    7.0,
+    11.0,
+    0.0
+   ],
+   "to": [
+    12.0,
+    15.0,
+    0.0
+   ],
+   "cor": "#003060",
+   "mirror_uv": true,
+   "uv_offset": [
+    100,
+    19
+   ]
+  }
+ ],
+ "locators": [
+  {
+   "nome": "loc_eye_left",
+   "osso": "eye_left",
+   "posicao": [
+    -2.5,
+    8.5,
+    -6.11
+   ]
+  },
+  {
+   "nome": "loc_eye_right",
+   "osso": "eye_right",
+   "posicao": [
+    2.5,
+    8.5,
+    -6.11
+   ]
+  },
+  {
+   "nome": "loc_center",
+   "osso": "body",
+   "posicao": [
+    0.0,
+    6.5,
+    0.0
+   ]
+  },
+  {
+   "nome": "loc_top",
+   "osso": "body",
+   "posicao": [
+    0.0,
+    18.0,
+    0.0
+   ]
+  },
+  {
+   "nome": "loc_ground",
+   "osso": "body",
+   "posicao": [
+    0.0,
+    0.0,
+    0.0
+   ]
+  }
+ ],
+ "orcamento": {
+  "cubos": 14,
+  "p75": 54,
+  "limite": 70.2
+ }
+}

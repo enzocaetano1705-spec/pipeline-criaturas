@@ -1,0 +1,305 @@
+{
+ "altura_alvo_unidades": 16.0,
+ "unidades_por_celula": 0.5,
+ "fator_vistas": {
+  "frente": 1.0,
+  "lado": 0.9833,
+  "costas": 1.0
+ },
+ "mapeamento": {
+  "frente": {
+   "centro": 22.6,
+   "fator": 1.0
+  },
+  "costas": {
+   "centro": 21.5156,
+   "fator": 1.0
+  },
+  "lado": {
+   "centro": 14.3,
+   "fator": 0.98333
+  }
+ },
+ "partes": [
+  {
+   "id": "body",
+   "pai": null,
+   "tipo": "volume",
+   "simetria": "central",
+   "espelho": null,
+   "from": [
+    -7.85,
+    0.0,
+    -6.98
+   ],
+   "to": [
+    7.85,
+    12.54,
+    6.98
+   ],
+   "profundidade": "lado",
+   "papel_cor": "primaria",
+   "fatias": [
+    {
+     "x": [
+      -5.67,
+      5.8
+     ],
+     "y": [
+      9.34,
+      12.45
+     ],
+     "z": [
+      -5.1,
+      5.1
+     ]
+    },
+    {
+     "x": [
+      -7.46,
+      7.49
+     ],
+     "y": [
+      6.23,
+      9.34
+     ],
+     "z": [
+      -6.65,
+      6.65
+     ]
+    },
+    {
+     "x": [
+      -7.85,
+      7.86
+     ],
+     "y": [
+      3.12,
+      6.23
+     ],
+     "z": [
+      -6.99,
+      6.99
+     ]
+    },
+    {
+     "x": [
+      -7.03,
+      7.16
+     ],
+     "y": [
+      0.0,
+      3.12
+     ],
+     "z": [
+      -6.31,
+      6.31
+     ]
+    }
+   ]
+  },
+  {
+   "id": "eye_left",
+   "pai": "body",
+   "tipo": "adesivo",
+   "simetria": "esquerda",
+   "espelho": "eye_right",
+   "from": [
+    -4.06,
+    5.75,
+    -6.99
+   ],
+   "to": [
+    -1.2,
+    8.85,
+    -6.99
+   ],
+   "profundidade": "lado",
+   "papel_cor": "ambar"
+  },
+  {
+   "id": "mouth",
+   "pai": "body",
+   "tipo": "adesivo",
+   "simetria": "central",
+   "espelho": null,
+   "from": [
+    -6.3,
+    3.84,
+    -6.99
+   ],
+   "to": [
+    6.2,
+    6.1,
+    -6.99
+   ],
+   "profundidade": "lado",
+   "papel_cor": "escura"
+  },
+  {
+   "id": "forehead_gem",
+   "pai": "body",
+   "tipo": "adesivo",
+   "simetria": "central",
+   "espelho": null,
+   "from": [
+    -0.6,
+    8.36,
+    -6.99
+   ],
+   "to": [
+    0.75,
+    10.4,
+    -6.99
+   ],
+   "profundidade": "lado",
+   "papel_cor": "dourada"
+  },
+  {
+   "id": "feather_left_1",
+   "pai": "body",
+   "tipo": "plano",
+   "simetria": "esquerda",
+   "espelho": "feather_right_1",
+   "from": [
+    -3.8,
+    10.95,
+    -0.0
+   ],
+   "to": [
+    -0.6,
+    14.1,
+    -0.0
+   ],
+   "profundidade": "estimada",
+   "papel_cor": "escura"
+  },
+  {
+   "id": "feather_left_2",
+   "pai": "feather_left_1",
+   "tipo": "plano",
+   "simetria": "esquerda",
+   "espelho": "feather_right_2",
+   "from": [
+    -7.8,
+    13.45,
+    -0.0
+   ],
+   "to": [
+    -2.85,
+    15.9,
+    -0.0
+   ],
+   "profundidade": "estimada",
+   "papel_cor": "primaria"
+  },
+  {
+   "id": "feather_left_3",
+   "pai": "feather_left_2",
+   "tipo": "plano",
+   "simetria": "esquerda",
+   "espelho": "feather_right_3",
+   "from": [
+    -11.9,
+    11.15,
+    -0.0
+   ],
+   "to": [
+    -6.7,
+    15.65,
+    -0.0
+   ],
+   "profundidade": "estimada",
+   "papel_cor": "verde"
+  },
+  {
+   "id": "eye_right",
+   "pai": "body",
+   "tipo": "adesivo",
+   "simetria": "direita",
+   "espelho": "eye_left",
+   "from": [
+    1.2,
+    5.75,
+    -6.99
+   ],
+   "to": [
+    4.06,
+    8.85,
+    -6.99
+   ],
+   "profundidade": "lado",
+   "papel_cor": "ambar"
+  },
+  {
+   "id": "feather_right_1",
+   "pai": "body",
+   "tipo": "plano",
+   "simetria": "direita",
+   "espelho": "feather_left_1",
+   "from": [
+    0.6,
+    10.95,
+    -0.0
+   ],
+   "to": [
+    3.8,
+    14.1,
+    -0.0
+   ],
+   "profundidade": "estimada",
+   "papel_cor": "escura"
+  },
+  {
+   "id": "feather_right_2",
+   "pai": "feather_right_1",
+   "tipo": "plano",
+   "simetria": "direita",
+   "espelho": "feather_left_2",
+   "from": [
+    2.85,
+    13.45,
+    -0.0
+   ],
+   "to": [
+    7.8,
+    15.9,
+    -0.0
+   ],
+   "profundidade": "estimada",
+   "papel_cor": "primaria"
+  },
+  {
+   "id": "feather_right_3",
+   "pai": "feather_right_2",
+   "tipo": "plano",
+   "simetria": "direita",
+   "espelho": "feather_left_3",
+   "from": [
+    6.7,
+    11.15,
+    -0.0
+   ],
+   "to": [
+    11.9,
+    15.65,
+    -0.0
+   ],
+   "profundidade": "estimada",
+   "papel_cor": "verde"
+  }
+ ],
+ "avisos": [
+  {
+   "codigo": "diferenca_vistas",
+   "texto": "mouth: altura 1.9 na frente e 2.3 no lado (16%); parte escondida numa vista?",
+   "parte": "mouth"
+  },
+  {
+   "codigo": "diferenca_vistas",
+   "texto": "forehead_gem: altura 2.0 na frente e 1.6 no lado (19%); parte escondida numa vista?",
+   "parte": "forehead_gem"
+  }
+ ],
+ "fonte_altura": "ficha"
+}

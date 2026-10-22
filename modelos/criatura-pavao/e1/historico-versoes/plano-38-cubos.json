@@ -1,0 +1,985 @@
+{
+ "nome": "criatura-pavao-e1",
+ "formato": "bedrock",
+ "resolucao": {
+  "largura": 128,
+  "altura": 128
+ },
+ "ossos": [
+  {
+   "nome": "root",
+   "pai": null,
+   "pivo": [
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "nome": "body",
+   "pai": "root",
+   "pivo": [
+    0.0,
+    6.5,
+    0.0
+   ]
+  },
+  {
+   "nome": "eye_left",
+   "pai": "body",
+   "pivo": [
+    -2.5,
+    8.5,
+    -6.01
+   ]
+  },
+  {
+   "nome": "mouth",
+   "pai": "body",
+   "pivo": [
+    0.0,
+    5.0,
+    -7.01
+   ]
+  },
+  {
+   "nome": "forehead_gem",
+   "pai": "body",
+   "pivo": [
+    0.0,
+    9.0,
+    -6.01
+   ]
+  },
+  {
+   "nome": "feather_left_1",
+   "pai": "body",
+   "pivo": [
+    -1,
+    12,
+    0
+   ],
+   "rotacao": [
+    0,
+    45,
+    0
+   ]
+  },
+  {
+   "nome": "feather_left_2",
+   "pai": "feather_left_1",
+   "pivo": [
+    -5.5,
+    14.5,
+    0.0
+   ]
+  },
+  {
+   "nome": "feather_left_3",
+   "pai": "feather_left_2",
+   "pivo": [
+    -9.5,
+    13.0,
+    0.0
+   ]
+  },
+  {
+   "nome": "eye_right",
+   "pai": "body",
+   "pivo": [
+    2.5,
+    8.5,
+    -6.01
+   ]
+  },
+  {
+   "nome": "feather_right_1",
+   "pai": "body",
+   "pivo": [
+    1,
+    12,
+    0
+   ],
+   "rotacao": [
+    0,
+    -45,
+    0
+   ]
+  },
+  {
+   "nome": "feather_right_2",
+   "pai": "feather_right_1",
+   "pivo": [
+    5.5,
+    14.5,
+    0.0
+   ]
+  },
+  {
+   "nome": "feather_right_3",
+   "pai": "feather_right_2",
+   "pivo": [
+    9.5,
+    13.0,
+    0.0
+   ]
+  }
+ ],
+ "cubos": [
+  {
+   "nome": "body_cube",
+   "osso": "body",
+   "parte": "body",
+   "tipo": "volume",
+   "from": [
+    -2,
+    0,
+    -3
+   ],
+   "to": [
+    2,
+    1,
+    -2
+   ],
+   "cor": "#30c0b8",
+   "uv_offset": [
+    0,
+    43
+   ]
+  },
+  {
+   "nome": "body_cube_2",
+   "osso": "body",
+   "parte": "body",
+   "tipo": "volume",
+   "from": [
+    -3,
+    0,
+    -2
+   ],
+   "to": [
+    3,
+    1,
+    2
+   ],
+   "cor": "#30c0b8",
+   "uv_offset": [
+    81,
+    32
+   ]
+  },
+  {
+   "nome": "body_cube_3",
+   "osso": "body",
+   "parte": "body",
+   "tipo": "volume",
+   "from": [
+    -2,
+    0,
+    2
+   ],
+   "to": [
+    2,
+    1,
+    3
+   ],
+   "cor": "#30c0b8",
+   "uv_offset": [
+    11,
+    43
+   ]
+  },
+  {
+   "nome": "body_cube_4",
+   "osso": "body",
+   "parte": "body",
+   "tipo": "volume",
+   "from": [
+    -5,
+    1,
+    -5
+   ],
+   "to": [
+    5,
+    3,
+    -2
+   ],
+   "cor": "#30c0b8",
+   "uv_offset": [
+    29,
+    26
+   ]
+  },
+  {
+   "nome": "body_cube_5",
+   "osso": "body",
+   "parte": "body",
+   "tipo": "volume",
+   "from": [
+    -6,
+    1,
+    -2
+   ],
+   "to": [
+    6,
+    3,
+    2
+   ],
+   "cor": "#30c0b8",
+   "uv_offset": [
+    82,
+    11
+   ]
+  },
+  {
+   "nome": "body_cube_6",
+   "osso": "body",
+   "parte": "body",
+   "tipo": "volume",
+   "from": [
+    -5,
+    1,
+    2
+   ],
+   "to": [
+    5,
+    3,
+    5
+   ],
+   "cor": "#30c0b8",
+   "uv_offset": [
+    56,
+    26
+   ]
+  },
+  {
+   "nome": "body_cube_7",
+   "osso": "body",
+   "parte": "body",
+   "tipo": "volume",
+   "from": [
+    -5,
+    3,
+    -6
+   ],
+   "to": [
+    5,
+    5,
+    -3
+   ],
+   "cor": "#30c0b8",
+   "uv_offset": [
+    83,
+    26
+   ]
+  },
+  {
+   "nome": "body_cube_8",
+   "osso": "body",
+   "parte": "body",
+   "tipo": "volume",
+   "from": [
+    -7,
+    3,
+    -3
+   ],
+   "to": [
+    7,
+    5,
+    3
+   ],
+   "cor": "#30c0b8",
+   "uv_offset": [
+    0,
+    11
+   ]
+  },
+  {
+   "nome": "body_cube_9",
+   "osso": "body",
+   "parte": "body",
+   "tipo": "volume",
+   "from": [
+    -5,
+    3,
+    3
+   ],
+   "to": [
+    5,
+    5,
+    6
+   ],
+   "cor": "#30c0b8",
+   "uv_offset": [
+    0,
+    32
+   ]
+  },
+  {
+   "nome": "body_cube_10",
+   "osso": "body",
+   "parte": "body",
+   "tipo": "volume",
+   "from": [
+    -6,
+    5,
+    -7
+   ],
+   "to": [
+    6,
+    7,
+    -4
+   ],
+   "cor": "#30c0b8",
+   "uv_offset": [
+    0,
+    20
+   ]
+  },
+  {
+   "nome": "body_cube_11",
+   "osso": "body",
+   "parte": "body",
+   "tipo": "volume",
+   "from": [
+    -8,
+    5,
+    -4
+   ],
+   "to": [
+    8,
+    7,
+    4
+   ],
+   "cor": "#30c0b8",
+   "uv_offset": [
+    0,
+    0
+   ]
+  },
+  {
+   "nome": "body_cube_12",
+   "osso": "body",
+   "parte": "body",
+   "tipo": "volume",
+   "from": [
+    -6,
+    5,
+    4
+   ],
+   "to": [
+    6,
+    7,
+    7
+   ],
+   "cor": "#30c0b8",
+   "uv_offset": [
+    31,
+    20
+   ]
+  },
+  {
+   "nome": "body_cube_13",
+   "osso": "body",
+   "parte": "body",
+   "tipo": "volume",
+   "from": [
+    -6,
+    7,
+    -7
+   ],
+   "to": [
+    6,
+    9,
+    -4
+   ],
+   "cor": "#30c0b8",
+   "uv_offset": [
+    62,
+    20
+   ]
+  },
+  {
+   "nome": "body_cube_14",
+   "osso": "body",
+   "parte": "body",
+   "tipo": "volume",
+   "from": [
+    -8,
+    7,
+    -4
+   ],
+   "to": [
+    8,
+    9,
+    4
+   ],
+   "cor": "#30c0b8",
+   "uv_offset": [
+    49,
+    0
+   ]
+  },
+  {
+   "nome": "body_cube_15",
+   "osso": "body",
+   "parte": "body",
+   "tipo": "volume",
+   "from": [
+    -6,
+    7,
+    4
+   ],
+   "to": [
+    6,
+    9,
+    7
+   ],
+   "cor": "#30c0b8",
+   "uv_offset": [
+    93,
+    20
+   ]
+  },
+  {
+   "nome": "body_cube_16",
+   "osso": "body",
+   "parte": "body",
+   "tipo": "volume",
+   "from": [
+    -5,
+    9,
+    -6
+   ],
+   "to": [
+    5,
+    11,
+    -3
+   ],
+   "cor": "#30c0b8",
+   "uv_offset": [
+    27,
+    32
+   ]
+  },
+  {
+   "nome": "body_cube_17",
+   "osso": "body",
+   "parte": "body",
+   "tipo": "volume",
+   "from": [
+    -7,
+    9,
+    -3
+   ],
+   "to": [
+    7,
+    11,
+    3
+   ],
+   "cor": "#30c0b8",
+   "uv_offset": [
+    41,
+    11
+   ]
+  },
+  {
+   "nome": "body_cube_18",
+   "osso": "body",
+   "parte": "body",
+   "tipo": "volume",
+   "from": [
+    -5,
+    9,
+    3
+   ],
+   "to": [
+    5,
+    11,
+    6
+   ],
+   "cor": "#30c0b8",
+   "uv_offset": [
+    54,
+    32
+   ]
+  },
+  {
+   "nome": "body_cube_19",
+   "osso": "body",
+   "parte": "body",
+   "tipo": "volume",
+   "from": [
+    -4,
+    11,
+    -4
+   ],
+   "to": [
+    4,
+    12,
+    -2
+   ],
+   "cor": "#30c0b8",
+   "uv_offset": [
+    30,
+    38
+   ]
+  },
+  {
+   "nome": "body_cube_20",
+   "osso": "body",
+   "parte": "body",
+   "tipo": "volume",
+   "from": [
+    -5,
+    11,
+    -2
+   ],
+   "to": [
+    5,
+    12,
+    2
+   ],
+   "cor": "#30c0b8",
+   "uv_offset": [
+    0,
+    26
+   ]
+  },
+  {
+   "nome": "body_cube_21",
+   "osso": "body",
+   "parte": "body",
+   "tipo": "volume",
+   "from": [
+    -4,
+    11,
+    2
+   ],
+   "to": [
+    4,
+    12,
+    4
+   ],
+   "cor": "#30c0b8",
+   "uv_offset": [
+    51,
+    38
+   ]
+  },
+  {
+   "nome": "body_cube_22",
+   "osso": "body",
+   "parte": "body",
+   "tipo": "volume",
+   "from": [
+    -2,
+    12,
+    -3
+   ],
+   "to": [
+    2,
+    13,
+    -2
+   ],
+   "cor": "#30c0b8",
+   "uv_offset": [
+    22,
+    43
+   ]
+  },
+  {
+   "nome": "body_cube_23",
+   "osso": "body",
+   "parte": "body",
+   "tipo": "volume",
+   "from": [
+    -3,
+    12,
+    -2
+   ],
+   "to": [
+    3,
+    13,
+    2
+   ],
+   "cor": "#30c0b8",
+   "uv_offset": [
+    102,
+    32
+   ]
+  },
+  {
+   "nome": "body_cube_24",
+   "osso": "body",
+   "parte": "body",
+   "tipo": "volume",
+   "from": [
+    -2,
+    12,
+    2
+   ],
+   "to": [
+    2,
+    13,
+    3
+   ],
+   "cor": "#30c0b8",
+   "uv_offset": [
+    33,
+    43
+   ]
+  },
+  {
+   "nome": "eye_left_cube",
+   "osso": "eye_left",
+   "parte": "eye_left",
+   "tipo": "adesivo",
+   "from": [
+    -4.0,
+    7,
+    -7.01
+   ],
+   "to": [
+    -1.0,
+    9,
+    -7.01
+   ],
+   "cor": "#f0b030",
+   "uv_offset": [
+    44,
+    43
+   ]
+  },
+  {
+   "nome": "eye_left_cube_2",
+   "osso": "eye_left",
+   "parte": "eye_left",
+   "tipo": "adesivo",
+   "from": [
+    -4.0,
+    9,
+    -6.01
+   ],
+   "to": [
+    -1.0,
+    10.0,
+    -6.01
+   ],
+   "cor": "#f0b030",
+   "uv_offset": [
+    108,
+    43
+   ]
+  },
+  {
+   "nome": "mouth_cube",
+   "osso": "mouth",
+   "parte": "mouth",
+   "tipo": "adesivo",
+   "from": [
+    -6.0,
+    4.0,
+    -6.01
+   ],
+   "to": [
+    6.0,
+    5,
+    -6.01
+   ],
+   "cor": "#005878",
+   "uv_offset": [
+    58,
+    43
+   ]
+  },
+  {
+   "nome": "mouth_cube_2",
+   "osso": "mouth",
+   "parte": "mouth",
+   "tipo": "adesivo",
+   "from": [
+    -6.0,
+    5,
+    -7.01
+   ],
+   "to": [
+    6.0,
+    6.0,
+    -7.01
+   ],
+   "cor": "#005878",
+   "uv_offset": [
+    83,
+    43
+   ]
+  },
+  {
+   "nome": "forehead_gem_cube",
+   "osso": "forehead_gem",
+   "parte": "forehead_gem",
+   "tipo": "adesivo",
+   "from": [
+    -0.5,
+    8.0,
+    -7.01
+   ],
+   "to": [
+    0.5,
+    9,
+    -7.01
+   ],
+   "cor": "#e09810",
+   "uv_offset": [
+    122,
+    43
+   ]
+  },
+  {
+   "nome": "forehead_gem_cube_2",
+   "osso": "forehead_gem",
+   "parte": "forehead_gem",
+   "tipo": "adesivo",
+   "from": [
+    -0.5,
+    9,
+    -6.01
+   ],
+   "to": [
+    0.5,
+    10.0,
+    -6.01
+   ],
+   "cor": "#e09810",
+   "uv_offset": [
+    125,
+    43
+   ]
+  },
+  {
+   "nome": "feather_left_1_cube",
+   "osso": "feather_left_1",
+   "parte": "feather_left_1",
+   "tipo": "plano",
+   "from": [
+    -5.0,
+    11.0,
+    0.0
+   ],
+   "to": [
+    -1.0,
+    14.0,
+    0.0
+   ],
+   "cor": "#005878",
+   "uv_offset": [
+    102,
+    38
+   ]
+  },
+  {
+   "nome": "feather_left_2_cube",
+   "osso": "feather_left_2",
+   "parte": "feather_left_2",
+   "tipo": "plano",
+   "from": [
+    -11.0,
+    13.0,
+    0.0
+   ],
+   "to": [
+    -4.0,
+    16.0,
+    0.0
+   ],
+   "cor": "#30c0b8",
+   "uv_offset": [
+    72,
+    38
+   ]
+  },
+  {
+   "nome": "feather_left_3_cube",
+   "osso": "feather_left_3",
+   "parte": "feather_left_3",
+   "tipo": "plano",
+   "from": [
+    -16.5,
+    11.0,
+    0.0
+   ],
+   "to": [
+    -9.5,
+    15.0,
+    0.0
+   ],
+   "cor": "#38a880",
+   "uv_offset": [
+    0,
+    38
+   ]
+  },
+  {
+   "nome": "eye_right_cube",
+   "osso": "eye_right",
+   "parte": "eye_right",
+   "tipo": "adesivo",
+   "from": [
+    1.0,
+    7,
+    -7.01
+   ],
+   "to": [
+    4.0,
+    9,
+    -7.01
+   ],
+   "cor": "#f0b030",
+   "mirror_uv": true,
+   "uv_offset": [
+    51,
+    43
+   ]
+  },
+  {
+   "nome": "eye_right_cube_2",
+   "osso": "eye_right",
+   "parte": "eye_right",
+   "tipo": "adesivo",
+   "from": [
+    1.0,
+    9,
+    -6.01
+   ],
+   "to": [
+    4.0,
+    10.0,
+    -6.01
+   ],
+   "cor": "#f0b030",
+   "mirror_uv": true,
+   "uv_offset": [
+    115,
+    43
+   ]
+  },
+  {
+   "nome": "feather_right_1_cube",
+   "osso": "feather_right_1",
+   "parte": "feather_right_1",
+   "tipo": "plano",
+   "from": [
+    1.0,
+    11.0,
+    0.0
+   ],
+   "to": [
+    5.0,
+    14.0,
+    0.0
+   ],
+   "cor": "#005878",
+   "mirror_uv": true,
+   "uv_offset": [
+    111,
+    38
+   ]
+  },
+  {
+   "nome": "feather_right_2_cube",
+   "osso": "feather_right_2",
+   "parte": "feather_right_2",
+   "tipo": "plano",
+   "from": [
+    4.0,
+    13.0,
+    0.0
+   ],
+   "to": [
+    11.0,
+    16.0,
+    0.0
+   ],
+   "cor": "#30c0b8",
+   "mirror_uv": true,
+   "uv_offset": [
+    87,
+    38
+   ]
+  },
+  {
+   "nome": "feather_right_3_cube",
+   "osso": "feather_right_3",
+   "parte": "feather_right_3",
+   "tipo": "plano",
+   "from": [
+    9.5,
+    11.0,
+    0.0
+   ],
+   "to": [
+    16.5,
+    15.0,
+    0.0
+   ],
+   "cor": "#38a880",
+   "mirror_uv": true,
+   "uv_offset": [
+    15,
+    38
+   ]
+  }
+ ],
+ "locators": [
+  {
+   "nome": "loc_eye_left",
+   "osso": "eye_left",
+   "posicao": [
+    -2.5,
+    8.5,
+    -6.11
+   ]
+  },
+  {
+   "nome": "loc_eye_right",
+   "osso": "eye_right",
+   "posicao": [
+    2.5,
+    8.5,
+    -6.11
+   ]
+  },
+  {
+   "nome": "loc_center",
+   "osso": "body",
+   "posicao": [
+    0.0,
+    6.5,
+    0.0
+   ]
+  },
+  {
+   "nome": "loc_top",
+   "osso": "body",
+   "posicao": [
+    0.0,
+    18.0,
+    0.0
+   ]
+  },
+  {
+   "nome": "loc_ground",
+   "osso": "body",
+   "posicao": [
+    0.0,
+    0.0,
+    0.0
+   ]
+  }
+ ],
+ "orcamento": {
+  "cubos": 38,
+  "p75": 54,
+  "limite": 70.2
+ }
+}

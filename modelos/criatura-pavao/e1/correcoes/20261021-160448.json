@@ -1,0 +1,45 @@
+{
+ "motivo": "UVs independentes para as duas penas e pintura original em pixels",
+ "operations": [
+  {
+   "op": "update_node",
+   "target": "body_cube",
+   "mirror_uv": false
+  },
+  {
+   "op": "update_node",
+   "target": "body_cube_2",
+   "mirror_uv": false
+  },
+  {
+   "op": "update_node",
+   "target": "feather_left_1_cube",
+   "mirror_uv": false
+  },
+  {
+   "op": "update_node",
+   "target": "feather_left_2_cube",
+   "mirror_uv": false
+  },
+  {
+   "op": "update_node",
+   "target": "feather_left_3_cube",
+   "mirror_uv": false
+  },
+  {
+   "op": "update_node",
+   "target": "feather_right_1_cube",
+   "mirror_uv": false
+  },
+  {
+   "op": "update_node",
+   "target": "feather_right_2_cube",
+   "mirror_uv": false
+  },
+  {
+   "op": "update_node",
+   "target": "feather_right_3_cube",
+   "mirror_uv": false
+  }
+ ]
+}

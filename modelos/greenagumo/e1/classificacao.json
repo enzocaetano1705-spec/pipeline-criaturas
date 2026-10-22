@@ -1,0 +1,42 @@
+{
+ "sugestoes": [
+  {
+   "plano": "cabeça-corpo",
+   "nicho": "fada/fofo",
+   "confianca": 0.609,
+   "tracos": [
+    "cabeça 73% da altura",
+    "cabeça e olhos grandes"
+   ]
+  },
+  {
+   "plano": "cabeça-corpo",
+   "nicho": "amorfo/fantasma",
+   "confianca": 0.225,
+   "tracos": [
+    "cabeça 73% da altura"
+   ]
+  },
+  {
+   "plano": "cabeça-corpo",
+   "nicho": "ungulado",
+   "confianca": 0.166,
+   "tracos": [
+    "cabeça 73% da altura",
+    "pelo"
+   ]
+  }
+ ],
+ "estagio_aparente": {
+  "estagio_tabela": "inicial",
+  "cabeca_alt": 0.73,
+  "olho_alt": 0.16,
+  "nota": "pela cabeça e pelo olho"
+ },
+ "conflitos": [],
+ "categoria_usada": {
+  "plano": "cabeça-corpo",
+  "nicho": "ave",
+  "fonte": "confirmada"
+ }
+}

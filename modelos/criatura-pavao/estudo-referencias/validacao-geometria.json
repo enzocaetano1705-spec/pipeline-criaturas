@@ -1,0 +1,91 @@
+{
+  "revision": "2ee4413dedd0528c",
+  "format": "bedrock",
+  "summary": {
+    "errors": 0,
+    "warnings": 4,
+    "passed": true
+  },
+  "gates": [
+    {
+      "id": "outliner",
+      "label": "Outliner references resolve and UUIDs are unique",
+      "severity": "error",
+      "ran": true,
+      "violations": []
+    },
+    {
+      "id": "unlisted_nodes",
+      "label": "Every group and element is placed in the outliner",
+      "severity": "warning",
+      "ran": true,
+      "violations": []
+    },
+    {
+      "id": "degenerate",
+      "label": "No sliver or inverted cubes",
+      "severity": "warning",
+      "ran": true,
+      "violations": []
+    },
+    {
+      "id": "block_limits",
+      "label": "Geometry stays inside the block-model limits",
+      "severity": "error",
+      "ran": false,
+      "skipped_reason": "Pass block_limits: java_block or bedrock_block to enable.",
+      "violations": []
+    },
+    {
+      "id": "floating",
+      "label": "Every part touches the main body",
+      "severity": "warning",
+      "ran": true,
+      "violations": []
+    },
+    {
+      "id": "interpenetration",
+      "label": "Parts of different groups do not pass through each other",
+      "severity": "warning",
+      "ran": true,
+      "violations": [
+        {
+          "message": "body_cube and feather_left_1_cube (different groups) interpenetrate by 0.78 units.",
+          "targets": [
+            "body_cube",
+            "feather_left_1_cube"
+          ]
+        },
+        {
+          "message": "body_cube and feather_left_3_cube (different groups) interpenetrate by 1 units.",
+          "targets": [
+            "body_cube",
+            "feather_left_3_cube"
+          ]
+        },
+        {
+          "message": "body_cube and feather_right_1_cube (different groups) interpenetrate by 0.78 units.",
+          "targets": [
+            "body_cube",
+            "feather_right_1_cube"
+          ]
+        },
+        {
+          "message": "body_cube and feather_right_3_cube (different groups) interpenetrate by 1 units.",
+          "targets": [
+            "body_cube",
+            "feather_right_3_cube"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mirror",
+      "label": "Left/right parts mirror each other",
+      "severity": "warning",
+      "ran": true,
+      "violations": []
+    }
+  ],
+  "notes": []
+}

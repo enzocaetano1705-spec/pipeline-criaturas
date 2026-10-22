@@ -1,0 +1,106 @@
+{
+  "operations": [
+    {
+      "op": "update_node",
+      "target": "feather_left_1_cube",
+      "from": [
+        -4.0,
+        11.0,
+        0
+      ],
+      "to": [
+        -1.0,
+        14.0,
+        0
+      ]
+    },
+    {
+      "op": "update_node",
+      "target": "feather_left_2_cube",
+      "from": [
+        -8.0,
+        13.0,
+        0
+      ],
+      "to": [
+        -3.0,
+        16.0,
+        0
+      ]
+    },
+    {
+      "op": "update_node",
+      "target": "feather_left_3_cube",
+      "from": [
+        -12.0,
+        11.0,
+        0
+      ],
+      "to": [
+        -7.0,
+        15.0,
+        0
+      ]
+    },
+    {
+      "op": "update_node",
+      "target": "feather_right_1_cube",
+      "from": [
+        1.0,
+        11.0,
+        0
+      ],
+      "to": [
+        4.0,
+        14.0,
+        0
+      ]
+    },
+    {
+      "op": "update_node",
+      "target": "feather_right_2_cube",
+      "from": [
+        3.0,
+        13.0,
+        0
+      ],
+      "to": [
+        8.0,
+        16.0,
+        0
+      ]
+    },
+    {
+      "op": "update_node",
+      "target": "feather_right_3_cube",
+      "from": [
+        7.0,
+        11.0,
+        0
+      ],
+      "to": [
+        12.0,
+        15.0,
+        0
+      ]
+    },
+    {
+      "op": "update_node",
+      "target": "feather_left_1",
+      "rotation": [
+        15,
+        0,
+        0
+      ]
+    },
+    {
+      "op": "update_node",
+      "target": "feather_right_1",
+      "rotation": [
+        15,
+        0,
+        0
+      ]
+    }
+  ]
+}

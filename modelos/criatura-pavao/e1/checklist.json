@@ -1,0 +1,82 @@
+{
+  "estagio": "e1",
+  "vista": "preparo/frente-grade.png",
+  "itens": {
+    "postura": {
+      "valor": "sem membros",
+      "certeza": "visível",
+      "fonte": "imagem"
+    },
+    "pernas": {
+      "valor": 0,
+      "certeza": "visível",
+      "fonte": "imagem"
+    },
+    "bracos": {
+      "valor": 0,
+      "certeza": "visível",
+      "fonte": "imagem"
+    },
+    "asas": {
+      "valor": 0,
+      "certeza": "visível",
+      "fonte": "imagem",
+      "nota": "As duas estruturas superiores são penas ornamentais, sem asas."
+    },
+    "cauda": {
+      "valor": 0,
+      "certeza": "visível",
+      "fonte": "imagem"
+    },
+    "nadadeiras": {
+      "valor": 0,
+      "certeza": "visível",
+      "fonte": "imagem"
+    },
+    "pescoco": {
+      "valor": "nenhum",
+      "certeza": "visível",
+      "fonte": "imagem"
+    },
+    "cabeca": {
+      "valor": {
+        "frac_alt": 0.77
+      },
+      "certeza": "visível",
+      "fonte": "imagem",
+      "nota": "Cabeça e corpo formam o mesmo volume, de y=7.4 a 32."
+    },
+    "focinho": {
+      "valor": "curto",
+      "certeza": "visível",
+      "fonte": "imagem"
+    },
+    "orelhas": {
+      "valor": "nenhuma",
+      "certeza": "visível",
+      "fonte": "imagem"
+    },
+    "olhos": {
+      "valor": {
+        "frac_alt": 0.18
+      },
+      "certeza": "visível",
+      "fonte": "imagem"
+    },
+    "cobertura": {
+      "valor": "pelo",
+      "certeza": "visível",
+      "fonte": "imagem"
+    },
+    "extras": {
+      "valor": [
+        "penas ornamentais",
+        "dentes",
+        "gema frontal"
+      ],
+      "certeza": "visível",
+      "fonte": "imagem"
+    }
+  },
+  "conflitos": []
+}

@@ -1,0 +1,167 @@
+{
+  "arquivo": "C:\\Users\\enzoc\\dev\\pipeline-criaturas\\modelos\\criatura-pavao\\estudo-referencias\\pavao-planos-animado.bbmodel",
+  "nome": "criatura-pavao-e1",
+  "formato": "bedrock",
+  "contagem": {
+    "pecas": 8,
+    "solidos": 2,
+    "planos": 6,
+    "ossos": 12
+  },
+  "orcamento_observado": {
+    "pecas": 8,
+    "nota": "observação da referência, não meta para a criatura nova"
+  },
+  "tags": [
+    "corpo",
+    "penas",
+    "corpo-dominante"
+  ],
+  "motivos_tags": {
+    "penas": [
+      "feather_left_1",
+      "feather_left_1_cube",
+      "feather_left_2",
+      "feather_left_2_cube",
+      "feather_left_3",
+      "feather_left_3_cube",
+      "feather_right_1",
+      "feather_right_1_cube",
+      "feather_right_2",
+      "feather_right_2_cube",
+      "feather_right_3",
+      "feather_right_3_cube"
+    ],
+    "corpo": [
+      "body",
+      "body_cube",
+      "body_cube_2"
+    ],
+    "corpo-dominante": [
+      "uma caixa reúne ao menos 80% do volume; sem nomes de membros reconhecidos"
+    ]
+  },
+  "nomes_ossos": [
+    "body",
+    "eye_left",
+    "eye_right",
+    "feather_left_1",
+    "feather_left_2",
+    "feather_left_3",
+    "feather_right_1",
+    "feather_right_2",
+    "feather_right_3",
+    "forehead_gem",
+    "mouth",
+    "root"
+  ],
+  "rotacoes": {
+    "pecas_com_rotacao_propria_ou_herdada": 6,
+    "fracao": 0.75
+  },
+  "proporcoes": {
+    "largura_altura": 1.5113,
+    "profundidade_altura": 0.8816
+  },
+  "volumes": {
+    "metrica": "soma das caixas locais sólidas, sem descontar sobreposição ou inflate",
+    "fracao_por_regiao": {
+      "corpo": 1.0
+    },
+    "maior_peca_fracao": 0.8537
+  },
+  "texturas": {
+    "resolucao_uv": [
+      64,
+      64
+    ],
+    "quantidade": 1,
+    "dimensoes": [
+      [
+        64,
+        64
+      ]
+    ],
+    "uv": {
+      "box": 8
+    }
+  },
+  "animacoes": {
+    "incorporadas": [
+      {
+        "nome": "idle",
+        "duracao_s": 2.4,
+        "loop": "loop",
+        "ossos_animados": 7,
+        "ossos_ausentes": [],
+        "chaves": 175,
+        "canais": {
+          "scale": 25,
+          "rotation": 150
+        },
+        "usa_expressoes": false
+      },
+      {
+        "nome": "walk",
+        "duracao_s": 1.33,
+        "loop": "loop",
+        "ossos_animados": 7,
+        "ossos_ausentes": [],
+        "chaves": 120,
+        "canais": {
+          "position": 15,
+          "scale": 15,
+          "rotation": 90
+        },
+        "usa_expressoes": false
+      }
+    ],
+    "selecionadas": []
+  },
+  "limites": [
+    "Tags descrevem nomes de peças/ossos; confirmar a função olhando as vistas.",
+    "Volumes e proporções são medidas agregadas; não constituem molde ou transferência de rig."
+  ],
+  "ensaio": {
+    "clipes": {
+      "idle": {
+        "duracao": 2.4,
+        "loop": "loop",
+        "ossos": [
+          "body",
+          "feather_left_1",
+          "feather_left_2",
+          "feather_left_3",
+          "feather_right_1",
+          "feather_right_2",
+          "feather_right_3"
+        ]
+      },
+      "walk": {
+        "duracao": 1.33,
+        "loop": "loop",
+        "ossos": [
+          "body",
+          "feather_left_1",
+          "feather_left_2",
+          "feather_left_3",
+          "feather_right_1",
+          "feather_right_2",
+          "feather_right_3"
+        ]
+      }
+    },
+    "avisos": [
+      {
+        "codigo": "sem_olhos",
+        "texto": "blink omitido: olhos/pálpebras sem geometria visível para animar (olho pintado?)"
+      }
+    ],
+    "validacao_animacoes": {
+      "erros": 0,
+      "avisos": 0,
+      "mensagens": []
+    },
+    "origem_movimento": "Funções procedurais próprias assadas em chaves numéricas; sem chaves copiadas de terceiros."
+  }
+}

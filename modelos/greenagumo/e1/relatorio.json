@@ -1,0 +1,159 @@
+{
+ "criatura": "greenagumo",
+ "estagio": "e1",
+ "etapas": {
+  "preparar": {
+   "ok": true,
+   "quando": "2026-10-21T15:37:14",
+   "erros": [],
+   "avisos": [
+    {
+     "codigo": "sem_lado",
+     "texto": "e1: sem vista lateral; a profundidade será estimada"
+    }
+   ],
+   "arquivos": [
+    "modelos/greenagumo/e1/preparo/preparo.json"
+   ],
+   "resumo": {
+    "vistas": [
+     "conceito",
+     "frente"
+    ]
+   }
+  },
+  "classificar": {
+   "ok": true,
+   "quando": "2026-10-21T15:37:14",
+   "erros": [],
+   "avisos": [
+    {
+     "codigo": "difere_sugestao",
+     "texto": "categoria confirmada (cabeça-corpo › ave) difere da sugestão 1"
+    }
+   ],
+   "arquivos": [
+    "modelos/greenagumo/e1/classificacao.json"
+   ],
+   "resumo": {
+    "sugestao_1": "cabeça-corpo › fada/fofo",
+    "parar": false
+   }
+  },
+  "medir": {
+   "ok": true,
+   "quando": "2026-10-21T15:37:15",
+   "erros": [],
+   "avisos": [
+    {
+     "codigo": "sem_lado",
+     "texto": "sem vista lateral: profundidades estimadas pela categoria"
+    }
+   ],
+   "arquivos": [
+    "modelos/greenagumo/e1/medidas.json"
+   ],
+   "resumo": {
+    "partes": 7,
+    "altura": 13.76
+   }
+  },
+  "cubificar": {
+   "ok": true,
+   "quando": "2026-10-21T15:37:15",
+   "erros": [],
+   "avisos": [],
+   "arquivos": [
+    "modelos/greenagumo/e1/plano-cubos.json",
+    "modelos/greenagumo/e1/ops.json",
+    "modelos/greenagumo/e1/greenagumo-e1.bbmodel"
+   ],
+   "resumo": {
+    "cubos": 9,
+    "ossos": 8,
+    "arquivo": "greenagumo-e1.bbmodel"
+   }
+  },
+  "validar": {
+   "ok": true,
+   "quando": "2026-10-21T15:37:15",
+   "erros": [],
+   "avisos": [],
+   "arquivos": [
+    "modelos/greenagumo/e1/validacao.json"
+   ],
+   "resumo": {
+    "motor": {
+     "erros": 0,
+     "avisos": 0
+    },
+    "orcamento": {
+     "cubos": 9,
+     "p75": 52,
+     "limite": 67.6
+    }
+   }
+  },
+  "folha": {
+   "ok": true,
+   "quando": "2026-10-21T15:37:18",
+   "erros": [],
+   "avisos": [],
+   "arquivos": [
+    "modelos/greenagumo/e1/folha.png"
+   ],
+   "resumo": {
+    "tamanho": [
+     768,
+     384
+    ],
+    "render": "próprio"
+   }
+  },
+  "texturizar": {
+   "ok": true,
+   "quando": "2026-10-21T15:37:17",
+   "erros": [],
+   "avisos": [
+    {
+     "codigo": "delta_e",
+     "texto": "ΔE acima de 10: body 17.0, feather_left 20.1, eye_left 41.2, gem 16.0"
+    },
+    {
+     "codigo": "sem_costas",
+     "texto": "sem vista de trás: as costas foram preenchidas pela cor das bordas"
+    }
+   ],
+   "arquivos": [
+    "modelos/greenagumo/e1/textura.png",
+    "modelos/greenagumo/e1/textura-roblox.png"
+   ],
+   "resumo": {
+    "cores": 6,
+    "delta_e": {
+     "body": 17.0,
+     "body_cube_2": 0.7,
+     "body_cube_3": 2.3,
+     "feather_left": 20.1,
+     "eye_left": 41.2,
+     "mouth": 0.6,
+     "gem": 16.0
+    },
+    "amostrados": 180,
+    "preenchidos": 422,
+    "transparentes_volume": 0,
+    "paleta": [
+     "#48a3a1",
+     "#4db7b7",
+     "#3a888c",
+     "#336d77",
+     "#1f535f",
+     "#532c17"
+    ]
+   }
+  }
+ },
+ "hashes": {
+  "greenagumo-e1.bbmodel": "94848e53001dcac6d1608cf6fbc65ee1af6cd519a305737a6fd3393c9ebd2b89"
+ }
+}

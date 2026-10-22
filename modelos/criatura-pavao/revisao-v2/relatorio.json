@@ -1,0 +1,32 @@
+{
+  "pecas": 9,
+  "solidos": 3,
+  "planos": 6,
+  "ossos": 12,
+  "atlas": [
+    128,
+    128
+  ],
+  "validacao_geometria": {
+    "erros": 0,
+    "avisos": 6,
+    "mensagens": [
+      "[warning] interpenetration: body_crown and feather_left_1_cube (different groups) interpenetrate by 2.2 units.",
+      "[warning] interpenetration: body_crown and feather_right_1_cube (different groups) interpenetrate by 2.2 units.",
+      "[warning] interpenetration: feather_left_1_cube and feather_left_2_cube (different groups) interpenetrate by 0.6 units.",
+      "[warning] interpenetration: feather_left_2_cube and feather_left_3_cube (different groups) interpenetrate by 0.94 units.",
+      "[warning] interpenetration: feather_right_1_cube and feather_right_2_cube (different groups) interpenetrate by 0.6 units.",
+      "[warning] interpenetration: feather_right_2_cube and feather_right_3_cube (different groups) interpenetrate by 0.94 units."
+    ]
+  },
+  "validacao_animacoes": {
+    "erros": 0,
+    "avisos": 0,
+    "mensagens": []
+  },
+  "animacoes": [
+    "idle",
+    "walk"
+  ],
+  "origem": "arte e pintura próprias; técnicas estudadas em Koromon e Harpymon"
+}

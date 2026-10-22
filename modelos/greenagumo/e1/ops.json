@@ -1,0 +1,323 @@
+{
+ "operations": [
+  {
+   "op": "set_model_properties",
+   "name": "greenagumo-e1",
+   "resolution": {
+    "width": 64,
+    "height": 64
+   }
+  },
+  {
+   "op": "add_group",
+   "name": "root",
+   "origin": [
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "op": "add_group",
+   "name": "body",
+   "origin": [
+    0.0,
+    5.0,
+    0.5
+   ],
+   "parent": "root"
+  },
+  {
+   "op": "add_group",
+   "name": "feather_left",
+   "origin": [
+    -5.0,
+    11.5,
+    0.0
+   ],
+   "parent": "body"
+  },
+  {
+   "op": "add_group",
+   "name": "eye_left",
+   "origin": [
+    -2.5,
+    6.0,
+    -6.01
+   ],
+   "parent": "body"
+  },
+  {
+   "op": "add_group",
+   "name": "mouth",
+   "origin": [
+    0.0,
+    4.0,
+    -6.01
+   ],
+   "parent": "body"
+  },
+  {
+   "op": "add_group",
+   "name": "gem",
+   "origin": [
+    0.0,
+    8.0,
+    -5.01
+   ],
+   "parent": "body"
+  },
+  {
+   "op": "add_group",
+   "name": "feather_right",
+   "origin": [
+    5.0,
+    11.5,
+    0.0
+   ],
+   "parent": "body"
+  },
+  {
+   "op": "add_group",
+   "name": "eye_right",
+   "origin": [
+    2.5,
+    6.0,
+    -6.01
+   ],
+   "parent": "body"
+  },
+  {
+   "op": "add_cube",
+   "name": "body_cube",
+   "from": [
+    -6.0,
+    0.0,
+    -5.0
+   ],
+   "to": [
+    6.0,
+    3.0,
+    7.0
+   ],
+   "parent": "body",
+   "box_uv": true,
+   "uv_offset": [
+    0,
+    18
+   ]
+  },
+  {
+   "op": "add_cube",
+   "name": "body_cube_2",
+   "from": [
+    -6.5,
+    3.0,
+    -6.0
+   ],
+   "to": [
+    6.5,
+    7.0,
+    7.0
+   ],
+   "parent": "body",
+   "box_uv": true,
+   "uv_offset": [
+    0,
+    0
+   ]
+  },
+  {
+   "op": "add_cube",
+   "name": "body_cube_3",
+   "from": [
+    -5.5,
+    7.0,
+    -5.0
+   ],
+   "to": [
+    5.5,
+    10.0,
+    6.0
+   ],
+   "parent": "body",
+   "box_uv": true,
+   "uv_offset": [
+    0,
+    34
+   ]
+  },
+  {
+   "op": "add_cube",
+   "name": "feather_left_cube",
+   "from": [
+    -10.0,
+    9.0,
+    0.0
+   ],
+   "to": [
+    0.0,
+    14.0,
+    0.0
+   ],
+   "parent": "feather_left",
+   "box_uv": true,
+   "uv_offset": [
+    0,
+    49
+   ]
+  },
+  {
+   "op": "add_cube",
+   "name": "eye_left_cube",
+   "from": [
+    -4.0,
+    5.0,
+    -6.01
+   ],
+   "to": [
+    -1.0,
+    7.0,
+    -6.01
+   ],
+   "parent": "eye_left",
+   "box_uv": true,
+   "uv_offset": [
+    44,
+    49
+   ]
+  },
+  {
+   "op": "add_cube",
+   "name": "mouth_cube",
+   "from": [
+    -5.5,
+    3.0,
+    -6.01
+   ],
+   "to": [
+    5.5,
+    5.0,
+    -6.01
+   ],
+   "parent": "mouth",
+   "box_uv": true,
+   "uv_offset": [
+    21,
+    49
+   ]
+  },
+  {
+   "op": "add_cube",
+   "name": "gem_cube",
+   "from": [
+    -0.5,
+    7.0,
+    -5.01
+   ],
+   "to": [
+    0.5,
+    9.0,
+    -5.01
+   ],
+   "parent": "gem",
+   "box_uv": true,
+   "uv_offset": [
+    51,
+    49
+   ]
+  },
+  {
+   "op": "add_cube",
+   "name": "feather_right_cube",
+   "from": [
+    -0.0,
+    9.0,
+    0.0
+   ],
+   "to": [
+    10.0,
+    14.0,
+    0.0
+   ],
+   "parent": "feather_right",
+   "box_uv": true,
+   "uv_offset": [
+    0,
+    49
+   ],
+   "mirror_uv": true
+  },
+  {
+   "op": "add_cube",
+   "name": "eye_right_cube",
+   "from": [
+    1.0,
+    5.0,
+    -6.01
+   ],
+   "to": [
+    4.0,
+    7.0,
+    -6.01
+   ],
+   "parent": "eye_right",
+   "box_uv": true,
+   "uv_offset": [
+    44,
+    49
+   ],
+   "mirror_uv": true
+  },
+  {
+   "op": "add_locator",
+   "name": "loc_eye_left",
+   "parent": "eye_left",
+   "position": [
+    -2.5,
+    6.0,
+    -6.11
+   ]
+  },
+  {
+   "op": "add_locator",
+   "name": "loc_eye_right",
+   "parent": "eye_right",
+   "position": [
+    2.5,
+    6.0,
+    -6.11
+   ]
+  },
+  {
+   "op": "add_locator",
+   "name": "loc_center",
+   "parent": "body",
+   "position": [
+    0.0,
+    5.0,
+    0.5
+   ]
+  },
+  {
+   "op": "add_locator",
+   "name": "loc_top",
+   "parent": "body",
+   "position": [
+    0.0,
+    16.0,
+    0.5
+   ]
+  },
+  {
+   "op": "add_locator",
+   "name": "loc_ground",
+   "parent": "body",
+   "position": [
+    0.0,
+    0.0,
+    0.5
+   ]
+  }
+ ]
+}

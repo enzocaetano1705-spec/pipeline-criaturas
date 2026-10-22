@@ -1,0 +1,40 @@
+{
+ "criatura": "criatura-pavao",
+ "estagio": null,
+ "etapas": {
+  "ficha": {
+   "ok": true,
+   "quando": "2026-10-21T15:51:32",
+   "erros": [],
+   "avisos": [
+    {
+     "codigo": "tamanho_imagem",
+     "texto": "e1: e1-conceito.png tem lado maior 788 px (recomendado 1024–1536)"
+    },
+    {
+     "codigo": "tamanho_imagem",
+     "texto": "e1: e1-frente.png tem lado maior 391 px (recomendado 1024–1536)"
+    },
+    {
+     "codigo": "tamanho_imagem",
+     "texto": "e1: e1-lado.png tem lado maior 389 px (recomendado 1024–1536)"
+    },
+    {
+     "codigo": "tamanho_imagem",
+     "texto": "e1: e1-costas.png tem lado maior 391 px (recomendado 1024–1536)"
+    },
+    {
+     "codigo": "sem_prompt",
+     "texto": "e1: falta o prompt usado na imagem principal"
+    }
+   ],
+   "arquivos": [
+    "modelos/criatura-pavao/entrada.json"
+   ],
+   "resumo": {
+    "estagios": 1,
+    "status": "pronta-para-modelagem"
+   }
+  }
+ }
+}
