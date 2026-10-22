@@ -7,7 +7,7 @@ Um pipeline que transforma o conceito de uma criatura (imagens geradas livrement
 
 ## Comece por aqui, nesta ordem
 1. `docs/plano-construcao.md`: fases, status (caixas marcadas) e critérios de aceite.
-2. A nota mais recente em `docs/sessoes/` e `git log --oneline -15`: onde a última sessão parou.
+2. A nota de retomada mais recente em `docs/sessoes/` (hoje `2026-10-22-retomada.md`) e `git log --oneline -15`: onde a última sessão parou.
 3. `docs/convencoes.md`: unidades, eixos, nomes de ossos, locators e animações, pastas e formatos.
 
 Leia `docs/pesquisa/` só quando a tarefa pedir, e procure por assunto (grep) em vez de ler as notas inteiras.
