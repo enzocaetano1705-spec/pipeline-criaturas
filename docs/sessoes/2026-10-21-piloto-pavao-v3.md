@@ -134,3 +134,5 @@ O `--penugem` deixou de repor o UV sozinho: a versão aprovada tem `[0, −1]`, 
 O `.glb` foi reexportado: validador sem erros, UV em v ∈ [0,0002; 0,9998]. Restam 4 vértices com u = −0,00024, o recuo de borda do exportador, abaixo de 1/60 de texel.
 
 **Lição:** antes de exportar para o Roblox, recusar qualquer UV fora de [0, 1]. O Roblox ignora o clamp do glTF.
+
+**Confirmado pelo usuário:** com o `.glb` novo e o preparo, a linha sumiu e o pavão está certo no Roblox.

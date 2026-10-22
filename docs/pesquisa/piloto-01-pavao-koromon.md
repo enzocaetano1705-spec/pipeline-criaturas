@@ -53,3 +53,7 @@ Primeiro caso do piloto descrito em [[aprendizado-por-gabaritos]]. O registro do
 - Modelo aprovado: `modelos/criatura-pavao/revisao-v3/criatura-pavao-e1-v3.bbmodel`. Textura: `modelos/criatura-pavao/textura.png`.
 - Gerador: `modelos/criatura-pavao/revisao-v3-koromon.py` (`--refazer`, `--so-textura`, `--penugem`).
 - Diagnóstico por partes: `revisao-v3/comparacao-koromon-v3.json`. Histórico das versões do usuário: `revisao-v3/historico/`.
+
+## Exportação
+- **Roblox:** confirmado no Studio pelo usuário em 21/10/2026, com escala 3×, alfa por `SurfaceAppearance` e `idle` tocando. Arquivos em `modelos/criatura-pavao/export/roblox/` (`.glb` e `preparar-no-studio.luau`).
+- **Minecraft:** não exportado ainda. O usuário considera certo que funciona, porque é o formato nativo do Blockbench.
