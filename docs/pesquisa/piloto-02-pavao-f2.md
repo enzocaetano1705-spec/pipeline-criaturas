@@ -51,3 +51,25 @@ Registro completo em [[2026-10-21-pavao-f2]]. Primeiro caso que não é recolor 
   - `Animator`;
   - script `TocarAnimacao` (walk).
 - **Teste:** no Run, o walk tocou e as pernas se moveram, sem erro no console.
+
+## Roblox, segunda rodada (22/10)
+
+**Relato do usuário:** a textura estava borrada; a animação estava exagerada, com o pescoço descolando; e a criatura andava de lado invertido, com o corpo sumindo.
+
+**Causas encontradas e correções:**
+- **Corpo sumindo:** o osso de cima virava a MeshPart. Agora há uma `Raiz` sem animação, só com uma chave neutra.
+- **Animação exagerada:** a `Raiz` estava girada 180°. Agora ela é neutra, e a frente é dada pela `Hitbox`, que o preparo aponta para a cabeça.
+- **Textura borrada:** a correção é `SurfaceAppearance.ResampleMode = Pixelated`, que agora existe no Studio. Junto com isso, a textura vai em 1024 e com alfa sangrado.
+
+**Teste no Play, medido no `Transform` dos ossos:** os giros máximos batem com os do Blockbench:
+
+| osso | giro máximo |
+|---|---|
+| body | 4,7° |
+| pescoço | 7,0° |
+| cabeça | 9,3° |
+| quadril | 31,9° |
+| joelho | 18,4° |
+| tornozelo | 32,5° |
+
+O corpo sobe e desce 0,08 stud (0,45 unidade × 0,1875), e a malha fica parada.
