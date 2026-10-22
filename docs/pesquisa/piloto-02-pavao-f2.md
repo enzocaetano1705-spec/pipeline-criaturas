@@ -86,3 +86,14 @@ O corpo sobe e desce 0,08 stud (0,45 unidade × 0,1875), e a malha fica parada.
 - preparo aplicado às 4 cópias.
 
 **Teste no cliente (Play):** as 4 criaturas com a faixa tocando e os ossos se movendo, sem erros no console.
+
+## Roblox, quarta rodada (22/10): "walk invertendo de lado" e olho borrado
+
+**Lado invertido:** a recuperação automática do Studio trouxe de volta cópias importadas do `.glb` antigo, com a `Raiz` girada: em (14,7; 1,6; 7,4) [F1] e (1; 4,1; 7,5) [F2]. Nelas a pose `Raiz` tem 180° e, no F2, o `body` também, então o corpo vira de lado no walk. As cópias do `.glb` atual estão certas: o quadril segue os mesmos ângulos do Blockbench (+15° → −32°) e o `body` fica perto de 0°. **Solução:** apagar as cópias antigas e usar só as do `.glb` atual.
+
+**Olho do F2 borrado:**
+- O atlas tem 256 (as ilhas somam 30.886 px², não cabem em 128), e a ampliação para 1024 é só 4×.
+- O olho tem 3×3 pixels: o bilinear do Roblox, em pixels de 4 texels, deixa o traço visivelmente borrado.
+- O resto do corpo passa porque é textura de ruído.
+
+**Proposta:** exportar a cabeça (crânio, bico e crista) com uma textura própria e pequena (64 → 1024, 16×, igual ao F1, que fica nítido). O `.glb` sai com duas malhas, e o Roblox cria duas MeshParts sobre o mesmo esqueleto.
