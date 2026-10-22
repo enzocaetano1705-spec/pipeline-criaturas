@@ -26,11 +26,16 @@
         "idle",
         "walk"
       ],
-      "notas": "Ave bípede digitígrada; asas, crista e leque em planos com alfa. walk de avestruz (cinemática inversa).",
+      "notas": "Ave bípede digitígrada; asas, crista e leque em planos com alfa. walk de avestruz (cinemática inversa). A cabeça (crânio, bico, crista) tem textura própria de 64→1024, para o olho ficar nítido.",
       "arquivo": "exportacoes/roblox/pavao/Pavao_F2.glb",
       "ids_publicados": {},
       "walk_studs_por_s": 2.08,
-      "altura_studs": 8.3
+      "altura_studs": 8.3,
+      "texturas_separadas": {
+        "cabeca": [
+          "head"
+        ]
+      }
     }
   ],
   "_unidades": "1 unidade do Blockbench = 1/16 stud na escala 1; walk_studs_por_s vale na escala_studio."

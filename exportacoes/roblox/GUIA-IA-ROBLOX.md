@@ -104,6 +104,11 @@ Tudo fica numa gravação do `ChangeHistoryService`: um Ctrl+Z desfaz.
   - a compressão da textura enviada (o asset fica em 1024, conferido com `AssetService:CreateEditableImageAsync`);
   - o mipmap de longe;
   - a qualidade gráfica Automática, que baixa a resolução da textura.
+- **Textura separada (`texturas_separadas` no `criaturas.json`):** as partes indicadas (ex.: a cabeça do Pavao_F2)
+  saem com um atlas próprio e pequeno (64 → 1024, 16×). O `.glb` vem com um material por textura e o Studio cria
+  **uma MeshPart por textura**, todas ligadas aos mesmos ossos da `Raiz`. O preparo trata todas (SurfaceAppearance,
+  solda na Hitbox, sem colisão). Para exportar, a cópia de trabalho usa o formato genérico do Blockbench, porque o
+  Bedrock aceita uma textura só.
 - **Mais nitidez = mais texels por pixel da arte:** um atlas de 64 vira ×16 em 1024 (nítido), um de 256 vira só ×4.
   Para criaturas com atlas grande, reduza o atlas (menos peças, ou planos que reaproveitam a mesma ilha) ou
   divida a criatura em mais de uma malha, cada uma com a sua textura de 1024.

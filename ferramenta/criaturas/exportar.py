@@ -241,9 +241,99 @@ def trocar_imagem_glb(caminho: Path, png: bytes, indice: int = 0) -> None:
                         + struct.pack("<I", len(novo_bin)) + b"BIN\0" + bytes(novo_bin))
 
 
-def exportar_roblox(arquivo: Path, nome: str, pasta: Path) -> dict:
+def _descendentes(modelo: bbmodelo.Modelo, raizes: list[str]) -> set[str]:
+    ossos = set(raizes)
+    mudou = True
+    while mudou:
+        mudou = False
+        for n, o in modelo.ossos.items():
+            if o.pai in ossos and n not in ossos:
+                ossos.add(n)
+                mudou = True
+    return ossos
+
+
+def separar_textura(copia: Path, base: Image.Image, nome_textura: str, raizes: list[str], pasta: Path, nome: str) -> Path:
+    """Dá às peças dos ossos `raizes` (e descendentes) uma textura própria e pequena, na cópia de exportação.
+
+    O Roblox guarda no máximo 1024 por textura: com um atlas grande (256) cada pixel da arte vira só 4 texels e
+    traços pequenos (olho de 3×3) borram. Separando a cabeça num atlas de 64, ela vai a 1024 com 16× (nítida como o
+    F1). As cores são copiadas texel a texel da textura principal (mesma densidade); o .glb sai com uma malha por
+    textura e o Roblox cria uma MeshPart para cada, sobre o mesmo esqueleto. Devolve o PNG ampliado dessa textura.
+    """
+    import numpy as np
+
+    from criaturas import ops, texturizar
+
+    modelo = bbmodelo.ler(copia)
+    ossos = _descendentes(modelo, raizes)
+    cubos = [c for c in modelo.cubos if c.osso in ossos]
+    if not cubos:
+        raise ValueError(f"nenhuma peça nos ossos {raizes}")
+    offsets, (res, _) = ops.distribuir_uv([{"nome": c.uuid, "from": c.de.tolist(), "to": c.ate.tolist()} for c in cubos],
+                                          margem=0, larguras=(32, 64, 128))
+    motor.editar(copia, [{"op": "update_node", "target": c.uuid, "uv_offset": offsets[c.uuid]} for c in cubos])
+    novo = bbmodelo.ler(copia)
+    por_uuid = {c.uuid: c for c in novo.cubos}
+    src = np.asarray(base.convert("RGBA"))
+    atlas = np.zeros((res, res, 4), np.uint8)
+    for c in cubos:
+        for face in ("north", "south", "east", "west", "up", "down"):
+            a = texturizar.texels_da_face(c, face, np.eye(4))
+            b = texturizar.texels_da_face(por_uuid[c.uuid], face, np.eye(4))
+            if a is None or b is None or len(a[0]) != len(b[0]):
+                continue
+            for (u0, v0), (u1, v1) in zip(a[0], b[0]):
+                if 0 <= v0 < src.shape[0] and 0 <= u0 < src.shape[1] and 0 <= v1 < res and 0 <= u1 < res:
+                    atlas[int(v1), int(u1)] = src[int(v0), int(u0)]
+    img, fator = textura_para_roblox(Image.fromarray(atlas))
+    png = pasta / f"{nome}-textura-{nome_textura}.png"
+    img.save(png)
+    motor.editar(copia, [{"op": "add_texture", "name": nome_textura, "source": _data_url(np.asarray(img)),
+                          "width": img.width, "height": img.height},
+                         {"op": "assign_texture", "targets": [c.uuid for c in cubos], "texture": nome_textura}])
+    # tamanho de UV por textura (o motor não tem operação para isto): a principal no espaço do projeto, a nova no seu
+    dados = json.loads(copia.read_text(encoding="utf-8"))
+    proj = dados.get("resolution", {})
+    for t in dados.get("textures", []):
+        if t.get("name") == nome_textura:
+            t["uv_width"], t["uv_height"] = res, res
+        else:
+            t["uv_width"], t["uv_height"] = proj.get("width", 16), proj.get("height", 16)
+    # o formato Bedrock do Blockbench usa uma textura só (single_texture) e o glTF sairia com um material; o
+    # formato genérico ("free") mantém uma textura por face e o exportador cria um material/malha por textura
+    dados.setdefault("meta", {})["model_format"] = "free"
+    copia.write_text(json.dumps(dados, ensure_ascii=False), encoding="utf-8")
+    return png
+
+
+def trocar_imagens_glb(caminho: Path, pngs: list[bytes]) -> None:
+    """Põe cada PNG (com alfa sangrado) no lugar da imagem do .glb que tem o mesmo alfa."""
+    import io
+
+    import numpy as np
+
+    g = json_do_glb(caminho)
+    dados = caminho.read_bytes()
+    tam_json = struct.unpack("<I", dados[12:16])[0]
+    ini = 20 + tam_json + 8
+    alfas = []
+    for im in g.get("images", []):
+        v = g["bufferViews"][im["bufferView"]]
+        o = ini + v.get("byteOffset", 0)
+        alfas.append(np.asarray(Image.open(io.BytesIO(dados[o:o + v["byteLength"]])).convert("RGBA"))[..., 3])
+    for png in pngs:
+        a = np.asarray(Image.open(io.BytesIO(png)).convert("RGBA"))[..., 3]
+        idx = next((i for i, x in enumerate(alfas) if x.shape == a.shape and (x == a).mean() > 0.999), None)
+        if idx is None:
+            raise ValueError("não achei no .glb a imagem correspondente a uma das texturas")
+        trocar_imagem_glb(caminho, png, idx)
+
+
+def exportar_roblox(arquivo: Path, nome: str, pasta: Path, separar: dict | None = None) -> dict:
     """`.bbmodel` → `<pasta>/<nome>.glb` pronto para o Roblox (raiz, frente, alfa sangrado, 1024, nome da cena).
 
+    `separar` = {"nome_da_textura": ["osso", ...]}: essas partes ganham textura própria (ver separar_textura).
     Recusa UV fora da textura. Devolve {glb, erros, avisos, resumo}."""
     modelo = bbmodelo.ler(arquivo)
     fora = uv_fora_do_atlas(modelo)
@@ -255,11 +345,24 @@ def exportar_roblox(arquivo: Path, nome: str, pasta: Path) -> dict:
     tex.save(ampliada)
     trabalho = RAIZ / "modelos" / ".roblox-trabalho"  # o motor só edita dentro de modelos/
     copia = copia_roblox(arquivo, ampliada, trabalho, nome)
+    pngs = [ampliada]
+    if separar:
+        import hashlib
+
+        marca = hashlib.sha256(json.dumps(separar, sort_keys=True).encode()).hexdigest()[:6]
+        copia_sep = copia.with_name(f"{copia.stem}s{marca}g.bbmodel")  # "g": formato genérico (nome novo = aba nova)
+        if not copia_sep.exists():
+            shutil.copy(copia, copia_sep)
+            motor.editar(copia_sep, [{"op": "set_model_properties", "name": copia_sep.stem}])
+            for nome_t, raizes in separar.items():
+                separar_textura(copia_sep, modelo.textura, nome_t, raizes, pasta, nome)
+        copia = copia_sep
+        pngs += [pasta / f"{nome}-textura-{n}.png" for n in separar]
     glb = pasta / f"{nome}.glb"
     exportar_glb(copia, glb)
     acrescentar_locators(glb, modelo)
     renomear_glb(glb, nome)
-    trocar_imagem_glb(glb, ampliada.read_bytes())  # devolve o alfa sangrado que o canvas do Blockbench zerou
+    trocar_imagens_glb(glb, [p.read_bytes() for p in pngs])  # devolve o alfa sangrado que o canvas do Blockbench zerou
     erros, avisos, resumo = verificar_glb(glb, modelo)
     resumo["textura"] = f"{modelo.textura.width}×{fator} = {tex.width}"
     return {"glb": glb, "erros": erros, "avisos": avisos, "resumo": resumo}

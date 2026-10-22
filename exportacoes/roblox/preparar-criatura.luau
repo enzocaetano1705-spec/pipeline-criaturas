@@ -29,15 +29,20 @@ local modelo = workspace:FindFirstChild(NOME)
 assert(modelo and modelo:IsA("Model"), "Model '" .. NOME .. "' não está no Workspace")
 local rec = CHS:TryBeginRecording("Preparar " .. NOME)
 
-local malha = modelo:FindFirstChildWhichIsA("MeshPart")
-assert(malha, "o Model não tem MeshPart (importou como Rig Type Custom?)")
+-- a malha principal é a que tem os ossos (Raiz); criaturas com textura separada (ex.: cabeça) têm outras MeshParts
+local malhas = {}
+for _, p in ipairs(modelo:GetChildren()) do if p:IsA("MeshPart") then table.insert(malhas, p) end end
+assert(#malhas > 0, "o Model não tem MeshPart (importou como Rig Type Custom?)")
+local malha = modelo:FindFirstChild("Raiz") or malhas[1]
 
--- 1) transparência das penas/orelhas
-local sa = malha:FindFirstChildOfClass("SurfaceAppearance") or Instance.new("SurfaceAppearance")
-sa.ColorMap = malha.TextureID
-sa.AlphaMode = Enum.AlphaMode.Transparency
-pcall(function() sa.ResampleMode = Enum.ResamplerMode.Pixelated end) -- pixel art nítida (sem o borrado bilinear)
-sa.Parent = malha
+-- 1) transparência das penas/orelhas, em cada malha
+for _, m in ipairs(malhas) do
+	local sa = m:FindFirstChildOfClass("SurfaceAppearance") or Instance.new("SurfaceAppearance")
+	sa.ColorMap = m.TextureID
+	sa.AlphaMode = Enum.AlphaMode.Transparency
+	pcall(function() sa.ResampleMode = Enum.ResamplerMode.Pixelated end)
+	sa.Parent = m
+end
 
 -- 2) escala e chão (antes da hitbox, para ela nascer do tamanho certo)
 local hitbox = modelo:FindFirstChild("Hitbox")
@@ -69,14 +74,16 @@ hitbox.Transparency = 1
 hitbox.CanCollide = true
 hitbox.Anchored = true
 hitbox.Parent = modelo
-malha.CanCollide = false
-malha.CanTouch = false
-malha.Massless = true
-malha.Anchored = false
-local solda = malha:FindFirstChild("SoldaHitbox") or Instance.new("WeldConstraint")
-solda.Name = "SoldaHitbox"
-solda.Part0, solda.Part1 = hitbox, malha
-solda.Parent = malha
+for _, m in ipairs(malhas) do
+	m.CanCollide = false
+	m.CanTouch = false
+	m.Massless = true
+	m.Anchored = false
+	local solda = m:FindFirstChild("SoldaHitbox") or Instance.new("WeldConstraint")
+	solda.Name = "SoldaHitbox"
+	solda.Part0, solda.Part1 = hitbox, m
+	solda.Parent = m
+end
 modelo.PrimaryPart = hitbox
 
 -- 4) animação
