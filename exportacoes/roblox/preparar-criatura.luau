@@ -10,7 +10,8 @@ O que faz:
   3. Hitbox: Part invisível do tamanho da criatura, que colide e vira o PrimaryPart. A malha não colide
      (a malha animada não serve de colisão estável).
   4. Animator no AnimationController; poses das animações embaixo da Raiz (o topo não é animado pelo Roblox);
-     e, se pedido, um Script de prévia que toca uma animação no Run/Play.
+     ModelStreamingMode Atomic (o modelo chega inteiro ao cliente); cópia das animações em <Model>.Animacoes e,
+     se pedido, um Script de prévia que roda NO CLIENTE e toca uma animação no Play/Run.
   5. Frente: a Hitbox (PrimaryPart) olha para a cabeça; mova a criatura pelo LookVector da Hitbox.
 Tudo dentro de uma gravação do ChangeHistoryService (Ctrl+Z desfaz).
 ]]
@@ -99,19 +100,35 @@ if pasta then
 		end
 	end
 end
+-- 4c) streaming: o modelo chega inteiro ao cliente (com StreamingEnabled, sem isto o cliente recebia só a malha,
+--     sem Hitbox, sem animações e sem o script de prévia)
+modelo.ModelStreamingMode = Enum.ModelStreamingMode.Atomic
+
+-- 4d) prévia NO CLIENTE: o Play desenha pelo cliente, e o cliente não carrega ids temporários criados no servidor
+--     nem enxerga o ServerStorage. As KeyframeSequences vão para <Model>.Animacoes e o script roda no cliente.
+local animacoes = modelo:FindFirstChild("Animacoes") or Instance.new("Folder")
+animacoes.Name = "Animacoes"
+animacoes:ClearAllChildren()
+if pasta then
+	for _, seq in ipairs(pasta:GetChildren()) do seq:Clone().Parent = animacoes end
+end
+animacoes.Parent = modelo
 local velho = modelo:FindFirstChild("TocarAnimacao")
 if velho then velho:Destroy() end
 if PREVIA then
 	local s = Instance.new("Script")
 	s.Name = "TocarAnimacao"
+	s.RunContext = Enum.RunContext.Client
 	s.Source = ([[
--- Prévia: toca "%s" em loop no Run/Play. O id gerado aqui é temporário (só vale nos testes do Studio);
--- no jogo publicado use o AnimationId da animação publicada (veja GUIA-IA-ROBLOX.md).
+-- Prévia de animação (RunContext = Client). Toca "%s" em loop no Play e no Run.
+-- O id gerado aqui é temporário (só vale no Studio); no jogo publicado use os AnimationIds publicados (GUIA-IA-ROBLOX.md).
 local modelo = script.Parent
-local seq = modelo.AnimSaves.Value["%s"]
+local seq = modelo:WaitForChild("Animacoes"):WaitForChild("%s")
+local controlador = modelo:WaitForChild("AnimationController")
+local animator = controlador:FindFirstChildOfClass("Animator") or Instance.new("Animator", controlador)
 local anim = Instance.new("Animation")
 anim.AnimationId = game:GetService("KeyframeSequenceProvider"):RegisterKeyframeSequence(seq)
-local faixa = modelo.AnimationController:FindFirstChildOfClass("Animator"):LoadAnimation(anim)
+local faixa = animator:LoadAnimation(anim)
 faixa.Looped = true
 faixa:Play()
 ]]):format(PREVIA, PREVIA)

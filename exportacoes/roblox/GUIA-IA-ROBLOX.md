@@ -74,7 +74,13 @@ Tudo fica numa gravação do `ChangeHistoryService`: um Ctrl+Z desfaz.
 ## 5. Animações
 
 - As animações vêm como **KeyframeSequence local**. Um id criado com
-  `KeyframeSequenceProvider:RegisterKeyframeSequence(seq)` **só vale nos testes do Studio**.
+  `KeyframeSequenceProvider:RegisterKeyframeSequence(seq)` **só vale nos testes do Studio** e **só no lado que o
+  registrou**: um id registrado no servidor não toca no cliente. No **Play (F5)** quem desenha é o cliente, então a
+  prévia precisa rodar no cliente (`Script` com `RunContext = Client`) e ler as KeyframeSequences de um lugar que
+  replica (`<Model>.Animacoes`), não do `ServerStorage`. O preparo já faz isso. Um script no servidor só aparece no
+  **Run (F8)**.
+- **StreamingEnabled:** com streaming ligado, o cliente pode receber só a malha. Use `ModelStreamingMode = Atomic` nas
+  criaturas (o preparo faz), para Hitbox, animações e scripts chegarem juntos.
 - **No jogo publicado:** publique cada KeyframeSequence pelo Animation Editor (o usuário publica). Guarde o `AnimationId`
   e use `Animator:LoadAnimation(anim)`. Registre os ids publicados no `criaturas.json` (`ids_publicados`).
 - Para tocar:
@@ -93,9 +99,15 @@ Tudo fica numa gravação do `ChangeHistoryService`: um Ctrl+Z desfaz.
 
 ## 6. Texturas: por que borram e o que já foi feito
 
-- **A correção é `SurfaceAppearance.ResampleMode = Enum.ResamplerMode.Pixelated`.** Existe no Studio desde
-  2025–26 e o preparo já liga. Sem ela, o Roblox usa filtro bilinear e a pixel art borra até de perto. De longe, o
-  mipmap ainda suaviza um pouco.
+- `SurfaceAppearance.ResampleMode = Pixelated` existe e o preparo liga, mas no teste de 22/10 **não mudou nada
+  visível** (as capturas com Default e Pixelated saíram iguais). O borrado que sobra vem do próprio Roblox:
+  - a compressão da textura enviada (o asset fica em 1024, conferido com `AssetService:CreateEditableImageAsync`);
+  - o mipmap de longe;
+  - a qualidade gráfica Automática, que baixa a resolução da textura.
+- **Mais nitidez = mais texels por pixel da arte:** um atlas de 64 vira ×16 em 1024 (nítido), um de 256 vira só ×4.
+  Para criaturas com atlas grande, reduza o atlas (menos peças, ou planos que reaproveitam a mesma ilha) ou
+  divida a criatura em mais de uma malha, cada uma com a sua textura de 1024.
+- Exportar como FBX não muda isso: a textura passa pelo mesmo envio e pela mesma filtragem.
 - **O que já foi feito na exportação:**
   - a textura é ampliada sem suavizar até **1024** (o máximo que o Roblox guarda sem reduzir);
   - o **alfa é sangrado**: os pixels transparentes levam a cor do vizinho opaco, o que tira o contorno escuro
@@ -129,7 +141,9 @@ Depois disso, importe de novo no Studio e rode o preparo.
 | anda de costas ou vira para o lado errado | está sendo movida pelo LookVector da malha | mova pela `Hitbox` (o preparo a aponta para a cabeça) |
 | animação exagerada, partes descolando | `Raiz` girada na exportação | reexporte (a Raiz não pode ter rotação) |
 | textura borrada | `ResampleMode` não está `Pixelated` | rode o preparo |
-| animação não toca | sem `Animator`, ou id temporário fora do Studio | rode o preparo ou publique a animação |
+| animação não toca no Play (toca só no Run) | prévia rodando no servidor; o cliente não carrega o id temporário | rode o preparo (prévia no cliente) |
+| no cliente o modelo chega sem Hitbox nem scripts | StreamingEnabled | `ModelStreamingMode = Atomic` (o preparo faz) |
+| animação não toca nem no Run | sem `Animator`, ou id temporário fora do Studio | rode o preparo ou publique a animação |
 | pernas animam, mas o corpo não balança | a pose `body` está no topo da KeyframeSequence | rode o preparo (passo 4b) ou reexporte |
 | colisão estranha | malha colidindo | rode o preparo (Hitbox) |
 
