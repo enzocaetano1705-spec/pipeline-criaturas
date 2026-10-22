@@ -104,7 +104,14 @@ Tudo fica numa gravação do `ChangeHistoryService`: um Ctrl+Z desfaz.
   - a compressão da textura enviada (o asset fica em 1024, conferido com `AssetService:CreateEditableImageAsync`);
   - o mipmap de longe;
   - a qualidade gráfica Automática, que baixa a resolução da textura.
-- **Textura separada (`texturas_separadas` no `criaturas.json`):** as partes indicadas (ex.: a cabeça do Pavao_F2)
+- **Superamostragem (`superamostrar` no `criaturas.json`, ex.: cabeça do Pavao_F2, fator 4):** as faces das partes
+  indicadas ganham uma área `fator`× maior **no mesmo atlas**, com os pixels repetidos (o desenho não muda). Exportado
+  a 1024, o olho do F2 passa de 4 para 16 texels por pixel, nítido como o F1. Continua uma malha e uma textura.
+  **É a forma recomendada de deixar um detalhe pequeno (olho, boca, gema) nítido.**
+- **Textura separada (`texturas_separadas`, experimental, NÃO usar):** testada em 22/10. O `.glb` sai com uma
+  malha por textura, mas exige o formato genérico do Blockbench, que muda a orientação de repouso. No Roblox o
+  `body` passou a girar 180° durante as animações. Fica no código só como registro.
+- (registro) **Textura separada:** as partes indicadas (ex.: a cabeça do Pavao_F2)
   saem com um atlas próprio e pequeno (64 → 1024, 16×). O `.glb` vem com um material por textura e o Studio cria
   **uma MeshPart por textura**, todas ligadas aos mesmos ossos da `Raiz`. O preparo trata todas (SurfaceAppearance,
   solda na Hitbox, sem colisão). Para exportar, a cópia de trabalho usa o formato genérico do Blockbench, porque o

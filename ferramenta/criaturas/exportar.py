@@ -307,6 +307,78 @@ def separar_textura(copia: Path, base: Image.Image, nome_textura: str, raizes: l
     return png
 
 
+def superamostrar(copia: Path, base: Image.Image, ossos_raiz: list[str], fator: int) -> Image.Image:
+    """Dá mais texels por pixel da arte às peças dos ossos indicados, no MESMO atlas (formato Bedrock, uma textura).
+
+    Cada face dessas peças ganha uma área `fator`× maior num espaço livre do atlas, com os pixels repetidos
+    fator×fator (o desenho não muda). Exportado a 1024, um olho de atlas 256 passa de 4 para 16 texels por pixel.
+    As peças são recriadas sem Box UV (UV por face), com o mesmo nome, osso, forma, rotação e pivô. Devolve o
+    atlas novo (no tamanho do projeto). Uso: `superamostrar` no criaturas.json.
+    """
+    import uuid as _uuid
+
+    import numpy as np
+
+    from criaturas import texturizar
+
+    modelo = bbmodelo.ler(copia)
+    res = int(modelo.bruto["resolution"]["width"])
+    tex = np.array(base.convert("RGBA"))
+    ocupado = np.zeros((res, res), bool)
+    for c in modelo.cubos:
+        for f in c.faces.values():
+            uv = f.get("uv")
+            if uv:
+                u0, u1 = sorted((uv[0], uv[2]))
+                v0, v1 = sorted((uv[1], uv[3]))
+                ocupado[int(np.floor(v0)):int(np.ceil(v1)), int(np.floor(u0)):int(np.ceil(u1))] = True
+    ossos = _descendentes(modelo, ossos_raiz) if ossos_raiz else set()
+    alvo = [c for c in modelo.cubos if c.osso in ossos]
+    elementos = {e["uuid"]: e for e in modelo.bruto["elements"]}
+
+    def lugar(w, h):
+        for y in range(0, res - h + 1):
+            linha = ocupado[y:y + h]
+            for x in range(0, res - w + 1):
+                if not linha[:, x:x + w].any():
+                    ocupado[y:y + h, x:x + w] = True
+                    return x, y
+        raise ValueError("o atlas não tem espaço livre para superamostrar; diminua o fator")
+
+    lote = []
+    for c in alvo:
+        e = elementos[c.uuid]
+        faces = {}
+        for nome_f, f in c.faces.items():
+            uv = f.get("uv")
+            if not uv or abs(uv[2] - uv[0]) < 1e-6 or abs(uv[3] - uv[1]) < 1e-6:
+                faces[nome_f] = {"texture": None}
+                continue
+            u0, u1 = sorted((uv[0], uv[2]))
+            v0, v1 = sorted((uv[1], uv[3]))
+            iu0, iv0 = int(np.floor(u0)), int(np.floor(v0))
+            w, h = int(np.ceil(u1)) - iu0, int(np.ceil(v1)) - iv0
+            x, y = lugar(w * fator, h * fator)
+            bloco = tex[iv0:iv0 + h, iu0:iu0 + w]
+            tex[y:y + h * fator, x:x + w * fator] = np.repeat(np.repeat(bloco, fator, axis=0), fator, axis=1)
+            nu = [x + (u0 - iu0) * fator, x + (u1 - iu0) * fator]
+            nv = [y + (v0 - iv0) * fator, y + (v1 - iv0) * fator]
+            if uv[0] > uv[2]:
+                nu.reverse()
+            if uv[1] > uv[3]:
+                nv.reverse()
+            faces[nome_f] = {"uv": [nu[0], nv[0], nu[1], nv[1]], "texture": 0, "rotation": f.get("rotation", 0) or 0}
+        op = {"op": "add_cube", "name": c.nome, "parent": c.osso, "from": c.de.tolist(), "to": c.ate.tolist(),
+              "box_uv": False, "faces": faces, "uuid": str(_uuid.uuid4())}
+        if e.get("rotation") and any(e["rotation"]):
+            op["rotation"], op["origin"] = e["rotation"], e.get("origin", [0, 0, 0])
+        if e.get("inflate"):
+            op["inflate"] = e["inflate"]
+        lote += [{"op": "remove_node", "target": c.uuid}, op]
+    motor.editar(copia, lote)
+    return Image.fromarray(tex)
+
+
 def trocar_imagens_glb(caminho: Path, pngs: list[bytes]) -> None:
     """Põe cada PNG (com alfa sangrado) no lugar da imagem do .glb que tem o mesmo alfa."""
     import io
@@ -330,7 +402,8 @@ def trocar_imagens_glb(caminho: Path, pngs: list[bytes]) -> None:
         trocar_imagem_glb(caminho, png, idx)
 
 
-def exportar_roblox(arquivo: Path, nome: str, pasta: Path, separar: dict | None = None) -> dict:
+def exportar_roblox(arquivo: Path, nome: str, pasta: Path, separar: dict | None = None,
+                    superamostra: dict | None = None) -> dict:
     """`.bbmodel` → `<pasta>/<nome>.glb` pronto para o Roblox (raiz, frente, alfa sangrado, 1024, nome da cena).
 
     `separar` = {"nome_da_textura": ["osso", ...]}: essas partes ganham textura própria (ver separar_textura).
@@ -346,6 +419,27 @@ def exportar_roblox(arquivo: Path, nome: str, pasta: Path, separar: dict | None 
     trabalho = RAIZ / "modelos" / ".roblox-trabalho"  # o motor só edita dentro de modelos/
     copia = copia_roblox(arquivo, ampliada, trabalho, nome)
     pngs = [ampliada]
+    if superamostra:  # {"ossos": [...], "fator": 4}
+        import numpy as np
+        import hashlib
+
+        marca = hashlib.sha256(json.dumps(superamostra, sort_keys=True).encode()).hexdigest()[:6]
+        copia_sa = copia.with_name(f"{copia.stem}x{marca}.bbmodel")
+        if not copia_sa.exists():
+            shutil.copy(copia, copia_sa)
+            motor.editar(copia_sa, [{"op": "set_model_properties", "name": copia_sa.stem}])
+            atlas = superamostrar(copia_sa, modelo.textura, superamostra["ossos"], int(superamostra.get("fator", 4)))
+            tex, fator = textura_para_roblox(atlas)
+            tex.save(ampliada)
+            alvo = json.loads(copia_sa.read_text(encoding="utf-8"))["textures"][0]["uuid"]
+            op = {"op": "update_texture", "target": alvo, "source": _data_url(np.asarray(tex)), "width": tex.width,
+                  "height": tex.height}
+            if json.loads(copia_sa.read_text(encoding="utf-8"))["textures"][0].get("group") == "":
+                op["material"] = None
+            motor.editar(copia_sa, [op])
+        else:
+            tex = Image.open(ampliada)
+        copia = copia_sa
     if separar:
         import hashlib
 
