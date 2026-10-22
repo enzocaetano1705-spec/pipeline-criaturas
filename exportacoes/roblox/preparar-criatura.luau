@@ -18,6 +18,7 @@ Tudo dentro de uma gravação do ChangeHistoryService (Ctrl+Z desfaz).
 
 -- CONFIGURAÇÃO ---------------------------------------------------------------
 local NOME = "Pavao_F2"          -- nome do Model no Workspace (= nome do .glb)
+local PASTA = "criaturas modeladas blockbench" -- pasta no Workspace para as novas importações
 local ESCALA = 3                 -- escala_studio do criaturas.json
 local PREVIA = "walk"            -- "idle", "walk" ou nil (sem script de prévia)
 local OSSO_CABECA = "head"       -- ossos usados para conferir a frente (cabeça à frente da cauda)
@@ -25,22 +26,40 @@ local OSSO_CAUDA = "tail_1"
 --------------------------------------------------------------------------------
 
 local CHS = game:GetService("ChangeHistoryService")
-local modelo = workspace:FindFirstChild(NOME)
-assert(modelo and modelo:IsA("Model"), "Model '" .. NOME .. "' não está no Workspace")
-local rec = CHS:TryBeginRecording("Preparar " .. NOME)
+local container = assert(workspace:FindFirstChild(PASTA), "Falta a pasta Workspace." .. PASTA)
+local modelo
+for _, filho in ipairs(container:GetChildren()) do
+	if filho.Name == NOME and filho:IsA("Model") then
+		assert(not modelo, "Há dois modelos chamados " .. NOME .. " na pasta de importação")
+		modelo = filho
+	end
+end
+assert(modelo, "Model '" .. NOME .. "' não está na pasta de importação")
 
 -- a malha principal é a que tem os ossos (Raiz); criaturas com textura separada (ex.: cabeça) têm outras MeshParts
 local malhas = {}
-for _, p in ipairs(modelo:GetChildren()) do if p:IsA("MeshPart") then table.insert(malhas, p) end end
+for _, p in ipairs(modelo:GetDescendants()) do if p:IsA("MeshPart") then table.insert(malhas, p) end end
 assert(#malhas > 0, "o Model não tem MeshPart (importou como Rig Type Custom?)")
-local malha = modelo:FindFirstChild("Raiz") or malhas[1]
+local malha = modelo:FindFirstChild("Raiz", true) or malhas[1]
+assert(malha:IsA("MeshPart"), "Raiz precisa ser a MeshPart do rig Custom")
+-- Validar antes de alterar: nunca atribuir uma string vazia por cima do mapa importado.
+for _, m in ipairs(malhas) do
+	local sa = m:FindFirstChildOfClass("SurfaceAppearance")
+	assert((sa and sa.ColorMapContent.SourceType ~= Enum.ContentSourceType.None) or m.TextureID ~= "",
+		m:GetFullName() .. ": nenhuma textura importada (ColorMap e TextureID vazios)")
+end
+local rec = CHS:TryBeginRecording("Preparar " .. NOME)
 
 -- 1) transparência das penas/orelhas, em cada malha
 for _, m in ipairs(malhas) do
 	local sa = m:FindFirstChildOfClass("SurfaceAppearance") or Instance.new("SurfaceAppearance")
-	sa.ColorMap = m.TextureID
+	if sa.ColorMapContent.SourceType == Enum.ContentSourceType.None then sa.ColorMap = m.TextureID end
 	sa.AlphaMode = Enum.AlphaMode.Transparency
-	pcall(function() sa.ResampleMode = Enum.ResamplerMode.Pixelated end)
+	sa.ResampleMode = Enum.ResamplerMode.Pixelated
+	sa.Color = Color3.new(1, 1, 1)
+	m.Color = Color3.new(1, 1, 1)
+	m.Material = Enum.Material.SmoothPlastic
+	m.Reflectance = 0
 	sa.Parent = m
 end
 
@@ -50,26 +69,38 @@ if hitbox then hitbox:Destroy() end -- refeita abaixo
 if math.abs(modelo:GetScale() - ESCALA) > 1e-3 then
 	modelo:ScaleTo(ESCALA)
 end
-local cf, tamanho = modelo:GetBoundingBox()
+-- Medir somente as malhas, no referencial da frente. GetBoundingBox seguido de uma
+-- rotação da caixa troca os eixos e pode deixar partes da criatura fora da colisão.
+local cabeca = modelo:FindFirstChild(OSSO_CABECA, true)
+local cauda = modelo:FindFirstChild(OSSO_CAUDA, true)
+local frente_dir = -malha.CFrame.LookVector * Vector3.new(1, 0, 1)
+if cabeca and cauda then
+	local d = (cabeca.WorldPosition - cauda.WorldPosition) * Vector3.new(1, 0, 1)
+	if d.Magnitude > 1e-3 then frente_dir = d.Unit end
+end
+assert(frente_dir.Magnitude > 1e-3, "Não foi possível determinar a frente horizontal")
+local eixos = CFrame.lookAt(Vector3.zero, frente_dir.Unit)
+local menor, maior = Vector3.new(math.huge, math.huge, math.huge), Vector3.new(-math.huge, -math.huge, -math.huge)
+for _, m in ipairs(malhas) do
+	for _, x in ipairs({-1, 1}) do for _, y in ipairs({-1, 1}) do for _, z in ipairs({-1, 1}) do
+		local p = eixos:PointToObjectSpace(m.CFrame:PointToWorldSpace(m.Size * Vector3.new(x, y, z) / 2))
+		menor = Vector3.new(math.min(menor.X, p.X), math.min(menor.Y, p.Y), math.min(menor.Z, p.Z))
+		maior = Vector3.new(math.max(maior.X, p.X), math.max(maior.Y, p.Y), math.max(maior.Z, p.Z))
+	end end end
+end
+local tamanho = maior - menor
+local cf = eixos * CFrame.new((menor + maior) / 2)
 local chao = 0
 local base = workspace:FindFirstChild("Baseplate")
 if base then chao = base.Position.Y + base.Size.Y / 2 end
 modelo:PivotTo(modelo:GetPivot() + Vector3.new(0, chao - (cf.Position.Y - tamanho.Y / 2), 0))
-cf, tamanho = modelo:GetBoundingBox()
+cf = cf + Vector3.new(0, chao - (cf.Position.Y - tamanho.Y / 2), 0)
 
 -- 3) hitbox: colisão estável e PrimaryPart (gira junto com a criatura, frente = LookVector)
 hitbox = Instance.new("Part")
 hitbox.Name = "Hitbox"
 hitbox.Size = tamanho
--- frente: da cauda para a cabeça, se os ossos existirem; senão +Z da malha (o Blockbench exporta a frente em +Z)
-local cabeca = modelo:FindFirstChild(OSSO_CABECA, true)
-local cauda = modelo:FindFirstChild(OSSO_CAUDA, true)
-local frente_dir = -malha.CFrame.LookVector
-if cabeca and cauda then
-	local d = (cabeca.WorldPosition - cauda.WorldPosition) * Vector3.new(1, 0, 1)
-	if d.Magnitude > 1e-3 then frente_dir = d.Unit end
-end
-hitbox.CFrame = CFrame.lookAt(cf.Position, cf.Position + frente_dir)
+hitbox.CFrame = cf
 hitbox.Transparency = 1
 hitbox.CanCollide = true
 hitbox.Anchored = true
@@ -87,13 +118,19 @@ end
 modelo.PrimaryPart = hitbox
 
 -- 4) animação
-local controlador = modelo:FindFirstChildOfClass("AnimationController")
-if controlador and not controlador:FindFirstChildOfClass("Animator") then
+local controlador = modelo:FindFirstChildOfClass("AnimationController") or Instance.new("AnimationController", modelo)
+if not controlador:FindFirstChildOfClass("Animator") then
 	Instance.new("Animator").Parent = controlador
 end
 -- 4b) o Roblox não anima a pose do topo da KeyframeSequence (é a peça raiz): se o topo não for a Raiz,
 --     embrulha as poses numa pose "Raiz" neutra para o `body` (balanço do corpo) voltar a tocar
-local pasta = modelo:FindFirstChild("AnimSaves") and modelo.AnimSaves.Value
+local fonte = (modelo:FindFirstChild("AnimSaves") and modelo.AnimSaves.Value) or modelo:FindFirstChild("Animacoes")
+local pasta = Instance.new("Folder") -- corrigir cópias; conservar as sequências originais do importador
+if fonte then
+	for _, seq in ipairs(fonte:GetChildren()) do
+		if seq:IsA("KeyframeSequence") then seq:Clone().Parent = pasta end
+	end
+end
 if pasta then
 	for _, seq in ipairs(pasta:GetChildren()) do
 		for _, kf in ipairs(seq:GetKeyframes()) do
@@ -116,9 +153,11 @@ if pasta then
 			for _, raiz in ipairs(kf:GetPoses()) do
 				local R = raiz.CFrame - raiz.CFrame.Position
 				local _, ang = R:ToAxisAngle()
-				if math.abs(ang) > 1e-3 then
+				if math.abs(math.abs(ang) - math.pi) < 0.01 then
 					for _, filho in ipairs(raiz:GetSubPoses()) do filho.CFrame = R:Inverse() * filho.CFrame end
 					raiz.CFrame = CFrame.new(raiz.CFrame.Position)
+				elseif math.abs(ang) > 1e-3 then
+					warn("Rotação inesperada da Raiz em " .. seq.Name .. ": " .. math.deg(ang) .. " graus; conferir antes de usar")
 				end
 			end
 		end
@@ -138,9 +177,10 @@ if pasta then
 	for _, seq in ipairs(pasta:GetChildren()) do seq:Clone().Parent = animacoes end
 end
 animacoes.Parent = modelo
+pasta:Destroy()
 local velho = modelo:FindFirstChild("TocarAnimacao")
 if velho then velho:Destroy() end
-if PREVIA then
+if PREVIA and animacoes:FindFirstChild(PREVIA) then
 	local s = Instance.new("Script")
 	s.Name = "TocarAnimacao"
 	s.RunContext = Enum.RunContext.Client

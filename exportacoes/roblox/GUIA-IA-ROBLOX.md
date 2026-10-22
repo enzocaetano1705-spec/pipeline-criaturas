@@ -22,8 +22,9 @@ Nunca renomeie no Studio sem atualizar o `criaturas.json`.
 1. Faça File › Import 3D (ou Avatar › Import 3D) e escolha o `.glb`. Em **Rig General**, use **Rig Type: Custom**, nunca R15.
 2. O Studio sobe a textura para a conta do usuário, então é preciso estar logado. **Importar é ação do usuário.** Uma IA
    não deve tentar contornar isso.
-3. Se já existir um Model com o mesmo nome, apague o antigo **e** a pasta dele em `ServerStorage.RBX_ANIMSAVES`.
-   Os nomes se repetem e os scripts pegariam o errado.
+3. Coloque as novas importações em `Workspace["criaturas modeladas blockbench"]`, com apenas um `Pavao_F1`
+   e um `Pavao_F2` nessa pasta. Preserve os antigos fora dela. O preparo seleciona a pasta explicitamente e recusa
+   nomes duplicados. A referência `AnimSaves.Value` identifica as animações de cada importação.
 
 ## 3. Anatomia do modelo importado
 
@@ -57,17 +58,20 @@ ServerStorage.RBX_ANIMSAVES.<Nome>
 
 ## 4. Preparar (sempre, depois de importar)
 
-Abra `preparar-criatura.luau`, ajuste `NOME`, `ESCALA` (do `criaturas.json`) e `PREVIA`, e rode pelo MCP
+Abra `preparar-criatura.luau`, ajuste `NOME`, `PASTA`, `ESCALA` (do `criaturas.json`) e `PREVIA`, e rode pelo MCP
 (`execute_luau`, datamodel `Edit`) ou pela barra de comandos. O script:
 
-- põe um `SurfaceAppearance` com `AlphaMode.Transparency` e **`ResampleMode = Pixelated`**. Com `TextureID`, o alfa
+- preserva o mapa de cor do `SurfaceAppearance` importado; usa `TextureID` somente se aquele estiver vazio.
+  Recusa modelos sem nenhum mapa antes de alterar. Aplica `AlphaMode.Transparency` e **`ResampleMode = Pixelated`**. Com `TextureID`, o alfa
   mostra a cor da peça e penas e orelhas ficam com o fundo escuro. Sem `Pixelated`, a pixel art fica borrada;
 - aplica `Model:ScaleTo(ESCALA)` e apoia a base no chão;
-- cria a **`Hitbox`**: uma Part invisível do tamanho da criatura, que colide, é o PrimaryPart e fica soldada à malha.
+- cria a **`Hitbox`**: mede os oito cantos de cada malha no referencial da frente, para conter a criatura mesmo girada;
+  a Part invisível colide, é o PrimaryPart e fica soldada à malha.
   A malha fica sem colisão (`CanCollide = false`, `Massless`);
 - cria o `Animator` e, se pedido, o Script `TocarAnimacao`, que toca uma animação em loop no Run/Play;
 - aponta a Hitbox para a cabeça (ossos `head` e `tail_1`; sem eles, assume +Z da malha) e imprime como decidiu;
-- embrulha as poses das animações numa pose da Raiz, para importações antigas sem a chave neutra.
+- embrulha as poses das animações numa pose da Raiz, para importações antigas sem a chave neutra. Corrige o giro
+  de aproximadamente 180° em cópias das sequências, preservando os originais em `AnimSaves.Value`.
 
 Tudo fica numa gravação do `ChangeHistoryService`: um Ctrl+Z desfaz.
 
@@ -99,8 +103,10 @@ Tudo fica numa gravação do `ChangeHistoryService`: um Ctrl+Z desfaz.
 
 ## 6. Texturas: por que borram e o que já foi feito
 
-- `SurfaceAppearance.ResampleMode = Pixelated` existe e o preparo liga, mas no teste de 22/10 **não mudou nada
-  visível** (as capturas com Default e Pixelated saíram iguais). O borrado que sobra vem do próprio Roblox:
+- `SurfaceAppearance.ResampleMode = Pixelated` usa filtro de vizinho mais próximo segundo a
+  [documentação oficial](https://create.roblox.com/docs/reference/engine/classes/SurfaceAppearance#ResampleMode).
+  O preparo exige a propriedade, sem ocultar uma falha com `pcall`. Na primeira sessão de 22/10 as capturas
+  Default/Pixelated foram iguais; isso não comprova ausência de efeito em toda importação. Ainda podem influir:
   - a compressão da textura enviada (o asset fica em 1024, conferido com `AssetService:CreateEditableImageAsync`);
   - o mipmap de longe;
   - a qualidade gráfica Automática, que baixa a resolução da textura.
@@ -108,6 +114,8 @@ Tudo fica numa gravação do `ChangeHistoryService`: um Ctrl+Z desfaz.
   indicadas ganham uma área `fator`× maior **no mesmo atlas**, com os pixels repetidos (o desenho não muda). Exportado
   a 1024, o olho do F2 passa de 4 para 16 texels por pixel, nítido como o F1. Continua uma malha e uma textura.
   **É a forma recomendada de deixar um detalhe pequeno (olho, boca, gema) nítido.**
+  Desde a revisão de 22/10, cada ilha ampliada recebe borda repetida para reduzir mistura com outras ilhas;
+  a reexportação recupera o atlas da própria cópia em cache, junto com suas UVs. O cache inclui o hash da textura.
 - **Textura separada (`texturas_separadas`, experimental, NÃO usar):** testada em 22/10. O `.glb` sai com uma
   malha por textura, mas exige o formato genérico do Blockbench, que muda a orientação de repouso. No Roblox o
   `body` passou a girar 180° durante as animações. Fica no código só como registro.
@@ -153,11 +161,11 @@ Depois disso, importe de novo no Studio e rode o preparo.
 | anda de costas ou vira para o lado errado | está sendo movida pelo LookVector da malha | mova pela `Hitbox` (o preparo a aponta para a cabeça) |
 | animação exagerada, partes descolando | `Raiz` girada na exportação | reexporte (a Raiz não pode ter rotação) |
 | textura borrada em detalhe pequeno (olho) | poucos texels por pixel (atlas grande) | `superamostrar` as partes do rosto e reexporte |
-| criatura toda branca logo depois de importar | a textura nova ainda está em moderação: o `SurfaceAppearance` só mostra imagem aprovada (a `TextureID` aparece na hora para quem subiu) | espere (minutos a horas); para conferir antes, tire o SurfaceAppearance por um instante |
+| criatura toda branca depois de importar | mapa ausente/substituído, falha de carregamento ou material; moderação precisa de evidência | conferir `ColorMapContent`, `TextureID`, status de carregamento e pixels do asset. O preparo antigo atribuía TextureID vazio por cima de ColorMap válido. Não atribuir o sintoma automaticamente à moderação |
 | vira de lado no walk mesmo com o `.glb` atual | a importação gravou ~180° na pose da Raiz | rode o preparo (passo 4b2) |
 | animação não toca no Play (toca só no Run) | prévia rodando no servidor; o cliente não carrega o id temporário | rode o preparo (prévia no cliente) |
 | no cliente o modelo chega sem Hitbox nem scripts | StreamingEnabled | `ModelStreamingMode = Persistent` (o preparo faz) |
-| criatura parada, mas outra igual anima | há cópias duplicadas no Workspace e só uma foi preparada | rode o preparo em todas as cópias (busque pelo nome) |
+| criatura parada, mas outra igual anima | cópia errada selecionada | preparar somente a importação na pasta combinada e seguir seu `AnimSaves.Value` |
 | animação não toca nem no Run | sem `Animator`, ou id temporário fora do Studio | rode o preparo ou publique a animação |
 | pernas animam, mas o corpo não balança | a pose `body` está no topo da KeyframeSequence | rode o preparo (passo 4b) ou reexporte |
 | colisão estranha | malha colidindo | rode o preparo (Hitbox) |
@@ -165,7 +173,7 @@ Depois disso, importe de novo no Studio e rode o preparo.
 ## 9. Boas maneiras pelo MCP
 
 - Antes de alterar, liste os Studios (`list_roblox_studios`) e confirme o lugar. O usuário tem outros jogos abertos.
-- Ache o modelo pelo nome do `criaturas.json`. Se houver dois com o mesmo nome, compare o `TextureID`.
+- Ache o modelo pelo nome do `criaturas.json`, dentro de `Workspace["criaturas modeladas blockbench"]`.
 - Faça cada alteração dentro de uma gravação do `ChangeHistoryService`.
 - Não apague nem altere modelos que não foram pedidos.
 - Para testar, use `start_stop_play` (true), leia o `get_console_output` e **pare o teste** (false) no fim.

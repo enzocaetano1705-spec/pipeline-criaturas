@@ -111,7 +111,7 @@ def exportar_minecraft(arquivo: Path, textura: Path | None, destino: Path, ident
 # ---------- Roblox ----------
 
 TEXTURA_ROBLOX = 1024  # maior lado que o Roblox guarda sem reduzir
-VERSAO_COPIA = "r4"  # muda quando a preparação da cópia muda (a cópia antiga não pode ser reaproveitada)
+VERSAO_COPIA = "r5"  # cache inclui a textura e a versão do preparo
 
 
 def sangrar_alfa(rgba):
@@ -176,10 +176,7 @@ def copia_roblox(arquivo: Path, textura_roblox: Path, destino: Path, base: str) 
     destino.mkdir(parents=True, exist_ok=True)
     with Image.open(textura_roblox) as im:
         tex = np.asarray(im.convert("RGBA"))
-    marca = sha256(arquivo)[:8] + VERSAO_COPIA
-    for velha in destino.glob(f"{base}.*.bbmodel"):  # cópias anteriores, feitas por aqui
-        if velha.name != f"{base}.{marca}.bbmodel":
-            velha.unlink()
+    marca = sha256(arquivo)[:12] + sha256(textura_roblox)[:12] + VERSAO_COPIA
     copia = destino / f"{base}.{marca}.bbmodel"
     if not copia.exists():
         shutil.copy(arquivo, copia)
@@ -358,9 +355,14 @@ def superamostrar(copia: Path, base: Image.Image, ossos_raiz: list[str], fator: 
             v0, v1 = sorted((uv[1], uv[3]))
             iu0, iv0 = int(np.floor(u0)), int(np.floor(v0))
             w, h = int(np.ceil(u1)) - iu0, int(np.ceil(v1)) - iv0
-            x, y = lugar(w * fator, h * fator)
+            # Uma borda repetida isola a ilha dos vizinhos quando o Roblox usa mipmaps.
+            margem = fator
+            x, y = lugar(w * fator + 2 * margem, h * fator + 2 * margem)
             bloco = tex[iv0:iv0 + h, iu0:iu0 + w]
-            tex[y:y + h * fator, x:x + w * fator] = np.repeat(np.repeat(bloco, fator, axis=0), fator, axis=1)
+            ampliado = np.repeat(np.repeat(bloco, fator, axis=0), fator, axis=1)
+            protegido = np.pad(ampliado, ((margem, margem), (margem, margem), (0, 0)), mode="edge")
+            tex[y:y + protegido.shape[0], x:x + protegido.shape[1]] = protegido
+            x, y = x + margem, y + margem
             nu = [x + (u0 - iu0) * fator, x + (u1 - iu0) * fator]
             nv = [y + (v0 - iv0) * fator, y + (v1 - iv0) * fator]
             if uv[0] > uv[2]:
@@ -438,7 +440,12 @@ def exportar_roblox(arquivo: Path, nome: str, pasta: Path, separar: dict | None 
                 op["material"] = None
             motor.editar(copia_sa, [op])
         else:
-            tex = Image.open(ampliada)
+            # O PNG acima acabou de ser escrito com o atlas ORIGINAL. A cópia em cache tem
+            # UVs remapeadas: recuperar a imagem dela, senão a cabeça lê pixels errados.
+            tex = bbmodelo.ler(copia_sa).textura
+            if tex is None:
+                raise ValueError("cópia superamostrada sem textura embutida")
+            tex.save(ampliada)
         copia = copia_sa
     if separar:
         import hashlib
