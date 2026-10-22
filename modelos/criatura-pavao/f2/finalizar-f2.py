@@ -127,13 +127,13 @@ def garras(modelo, W):
         fino = [e for e in outros if e != largo][0]
         sinal = 1 if lado else -1
         face = (mao.de, mao.ate)[lado][eixo]
-        for i, f in enumerate((0.2, 0.5, 0.8)):
+        for i, f in enumerate((0.15, 0.5, 0.85)):
             de, ate = np.zeros(3), np.zeros(3)
             pos = mao.de[largo] + f * (mao.ate[largo] - mao.de[largo])
-            de[largo], ate[largo] = pos - 0.3, pos + 0.3
+            de[largo], ate[largo] = pos - 0.4, pos + 0.4
             meio = mao.de[fino] + 0.3 * (mao.ate[fino] - mao.de[fino])  # do lado da palma
-            de[fino], ate[fino] = meio - 0.3, meio + 0.3
-            a, b = face - sinal * 0.2, face + sinal * 2.0
+            de[fino], ate[fino] = meio - 0.4, meio + 0.4
+            a, b = face - sinal * 0.3, face + sinal * 2.6
             de[eixo], ate[eixo] = min(a, b), max(a, b)
             lote.append({"op": "add_cube", "name": f"claw_{s}_{i}", "parent": f"forearm_{s}", "from": de.round(4).tolist(),
                          "to": ate.round(4).tolist(), "origin": mao.origem.round(5).tolist(),
@@ -227,7 +227,21 @@ def pintar(modelo, res):
         plano = any(c.ate[i] - c.de[i] < 1e-6 for i in range(3))
         nome = c.nome
         if plano:
-            if nome.startswith("wing"):
+            if nome.startswith("wing_") and "feather" in nome:
+                s = "left" if "left" in nome else "right"
+                e_long = int(np.argmax(c.ate - c.de))
+                e_lar = [e for e in range(3) if e != e_long and c.ate[e] - c.de[e] > 1e-6][0]
+                a_, b_ = centro(c).copy(), centro(c).copy()
+                a_[e_long], b_[e_long] = c.de[e_long], c.ate[e_long]
+                pa, pb = bbmodelo.aplicar(w, np.array([a_, b_]))
+                ombro = cw[f"upper_arm_{s}"]
+                base0 = np.linalg.norm(pa - ombro) <= np.linalg.norm(pb - ombro)
+                L = c.ate[e_long] - c.de[e_long]
+                mid = (c.de[e_lar] + c.ate[e_lar]) / 2
+                mm = (c.ate[e_lar] - c.de[e_lar]) / 2
+                pinta = lambda p, r, e_long=e_long, e_lar=e_lar, base0=base0, L=L, mid=mid, mm=mm, c=c: pena_crista(
+                    ((p[e_long] - c.de[e_long]) if base0 else (c.ate[e_long] - p[e_long])) / L, p[e_lar] - mid, mm, r, L)
+            elif nome.startswith("wing"):
                 s = "left" if "left" in nome else "right"
                 ombro = cw[f"upper_arm_{s}"]
                 eixos, _ = _plano_uv(c, w, perto, ombro)
@@ -297,6 +311,45 @@ def _ao_longo(c, w, pt, alvo):
     return c.ate[e] - pt[e]
 
 
+OLHO_LADO = ["KKK", "WPA", "AAD"]  # da frente para trás; linha 0 = sobrancelha
+COR_OLHO_LADO = {"K": "dark", "W": "white", "P": "pupil", "A": "amber", "D": "amber_dark"}
+
+
+def escamas(c, w, pt, alvo, r):
+    """Pé de ave: placas em anéis ao longo do comprimento (linha escura a cada 2 unidades), brilho de vez em quando."""
+    d = _ao_longo(c, w, pt, alvo)
+    anel = int(math.floor(d))
+    if d - anel < 0.5 and anel % 2 == 0:
+        return TEAL[2]
+    if r > 0.85:
+        return TEAL[4]
+    return TEAL[3]
+
+
+def pena_crista(u, d, meia_max, r, L=12.0):
+    """Pena como as da crista: haste azul, barbas azul/teal que viram verde, ocelo perto da ponta."""
+    if u < 0 or u > 1:
+        return None
+    if u < 0.18:
+        meia = 0.35 + 0.15 * meia_max
+    else:
+        meia = min(meia_max, 0.5 + meia_max * math.sin(math.pi * min(1.0, (u - 0.1) / 0.95)) ** 0.7)
+    if abs(d) > meia + (0.3 if r > 0.6 else 0):
+        return None
+    e = ((u - 0.82) * L / (1.3 * meia_max)) ** 2 + (d / (0.62 * meia_max)) ** 2  # ocelo redondo, em unidades
+    if e < 0.25:
+        return "oc_navy"
+    if e < 0.55:
+        return "oc_blue"
+    if e < 0.95:
+        return "f_teal"
+    if abs(d) < 0.35 and u < 0.7:
+        return "rachis"
+    if u < 0.55:
+        return "f_blue" if r < 0.55 else "f_teal"
+    return "f_green" if r > 0.3 else "f_green_l"
+
+
 def cor_solido(c, face, pt, pw, nmw, W, cub, cw, r):
     nome = c.nome
     w = W[c.uuid]
@@ -308,7 +361,7 @@ def cor_solido(c, face, pt, pw, nmw, W, cub, cw, r):
         s = "left" if "left" in nome else "right"
         if _ao_longo(c, w, pt, cw[f"tarsus_{s}"]) > (c.ate - c.de).max() - 1.1:
             return P["claw"]
-        return TEAL[3]
+        return escamas(c, w, pt, cw[f"tarsus_{s}"], r)
     if nome.startswith("beak"):
         return P["beak_dark"] if nome == "beak_tip" else (P["beak"] if r > 0.15 else P["beak_dark"])
     if nome.startswith("lower_arm"):
@@ -319,22 +372,21 @@ def cor_solido(c, face, pt, pw, nmw, W, cub, cw, r):
         s = "left" if "left" in nome else "right"
         if 0.3 < _ao_longo(c, w, pt, cw[f"shank_{s}"]) < 1.4:
             return P["gold_light"] if r > 0.75 else P["gold"]
-        return TEAL[3]
+        return escamas(c, w, pt, cw[f"shank_{s}"], r)
     if nome.startswith("hand"):
-        return TEAL[3]
+        s = "left" if "left" in nome else "right"
+        return escamas(c, w, pt, cw[f"lower_arm_{s}"], r)
     if nome == "skull":
         de, ate = c.de, c.ate
         y0 = de[1]
-        if face == "north":
-            q = -(3 - abs(pt[0] - (de[0] + ate[0]) / 2))
-        elif face in ("east", "west"):
-            q = pt[2] - de[2]
-        else:
-            q = None
-        if q is not None and -2 < q < 2 and y0 + 1.6 <= pt[1] < y0 + 4.6:
-            kk = g.OLHO[int((y0 + 4.6 - pt[1]) // 1)][int(math.floor(q + 2))]
-            if kk != "_":
-                return P[g.COR_OLHO[kk]]
+        if face in ("east", "west"):
+            # olho de ave na lateral, no terço da frente; sobrancelha escura brava por cima
+            col = int(math.floor(pt[2] - de[2] - 1.0))  # 0..2 a partir da frente
+            lin = int(math.floor(y0 + 4.6 - pt[1]))  # 0 = sobrancelha
+            if 0 <= col < 3 and 0 <= lin < 3:
+                kk = OLHO_LADO[lin][col]
+                if kk != "_":
+                    return P[COR_OLHO_LADO[kk]]
         xm = pt[0] - (de[0] + ate[0]) / 2
         if face == "north" and abs(xm) < 1 and pt[1] >= y0 + 3.6:
             return P["gold_light"] if (xm > 0 and pt[1] > y0 + 4.2) else P["gold"]
@@ -350,8 +402,17 @@ def cor_solido(c, face, pt, pw, nmw, W, cub, cw, r):
         valor = 0.8
     elif nmw[1] < -0.7:
         valor = -1.6
-    rampa = VERDE if g._ruido(a, b, 7, k + 50) > 0.7 else TEAL
-    return plumagem(rampa, a, b, valor, k)
+    return plumagem(TEAL, a, b, valor, k)  # sem manchas verdes: só a rampa teal
+
+
+def acertar_uv_da_textura(arquivo: Path, res: int) -> None:
+    """O motor não tem operação para uv_width/uv_height da textura, e o update_texture mantém os antigos: com o
+    atlas maior (128 → 256) os UVs passavam a ler fora da imagem. Única edição direta do JSON, só desses campos."""
+    import json
+    dados = json.loads(arquivo.read_text(encoding="utf-8"))
+    for t in dados.get("textures", []):
+        t["uv_width"], t["uv_height"] = res, res
+    arquivo.write_text(json.dumps(dados, ensure_ascii=False), encoding="utf-8")
 
 
 # ------------------------------------------------------------------ execução
@@ -362,6 +423,25 @@ def main():
     modelo = bbmodelo.ler(FILE)
     antes = mundo(modelo)
     cantos_antes = {c.uuid: bbmodelo.aplicar(antes[c.uuid], np.array([c.de, c.ate])) for c in modelo.cubos}
+    # penas de asa feitas a partir de cópias do leque: passam para o osso da asa do lado certo (ossos sem rotação,
+    # então mudar o pai não move nada) e ganham nome próprio
+    W0 = mundo(modelo)
+    mov, n = [], {"left": 0, "right": 0}
+    for c in modelo.cubos:
+        if c.osso and c.osso.startswith("feather_fan") and c.nome.startswith("fan"):
+            p = bbmodelo.aplicar(W0[c.uuid], centro(c)[None])[0]
+            if p[2] < 20:
+                s = "left" if p[0] < 0 else "right"
+                n[s] += 1
+                mov.append({"op": "update_node", "target": c.uuid, "parent": f"wing_{s}", "name": f"wing_{s}_feather_{n[s]}"})
+    if mov:
+        if any(np.any(o.rotacao) for o in modelo.ossos.values()):
+            raise SystemExit("há ossos com rotação: achate antes de reparentar")
+        motor.editar(FILE, mov)
+        print(f"penas de asa reparentadas: {n}")
+        modelo = bbmodelo.ler(FILE)
+        antes = mundo(modelo)
+        cantos_antes = {c.uuid: bbmodelo.aplicar(antes[c.uuid], np.array([c.de, c.ate])) for c in modelo.cubos}
     lote, W = achatar_e_pivotar(modelo)
     motor.editar(FILE, lote)
     modelo = bbmodelo.ler(FILE)
@@ -371,9 +451,9 @@ def main():
     print(f"rig achatado: maior desvio de canto = {erro:.5f} unidade")
     if erro > 0.01:
         raise SystemExit("o achatamento mudou a geometria; abortado (backup em historico/)")
-    if not any(c.nome.startswith("claw_") for c in modelo.cubos):
-        motor.editar(FILE, garras(modelo, depois))
-        modelo = bbmodelo.ler(FILE)
+    velhas = [{"op": "remove_node", "target": c.uuid} for c in modelo.cubos if c.nome.startswith("claw_")]
+    motor.editar(FILE, velhas + garras(modelo, depois))  # refeitas na posição atual da mão
+    modelo = bbmodelo.ler(FILE)
     lista = [{"nome": c.uuid, "from": c.de.tolist(), "to": c.ate.tolist()} for c in modelo.cubos]  # nomes se repetem
     offsets, (res, _) = ops.distribuir_uv(lista, margem=0, larguras=(64, 128, 256))
     motor.editar(FILE, [{"op": "set_model_properties", "resolution": {"width": res, "height": res}}] +
@@ -382,8 +462,16 @@ def main():
     tex = pintar(modelo, res)
     Image.fromarray(tex).save(AQUI / "textura.png")
     # peças com nome repetido: atribuir pela UUID
-    motor.editar(FILE, [{"op": "add_texture", "name": "textura", "source": texturizar._data_url(tex), "width": res, "height": res},
-                        {"op": "assign_texture", "targets": [c.uuid for c in modelo.cubos], "texture": "textura"}])
+    texs = modelo.bruto.get("textures") or []
+    if texs:
+        nome_t = texs[0]["uuid"]
+        op_t = {"op": "update_texture", "target": nome_t, "source": texturizar._data_url(tex), "width": res, "height": res,
+                "material": None}
+    else:
+        nome_t = "textura"
+        op_t = {"op": "add_texture", "name": nome_t, "source": texturizar._data_url(tex), "width": res, "height": res}
+    motor.editar(FILE, [op_t, {"op": "assign_texture", "targets": [c.uuid for c in modelo.cubos], "texture": nome_t}])
+    acertar_uv_da_textura(FILE, res)
     info = animar.animar(FILE, "bípede", "meio", quais=("idle", "walk"))
     modelo = bbmodelo.ler(FILE)
     render.folha(modelo, lado_px=360, titulo="Pavão F2 | remodelagem do usuário + textura").save(AQUI / "folha.png")
