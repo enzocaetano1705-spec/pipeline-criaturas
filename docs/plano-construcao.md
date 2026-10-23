@@ -195,6 +195,7 @@ Começa quando `docs/criaturas/<nome>/ficha.md` estiver com `status: pronta-para
 - [x] 10.3 Exportar para o Roblox e testar no Studio com o usuário. F1/F2 com textura, walk e hitbox conferidos em 23/10; evidências em [[2026-10-23-validacao-roblox]]. A publicação das animações ainda é uma etapa manual futura.
 
 **Ajuste solicitado durante a fase 10:**
+- [x] Criar proposta de `attack_physical` do F2 em nova versão com as garras removidas pelo usuário; validar apoio/juntas e abrir no Blockbench para avaliação. A aprovação artística e adoção no Roblox aguardam retorno em [[2026-10-23-ataque-f2]].
 - [x] Estudar referências por estrutura (ilustração, vistas reais, atlas, JSON e animações), acrescentar consulta local e estratégia `poucas_formas`, testar e registrar na skill. Decisão [[0005-estudar-referencias-por-estrutura]]. O ensaio técnico do pavão não conclui a revisão artística nem a importação no Roblox.
 - [x] Auditar acervo e acrescentar diagnóstico por partes (`comparar-referencias`) com teste no pavão v2 rejeitado. Método e limites em [[aprendizado-por-gabaritos]], decisão [[0006-comparacao-por-partes-e-gabaritos]]. Não equivale a um gerador treinado.
 - [x] Corrigir cache do atlas, preservar mapa importado no preparo e medir hitbox no eixo da frente; reexportar F1/F2 com alterações salvas do usuário e conferir canais glTF. Nova importação e aprovação visual no Studio continuam pendentes em [[2026-10-22-importacao-roblox]].

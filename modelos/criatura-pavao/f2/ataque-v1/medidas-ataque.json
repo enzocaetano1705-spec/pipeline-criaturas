@@ -1,0 +1,43 @@
+{
+  "amostras": 181,
+  "fps_medicao": 120,
+  "minimo_y": [
+    0.08096048401100316,
+    0.4583333333333333,
+    "toe_right_1"
+  ],
+  "erro_pe_apoio_max_unidades": 0.029868764528273358,
+  "duracao": 1.5,
+  "loop": "once",
+  "chaves": 2548,
+  "alvos": [
+    "body",
+    "neck_1",
+    "head",
+    "feather_left_1",
+    "feather_left_2",
+    "arm_left",
+    "forearm_left",
+    "wing_left",
+    "leg_left",
+    "shin_left",
+    "foot_left",
+    "feather_right_1",
+    "feather_right_2",
+    "arm_right",
+    "forearm_right",
+    "wing_right",
+    "leg_right",
+    "shin_right",
+    "foot_right",
+    "tail_1",
+    "feather_fan_1",
+    "feather_fan_2",
+    "feather_fan_3",
+    "feather_fan_4",
+    "feather_fan_5",
+    "feather_fan_6",
+    "feather_fan_7"
+  ],
+  "sem_escala": true
+}

@@ -1,0 +1,9 @@
+{
+  "fonte": "modelos/criatura-pavao/f2/criatura-pavao-e2.bbmodel",
+  "fonte_sha256": "4ee150999774ac5f9b8036487040904ee95243d58e9efc002534654a398d3bad",
+  "saida_sha256": "69345af95a7ba4dc13abda2ced7e9c69307ebe109fde00119465698291e1a380",
+  "animacao": "attack_physical",
+  "duracao": 1.5,
+  "fps": 60,
+  "operacoes": 2549
+}
