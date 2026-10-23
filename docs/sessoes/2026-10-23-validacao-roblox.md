@@ -3,15 +3,19 @@ tipo: sessao
 data: 2026-10-23
 fase: 10
 ia: codex
-status: aguardando-reimportacao-f1
+status: aguardando-reimportacao-atlas-f1
 ---
 
 # Validação no cliente do Studio e material do F1
 
-**Pedido ao usuário:** importar apenas o `exportacoes/roblox/pavao/Pavao_F1.glb` atualizado, com Rig Type Custom.
+**Pedido atual ao usuário:** importar apenas o `exportacoes/roblox/pavao/Pavao_F1.glb` atualizado **com o novo
+layout de atlas** (`espelhar_atlas: true`), com Rig Type Custom. A importação PBR anterior já foi feita e
+continuou branca: o usuário confirmou que o mapa do F2, aplicado temporariamente no mesmo material do F1,
+mostrou cores. A nova exportação muda o conteúdo do atlas e remapeia as UVs para gerar outro asset de cor,
+preservando a aparência. Esse último arquivo ainda aguarda importação e confirmação visual.
 Pode deixar o modelo novo no Workspace; a IA localizará a importação e a colocará na pasta combinada,
 preservando o F1 anterior em um subdiretório de histórico. A importação é ação manual combinada com o usuário.
-O novo arquivo contém material PBR explícito; a correção visual do F1 ainda não está comprovada.
+O material PBR permanece explícito; a correção visual do F1 ainda não está comprovada.
 
 **Feito:**
 - As importações novas estavam no Workspace, entre modelos antigos. Organizadas em
@@ -60,3 +64,32 @@ O novo arquivo contém material PBR explícito; a correção visual do F1 ainda 
 
 **Próximo passo:** localizar o novo F1, preservar o anterior, aplicar o preparo vigente e testar no cliente.
 Conferir os mapas PBR criados pelo importador e obter evidência visual perto/longe. A fase 10.3 continua aberta.
+
+## Reimportação PBR e diagnóstico com o usuário
+
+- F1 PBR importado e preparado; anterior preservado em
+  `ServerStorage.HistoricoCriaturasBlockbench.Pavao_F1_antes_material_pbr`.
+  O novo manteve MeshId `97293060483622` e ColorMap `136950763430471`.
+  RoughnessMap `135530020828766`, MetalnessMap `118011954941645`: ambos imagens de 4×4,
+  legíveis por EditableImage no Edit, embora PreloadAsync no cliente tenha retornado Failure nesses dois mapas.
+  Isso não prova moderação nem explica sozinho o material branco.
+- Walks medidos novamente no cliente: F1 Y entre −0,0108 e 0,4655 stud, rotação 0°, X/Z=0;
+  F2 Y entre −0,0801 e 0,0815, rotação até 4,6635°, X/Z=0. Ambas as hitboxes ficaram imóveis e contiveram
+  os oito cantos das MeshParts (excesso 0); uma faixa tocando por modelo e filtro Pixelated no cliente.
+- Todas as capturas retornaram 99,6% de pixels brancos, incluindo cenário. O usuário confirmou que o F1
+  continuava branco: o material completo sozinho não resolveu.
+- Teste controlado no Edit: somente ColorMap do F1 foi trocado temporariamente para `123315715785564` (F2).
+  O usuário confirmou **"Ganhou cores, com o desenho errado"**. Isso isola a falha ao caminho de material do
+  mapa de cor `136950763430471`; o mesmo objeto F1 consegue mostrar outra textura. O mapa original foi
+  restaurado e o atributo temporário de diagnóstico foi removido. Não é prova de corrupção interna do asset.
+- Exportador: `espelhar_atlas: true` reorganiza a imagem por reflexão horizontal e troca U por 1−U,
+  limitando a margem do codec a [0,1] conforme o sampler CLAMP_TO_EDGE. A imagem embutida e o PNG entregue
+  são atualizados juntos; fonte artística e modelo original ficam intactos. Só habilitado no F1.
+- Conferência do F1 real: 192 UVs de vértices mantêm exatamente a mesma amostra RGBA; todos os dados
+  binários de posições, normais, índices, skin e animações permanecem iguais aos do GLB PBR anterior.
+  Novo GLB: UVs entre 0,00024 e 1,0, 96 triângulos, duas animações, zero erros/avisos Khronos.
+- Regressão acrescentada para o novo layout: testa UVs, amostragem, preservação dos outros accessors e
+  igualdade do PNG embutido com o entregue. Suíte de exportação/regressões: **11 passaram**.
+  O Play foi encerrado e F1/F2 foram enquadrados no Edit.
+- Próxima importação deve criar outro asset de cor; verificar isso antes de fazer qualquer teste adicional
+  de material. Não repetir a importação anterior com o mesmo ColorMap e tratá-la como nova textura.

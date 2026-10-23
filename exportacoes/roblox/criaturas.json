@@ -4,6 +4,7 @@
     {
       "nome": "Pavao_F1",
       "material_pbr": true,
+      "espelhar_atlas": true,
       "especie": "pavao",
       "estagio": "1 de 3 (bebê)",
       "fonte": "modelos/criatura-pavao/revisao-v3/criatura-pavao-e1-v3.bbmodel",

@@ -443,8 +443,52 @@ def material_fosco_glb(caminho: Path) -> None:
                         + cabecalho + struct.pack("<I", len(binario)) + b"BIN\0" + binario)
 
 
+def espelhar_atlas_glb(caminho: Path, png: Path) -> None:
+    """Novo layout do atlas, com a mesma aparência: imagem espelhada e U substituído por 1-U.
+
+    Permite reenviar uma textura cujo asset funciona em TextureID mas falha em ColorMap.
+    Não muda a fonte artística, posições, ossos ou canais. O PNG entregue e o embutido
+    são sempre atualizados juntos. Só é aplicado a exportações de atlas único.
+    """
+    import numpy as np
+
+    g = json_do_glb(caminho)
+    if len(g.get("images", [])) != 1:
+        raise ValueError("espelhar_atlas requer um único atlas de cor antes do material PBR")
+    dados = bytearray(caminho.read_bytes())
+    inicio = 28 + struct.unpack("<I", dados[12:16])[0]
+    indices = {p["attributes"]["TEXCOORD_0"] for m in g.get("meshes", []) for p in m["primitives"]
+               if "TEXCOORD_0" in p.get("attributes", {})}
+    for indice in indices:
+        a = g["accessors"][indice]
+        if a["componentType"] != 5126 or a["type"] != "VEC2" or "sparse" in a:
+            raise ValueError("UV precisa ser VEC2 float32 sem sparse para remapear o atlas")
+        v = g["bufferViews"][a["bufferView"]]
+        offset = inicio + v.get("byteOffset", 0) + a.get("byteOffset", 0)
+        uv = np.ndarray((a["count"], 2), dtype="<f4", buffer=dados, offset=offset,
+                        strides=(v.get("byteStride", 8), 4))
+        # O codec pode recuar uma borda para -1/4096. O sampler da fonte é CLAMP_TO_EDGE;
+        # limitar U mantém a mesma cor e evita reenviar essa margem fora de [0, 1].
+        uv[:, 0] = np.clip(1 - uv[:, 0], 0, 1)
+        if "min" in a:
+            a["min"] = uv.min(axis=0).tolist()
+        if "max" in a:
+            a["max"] = uv.max(axis=0).tolist()
+    with Image.open(png) as im:
+        espelhada = im.transpose(Image.Transpose.FLIP_LEFT_RIGHT)
+    cabecalho = json.dumps(g, separators=(",", ":")).encode()
+    cabecalho += b" " * (-len(cabecalho) % 4)
+    resto = dados[inicio - 8:]  # chunk BIN, com as UVs alteradas
+    total = 20 + len(cabecalho) + len(resto)
+    caminho.write_bytes(b"glTF" + struct.pack("<II", 2, total) + struct.pack("<I", len(cabecalho)) + b"JSON"
+                        + cabecalho + resto)
+    espelhada.save(png)
+    trocar_imagem_glb(caminho, png.read_bytes())
+
+
 def exportar_roblox(arquivo: Path, nome: str, pasta: Path, separar: dict | None = None,
-                    superamostra: dict | None = None, material_pbr: bool = False) -> dict:
+                    superamostra: dict | None = None, material_pbr: bool = False,
+                    espelhar_atlas: bool = False) -> dict:
     """`.bbmodel` → `<pasta>/<nome>.glb` pronto para o Roblox (raiz, frente, alfa sangrado, 1024, nome da cena).
 
     `separar` = {"nome_da_textura": ["osso", ...]}: essas partes ganham textura própria (ver separar_textura).
@@ -503,6 +547,8 @@ def exportar_roblox(arquivo: Path, nome: str, pasta: Path, separar: dict | None 
     acrescentar_locators(glb, modelo)
     renomear_glb(glb, nome)
     trocar_imagens_glb(glb, [p.read_bytes() for p in pngs])  # devolve o alfa sangrado que o canvas do Blockbench zerou
+    if espelhar_atlas:
+        espelhar_atlas_glb(glb, ampliada)
     if material_pbr:
         material_fosco_glb(glb)
     erros, avisos, resumo = verificar_glb(glb, modelo)

@@ -111,9 +111,16 @@ esse objeto no cliente. Os pixels do asset estavam disponíveis; `PreloadAsync.S
 material PBR derivado renderiza. Reatribuir o mapa, trocar Pixelated/Default e acrescentar roughness nativo
 não resolveram. O diagnóstico aponta para o caminho de processamento do material; a causa interna não foi provada.
 `material_pbr: true` no registro do F1 agora embute um mapa glTF constante de roughness/metallic (4×4, G=1/B=0),
-para o importador criar o material completo junto com o albedo. **Esse caminho ainda aguarda nova importação e
-validação visual.** Não usar EditableImage de execução como conserto permanente de uma criatura salva.
+para o importador criar o material completo junto com o albedo. **A reimportação foi testada e, sozinha,
+não resolveu o branco**, conforme o resultado abaixo. Não usar EditableImage de execução como conserto permanente de uma criatura salva.
 O [importador oficial](https://create.roblox.com/docs/studio/importer) suporta texturas PBR com rigs e animações.
+
+**Resultado da reimportação PBR:** o F1 continuou branco segundo o usuário, reutilizando ColorMap
+`136950763430471`. Ao trocar somente esse mapa pelo asset do F2, o usuário viu cores no mesmo F1.
+O problema está isolado ao uso daquele mapa no material, sem comprovação da causa interna do asset.
+O F1 agora usa também `espelhar_atlas: true`: imagem reorganizada horizontalmente e U remapeado junto,
+com a mesma aparência. Isso deve gerar outro asset de cor na próxima importação; **ainda falta confirmar**.
+Nunca aplique só o PNG espelhado à malha antiga: é necessário importar o GLB com as UVs correspondentes.
 
 - `SurfaceAppearance.ResampleMode = Pixelated` usa filtro de vizinho mais próximo segundo a
   [documentação oficial](https://create.roblox.com/docs/reference/engine/classes/SurfaceAppearance#ResampleMode).

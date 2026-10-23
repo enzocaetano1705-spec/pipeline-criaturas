@@ -77,3 +77,45 @@ def test_material_fosco_preserva_binario_uvs_rig_e_animacoes(tmp_path):
     im = Image.open(io.BytesIO(depois[offset:offset + vista["byteLength"]]))
     assert im.size == (4, 4) and im.getpixel((0, 0)) == (255, 255, 0)
     assert pbr["metallicFactor"] == 0 and pbr["roughnessFactor"] == 1
+
+
+def test_novo_atlas_preserva_amostragem_e_todos_os_dados_exceto_u(tmp_path):
+    import numpy as np
+
+    glb = tmp_path / "novo-atlas.glb"
+    png = tmp_path / "atlas.png"
+    shutil.copy(RAIZ / "exportacoes/roblox/pavao/Pavao_F2.glb", glb)
+    shutil.copy(RAIZ / "exportacoes/roblox/pavao/Pavao_F2-textura.png", png)
+    antes, g0 = glb.read_bytes(), exportar.json_do_glb(glb)
+    pixels0 = np.array(Image.open(png))
+
+    def accessor(blob, g, i):
+        a = g["accessors"][i]
+        v = g["bufferViews"][a["bufferView"]]
+        n = {"SCALAR": 1, "VEC2": 2, "VEC3": 3, "VEC4": 4, "MAT4": 16}[a["type"]]
+        b = {5120: 1, 5121: 1, 5122: 2, 5123: 2, 5125: 4, 5126: 4}[a["componentType"]]
+        offset = 28 + struct.unpack("<I", blob[12:16])[0] + v.get("byteOffset", 0) + a.get("byteOffset", 0)
+        stride = v.get("byteStride", n * b)
+        return b"".join(blob[offset+j*stride:offset+j*stride+n*b] for j in range(a["count"]))
+
+    exportar.espelhar_atlas_glb(glb, png)
+    depois, g1 = glb.read_bytes(), exportar.json_do_glb(glb)
+    for campo in ("nodes", "skins", "meshes", "animations"):
+        assert g0[campo] == g1[campo]
+    uvs = {p["attributes"]["TEXCOORD_0"] for m in g0["meshes"] for p in m["primitives"]}
+    for i in range(len(g0["accessors"])):
+        a, b = accessor(antes, g0, i), accessor(depois, g1, i)
+        if i in uvs:
+            u0, u1 = np.frombuffer(a, "<f4").reshape(-1, 2), np.frombuffer(b, "<f4").reshape(-1, 2)
+            assert np.allclose(u1[:, 0], np.clip(1 - u0[:, 0], 0, 1))
+            assert np.array_equal(u1[:, 1], u0[:, 1])
+        else:
+            assert a == b  # posições, normais, índices, skin e canais de animação
+    pixels1 = np.array(Image.open(png))
+    assert np.array_equal(pixels1, pixels0[:, ::-1])
+    h, w = pixels0.shape[:2]
+    for u, v in [(0.123, 0.345), (0.456, 0.678), (0.789, 0.111)]:
+        assert np.array_equal(pixels0[int(v*h), int(u*w)], pixels1[int(v*h), int((1-u)*w)])
+    vista = g1["bufferViews"][g1["images"][0]["bufferView"]]
+    inicio = 28 + struct.unpack("<I", depois[12:16])[0] + vista["byteOffset"]
+    assert depois[inicio:inicio+vista["byteLength"]] == png.read_bytes()

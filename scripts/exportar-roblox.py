@@ -22,7 +22,8 @@ for c in registro["criaturas"]:
     if pedidas and c["nome"] not in pedidas:
         continue
     r = exportar.exportar_roblox(RAIZ / c["fonte"], c["nome"], PASTA / c["especie"], c.get("texturas_separadas"),
-                               c.get("superamostrar"), material_pbr=c.get("material_pbr", False))
+                               c.get("superamostrar"), material_pbr=c.get("material_pbr", False),
+                               espelhar_atlas=c.get("espelhar_atlas", False))
     print(f"{c['nome']}: {r['glb'].relative_to(RAIZ)}  {r['resumo']}")
     for m in r["erros"] + r["avisos"]:
         print("   ", m)
