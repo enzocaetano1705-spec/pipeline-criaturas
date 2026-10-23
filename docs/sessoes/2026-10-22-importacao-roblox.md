@@ -3,10 +3,13 @@ tipo: sessao
 data: 2026-10-22
 fase: 10
 ia: codex
-status: aguardando-importacao
+status: importado-validacao-continuada
 ---
 
 # Correções da exportação e do preparo no Roblox
+
+**Continuação:** os arquivos foram importados. Veja [[2026-10-23-validacao-roblox]] para a organização no Studio,
+as correções adicionais das animações e o pedido atual de reimportação apenas do F1 com material PBR.
 
 **Pedido ao usuário:** importar `exportacoes/roblox/pavao/Pavao_F1.glb` e `Pavao_F2.glb` com Rig Type Custom
 e colocar ambos em `Workspace["criaturas modeladas blockbench"]`. Avisar quando terminar; então rodar o

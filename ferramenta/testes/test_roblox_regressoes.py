@@ -2,11 +2,14 @@
 import base64
 import io
 import json
+import shutil
+import struct
 from types import SimpleNamespace
 
 from PIL import Image
 
 from criaturas import exportar
+from criaturas.caminhos import RAIZ
 
 
 def test_reexportacao_recupera_atlas_das_uvs_em_cache(tmp_path, monkeypatch):
@@ -49,3 +52,28 @@ def test_cache_invalida_quando_so_a_textura_muda_e_preserva_copias(tmp_path, mon
     assert primeira != segunda
     assert primeira.exists() and segunda.exists()
     assert fonte.read_text() == primeira.read_text() == segunda.read_text()
+
+
+def test_material_fosco_preserva_binario_uvs_rig_e_animacoes(tmp_path):
+    arquivo = tmp_path / "pbr.glb"
+    shutil.copy(RAIZ / "exportacoes/roblox/pavao/Pavao_F2.glb", arquivo)
+    antes = arquivo.read_bytes()
+    g0 = exportar.json_do_glb(arquivo)
+    inicio0 = 28 + struct.unpack("<I", antes[12:16])[0]
+    binario0 = antes[inicio0:]
+    exportar.material_fosco_glb(arquivo)
+    depois = arquivo.read_bytes()
+    g1 = exportar.json_do_glb(arquivo)
+    inicio1 = 28 + struct.unpack("<I", depois[12:16])[0]
+    assert depois[inicio1:inicio1 + len(binario0)] == binario0
+    for campo in ("nodes", "meshes", "skins", "accessors", "animations", "scenes"):
+        assert g1.get(campo) == g0.get(campo)
+    assert g1["images"][:-1] == g0["images"]
+    pbr = g1["materials"][0]["pbrMetallicRoughness"]
+    indice = pbr["metallicRoughnessTexture"]["index"]
+    imagem = g1["images"][g1["textures"][indice]["source"]]
+    vista = g1["bufferViews"][imagem["bufferView"]]
+    offset = inicio1 + vista["byteOffset"]
+    im = Image.open(io.BytesIO(depois[offset:offset + vista["byteLength"]]))
+    assert im.size == (4, 4) and im.getpixel((0, 0)) == (255, 255, 0)
+    assert pbr["metallicFactor"] == 0 and pbr["roughnessFactor"] == 1

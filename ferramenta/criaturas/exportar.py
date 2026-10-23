@@ -404,8 +404,47 @@ def trocar_imagens_glb(caminho: Path, pngs: list[bytes]) -> None:
         trocar_imagem_glb(caminho, png, idx)
 
 
+def material_fosco_glb(caminho: Path) -> None:
+    """Material PBR explícito para o importador criar o SurfaceAppearance com os mapas juntos.
+
+    Um mapa glTF usa G para roughness (1) e B para metallic (0). Isso mantém o acabamento
+    fosco já declarado nos fatores do material, sem alterar o albedo, UVs, rig ou animações.
+    O PNG de 4x4 é constante e fica embutido. Evita depender da conversão posterior de
+    TextureID para ColorMap (falhou visualmente com o asset do F1 no Studio).
+    """
+    import io
+
+    dados = caminho.read_bytes()
+    tamanho_json = struct.unpack("<I", dados[12:16])[0]
+    g = json_do_glb(caminho)
+    inicio = 28 + tamanho_json
+    tamanho_bin = struct.unpack("<I", dados[inicio - 8:inicio - 4])[0]
+    binario = bytearray(dados[inicio:inicio + tamanho_bin])
+    binario += b"\0" * (-len(binario) % 4)
+    png = io.BytesIO()
+    Image.new("RGB", (4, 4), (255, 255, 0)).save(png, "PNG")
+    vista = len(g["bufferViews"])
+    g["bufferViews"].append({"buffer": 0, "byteOffset": len(binario), "byteLength": len(png.getvalue())})
+    binario += png.getvalue()
+    binario += b"\0" * (-len(binario) % 4)
+    imagem = len(g.setdefault("images", []))
+    g["images"].append({"name": "Fosco_MetallicRoughness", "bufferView": vista, "mimeType": "image/png"})
+    textura = len(g.setdefault("textures", []))
+    g["textures"].append({"source": imagem})
+    for material in g.get("materials", []):
+        pbr = material.setdefault("pbrMetallicRoughness", {})
+        pbr["metallicFactor"], pbr["roughnessFactor"] = 0, 1
+        pbr["metallicRoughnessTexture"] = {"index": textura}
+    g["buffers"][0]["byteLength"] = len(binario)
+    cabecalho = json.dumps(g, separators=(",", ":")).encode()
+    cabecalho += b" " * (-len(cabecalho) % 4)
+    total = 28 + len(cabecalho) + len(binario)
+    caminho.write_bytes(b"glTF" + struct.pack("<II", 2, total) + struct.pack("<I", len(cabecalho)) + b"JSON"
+                        + cabecalho + struct.pack("<I", len(binario)) + b"BIN\0" + binario)
+
+
 def exportar_roblox(arquivo: Path, nome: str, pasta: Path, separar: dict | None = None,
-                    superamostra: dict | None = None) -> dict:
+                    superamostra: dict | None = None, material_pbr: bool = False) -> dict:
     """`.bbmodel` → `<pasta>/<nome>.glb` pronto para o Roblox (raiz, frente, alfa sangrado, 1024, nome da cena).
 
     `separar` = {"nome_da_textura": ["osso", ...]}: essas partes ganham textura própria (ver separar_textura).
@@ -464,6 +503,8 @@ def exportar_roblox(arquivo: Path, nome: str, pasta: Path, separar: dict | None 
     acrescentar_locators(glb, modelo)
     renomear_glb(glb, nome)
     trocar_imagens_glb(glb, [p.read_bytes() for p in pngs])  # devolve o alfa sangrado que o canvas do Blockbench zerou
+    if material_pbr:
+        material_fosco_glb(glb)
     erros, avisos, resumo = verificar_glb(glb, modelo)
     resumo["textura"] = f"{modelo.textura.width}×{fator} = {tex.width}"
     return {"glb": glb, "erros": erros, "avisos": avisos, "resumo": resumo}

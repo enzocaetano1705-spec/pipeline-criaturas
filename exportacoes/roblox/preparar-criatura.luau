@@ -154,12 +154,47 @@ if pasta then
 				local R = raiz.CFrame - raiz.CFrame.Position
 				local _, ang = R:ToAxisAngle()
 				if math.abs(math.abs(ang) - math.pi) < 0.01 then
-					for _, filho in ipairs(raiz:GetSubPoses()) do filho.CFrame = R:Inverse() * filho.CFrame end
+					for _, filho in ipairs(raiz:GetSubPoses()) do
+						local osso = malha:FindFirstChild(filho.Name, true)
+						-- Só o osso diretamente sob a malha herda o giro de importação.
+						-- F1 tem um root intermediário omitido nas poses; body já está no referencial correto.
+						if osso and osso:IsA("Bone") and osso.Parent == malha then
+							filho.CFrame = R:Inverse() * filho.CFrame
+							local iniciais = modelo:FindFirstChild("InitialPoses")
+							local inicial = iniciais and iniciais:FindFirstChild(filho.Name .. "_Original")
+							if inicial then
+								-- O importador também girou a posição de repouso: compensar só a
+								-- rotação deixa um deslocamento de 2x o pivô (3,27 studs no F2).
+								local p = inicial.Value.Position
+								filho.CFrame += p - R:Inverse():VectorToWorldSpace(p)
+							end
+						end
+					end
 					raiz.CFrame = CFrame.new(raiz.CFrame.Position)
 				elseif math.abs(ang) > 1e-3 then
 					warn("Rotação inesperada da Raiz em " .. seq.Name .. ": " .. math.deg(ang) .. " graus; conferir antes de usar")
 				end
 			end
+		end
+	end
+end
+
+-- O caminho das Poses precisa coincidir com o dos Bones. O importador omite ossos
+-- sem canais, como root no F1: inserir poses neutras e reconstruir os pais reais.
+for _, seq in ipairs(pasta:GetChildren()) do
+	for _, kf in ipairs(seq:GetKeyframes()) do
+		local topo = kf:GetPoses()[1]
+		local porNome = {}
+		for _, p in ipairs(topo:GetDescendants()) do if p:IsA("Pose") then porNome[p.Name] = p end end
+		local function garantir(osso)
+			local p = porNome[osso.Name]
+			if not p then p = Instance.new("Pose"); p.Name = osso.Name; porNome[osso.Name] = p end
+			local pai = osso.Parent:IsA("Bone") and garantir(osso.Parent) or topo
+			p.Parent = pai
+			return p
+		end
+		for _, osso in ipairs(malha:GetDescendants()) do
+			if osso:IsA("Bone") and porNome[osso.Name] then garantir(osso) end
 		end
 	end
 end

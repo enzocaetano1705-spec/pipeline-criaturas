@@ -71,7 +71,10 @@ Abra `preparar-criatura.luau`, ajuste `NOME`, `PASTA`, `ESCALA` (do `criaturas.j
 - cria o `Animator` e, se pedido, o Script `TocarAnimacao`, que toca uma animação em loop no Run/Play;
 - aponta a Hitbox para a cabeça (ossos `head` e `tail_1`; sem eles, assume +Z da malha) e imprime como decidiu;
 - embrulha as poses das animações numa pose da Raiz, para importações antigas sem a chave neutra. Corrige o giro
-  de aproximadamente 180° em cópias das sequências, preservando os originais em `AnimSaves.Value`.
+  de aproximadamente 180° em cópias das sequências, preservando os originais em `AnimSaves.Value`. Compensa
+  também o deslocamento da posição de repouso (`InitialPoses.*_Original`), sem alterar esses valores.
+  Reconstrói os pais das Poses a partir dos Bones reais: no F1 o `root` intermediário era omitido pelo importador.
+  Só o osso diretamente sob a MeshPart recebe a compensação; aplicar o giro ao body do F1 invertia a criatura.
 
 Tudo fica numa gravação do `ChangeHistoryService`: um Ctrl+Z desfaz.
 
@@ -102,6 +105,15 @@ Tudo fica numa gravação do `ChangeHistoryService`: um Ctrl+Z desfaz.
   Humanoid.
 
 ## 6. Texturas: por que borram e o que já foi feito
+
+**Atualização de 23/10:** o F1 ficou branco com `SurfaceAppearance`, mas mostrou a textura ao retirar
+esse objeto no cliente. Os pixels do asset estavam disponíveis; `PreloadAsync.Success` não confirma que o
+material PBR derivado renderiza. Reatribuir o mapa, trocar Pixelated/Default e acrescentar roughness nativo
+não resolveram. O diagnóstico aponta para o caminho de processamento do material; a causa interna não foi provada.
+`material_pbr: true` no registro do F1 agora embute um mapa glTF constante de roughness/metallic (4×4, G=1/B=0),
+para o importador criar o material completo junto com o albedo. **Esse caminho ainda aguarda nova importação e
+validação visual.** Não usar EditableImage de execução como conserto permanente de uma criatura salva.
+O [importador oficial](https://create.roblox.com/docs/studio/importer) suporta texturas PBR com rigs e animações.
 
 - `SurfaceAppearance.ResampleMode = Pixelated` usa filtro de vizinho mais próximo segundo a
   [documentação oficial](https://create.roblox.com/docs/reference/engine/classes/SurfaceAppearance#ResampleMode).
@@ -163,6 +175,8 @@ Depois disso, importe de novo no Studio e rode o preparo.
 | textura borrada em detalhe pequeno (olho) | poucos texels por pixel (atlas grande) | `superamostrar` as partes do rosto e reexporte |
 | criatura toda branca depois de importar | mapa ausente/substituído, falha de carregamento ou material; moderação precisa de evidência | conferir `ColorMapContent`, `TextureID`, status de carregamento e pixels do asset. O preparo antigo atribuía TextureID vazio por cima de ColorMap válido. Não atribuir o sintoma automaticamente à moderação |
 | vira de lado no walk mesmo com o `.glb` atual | a importação gravou ~180° na pose da Raiz | rode o preparo (passo 4b2) |
+| F2 anda longe da hitbox ao animar | giro de importação aplicado à posição de repouso | preparo vigente: compensar posição e giro a partir de InitialPoses, preservando os originais |
+| F1 toca faixa, mas o corpo fica parado | falta Pose neutra para o Bone root intermediário | preparo vigente: reconstruir hierarquia das Poses a partir dos Bones |
 | animação não toca no Play (toca só no Run) | prévia rodando no servidor; o cliente não carrega o id temporário | rode o preparo (prévia no cliente) |
 | no cliente o modelo chega sem Hitbox nem scripts | StreamingEnabled | `ModelStreamingMode = Persistent` (o preparo faz) |
 | criatura parada, mas outra igual anima | cópia errada selecionada | preparar somente a importação na pasta combinada e seguir seu `AnimSaves.Value` |
