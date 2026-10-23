@@ -1,14 +1,14 @@
 --[[ Preparo de uma criatura importada (File › Import 3D, Rig Type: Custom) no Roblox Studio.
 
 Rode na barra de comandos do Studio ou pelo MCP (execute_luau, datamodel Edit). Pode ser rodado de novo: não duplica nada.
-Ajuste a CONFIGURAÇÃO. Os valores de cada criatura estão em exportacoes/roblox/criaturas.json.
+Use a receita gerada por scripts/preparar-roblox.py. O registro fica em exportacoes/roblox/criaturas.json.
 
 O que faz:
   1. Textura: SurfaceAppearance com AlphaMode.Transparency (com TextureID o alfa mostra a cor da peça) e
      ResampleMode.Pixelated (sem isso o Roblox borra a pixel art com filtro bilinear).
   2. Escala (Model:ScaleTo) e base no chão.
-  3. Hitbox: Part invisível do tamanho da criatura, que colide e vira o PrimaryPart. A malha não colide
-     (a malha animada não serve de colisão estável).
+  3. Hitbox: envelope do corpo sólido prolongado até o chão, que colide e vira o PrimaryPart.
+     Exclui planos/ossos filhos. A malha não colide; Bones não atualizam sua forma física.
   4. Animator no AnimationController; poses das animações embaixo da Raiz (o topo não é animado pelo Roblox);
      ModelStreamingMode Persistent (o modelo inteiro sempre no cliente); cópia das animações em <Model>.Animacoes e,
      se pedido, um Script de prévia que roda NO CLIENTE e toca uma animação no Play/Run.
@@ -19,7 +19,8 @@ Tudo dentro de uma gravação do ChangeHistoryService (Ctrl+Z desfaz).
 -- CONFIGURAÇÃO ---------------------------------------------------------------
 local NOME = "Pavao_F2"          -- nome do Model no Workspace (= nome do .glb)
 local PASTA = "criaturas modeladas blockbench" -- pasta no Workspace para as novas importações
-local ESCALA = 3                 -- escala_studio do criaturas.json
+local ESCALA = nil               -- nil preserva a escala atual; receita gerada usa escala_studio
+local PERFIL_JSON = nil          -- preenchido por scripts/preparar-roblox.py; ou usa atributo já registrado
 local PREVIA = "walk"            -- "idle", "walk" ou nil (sem script de prévia)
 local OSSO_CABECA = "head"       -- ossos usados para conferir a frente (cabeça à frente da cauda)
 local OSSO_CAUDA = "tail_1"
@@ -35,6 +36,12 @@ for _, filho in ipairs(container:GetChildren()) do
 	end
 end
 assert(modelo, "Model '" .. NOME .. "' não está na pasta de importação")
+local perfilJSON = PERFIL_JSON or modelo:GetAttribute("PipelineColisao")
+assert(perfilJSON, "Falta perfil físico: gere a receita com scripts/preparar-roblox.py")
+local perfil = game:GetService("HttpService"):JSONDecode(perfilJSON)
+assert(perfil.versao == 1 and perfil.tipo == "corpo_estatico_ate_o_chao", "Perfil físico incompatível")
+local ossoFisico = modelo:FindFirstChild(perfil.osso, true)
+assert(ossoFisico and ossoFisico:IsA("Bone"), "Osso físico ausente: " .. perfil.osso)
 
 -- a malha principal é a que tem os ossos (Raiz); criaturas com textura separada (ex.: cabeça) têm outras MeshParts
 local malhas = {}
@@ -66,11 +73,11 @@ end
 -- 2) escala e chão (antes da hitbox, para ela nascer do tamanho certo)
 local hitbox = modelo:FindFirstChild("Hitbox")
 if hitbox then hitbox:Destroy() end -- refeita abaixo
-if math.abs(modelo:GetScale() - ESCALA) > 1e-3 then
+if ESCALA and math.abs(modelo:GetScale() - ESCALA) > 1e-3 then
 	modelo:ScaleTo(ESCALA)
 end
--- Medir somente as malhas, no referencial da frente. GetBoundingBox seguido de uma
--- rotação da caixa troca os eixos e pode deixar partes da criatura fora da colisão.
+-- Medir as malhas no referencial da frente somente para apoiar a base no chão.
+-- O bloqueio físico será calculado separadamente a partir do perfil do corpo.
 local cabeca = modelo:FindFirstChild(OSSO_CABECA, true)
 local cauda = modelo:FindFirstChild(OSSO_CAUDA, true)
 local frente_dir = -malha.CFrame.LookVector * Vector3.new(1, 0, 1)
@@ -95,6 +102,25 @@ local base = workspace:FindFirstChild("Baseplate")
 if base then chao = base.Position.Y + base.Size.Y / 2 end
 modelo:PivotTo(modelo:GetPivot() + Vector3.new(0, chao - (cf.Position.Y - tamanho.Y / 2), 0))
 cf = cf + Vector3.new(0, chao - (cf.Position.Y - tamanho.Y / 2), 0)
+
+-- A caixa visual inclui penas/crista/cauda. O bloqueio físico usa o corpo sólido,
+-- calculado da fonte .bbmodel, e se estende até a base para locomoção.
+local baseFisica = cf.Position.Y - tamanho.Y / 2
+local inf, sup = Vector3.new(table.unpack(perfil.min)), Vector3.new(table.unpack(perfil.max))
+local lo, hi = Vector3.new(math.huge, math.huge, math.huge), Vector3.new(-math.huge, -math.huge, -math.huge)
+for _, x in ipairs({inf.X, sup.X}) do for _, y in ipairs({inf.Y, sup.Y}) do for _, z in ipairs({inf.Z, sup.Z}) do
+	local p = eixos:PointToObjectSpace(ossoFisico.WorldCFrame:PointToWorldSpace(Vector3.new(x,y,z) * modelo:GetScale() / 16))
+	lo = Vector3.new(math.min(lo.X,p.X), math.min(lo.Y,p.Y), math.min(lo.Z,p.Z))
+	hi = Vector3.new(math.max(hi.X,p.X), math.max(hi.Y,p.Y), math.max(hi.Z,p.Z))
+end end end
+lo = Vector3.new(lo.X, baseFisica, lo.Z)
+tamanho = hi - lo
+assert(tamanho.X > 0 and tamanho.Y > 0 and tamanho.Z > 0, "Colisão degenerada")
+cf = eixos * CFrame.new((lo + hi) / 2)
+modelo:SetAttribute("PipelineColisao", perfilJSON)
+modelo:SetAttribute("PipelineCriaturaId", NOME)
+modelo:SetAttribute("PipelineFonteSHA256", perfil.fonte_sha256)
+modelo:SetAttribute("PipelineGLBSHA256", perfil.glb_sha256)
 
 -- 3) hitbox: colisão estável e PrimaryPart (gira junto com a criatura, frente = LookVector)
 hitbox = Instance.new("Part")

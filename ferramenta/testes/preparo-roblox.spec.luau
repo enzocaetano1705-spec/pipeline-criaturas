@@ -17,6 +17,7 @@ local function caso(intermediario)
 	local pai = mesh
 	if intermediario then pai = Instance.new("Bone", mesh); pai.Name = "root" end
 	local body = Instance.new("Bone", pai); body.Name = "body"
+	m:SetAttribute("PipelineColisao", [[{"versao":1,"tipo":"corpo_estatico_ate_o_chao","osso":"body","min":[-16,-24,-64],"max":[16,24,64],"fonte_sha256":"fixture"}]])
 	local ini = Instance.new("Folder", m); ini.Name = "InitialPoses"
 	local R = CFrame.Angles(0, math.pi, 0)
 	local inicial = Instance.new("CFrameValue", ini); inicial.Name = "body_Original"
