@@ -192,7 +192,7 @@ Qualquer IA continua daqui. Siga as fases em ordem. Cada fase entrega a **versã
 Começa quando `docs/criaturas/<nome>/ficha.md` estiver com `status: pronta-para-modelagem`.
 - [ ] 10.1 Rodar estágio por estágio, com as paradas na categoria e na folha de vistas.
 - [ ] 10.2 Registrar o que falhou na lista de melhorias abaixo e corrigir o que bloqueia.
-- [ ] 10.3 Exportar para o Roblox e testar no Studio com o usuário.
+- [x] 10.3 Exportar para o Roblox e testar no Studio com o usuário. F1/F2 com textura, walk e hitbox conferidos em 23/10; evidências em [[2026-10-23-validacao-roblox]]. A publicação das animações ainda é uma etapa manual futura.
 
 **Ajuste solicitado durante a fase 10:**
 - [x] Estudar referências por estrutura (ilustração, vistas reais, atlas, JSON e animações), acrescentar consulta local e estratégia `poucas_formas`, testar e registrar na skill. Decisão [[0005-estudar-referencias-por-estrutura]]. O ensaio técnico do pavão não conclui a revisão artística nem a importação no Roblox.

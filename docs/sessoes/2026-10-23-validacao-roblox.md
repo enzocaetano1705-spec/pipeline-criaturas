@@ -3,19 +3,15 @@ tipo: sessao
 data: 2026-10-23
 fase: 10
 ia: codex
-status: aguardando-reimportacao-atlas-f1
+status: validado-no-studio
 ---
 
 # Validação no cliente do Studio e material do F1
 
-**Pedido atual ao usuário:** importar apenas o `exportacoes/roblox/pavao/Pavao_F1.glb` atualizado **com o novo
-layout de atlas** (`espelhar_atlas: true`), com Rig Type Custom. A importação PBR anterior já foi feita e
-continuou branca: o usuário confirmou que o mapa do F2, aplicado temporariamente no mesmo material do F1,
-mostrou cores. A nova exportação muda o conteúdo do atlas e remapeia as UVs para gerar outro asset de cor,
-preservando a aparência. Esse último arquivo ainda aguarda importação e confirmação visual.
-Pode deixar o modelo novo no Workspace; a IA localizará a importação e a colocará na pasta combinada,
-preservando o F1 anterior em um subdiretório de histórico. A importação é ação manual combinada com o usuário.
-O material PBR permanece explícito; a correção visual do F1 ainda não está comprovada.
+**Concluído:** F1 reimportado com o novo atlas, texturizado e preparado ao lado do F2. Capturas válidas
+confirmaram o resultado perto e longe. Walks e hitboxes medidos no cliente; item 10.3 marcado no plano.
+**Pedido ao usuário:** salvar o projeto do Studio para guardar os modelos e scripts preparados.
+A publicação das animações para uso fora do Studio continua pendente; a prévia usa ids locais.
 
 **Feito:**
 - As importações novas estavam no Workspace, entre modelos antigos. Organizadas em
@@ -93,3 +89,26 @@ Conferir os mapas PBR criados pelo importador e obter evidência visual perto/lo
   O Play foi encerrado e F1/F2 foram enquadrados no Edit.
 - Próxima importação deve criar outro asset de cor; verificar isso antes de fazer qualquer teste adicional
   de material. Não repetir a importação anterior com o mesmo ColorMap e tratá-la como nova textura.
+
+## Resultado final — atlas novo validado
+
+- Usuário importou o arquivo atualizado. Nova textura `84161190231240`, nova malha `135449839741592`.
+  O F1 foi preparado em escala 3 e reposicionado em (24; 1,596; 10), na pasta combinada ao lado do F2.
+  Revisão anterior preservada em `ServerStorage.HistoricoCriaturasBlockbench.Pavao_F1_pbr_atlas_antigo`.
+- A captura voltou a funcionar: **F1 com a textura correta**, sem o branco do asset antigo.
+  Conferidas também as vistas próximas do F2 e os dois de longe. Ambos mantêm Pixelated.
+  A redução natural de detalhe a distância permanece; não há promessa de remover todos os mipmaps.
+- Novo F1 medido no cliente por mais de um ciclo: uma faixa tocando, salto Y de −0,0133 a 0,4673 stud,
+  rotação 0°, deslocamento lateral X/Z=0 e movimento da hitbox=0. Canais de escala por Bone continuam
+  sendo uma limitação documentada do Roblox; não declarar igualdade de 100% de todos os canais.
+- Hitboxes de ambos contêm os oito cantos das MeshParts (excesso 0), são PrimaryPart e colidem;
+  as malhas não colidem. Frente e walk do F2 já medidos nas seções anteriores.
+- Evidência persistida: `docs/sessoes/imagens/2026-10-23-roblox-final-768.png`.
+  O Play foi encerrado; os dois modelos estão selecionados/enquadrados no Edit.
+- Não houve alteração de código neste fechamento: mantidos os 11 testes de exportação/regressão já aprovados,
+  mais a validação real da nova importação. Fase 10 continua aberta pelos demais itens e pelo piloto.
+
+![F1 e F2 com texturas, perto e longe](imagens/2026-10-23-roblox-final-768.png)
+
+**Próximo passo após esta correção:** salvar o projeto no Studio; quando o usuário quiser usar no jogo publicado,
+publicar as animações e registrar os ids. Para o pipeline artístico, continuar o piloto sem refazer os modelos salvos.

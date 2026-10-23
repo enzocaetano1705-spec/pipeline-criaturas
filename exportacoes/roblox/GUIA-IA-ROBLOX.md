@@ -119,7 +119,9 @@ O [importador oficial](https://create.roblox.com/docs/studio/importer) suporta t
 `136950763430471`. Ao trocar somente esse mapa pelo asset do F2, o usuário viu cores no mesmo F1.
 O problema está isolado ao uso daquele mapa no material, sem comprovação da causa interna do asset.
 O F1 agora usa também `espelhar_atlas: true`: imagem reorganizada horizontalmente e U remapeado junto,
-com a mesma aparência. Isso deve gerar outro asset de cor na próxima importação; **ainda falta confirmar**.
+com a mesma aparência. **Confirmado em 23/10:** a reimportação gerou ColorMap `84161190231240` e MeshId
+`135449839741592`; o F1 voltou a exibir a textura correta. F1/F2 conferidos perto/longe com Pixelated;
+walks medidos no cliente sem inversão ou deslocamento lateral extra, hitboxes estáveis.
 Nunca aplique só o PNG espelhado à malha antiga: é necessário importar o GLB com as UVs correspondentes.
 
 - `SurfaceAppearance.ResampleMode = Pixelated` usa filtro de vizinho mais próximo segundo a
