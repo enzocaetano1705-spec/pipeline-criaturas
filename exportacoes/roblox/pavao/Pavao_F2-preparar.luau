@@ -96,6 +96,14 @@ for _, filho in ipairs(container:GetChildren()) do
 	end
 end
 assert(modelo, "Model '" .. NOME .. "' não está na pasta de importação")
+-- Animacoes contém Poses com os mesmos nomes dos Bones; buscar pelo tipo antes de alterar.
+local ossosPorNome = {}
+for _, d in ipairs(modelo:GetDescendants()) do
+	if d:IsA("Bone") then
+		assert(not ossosPorNome[d.Name], "Nome de Bone duplicado: " .. d.Name)
+		ossosPorNome[d.Name] = d
+	end
+end
 local perfilJSON = PERFIL_JSON or modelo:GetAttribute("PipelineColisao")
 assert(perfilJSON, "Falta perfil físico: gere a receita com scripts/preparar-roblox.py")
 local perfil = game:GetService("HttpService"):JSONDecode(perfilJSON)
@@ -107,14 +115,14 @@ if composto then
 	assert(not MODULO_COLISAO:find("@COLISAO_OSSOS@",1,true), "Gere a receita com o módulo de colisão")
 	assert(#perfil.pecas > 0 and #perfil.pecas <= 192, "Orçamento físico excedido")
 	for _, p in ipairs(perfil.pecas) do
-		local bone = modelo:FindFirstChild(p.osso,true)
+		local bone = ossosPorNome[p.osso]
 		assert(bone and bone:IsA("Bone"), "Osso físico ausente: " .. p.osso)
 		assert(#p.cf == 12 and #p.tamanho == 3, "Peça física inválida: " .. p.nome)
 		for _, v in ipairs(p.tamanho) do assert(v > 0, "Colisor degenerado: " .. p.nome) end
 		ossosFisicos[p.osso] = bone
 	end
 else
-	ossoFisico = modelo:FindFirstChild(perfil.osso, true)
+	ossoFisico = ossosPorNome[perfil.osso]
 	assert(ossoFisico and ossoFisico:IsA("Bone"), "Osso físico ausente: " .. perfil.osso)
 end
 
@@ -157,8 +165,8 @@ if ESCALA and math.abs(modelo:GetScale() - ESCALA) > 1e-3 then
 end
 -- Medir as malhas no referencial da frente somente para apoiar a base no chão.
 -- O bloqueio físico será calculado separadamente a partir do perfil do corpo.
-local cabeca = modelo:FindFirstChild(OSSO_CABECA, true)
-local cauda = modelo:FindFirstChild(OSSO_CAUDA, true)
+local cabeca = ossosPorNome[OSSO_CABECA]
+local cauda = ossosPorNome[OSSO_CAUDA]
 local frente_dir = -malha.CFrame.LookVector * Vector3.new(1, 0, 1)
 if cabeca and cauda then
 	local d = (cabeca.WorldPosition - cauda.WorldPosition) * Vector3.new(1, 0, 1)

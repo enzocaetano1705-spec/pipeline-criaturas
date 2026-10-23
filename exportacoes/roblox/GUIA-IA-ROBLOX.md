@@ -82,7 +82,7 @@ Não aplique um perfil de outra revisão. O script:
   Exclui planos e ossos filhos; penas, cauda e crista não ampliam automaticamente a caixa.
   A Part invisível colide, é o PrimaryPart e fica soldada à malha.
   A malha fica sem colisão (`CanCollide = false`, `Massless`);
-- **exceção v2 (F2):** cria `ColisoresPipeline` com caixas orientadas por cubo e placas recortadas pelo alfa.
+- **perfil v2 (F1/F2):** cria `ColisoresPipeline` com caixas orientadas por cubo e placas recortadas pelo alfa.
   A `Hitbox` vira somente referência de frente/PrimaryPart, sem colisão nem consulta. O módulo `ColisaoOssos`
   acompanha os Bones na prévia do cliente. Nunca volte a ligar `Hitbox.CanCollide` nesse perfil;
 - registra ID da criatura, hashes da fonte/GLB e perfil físico como atributos `Pipeline*`;
@@ -97,8 +97,9 @@ Não aplique um perfil de outra revisão. O script:
 Tudo fica numa gravação do `ChangeHistoryService`: um Ctrl+Z desfaz.
 
 A Hitbox do perfil v1 é um envelope estático de locomoção, não uma superfície exata nem uma caixa de dano.
-O salto visual do F1 não levanta o jogador: Bones mudam a aparência sem atualizar a forma física da malha.
-Transporte do jogador e colisão por segmento animado ficam para gameplay.
+Bones mudam a aparência sem atualizar a forma física da malha. No v2, `ColisaoOssos` atualiza peças
+físicas separadas; no teste do F1, o avatar acompanhou o salto por contato normal. Montaria e transporte
+controlado de passageiros ficam para gameplay.
 [Limite documentado pelo Roblox](https://create.roblox.com/docs/art/modeling/rigging).
 O perfil v2 precisa de sua própria atualização para acompanhar os ossos; limites, configuração e autoridade
 de simulação estão em [Biblioteca e iteração](BIBLIOTECA-E-ITERACAO.md#colisão-composta-v2).
@@ -224,7 +225,7 @@ O fluxo nativo de Reimport ainda precisa de ensaio completo neste rig; a primeir
 | caixa única ainda não acompanha a anatomia | perfil v1 simplificado | selecionar perfil composto v2, reexportar manifesto e aplicar receita |
 | v2 não acompanha a animação | módulo ausente ou rodando em outro simulador | na prévia, `TocarAnimacao` deve iniciar `ColisaoOssos` no cliente |
 | malha visual colide | CanCollide indevido na MeshPart | rode a receita de preparo |
-| personagem não sobe junto com o salto visual | Bones não alteram a colisão física | comportamento de gameplay futuro |
+| perfil v1 fica parado durante salto | somente Bones animados | usar v2 para atualizar superfícies físicas; montaria controlada é gameplay |
 
 ## 9. Boas maneiras pelo MCP
 

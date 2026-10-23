@@ -70,9 +70,9 @@ neste place não comprova que o asset pode ser removido de outros jogos.
 
 ## Perfis de colisão
 
-O perfil é escolhido por criatura. **F1 mantém a caixa simples v1 aprovada pelo usuário. F2 usa o
-perfil composto v2**, depois que os testes com avatar mostraram espaços vazios e partes atravessáveis
-com a caixa única. A malha visual continua sem colisão nos dois casos.
+O perfil é escolhido por criatura. **F1 e F2 usam o perfil composto v2.** O usuário aprovou o resultado
+do F2 e pediu o mesmo acompanhamento de animação no F1. A caixa simples v1 permanece disponível para
+outros casos. A malha visual continua sem colisão nos dois pavões.
 
 ### Caixa simples v1
 
@@ -91,9 +91,9 @@ existirem, a geração para com erro; a ferramenta não inventa uma forma físic
 terrestres do pipeline Bedrock 5.0 e depende do registro e das convenções. Novas anatomias e formatos
 precisam de conferência; não é uma garantia de compatibilidade com qualquer arquivo arbitrário.
 
-O Roblox anima a aparência por Bones sem atualizar a forma física da malha. Portanto, o salto visual
-do F1 não levanta automaticamente quem está sobre ele. Montaria, transporte do jogador e caixas de dano
-exigem comportamento de gameplay, a definir depois.
+O Roblox anima a aparência por Bones sem atualizar a forma física da malha. A caixa v1 fica parada
+durante esse movimento. No v2, o módulo atualiza peças físicas separadas a partir da pose; o salto
+do F1 passou a mover também essas superfícies. Montaria e caixas de dano exigem comportamento de gameplay.
 [Rigging e colisão](https://create.roblox.com/docs/art/modeling/rigging).
 
 ### Colisão composta v2
@@ -106,6 +106,7 @@ Cada cubo sólido gera uma caixa com sua rotação real, local ao Bone correspon
 recortado em retângulos de pixels opacos (alfa >= 128), considerando as duas faces e UV invertida.
 Os retângulos recebem espessura de 0,25 unidade Blockbench; os vazios transparentes ficam livres.
 Não há extensão dos volumes até o chão. O F2 resulta em **37 caixas sólidas e 124 placas**.
+O F1 usa **2 caixas sólidas e 28 placas**, acompanhando body e os seis ossos das penas.
 O limite é de 192 partes por criatura; excedê-lo interrompe a geração e exige revisão explícita.
 Planos com rotação de UV e arquivos sem textura incorporada ainda são recusados nesta modalidade.
 
@@ -124,6 +125,10 @@ Na amostra de 45 frames de um único F2: desvio posicional medido zero, moviment
 2,002 studs; chamada Lua de atualização em média 0,077 ms e máximo 0,248 ms. Isso não mede o custo total
 da física nem garante desempenho com muitos NPCs. Perfis de menor detalhe/distância ficam para ensaio
 de população. A folha técnica em `auditorias/2026-10-23-f2-colisao-composta.png` compara repouso e volumes.
+
+F1 validado depois da aprovação do F2: salto de um colisor do corpo de 0,561 stud, desvio posicional
+medido zero, sem giro do body. Avatar sobre o F1 variou 0,574 stud em altura e manteve apoio em todos
+os frames da amostra após acomodação. É contato físico observado na prévia, sem driver de passageiros.
 
 ## Próximos testes de infraestrutura
 

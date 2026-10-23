@@ -20,7 +20,11 @@ da pose junto com o preparo; a prévia local o executa no mesmo cliente que aval
 - Uma caixa por plano inteiro: os cantos transparentes viram superfícies invisíveis.
 - Repartir a malha visual/importar novos assets: desnecessário para os volumes físicos gerados.
 
-**Consequências:** preserva os GLBs, textura e animações. F1 continua no perfil aprovado. F2 usa 161
+**Atualização a pedido do usuário:** após aprovar a colisão composta do F2, pediu aplicá-la ao F1
+também. F1 passou a usar v2 com 30 partes (2 sólidas + 28 recortes), incluindo o salto do corpo.
+O acompanhamento é feito pelo módulo embutido no preparo, sem exigir que o usuário escreva um script.
+
+**Consequências:** preserva os GLBs, textura e animações. F2 usa 161
 partes físicas (37 sólidas, 124 recortes), com teto explícito de 192. Há custo de atualização/física;
 medir muitos NPCs antes de tratar esse detalhe como padrão universal. Planos com rotação de UV ainda
 são recusados. Integração multiplayer deve escolher a autoridade de animação/colisão, pois Bone.Transform

@@ -8,6 +8,10 @@ status: colisao-composta-testada
 
 # Colisão composta do F2
 
+**Retorno posterior:** usuário aprovou o F2 (melhor que esperava) e pediu o mesmo perfil no F1.
+Aplicação e teste registrados em [[2026-10-23-colisao-f1]]. O acompanhamento usa um módulo embutido,
+não é colisão por Bones nativa sem script.
+
 **Pedido ao usuário:** testar contorno, costas e cabeça do F2 no Play e salvar novamente o place.
 As alterações já estão aplicadas; o GLB e os IDs de malha/textura não mudaram nesta revisão.
 

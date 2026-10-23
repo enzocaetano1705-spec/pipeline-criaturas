@@ -6,6 +6,12 @@ local function preparar()
 -- @PREPARO@
 end
 local m=Instance.new("Model",container);m.Name="Pavao_F2"
+-- O cliente pode receber Animacoes antes da malha: essas Poses não são os Bones físicos.
+local animacoes=Instance.new("Folder",m);animacoes.Name="Animacoes"
+local seq=Instance.new("KeyframeSequence",animacoes);seq.Name="walk"
+local kf=Instance.new("Keyframe",seq)
+local pose=Instance.new("Pose",kf);pose.Name="body"
+local poseHead=Instance.new("Pose",pose);poseHead.Name="head"
 local mesh=Instance.new("MeshPart",m);mesh.Name="Raiz";mesh.Size=Vector3.new(6,8,12)
 mesh.CFrame=CFrame.new(10,4,0)*CFrame.Angles(0,math.rad(37),0)
 local sa=Instance.new("SurfaceAppearance",mesh);sa.ColorMap="rbxassetid://123315715785564"

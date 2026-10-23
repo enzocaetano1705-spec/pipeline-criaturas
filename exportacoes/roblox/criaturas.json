@@ -3,6 +3,12 @@
   "criaturas": [
     {
       "nome": "Pavao_F1",
+      "colisao": {
+        "tipo": "composta_ossos",
+        "planos_alfa": true,
+        "espessura_planos": 0.25,
+        "max_partes": 192
+      },
       "material_pbr": true,
       "espelhar_atlas": true,
       "especie": "pavao",
