@@ -208,3 +208,13 @@ Começa quando `docs/criaturas/<nome>/ficha.md` estiver com `status: pronta-para
 - Mais animações (ataques com marcadores de combate, expressões) e VFX nos locators.
 - Teste automático no Roblox Studio pelo MCP do Studio.
 - Processar várias criaturas em lote.
+
+## Fase 11 — Infraestrutura de assets (antecipada por pedido do usuário em 23/10)
+
+Prioridade solicitada pelo usuário, em paralelo à conclusão artística do piloto da fase 10.
+- [x] 11.1 Documentar pastas/movimentação em lote no Asset Manager e Reimport, distinguindo instâncias do place e uploads da conta.
+- [x] 11.2 Catálogo e manifestos de revisão com hashes; receitas geradas e recusa de fonte/configuração/exportação desatualizadas.
+- [x] 11.3 Gerenciador de seleção em lote com auditoria, adoção, histórico reversível e restauração; testes isolados no Studio.
+- [x] 11.4 Perfil físico do corpo sólido no preparo, preservando escala/posição; testes numéricos e de animação em F1/F2. Sensação no jogo ainda pede retorno do usuário.
+- [ ] 11.5 Ensaiar Reimport de uma revisão e conferir nomes, hierarquia, atributos, textura, animação e repetição do preparo.
+- [ ] 11.6 Definir retenção e dependências dos uploads antes de propor limpeza online.

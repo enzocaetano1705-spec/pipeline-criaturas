@@ -12,10 +12,17 @@ Roblox Studio, normalmente pelo MCP do Studio (`execute_luau`, `search_game_tree
 | `exportacoes/roblox/<especie>/<Nome>.glb` | o modelo pronto para importar (malha, ossos, textura e animações) |
 | `exportacoes/roblox/<especie>/<Nome>-textura.png` | a textura que está dentro do .glb (1024 px), só para consulta |
 | `exportacoes/roblox/preparar-criatura.luau` | script de preparo, para rodar depois de importar |
+| `exportacoes/roblox/<especie>/<Nome>-importacao.json` | revisão, hashes e perfil físico extraído da fonte |
+| `exportacoes/roblox/<especie>/<Nome>-preparar.luau` | receita gerada para aquela criatura/revisão |
+| `exportacoes/roblox/catalogo.json` | catálogo local das exportações |
+| `exportacoes/roblox/gerenciar-criaturas.luau` | auditoria, adoção e histórico de Models em lote |
 | `scripts/exportar-roblox.py` | gera os .glb a partir dos `.bbmodel` aprovados (precisa do Blockbench desktop aberto) |
 
 **Nomes:** `<Especie>_F<estágio>`, por exemplo `Pavao_F1` e `Pavao_F2`. O nome do `.glb` é o nome do Model no Studio.
 Nunca renomeie no Studio sem atualizar o `criaturas.json`.
+
+Para organizar uploads e iterar sem acumular cópias, leia [Biblioteca e iteração](BIBLIOTECA-E-ITERACAO.md):
+pastas nativas do Asset Manager, Reimport e histórico reversível do place.
 
 ## 2. Importar
 
@@ -58,16 +65,22 @@ ServerStorage.RBX_ANIMSAVES.<Nome>
 
 ## 4. Preparar (sempre, depois de importar)
 
-Abra `preparar-criatura.luau`, ajuste `NOME`, `PASTA`, `ESCALA` (do `criaturas.json`) e `PREVIA`, e rode pelo MCP
-(`execute_luau`, datamodel `Edit`) ou pela barra de comandos. O script:
+Gere a receita com `uv run python scripts/preparar-roblox.py Nome` e execute o arquivo
+`<especie>/<Nome>-preparar.luau` pelo MCP (`execute_luau`, datamodel `Edit`) ou pela barra de comandos.
+A geração recusa manifestos cuja fonte, GLB ou configuração tenham mudado: nesse caso reexporte primeiro.
+Para uma instância já redimensionada pelo usuário, gere com `--preservar-escala`; a receita padrão usa a
+escala do registro. Ajuste `PASTA`/`PREVIA` se necessário. O template sozinho só serve para um Model
+que já tenha o atributo `PipelineColisao`; não aplique um perfil de outra revisão. O script:
 
 - preserva o mapa de cor do `SurfaceAppearance` importado; usa `TextureID` somente se aquele estiver vazio.
   Recusa modelos sem nenhum mapa antes de alterar. Aplica `AlphaMode.Transparency` e **`ResampleMode = Pixelated`**. Com `TextureID`, o alfa
   mostra a cor da peça e penas e orelhas ficam com o fundo escuro. Sem `Pixelated`, a pixel art fica borrada;
-- aplica `Model:ScaleTo(ESCALA)` e apoia a base no chão;
-- cria a **`Hitbox`**: mede os oito cantos de cada malha no referencial da frente, para conter a criatura mesmo girada;
-  a Part invisível colide, é o PrimaryPart e fica soldada à malha.
+- aplica `Model:ScaleTo(ESCALA)` quando definida e apoia a base no chão;
+- cria a **`Hitbox`** a partir do perfil do corpo sólido, no referencial da frente, prolongando sua base até o chão.
+  Exclui planos e ossos filhos; penas, cauda e crista não ampliam automaticamente a caixa.
+  A Part invisível colide, é o PrimaryPart e fica soldada à malha.
   A malha fica sem colisão (`CanCollide = false`, `Massless`);
+- registra ID da criatura, hashes da fonte/GLB e perfil físico como atributos `Pipeline*`;
 - cria o `Animator` e, se pedido, o Script `TocarAnimacao`, que toca uma animação em loop no Run/Play;
 - aponta a Hitbox para a cabeça (ossos `head` e `tail_1`; sem eles, assume +Z da malha) e imprime como decidiu;
 - embrulha as poses das animações numa pose da Raiz, para importações antigas sem a chave neutra. Corrige o giro
@@ -77,6 +90,11 @@ Abra `preparar-criatura.luau`, ajuste `NOME`, `PASTA`, `ESCALA` (do `criaturas.j
   Só o osso diretamente sob a MeshPart recebe a compensação; aplicar o giro ao body do F1 invertia a criatura.
 
 Tudo fica numa gravação do `ChangeHistoryService`: um Ctrl+Z desfaz.
+
+A Hitbox é um envelope estático de locomoção, não uma superfície exata da criatura nem uma caixa de dano.
+O salto visual do F1 não levanta o jogador: Bones mudam a aparência sem atualizar a forma física da malha.
+Transporte do jogador e colisão por segmento animado ficam para gameplay.
+[Limite documentado pelo Roblox](https://create.roblox.com/docs/art/modeling/rigging).
 
 ## 5. Animações
 
@@ -162,14 +180,18 @@ Nunca aplique só o PNG espelhado à malha antiga: é necessário importar o GLB
 ```bash
 uv run python scripts/exportar-roblox.py            # todas as criaturas do criaturas.json
 uv run python scripts/exportar-roblox.py Pavao_F2   # só uma
+uv run python scripts/preparar-roblox.py            # atualiza catálogo e receitas
 ```
 
 O exportador:
 - recusa UV fora da textura;
 - valida o `.glb` com o validador da Khronos;
 - põe a `Raiz` (com chave neutra), sangra o alfa, amplia para 1024 e dá o nome à cena.
+- grava o manifesto da revisão e o perfil físico do corpo. Configure `colisao.osso` e,
+  quando necessário, `colisao.cubos` no registro para outra anatomia; a ausência de corpo sólido é erro.
 
-Depois disso, importe de novo no Studio e rode o preparo.
+Depois disso, use Reimport para atualizar o Model existente e rode a nova receita de preparo.
+O fluxo nativo de Reimport ainda precisa de ensaio completo neste rig; a primeira importação segue o passo 2.
 
 ## 8. Checklist quando algo parecer errado
 
@@ -191,7 +213,9 @@ Depois disso, importe de novo no Studio e rode o preparo.
 | criatura parada, mas outra igual anima | cópia errada selecionada | preparar somente a importação na pasta combinada e seguir seu `AnimSaves.Value` |
 | animação não toca nem no Run | sem `Animator`, ou id temporário fora do Studio | rode o preparo ou publique a animação |
 | pernas animam, mas o corpo não balança | a pose `body` está no topo da KeyframeSequence | rode o preparo (passo 4b) ou reexporte |
-| colisão estranha | malha colidindo | rode o preparo (Hitbox) |
+| colisão nas penas/crista ou no vazio ao lado | caixa antiga da malha inteira | gere e rode a receita com o perfil do corpo |
+| malha visual colide | CanCollide indevido na MeshPart | rode a receita de preparo |
+| personagem não sobe junto com o salto visual | Bones não alteram a colisão física | comportamento de gameplay futuro |
 
 ## 9. Boas maneiras pelo MCP
 

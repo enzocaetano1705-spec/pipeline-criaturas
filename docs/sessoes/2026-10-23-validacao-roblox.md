@@ -8,6 +8,9 @@ status: validado-no-studio
 
 # Validação no cliente do Studio e material do F1
 
+**Revisão posterior:** [[2026-10-23-infraestrutura-assets]] corrige a política de colisão: a caixa da malha
+inteira, embora estável, bloqueava espaços vazios em volta de crista/penas. O novo perfil usa o corpo sólido.
+
 **Concluído:** F1 reimportado com o novo atlas, texturizado e preparado ao lado do F2. Capturas válidas
 confirmaram o resultado perto e longe. Walks e hitboxes medidos no cliente; item 10.3 marcado no plano.
 **Pedido ao usuário:** salvar o projeto do Studio para guardar os modelos e scripts preparados.
