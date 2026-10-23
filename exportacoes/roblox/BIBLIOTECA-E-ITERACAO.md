@@ -68,9 +68,15 @@ A consulta de inventário em `auditorias/2026-10-23-inventario.json` retornou 16
 (limite por tipo do conector). Nomes iguais não comprovam conteúdo duplicado. A ausência de referência
 neste place não comprova que o asset pode ser removido de outros jogos.
 
-## O que significa a colisão atual
+## Perfis de colisão
 
-`Hitbox` é o bloqueio de locomoção e o PrimaryPart. Seu envelope usa os volumes 3D diretamente no
+O perfil é escolhido por criatura. **F1 mantém a caixa simples v1 aprovada pelo usuário. F2 usa o
+perfil composto v2**, depois que os testes com avatar mostraram espaços vazios e partes atravessáveis
+com a caixa única. A malha visual continua sem colisão nos dois casos.
+
+### Caixa simples v1
+
+No perfil v1, `Hitbox` é o bloqueio de locomoção e o PrimaryPart. Seu envelope usa os volumes 3D diretamente no
 osso `body`, excluindo planos e ossos filhos. O envelope desce até a base da malha para apoiar o NPC
 no chão. É um bloqueio estático aproximado do corpo, não uma superfície exata de cada pena/perna.
 
@@ -86,9 +92,38 @@ terrestres do pipeline Bedrock 5.0 e depende do registro e das convenções. Nov
 precisam de conferência; não é uma garantia de compatibilidade com qualquer arquivo arbitrário.
 
 O Roblox anima a aparência por Bones sem atualizar a forma física da malha. Portanto, o salto visual
-do F1 não levanta automaticamente quem está sobre ele. Colisão por segmento animado, montaria,
-transporte do jogador e caixas de dano exigem comportamento de gameplay, a definir depois.
+do F1 não levanta automaticamente quem está sobre ele. Montaria, transporte do jogador e caixas de dano
+exigem comportamento de gameplay, a definir depois.
 [Rigging e colisão](https://create.roblox.com/docs/art/modeling/rigging).
+
+### Colisão composta v2
+
+```json
+"colisao": {"tipo": "composta_ossos", "planos_alfa": true, "espessura_planos": 0.25, "max_partes": 192}
+```
+
+Cada cubo sólido gera uma caixa com sua rotação real, local ao Bone correspondente. Cada plano é
+recortado em retângulos de pixels opacos (alfa >= 128), considerando as duas faces e UV invertida.
+Os retângulos recebem espessura de 0,25 unidade Blockbench; os vazios transparentes ficam livres.
+Não há extensão dos volumes até o chão. O F2 resulta em **37 caixas sólidas e 124 placas**.
+O limite é de 192 partes por criatura; excedê-lo interrompe a geração e exige revisão explícita.
+Planos com rotação de UV e arquivos sem textura incorporada ainda são recusados nesta modalidade.
+
+`Hitbox` continua PrimaryPart/referência de frente, mas tem `CanCollide/CanQuery = false`.
+As superfícies físicas estão em `ColisoresPipeline`. O ModuleScript `ColisaoOssos` acompanha
+`Bone.TransformedWorldCFrame` em `PreSimulation`, agrupando a atualização com `BulkMoveTo`.
+A prévia `TocarAnimacao` inicia esse módulo no cliente, onde a animação local de teste é avaliada.
+
+**Integração futura:** o módulo deve rodar no mesmo simulador que avalia a animação. Transformações de
+Bone não são replicadas; integrar animações publicadas e autoridade de colisão de um jogo multiplayer
+exige esse planejamento. Não executar atualizadores concorrentes no cliente e servidor. O teste atual
+comprova a prévia local do Studio e as posições de repouso do Edit, sem implementar montaria/transporte.
+[Propriedades de Bone](https://create.roblox.com/docs/reference/engine/classes/Bone).
+
+Na amostra de 45 frames de um único F2: desvio posicional medido zero, movimento dos colisores até
+2,002 studs; chamada Lua de atualização em média 0,077 ms e máximo 0,248 ms. Isso não mede o custo total
+da física nem garante desempenho com muitos NPCs. Perfis de menor detalhe/distância ficam para ensaio
+de população. A folha técnica em `auditorias/2026-10-23-f2-colisao-composta.png` compara repouso e volumes.
 
 ## Próximos testes de infraestrutura
 

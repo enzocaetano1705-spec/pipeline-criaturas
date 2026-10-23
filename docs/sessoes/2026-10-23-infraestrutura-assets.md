@@ -8,6 +8,9 @@ status: infraestrutura-v1-validada
 
 # Biblioteca, revisões e colisão do corpo
 
+**Revisão posterior:** [[2026-10-23-colisao-composta]]. O usuário aprovou F1 e rejeitou a caixa simples
+do F2; F2 passou ao perfil composto v2 com acompanhamento dos ossos na prévia do Studio.
+
 **Pedido ao usuário:** salvar novamente o place para guardar os novos perfis físicos. Conferir a sensação
 do bloqueio do F2 no jogo. Carregar o jogador junto com o salto ficou para gameplay, conforme o pedido.
 O próximo teste de infraestrutura é Reimport de uma revisão, que depende da operação manual do Studio.

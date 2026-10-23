@@ -17,6 +17,7 @@ nomes = {c["nome"] for c in registro["criaturas"]}
 if set(args.nomes) - nomes:
     p.error("criatura desconhecida: " + ", ".join(sorted(set(args.nomes) - nomes)))
 template = (pasta / "preparar-criatura.luau").read_text(encoding="utf-8")
+modulo_colisao = (pasta / "colisao-ossos.luau").read_text(encoding="utf-8")
 catalogo = []
 for c in registro["criaturas"]:
     if args.nomes and c["nome"] not in args.nomes:
@@ -31,9 +32,10 @@ for c in registro["criaturas"]:
     except ValueError as e:
         p.error(f"{c['nome']}: {e}")
     receita = glb.with_name(c["nome"] + "-preparar.luau")
-    receita.write_text(receita_preparo(template, item, args.preservar_escala), encoding="utf-8")
+    receita.write_text(receita_preparo(template, item, args.preservar_escala,modulo_colisao), encoding="utf-8")
     catalogo.append(item)
-    print(f"{c['nome']}: {receita.relative_to(raiz)} ({len(item['colisao']['cubos'])} volumes no corpo)")
+    n = len(item['colisao'].get('pecas',item['colisao']['cubos']))
+    print(f"{c['nome']}: {receita.relative_to(raiz)} ({n} peças no perfil físico)")
 nome_catalogo = "catalogo.json" if not args.nomes else "catalogo-selecao.json"
 (pasta / nome_catalogo).write_text(json.dumps({"versao": 1, "criaturas": catalogo}, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 gerente = pasta / "gerenciar-criaturas.luau"

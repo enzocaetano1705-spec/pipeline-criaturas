@@ -218,3 +218,4 @@ Prioridade solicitada pelo usuário, em paralelo à conclusão artística do pil
 - [x] 11.4 Perfil físico do corpo sólido no preparo, preservando escala/posição; testes numéricos e de animação em F1/F2. Sensação no jogo ainda pede retorno do usuário.
 - [ ] 11.5 Ensaiar Reimport de uma revisão e conferir nomes, hierarquia, atributos, textura, animação e repetição do preparo.
 - [ ] 11.6 Definir retenção e dependências dos uploads antes de propor limpeza online.
+- [x] 11.7 Após retorno do usuário: manter F1 v1 aprovado; substituir a caixa única do F2 por colisão composta com rotações, recorte alfa e acompanhamento dos ossos na prévia. Verificações geométricas, contato com avatar e walk no Studio; sensação final aguarda usuário. [[2026-10-23-colisao-composta]]

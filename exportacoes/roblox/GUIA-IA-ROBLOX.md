@@ -16,6 +16,7 @@ Roblox Studio, normalmente pelo MCP do Studio (`execute_luau`, `search_game_tree
 | `exportacoes/roblox/<especie>/<Nome>-preparar.luau` | receita gerada para aquela criatura/revisão |
 | `exportacoes/roblox/catalogo.json` | catálogo local das exportações |
 | `exportacoes/roblox/gerenciar-criaturas.luau` | auditoria, adoção e histórico de Models em lote |
+| `exportacoes/roblox/colisao-ossos.luau` | módulo embutido nas receitas para acompanhar colisores compostos |
 | `scripts/exportar-roblox.py` | gera os .glb a partir dos `.bbmodel` aprovados (precisa do Blockbench desktop aberto) |
 
 **Nomes:** `<Especie>_F<estágio>`, por exemplo `Pavao_F1` e `Pavao_F2`. O nome do `.glb` é o nome do Model no Studio.
@@ -70,7 +71,8 @@ Gere a receita com `uv run python scripts/preparar-roblox.py Nome` e execute o a
 A geração recusa manifestos cuja fonte, GLB ou configuração tenham mudado: nesse caso reexporte primeiro.
 Para uma instância já redimensionada pelo usuário, gere com `--preservar-escala`; a receita padrão usa a
 escala do registro. Ajuste `PASTA`/`PREVIA` se necessário. O template sozinho só serve para um Model
-que já tenha o atributo `PipelineColisao`; não aplique um perfil de outra revisão. O script:
+v1 que já tenha `PipelineColisao`; v2 exige a receita com o módulo embutido.
+Não aplique um perfil de outra revisão. O script:
 
 - preserva o mapa de cor do `SurfaceAppearance` importado; usa `TextureID` somente se aquele estiver vazio.
   Recusa modelos sem nenhum mapa antes de alterar. Aplica `AlphaMode.Transparency` e **`ResampleMode = Pixelated`**. Com `TextureID`, o alfa
@@ -80,6 +82,9 @@ que já tenha o atributo `PipelineColisao`; não aplique um perfil de outra revi
   Exclui planos e ossos filhos; penas, cauda e crista não ampliam automaticamente a caixa.
   A Part invisível colide, é o PrimaryPart e fica soldada à malha.
   A malha fica sem colisão (`CanCollide = false`, `Massless`);
+- **exceção v2 (F2):** cria `ColisoresPipeline` com caixas orientadas por cubo e placas recortadas pelo alfa.
+  A `Hitbox` vira somente referência de frente/PrimaryPart, sem colisão nem consulta. O módulo `ColisaoOssos`
+  acompanha os Bones na prévia do cliente. Nunca volte a ligar `Hitbox.CanCollide` nesse perfil;
 - registra ID da criatura, hashes da fonte/GLB e perfil físico como atributos `Pipeline*`;
 - cria o `Animator` e, se pedido, o Script `TocarAnimacao`, que toca uma animação em loop no Run/Play;
 - aponta a Hitbox para a cabeça (ossos `head` e `tail_1`; sem eles, assume +Z da malha) e imprime como decidiu;
@@ -91,10 +96,12 @@ que já tenha o atributo `PipelineColisao`; não aplique um perfil de outra revi
 
 Tudo fica numa gravação do `ChangeHistoryService`: um Ctrl+Z desfaz.
 
-A Hitbox é um envelope estático de locomoção, não uma superfície exata da criatura nem uma caixa de dano.
+A Hitbox do perfil v1 é um envelope estático de locomoção, não uma superfície exata nem uma caixa de dano.
 O salto visual do F1 não levanta o jogador: Bones mudam a aparência sem atualizar a forma física da malha.
 Transporte do jogador e colisão por segmento animado ficam para gameplay.
 [Limite documentado pelo Roblox](https://create.roblox.com/docs/art/modeling/rigging).
+O perfil v2 precisa de sua própria atualização para acompanhar os ossos; limites, configuração e autoridade
+de simulação estão em [Biblioteca e iteração](BIBLIOTECA-E-ITERACAO.md#colisão-composta-v2).
 
 ## 5. Animações
 
@@ -214,6 +221,8 @@ O fluxo nativo de Reimport ainda precisa de ensaio completo neste rig; a primeir
 | animação não toca nem no Run | sem `Animator`, ou id temporário fora do Studio | rode o preparo ou publique a animação |
 | pernas animam, mas o corpo não balança | a pose `body` está no topo da KeyframeSequence | rode o preparo (passo 4b) ou reexporte |
 | colisão nas penas/crista ou no vazio ao lado | caixa antiga da malha inteira | gere e rode a receita com o perfil do corpo |
+| caixa única ainda não acompanha a anatomia | perfil v1 simplificado | selecionar perfil composto v2, reexportar manifesto e aplicar receita |
+| v2 não acompanha a animação | módulo ausente ou rodando em outro simulador | na prévia, `TocarAnimacao` deve iniciar `ColisaoOssos` no cliente |
 | malha visual colide | CanCollide indevido na MeshPart | rode a receita de preparo |
 | personagem não sobe junto com o salto visual | Bones não alteram a colisão física | comportamento de gameplay futuro |
 

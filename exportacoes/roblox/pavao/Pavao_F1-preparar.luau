@@ -7,8 +7,8 @@ O que faz:
   1. Textura: SurfaceAppearance com AlphaMode.Transparency (com TextureID o alfa mostra a cor da peça) e
      ResampleMode.Pixelated (sem isso o Roblox borra a pixel art com filtro bilinear).
   2. Escala (Model:ScaleTo) e base no chão.
-  3. Hitbox: envelope do corpo sólido prolongado até o chão, que colide e vira o PrimaryPart.
-     Exclui planos/ossos filhos. A malha não colide; Bones não atualizam sua forma física.
+  3. Perfil v1: Hitbox do corpo até o chão. Perfil v2: caixas orientadas por peça/opacidade,
+     com Hitbox só de referência (não colide) e módulo que acompanha Bones na prévia.
   4. Animator no AnimationController; poses das animações embaixo da Raiz (o topo não é animado pelo Roblox);
      ModelStreamingMode Persistent (o modelo inteiro sempre no cliente); cópia das animações em <Model>.Animacoes e,
      se pedido, um Script de prévia que roda NO CLIENTE e toca uma animação no Play/Run.
@@ -24,6 +24,66 @@ local PERFIL_JSON = [==[{"versao":1,"osso":"body","min":[-6.5,-6.5,-6.0],"max":[
 local PREVIA = "walk"            -- "idle", "walk" ou nil (sem script de prévia)
 local OSSO_CABECA = "head"       -- ossos usados para conferir a frente (cabeça à frente da cauda)
 local OSSO_CAUDA = "tail_1"
+local MODULO_COLISAO = [====[
+-- Segue os Bones no mesmo simulador que toca a animação.
+-- A prévia chama no cliente; integração com animações publicadas deve escolher sua autoridade física.
+-- Não implementa montaria, transporte de passageiros ou detecção de dano.
+local M = {}
+local estados = setmetatable({}, {__mode = "k"})
+local function estado(modelo)
+	if estados[modelo] then return estados[modelo] end
+	local e = {partes={}, offsets={}, tamanhos={}, ossos={}}
+	for _, p in ipairs(modelo:WaitForChild("ColisoresPipeline"):GetChildren()) do
+		if p:IsA("BasePart") then
+			local bone = assert(p:FindFirstChild("Osso"), "Colisor sem referência de osso").Value
+			assert(bone and bone:IsA("Bone"), "Osso do colisor ausente")
+			table.insert(e.partes,p)
+			table.insert(e.offsets,p:GetAttribute("PipelineOffset"))
+			table.insert(e.tamanhos,p:GetAttribute("PipelineTamanho"))
+			table.insert(e.ossos,bone)
+		end
+	end
+	estados[modelo]=e
+	return e
+end
+function M.Atualizar(modelo)
+	local e = estado(modelo)
+	local escala = modelo:GetScale()/16
+	if escala ~= e.escala then
+		e.locais={}
+		for i,p in ipairs(e.partes) do
+			local offset=e.offsets[i]
+			e.locais[i]=CFrame.new(offset.Position*escala)*(offset-offset.Position)
+			p.Size=e.tamanhos[i]*escala
+		end
+		e.escala=escala
+	end
+	local mundo, cframes = {}, {}
+	for i,bone in ipairs(e.ossos) do
+		if not mundo[bone] then mundo[bone]=bone.TransformedWorldCFrame end
+		cframes[i]=mundo[bone]*e.locais[i]
+	end
+	if modelo:IsDescendantOf(workspace) then
+		workspace:BulkMoveTo(e.partes,cframes,Enum.BulkMoveMode.FireCFrameChanged)
+	else -- fixtures isoladas fora do place
+		for i,p in ipairs(e.partes) do p.CFrame=cframes[i] end
+	end
+end
+function M.Iniciar(modelo)
+	local e = estado(modelo)
+	if e.conexao then return end
+	M.Atualizar(modelo)
+	e.conexao=game:GetService("RunService").PreSimulation:Connect(function()
+		M.Atualizar(modelo)
+	end)
+	modelo.Destroying:Once(function()
+		e.conexao:Disconnect()
+		estados[modelo]=nil
+	end)
+end
+return M
+
+]====]
 --------------------------------------------------------------------------------
 
 local CHS = game:GetService("ChangeHistoryService")
@@ -39,9 +99,24 @@ assert(modelo, "Model '" .. NOME .. "' não está na pasta de importação")
 local perfilJSON = PERFIL_JSON or modelo:GetAttribute("PipelineColisao")
 assert(perfilJSON, "Falta perfil físico: gere a receita com scripts/preparar-roblox.py")
 local perfil = game:GetService("HttpService"):JSONDecode(perfilJSON)
-assert(perfil.versao == 1 and perfil.tipo == "corpo_estatico_ate_o_chao", "Perfil físico incompatível")
-local ossoFisico = modelo:FindFirstChild(perfil.osso, true)
-assert(ossoFisico and ossoFisico:IsA("Bone"), "Osso físico ausente: " .. perfil.osso)
+local composto = perfil.versao == 2 and perfil.tipo == "composta_ossos"
+assert(composto or (perfil.versao == 1 and perfil.tipo == "corpo_estatico_ate_o_chao"), "Perfil físico incompatível")
+local ossoFisico
+local ossosFisicos = {}
+if composto then
+	assert(not MODULO_COLISAO:find("@COLISAO_OSSOS@",1,true), "Gere a receita com o módulo de colisão")
+	assert(#perfil.pecas > 0 and #perfil.pecas <= 192, "Orçamento físico excedido")
+	for _, p in ipairs(perfil.pecas) do
+		local bone = modelo:FindFirstChild(p.osso,true)
+		assert(bone and bone:IsA("Bone"), "Osso físico ausente: " .. p.osso)
+		assert(#p.cf == 12 and #p.tamanho == 3, "Peça física inválida: " .. p.nome)
+		for _, v in ipairs(p.tamanho) do assert(v > 0, "Colisor degenerado: " .. p.nome) end
+		ossosFisicos[p.osso] = bone
+	end
+else
+	ossoFisico = modelo:FindFirstChild(perfil.osso, true)
+	assert(ossoFisico and ossoFisico:IsA("Bone"), "Osso físico ausente: " .. perfil.osso)
+end
 
 -- a malha principal é a que tem os ossos (Raiz); criaturas com textura separada (ex.: cabeça) têm outras MeshParts
 local malhas = {}
@@ -73,6 +148,10 @@ end
 -- 2) escala e chão (antes da hitbox, para ela nascer do tamanho certo)
 local hitbox = modelo:FindFirstChild("Hitbox")
 if hitbox then hitbox:Destroy() end -- refeita abaixo
+local antigosColisores = modelo:FindFirstChild("ColisoresPipeline")
+if antigosColisores then antigosColisores:Destroy() end
+local antigoModulo = modelo:FindFirstChild("ColisaoOssos")
+if antigoModulo then antigoModulo:Destroy() end
 if ESCALA and math.abs(modelo:GetScale() - ESCALA) > 1e-3 then
 	modelo:ScaleTo(ESCALA)
 end
@@ -106,6 +185,11 @@ cf = cf + Vector3.new(0, chao - (cf.Position.Y - tamanho.Y / 2), 0)
 -- A caixa visual inclui penas/crista/cauda. O bloqueio físico usa o corpo sólido,
 -- calculado da fonte .bbmodel, e se estende até a base para locomoção.
 local baseFisica = cf.Position.Y - tamanho.Y / 2
+if composto then
+	-- Referência de movimento sem superfície física; cada peça abaixo tem sua própria colisão.
+	tamanho = Vector3.new(.2,.2,.2) * modelo:GetScale()
+	cf = eixos * CFrame.new(eixos:PointToObjectSpace(malha.Position))
+else
 local inf, sup = Vector3.new(table.unpack(perfil.min)), Vector3.new(table.unpack(perfil.max))
 local lo, hi = Vector3.new(math.huge, math.huge, math.huge), Vector3.new(-math.huge, -math.huge, -math.huge)
 for _, x in ipairs({inf.X, sup.X}) do for _, y in ipairs({inf.Y, sup.Y}) do for _, z in ipairs({inf.Z, sup.Z}) do
@@ -117,6 +201,7 @@ lo = Vector3.new(lo.X, baseFisica, lo.Z)
 tamanho = hi - lo
 assert(tamanho.X > 0 and tamanho.Y > 0 and tamanho.Z > 0, "Colisão degenerada")
 cf = eixos * CFrame.new((lo + hi) / 2)
+end
 modelo:SetAttribute("PipelineColisao", perfilJSON)
 modelo:SetAttribute("PipelineCriaturaId", NOME)
 modelo:SetAttribute("PipelineFonteSHA256", perfil.fonte_sha256)
@@ -128,7 +213,9 @@ hitbox.Name = "Hitbox"
 hitbox.Size = tamanho
 hitbox.CFrame = cf
 hitbox.Transparency = 1
-hitbox.CanCollide = true
+hitbox.CanCollide = not composto
+hitbox.CanQuery = not composto
+hitbox.CanTouch = false
 hitbox.Anchored = true
 hitbox.Parent = modelo
 for _, m in ipairs(malhas) do
@@ -142,6 +229,27 @@ for _, m in ipairs(malhas) do
 	solda.Parent = m
 end
 modelo.PrimaryPart = hitbox
+if composto then
+	local grupo = Instance.new("Folder"); grupo.Name = "ColisoresPipeline"
+	for i,p in ipairs(perfil.pecas) do
+		local colisor = Instance.new("Part")
+		colisor.Name = ("%03d_%s"):format(i,p.nome)
+		colisor:SetAttribute("PipelineOffset",CFrame.new(table.unpack(p.cf)))
+		colisor:SetAttribute("PipelineTamanho",Vector3.new(table.unpack(p.tamanho)))
+		colisor:SetAttribute("PipelineCuboUUID",p.cubo_uuid)
+		colisor:SetAttribute("PipelinePlano",p.plano)
+		local bone = Instance.new("ObjectValue"); bone.Name="Osso"; bone.Value=ossosFisicos[p.osso]; bone.Parent=colisor
+		colisor.Transparency=1; colisor.CastShadow=false
+		colisor.Anchored=true; colisor.CanCollide=true; colisor.CanTouch=false
+		local offset = colisor:GetAttribute("PipelineOffset")
+		local k = modelo:GetScale()/16
+		colisor.Size=Vector3.new(table.unpack(p.tamanho))*k
+		colisor.CFrame=bone.Value.WorldCFrame*CFrame.new(offset.Position*k)*(offset-offset.Position)
+		colisor.Parent=grupo
+	end
+	grupo.Parent=modelo
+	local modulo=Instance.new("ModuleScript"); modulo.Name="ColisaoOssos"; modulo.Source=MODULO_COLISAO; modulo.Parent=modelo
+end
 
 -- 4) animação
 local controlador = modelo:FindFirstChildOfClass("AnimationController") or Instance.new("AnimationController", modelo)
@@ -257,6 +365,8 @@ anim.AnimationId = game:GetService("KeyframeSequenceProvider"):RegisterKeyframeS
 local faixa = animator:LoadAnimation(anim)
 faixa.Looped = true
 faixa:Play()
+local colisao = modelo:FindFirstChild("ColisaoOssos")
+if colisao then require(colisao).Iniciar(modelo) end
 ]]):format(PREVIA, PREVIA)
 	s.Parent = modelo
 end

@@ -16,6 +16,9 @@ receitas geradas, atributos de identidade no Model e operações em lote com his
 O perfil físico v1 usa o envelope do corpo sólido em um osso escolhido, até o chão; planos e outros
 ossos ficam fora desse envelope. O perfil fica em coordenadas locais do Bone, escalado pelo Model no Studio.
 
+**Atualização após teste do usuário:** [[0008-colisao-composta-por-osso]] mantém v1 para F1 e acrescenta
+v2 para F2. O novo pedido mostrou que uma caixa única não atende à anatomia mais complexa.
+
 **Alternativas:** uma caixa com a malha inteira foi rejeitada pelo teste do usuário; collision fidelity
 da malha não resolve deformação por Bones. Interface própria, servidor de assets, credenciais de nuvem e
 montagem de inventário como drive do Windows não são necessários para esta entrega.
