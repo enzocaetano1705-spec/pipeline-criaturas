@@ -11,6 +11,7 @@ import sys
 from pathlib import Path
 
 from criaturas import exportar
+from criaturas.roblox_infra import manifesto
 
 RAIZ = Path(__file__).resolve().parents[1]
 PASTA = RAIZ / "exportacoes" / "roblox"
@@ -28,4 +29,8 @@ for c in registro["criaturas"]:
     for m in r["erros"] + r["avisos"]:
         print("   ", m)
     falhas += bool(r["erros"])
+    if not r["erros"]:
+        item = manifesto(RAIZ, c)
+        r["glb"].with_name(c["nome"] + "-importacao.json").write_text(
+            json.dumps(item, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 sys.exit(1 if falhas else 0)

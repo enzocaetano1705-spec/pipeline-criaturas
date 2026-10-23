@@ -1,0 +1,34 @@
+{
+  "versao": 1,
+  "id": "Pavao_F1",
+  "fonte": "modelos/criatura-pavao/revisao-v3/criatura-pavao-e1-v3.bbmodel",
+  "config_sha256": "6e62c9c402c8520b0f21fb92b291b80549a02518d7665affee85eceb5feb3b50",
+  "fonte_sha256": "9604fa4c679be7e52ea95941735099613ecc0fe54eadfd33f1df95125c0185eb",
+  "arquivo": "exportacoes/roblox/pavao/Pavao_F1.glb",
+  "glb_sha256": "d3a8ce0715a901fdcd9834dbc889cfe8ab4697187db18914fdef36265d5aac5d",
+  "escala_studio": 3,
+  "colisao": {
+    "versao": 1,
+    "osso": "body",
+    "min": [
+      -6.5,
+      -6.5,
+      -6.0
+    ],
+    "max": [
+      6.5,
+      4.5,
+      7.0
+    ],
+    "cubos": [
+      "body_upper",
+      "body_lower"
+    ],
+    "tipo": "corpo_estatico_ate_o_chao",
+    "fonte_sha256": "9604fa4c679be7e52ea95941735099613ecc0fe54eadfd33f1df95125c0185eb",
+    "glb_sha256": "d3a8ce0715a901fdcd9834dbc889cfe8ab4697187db18914fdef36265d5aac5d"
+  },
+  "material_pbr": true,
+  "espelhar_atlas": true,
+  "superamostrar": null
+}

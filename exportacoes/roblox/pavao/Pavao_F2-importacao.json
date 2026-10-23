@@ -1,0 +1,41 @@
+{
+  "versao": 1,
+  "id": "Pavao_F2",
+  "fonte": "modelos/criatura-pavao/f2/criatura-pavao-e2.bbmodel",
+  "config_sha256": "5806f3ddf775a80710dbb446e066b12e0a15305b39bc52d49d7b77a39daab334",
+  "fonte_sha256": "57c04dc4274a88c1408fdc2d38c58c5aa8f0ea0bb0c972dc5841a0a2f4a4e736",
+  "arquivo": "exportacoes/roblox/pavao/Pavao_F2.glb",
+  "glb_sha256": "1db8ade053d4ebc29f6ed187cdd2333ce3e52bcf4ada9c346424a7d4e064d67b",
+  "escala_studio": 3,
+  "colisao": {
+    "versao": 1,
+    "osso": "body",
+    "min": [
+      -4.0,
+      -3.57949,
+      -18.905051
+    ],
+    "max": [
+      4.0,
+      12.288608,
+      4.993704
+    ],
+    "cubos": [
+      "hips",
+      "torso",
+      "shoulders",
+      "TorsoHips"
+    ],
+    "tipo": "corpo_estatico_ate_o_chao",
+    "fonte_sha256": "57c04dc4274a88c1408fdc2d38c58c5aa8f0ea0bb0c972dc5841a0a2f4a4e736",
+    "glb_sha256": "1db8ade053d4ebc29f6ed187cdd2333ce3e52bcf4ada9c346424a7d4e064d67b"
+  },
+  "material_pbr": false,
+  "espelhar_atlas": false,
+  "superamostrar": {
+    "ossos": [
+      "head"
+    ],
+    "fator": 4
+  }
+}
