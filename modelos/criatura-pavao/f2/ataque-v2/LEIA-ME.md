@@ -1,5 +1,10 @@
 # F2 — ataques v2: pernas e bico
 
+**Retorno artístico posterior:** chutes rejeitados por leitura humanizada e pouco anatômica;
+bicotada aproveitável, conjunto ainda sem vida. A alta frequência deixou de ser requisito.
+Ver `docs/sessoes/2026-10-23-direcao-combate-f2.md` para a proposta de repertório em discussão.
+Esta versão permanece como estudo e não está aprovada para adoção/exportação.
+
 **Avaliação no Blockbench:** abrir `criatura-pavao-e2-ataque-v2.bbmodel`, aba Animate,
 e tocar **attack_chain_preview**. O GIF tem a mesma sequência em velocidade normal (1×),
 sem pausa adicional entre repetições. Os ataques individuais executam uma vez.
@@ -91,5 +96,6 @@ uv run python scripts/revisar-ataque-pavao-f2-v2.py
 O gerador recusa uma saída existente; `--refazer` só funciona se fonte e saída ainda coincidirem
 com os hashes registrados. Uma proposta editada manualmente deve gerar outra versão.
 
-**Estado:** pronta para avaliação artística no Blockbench. A fonte canônica e as exportações do
-Roblox ainda não adotaram estes ataques; a remoção das garras será propagada junto da versão aprovada.
+**Estado após avaliação:** chutes rejeitados, bicotada aproveitável; repertório novo em discussão
+na nota de direção do combate. A fonte canônica e as exportações do Roblox ainda não adotaram estes
+ataques; a remoção das garras será propagada junto da versão que vier a ser aprovada.
