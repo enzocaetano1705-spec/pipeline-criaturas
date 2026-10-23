@@ -1,0 +1,10 @@
+{
+  "fonte": "modelos/criatura-pavao/f2/criatura-pavao-e2.bbmodel",
+  "fonte_sha256": "4ee150999774ac5f9b8036487040904ee95243d58e9efc002534654a398d3bad",
+  "saida_sha256": "d3bb4998cd45288bd5d97f9fbb41c9e6b41c435151009afcf82d827bd841d1f3",
+  "fps": 120,
+  "animacao": "attack_physical",
+  "duracao": 1.2,
+  "operacoes": 4361,
+  "rig": "penas de cotovelo sob forearm_*; dois grupos neutros para acomoda\u00e7\u00e3o das penas das pernas"
+}

@@ -1,0 +1,39 @@
+{
+  "fps_medicao": 240,
+  "duracao": 1.2,
+  "loop": "once",
+  "minimo_y": [
+    0.08512418675793831,
+    0.29583333333333334,
+    "toe_left_1"
+  ],
+  "erro_apoio_max": 0.003359277798987529,
+  "erro_trajeto_max": 0.057134418901684914,
+  "pena_cotovelo_max": 1.0695084443661336e-14,
+  "maior_variacao_euler_por_chave": 10.905937000000002,
+  "alinhamento_frente_min": 0.8192127916193949,
+  "inicio_fim_neutros": true,
+  "sem_escala": true,
+  "fase_aerea": {
+    "inicio": 0.3375,
+    "fim": 0.7833333333333333
+  },
+  "caixa_alvo_pequeno": [
+    [
+      -2,
+      0.08741,
+      -14
+    ],
+    [
+      2,
+      3.08741,
+      -7
+    ]
+  ],
+  "contatos_ambas_patas": {
+    "inicio": 0.575,
+    "fim": 0.670833,
+    "amostras": 24
+  },
+  "observacao": "Ensaio geométrico de animação; sem física, dano, deslocamento ou captura de inimigo no jogo."
+}

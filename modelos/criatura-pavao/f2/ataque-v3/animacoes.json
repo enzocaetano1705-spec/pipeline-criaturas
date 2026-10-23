@@ -1,0 +1,8 @@
+{
+  "attack_physical": {
+    "HitFrame": 0.59,
+    "RecoveryStart": 0.67,
+    "CancelOpen": 0.92,
+    "observacao": "Proposta: contato no arco descendente das duas patas. Sem dano ou deslocamento de gameplay integrado."
+  }
+}

@@ -3,10 +3,13 @@ tipo: sessao
 data: 2026-10-23
 fase: 10
 ia: codex
-status: proposta-de-direcao-em-discussao
+status: direcao-autorizada-primeiro-bote-entregue
 ---
 
 # F2 — direção do combate após avaliação da v2
+
+**Atualização:** usuário autorizou seguir este plano. Primeira etapa entregue em
+[[2026-10-23-bote-f2-v3]]; avaliação artística do bote ainda pendente, outros golpes ainda não criados.
 
 ## Retorno do usuário e restrições atuais
 
@@ -19,8 +22,9 @@ status: proposta-de-direcao-em-discussao
 - Usuário propôs também apoio de cauda e extensão simultânea das pernas, inspirado no canguru.
 - A exigência anterior de 0,3–0,4 s/alta frequência foi relaxada. DPS alto pode vir de skills mágicas
   no futuro. Não continuar otimizando o ataque físico em torno da cadência da v2.
-- Pedido desta etapa: ajudar a pensar o conjunto de golpes e sua linguagem corporal.
-  As ideias abaixo são propostas artísticas; ainda não são clipes feitos ou decisões aprovadas.
+- Pedido inicial desta etapa: ajudar a pensar o conjunto de golpes e sua linguagem corporal.
+  As ideias abaixo foram propostas na discussão e depois autorizadas conforme a atualização no topo;
+  a aprovação artística dos clipes continua sendo uma etapa própria.
 
 ## Conferência do modelo
 
@@ -94,4 +98,5 @@ animação ou exportação foi alterado nesta discussão. Documentação de reto
 **Próximo passo recomendado:** experimentar primeiro o bote baixo/rasante em poses simples,
 pois resolve o encontro frequente de farm e estabelece a identidade corporal. Testar a escora de
 cauda antes de prometer a repulsão apoiada; sequência de captura longa fica como opção futura.
-Continuar a conversa artística com o usuário; não tratar esta proposta como aprovada.
+Continuar a conversa artística com o usuário; a direção foi autorizada, mas não presumir aprovação
+artística dos protótipos. Primeira entrega registrada na atualização do topo.
