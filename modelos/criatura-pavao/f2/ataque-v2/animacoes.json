@@ -1,0 +1,20 @@
+{
+  "attack_physical": {
+    "HitFrame": 0.144,
+    "RecoveryStart": 0.24,
+    "CancelOpen": 0.304,
+    "observacao": "Proposta para avaliação. Chute acerta também no arco descendente; nenhum dano integrado ao jogo."
+  },
+  "attack_physical_right": {
+    "HitFrame": 0.144,
+    "RecoveryStart": 0.24,
+    "CancelOpen": 0.304,
+    "observacao": "Proposta para avaliação. Chute acerta também no arco descendente; nenhum dano integrado ao jogo."
+  },
+  "attack_peck": {
+    "HitFrame": 0.114,
+    "RecoveryStart": 0.18,
+    "CancelOpen": 0.228,
+    "observacao": "Proposta para avaliação. Chute acerta também no arco descendente; nenhum dano integrado ao jogo."
+  }
+}

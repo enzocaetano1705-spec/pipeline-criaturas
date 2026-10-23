@@ -1,0 +1,209 @@
+{
+  "fps_medicao": 240,
+  "unidade": "Blockbench",
+  "alvos_geometricos": {
+    "pequeno": [
+      [
+        -1.5,
+        0.08741,
+        -16
+      ],
+      [
+        1.5,
+        3.08741,
+        -10
+      ]
+    ],
+    "medio": [
+      [
+        -3,
+        0.08741,
+        -22
+      ],
+      [
+        3,
+        14.08741,
+        -16
+      ]
+    ],
+    "grande": [
+      [
+        -4,
+        0.08741,
+        -24
+      ],
+      [
+        4,
+        48.08741,
+        -20
+      ]
+    ]
+  },
+  "clipes": {
+    "attack_physical": {
+      "duracao": 0.4,
+      "loop": "once",
+      "amostras": 97,
+      "chaves": 1325,
+      "minimo_y": [
+        0.08044829066060324,
+        0.10416666666666667,
+        "toe_right_1"
+      ],
+      "erro_trajetoria_max": 0.26120183827045507,
+      "erro_apoio_max": 0.007658502503831535,
+      "distancia_pena_cotovelo_max": 7.377764055609925e-15,
+      "inicio_igual_fim": true,
+      "guarda_comum": true,
+      "sem_escala": true,
+      "arma_ativa_min": [
+        -3.2478811838310655,
+        1.3146495237267832,
+        -20.24561026967274
+      ],
+      "arma_ativa_max": [
+        1.9699270858172153,
+        10.930870890797225,
+        -3.677324907252104
+      ],
+      "contatos_alvos_geometricos": {
+        "pequeno": {
+          "primeiro": 0.2,
+          "ultimo": 0.258333,
+          "amostras": 15
+        },
+        "medio": {
+          "primeiro": 0.120833,
+          "ultimo": 0.195833,
+          "amostras": 19
+        },
+        "grande": {
+          "primeiro": 0.141667,
+          "ultimo": 0.154167,
+          "amostras": 4
+        }
+      }
+    },
+    "attack_physical_right": {
+      "duracao": 0.4,
+      "loop": "once",
+      "amostras": 97,
+      "chaves": 1325,
+      "minimo_y": [
+        0.08009791092952112,
+        0.10416666666666667,
+        "toe_left_1"
+      ],
+      "erro_trajetoria_max": 0.2443524001679087,
+      "erro_apoio_max": 0.008142521263704119,
+      "distancia_pena_cotovelo_max": 7.377764055609925e-15,
+      "inicio_igual_fim": true,
+      "guarda_comum": true,
+      "sem_escala": true,
+      "arma_ativa_min": [
+        -1.968765407854527,
+        1.3146496864194366,
+        -19.245610216339998
+      ],
+      "arma_ativa_max": [
+        3.2478821164901412,
+        10.757133573713741,
+        -3.6634412094039126
+      ],
+      "contatos_alvos_geometricos": {
+        "pequeno": {
+          "primeiro": 0.2,
+          "ultimo": 0.254167,
+          "amostras": 14
+        },
+        "medio": {
+          "primeiro": 0.125,
+          "ultimo": 0.1875,
+          "amostras": 16
+        },
+        "grande": null
+      }
+    },
+    "attack_peck": {
+      "duracao": 0.3,
+      "loop": "once",
+      "amostras": 73,
+      "chaves": 1036,
+      "minimo_y": [
+        0.08420898447379765,
+        0.07083333333333333,
+        "toe_left_1"
+      ],
+      "erro_trajetoria_max": 0.004555787903156518,
+      "erro_apoio_max": 0.004555787903156518,
+      "distancia_pena_cotovelo_max": 1.0658141036401503e-14,
+      "inicio_igual_fim": true,
+      "guarda_comum": true,
+      "sem_escala": true,
+      "arma_ativa_min": [
+        -2.0,
+        21.40602519863222,
+        -24.4095817811993
+      ],
+      "arma_ativa_max": [
+        2.0,
+        31.136347419981213,
+        -16.236557224262075
+      ],
+      "contatos_alvos_geometricos": {
+        "pequeno": null,
+        "medio": null,
+        "grande": {
+          "primeiro": 0.070833,
+          "ultimo": 0.166667,
+          "amostras": 24
+        }
+      }
+    },
+    "attack_chain_preview": {
+      "duracao": 1.1,
+      "loop": "loop",
+      "amostras": 265,
+      "chaves": 3724,
+      "minimo_y": [
+        0.08009791092952134,
+        0.8041666666666667,
+        "toe_left_1"
+      ],
+      "erro_trajetoria_max": 0.26120183827045507,
+      "erro_apoio_max": 0.008142521263708192,
+      "distancia_pena_cotovelo_max": 1.0658141036401503e-14,
+      "inicio_igual_fim": true,
+      "guarda_comum": true,
+      "sem_escala": true,
+      "arma_ativa_min": [
+        -3.2478811838310655,
+        1.3146495237267832,
+        -24.4095817811993
+      ],
+      "arma_ativa_max": [
+        3.247882116490146,
+        31.136347419981213,
+        -3.6634412094038993
+      ],
+      "contatos_alvos_geometricos": {
+        "pequeno": {
+          "primeiro": 0.2,
+          "ultimo": 0.954167,
+          "amostras": 29
+        },
+        "medio": {
+          "primeiro": 0.120833,
+          "ultimo": 0.8875,
+          "amostras": 35
+        },
+        "grande": {
+          "primeiro": 0.141667,
+          "ultimo": 0.566667,
+          "amostras": 28
+        }
+      }
+    }
+  },
+  "observacao": "Ensaio geométrico de alcance; sem física/dano/seleção de alvo do Roblox."
+}

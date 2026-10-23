@@ -1,0 +1,26 @@
+{
+  "fonte": "modelos/criatura-pavao/f2/criatura-pavao-e2.bbmodel",
+  "fonte_sha256": "4ee150999774ac5f9b8036487040904ee95243d58e9efc002534654a398d3bad",
+  "saida_sha256": "77a16d7e8c85a5839f3162315c9f91fc6cace16b772e9d32d77d0979601e8115",
+  "fps": 120,
+  "clipes": {
+    "attack_physical": [
+      "left",
+      0.4
+    ],
+    "attack_physical_right": [
+      "right",
+      0.4
+    ],
+    "attack_peck": [
+      "peck",
+      0.3
+    ],
+    "attack_chain_preview": [
+      "chain",
+      1.1
+    ]
+  },
+  "operacoes": 7416,
+  "rig": "wing_* sob forearm_*, piv\u00f4 no cotovelo"
+}

@@ -1,5 +1,8 @@
 # F2 — proposta de ataque v1
 
+**Histórico:** substituída pela proposta em `../ataque-v2/` após retorno do usuário sobre alcance,
+altura, cadência e penas do cotovelo. A v1 não deve ser adotada como ataque vigente.
+
 Arquivo: `criatura-pavao-e2-ataque-v1.bbmodel`. Selecionar **attack_physical** na aba Animate.
 Clipe de **1,5 s**, uma execução, assado a **60 Hz**, sem escala animada ou fórmulas Molang.
 
