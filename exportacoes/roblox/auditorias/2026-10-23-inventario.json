@@ -1,0 +1,210 @@
+{
+  "data": "2026-10-23",
+  "conta": "Aerodatiro",
+  "escopo": "inventario_pessoal",
+  "limite_por_tipo": 20,
+  "nota": "Amostra retornada pelo conector. Mesmo nome não prova conteúdo duplicado. Ausência de referência direta neste place não prova desuso em outros jogos.",
+  "referencias_diretas_observadas": [
+    "123315715785564",
+    "136950763430471",
+    "9691922181",
+    "120641951142067",
+    "135530020828766",
+    "84161190231240",
+    "97293060483622",
+    "118011954941645",
+    "135449839741592"
+  ],
+  "tipos": {
+    "Model": {
+      "quantidade_retornada": 16,
+      "assets": [
+        {
+          "id": "131862360482983",
+          "nome": "Pavao_F1",
+          "referencia_direta_observada": false
+        },
+        {
+          "id": "138512612122771",
+          "nome": "Pavao_F1",
+          "referencia_direta_observada": false
+        },
+        {
+          "id": "113846789161889",
+          "nome": "Pavao_F2",
+          "referencia_direta_observada": false
+        },
+        {
+          "id": "138321178851401",
+          "nome": "Pavao_F2",
+          "referencia_direta_observada": false
+        },
+        {
+          "id": "102777035740056",
+          "nome": "Pavao_F2",
+          "referencia_direta_observada": false
+        },
+        {
+          "id": "139684807352705",
+          "nome": "Pavao_F1",
+          "referencia_direta_observada": false
+        },
+        {
+          "id": "102048379061525",
+          "nome": "Pavao_F2",
+          "referencia_direta_observada": false
+        },
+        {
+          "id": "96630645260623",
+          "nome": "Pavao_F1",
+          "referencia_direta_observada": false
+        },
+        {
+          "id": "79212931937041",
+          "nome": "Pavao_F2",
+          "referencia_direta_observada": false
+        },
+        {
+          "id": "94826373594773",
+          "nome": "Pavao_F1",
+          "referencia_direta_observada": false
+        },
+        {
+          "id": "127314293233978",
+          "nome": "blockbench_export",
+          "referencia_direta_observada": false
+        },
+        {
+          "id": "73256412401045",
+          "nome": "blockbench_export",
+          "referencia_direta_observada": false
+        },
+        {
+          "id": "112370096877283",
+          "nome": "blockbench_export",
+          "referencia_direta_observada": false
+        },
+        {
+          "id": "120062896940406",
+          "nome": "EmeraldGaze_rigged",
+          "referencia_direta_observada": false
+        },
+        {
+          "id": "72563026284802",
+          "nome": "EmeraldGaze_rigged",
+          "referencia_direta_observada": false
+        },
+        {
+          "id": "102726439678354",
+          "nome": "crit0123",
+          "referencia_direta_observada": false
+        }
+      ]
+    },
+    "Image": {
+      "quantidade_retornada": 20,
+      "assets": [
+        {
+          "id": "84161190231240",
+          "nome": "Image",
+          "referencia_direta_observada": true
+        },
+        {
+          "id": "135530020828766",
+          "nome": "Image",
+          "referencia_direta_observada": true
+        },
+        {
+          "id": "118011954941645",
+          "nome": "Image",
+          "referencia_direta_observada": true
+        },
+        {
+          "id": "123315715785564",
+          "nome": "Image",
+          "referencia_direta_observada": true
+        },
+        {
+          "id": "87471733914196",
+          "nome": "Pavao_F2-textura",
+          "referencia_direta_observada": false
+        },
+        {
+          "id": "115295757056198",
+          "nome": "Pavao_F2-conferencia",
+          "referencia_direta_observada": false
+        },
+        {
+          "id": "73223217303259",
+          "nome": "Image",
+          "referencia_direta_observada": false
+        },
+        {
+          "id": "106605039726630",
+          "nome": "Pavao_F2-textura",
+          "referencia_direta_observada": false
+        },
+        {
+          "id": "74344198794747",
+          "nome": "Image",
+          "referencia_direta_observada": false
+        },
+        {
+          "id": "106354140503475",
+          "nome": "Pavao_F2-textura",
+          "referencia_direta_observada": false
+        },
+        {
+          "id": "103797083263794",
+          "nome": "Image",
+          "referencia_direta_observada": false
+        },
+        {
+          "id": "115596034879613",
+          "nome": "Pavao_F2-textura-cabeca",
+          "referencia_direta_observada": false
+        },
+        {
+          "id": "136950763430471",
+          "nome": "Image",
+          "referencia_direta_observada": true
+        },
+        {
+          "id": "111089765622161",
+          "nome": "Pavao_F1-textura",
+          "referencia_direta_observada": false
+        },
+        {
+          "id": "71383258772525",
+          "nome": "Image",
+          "referencia_direta_observada": false
+        },
+        {
+          "id": "125151392870695",
+          "nome": "Pavao_F2-textura",
+          "referencia_direta_observada": false
+        },
+        {
+          "id": "140221765630887",
+          "nome": "Image",
+          "referencia_direta_observada": false
+        },
+        {
+          "id": "70819774451692",
+          "nome": "Pavao_F1-textura",
+          "referencia_direta_observada": false
+        },
+        {
+          "id": "114730681030595",
+          "nome": "Image",
+          "referencia_direta_observada": false
+        },
+        {
+          "id": "109326602935875",
+          "nome": "textura-roblox",
+          "referencia_direta_observada": false
+        }
+      ]
+    }
+  }
+}
