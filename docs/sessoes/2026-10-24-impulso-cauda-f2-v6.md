@@ -8,6 +8,10 @@ status: pisao-spin-aprovados-impulso-cauda-aguarda-avaliacao
 
 # F2 v6 — carga, impulso da cauda e golpe aéreo
 
+**Retorno posterior:** usuário pediu corrigir a dobra em L, transferir de fato o corpo sobre
+a cauda e aumentar bastante o salto. A interpretação de peito como Y fixo foi corrigida.
+Esta revisão é histórica; proposta atual em [[2026-10-24-catapulta-f2-v7]].
+
 **Pedido ao usuário:** avaliar somente `attack_tail_kick` no arquivo
 `modelos/criatura-pavao/f2/ataque-v6/criatura-pavao-e2-ataque-v6.bbmodel`, aberto em Animate.
 Pisão e spin já aprovados, sem necessidade de nova avaliação. Prévia a 1× em `previa-impulso.gif`.

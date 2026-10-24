@@ -1,0 +1,33 @@
+{
+  "revision": "8d66e18a51daa98c",
+  "format": "bedrock",
+  "summary": {
+    "errors": 0,
+    "warnings": 0,
+    "passed": true
+  },
+  "gates": [
+    {
+      "id": "outliner",
+      "label": "Outliner references resolve and UUIDs are unique",
+      "severity": "error",
+      "ran": true,
+      "violations": []
+    },
+    {
+      "id": "unlisted_nodes",
+      "label": "Every group and element is placed in the outliner",
+      "severity": "warning",
+      "ran": true,
+      "violations": []
+    },
+    {
+      "id": "degenerate",
+      "label": "No sliver or inverted cubes",
+      "severity": "warning",
+      "ran": true,
+      "violations": []
+    }
+  ],
+  "notes": []
+}

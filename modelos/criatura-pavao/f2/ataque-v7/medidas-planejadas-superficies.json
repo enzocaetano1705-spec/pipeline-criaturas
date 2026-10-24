@@ -1,0 +1,54 @@
+{
+  "minimo_y_visivel": [
+    0.08740999999999133,
+    0.48333333333333334,
+    "tail_base_3"
+  ],
+  "erro_juntas_max": 7.105427357601002e-15,
+  "erro_apoio_cauda_max": 9.089951014118469e-15,
+  "dobra_por_junta_carga_max_graus": 23.994516655868708,
+  "patas_livres_carga_min_y": 11.29546209838652,
+  "fase_aerea_completa": [
+    0.8333333333333334,
+    1.5833333333333333
+  ],
+  "velocidade_lancamento": [
+    0.0,
+    43.55268478438478,
+    -26.875167089528414
+  ],
+  "subida_bacia_apos_soltar": 8.158755376398018,
+  "avanco_no_ar": 20.962630329832166,
+  "pico_aceleracao_carga_s": 0.8099999999999999,
+  "transferencia_volume": {
+    "centro_volumes_solidos_sem_cauda": [
+      0.016256570289357956,
+      25.46000432524489,
+      23.950374969752552
+    ],
+    "apoio_z": [
+      25.35472549670888,
+      25.35472549670888
+    ],
+    "distancia_z_apoio": 1.4043505269563283,
+    "limite": "Proxy visual de volume com densidade uniforme; n\u00e3o \u00e9 massa f\u00edsica ou prova de equil\u00edbrio."
+  },
+  "leque_abertura_erro_max": 2.220446049250313e-16,
+  "inicio_fim_neutros": true,
+  "minimo_penas_opacas_centros": [
+    1.5125870724952009,
+    0.3833333333333333,
+    "leg_right_feather_3"
+  ],
+  "nova_penetracao_pena_perna": [
+    0.010313621427139097,
+    2.5833333333333335,
+    "leg_left_feather_2",
+    "tarsus_left"
+  ],
+  "minimo_caixas_inclui_transparencia": [
+    -0.9428066296168343,
+    0.7333333333333333,
+    "fan_1"
+  ]
+}

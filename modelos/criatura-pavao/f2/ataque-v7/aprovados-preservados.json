@@ -1,0 +1,26 @@
+{
+  "idle": {
+    "chaves_originais_preservadas": true,
+    "prova": "Articula\u00e7\u00f5es inseridas neutras, sem animadores no clipe; cadeia reduzida e transforma\u00e7\u00f5es originais iguais. Vale tamb\u00e9m para curvas n\u00e3o lineares."
+  },
+  "walk": {
+    "chaves_originais_preservadas": true,
+    "prova": "Articula\u00e7\u00f5es inseridas neutras, sem animadores no clipe; cadeia reduzida e transforma\u00e7\u00f5es originais iguais. Vale tamb\u00e9m para curvas n\u00e3o lineares."
+  },
+  "attack_stomp": {
+    "desvio_superficies_max": 0,
+    "amostragem_hz": 240,
+    "chaves_originais_preservadas": true
+  },
+  "attack_spin": {
+    "desvio_superficies_max": 0,
+    "amostragem_hz": 240,
+    "chaves_originais_preservadas": true
+  },
+  "uv": {
+    "particao_contigua": true,
+    "uv_recortado_proporcionalmente": true,
+    "atlas_identico": true,
+    "observacao": "Faces internas fecham as fatias; ocultas em repouso e nos clipes aprovados."
+  }
+}
