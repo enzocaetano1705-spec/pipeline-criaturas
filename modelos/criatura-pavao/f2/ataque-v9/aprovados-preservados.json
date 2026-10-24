@@ -1,0 +1,18 @@
+{
+  "idle": {
+    "curvas_rig_geometria_identicos": true,
+    "desvio_geometrico_max": 0
+  },
+  "walk": {
+    "curvas_rig_geometria_identicos": true,
+    "desvio_geometrico_max": 0
+  },
+  "attack_stomp": {
+    "curvas_rig_geometria_identicos": true,
+    "desvio_geometrico_max": 0
+  },
+  "attack_spin": {
+    "curvas_rig_geometria_identicos": true,
+    "desvio_geometrico_max": 0
+  }
+}

@@ -8,6 +8,10 @@ status: pisao-spin-aprovados-gancho-aguarda-avaliacao
 
 # F2 v8 — cauda em J, leque externo e chute descendente
 
+**Retorno posterior:** usuário considerou a correção da v8 quase perfeita e pediu
+retomar o chute cedo da v7, com animação mais curta. A espera pela descida foi revogada.
+Proposta atual em [[2026-10-24-ritmo-cauda-f2-v9]], preservando cauda e leque da v8.
+
 **Pedido ao usuário:** avaliar somente `attack_tail_kick` na nova v8:
 `modelos/criatura-pavao/f2/ataque-v8/criatura-pavao-e2-ataque-v8.bbmodel`.
 Arquivo aberto em Animate. Prévia em `previa-gancho.gif`, duas vistas a 1×.
