@@ -1,0 +1,22 @@
+{
+  "attack_stomp": {
+    "maior_variacao_euler_por_chave": 5.080894999999998,
+    "sem_escala": true,
+    "loop": "once",
+    "duracao": 1.25
+  },
+  "attack_spin": {
+    "maior_variacao_euler_por_chave": 14.387204999999994,
+    "sem_escala": true,
+    "loop": "once",
+    "duracao": 1.35,
+    "volta_de_graus": 360.0,
+    "giro_ativo_graus": 359.82909464026875
+  },
+  "attack_tail_kick": {
+    "maior_variacao_euler_por_chave": 8.295423999999997,
+    "sem_escala": true,
+    "loop": "once",
+    "duracao": 1.55
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "fonte": "modelos/criatura-pavao/f2/criatura-pavao-e2.bbmodel",
+  "fonte_sha256": "4ee150999774ac5f9b8036487040904ee95243d58e9efc002534654a398d3bad",
+  "saida_sha256": "b14e314d03d01bfea636606122cfd06a41559a3663065fa1e608e2bcfd01cf12",
+  "clipes": {
+    "attack_stomp": 1.25,
+    "attack_spin": 1.35,
+    "attack_tail_kick": 1.55
+  },
+  "fps": 120,
+  "operacoes": 13281,
+  "grupos": 43
+}

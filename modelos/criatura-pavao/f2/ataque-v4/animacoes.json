@@ -1,0 +1,17 @@
+{
+  "attack_stomp": {
+    "HitFrame": 0.575,
+    "RecoveryStart": 0.74,
+    "CancelOpen": 0.99
+  },
+  "attack_spin": {
+    "HitFrame": 0.58,
+    "RecoveryStart": 0.8,
+    "CancelOpen": 1.15
+  },
+  "attack_tail_kick": {
+    "HitFrame": 0.6,
+    "RecoveryStart": 0.79,
+    "CancelOpen": 1.24
+  }
+}

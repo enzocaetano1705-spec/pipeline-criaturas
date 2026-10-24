@@ -1,0 +1,29 @@
+{
+  "attack_stomp": {
+    "minimo_y": [
+      0.08740999999999502,
+      0.6,
+      "toe_left_0"
+    ],
+    "alcance_erros": [],
+    "rotacao_max": 84.8184813788571
+  },
+  "attack_spin": {
+    "minimo_y": [
+      0.08740999999999473,
+      0.15833333333333333,
+      "toe_right_1"
+    ],
+    "alcance_erros": [],
+    "rotacao_max": 108.3591489477957
+  },
+  "attack_tail_kick": {
+    "minimo_y": [
+      0.08740999999999488,
+      0.8666666666666667,
+      "tail_base"
+    ],
+    "alcance_erros": [],
+    "rotacao_max": 179.9384744451537
+  }
+}

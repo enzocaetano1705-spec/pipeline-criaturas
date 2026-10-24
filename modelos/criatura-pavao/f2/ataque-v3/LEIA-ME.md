@@ -1,5 +1,9 @@
 # F2 — bote baixo v3
 
+**Histórico rejeitado pelo usuário em 24/10.** Cauda e plumagem apresentaram problemas visuais
+não capturados pelas verificações desta versão. Novo repertório e rig em `../ataque-v4/LEIA-ME.md`;
+não adotar este bote no jogo. O restante descreve a entrega original.
+
 Primeira etapa do repertório autorizado pelo usuário depois da discussão em
 `docs/sessoes/2026-10-23-direcao-combate-f2.md`. Nova proposta artística, ainda em avaliação.
 

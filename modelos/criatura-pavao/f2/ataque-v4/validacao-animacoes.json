@@ -1,0 +1,53 @@
+{
+  "revision": "b14e314d03d01bfe",
+  "checked": [
+    "attack_stomp",
+    "attack_spin",
+    "attack_tail_kick"
+  ],
+  "summary": {
+    "errors": 0,
+    "warnings": 1,
+    "passed": true
+  },
+  "gates": [
+    {
+      "id": "animated_bones_exist",
+      "label": "Animators target groups that exist",
+      "severity": "error",
+      "ran": true,
+      "violations": []
+    },
+    {
+      "id": "keyframe_timing",
+      "label": "Keyframes lie inside the clip and do not collide",
+      "severity": "warning",
+      "ran": true,
+      "violations": []
+    },
+    {
+      "id": "ground_sink",
+      "label": "No part sinks below the ground during a clip",
+      "severity": "warning",
+      "ran": true,
+      "violations": [
+        {
+          "message": "attack_stomp: leg_left_feather_3 sinks 0.51 units below ground y=0.09 at 0.9s.",
+          "targets": [
+            "leg_left_feather_3"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "detachment",
+      "label": "Attached groups stay attached to their parent during a clip",
+      "severity": "warning",
+      "ran": true,
+      "violations": []
+    }
+  ],
+  "skipped_channels": [],
+  "approximated_bezier": [],
+  "capped_clips": []
+}

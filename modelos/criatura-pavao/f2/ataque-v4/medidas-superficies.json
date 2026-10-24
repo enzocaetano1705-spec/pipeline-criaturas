@@ -1,0 +1,92 @@
+{
+  "attack_stomp": {
+    "minimo_y_visivel": [
+      0.08483585724611122,
+      0.15416666666666667,
+      "toe_left_back"
+    ],
+    "minimo_penas_opacas_centros": [
+      0.9132879427638398,
+      0.9,
+      "leg_left_feather_3"
+    ],
+    "nova_penetracao_pena_perna": [
+      0.006364548928939229,
+      0.0625,
+      "leg_right_feather_2",
+      "tarsus_right"
+    ],
+    "minimo_caixas_inclui_transparencia": [
+      -0.42044626056887147,
+      0.9,
+      "leg_left_feather_3"
+    ],
+    "inicio_fim_neutros_matrizes": true,
+    "fixacao_raizes_max": 7.944109290391274e-15,
+    "erro_trajeto_pe_max": 0.02311890122346689,
+    "erro_solo_patas_apoiadas_max": 0.001373229012074595,
+    "erro_contato_cauda_max": 0,
+    "normal_vertical_laminas_min": 1,
+    "solas_no_impacto_y_min": null
+  },
+  "attack_spin": {
+    "minimo_y_visivel": [
+      0.08618774137693483,
+      1.0541666666666667,
+      "toe_left_1"
+    ],
+    "minimo_penas_opacas_centros": [
+      3.1615693882113005,
+      0.0,
+      "leg_right_feather_3"
+    ],
+    "nova_penetracao_pena_perna": [
+      0.001573711618299889,
+      0.075,
+      "leg_left_feather_2",
+      "tarsus_left"
+    ],
+    "minimo_caixas_inclui_transparencia": [
+      0.08618774137693483,
+      1.0541666666666667,
+      "toe_left_1"
+    ],
+    "inicio_fim_neutros_matrizes": true,
+    "fixacao_raizes_max": 8.379058453350832e-15,
+    "erro_trajeto_pe_max": 0.026321446232169404,
+    "erro_solo_patas_apoiadas_max": 0,
+    "erro_contato_cauda_max": 0,
+    "normal_vertical_laminas_min": 0.9999999999999999,
+    "solas_no_impacto_y_min": null
+  },
+  "attack_tail_kick": {
+    "minimo_y_visivel": [
+      0.08218038621742578,
+      0.3125,
+      "toe_left_0"
+    ],
+    "minimo_penas_opacas_centros": [
+      1.2773596119622788,
+      0.35,
+      "leg_right_feather_3"
+    ],
+    "nova_penetracao_pena_perna": [
+      0.02438122847386559,
+      0.10833333333333334,
+      "leg_right_feather_3",
+      "tarsus_right"
+    ],
+    "minimo_caixas_inclui_transparencia": [
+      0.08218038621742578,
+      0.3125,
+      "toe_left_0"
+    ],
+    "inicio_fim_neutros_matrizes": true,
+    "fixacao_raizes_max": 1.464821375527116e-14,
+    "erro_trajeto_pe_max": 0.037273702732568796,
+    "erro_solo_patas_apoiadas_max": 0,
+    "erro_contato_cauda_max": 0.00094867454770735,
+    "normal_vertical_laminas_min": 1,
+    "solas_no_impacto_y_min": 13.10173260735829
+  }
+}
