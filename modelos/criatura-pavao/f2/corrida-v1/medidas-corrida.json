@@ -1,0 +1,169 @@
+{
+  "preservados": [
+    "idle",
+    "walk",
+    "attack_stomp",
+    "attack_spin",
+    "attack_tail_kick"
+  ],
+  "clipes": {
+    "run": {
+      "minimo_y_visivel": [
+        0.08740912817366488,
+        0.12901734104046242,
+        "toe_left_2"
+      ],
+      "minimo_penas_opacas_centros": [
+        1.5323973756863083,
+        0.33294797687861266,
+        "leg_right_feather_3"
+      ],
+      "nova_penetracao_pena_perna": [
+        0,
+        null,
+        null,
+        null
+      ],
+      "minimo_caixas_inclui_transparencia": [
+        0.08740912817366488,
+        0.12901734104046242,
+        "toe_left_2"
+      ]
+    },
+    "run_start": {
+      "minimo_y_visivel": [
+        0.08157516039461365,
+        0.41123076923076923,
+        "toe_left_1"
+      ],
+      "minimo_penas_opacas_centros": [
+        1.5499378241802622,
+        0.4403076923076923,
+        "leg_right_feather_3"
+      ],
+      "nova_penetracao_pena_perna": [
+        0,
+        null,
+        null,
+        null
+      ],
+      "minimo_caixas_inclui_transparencia": [
+        0.08157516039461365,
+        0.41123076923076923,
+        "toe_left_1"
+      ]
+    },
+    "run_stop": {
+      "minimo_y_visivel": [
+        0.08455373638154648,
+        0.0125,
+        "toe_left_0"
+      ],
+      "minimo_penas_opacas_centros": [
+        2.820193727686264,
+        0.4083333333333333,
+        "leg_right_feather_3"
+      ],
+      "nova_penetracao_pena_perna": [
+        0,
+        null,
+        null,
+        null
+      ],
+      "minimo_caixas_inclui_transparencia": [
+        0.08455373638154648,
+        0.0125,
+        "toe_left_0"
+      ]
+    },
+    "walk_blend": {
+      "minimo_y_visivel": [
+        0.08720817227037106,
+        0.10416666666666667,
+        "toe_right_1"
+      ],
+      "minimo_penas_opacas_centros": [
+        3.0118090249863183,
+        0.6083333333333333,
+        "leg_right_feather_3"
+      ],
+      "nova_penetracao_pena_perna": [
+        0,
+        null,
+        null,
+        null
+      ],
+      "minimo_caixas_inclui_transparencia": [
+        0.08720817227037106,
+        0.10416666666666667,
+        "toe_right_1"
+      ]
+    },
+    "idle_blend": {
+      "minimo_y_visivel": [
+        0.08741,
+        0.0,
+        "toe_left_0"
+      ],
+      "minimo_penas_opacas_centros": [
+        3.1615693882113005,
+        0.0,
+        "leg_right_feather_3"
+      ],
+      "nova_penetracao_pena_perna": [
+        0,
+        null,
+        null,
+        null
+      ],
+      "minimo_caixas_inclui_transparencia": [
+        0.08741,
+        0.0,
+        "toe_left_0"
+      ]
+    }
+  },
+  "fase_compartilhada": true,
+  "erro_trajetoria_pes_max": 0.029886561679616924,
+  "deriva_apoio_por_amostra_max": 0.0008544732149130638,
+  "fases_aereas": [
+    0.4375,
+    0.4395833333333333,
+    0.44166666666666665,
+    0.44375,
+    0.4458333333333333,
+    0.4479166666666667,
+    0.45,
+    0.45208333333333334,
+    0.45416666666666666,
+    0.45625,
+    0.4583333333333333,
+    0.46041666666666664,
+    0.46249999999999997,
+    0.9375,
+    0.9395833333333333,
+    0.9416666666666667,
+    0.94375,
+    0.9458333333333333,
+    0.9479166666666666,
+    0.95,
+    0.9520833333333333,
+    0.9541666666666666,
+    0.9562499999999999,
+    0.9583333333333334,
+    0.9604166666666667,
+    0.9625
+  ],
+  "misturas_arbitrarias": {
+    "penetracao_max": [
+      0,
+      null
+    ],
+    "piso": 0.08740999999999886,
+    "fases": 121,
+    "pesos": 9,
+    "compensacao_vertical_de_referencia": true,
+    "validacao_offline_sem_integracao_no_jogo": true
+  },
+  "fonte_sha256": "9185045f3ac14a0d4a1b81d7f52b5729a3b12890d90c8abfffbbb277a15a6503"
+}

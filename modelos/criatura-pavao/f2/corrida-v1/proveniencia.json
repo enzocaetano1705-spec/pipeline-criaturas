@@ -1,0 +1,14 @@
+{
+  "fonte": "modelos/criatura-pavao/f2/ataque-v9/criatura-pavao-e2-ataque-v9.bbmodel",
+  "fonte_sha256": "5cf2ab754f6d36d34d84f586012d2d0a9344f0e46823194631a3e097bbdcba82",
+  "saida_sha256": "9185045f3ac14a0d4a1b81d7f52b5729a3b12890d90c8abfffbbb277a15a6503",
+  "operacoes": 16156,
+  "clipes": {
+    "run": 0.72,
+    "run_start": 0.54,
+    "run_stop": 0.6,
+    "walk_blend": 1.2,
+    "idle_blend": 2.4
+  },
+  "rig_geometria_uv_atlas_preservados": true
+}

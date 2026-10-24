@@ -1,0 +1,49 @@
+{
+  "revision": "9185045f3ac14a0d",
+  "checked": [
+    "run",
+    "run_start",
+    "run_stop",
+    "walk_blend",
+    "idle_blend"
+  ],
+  "summary": {
+    "errors": 0,
+    "warnings": 0,
+    "passed": true
+  },
+  "gates": [
+    {
+      "id": "animated_bones_exist",
+      "label": "Animators target groups that exist",
+      "severity": "error",
+      "ran": true,
+      "violations": []
+    },
+    {
+      "id": "keyframe_timing",
+      "label": "Keyframes lie inside the clip and do not collide",
+      "severity": "warning",
+      "ran": true,
+      "violations": []
+    },
+    {
+      "id": "ground_sink",
+      "label": "No part sinks below the ground during a clip",
+      "severity": "warning",
+      "ran": true,
+      "violations": []
+    },
+    {
+      "id": "detachment",
+      "label": "Attached groups stay attached to their parent during a clip",
+      "severity": "warning",
+      "ran": true,
+      "violations": []
+    }
+  ],
+  "skipped_channels": [],
+  "approximated_bezier": [],
+  "capped_clips": [],
+  "fonte_sha256": "9185045f3ac14a0d4a1b81d7f52b5729a3b12890d90c8abfffbbb277a15a6503"
+}
