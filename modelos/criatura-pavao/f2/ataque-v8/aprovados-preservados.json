@@ -1,0 +1,21 @@
+{
+  "idle": {
+    "chaves_originais_preservadas": true,
+    "articulacoes_modificadas_neutras": true
+  },
+  "walk": {
+    "chaves_originais_preservadas": true,
+    "articulacoes_modificadas_neutras": true
+  },
+  "attack_stomp": {
+    "desvio_geometrico_max": 0,
+    "amostragem_hz": 240,
+    "chaves_originais_preservadas": true
+  },
+  "attack_spin": {
+    "desvio_geometrico_max": 0,
+    "amostragem_hz": 240,
+    "chaves_originais_preservadas": true
+  },
+  "geometria_uv_atlas_identicos": true
+}

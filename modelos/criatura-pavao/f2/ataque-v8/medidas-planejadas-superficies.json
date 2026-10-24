@@ -1,0 +1,56 @@
+{
+  "minimo_y_visivel": [
+    0.08740999999999255,
+    0.1,
+    "toe_left_1"
+  ],
+  "nova_penetracao_leque_cauda": [
+    0.04341294249376304,
+    0.8666666666666667,
+    "fan_1",
+    "tail_base_2"
+  ],
+  "juntas_fora_volumes_max": 9.565974336450906e-15,
+  "apoio_cauda_erro_max": 5.1209037010835345e-15,
+  "largura_leque_erro_max": 0.0,
+  "normais_leque_variacao_max": 2.220446049250313e-16,
+  "rotacao_contraria_juntas_max": 0,
+  "curva_J": {
+    "ponta_em_relacao_raiz_z": 5.243721849009365,
+    "ponta_acima_apoio": 2.56823071953532,
+    "ponta_tangente_y": 0.573576436351046,
+    "ponta_tangente_z": 0.819152044288992
+  },
+  "fase_aerea_completa": [
+    0.8333333333333334,
+    1.6833333333333333
+  ],
+  "lancamento_velocidade": [
+    0.0,
+    42.99998122053209,
+    -27.000096161729676
+  ],
+  "subida_apos_lancamento": 9.43277407013221,
+  "apice_s": 1.2587338692896055,
+  "inicio_chute_s": 1.2937338692896054,
+  "impacto_s": 1.4237338692896055,
+  "velocidade_vertical_inicio_chute": -3.430324048506911,
+  "velocidade_vertical_impacto": -16.17152765724689,
+  "inicio_fim_neutros": true,
+  "minimo_penas_opacas_centros": [
+    2.8217793469682464,
+    0.3833333333333333,
+    "leg_right_feather_3"
+  ],
+  "nova_penetracao_pena_perna": [
+    0.009016182542101348,
+    2.7333333333333334,
+    "leg_right_feather_2",
+    "tarsus_right"
+  ],
+  "minimo_caixas_inclui_transparencia": [
+    -1.1701197957182128,
+    0.8,
+    "fan_5"
+  ]
+}

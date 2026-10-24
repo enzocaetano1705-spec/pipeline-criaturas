@@ -8,6 +8,10 @@ status: pisao-spin-aprovados-catapulta-aguarda-avaliacao
 
 # F2 v7 — transferência sobre a cauda e catapulta
 
+**Retorno posterior:** elasticidade aprovada, mas usuário pediu gancho em J voltado
+para trás, leque fora da parte sólida e chute somente na descida. Proposta atual em
+[[2026-10-24-gancho-cauda-f2-v8]]; esta nota registra o histórico da v7.
+
 **Pedido ao usuário:** avaliar somente `attack_tail_kick` na v7, aberta em Animate:
 `modelos/criatura-pavao/f2/ataque-v7/criatura-pavao-e2-ataque-v7.bbmodel`.
 Prévia em `previa-catapulta.gif`, duas vistas a 1×. Pisão e spin continuam aprovados.
