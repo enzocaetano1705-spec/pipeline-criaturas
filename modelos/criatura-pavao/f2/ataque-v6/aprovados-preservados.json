@@ -1,0 +1,12 @@
+{
+  "attack_stomp": {
+    "desvio_cantos_max": 0,
+    "amostragem_hz": 240,
+    "chaves_originais_preservadas": true
+  },
+  "attack_spin": {
+    "desvio_cantos_max": 0,
+    "amostragem_hz": 240,
+    "chaves_originais_preservadas": true
+  }
+}

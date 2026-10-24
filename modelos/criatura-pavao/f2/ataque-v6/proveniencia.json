@@ -1,0 +1,9 @@
+{
+  "fonte": "modelos/criatura-pavao/f2/ataque-v5/criatura-pavao-e2-ataque-v5.bbmodel",
+  "fonte_sha256": "cb09323fd0c8a3e5dbc21c4ee7776d7afbbca07fc23f98d5e3bfd58f6433a42d",
+  "saida_sha256": "b563eb9e10c342c623c80d941eaa46e6a6328a5b1f1166504c24b68759465eac",
+  "grupos": 48,
+  "fps": 120,
+  "operacoes": 7889,
+  "pisao_spin_preservados": true
+}

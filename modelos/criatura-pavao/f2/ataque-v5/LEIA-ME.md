@@ -1,5 +1,9 @@
 # F2 v5 — impulso do giro e ataque apoiado na cauda
 
+**Retorno posterior:** spin aprovado. Ataque de cauda revisado na v6 para carga elástica,
+impulso e golpe aéreo; ver `../ataque-v6/LEIA-ME.md`. Pisão e spin da v5 permanecem aprovados.
+O restante descreve a entrega anterior.
+
 **Pisão aprovado. Giro e ataque com cauda aguardam avaliação artística.**
 Abrir `criatura-pavao-e2-ataque-v5.bbmodel`, aba Animate. Avaliar primeiro `attack_spin`.
 
