@@ -1,0 +1,10 @@
+{
+  "amostragem_hz": 240,
+  "erro_max_cantos": [
+    0.0001721442466082846,
+    0.6541666666666667,
+    "wing_right_feather_7"
+  ],
+  "trajetorias_e_chaves_originais_preservadas": true,
+  "observacao": "Compensa\u00e7\u00e3o num\u00e9rica s\u00f3 da pena direita 7, reparentada ao antebra\u00e7o; demais pe\u00e7as id\u00eanticas."
+}

@@ -1,0 +1,18 @@
+{
+  "attack_spin": {
+    "minimo_y_visivel": [
+      0.08740999999999502,
+      1.5166666666666666,
+      "toe_right_0"
+    ],
+    "alcance_erros": []
+  },
+  "attack_tail_kick": {
+    "minimo_y_visivel": [
+      0.08740999999999258,
+      1.2083333333333333,
+      "toe_left_0"
+    ],
+    "alcance_erros": []
+  }
+}

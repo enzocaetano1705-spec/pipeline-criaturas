@@ -1,5 +1,9 @@
 # F2 — três ataques v4, para avaliação
 
+**Retorno em 24/10:** pisão aprovado. Giro e ataque com cauda rejeitados por rigidez,
+pena perdida e curva/contração da cauda. Revisão em `../ataque-v5/LEIA-ME.md`.
+O restante desta nota descreve a entrega original.
+
 Abrir **criatura-pavao-e2-ataque-v4.bbmodel** no Blockbench, aba **Animate**.
 As três animações são propostas artísticas; ainda precisam da avaliação do usuário.
 

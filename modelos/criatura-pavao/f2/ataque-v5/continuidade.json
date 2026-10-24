@@ -1,0 +1,20 @@
+{
+  "attack_spin": {
+    "maior_variacao_euler_por_chave": [
+      10.315955000000002,
+      "combat_pivot"
+    ],
+    "maior_passo_bacia_por_chave": 0.13756388707069903,
+    "sem_escala": true,
+    "loop": "once"
+  },
+  "attack_tail_kick": {
+    "maior_variacao_euler_por_chave": [
+      8.886813,
+      "shin_right"
+    ],
+    "maior_passo_bacia_por_chave": 0.7192227797073729,
+    "sem_escala": true,
+    "loop": "once"
+  }
+}

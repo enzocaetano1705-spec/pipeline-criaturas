@@ -1,0 +1,66 @@
+{
+  "attack_spin": {
+    "minimo_y_visivel": [
+      0.08243034752766021,
+      0.4041666666666667,
+      "toe_right_1"
+    ],
+    "minimo_penas_opacas_centros": [
+      3.1615693882113005,
+      0.0,
+      "leg_right_feather_3"
+    ],
+    "nova_penetracao_pena_perna": [
+      8.881784197001252e-16,
+      1.65,
+      "leg_right_feather_3",
+      "tarsus_right"
+    ],
+    "minimo_caixas_inclui_transparencia": [
+      0.08243034752766021,
+      0.4041666666666667,
+      "toe_right_1"
+    ],
+    "fixacao_raizes_max": 1.1783018260144473e-14,
+    "apoio_pata_spin_erro": 0.0022418914285891184,
+    "normal_laminas_spin_min": 0.9999999680702336,
+    "apoio_solid_cauda_erro": 0,
+    "abertura_leque_diferenca_max": 0,
+    "solas_impacto_min_y": null,
+    "pata_direita_livre_min_y": 1.998282942146817,
+    "ponta_apoio_deriva_xz_max": 0.00575449445549528,
+    "inicio_fim_neutros": true
+  },
+  "attack_tail_kick": {
+    "minimo_y_visivel": [
+      0.07913171322117263,
+      0.29583333333333334,
+      "toe_right_0"
+    ],
+    "minimo_penas_opacas_centros": [
+      2.7987328820953907,
+      1.425,
+      "leg_right_feather_3"
+    ],
+    "nova_penetracao_pena_perna": [
+      0.01726642162119063,
+      1.55,
+      "leg_left_feather_2",
+      "tarsus_left"
+    ],
+    "minimo_caixas_inclui_transparencia": [
+      -1.3629881741770067,
+      0.39166666666666666,
+      "fan_5"
+    ],
+    "fixacao_raizes_max": 1.1234667099445444e-14,
+    "apoio_pata_spin_erro": 0,
+    "normal_laminas_spin_min": 1,
+    "apoio_solid_cauda_erro": 0.002147005475954908,
+    "abertura_leque_diferenca_max": 2.220446049250313e-16,
+    "solas_impacto_min_y": 10.985591915903239,
+    "pata_direita_livre_min_y": null,
+    "ponta_apoio_deriva_xz_max": 0,
+    "inicio_fim_neutros": true
+  }
+}
