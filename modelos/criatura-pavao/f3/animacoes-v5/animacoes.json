@@ -1,0 +1,73 @@
+{
+  "status": "proposta-para-revisao-artistica",
+  "modelo": "criatura-pavao-e3-combate-v5.bbmodel",
+  "fonte": "modelos/criatura-pavao/f3/animacoes-v4/criatura-pavao-e3-combate-v4.bbmodel",
+  "fonte_sha256": "5db5e41f51a98a1fa6c62877bbbe359d95c3952b43189aa2c075f52138cfd19d",
+  "root_motion": false,
+  "aprovados": [
+    "idle",
+    "walk",
+    "combat_walk"
+  ],
+  "clipes_revistos": {
+    "combat_ready": {
+      "duracao": 2.4,
+      "loop": true,
+      "fps_chaves": 120
+    },
+    "combat_enter": {
+      "duracao": 2.1,
+      "loop": false,
+      "fps_chaves": 120
+    }
+  },
+  "clipes_preservados": [
+    "idle",
+    "walk",
+    "combat_idle",
+    "combat_exit_upper",
+    "combat_enter_upper",
+    "combat_idle_resume",
+    "combat_exit",
+    "combat_walk_start",
+    "combat_walk_stop",
+    "combat_enter_walk",
+    "combat_walk"
+  ],
+  "respiracao": {
+    "corpo_amplitude_vertical": 1.0,
+    "peito_amplitude_graus": 5.6,
+    "ciclo": 2.4,
+    "plumagem_e_cauda_com_atraso": true
+  },
+  "saque": {
+    "GripLeft": 0.3,
+    "GripRight": 0.34,
+    "InicioArcoContinuo": 0.4,
+    "GuiaSemParada": 0.56,
+    "FimArcoContinuo": 1.15,
+    "FlourishStart": 1.15,
+    "FlourishEnd": 1.68,
+    "ApoiarNoOmbroInicio": 1.7,
+    "Ready": 2.1,
+    "trecho_aprovado_preservado": [
+      1.15,
+      2.1
+    ]
+  },
+  "lados_confirmados": {
+    "ombro_e_floreio": "left da criatura",
+    "arrasto_sem_floreio": "right da criatura"
+  },
+  "integracao_adiada": [
+    "combat_enter_walk",
+    "combat_enter_upper",
+    "combat_walk_start",
+    "combat_walk_stop",
+    "combat_idle",
+    "combat_idle_resume",
+    "combat_exit",
+    "combat_exit_upper"
+  ],
+  "validacao": "validacao.json"
+}

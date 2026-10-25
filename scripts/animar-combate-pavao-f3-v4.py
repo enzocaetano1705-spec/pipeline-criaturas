@@ -127,9 +127,9 @@ def checks(report,m,rig,saved):
     if preserved>.002:errors.append('Floreio aprovado do braço do ombro mudou')
 
 
-def overview():
+def overview(samples=None):
     m=bbmodelo.ler(FILE);saved=v2.review.Saved(m)
-    samples=[('combat_ready',0,0),('combat_ready',0,90),('combat_enter',.90,65),
+    samples=samples or [('combat_ready',0,0),('combat_ready',0,90),('combat_enter',.90,65),
              ('combat_enter',1.40,35),('combat_enter',1.90,65),('combat_enter',2.1,35)]
     sheet=Image.new('RGB',(768,768),(238,242,244));d=ImageDraw.Draw(sheet)
     for i,(name,t,az) in enumerate(samples):

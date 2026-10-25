@@ -1,18 +1,18 @@
 {
-  "status": "guarda-marcha-e-final-saque-aguardam-revisao",
-  "fonte": "modelos/criatura-pavao/f3/animacoes-v4/criatura-pavao-e3-combate-v4.bbmodel",
-  "sha256": "5db5e41f51a98a1fa6c62877bbbe359d95c3952b43189aa2c075f52138cfd19d",
+  "status": "respiracao-e-fluidez-saque-aguardam-revisao",
+  "fonte": "modelos/criatura-pavao/f3/animacoes-v5/criatura-pavao-e3-combate-v5.bbmodel",
+  "sha256": "35ea0d44d03b6412da6528a168f980baa700cb3ef9422df6532d1cdf9e742022",
   "origem_manual": "modelos/criatura-pavao/f3/animacoes-v3/origem-revisada.bbmodel",
-  "revisao_atual": "Combat_walk aprovada e preservada integralmente. Combat_ready usa essa postura parada. Depois do saque, só a espada do ombro floreia; a outra segue para o arrasto. Final coincide com a nova guarda.",
+  "revisao_atual": "V4 aprovada com dois ajustes: respiração pesada na guarda e arco contínuo da extração à extensão do braço entre 0,40 e 1,15 s. Floreio/final e outros onze clipes preservados.",
   "direcao_atual": "Mesmos braços da marcha aprovada: esquerdo da criatura no ombro, direito no arrasto; confirmado pelo usuário. Demais clipes continuam adiados.",
   "aprovacoes": {
     "idle": "aprovado",
     "walk": "aprovado",
-    "combate": "guarda-e-final-do-saque-em-revisao",
+    "combate": "ajustes-finais-da-base-em-revisao",
     "combat_walk": "aprovado",
     "combat_enter_v3": "saque e floreio aprovados; final revisto na v4",
-    "combat_ready": "aguarda-avaliacao-v4",
-    "combat_enter": "aguarda-avaliacao-final-v4"
+    "combat_ready": "base aprovada; respiração v5 em avaliação",
+    "combat_enter": "floreio e final aprovados; fluidez inicial v5 em avaliação"
   },
   "animacoes": [
     "idle",
@@ -29,7 +29,7 @@
     "combat_exit",
     "combat_exit_upper"
   ],
-  "metadados": "modelos/criatura-pavao/f3/animacoes-v4/animacoes.json",
+  "metadados": "modelos/criatura-pavao/f3/animacoes-v5/animacoes.json",
   "studio": "não alterado; somente animações e metadados locais",
   "clipes_em_revisao": [
     "combat_ready",
@@ -45,5 +45,5 @@
     "combat_exit",
     "combat_exit_upper"
   ],
-  "fonte_anterior": "modelos/criatura-pavao/f3/animacoes-v3/criatura-pavao-e3-combate-v3.bbmodel"
+  "fonte_anterior": "modelos/criatura-pavao/f3/animacoes-v4/criatura-pavao-e3-combate-v4.bbmodel"
 }

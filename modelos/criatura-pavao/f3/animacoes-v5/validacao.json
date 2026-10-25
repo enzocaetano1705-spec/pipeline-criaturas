@@ -1,0 +1,89 @@
+{
+  "fonte_sha256": "5db5e41f51a98a1fa6c62877bbbe359d95c3952b43189aa2c075f52138cfd19d",
+  "saida_sha256": "35ea0d44d03b6412da6528a168f980baa700cb3ef9422df6532d1cdf9e742022",
+  "clipes": {
+    "combat_ready": {
+      "erro_ancora_penas": 1.1631959523615375e-07,
+      "erro_mao_arma": 4.445937248841923e-08,
+      "min_sola_y": -2.600477093083351e-06,
+      "ambos_pes_fora_chao": 4.665152986284307e-08,
+      "min_lamina_y": -1.617205676041067e-07,
+      "erro_arrasto": 0.0,
+      "costura_matriz": 0.0,
+      "maior_dobra_punho": 14.11804285416924,
+      "flexao_cotovelo": [
+        71.14407188648477,
+        120.31479251727032
+      ],
+      "erro_eixo_cotovelo": 1.2971328074766714e-09,
+      "maior_passo_angular_240hz": 0.004821665787222672
+    },
+    "combat_enter": {
+      "erro_ancora_penas": 0.0005871819819611238,
+      "erro_mao_arma": 5.320452718788179e-07,
+      "min_sola_y": -0.00031419774452837526,
+      "ambos_pes_fora_chao": 4.9601191702045365e-08,
+      "min_lamina_y": -0.012913693621531053,
+      "erro_arrasto": 0.0,
+      "costura_matriz": 0,
+      "maior_dobra_punho": 72.0700553795561,
+      "flexao_cotovelo": [
+        47.18189678087848,
+        129.33824106745996
+      ],
+      "erro_eixo_cotovelo": 0.0005815255513081079,
+      "maior_passo_angular_240hz": 8.798558596622115
+    }
+  },
+  "erros": [],
+  "clipes_preservados": [
+    "idle",
+    "walk",
+    "combat_idle",
+    "combat_exit_upper",
+    "combat_enter_upper",
+    "combat_idle_resume",
+    "combat_exit",
+    "combat_walk_start",
+    "combat_walk_stop",
+    "combat_enter_walk",
+    "combat_walk"
+  ],
+  "floreio": {
+    "left": {
+      "volta_projetada_yz_graus": 359.9987408254309,
+      "inclinacao_para_fora_graus": [
+        29.99994005773277,
+        30.289297692689175
+      ]
+    }
+  },
+  "conexoes": [
+    {
+      "de": "combat_enter",
+      "para": "idle",
+      "erro_matriz": 3.1628955809992476e-07
+    },
+    {
+      "de": "combat_enter",
+      "para": "combat_ready",
+      "erro_matriz": 0.0
+    }
+  ],
+  "erro_saque_aprovado_matriz": 1.9895795446700504e-06,
+  "guarda_igual_marcha_quadro_zero": 0.0,
+  "combat_walk_preservado_integralmente": true,
+  "erro_contato_espada_em_descanso": 1.7228085727793996e-05,
+  "variacao_angular_espada_sem_floreio": 1.5110697010249368,
+  "erro_floreio_aprovado_braço_ombro": 2.843640881877718e-06,
+  "erro_trecho_aprovado_apos_extensao": 3.0022414563291022e-06,
+  "arco_continuo": {
+    "menor_velocidade_mao": 5.247966869529891,
+    "menor_velocidade_vertical": 3.816084760586591
+  },
+  "respiracao": {
+    "amplitude_vertical_corpo": 1.0,
+    "amplitude_inclinacao_peito": 5.6
+  },
+  "integridade_ok": true
+}

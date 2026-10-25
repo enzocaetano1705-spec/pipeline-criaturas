@@ -242,7 +242,7 @@ def bake(names):
     print('Gravado:',FILE.name,flush=True)
 
 
-def validate(names, *, flourish_sides=('left','right'), extra_checks=None):
+def validate(names, *, flourish_sides=('left','right'), extra_checks=None, preserve_draw_until=.50):
     m=bbmodelo.ler(FILE);src=bbmodelo.ler(SOURCE);saved=v2.review.Saved(m);rig=Rig(m)
     def canonical(a):
         a=copy.deepcopy(a)
@@ -329,7 +329,7 @@ def validate(names, *, flourish_sides=('left','right'), extra_checks=None):
             report['conexoes'].append({'de':name,'para':other,'erro_matriz':err})
             if err>1e-4:errors.append('Conexão: '+name+'/'+other)
         preserved=0.
-        for t in np.linspace(0,.5,61):
+        for t in np.linspace(0,preserve_draw_until,61):
             a=bbmodelo.matrizes_ossos(m,saved.pose('combat_enter',float(t)))
             b=bbmodelo.matrizes_ossos(src,source_saved.pose('combat_enter',float(t)))
             for n in ['arm_left','forearm_left','hand_left','arm_right','forearm_right','hand_right','tail_fan_04','tail_fan_06']:
