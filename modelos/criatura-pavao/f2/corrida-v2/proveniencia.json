@@ -1,0 +1,21 @@
+{
+  "fonte": "modelos/criatura-pavao/f2/corrida-v1/criatura-pavao-e2-corrida-v1.bbmodel",
+  "fonte_sha256": "9185045f3ac14a0d4a1b81d7f52b5729a3b12890d90c8abfffbbb277a15a6503",
+  "saida_sha256": "a387d4f84d3913d1f717b1c2cda92f17d794157331ad65f57448e8de29eacd0a",
+  "operacoes": 7918,
+  "clipes_alterados": [
+    "run",
+    "run_start",
+    "run_stop"
+  ],
+  "clipes_preservados": [
+    "idle",
+    "walk",
+    "attack_stomp",
+    "attack_spin",
+    "attack_tail_kick",
+    "walk_blend",
+    "idle_blend"
+  ],
+  "rig_geometria_uv_atlas_preservados": true
+}

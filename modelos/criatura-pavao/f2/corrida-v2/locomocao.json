@@ -1,0 +1,34 @@
+{
+  "versao": 1,
+  "ciclo_run_s": 0.72,
+  "ciclo_walk_s": 1.2,
+  "velocidade_walk_unidades_s": 11.111111111111112,
+  "velocidade_run_unidades_s": 44.44444444444444,
+  "distancia_ciclo_walk": 13.333333333333334,
+  "distancia_ciclo_run": 32.0,
+  "apoio_run": 0.4,
+  "run_start": {
+    "duracao": 0.54,
+    "fase_inicial": 0,
+    "fase_final": 0.6000000000000001,
+    "loop_destino": "run",
+    "tempo_loop_destino_s": 0.432
+  },
+  "run_stop": {
+    "duracao": 0.6,
+    "fase_inicial": 0,
+    "fase_final": 0.6666666666666666,
+    "loop_destino": "walk_blend",
+    "tempo_loop_destino_s": 0.8
+  },
+  "loops_compativeis_mistura": [
+    "idle_blend",
+    "walk_blend",
+    "run"
+  ],
+  "transicoes_walk_run": [
+    "run_start",
+    "run_stop"
+  ],
+  "integracao_no_jogo": "futura; esta entrega cont\u00e9m apenas anima\u00e7\u00f5es e metadados"
+}

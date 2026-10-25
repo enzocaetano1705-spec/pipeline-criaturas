@@ -1,0 +1,293 @@
+{
+  "fonte_sha256": "a387d4f84d3913d1f717b1c2cda92f17d794157331ad65f57448e8de29eacd0a",
+  "preservados": [
+    "idle",
+    "walk",
+    "attack_stomp",
+    "attack_spin",
+    "attack_tail_kick",
+    "walk_blend",
+    "idle_blend"
+  ],
+  "clipes": {
+    "run": {
+      "minimo_y_visivel": [
+        0.08740907444752362,
+        0.4869364161849711,
+        "toe_right_2"
+      ],
+      "minimo_penas_opacas_centros": [
+        1.5874278611651529,
+        0.32878612716763,
+        "leg_right_feather_3"
+      ],
+      "nova_penetracao_pena_perna": [
+        0,
+        null,
+        null,
+        null
+      ],
+      "minimo_caixas_inclui_transparencia": [
+        0.08740907444752362,
+        0.4869364161849711,
+        "toe_right_2"
+      ]
+    },
+    "run_start": {
+      "minimo_y_visivel": [
+        0.08072710876833611,
+        0.41123076923076923,
+        "toe_left_1"
+      ],
+      "minimo_penas_opacas_centros": [
+        1.6104387683099852,
+        0.432,
+        "leg_right_feather_3"
+      ],
+      "nova_penetracao_pena_perna": [
+        0,
+        null,
+        null,
+        null
+      ],
+      "minimo_caixas_inclui_transparencia": [
+        0.08072710876833611,
+        0.41123076923076923,
+        "toe_left_1"
+      ]
+    },
+    "run_stop": {
+      "minimo_y_visivel": [
+        0.08377279727561593,
+        0.004166666666666667,
+        "toe_left_0"
+      ],
+      "minimo_penas_opacas_centros": [
+        2.8867135969798374,
+        0.4,
+        "leg_right_feather_3"
+      ],
+      "nova_penetracao_pena_perna": [
+        0,
+        null,
+        null,
+        null
+      ],
+      "minimo_caixas_inclui_transparencia": [
+        0.08377279727561593,
+        0.004166666666666667,
+        "toe_left_0"
+      ]
+    },
+    "walk_blend": {
+      "minimo_y_visivel": [
+        0.08720817227037106,
+        0.10416666666666667,
+        "toe_right_1"
+      ],
+      "minimo_penas_opacas_centros": [
+        3.0118090249863183,
+        0.6083333333333333,
+        "leg_right_feather_3"
+      ],
+      "nova_penetracao_pena_perna": [
+        0,
+        null,
+        null,
+        null
+      ],
+      "minimo_caixas_inclui_transparencia": [
+        0.08720817227037106,
+        0.10416666666666667,
+        "toe_right_1"
+      ]
+    },
+    "idle_blend": {
+      "minimo_y_visivel": [
+        0.08741,
+        0.0,
+        "toe_left_0"
+      ],
+      "minimo_penas_opacas_centros": [
+        3.1615693882113005,
+        0.0,
+        "leg_right_feather_3"
+      ],
+      "nova_penetracao_pena_perna": [
+        0,
+        null,
+        null,
+        null
+      ],
+      "minimo_caixas_inclui_transparencia": [
+        0.08741,
+        0.0,
+        "toe_left_0"
+      ]
+    }
+  },
+  "fase_compartilhada": true,
+  "erro_trajetoria_pes_max": 0.029283024982066884,
+  "deriva_apoio_por_amostra_max": 0.0010428247165286584,
+  "fases_aereas": [
+    0.44375,
+    0.4458333333333333,
+    0.4479166666666667,
+    0.45,
+    0.45208333333333334,
+    0.45416666666666666,
+    0.45625,
+    0.94375,
+    0.9458333333333333,
+    0.9479166666666666,
+    0.95,
+    0.9520833333333333,
+    0.9541666666666666,
+    0.9562499999999999
+  ],
+  "misturas_arbitrarias": {
+    "penetracao_max": [
+      0,
+      null
+    ],
+    "piso": 0.08740999999999846,
+    "fases": 121,
+    "pesos": 9,
+    "compensacao_vertical_de_referencia": true,
+    "validacao_offline_sem_integracao_no_jogo": true
+  },
+  "resposta_corporal": {
+    "body": {
+      "v1": {
+        "curso_pivo_xyz": [
+          0.3599560072098053,
+          2.19936950792888,
+          0.0
+        ],
+        "pitch_graus": 2.999139601633832,
+        "yaw_graus": 3.199604063446287,
+        "roll_graus": 2.399704047584715
+      },
+      "v2": {
+        "curso_pivo_xyz": [
+          0.7999020158615718,
+          3.2990533868332523,
+          0.8397581619413739
+        ],
+        "pitch_graus": 6.398283401005607,
+        "yaw_graus": 5.39933260706561,
+        "roll_graus": 5.599308111031004
+      }
+    },
+    "pelvis": {
+      "v1": {
+        "curso_pivo_xyz": [
+          0.35995600720980536,
+          2.1993695079288837,
+          3.552713678800501e-15
+        ],
+        "pitch_graus": 2.988828465721454,
+        "yaw_graus": 6.56517429154737,
+        "roll_graus": 1.4521094744640912
+      },
+      "v2": {
+        "curso_pivo_xyz": [
+          0.799902015861572,
+          3.2990533868332452,
+          0.8397581619413739
+        ],
+        "pitch_graus": 2.942011600235791,
+        "yaw_graus": 12.465050221942334,
+        "roll_graus": 5.1372009310661415
+      }
+    },
+    "chest": {
+      "v1": {
+        "curso_pivo_xyz": [
+          0.26723324948275673,
+          1.7488715191877091,
+          0.058858335639852655
+        ],
+        "pitch_graus": 0.9777930358802251,
+        "yaw_graus": 0.6980202426808462,
+        "roll_graus": 1.9013081137142476
+      },
+      "v2": {
+        "curso_pivo_xyz": [
+          0.40177177224974914,
+          3.1373409037347866,
+          0.8504486179522068
+        ],
+        "pitch_graus": 5.487568306788958,
+        "yaw_graus": 3.3674253892249033,
+        "roll_graus": 5.836807007720538
+      }
+    },
+    "neck_1": {
+      "v1": {
+        "curso_pivo_xyz": [
+          0.43108756047948776,
+          1.5823848082347851,
+          0.034680676893504625
+        ],
+        "pitch_graus": 2.3757583924519334,
+        "yaw_graus": 1.3562425315552256,
+        "roll_graus": 1.4509896848227704
+      },
+      "v2": {
+        "curso_pivo_xyz": [
+          1.1053146912635823,
+          2.8927999675061784,
+          0.9669170057315952
+        ],
+        "pitch_graus": 4.739755693243849,
+        "yaw_graus": 4.587960888351667,
+        "roll_graus": 5.676387643198206
+      }
+    },
+    "head": {
+      "v1": {
+        "curso_pivo_xyz": [
+          0.602877640199697,
+          1.4482368787907234,
+          0.12353445570374433
+        ],
+        "pitch_graus": 0.5751827465538442,
+        "yaw_graus": 0.6827190028622077,
+        "roll_graus": 1.4201336189868468
+      },
+      "v2": {
+        "curso_pivo_xyz": [
+          1.7376739181859167,
+          2.644667052217038,
+          0.9955184465874787
+        ],
+        "pitch_graus": 6.130939666258849,
+        "yaw_graus": 2.2657140358022847,
+        "roll_graus": 4.638215244923429
+      }
+    },
+    "tail_1": {
+      "v1": {
+        "curso_pivo_xyz": [
+          0.7817195821138019,
+          2.397620088667848,
+          0.040084417850922094
+        ],
+        "pitch_graus": 0.7899369471453213,
+        "yaw_graus": 2.4489259937769368,
+        "roll_graus": 1.7382451893582491
+      },
+      "v2": {
+        "curso_pivo_xyz": [
+          1.565760090672026,
+          3.3041959128595337,
+          0.8658302090415457
+        ],
+        "pitch_graus": 6.059699374595667,
+        "yaw_graus": 4.252319574886672,
+        "roll_graus": 4.843833596056371
+      }
+    }
+  }
+}

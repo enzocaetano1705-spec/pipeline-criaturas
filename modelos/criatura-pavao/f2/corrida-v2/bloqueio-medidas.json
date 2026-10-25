@@ -1,0 +1,71 @@
+{
+  "run": {
+    "minimo_y_visivel": [
+      0.08740999999999227,
+      0.4952601156069364,
+      "toe_right_back"
+    ],
+    "minimo_penas_opacas_centros": [
+      1.5874267190272704,
+      0.32878612716763,
+      "leg_right_feather_3"
+    ],
+    "nova_penetracao_pena_perna": [
+      0,
+      null,
+      null,
+      null
+    ],
+    "minimo_caixas_inclui_transparencia": [
+      0.08740999999999227,
+      0.4952601156069364,
+      "toe_right_back"
+    ]
+  },
+  "run_start": {
+    "minimo_y_visivel": [
+      0.08740999999999723,
+      0.5316923076923077,
+      "toe_right_back"
+    ],
+    "minimo_penas_opacas_centros": [
+      1.607736493947423,
+      0.43615384615384617,
+      "leg_right_feather_3"
+    ],
+    "nova_penetracao_pena_perna": [
+      0,
+      null,
+      null,
+      null
+    ],
+    "minimo_caixas_inclui_transparencia": [
+      0.08740999999999723,
+      0.5316923076923077,
+      "toe_right_back"
+    ]
+  },
+  "run_stop": {
+    "minimo_y_visivel": [
+      0.08740999999999897,
+      0.04583333333333333,
+      "toe_left_back"
+    ],
+    "minimo_penas_opacas_centros": [
+      2.8834157450986826,
+      0.4041666666666667,
+      "leg_right_feather_3"
+    ],
+    "nova_penetracao_pena_perna": [
+      0,
+      null,
+      null,
+      null
+    ],
+    "minimo_caixas_inclui_transparencia": [
+      0.08740999999999897,
+      0.04583333333333333,
+      "toe_left_back"
+    ]
+  }
+}
