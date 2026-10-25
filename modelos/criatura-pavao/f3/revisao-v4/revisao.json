@@ -1,0 +1,578 @@
+{
+  "fonte_manual_sha256": "55f1ba28c7baf6d51e0faf25a2bcd5fa05809238739397e97fffdb89f78aa677",
+  "fonte_f2_sha256": "a387d4f84d3913d1f717b1c2cda92f17d794157331ad65f57448e8de29eacd0a",
+  "saida_sha256": "a95374928e8a480cbcc099b690f318ef99030fa6c1706c60a16b0de4aa09e35c",
+  "motor": {
+    "errors": 0,
+    "warnings": 279,
+    "passed": true
+  },
+  "avisos_por_gate": {
+    "outliner": 0,
+    "unlisted_nodes": 0,
+    "degenerate": 0,
+    "block_limits": 0,
+    "floating": 0,
+    "interpenetration": 279,
+    "mirror": 0
+  },
+  "cabeca_f2": [
+    {
+      "peca": "beak",
+      "erro_maximo": 3.552713678800501e-15,
+      "uv_identica": true
+    },
+    {
+      "peca": "beak_tip",
+      "erro_maximo": 7.105427357601002e-15,
+      "uv_identica": true
+    },
+    {
+      "peca": "crest_left_rise",
+      "erro_maximo": 7.105427357601002e-15,
+      "uv_identica": true
+    },
+    {
+      "peca": "crest_left_eye",
+      "erro_maximo": 7.105427357601002e-15,
+      "uv_identica": true
+    },
+    {
+      "peca": "crest_right_rise",
+      "erro_maximo": 7.105427357601002e-15,
+      "uv_identica": true
+    },
+    {
+      "peca": "crest_right_eye",
+      "erro_maximo": 7.105427357601002e-15,
+      "uv_identica": true
+    },
+    {
+      "peca": "skull",
+      "erro_maximo": 3.552713678800501e-15,
+      "uv_identica": true
+    }
+  ],
+  "textura_f2_identica": true,
+  "dimensoes_preservadas": [
+    {
+      "peca": "ribcage",
+      "dimensoes_preservadas": true
+    },
+    {
+      "peca": "ribcage_lower",
+      "dimensoes_preservadas": true
+    },
+    {
+      "peca": "chest_top",
+      "dimensoes_preservadas": true
+    },
+    {
+      "peca": "hip_plume_left_stem",
+      "dimensoes_preservadas": true
+    },
+    {
+      "peca": "hip_plume_left_vane",
+      "dimensoes_preservadas": true
+    },
+    {
+      "peca": "hip_plume_left_point",
+      "dimensoes_preservadas": true
+    },
+    {
+      "peca": "hip_outer_left_stem",
+      "dimensoes_preservadas": true
+    },
+    {
+      "peca": "hip_outer_left_vane",
+      "dimensoes_preservadas": true
+    },
+    {
+      "peca": "hip_outer_left_point",
+      "dimensoes_preservadas": true
+    },
+    {
+      "peca": "thigh_left",
+      "dimensoes_preservadas": true
+    },
+    {
+      "peca": "shank_left",
+      "dimensoes_preservadas": true
+    },
+    {
+      "peca": "tarsus_left",
+      "dimensoes_preservadas": true
+    },
+    {
+      "peca": "foot_pad_left",
+      "dimensoes_preservadas": true
+    },
+    {
+      "peca": "toe_left_1",
+      "dimensoes_preservadas": true
+    },
+    {
+      "peca": "claw_left_1_base",
+      "dimensoes_preservadas": true
+    },
+    {
+      "peca": "claw_left_1_tip",
+      "dimensoes_preservadas": true
+    },
+    {
+      "peca": "toe_left_2",
+      "dimensoes_preservadas": true
+    },
+    {
+      "peca": "claw_left_2_base",
+      "dimensoes_preservadas": true
+    },
+    {
+      "peca": "claw_left_2_tip",
+      "dimensoes_preservadas": true
+    },
+    {
+      "peca": "toe_left_3",
+      "dimensoes_preservadas": true
+    },
+    {
+      "peca": "claw_left_3_base",
+      "dimensoes_preservadas": true
+    },
+    {
+      "peca": "claw_left_3_tip",
+      "dimensoes_preservadas": true
+    },
+    {
+      "peca": "toe_left_back",
+      "dimensoes_preservadas": true
+    },
+    {
+      "peca": "claw_left_back",
+      "dimensoes_preservadas": true
+    },
+    {
+      "peca": "hip_plume_right_stem",
+      "dimensoes_preservadas": true
+    },
+    {
+      "peca": "hip_plume_right_vane",
+      "dimensoes_preservadas": true
+    },
+    {
+      "peca": "hip_plume_right_point",
+      "dimensoes_preservadas": true
+    },
+    {
+      "peca": "hip_outer_right_stem",
+      "dimensoes_preservadas": true
+    },
+    {
+      "peca": "hip_outer_right_vane",
+      "dimensoes_preservadas": true
+    },
+    {
+      "peca": "hip_outer_right_point",
+      "dimensoes_preservadas": true
+    },
+    {
+      "peca": "thigh_right",
+      "dimensoes_preservadas": true
+    },
+    {
+      "peca": "shank_right",
+      "dimensoes_preservadas": true
+    },
+    {
+      "peca": "tarsus_right",
+      "dimensoes_preservadas": true
+    },
+    {
+      "peca": "foot_pad_right",
+      "dimensoes_preservadas": true
+    },
+    {
+      "peca": "toe_right_1",
+      "dimensoes_preservadas": true
+    },
+    {
+      "peca": "claw_right_1_base",
+      "dimensoes_preservadas": true
+    },
+    {
+      "peca": "claw_right_1_tip",
+      "dimensoes_preservadas": true
+    },
+    {
+      "peca": "toe_right_2",
+      "dimensoes_preservadas": true
+    },
+    {
+      "peca": "claw_right_2_base",
+      "dimensoes_preservadas": true
+    },
+    {
+      "peca": "claw_right_2_tip",
+      "dimensoes_preservadas": true
+    },
+    {
+      "peca": "toe_right_3",
+      "dimensoes_preservadas": true
+    },
+    {
+      "peca": "claw_right_3_base",
+      "dimensoes_preservadas": true
+    },
+    {
+      "peca": "claw_right_3_tip",
+      "dimensoes_preservadas": true
+    },
+    {
+      "peca": "toe_right_back",
+      "dimensoes_preservadas": true
+    },
+    {
+      "peca": "claw_right_back",
+      "dimensoes_preservadas": true
+    },
+    {
+      "peca": "tail_1_solid",
+      "dimensoes_preservadas": true
+    },
+    {
+      "peca": "tail_2_solid",
+      "dimensoes_preservadas": true
+    },
+    {
+      "peca": "tail_fan_01_plane_stem",
+      "dimensoes_preservadas": true
+    },
+    {
+      "peca": "tail_fan_01_plane_vane",
+      "dimensoes_preservadas": true
+    },
+    {
+      "peca": "tail_fan_01_plane_point",
+      "dimensoes_preservadas": true
+    },
+    {
+      "peca": "tail_fan_02_plane_stem",
+      "dimensoes_preservadas": true
+    },
+    {
+      "peca": "tail_fan_03_plane_stem",
+      "dimensoes_preservadas": true
+    },
+    {
+      "peca": "tail_fan_03_plane_vane",
+      "dimensoes_preservadas": true
+    },
+    {
+      "peca": "tail_fan_03_plane_point",
+      "dimensoes_preservadas": true
+    },
+    {
+      "peca": "tail_fan_04_plane_stem",
+      "dimensoes_preservadas": true
+    },
+    {
+      "peca": "tail_fan_04_plane_vane",
+      "dimensoes_preservadas": true
+    },
+    {
+      "peca": "tail_fan_04_plane_point",
+      "dimensoes_preservadas": true
+    },
+    {
+      "peca": "tail_fan_05_plane_stem",
+      "dimensoes_preservadas": true
+    },
+    {
+      "peca": "tail_fan_05_plane_vane",
+      "dimensoes_preservadas": true
+    },
+    {
+      "peca": "tail_fan_05_plane_point",
+      "dimensoes_preservadas": true
+    },
+    {
+      "peca": "tail_fan_06_plane_stem",
+      "dimensoes_preservadas": true
+    },
+    {
+      "peca": "tail_fan_06_plane_vane",
+      "dimensoes_preservadas": true
+    },
+    {
+      "peca": "tail_fan_06_plane_point",
+      "dimensoes_preservadas": true
+    },
+    {
+      "peca": "tail_fan_02_plane_vane",
+      "dimensoes_preservadas": true
+    },
+    {
+      "peca": "tail_fan_02_plane_point",
+      "dimensoes_preservadas": true
+    },
+    {
+      "peca": "tail_fan_02_plane_vane",
+      "dimensoes_preservadas": true
+    },
+    {
+      "peca": "tail_fan_02_plane_point",
+      "dimensoes_preservadas": true
+    }
+  ],
+  "uv_fora_do_atlas": [],
+  "faces_solidas_transparentes": [],
+  "transparencias_herdadas_cabeca_f2": [
+    "beak.south",
+    "beak.down"
+  ],
+  "piso_opaco_minimo": [
+    0.23350204576011047,
+    "claw_left_1_tip"
+  ],
+  "desvio_encaixe_arma": 0.0,
+  "animacoes": 0,
+  "pecas": 111,
+  "ossos": 38,
+  "atlas": [
+    512,
+    512
+  ],
+  "limites": "Revisão de forma e rig em repouso; colisões e desempenho no Roblox ainda não testados. Sobreposições AABB incluem encaixes e camadas.",
+  "integridade_ok": true,
+  "plumagem_f2": [
+    {
+      "nome": "elbow_wing_left_1",
+      "fonte_f2": "wing_left_feather_7",
+      "pai": "wing_left",
+      "raiz": [
+        -8.1,
+        29.805337364201918,
+        -2.6454336266823915
+      ],
+      "ponta": [
+        -9.543468491576325,
+        38.46614831365987,
+        5.534221158916788
+      ],
+      "fator": 0.75,
+      "comprimento": 12
+    },
+    {
+      "nome": "elbow_wing_left_2",
+      "fonte_f2": "wing_left_feather_3",
+      "pai": "wing_left",
+      "raiz": [
+        -8.1,
+        29.805337364201918,
+        -2.6454336266823915
+      ],
+      "ponta": [
+        -10.385262161432202,
+        34.97724646639058,
+        7.938938489424649
+      ],
+      "fator": 0.75,
+      "comprimento": 12
+    },
+    {
+      "nome": "elbow_wing_left_3",
+      "fonte_f2": "wing_left_feather_2",
+      "pai": "wing_left",
+      "raiz": [
+        -8.1,
+        29.805337364201918,
+        -2.6454336266823915
+      ],
+      "ponta": [
+        -11.108889354792122,
+        31.008893106118766,
+        8.908701495719354
+      ],
+      "fator": 0.75,
+      "comprimento": 12
+    },
+    {
+      "nome": "back_wing_feather_left_1",
+      "fonte_f2": "wing_left_feather_8",
+      "pai": "back_feathers_left",
+      "raiz": [
+        -2.88,
+        37.69409152901837,
+        -1.4122090701304675
+      ],
+      "ponta": [
+        -15.358752187168808,
+        28.814979395840567,
+        17.065943207023345
+      ],
+      "fator": 0.75,
+      "comprimento": 24
+    },
+    {
+      "nome": "back_wing_feather_left_2",
+      "fonte_f2": "wing_left_feather_9",
+      "pai": "back_feathers_left",
+      "raiz": [
+        -2.88,
+        37.144091529018375,
+        -1.1922090701304675
+      ],
+      "ponta": [
+        -12.920241611281238,
+        23.087753273224642,
+        16.880225830175757
+      ],
+      "fator": 0.78125,
+      "comprimento": 25
+    },
+    {
+      "nome": "back_wing_feather_left_3",
+      "fonte_f2": "wing_left_feather_1",
+      "pai": "back_feathers_left",
+      "raiz": [
+        -3.88,
+        36.59409152901837,
+        -0.9722090701304675
+      ],
+      "ponta": [
+        -10.106007208003097,
+        17.137819004008687,
+        15.111642883877536
+      ],
+      "fator": 0.8125,
+      "comprimento": 26
+    },
+    {
+      "nome": "elbow_wing_right_1",
+      "fonte_f2": "wing_right_feather_4",
+      "pai": "wing_right",
+      "raiz": [
+        8.1,
+        29.805337364201918,
+        -2.6454336266823915
+      ],
+      "ponta": [
+        9.543468491576325,
+        38.46614831365987,
+        5.534221158916788
+      ],
+      "fator": 0.75,
+      "comprimento": 12
+    },
+    {
+      "nome": "elbow_wing_right_2",
+      "fonte_f2": "wing_right_feather_5",
+      "pai": "wing_right",
+      "raiz": [
+        8.1,
+        29.805337364201918,
+        -2.6454336266823915
+      ],
+      "ponta": [
+        10.385262161432202,
+        34.97724646639058,
+        7.938938489424649
+      ],
+      "fator": 0.75,
+      "comprimento": 12
+    },
+    {
+      "nome": "elbow_wing_right_3",
+      "fonte_f2": "wing_right_feather_6",
+      "pai": "wing_right",
+      "raiz": [
+        8.1,
+        29.805337364201918,
+        -2.6454336266823915
+      ],
+      "ponta": [
+        11.108889354792122,
+        31.008893106118766,
+        8.908701495719354
+      ],
+      "fator": 0.75,
+      "comprimento": 12
+    },
+    {
+      "nome": "back_wing_feather_right_1",
+      "fonte_f2": "wing_right_feather_7",
+      "pai": "back_feathers_right",
+      "raiz": [
+        2.880000000000001,
+        37.69409152901837,
+        -1.4122090701304675
+      ],
+      "ponta": [
+        15.35875218716881,
+        28.814979395840567,
+        17.065943207023345
+      ],
+      "fator": 0.75,
+      "comprimento": 24
+    },
+    {
+      "nome": "back_wing_feather_right_2",
+      "fonte_f2": "wing_right_feather_8",
+      "pai": "back_feathers_right",
+      "raiz": [
+        2.880000000000001,
+        37.144091529018375,
+        -1.1922090701304675
+      ],
+      "ponta": [
+        12.920241611281238,
+        23.087753273224642,
+        16.880225830175757
+      ],
+      "fator": 0.78125,
+      "comprimento": 25
+    },
+    {
+      "nome": "back_wing_feather_right_3",
+      "fonte_f2": "wing_right_feather_9",
+      "pai": "back_feathers_right",
+      "raiz": [
+        3.880000000000001,
+        36.59409152901837,
+        -0.9722090701304675
+      ],
+      "ponta": [
+        10.1060072080031,
+        17.137819004008687,
+        15.111642883877536
+      ],
+      "fator": 0.8125,
+      "comprimento": 26
+    }
+  ],
+  "erros_plumagem": [],
+  "dedos_ou_pincas": [],
+  "alturas_ombro_cotovelo_punho": {
+    "left": [
+      37.25533736420192,
+      29.65533736420192,
+      23.45533736420192
+    ],
+    "right": [
+      37.25533736420192,
+      29.65533736420192,
+      23.45533736420192
+    ]
+  },
+  "contatos_distais_plumagem": [],
+  "mudanca_postura_graus": {
+    "tronco_adicional": 6,
+    "cauda_adicional": 6
+  },
+  "espadas": {
+    "template_textura": "wing_left_feather_1",
+    "largura": 5,
+    "comprimento": 30,
+    "espessura_plano": 0
+  }
+}

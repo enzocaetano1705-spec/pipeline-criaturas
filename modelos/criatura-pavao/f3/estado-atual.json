@@ -1,9 +1,9 @@
 {
   "status": "proposta-aguarda-revisao-artistica",
-  "fonte": "modelos/criatura-pavao/f3/revisao-v3/criatura-pavao-e3-v3b.bbmodel",
-  "sha256": "57cec4770860a6a048cfb595602d2e494ad6afe3760e67bc6f9475fd8f55ba85",
-  "origem_manual": "modelos/criatura-pavao/f3/revisao-v3/origem-manual.bbmodel",
-  "direcao_atual": "Cabeça exata da F2; postura aviana inclinada; duas penas finas empunhadas por pinças; cauda espessa preservada.",
+  "fonte": "modelos/criatura-pavao/f3/revisao-v4/criatura-pavao-e3-v4.bbmodel",
+  "sha256": "a95374928e8a480cbcc099b690f318ef99030fa6c1706c60a16b0de4aa09e35c",
+  "origem_manual": "modelos/criatura-pavao/f3/revisao-v4/origem-aberta.bbmodel",
+  "direcao_atual": "Cabeça exata da F2; postura mais inclinada e cauda elevada; braços humanoides sem dedos; duas espadas finas com textura das penas da F2; penas longas nas costas e leques nos cotovelos.",
   "referencias": "modelos/criatura-pavao/f3/revisao-v2/imagens-fonte.json",
   "v1": "rejeitada pelo usuário com 3/10; arquivo manual preservado",
   "animacoes": [],
