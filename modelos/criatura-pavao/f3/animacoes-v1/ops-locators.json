@@ -1,0 +1,114 @@
+[
+  {
+    "op": "remove_node",
+    "target": "loc_hand_left"
+  },
+  {
+    "op": "add_locator",
+    "name": "loc_hand_left",
+    "parent": "hand_left",
+    "position": [
+      -8.536583483442527,
+      26.96236007492412,
+      -16.56001406723287
+    ]
+  },
+  {
+    "op": "remove_node",
+    "target": "loc_weapon_base_left"
+  },
+  {
+    "op": "add_locator",
+    "name": "loc_weapon_base_left",
+    "parent": "tail_fan_04",
+    "position": [
+      -4.950056758884634,
+      27.236197661796645,
+      1.2697480096968716
+    ]
+  },
+  {
+    "op": "remove_node",
+    "target": "loc_weapon_tip_left"
+  },
+  {
+    "op": "add_locator",
+    "name": "loc_weapon_tip_left",
+    "parent": "tail_fan_04",
+    "position": [
+      -32.787248365402405,
+      25.88503375225967,
+      49.98373489271933
+    ]
+  },
+  {
+    "op": "remove_node",
+    "target": "loc_tail_socket_left"
+  },
+  {
+    "op": "add_locator",
+    "name": "loc_tail_socket_left",
+    "parent": "tail_1",
+    "position": [
+      -4.950056758884634,
+      27.236197661796645,
+      1.2697480096968716
+    ]
+  },
+  {
+    "op": "remove_node",
+    "target": "loc_hand_right"
+  },
+  {
+    "op": "add_locator",
+    "name": "loc_hand_right",
+    "parent": "hand_right",
+    "position": [
+      8.536583483442527,
+      26.96236007492412,
+      -16.56001406723287
+    ]
+  },
+  {
+    "op": "remove_node",
+    "target": "loc_weapon_base_right"
+  },
+  {
+    "op": "add_locator",
+    "name": "loc_weapon_base_right",
+    "parent": "tail_fan_06",
+    "position": [
+      4.950056758884634,
+      27.236197661796645,
+      1.2697480096968716
+    ]
+  },
+  {
+    "op": "remove_node",
+    "target": "loc_weapon_tip_right"
+  },
+  {
+    "op": "add_locator",
+    "name": "loc_weapon_tip_right",
+    "parent": "tail_fan_06",
+    "position": [
+      32.787248365402405,
+      25.88503375225967,
+      49.98373489271933
+    ]
+  },
+  {
+    "op": "remove_node",
+    "target": "loc_tail_socket_right"
+  },
+  {
+    "op": "add_locator",
+    "name": "loc_tail_socket_right",
+    "parent": "tail_1",
+    "position": [
+      4.950056758884634,
+      27.236197661796645,
+      1.2697480096968716
+    ]
+  }
+]

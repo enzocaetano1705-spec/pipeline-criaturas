@@ -1,12 +1,21 @@
 {
   "status": "proposta-aguarda-revisao-artistica",
-  "fonte": "modelos/criatura-pavao/f3/revisao-v5/criatura-pavao-e3-v5.bbmodel",
-  "sha256": "ae65a777ae4eb2252b74dd9cf41cc9b5ddbef7e3869b9125c97203746918de53",
-  "origem_manual": "modelos/criatura-pavao/f3/revisao-v5/origem-manual.bbmodel",
-  "revisao_atual": "Edições manuais preservadas; pés compactos no estilo F2 e UVs de sete blocos redimensionados reparados.",
-  "direcao_atual": "Cabeça exata da F2; postura mais inclinada e cauda elevada; braços humanoides sem dedos; duas espadas finas com textura das penas da F2; penas longas nas costas e leques nos cotovelos.",
-  "referencias": "modelos/criatura-pavao/f3/revisao-v2/imagens-fonte.json",
-  "v1": "rejeitada pelo usuário com 3/10; arquivo manual preservado",
-  "animacoes": [],
+  "fonte": "modelos/criatura-pavao/f3/animacoes-v1/criatura-pavao-e3-animacoes-v1b.bbmodel",
+  "sha256": "e34a4fb16b7c4e1cd49952fc519fb424fcb017e6db21f336d635faffa7fa105c",
+  "origem_manual": "modelos/criatura-pavao/f3/animacoes-v1/origem-manual.bbmodel",
+  "revisao_atual": "Edição manual de 93 blocos preservada; pescoço repintado; oito clipes pacíficos e de combate com saque/retorno das penas da cauda.",
+  "direcao_atual": "Braços de louva-a-deus restaurados pelo usuário. Em combate, penas 04/06 são retiradas da cauda e empunhadas como Double Greatswords; postura ereta, uma espada no ombro e outra no chão durante descanso.",
+  "referencias": "modelos/criatura-pavao/f3/animacoes-v1/REFERENCIAS.md",
+  "animacoes": [
+    "idle",
+    "walk",
+    "combat_enter",
+    "combat_idle",
+    "combat_walk",
+    "combat_exit",
+    "combat_walk_start",
+    "combat_walk_stop"
+  ],
+  "metadados": "modelos/criatura-pavao/f3/animacoes-v1/animacoes.json",
   "studio": "não alterado; revisão somente no Blockbench"
 }

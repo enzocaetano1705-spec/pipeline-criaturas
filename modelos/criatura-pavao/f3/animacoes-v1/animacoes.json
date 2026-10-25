@@ -1,0 +1,89 @@
+{
+  "status": "proposta-para-revisao",
+  "unidades": "Blockbench; segundos",
+  "root_motion": false,
+  "clipes": {
+    "idle": {
+      "duracao": 3.2,
+      "loop": true,
+      "fps_chaves": 60
+    },
+    "walk": {
+      "duracao": 1.5,
+      "loop": true,
+      "fps_chaves": 60
+    },
+    "combat_enter": {
+      "duracao": 3.4,
+      "loop": false,
+      "fps_chaves": 120
+    },
+    "combat_idle": {
+      "duracao": 3,
+      "loop": true,
+      "fps_chaves": 60
+    },
+    "combat_walk": {
+      "duracao": 1.8,
+      "loop": true,
+      "fps_chaves": 60
+    },
+    "combat_exit": {
+      "duracao": 2.8,
+      "loop": false,
+      "fps_chaves": 60
+    },
+    "combat_walk_start": {
+      "duracao": 0.8,
+      "loop": false,
+      "fps_chaves": 60
+    },
+    "combat_walk_stop": {
+      "duracao": 0.8,
+      "loop": false,
+      "fps_chaves": 60
+    }
+  },
+  "penas": {
+    "left": "tail_fan_04",
+    "right": "tail_fan_06"
+  },
+  "eventos": {
+    "combat_enter": {
+      "GripLeft": 0.92,
+      "GripRight": 1.08,
+      "ShoulderRest": 2.02,
+      "GroundImpact": 2.46,
+      "Ready": 3.4
+    },
+    "combat_exit": {
+      "DockLeft": 1.95,
+      "DockRight": 2.12,
+      "Peaceful": 2.8
+    }
+  },
+  "velocidade_referencia": {
+    "walk": 10.582010582010582,
+    "combat_walk": 7.154882154882155
+  },
+  "conexoes_fase_zero": [
+    [
+      "idle",
+      "combat_enter",
+      "combat_idle"
+    ],
+    [
+      "combat_idle",
+      "combat_exit",
+      "idle"
+    ],
+    [
+      "combat_idle",
+      "combat_walk_start",
+      "combat_walk",
+      "combat_walk_stop",
+      "combat_idle"
+    ]
+  ],
+  "pendente": "Avaliação artística. Mistura de fases, interrupções, lógica de combate e colisões no motor serão tratadas quando solicitadas."
+}

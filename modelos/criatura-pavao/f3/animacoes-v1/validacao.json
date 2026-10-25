@@ -1,0 +1,204 @@
+{
+  "fonte_sha256": "fa84a77c233f20702d84707c24ec9e3edc195d1dc63cbe9404faf3abf834a7ed",
+  "saida_sha256": "e34a4fb16b7c4e1cd49952fc519fb424fcb017e6db21f336d635faffa7fa105c",
+  "clipes": {
+    "idle": {
+      "min_sola_y": -3.0921130305300483e-06,
+      "max_ambos_pes_fora_solo": 4.441186381748234e-08,
+      "erro_mao_arma": 0,
+      "tempo_erro_mao": null,
+      "erro_arma_embainhada": 3.02360747662284e-07,
+      "raiz_erro": 0,
+      "costura_pose": 0.0,
+      "costura_velocidade_matriz": 0.009340331496563437,
+      "amplitude_corpo": [
+        0.0,
+        0.17691782502608078,
+        0.05796317122755745
+      ],
+      "min_ponta_espada_direita": 30.765020516781462,
+      "velocidade_pivo_max": 0.5793811250727643
+    },
+    "walk": {
+      "min_sola_y": -0.0010878804813619846,
+      "max_ambos_pes_fora_solo": 4.796864609504071e-08,
+      "erro_mao_arma": 0,
+      "tempo_erro_mao": null,
+      "erro_arma_embainhada": 5.898375501707549e-05,
+      "raiz_erro": 0,
+      "costura_pose": 0.0,
+      "costura_velocidade_matriz": 4.701207188866192,
+      "amplitude_corpo": [
+        2.0857443532126396,
+        0.6496776453042585,
+        0.593162686458033
+      ],
+      "min_ponta_espada_direita": 27.358558552710825,
+      "velocidade_pivo_max": 37.40334246879197
+    },
+    "combat_enter": {
+      "min_sola_y": -0.0005729481545554835,
+      "max_ambos_pes_fora_solo": 5.068806977928741e-08,
+      "erro_mao_arma": 0.054937433850880076,
+      "tempo_erro_mao": 1.5125,
+      "erro_arma_embainhada": 2.418515735427236e-05,
+      "raiz_erro": 0,
+      "costura_pose": 0,
+      "costura_velocidade_matriz": 0,
+      "amplitude_corpo": [
+        2.384474369438074,
+        4.945659261717516,
+        5.650368265613443
+      ],
+      "min_ponta_espada_direita": -3.6638037534837515,
+      "velocidade_pivo_max": 253.94718264364485
+    },
+    "combat_idle": {
+      "min_sola_y": -2.300692161972975e-05,
+      "max_ambos_pes_fora_solo": 4.743456791931306e-08,
+      "erro_mao_arma": 2.4101208127070346e-06,
+      "tempo_erro_mao": 1.525,
+      "erro_arma_embainhada": 0,
+      "raiz_erro": 0,
+      "costura_pose": 0.0,
+      "costura_velocidade_matriz": 0.05053347482512294,
+      "amplitude_corpo": [
+        0.0,
+        0.4275799863190173,
+        0.6491861721855816
+      ],
+      "min_ponta_espada_direita": -3.663803869632165,
+      "velocidade_pivo_max": 1.5750488005043906
+    },
+    "combat_walk": {
+      "min_sola_y": -0.00047140029532479437,
+      "max_ambos_pes_fora_solo": 3.944006163417397e-08,
+      "erro_mao_arma": 8.408820388646611e-05,
+      "tempo_erro_mao": 0.15833333333333333,
+      "erro_arma_embainhada": 0,
+      "raiz_erro": 0,
+      "costura_pose": 0.0,
+      "costura_velocidade_matriz": 3.2873981833375865,
+      "amplitude_corpo": [
+        2.2713499914402204,
+        1.0021448312686942,
+        1.0613282976050247
+      ],
+      "min_ponta_espada_direita": 4.439052411837288,
+      "velocidade_pivo_max": 29.904460401013218
+    },
+    "combat_exit": {
+      "min_sola_y": -2.155871541588073e-06,
+      "max_ambos_pes_fora_solo": 6.057819752630889e-09,
+      "erro_mao_arma": 0.016951201007839783,
+      "tempo_erro_mao": 0.875,
+      "erro_arma_embainhada": 2.2583877879788195e-06,
+      "raiz_erro": 0,
+      "costura_pose": 0,
+      "costura_velocidade_matriz": 0,
+      "amplitude_corpo": [
+        0.0,
+        4.009074852791862,
+        5.632957287105427
+      ],
+      "min_ponta_espada_direita": -3.6638037534837515,
+      "velocidade_pivo_max": 74.21945597622518
+    },
+    "combat_walk_start": {
+      "min_sola_y": -0.00016530288534584295,
+      "max_ambos_pes_fora_solo": 4.515611982284123e-08,
+      "erro_mao_arma": 0.011168917812958833,
+      "tempo_erro_mao": 0.49166666666666664,
+      "erro_arma_embainhada": 0,
+      "raiz_erro": 0,
+      "costura_pose": 0,
+      "costura_velocidade_matriz": 0,
+      "amplitude_corpo": [
+        0.0,
+        1.8425430670461793,
+        0.3780480677481286
+      ],
+      "min_ponta_espada_direita": -9.783312234984784,
+      "velocidade_pivo_max": 164.79859832974682
+    },
+    "combat_walk_stop": {
+      "min_sola_y": -0.00016530288534584295,
+      "max_ambos_pes_fora_solo": 4.515611982284123e-08,
+      "erro_mao_arma": 0.011168917812956604,
+      "tempo_erro_mao": 0.30833333333333335,
+      "erro_arma_embainhada": 0,
+      "raiz_erro": 0,
+      "costura_pose": 0,
+      "costura_velocidade_matriz": 0,
+      "amplitude_corpo": [
+        0.0,
+        1.8425430670461793,
+        0.3780480677481286
+      ],
+      "min_ponta_espada_direita": -9.783312234984784,
+      "velocidade_pivo_max": 164.79859832974896
+    }
+  },
+  "erros": [],
+  "erro_geometria_manual": 0,
+  "pixels_repintados": 158,
+  "uv_fora": [],
+  "pintura_atingiu_outras_partes": [],
+  "cores_pescoco": {
+    "north": 9,
+    "east": 9,
+    "south": 5,
+    "west": 9,
+    "up": 5,
+    "down": 5
+  },
+  "transicoes": [
+    {
+      "de": "idle",
+      "para": "combat_enter",
+      "erro_matriz": 0.0
+    },
+    {
+      "de": "combat_enter",
+      "para": "combat_idle",
+      "erro_matriz": 2.1316282072803006e-14
+    },
+    {
+      "de": "combat_idle",
+      "para": "combat_exit",
+      "erro_matriz": 0.0
+    },
+    {
+      "de": "combat_exit",
+      "para": "idle",
+      "erro_matriz": 1.5987211554602254e-14
+    },
+    {
+      "de": "combat_idle",
+      "para": "combat_walk_start",
+      "erro_matriz": 0.0
+    },
+    {
+      "de": "combat_walk_start",
+      "para": "combat_walk",
+      "erro_matriz": 7.105427357601002e-15
+    },
+    {
+      "de": "combat_walk",
+      "para": "combat_walk_stop",
+      "erro_matriz": 0.0
+    },
+    {
+      "de": "combat_walk_stop",
+      "para": "combat_idle",
+      "erro_matriz": 1.4210854715202004e-14
+    }
+  ],
+  "integridade_ok": true,
+  "limites": [
+    "Validação local das poses e chaves; ainda requer avaliação artística.",
+    "Ponta da espada direita atravessa o plano de chão intencionalmente no descanso.",
+    "Clipes de começar/parar walk usam a fase zero; integração futura deve respeitar fase/mistura.",
+    "Não valida gameplay, dano, colisões no motor ou um esqueleto biológico real."
+  ]
+}
