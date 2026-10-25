@@ -1,0 +1,29 @@
+{
+  "projecao": "perspective",
+  "fov": 21,
+  "frente": {
+    "position": [
+      0,
+      70,
+      -180
+    ],
+    "target": [
+      0,
+      29.5,
+      8
+    ]
+  },
+  "lado_aproximado": {
+    "position": [
+      -163.13540166659698,
+      70,
+      -60.071287113325894
+    ],
+    "target": [
+      0,
+      29.5,
+      16
+    ]
+  },
+  "limite": "As referências redesenhadas não são projeções calibradas de uma mesma malha; frente e lado foram aproximados."
+}

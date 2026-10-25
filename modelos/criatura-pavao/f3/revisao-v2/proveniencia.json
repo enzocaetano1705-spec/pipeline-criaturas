@@ -1,0 +1,9 @@
+{
+  "saida_sha256": "bae8da251ea74f076df06da72ed5f7be8babccb4aa69efc220cdb7b11d6dd669",
+  "status": "em-revisao-artistica",
+  "pecas": 130,
+  "ossos": 36,
+  "atlas": 256,
+  "fonte_design": "imagens-fonte.json",
+  "fonte_anterior_preservada": "../criatura-pavao-e3.bbmodel"
+}

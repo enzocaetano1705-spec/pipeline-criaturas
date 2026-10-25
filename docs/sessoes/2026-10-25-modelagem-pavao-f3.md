@@ -3,10 +3,15 @@ tipo: sessao
 data: 2026-10-25
 fase: 10
 ia: codex
-status: aguardando-revisao-artistica
+status: rejeitada-pelo-usuario
 ---
 
 # Pavão F3 — primeira modelagem editável
+
+**Retorno posterior:** usuário rejeitou esta versão com 3/10 por proporções e
+conceito inadequados. Tentou corrigir blocos e removeu a textura da fonte manual.
+Reconstrução separada em [[2026-10-25-reconstrucao-pavao-f3-v2]]. Não tratar a v1
+como aprovada; o registro abaixo descreve a primeira entrega.
 
 **Revisão para o usuário:** avaliar silhueta/proporções e editar a F3 no
 Blockbench. A skill `criaturas-3d` pede aprovação da folha antes de seguir para

@@ -1,0 +1,22 @@
+{
+  "lado": {
+    "original": "C:\\Users\\enzoc\\Downloads\\Imagem do ChatGPT 25 de out. de 2026, 00_41_58-4.png",
+    "arquivo": "docs/criaturas/criatura-pavao/revisao-f3/e3-lado.png",
+    "sha256": "a6d517a12a63e820d425801ac17b9bd74ee4ba7825fd9a69a8fc162912f3b48b"
+  },
+  "costas": {
+    "original": "C:\\Users\\enzoc\\Downloads\\Imagem do ChatGPT 25 de out. de 2026, 00_41_57-3.png",
+    "arquivo": "docs/criaturas/criatura-pavao/revisao-f3/e3-costas.png",
+    "sha256": "d8153e02b5c3da29eb07b81eccd66cccf0ad5ae1c1cf2d6a83eac1342f2d8445"
+  },
+  "conceito": {
+    "original": "C:\\Users\\enzoc\\Downloads\\Imagem do ChatGPT 25 de out. de 2026, 00_41_57-2.png",
+    "arquivo": "docs/criaturas/criatura-pavao/revisao-f3/e3-conceito.png",
+    "sha256": "35e99d63eb896337b8de1fbce63a4034a6e47677439a67c205230390e8427150"
+  },
+  "frente": {
+    "original": "C:\\Users\\enzoc\\Downloads\\Imagem do ChatGPT 25 de out. de 2026, 00_41_54-1.png",
+    "arquivo": "docs/criaturas/criatura-pavao/revisao-f3/e3-frente.png",
+    "sha256": "e6f9eb47e2a609c8264c4fb2f286ac71d899139ca8118f3c8647017acaefe4f2"
+  }
+}

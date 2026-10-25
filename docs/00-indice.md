@@ -15,6 +15,7 @@ Conceito livre (imagens + prompt) → modelo cubificado no estilo Cobblemon/Digi
 - [[0002-exportacao-roblox]]: como o .glb do Roblox é exportado e verificado.
 
 ## Criaturas
+- [[2026-10-25-reconstrucao-pavao-f3-v2|F3 v2: reconstrução e comparação]]: novas referências, volumes e revisão artística pendente.
 - [[2026-10-25-modelagem-pavao-f3|F3: primeira proposta editável]]: modelo, quatro vistas e revisão artística pendente.
 - [[2026-10-24-fechamento-f2|F2 finalizada por ora]]: fonte aprovada, animações e próximos passos de integração.
 - [[criaturas/LEIA-ME|Como preparar uma criatura]]: requisitos das imagens, números de evolução e checklist.

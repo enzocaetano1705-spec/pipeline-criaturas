@@ -1,0 +1,47 @@
+{
+  "sha256": "bae8da251ea74f076df06da72ed5f7be8babccb4aa69efc220cdb7b11d6dd669",
+  "motor": {
+    "errors": 0,
+    "warnings": 193,
+    "passed": true
+  },
+  "avisos_por_gate": {
+    "outliner": 0,
+    "unlisted_nodes": 0,
+    "degenerate": 0,
+    "block_limits": 0,
+    "floating": 0,
+    "interpenetration": 193,
+    "mirror": 0
+  },
+  "faces_solidas_transparentes_ou_pecas_vazias": [],
+  "uv_fora_do_atlas": [],
+  "vinculos_incorretos": [],
+  "minimo_y_opaco": [
+    0.19149893392330952,
+    "tail_fan_04_plane_vane"
+  ],
+  "comparacao_silhueta_frontal": {
+    "v1_commit": "fe94ca4",
+    "v1_iou": 0.5404,
+    "v2_iou": 0.765,
+    "limite": "Máscara inteira, mesma câmera aproximada; não mede qualidade artística, semântica, textura ou anatomia."
+  },
+  "medidas": {
+    "pecas": 130,
+    "solidos": 118,
+    "ossos": 36,
+    "locators": 10,
+    "animacoes": 0,
+    "atlas": [
+      256,
+      256
+    ]
+  },
+  "perfil_composto_local": {
+    "pecas": 153,
+    "limite": 192
+  },
+  "integridade_ok": true,
+  "revisao_artistica": "pendente; proposta anterior rejeitada pelo usuário com 3/10"
+}

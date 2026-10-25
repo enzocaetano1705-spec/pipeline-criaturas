@@ -64,6 +64,8 @@ Escolha 1, 2, 3 ou outra categoria e preencha **Categoria confirmada** no estág
 - **Rosto:** avinídeo, bico creme afiado, olhos âmbar e gema dourada na testa. Frente e perfil devem manter a mesma identidade.
 - **Jeito de se mover:** tronco mais ereto e proporções humanoides; pernas digitígradas e cauda grossa de apoio. Combate futuro inspirado em muay thai/kickboxing, adaptado à anatomia: jabs/diretos com lâminas apontadas ao alvo e chutes com garras voltadas ao alvo. Evitar priorizar cotoveladas, joelhadas e golpes com a canela/peito do pé. Jesmon é referência funcional; forma e proporções vêm das imagens, sem flutuação.
 - **Escopo atual:** primeira modelagem editável no Blockbench para o usuário revisar à mão. Animações de combate/gameplay serão tratadas depois da aprovação da forma.
+- **Revisão de 25/10:** primeira proposta rejeitada com 3/10; usuário tentou alterar os blocos e removeu a textura. Quatro redesenhos em `revisao-f3/e3-{frente,lado,costas,conceito}.png` servem como alvo de construção, com prioridade para frente/perfil. Não copiar garras indevidas nem microvoxelizar os contornos. As artes originais permanecem referência de identidade.
+- **Proposta atual:** `modelos/criatura-pavao/f3/revisao-v2/criatura-pavao-e3-v2b.bbmodel`, gerada por `scripts/modelar-pavao-f3-v2.py`; aguarda revisão artística. Fonte manual anterior preservada. Comparação e câmeras na pasta da v2; não regerar a versão manual pelo atalho automático.
 
 ![[e3-conceito.png]]
 

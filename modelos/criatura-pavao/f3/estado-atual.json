@@ -1,0 +1,9 @@
+{
+  "status": "proposta-aguarda-revisao-artistica",
+  "fonte": "modelos/criatura-pavao/f3/revisao-v2/criatura-pavao-e3-v2b.bbmodel",
+  "sha256": "bae8da251ea74f076df06da72ed5f7be8babccb4aa69efc220cdb7b11d6dd669",
+  "referencias": "modelos/criatura-pavao/f3/revisao-v2/imagens-fonte.json",
+  "v1": "rejeitada pelo usuário com 3/10; arquivo manual preservado",
+  "animacoes": [],
+  "studio": "não alterado; perfil composto calculado apenas localmente"
+}
