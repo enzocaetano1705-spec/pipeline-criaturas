@@ -1,18 +1,18 @@
 {
-  "status": "ritmo-rapido-do-saque-aguarda-revisao",
-  "fonte": "modelos/criatura-pavao/f3/animacoes-v6/criatura-pavao-e3-combate-v6.bbmodel",
-  "sha256": "82e8d383a8de2275579cdf48b215b3d894a31786f782a3323beb5a9df7d22632",
+  "status": "braco-direito-suavizado-aguarda-revisao",
+  "fonte": "modelos/criatura-pavao/f3/animacoes-v7/criatura-pavao-e3-combate-v7.bbmodel",
+  "sha256": "53d8fe324dfaac8b6186cc0bcb06a25a030aa68dd1a3fc698a578de512aed38b",
   "origem_manual": "modelos/criatura-pavao/f3/animacoes-v3/origem-revisada.bbmodel",
-  "revisao_atual": "Somente combat_enter retimado: saque até 0,40 s igual, subida de 0,75 para 0,30 s, floreio e apoio antecipados. Total 1,65 s. Outros doze clipes preservados, incluindo respiração da guarda.",
+  "revisao_atual": "Combat_enter: esquerdo rápido da v6 preservado integralmente; braço direito com extração/descida em tempo próprio, chegando ao arrasto aos 1,65 s junto do apoio esquerdo no ombro. Outros doze clipes intactos.",
   "direcao_atual": "Mesmos braços da marcha aprovada: esquerdo da criatura no ombro, direito no arrasto; confirmado pelo usuário. Demais clipes continuam adiados.",
   "aprovacoes": {
     "idle": "aprovado",
     "walk": "aprovado",
-    "combate": "ritmo-do-levantamento-em-revisao",
+    "combate": "esquerdo-v6-aprovado-direito-v7-em-revisao",
     "combat_walk": "aprovado",
     "combat_enter_v3": "saque e floreio aprovados; final revisto na v4",
     "combat_ready": "base aprovada; respiração v5 em avaliação",
-    "combat_enter": "v6: velocidade da subida em avaliação; trajetórias aprovadas preservadas"
+    "combat_enter": "Esquerdo v6 aprovado; v7 suaviza somente direito, com chegada conjunta em 1,65 s."
   },
   "animacoes": [
     "idle",
@@ -29,7 +29,7 @@
     "combat_exit",
     "combat_exit_upper"
   ],
-  "metadados": "modelos/criatura-pavao/f3/animacoes-v6/animacoes.json",
+  "metadados": "modelos/criatura-pavao/f3/animacoes-v7/animacoes.json",
   "studio": "não alterado; somente animações e metadados locais",
   "clipes_em_revisao": [
     "combat_enter"
@@ -44,5 +44,5 @@
     "combat_exit",
     "combat_exit_upper"
   ],
-  "fonte_anterior": "modelos/criatura-pavao/f3/animacoes-v5/criatura-pavao-e3-combate-v5.bbmodel"
+  "fonte_anterior": "modelos/criatura-pavao/f3/animacoes-v6/criatura-pavao-e3-combate-v6.bbmodel"
 }

@@ -1,0 +1,70 @@
+{
+  "status": "proposta-para-revisao-artistica",
+  "modelo": "criatura-pavao-e3-combate-v7.bbmodel",
+  "fonte": "modelos/criatura-pavao/f3/animacoes-v6/criatura-pavao-e3-combate-v6.bbmodel",
+  "fonte_sha256": "82e8d383a8de2275579cdf48b215b3d894a31786f782a3323beb5a9df7d22632",
+  "referencia_trajetoria": "modelos/criatura-pavao/f3/animacoes-v5/criatura-pavao-e3-combate-v5.bbmodel",
+  "referencia_sha256": "35ea0d44d03b6412da6528a168f980baa700cb3ef9422df6532d1cdf9e742022",
+  "root_motion": false,
+  "aprovados": [
+    "idle",
+    "walk",
+    "combat_walk"
+  ],
+  "clipes_revistos": {
+    "combat_enter": {
+      "duracao": 1.65,
+      "loop": false,
+      "snapping": 120,
+      "ossos_revistos": [
+        "arm_right",
+        "forearm_right",
+        "hand_right",
+        "tail_fan_06"
+      ],
+      "esquerdo": "Chaves, gesto e tempo da v6 preservados exatamente.",
+      "direito": "Trajetória anterior à aceleração conjunta; retarget sobre o torso atual, desaceleração gradual e chegada ao arrasto em 1,65 s."
+    }
+  },
+  "clipes_preservados": [
+    "idle",
+    "walk",
+    "combat_idle",
+    "combat_exit_upper",
+    "combat_enter_upper",
+    "combat_idle_resume",
+    "combat_exit",
+    "combat_walk_start",
+    "combat_walk_stop",
+    "combat_enter_walk",
+    "combat_walk",
+    "combat_ready"
+  ],
+  "ritmo_direito": {
+    "inicio_ajuste": 0.4,
+    "chegada_arrasto": 1.65,
+    "chegada_ombro_esquerdo": 1.65,
+    "pico_velocidade_mao_apos_saque": 192.8351160610921,
+    "pico_velocidade_mao_v6": 251.35767355472686,
+    "pico_angular_espada_v6": 1829.3013292622934,
+    "pico_angular_espada_apos_saque": 974.4111573677835,
+    "min_ponta_y": -1.247135372750563e-08,
+    "ponta_final_y": 3.00793594476545e-08
+  },
+  "lados_confirmados": {
+    "ombro_e_floreio": "left da criatura",
+    "arrasto_sem_floreio": "right da criatura"
+  },
+  "integracao_adiada": [
+    "combat_enter_walk",
+    "combat_enter_upper",
+    "combat_walk_start",
+    "combat_walk_stop",
+    "combat_idle",
+    "combat_idle_resume",
+    "combat_exit",
+    "combat_exit_upper"
+  ],
+  "validacao": "validacao.json",
+  "motor": "validacao-motor.json"
+}

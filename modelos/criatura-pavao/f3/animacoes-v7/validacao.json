@@ -1,0 +1,111 @@
+{
+  "fonte_sha256": "82e8d383a8de2275579cdf48b215b3d894a31786f782a3323beb5a9df7d22632",
+  "saida_sha256": "53d8fe324dfaac8b6186cc0bcb06a25a030aa68dd1a3fc698a578de512aed38b",
+  "clipes": {
+    "combat_enter": {
+      "erro_ancora_penas": 0.0005871819819611238,
+      "erro_mao_arma": 5.320452718788179e-07,
+      "min_sola_y": -0.000314197744531116,
+      "ambos_pes_fora_chao": 4.960119166649866e-08,
+      "min_lamina_y": -1.247135372750563e-08,
+      "erro_arrasto": 0.0,
+      "costura_matriz": 0,
+      "maior_dobra_punho": 72.0700553795561,
+      "flexao_cotovelo": [
+        47.18189678087848,
+        129.32626674375308
+      ],
+      "erro_eixo_cotovelo": 0.0005815255513081079,
+      "maior_passo_angular_240hz": 8.798558596622364
+    }
+  },
+  "erros": [],
+  "clipes_preservados": [
+    "idle",
+    "walk",
+    "combat_idle",
+    "combat_exit_upper",
+    "combat_enter_upper",
+    "combat_idle_resume",
+    "combat_exit",
+    "combat_walk_start",
+    "combat_walk_stop",
+    "combat_enter_walk",
+    "combat_walk",
+    "combat_ready"
+  ],
+  "floreio": {
+    "left": {
+      "volta_projetada_yz_graus": 359.9987408254309,
+      "inclinacao_para_fora_graus": [
+        29.99994005773277,
+        30.289297692689154
+      ]
+    }
+  },
+  "conexoes": [
+    {
+      "de": "combat_enter",
+      "para": "idle",
+      "erro_matriz": 3.1628955809992476e-07
+    },
+    {
+      "de": "combat_enter",
+      "para": "combat_ready",
+      "erro_matriz": 0.0
+    }
+  ],
+  "erro_saque_aprovado_matriz": 0.0,
+  "animadores_preservados_integralmente": [
+    "back_feathers_left2",
+    "root",
+    "body",
+    "pelvis",
+    "leg_left",
+    "leg_right",
+    "shin_left",
+    "foot_left",
+    "shin_right",
+    "foot_right",
+    "tail_1",
+    "tail_2",
+    "tail_fan_01",
+    "tail_fan_02",
+    "tail_fan_03",
+    "tail_fan_04",
+    "tail_fan_05",
+    "waist",
+    "torso",
+    "arm_left",
+    "back_feathers_left",
+    "back_feathers_left3",
+    "back_feathers_right",
+    "back_feathers_right2",
+    "forearm_left",
+    "hand_left",
+    "feather_sword_left",
+    "feather_sword_right",
+    "neck_1",
+    "neck_2",
+    "head",
+    "feather_left_1",
+    "feather_left_2",
+    "feather_right_1",
+    "feather_right_2",
+    "wing_left",
+    "wing_right"
+  ],
+  "erro_braco_esquerdo_v6_matriz": 0.0,
+  "ritmo_direito": {
+    "inicio_ajuste": 0.4,
+    "chegada_arrasto": 1.65,
+    "chegada_ombro_esquerdo": 1.65,
+    "pico_velocidade_mao_apos_saque": 192.8351160610921,
+    "pico_velocidade_mao_v6": 251.35767355472686,
+    "pico_angular_espada_v6": 1829.3013292622934,
+    "pico_angular_espada_apos_saque": 974.4111573677835,
+    "min_ponta_y": -1.247135372750563e-08,
+    "ponta_final_y": 3.00793594476545e-08
+  },
+  "integridade_ok": true
+}

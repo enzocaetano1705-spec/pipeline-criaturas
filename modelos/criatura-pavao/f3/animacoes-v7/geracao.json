@@ -1,0 +1,17 @@
+{
+  "fonte_sha256": "82e8d383a8de2275579cdf48b215b3d894a31786f782a3323beb5a9df7d22632",
+  "referencia_sha256": "35ea0d44d03b6412da6528a168f980baa700cb3ef9422df6532d1cdf9e742022",
+  "saida_sha256": "53d8fe324dfaac8b6186cc0bcb06a25a030aa68dd1a3fc698a578de512aed38b",
+  "clipes_revistos": [
+    "combat_enter"
+  ],
+  "ossos_revistos": [
+    "arm_right",
+    "forearm_right",
+    "hand_right",
+    "tail_fan_06"
+  ],
+  "operacoes": 4071,
+  "alcance_excedido": 0,
+  "metodo": "Trajetória direita independente; todas as chaves do lado esquerdo preservadas."
+}
