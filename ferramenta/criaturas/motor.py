@@ -9,6 +9,7 @@ import json
 import os
 import subprocess
 import tempfile
+from decimal import Decimal, InvalidOperation
 from pathlib import Path
 
 from criaturas.caminhos import MODELOS, MOTOR
@@ -82,8 +83,25 @@ def criar(arquivo, nome: str, largura: int = 64, altura: int = 64, raiz: Path = 
 MAX_OPS = 500  # limite do bbmodel_edit por chamada
 
 
+def _valor_chave(valor):
+    """Molang não lê expoentes: 1e-8 é interpretado como -8 no Blockbench.
+
+    Passar texto decimal ao motor evita que String(number) reintroduza essa
+    notação. Expressões Molang continuam intactas; não arredondamos poses.
+    """
+    try:
+        numero = Decimal(str(valor))
+    except InvalidOperation:
+        return valor
+    if not numero.is_finite():
+        raise ValueError('Chave de animação não finita.')
+    return format(numero, 'f')
+
+
 def editar(arquivo, operacoes: list[dict], raiz: Path = MODELOS, lote: int = 450) -> dict:
     """bbmodel_edit em lotes de até `lote` operações (cada lote é atômico; o conjunto, não)."""
+    operacoes = [{**op, 'value': [_valor_chave(v) for v in op['value']]}
+                 if op.get('op') == 'set_keyframe' else op for op in operacoes]
     resultado = {}
     for i in range(0, max(len(operacoes), 1), lote):
         resultado = chamar("bbmodel_edit", {"file": relativo(arquivo, raiz), "operations": operacoes[i:i + lote]}, raiz)

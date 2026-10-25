@@ -8,6 +8,12 @@ status: aguardando-revisao-artistica
 
 # F3 — flicks de animação e superfícies coincidentes
 
+**Complemento posterior:** [[2026-10-25-flicks-numericos-pavao-f3-v10]]
+identifica a causa dos flicks persistentes: expoentes como `1e-8` eram lidos
+como -8 pelo Molang. A conferência numérica anterior não capturava isso.
+V10 corrige a serialização e reduz as chaves do descanso; sincronização
+temporal, isoladamente, não eliminava o problema.
+
 **Para avaliar:** reprodução dos nove clipes corrigidos na v9, já aberta no
 Blockbench. Depois dos reparos aprovados, trabalhar os golpes.
 

@@ -1,0 +1,22 @@
+{
+  "compactacao_idle": {
+    "erro_angular_por_eixo": 0.009993624277512936,
+    "erro_posicao_por_eixo": 0.0009847450000002311,
+    "maior_desvio_visual_unidades": 0.025606117139897674,
+    "pior_amostra": {
+      "bone": "tail_fan_06",
+      "t": 6.008333333333333
+    },
+    "amostras_por_segundo": 240
+  },
+  "outros_12_clipes": "mesmos valores, tempos, interpolacoes e metadados; somente grafia decimal/UUID de chave",
+  "notacao_cientifica_restante": 0,
+  "geometria_textura_rig": "iguais a v9",
+  "causa_confirmada_no_parser_instalado": {
+    "1e-8": -8,
+    "-8.2e-7": -7,
+    "-6.5e-7": -7,
+    "0.00000001": 1e-08,
+    "-0.00000082": -8.2e-07
+  }
+}

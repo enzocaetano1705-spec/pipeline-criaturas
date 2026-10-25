@@ -1,0 +1,16 @@
+{
+  "status": "indisponivel-janela-oculta",
+  "observacao": "A janela oculta suspende o render. Zero frames não é o FPS da animação. Redução de chaves medida; ganho de FPS ainda depende da conferência com a janela visível.",
+  "medicao": {
+    "average_fps": 0,
+    "frames": 0,
+    "elapsed_ms": 0,
+    "fps_limit": 144,
+    "last_second_fps": 0,
+    "background_rendering": true,
+    "document_hidden": true,
+    "window_focused": false,
+    "focus_changed": false,
+    "rendering_paused": true
+  }
+}

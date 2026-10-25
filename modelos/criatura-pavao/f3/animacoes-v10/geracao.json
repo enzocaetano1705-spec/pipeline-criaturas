@@ -1,0 +1,40 @@
+{
+  "fonte_sha256": "2868fe1527ce3bd22f202e85678eab1a384f8493c7b13fc8673aa9d49b212733",
+  "compactacao_idle": {
+    "tempos_antes": 864,
+    "tempos_distintos_depois": 740,
+    "chaves_antes": 34644,
+    "chaves_depois": 5866,
+    "tolerancia_graus_por_eixo": 0.01,
+    "tolerancia_unidades_por_eixo": 0.001,
+    "eventos_preservados": [
+      0,
+      0.48,
+      0.72,
+      0.95,
+      1.25,
+      4.25,
+      4.55,
+      5.35,
+      6.55,
+      6.554654486930031,
+      7.1499999999999995
+    ]
+  },
+  "chaves_com_expoente_reparadas": {
+    "idle": 4,
+    "walk": 0,
+    "combat_walk": 0,
+    "combat_ready": 0,
+    "combat_enter": 28,
+    "combat_enter_walk": 234,
+    "combat_walk_start": 170,
+    "combat_walk_stop": 43,
+    "combat_idle_resume": 0,
+    "combat_exit": 1089,
+    "combat_enter_upper": 189,
+    "combat_exit_upper": 1074
+  },
+  "saida_sha256": "0b125d7219362f686372e82690432d68097e24170406316fbe5bd5abb23499db",
+  "operacoes": 8700
+}

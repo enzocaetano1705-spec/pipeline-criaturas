@@ -1,18 +1,18 @@
 {
-  "status": "flicks-corrigidos-v9-em-avaliacao",
-  "fonte": "modelos/criatura-pavao/f3/animacoes-v9/criatura-pavao-e3-combate-v9.bbmodel",
-  "sha256": "2868fe1527ce3bd22f202e85678eab1a384f8493c7b13fc8673aa9d49b212733",
+  "status": "reparos-numericos-v10-em-avaliacao",
+  "fonte": "modelos/criatura-pavao/f3/animacoes-v10/criatura-pavao-e3-combate-v10.bbmodel",
+  "sha256": "0b125d7219362f686372e82690432d68097e24170406316fbe5bd5abb23499db",
   "origem_manual": "modelos/criatura-pavao/f3/animacoes-v3/origem-revisada.bbmodel",
-  "revisao_atual": "Nove clipes com chaves sincronizadas, vínculos rígidos das espadas, floreio andando sem quase travar o cotovelo e upper local com cauda presa. Cristas com espessura 0,01 e faces das pontas recuadas para eliminar sobreposição de renderização. UVs/atlas e quatro ciclos aprovados preservados.",
+  "revisao_atual": "Decimais explícitos corrigem flicks de penas/asas causados por expoentes no Molang. Descanso compactado de 34.644 para 5.866 chaves (-83,1%); eventos preservados, maior desvio visual 0,02561 unidade. Outros 12 clipes numericamente iguais; mesma geometria/UVs/atlas/rig. FPS real ainda sem medida por janela oculta.",
   "direcao_atual": "Esquerdo no ombro e floreio; direito no arrasto ou cravado durante o descanso. Lados e base aprovados pelo usuário.",
   "aprovacoes": {
     "idle": "aprovado",
     "walk": "aprovado",
-    "combate": "movimentos-base-aprovados-reparos-v9-em-revisao",
+    "combate": "movimentos-base-aprovados-reparos-v10-em-revisao",
     "combat_walk": "aprovado",
     "combat_enter_v3": "saque e floreio aprovados; final revisto na v4",
     "combat_ready": "aprovado na base v7",
-    "combat_enter": "movimento aprovado; v9 corrige flicks e mantém o ritmo"
+    "combat_enter": "movimento aprovado; v10 repara os valores sem mudar o ritmo"
   },
   "animacoes": [
     "idle",
@@ -29,20 +29,16 @@
     "combat_exit",
     "combat_exit_upper"
   ],
-  "metadados": "modelos/criatura-pavao/f3/animacoes-v9/animacoes.json",
+  "metadados": "modelos/criatura-pavao/f3/animacoes-v10/animacoes.json",
   "studio": "não alterado; somente animações e metadados locais",
   "clipes_em_revisao": [
     "combat_enter",
     "combat_enter_walk",
-    "combat_enter_upper",
     "combat_walk_start",
     "combat_walk_stop",
-    "combat_idle",
-    "combat_idle_resume",
-    "combat_exit",
-    "combat_exit_upper"
+    "combat_idle"
   ],
   "clipes_adiados": [],
-  "fonte_anterior": "modelos/criatura-pavao/f3/animacoes-v8/criatura-pavao-e3-combate-v8.bbmodel",
-  "proxima_etapa": "Avaliar os reparos de flick; depois golpes da F3."
+  "fonte_anterior": "modelos/criatura-pavao/f3/animacoes-v9/criatura-pavao-e3-combate-v9.bbmodel",
+  "proxima_etapa": "Conferir os cinco reparos e o desempenho do descanso com janela visível; depois golpes da F3."
 }

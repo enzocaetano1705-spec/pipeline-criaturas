@@ -46,6 +46,7 @@ def check(sysmod,names,study=False,reader_factory=None,sample_offset=0.):
         assert len(m.cubos)==len(src.cubos) and set(m.ossos)==set(src.ossos)
         def canonical(a):
             a=copy.deepcopy(a);a['animators']={u:x for u,x in a['animators'].items() if x.get('keyframes')};return a
+        canonical=getattr(v,'canonical_animation',canonical)
         for name in v.APPROVED:
             a=next(a for a in src.animacoes if a['name']==name);b=next(a for a in m.animacoes if a['name']==name)
             assert canonical(a)==canonical(b),name

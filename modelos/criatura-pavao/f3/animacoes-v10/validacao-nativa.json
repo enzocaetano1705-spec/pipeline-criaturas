@@ -1,0 +1,580 @@
+{
+  "fonte_sha256": "2868fe1527ce3bd22f202e85678eab1a384f8493c7b13fc8673aa9d49b212733",
+  "clipes": {
+    "combat_enter": {
+      "min_sola_y": -0.0003102192199782341,
+      "ambos_pes_fora": 3.358254277404319e-08,
+      "min_lamina_sem_enterrar_y": -0.0009531513038538719,
+      "profundidade_intencional": -0.0,
+      "erro_mao_arma": 6.61476233553078e-09,
+      "erro_cauda_arma": 0.0034448408511236284,
+      "erro_arma_solta": 0.0,
+      "erro_ancoras": 8.948232184359294e-05,
+      "erro_eixo_cotovelo": 0.0005741085270517822,
+      "erro_raiz": 0.0,
+      "flexao_cotovelo": [
+        47.181896644636666,
+        129.2196056093936
+      ],
+      "punho_max": 72.0700553795561,
+      "maior_passo_angular": 9.767881717194564,
+      "piores_amostras": {
+        "piso_lamina": [
+          "right",
+          0.87547,
+          -0.0009531513038538719
+        ],
+        "cauda": [
+          "left",
+          0.08796999999999999,
+          0.0034448408511236284
+        ],
+        "salto": [
+          "hand_left",
+          0.9546366666666666,
+          9.767881717194564
+        ],
+        "punho": [
+          "left",
+          0.9504699999999999,
+          72.0700553795561
+        ],
+        "eixo": [
+          "right",
+          0.38797000000000004,
+          0.0005741085270517822
+        ],
+        "mao": [
+          "right",
+          0.5754699999999999,
+          6.61476233553078e-09
+        ]
+      }
+    },
+    "combat_enter_walk": {
+      "min_sola_y": -0.0014275816863044636,
+      "ambos_pes_fora": 4.6811491368535287e-05,
+      "min_lamina_sem_enterrar_y": -0.00036371271709256803,
+      "profundidade_intencional": -0.0,
+      "erro_mao_arma": 6.614764073047733e-09,
+      "erro_cauda_arma": 0.00599262541994452,
+      "erro_arma_solta": 0.0,
+      "erro_ancoras": 7.962352427881382e-05,
+      "erro_eixo_cotovelo": 0.0005972387107163883,
+      "erro_raiz": 0.0,
+      "flexao_cotovelo": [
+        34.2646737007098,
+        128.66436843573325
+      ],
+      "punho_max": 72.0680360601967,
+      "maior_passo_angular": 9.767396589326914,
+      "piores_amostras": {
+        "piso_lamina": [
+          "right",
+          0.8713033333333333,
+          -0.00036371271709256803
+        ],
+        "cauda": [
+          "left",
+          0.10463666666666667,
+          0.00599262541994452
+        ],
+        "eixo": [
+          "right",
+          0.0046366666666666665,
+          0.0005972387107163883
+        ],
+        "punho": [
+          "left",
+          0.9504699999999999,
+          72.0680360601967
+        ],
+        "salto": [
+          "tail_fan_04",
+          0.9546366666666666,
+          9.767396589326914
+        ],
+        "mao": [
+          "left",
+          0.5088033333333333,
+          6.614764073047733e-09
+        ]
+      }
+    },
+    "combat_enter_upper": {
+      "min_sola_y": -0.0014275816863044636,
+      "ambos_pes_fora": 4.6811491368535287e-05,
+      "min_lamina_sem_enterrar_y": -0.00036440663162551346,
+      "profundidade_intencional": -0.0,
+      "erro_mao_arma": 6.614764073047733e-09,
+      "erro_cauda_arma": 0.00599262541994452,
+      "erro_arma_solta": 0.0,
+      "erro_ancoras": 7.962352427881382e-05,
+      "erro_eixo_cotovelo": 0.0005972387107163883,
+      "erro_raiz": 0.0,
+      "flexao_cotovelo": [
+        34.349716165575444,
+        128.66436843573325
+      ],
+      "punho_max": 72.0680360601967,
+      "maior_passo_angular": 9.767396589326914,
+      "piores_amostras": {
+        "piso_lamina": [
+          "right",
+          0.8713033333333333,
+          -0.00036440663162551346
+        ],
+        "cauda": [
+          "left",
+          0.10463666666666667,
+          0.00599262541994452
+        ],
+        "eixo": [
+          "right",
+          0.0046366666666666665,
+          0.0005972387107163883
+        ],
+        "punho": [
+          "left",
+          0.9504699999999999,
+          72.0680360601967
+        ],
+        "salto": [
+          "tail_fan_04",
+          0.9546366666666666,
+          9.767396589326914
+        ],
+        "mao": [
+          "left",
+          0.5088033333333333,
+          6.614764073047733e-09
+        ]
+      }
+    },
+    "combat_walk_start": {
+      "min_sola_y": -0.0001898531206311222,
+      "ambos_pes_fora": 4.34841766757952e-05,
+      "min_lamina_sem_enterrar_y": -0.0005832976335256035,
+      "profundidade_intencional": -0.0,
+      "erro_mao_arma": 6.614763721621328e-09,
+      "erro_cauda_arma": 0.0,
+      "erro_arma_solta": 0.0,
+      "erro_ancoras": 1.8899616770408913e-06,
+      "erro_eixo_cotovelo": 1.190002340724402e-08,
+      "erro_raiz": 0.0,
+      "flexao_cotovelo": [
+        71.20860509470603,
+        120.37275739078125
+      ],
+      "punho_max": 13.887560227591706,
+      "maior_passo_angular": 0.03899659612769149,
+      "piores_amostras": {
+        "piso_lamina": [
+          "right",
+          0.10047,
+          -0.0005832976335256035
+        ],
+        "mao": [
+          "right",
+          0.19630333333333333,
+          6.614763721621328e-09
+        ],
+        "punho": [
+          "right",
+          0.6,
+          13.887560227591706
+        ],
+        "eixo": [
+          "left",
+          0.4421366666666667,
+          1.190002340724402e-08
+        ],
+        "salto": [
+          "tail_fan_06",
+          0.4796366666666667,
+          0.03899659612769149
+        ]
+      }
+    },
+    "combat_walk_stop": {
+      "min_sola_y": -0.00013970091882911583,
+      "ambos_pes_fora": 6.94879351782833e-05,
+      "min_lamina_sem_enterrar_y": -0.001150877572712261,
+      "profundidade_intencional": -0.0,
+      "erro_mao_arma": 6.61476318812454e-09,
+      "erro_cauda_arma": 0.0,
+      "erro_arma_solta": 0.0,
+      "erro_ancoras": 1.3463700054927482e-06,
+      "erro_eixo_cotovelo": 6.76824439526032e-09,
+      "erro_raiz": 0.0,
+      "flexao_cotovelo": [
+        71.20860509470603,
+        120.34331039128642
+      ],
+      "punho_max": 13.767614591376091,
+      "maior_passo_angular": 0.04152727835969737,
+      "piores_amostras": {
+        "piso_lamina": [
+          "right",
+          0.37547,
+          -0.001150877572712261
+        ],
+        "mao": [
+          "right",
+          0.4338033333333334,
+          6.61476318812454e-09
+        ],
+        "punho": [
+          "right",
+          0.35047,
+          13.767614591376091
+        ],
+        "eixo": [
+          "right",
+          0.29630333333333336,
+          6.76824439526032e-09
+        ],
+        "salto": [
+          "hand_right",
+          0.0046366666666666665,
+          0.04152727835969737
+        ]
+      }
+    },
+    "combat_idle": {
+      "min_sola_y": -0.0059399164418611665,
+      "ambos_pes_fora": 0.001826519892923734,
+      "min_lamina_sem_enterrar_y": -0.0005991264131957053,
+      "profundidade_intencional": 30.201149281359612,
+      "erro_mao_arma": 0.009476647518482696,
+      "erro_cauda_arma": 0.0157268883456159,
+      "erro_arma_solta": 0.007039647388311431,
+      "erro_ancoras": 0.002500784578505983,
+      "erro_eixo_cotovelo": 0.001124784185180671,
+      "erro_raiz": 0.0,
+      "flexao_cotovelo": [
+        71.20860509470603,
+        129.60094913700965
+      ],
+      "punho_max": 58.60782831569082,
+      "maior_passo_angular": 7.5728703171732,
+      "piores_amostras": {
+        "piso_lamina": [
+          "right",
+          0.008803333333333333,
+          -0.0005991264131957053
+        ],
+        "mao": [
+          "right",
+          6.554636666666666,
+          0.009476647518482696
+        ],
+        "punho": [
+          "right",
+          6.483803333333333,
+          58.60782831569082
+        ],
+        "eixo": [
+          "right",
+          6.521303333333333,
+          0.001124784185180671
+        ],
+        "salto": [
+          "hand_left",
+          6.23797,
+          7.5728703171732
+        ],
+        "cauda": [
+          "left",
+          6.91297,
+          0.0157268883456159
+        ]
+      }
+    },
+    "combat_idle_resume": {
+      "min_sola_y": -0.00014345390570737464,
+      "ambos_pes_fora": 0.00013133765542878883,
+      "min_lamina_sem_enterrar_y": 34.17033356183278,
+      "profundidade_intencional": 30.197189843923617,
+      "erro_mao_arma": 6.614763173578211e-09,
+      "erro_cauda_arma": 0.0,
+      "erro_arma_solta": 0.0063100867839479885,
+      "erro_ancoras": 7.771997979545164e-07,
+      "erro_eixo_cotovelo": 5.955082706841248e-05,
+      "erro_raiz": 0.0,
+      "flexao_cotovelo": [
+        71.20860509470603,
+        120.31875890534162
+      ],
+      "punho_max": 53.66030572275654,
+      "maior_passo_angular": 2.083906739498233,
+      "piores_amostras": {
+        "piso_lamina": [
+          "left",
+          0.6088033333333333,
+          34.17033356183278
+        ],
+        "mao": [
+          "right",
+          0.39630333333333334,
+          6.614763173578211e-09
+        ],
+        "punho": [
+          "right",
+          0.67547,
+          53.66030572275654
+        ],
+        "eixo": [
+          "right",
+          0.8296366666666666,
+          5.955082706841248e-05
+        ],
+        "salto": [
+          "hand_right",
+          0.15463666666666667,
+          2.083906739498233
+        ]
+      }
+    },
+    "combat_exit": {
+      "min_sola_y": -0.000870312730215547,
+      "ambos_pes_fora": 6.878149776262923e-07,
+      "min_lamina_sem_enterrar_y": -0.0006386373807032442,
+      "profundidade_intencional": -0.0,
+      "erro_mao_arma": 0.009604489803073454,
+      "erro_cauda_arma": 0.01615572911966918,
+      "erro_arma_solta": 0.0,
+      "erro_ancoras": 4.2934039836011015e-05,
+      "erro_eixo_cotovelo": 0.002901436061208112,
+      "erro_raiz": 0.0,
+      "flexao_cotovelo": [
+        71.20859950481955,
+        130.56033068858426
+      ],
+      "punho_max": 58.80512048713593,
+      "maior_passo_angular": 7.537001378114423,
+      "piores_amostras": {
+        "piso_lamina": [
+          "right",
+          0.18380333333333332,
+          -0.0006386373807032442
+        ],
+        "mao": [
+          "right",
+          1.2046366666666666,
+          0.009604489803073454
+        ],
+        "punho": [
+          "right",
+          1.1338033333333333,
+          58.80512048713593
+        ],
+        "eixo": [
+          "right",
+          1.7963033333333334,
+          0.002901436061208112
+        ],
+        "salto": [
+          "tail_fan_04",
+          0.8879699999999999,
+          7.537001378114423
+        ],
+        "cauda": [
+          "left",
+          1.56297,
+          0.01615572911966918
+        ]
+      }
+    },
+    "combat_exit_upper": {
+      "min_sola_y": -0.000870312730215547,
+      "ambos_pes_fora": 6.878149776262923e-07,
+      "min_lamina_sem_enterrar_y": -0.0006386373807032442,
+      "profundidade_intencional": -0.0,
+      "erro_mao_arma": 0.009604489803073454,
+      "erro_cauda_arma": 0.01615572911966918,
+      "erro_arma_solta": 0.0,
+      "erro_ancoras": 4.2934039836011015e-05,
+      "erro_eixo_cotovelo": 0.002901436061208112,
+      "erro_raiz": 0.0,
+      "flexao_cotovelo": [
+        71.20859950481955,
+        130.56033068858426
+      ],
+      "punho_max": 58.80512048713593,
+      "maior_passo_angular": 7.537001378114423,
+      "piores_amostras": {
+        "piso_lamina": [
+          "right",
+          0.18380333333333332,
+          -0.0006386373807032442
+        ],
+        "mao": [
+          "right",
+          1.2046366666666666,
+          0.009604489803073454
+        ],
+        "punho": [
+          "right",
+          1.1338033333333333,
+          58.80512048713593
+        ],
+        "eixo": [
+          "right",
+          1.7963033333333334,
+          0.002901436061208112
+        ],
+        "salto": [
+          "tail_fan_04",
+          0.8879699999999999,
+          7.537001378114423
+        ],
+        "cauda": [
+          "left",
+          1.56297,
+          0.01615572911966918
+        ]
+      }
+    }
+  },
+  "erros": [],
+  "saida_sha256": "0b125d7219362f686372e82690432d68097e24170406316fbe5bd5abb23499db",
+  "clipes_aprovados_preservados": [
+    "idle",
+    "walk",
+    "combat_ready",
+    "combat_walk"
+  ],
+  "conexoes": [
+    {
+      "de": "combat_walk_start",
+      "para": "combat_ready",
+      "erro": 3.633203959907405e-08
+    },
+    {
+      "de": "combat_walk_start",
+      "para": "combat_walk",
+      "erro": 3.642968948724956e-08
+    },
+    {
+      "de": "combat_walk_stop",
+      "para": "combat_walk",
+      "erro": 3.633203959907405e-08
+    },
+    {
+      "de": "combat_walk_stop",
+      "para": "combat_ready",
+      "erro": 3.633203959907405e-08
+    },
+    {
+      "de": "combat_enter_walk",
+      "para": "walk",
+      "erro": 2.7646102651601723e-07
+    },
+    {
+      "de": "combat_enter_walk",
+      "para": "combat_walk",
+      "erro": 3.4169293172681137e-08
+    },
+    {
+      "de": "combat_exit",
+      "para": "combat_walk",
+      "erro": 3.633203959907405e-08
+    },
+    {
+      "de": "combat_exit",
+      "para": "walk",
+      "erro": 1.7981974265168787e-07
+    },
+    {
+      "de": "combat_idle",
+      "para": "combat_ready",
+      "erro": 3.633203959907405e-08
+    },
+    {
+      "de": "combat_idle",
+      "para": "idle",
+      "erro": 3.089422833113531e-07
+    },
+    {
+      "de": "combat_idle",
+      "para": "combat_idle_resume",
+      "erro": 0.00015646759722898196
+    },
+    {
+      "de": "combat_idle_resume",
+      "para": "combat_ready",
+      "erro": 3.633203959907405e-08
+    }
+  ],
+  "mascaras": {
+    "combat_enter_upper": [
+      "arm_left",
+      "arm_right",
+      "back_feathers_left",
+      "back_feathers_left3",
+      "back_feathers_right",
+      "back_feathers_right2",
+      "feather_left_1",
+      "feather_left_2",
+      "feather_right_1",
+      "feather_right_2",
+      "feather_sword_left",
+      "feather_sword_right",
+      "forearm_left",
+      "forearm_right",
+      "hand_left",
+      "hand_right",
+      "head",
+      "neck_1",
+      "neck_2",
+      "tail_1",
+      "tail_2",
+      "tail_fan_01",
+      "tail_fan_02",
+      "tail_fan_03",
+      "tail_fan_04",
+      "tail_fan_05",
+      "tail_fan_06",
+      "torso",
+      "waist",
+      "wing_left",
+      "wing_right"
+    ],
+    "combat_exit_upper": [
+      "arm_left",
+      "arm_right",
+      "back_feathers_left",
+      "back_feathers_left3",
+      "back_feathers_right",
+      "back_feathers_right2",
+      "feather_left_1",
+      "feather_left_2",
+      "feather_right_1",
+      "feather_right_2",
+      "feather_sword_left",
+      "feather_sword_right",
+      "forearm_left",
+      "forearm_right",
+      "hand_left",
+      "hand_right",
+      "head",
+      "neck_1",
+      "neck_2",
+      "tail_1",
+      "tail_2",
+      "tail_fan_01",
+      "tail_fan_02",
+      "tail_fan_03",
+      "tail_fan_04",
+      "tail_fan_05",
+      "tail_fan_06",
+      "torso",
+      "waist",
+      "wing_left",
+      "wing_right"
+    ]
+  },
+  "alcance_excedido": 0,
+  "integridade_ok": true
+}
