@@ -323,7 +323,7 @@ def validate(names, *, flourish_sides=('left','right'), extra_checks=None, prese
             if abs(turns-360)>.05:errors.append('Floreio incompleto: '+side)
         report['conexoes']=[]
         source_saved=v2.review.Saved(src)
-        for name,ta,other,tb in [('combat_enter',0,'idle',0),('combat_enter',2.1,'combat_ready',0)]:
+        for name,ta,other,tb in [('combat_enter',0,'idle',0),('combat_enter',saved.durations['combat_enter'],'combat_ready',0)]:
             a=bbmodelo.matrizes_ossos(m,saved.pose(name,ta));b=bbmodelo.matrizes_ossos(m,saved.pose(other,tb))
             err=max(float(abs(a[n]-b[n]).max()) for n in a)
             report['conexoes'].append({'de':name,'para':other,'erro_matriz':err})

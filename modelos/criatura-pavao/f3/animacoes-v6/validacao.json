@@ -1,0 +1,74 @@
+{
+  "fonte_sha256": "35ea0d44d03b6412da6528a168f980baa700cb3ef9422df6532d1cdf9e742022",
+  "saida_sha256": "82e8d383a8de2275579cdf48b215b3d894a31786f782a3323beb5a9df7d22632",
+  "clipes": {
+    "combat_enter": {
+      "erro_ancora_penas": 0.0005871819819611238,
+      "erro_mao_arma": 5.320452718788179e-07,
+      "min_sola_y": -0.000314197744531116,
+      "ambos_pes_fora_chao": 4.960119166649866e-08,
+      "min_lamina_y": -0.005364037033675828,
+      "erro_arrasto": 0.0,
+      "costura_matriz": 0,
+      "maior_dobra_punho": 72.0700553795561,
+      "flexao_cotovelo": [
+        47.18189678087848,
+        129.32626674375308
+      ],
+      "erro_eixo_cotovelo": 0.0005815255513081079,
+      "maior_passo_angular_240hz": 8.798558596622364
+    }
+  },
+  "erros": [],
+  "clipes_preservados": [
+    "idle",
+    "walk",
+    "combat_idle",
+    "combat_exit_upper",
+    "combat_enter_upper",
+    "combat_idle_resume",
+    "combat_exit",
+    "combat_walk_start",
+    "combat_walk_stop",
+    "combat_enter_walk",
+    "combat_walk",
+    "combat_ready"
+  ],
+  "floreio": {
+    "left": {
+      "volta_projetada_yz_graus": 359.9987408254309,
+      "inclinacao_para_fora_graus": [
+        29.99994005773277,
+        30.289297692689154
+      ]
+    }
+  },
+  "conexoes": [
+    {
+      "de": "combat_enter",
+      "para": "idle",
+      "erro_matriz": 3.1628955809992476e-07
+    },
+    {
+      "de": "combat_enter",
+      "para": "combat_ready",
+      "erro_matriz": 0.0
+    }
+  ],
+  "erro_saque_aprovado_matriz": 0.0,
+  "erro_caminho_retemporizado_matriz": 6.750155989720952e-14,
+  "desvio_tempo_curva_continua_segundos": 9.099883888424865e-05,
+  "erro_floreio_e_final_apenas_antecipados": 8.526512829121202e-14,
+  "tempos": {
+    "saque_preservado_ate": 0.4,
+    "levantamento_antes": 0.7499999999999999,
+    "levantamento_agora": 0.29999999999999993,
+    "floreio_inicio": 0.7,
+    "floreio_fim": 1.23,
+    "apoio_ombro_inicio": 1.25,
+    "final": 1.6500000000000001,
+    "velocidade_media_subida": 2.5
+  },
+  "erro_contato_espada_do_chao": 1.7228085727793996e-05,
+  "integridade_ok": true
+}

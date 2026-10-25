@@ -1,0 +1,59 @@
+{
+  "status": "proposta-para-revisao-artistica",
+  "modelo": "criatura-pavao-e3-combate-v6.bbmodel",
+  "fonte": "modelos/criatura-pavao/f3/animacoes-v5/criatura-pavao-e3-combate-v5.bbmodel",
+  "fonte_sha256": "35ea0d44d03b6412da6528a168f980baa700cb3ef9422df6532d1cdf9e742022",
+  "root_motion": false,
+  "aprovados": [
+    "idle",
+    "walk",
+    "combat_walk"
+  ],
+  "clipes_revistos": {
+    "combat_enter": {
+      "duracao": 1.65,
+      "loop": false,
+      "snapping": 120,
+      "chaves": "Todos os valores da fonte preservados; tempos não uniformes no levantamento."
+    }
+  },
+  "clipes_preservados": [
+    "idle",
+    "walk",
+    "combat_idle",
+    "combat_exit_upper",
+    "combat_enter_upper",
+    "combat_idle_resume",
+    "combat_exit",
+    "combat_walk_start",
+    "combat_walk_stop",
+    "combat_enter_walk",
+    "combat_walk",
+    "combat_ready"
+  ],
+  "saque": {
+    "saque_preservado_ate": 0.4,
+    "levantamento_antes": 0.7499999999999999,
+    "levantamento_agora": 0.29999999999999993,
+    "floreio_inicio": 0.7,
+    "floreio_fim": 1.23,
+    "apoio_ombro_inicio": 1.25,
+    "final": 1.6500000000000001,
+    "velocidade_media_subida": 2.5
+  },
+  "lados_confirmados": {
+    "ombro_e_floreio": "left da criatura",
+    "arrasto_sem_floreio": "right da criatura"
+  },
+  "integracao_adiada": [
+    "combat_enter_walk",
+    "combat_enter_upper",
+    "combat_walk_start",
+    "combat_walk_stop",
+    "combat_idle",
+    "combat_idle_resume",
+    "combat_exit",
+    "combat_exit_upper"
+  ],
+  "validacao": "validacao.json"
+}
