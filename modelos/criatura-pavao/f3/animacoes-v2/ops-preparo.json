@@ -1,0 +1,40 @@
+[
+  {
+    "op": "remove_animation",
+    "animation": "combat_enter"
+  },
+  {
+    "op": "remove_animation",
+    "animation": "combat_idle"
+  },
+  {
+    "op": "remove_animation",
+    "animation": "combat_walk"
+  },
+  {
+    "op": "remove_animation",
+    "animation": "combat_exit"
+  },
+  {
+    "op": "remove_animation",
+    "animation": "combat_walk_start"
+  },
+  {
+    "op": "remove_animation",
+    "animation": "combat_walk_stop"
+  },
+  {
+    "op": "update_node",
+    "target": "tail_fan_04",
+    "parent": "hand_left"
+  },
+  {
+    "op": "update_node",
+    "target": "tail_fan_06",
+    "parent": "hand_right"
+  },
+  {
+    "op": "set_model_properties",
+    "name": "criatura-pavao-e3-combate-v2"
+  }
+]

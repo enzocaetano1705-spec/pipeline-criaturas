@@ -1,0 +1,162 @@
+{
+  "status": "proposta-para-revisao",
+  "modelo": "criatura-pavao-e3-combate-v2c.bbmodel",
+  "root_motion": false,
+  "aprovados": [
+    "idle",
+    "walk"
+  ],
+  "clipes": {
+    "combat_ready": {
+      "duracao": 2.4,
+      "loop": true,
+      "fps_chaves": 120
+    },
+    "combat_enter": {
+      "duracao": 1.3,
+      "loop": false,
+      "fps_chaves": 120
+    },
+    "combat_enter_walk": {
+      "duracao": 1.3,
+      "loop": false,
+      "fps_chaves": 240
+    },
+    "combat_enter_upper": {
+      "duracao": 1.3,
+      "loop": false,
+      "fps_chaves": 120
+    },
+    "combat_walk": {
+      "duracao": 1.8,
+      "loop": true,
+      "fps_chaves": 120
+    },
+    "combat_walk_start": {
+      "duracao": 0.6,
+      "loop": false,
+      "fps_chaves": 120
+    },
+    "combat_walk_stop": {
+      "duracao": 0.6,
+      "loop": false,
+      "fps_chaves": 120
+    },
+    "combat_idle": {
+      "duracao": 7.0,
+      "loop": false,
+      "fps_chaves": 120
+    },
+    "combat_idle_resume": {
+      "duracao": 1.0,
+      "loop": false,
+      "fps_chaves": 120
+    },
+    "combat_exit": {
+      "duracao": 1.5,
+      "loop": false,
+      "fps_chaves": 120
+    },
+    "combat_exit_upper": {
+      "duracao": 1.5,
+      "loop": false,
+      "fps_chaves": 120
+    }
+  },
+  "descanso": {
+    "clipe": "combat_idle",
+    "loop": false,
+    "impacto": 0.65,
+    "soltar_inicio": 0.78,
+    "pausa": [
+      1.1,
+      4.1
+    ],
+    "reagarrar": 4.4,
+    "extrair_ate": 4.8,
+    "guardar_left": 6.1786666666666665,
+    "guardar_right": 6.296,
+    "termina_em": "idle",
+    "retomada_da_pausa": "combat_idle_resume"
+  },
+  "saque": {
+    "parado": "combat_enter",
+    "andando": "combat_enter_walk",
+    "camada": "combat_enter_upper",
+    "GripLeft": 0.3,
+    "GripRight": 0.34,
+    "FlourishStart": 0.56,
+    "FlourishEnd": 1.06,
+    "fim_andando_fase_combat_walk": 0.7944444444444445
+  },
+  "saida": {
+    "andando": "combat_exit",
+    "camada": "combat_exit_upper",
+    "DockLeft": 0.94,
+    "DockRight": 1.02,
+    "fim_andando_fase_walk": 0.9166666666666665
+  },
+  "camadas": {
+    "base_inferior": "walk aprovado",
+    "modo": "substituir canais da máscara; não aditivo",
+    "ossos": [
+      "tail_1",
+      "tail_2",
+      "tail_fan_01",
+      "tail_fan_02",
+      "tail_fan_03",
+      "tail_fan_04",
+      "tail_fan_05",
+      "tail_fan_06",
+      "waist",
+      "torso",
+      "arm_left",
+      "arm_right",
+      "back_feathers_left",
+      "back_feathers_left3",
+      "back_feathers_right",
+      "back_feathers_right2",
+      "forearm_left",
+      "forearm_right",
+      "hand_left",
+      "feather_sword_left",
+      "hand_right",
+      "feather_sword_right",
+      "neck_1",
+      "neck_2",
+      "head",
+      "feather_left_1",
+      "feather_left_2",
+      "feather_right_1",
+      "feather_right_2",
+      "wing_left",
+      "wing_right"
+    ],
+    "clipes": [
+      "combat_enter_upper",
+      "combat_exit_upper"
+    ],
+    "guarda_da_camada": "combat_ready",
+    "sem_canais": [
+      "root",
+      "body",
+      "pelvis",
+      "leg_*",
+      "shin_*",
+      "foot_*"
+    ]
+  },
+  "transicoes_fase_zero": [
+    [
+      "combat_ready",
+      "combat_walk_start",
+      "combat_walk"
+    ],
+    [
+      "combat_walk",
+      "combat_walk_stop",
+      "combat_ready"
+    ]
+  ],
+  "pendente": "Avaliação artística. Seleção de estado/alvo, mistura em fases arbitrárias e interrupções serão feitas na futura integração."
+}

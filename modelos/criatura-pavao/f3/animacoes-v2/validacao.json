@@ -1,0 +1,225 @@
+{
+  "saida_sha256": "a6c931f15f44e31b7264ccf209f6d30cbd107b8a7c424bda26dd0463cf5cb195",
+  "fonte_sha256": "a15d18191258ad090fa810521d5299090b0835f523d3a0538118f4f28498e395",
+  "clipes": {
+    "idle": {
+      "min_sola_y": -3.199206097809826e-06,
+      "erro_mao_arma": 0,
+      "erro_cauda": 7.412250814719847e-07,
+      "erro_eixo_cotovelo": 0,
+      "flexao_cotovelo": null,
+      "min_lamina_y": 23.616062977272716
+    },
+    "walk": {
+      "min_sola_y": -0.0010872678754579074,
+      "erro_mao_arma": 0,
+      "erro_cauda": 5.9450130541746556e-05,
+      "erro_eixo_cotovelo": 0,
+      "flexao_cotovelo": null,
+      "min_lamina_y": 20.754899862645576
+    },
+    "combat_ready": {
+      "min_sola_y": -9.015397371081262e-06,
+      "erro_mao_arma": 4.445936656060146e-08,
+      "erro_cauda": 0,
+      "erro_eixo_cotovelo": 5.204584751980042e-10,
+      "flexao_cotovelo": [
+        97.39326148977204,
+        97.39326148977204
+      ],
+      "min_lamina_y": 30.09722839553264
+    },
+    "combat_enter": {
+      "min_sola_y": -1.9691781267411495e-05,
+      "erro_mao_arma": 4.4459367588222575e-08,
+      "erro_cauda": 0.02262794165353721,
+      "erro_eixo_cotovelo": 0.0005815255513081079,
+      "flexao_cotovelo": [
+        76.98645671154074,
+        129.16422619895025
+      ],
+      "min_lamina_y": 5.809399904083911
+    },
+    "combat_enter_walk": {
+      "min_sola_y": -5.5547891592009575e-05,
+      "erro_mao_arma": 4.445936920442064e-08,
+      "erro_cauda": 0.008880871418931773,
+      "erro_eixo_cotovelo": 0.00013673043188256611,
+      "flexao_cotovelo": [
+        76.94226871146381,
+        129.0371525707454
+      ],
+      "min_lamina_y": -0.027102129487865056
+    },
+    "combat_walk": {
+      "min_sola_y": -0.00011790638247095888,
+      "erro_mao_arma": 4.4459366896608904e-08,
+      "erro_cauda": 0,
+      "erro_eixo_cotovelo": 1.16180898546252e-09,
+      "flexao_cotovelo": [
+        89.98004372216126,
+        115.44672632473302
+      ],
+      "min_lamina_y": -0.0001740031501957784,
+      "ponta_arrastando": [
+        -0.0001740031501957784,
+        0.00017146504002685248
+      ]
+    },
+    "combat_walk_start": {
+      "min_sola_y": -7.35603715436636e-05,
+      "erro_mao_arma": 4.445936656060146e-08,
+      "erro_cauda": 0,
+      "erro_eixo_cotovelo": 0.00013416089954661426,
+      "flexao_cotovelo": [
+        90.15738055722605,
+        124.14369977460792
+      ],
+      "min_lamina_y": -0.01375930907266465
+    },
+    "combat_walk_stop": {
+      "min_sola_y": -7.356037154322595e-05,
+      "erro_mao_arma": 4.445936656060146e-08,
+      "erro_cauda": 0,
+      "erro_eixo_cotovelo": 0.00013416089954657335,
+      "flexao_cotovelo": [
+        90.15738055722605,
+        124.14369977460792
+      ],
+      "min_lamina_y": -0.013759309072671755
+    },
+    "combat_idle": {
+      "min_sola_y": -0.0005164891404521213,
+      "erro_mao_arma": 5.6137001283163376e-05,
+      "erro_cauda": 0.005434074290087292,
+      "erro_eixo_cotovelo": 6.247214843270198e-05,
+      "flexao_cotovelo": [
+        65.31116227082825,
+        126.19703630503757
+      ],
+      "distancia_mao_espada_solta": 9.712235540630287,
+      "fracao_enterrada": [
+        0.5734907003336805,
+        0.5734907057031898
+      ]
+    },
+    "combat_idle_resume": {
+      "min_sola_y": -5.306412489444091e-09,
+      "erro_mao_arma": 4.445937005590611e-08,
+      "erro_cauda": 0,
+      "erro_eixo_cotovelo": 8.117679523953585e-05,
+      "flexao_cotovelo": [
+        65.31116227082825,
+        124.15326095726047
+      ]
+    },
+    "combat_exit": {
+      "min_sola_y": -0.00086309404070185,
+      "erro_mao_arma": 4.445936756930476e-08,
+      "erro_cauda": 0.013211357564748383,
+      "erro_eixo_cotovelo": 0.00013042629638614864,
+      "flexao_cotovelo": [
+        69.72335289872072,
+        126.00991714635626
+      ],
+      "min_lamina_y": -0.0001624416924121963
+    }
+  },
+  "erros": [],
+  "geometria_e_textura_preservadas": true,
+  "preservacao_aprovados_matriz": {
+    "idle": 2.477589999827501e-07,
+    "walk": 2.499654080856395e-05
+  },
+  "conexoes": [
+    {
+      "de": "idle",
+      "para": "combat_enter",
+      "erro_matriz": 3.1628955809992476e-07
+    },
+    {
+      "de": "walk",
+      "para": "combat_enter_walk",
+      "erro_matriz": 2.2795002152520283e-07
+    },
+    {
+      "de": "combat_enter",
+      "para": "combat_ready",
+      "erro_matriz": 3.907985046680551e-14
+    },
+    {
+      "de": "combat_enter_walk",
+      "para": "combat_walk",
+      "erro_matriz": 0.002438270538135612
+    },
+    {
+      "de": "combat_walk",
+      "para": "combat_exit",
+      "erro_matriz": 0.0
+    },
+    {
+      "de": "combat_exit",
+      "para": "walk",
+      "erro_matriz": 3.706711100015525e-05
+    },
+    {
+      "de": "combat_ready",
+      "para": "combat_idle",
+      "erro_matriz": 0.0
+    },
+    {
+      "de": "combat_idle",
+      "para": "idle",
+      "erro_matriz": 0.0
+    },
+    {
+      "de": "combat_ready",
+      "para": "combat_walk_start",
+      "erro_matriz": 0.0
+    },
+    {
+      "de": "combat_walk_start",
+      "para": "combat_walk",
+      "erro_matriz": 0.000365544900120085
+    },
+    {
+      "de": "combat_walk",
+      "para": "combat_walk_stop",
+      "erro_matriz": 0.000365544900120085
+    },
+    {
+      "de": "combat_walk_stop",
+      "para": "combat_ready",
+      "erro_matriz": 0.0
+    },
+    {
+      "de": "combat_idle",
+      "para": "combat_idle_resume",
+      "erro_matriz": 1.4210854715202004e-14
+    },
+    {
+      "de": "combat_idle_resume",
+      "para": "combat_ready",
+      "erro_matriz": 1.4210854715202004e-14
+    }
+  ],
+  "camadas": {
+    "combat_enter_upper": {
+      "erro_mao_arma": 6.531662920263036e-05,
+      "erro_cauda": 0.017916631465151926,
+      "fases_verificadas": 12,
+      "canais_pernas": false
+    },
+    "combat_exit_upper": {
+      "erro_mao_arma": 4.445936717172311e-08,
+      "erro_cauda": 0.008726978322779385,
+      "fases_verificadas": 12,
+      "canais_pernas": false
+    }
+  },
+  "integridade_ok": true,
+  "finalizacao": {
+    "hash_antes_nome_final": "dd6b5deb4d50dd62fe4112c80649e3dc7d7b883f3bb0eb0d22c5cfdd580b9430",
+    "geometria_textura_ossos_e_animacoes_inalterados": true
+  }
+}

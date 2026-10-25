@@ -1,0 +1,10 @@
+{
+  "saida_sha256": "a6c931f15f44e31b7264ccf209f6d30cbd107b8a7c424bda26dd0463cf5cb195",
+  "fonte_sha256": "a15d18191258ad090fa810521d5299090b0835f523d3a0538118f4f28498e395",
+  "operacoes": 11673,
+  "alcance_excedido": 0,
+  "flexao_cotovelo": [
+    76.94226873487014,
+    129.0371528807362
+  ]
+}
