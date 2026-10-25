@@ -1,8 +1,8 @@
 # Pavão F3 — primeira proposta editável
 
 **Esta v1 foi rejeitada pelo usuário com 3/10.** O `.bbmodel` recebeu tentativas
-de edição manual e foi preservado. A proposta atual é a v4 em
-`revisao-v4/criatura-pavao-e3-v4.bbmodel`; veja `revisao-v4/LEIA-ME.md` e
+de edição manual e foi preservado. A proposta atual é a v5 em
+`revisao-v5/criatura-pavao-e3-v5.bbmodel`; veja `revisao-v5/LEIA-ME.md` e
 `estado-atual.json`. As informações abaixo descrevem a primeira entrega.
 
 Abra `criatura-pavao-e3.bbmodel` no Blockbench. A textura está embutida; o PNG

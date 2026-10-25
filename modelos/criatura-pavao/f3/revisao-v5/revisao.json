@@ -1,0 +1,580 @@
+{
+  "fonte_manual_sha256": "419a51c4edd7ba8b7383ec79f3ae30eaeccd1917d0ab7c6b516676921aa9c557",
+  "historico_textura": "237ceb7:modelos/criatura-pavao/f3/revisao-v4/criatura-pavao-e3-v4.bbmodel",
+  "saida_sha256": "ae65a777ae4eb2252b74dd9cf41cc9b5ddbef7e3869b9125c97203746918de53",
+  "motor": {
+    "errors": 0,
+    "warnings": 206,
+    "passed": true
+  },
+  "avisos_por_gate": {
+    "outliner": 0,
+    "unlisted_nodes": 0,
+    "degenerate": 0,
+    "block_limits": 0,
+    "floating": 0,
+    "interpenetration": 203,
+    "mirror": 3
+  },
+  "geometria_manual": [
+    {
+      "nome": "hips",
+      "uuid": "84a72692-1a2a-4980-8218-5c0281fd88ad",
+      "erro_geometria": 0.0
+    },
+    {
+      "nome": "abdomen",
+      "uuid": "5b06a8a9-8b3c-4e18-aaca-4d877c6cfaac",
+      "erro_geometria": 0.0
+    },
+    {
+      "nome": "ribcage",
+      "uuid": "0ccf9a91-66eb-4473-85bc-78a7f2812d2e",
+      "erro_geometria": 0.0
+    },
+    {
+      "nome": "ribcage_lower",
+      "uuid": "0f497a47-835f-4696-83f9-8d6b7cab02d6",
+      "erro_geometria": 0.0
+    },
+    {
+      "nome": "chest_top",
+      "uuid": "69e01186-154d-4c2e-af72-f295298d8477",
+      "erro_geometria": 0.0
+    },
+    {
+      "nome": "ventral_lappet",
+      "uuid": "02e8e39b-6913-469e-8f77-13c8640e43cc",
+      "erro_geometria": 0.0
+    },
+    {
+      "nome": "collar_left_1",
+      "uuid": "b31c6ac1-ba90-4322-823a-0cb93e7357d1",
+      "erro_geometria": 0.0
+    },
+    {
+      "nome": "collar_left_2",
+      "uuid": "34874a4b-8f7b-4fd1-aeaf-02a8c73027be",
+      "erro_geometria": 0.0
+    },
+    {
+      "nome": "hip_plume_left_stem",
+      "uuid": "ae1bcbc0-7fb3-4582-97ed-a614d1ae32bd",
+      "erro_geometria": 0.0
+    },
+    {
+      "nome": "hip_outer_left_stem",
+      "uuid": "6bc2a796-a78f-4bf8-bc42-86c55bce6051",
+      "erro_geometria": 0.0
+    },
+    {
+      "nome": "hip_outer_left_vane",
+      "uuid": "2e8a58ae-33f9-495f-8ff7-32c501d8183f",
+      "erro_geometria": 0.0
+    },
+    {
+      "nome": "thigh_left",
+      "uuid": "f867413a-30c4-405d-b43f-979fdd1ac4cf",
+      "erro_geometria": 0.0
+    },
+    {
+      "nome": "shank_left",
+      "uuid": "9242983f-8a74-4db7-a591-c280f2641e1b",
+      "erro_geometria": 0.0
+    },
+    {
+      "nome": "ankle_plume_left",
+      "uuid": "e9cf1169-9565-470a-88bb-2024468fa05d",
+      "erro_geometria": 0.0
+    },
+    {
+      "nome": "collar_right_1",
+      "uuid": "f6bceb2e-6d29-48b0-bf01-f2fafbcd463a",
+      "erro_geometria": 0.0
+    },
+    {
+      "nome": "collar_right_2",
+      "uuid": "56d4132b-6852-4d21-aab5-d653bbc6bdbf",
+      "erro_geometria": 0.0
+    },
+    {
+      "nome": "hip_plume_right_stem",
+      "uuid": "d36bf191-9b90-422d-a443-93617a86c912",
+      "erro_geometria": 0.0
+    },
+    {
+      "nome": "hip_outer_right_stem",
+      "uuid": "ac18f9ef-4fb4-4bf1-8075-fbfee2f56237",
+      "erro_geometria": 0.0
+    },
+    {
+      "nome": "hip_outer_right_vane",
+      "uuid": "9ac4332b-9790-438a-8b8e-7026ec12b297",
+      "erro_geometria": 0.0
+    },
+    {
+      "nome": "hip_outer_right_point",
+      "uuid": "51646bb6-f0e8-4e7b-91ff-5ada61272333",
+      "erro_geometria": 0.0
+    },
+    {
+      "nome": "thigh_right",
+      "uuid": "79f2f8f4-379a-4ffe-bbb0-f7d493ec2694",
+      "erro_geometria": 0.0
+    },
+    {
+      "nome": "shank_right",
+      "uuid": "0e9545d3-290c-45ba-a12d-65f5b19a6870",
+      "erro_geometria": 0.0
+    },
+    {
+      "nome": "ankle_plume_right",
+      "uuid": "58bb7d0a-c453-478e-a450-00bef2cb01bd",
+      "erro_geometria": 0.0
+    },
+    {
+      "nome": "tail_1_solid",
+      "uuid": "f759b017-6a52-4d90-b74c-63bcdd7a0a94",
+      "erro_geometria": 0.0
+    },
+    {
+      "nome": "tail_2_solid",
+      "uuid": "da53d21b-ed99-4d49-8c1e-f71d7ca9e07c",
+      "erro_geometria": 5.551115123125783e-17
+    },
+    {
+      "nome": "tail_fan_01_plane_stem",
+      "uuid": "72ff20ab-09b1-47d9-b490-0d416c9df0cf",
+      "erro_geometria": 0.0
+    },
+    {
+      "nome": "tail_fan_01_plane_vane",
+      "uuid": "7d92391b-5d94-4fd5-a2ef-36a5e613c412",
+      "erro_geometria": 0.0
+    },
+    {
+      "nome": "tail_fan_01_plane_point",
+      "uuid": "97f3f7d4-d544-4a05-b06f-ceb4981a93ae",
+      "erro_geometria": 0.0
+    },
+    {
+      "nome": "tail_fan_02_plane_stem",
+      "uuid": "534b0d53-f768-4e9f-a30e-56121142dfe3",
+      "erro_geometria": 0.0
+    },
+    {
+      "nome": "tail_fan_03_plane_stem",
+      "uuid": "31f4a0af-8894-4aab-9598-5b307df632ae",
+      "erro_geometria": 0.0
+    },
+    {
+      "nome": "tail_fan_03_plane_vane",
+      "uuid": "d7c38c9f-35fc-431b-a2ae-daab3a39ff16",
+      "erro_geometria": 1.1102230246251565e-16
+    },
+    {
+      "nome": "tail_fan_03_plane_point",
+      "uuid": "f43357f8-79f5-4bdd-a1a8-1bd42debd304",
+      "erro_geometria": 1.7763568394002505e-15
+    },
+    {
+      "nome": "tail_fan_04_plane_stem",
+      "uuid": "9dc8259d-eace-4973-9940-07839784dc0e",
+      "erro_geometria": 0.0
+    },
+    {
+      "nome": "tail_fan_04_plane_vane",
+      "uuid": "4542e6dc-e9dc-400a-b8a5-6d31d9a2bf7a",
+      "erro_geometria": 0.0
+    },
+    {
+      "nome": "tail_fan_04_plane_point",
+      "uuid": "19cc0942-5fd9-4bea-bd4f-e12336454b4d",
+      "erro_geometria": 1.7763568394002505e-15
+    },
+    {
+      "nome": "tail_fan_05_plane_stem",
+      "uuid": "22aae916-c09a-4324-b1e2-dfb77ca486a3",
+      "erro_geometria": 0.0
+    },
+    {
+      "nome": "tail_fan_05_plane_vane",
+      "uuid": "610cca65-89cd-4736-ab79-41c3f3997519",
+      "erro_geometria": 1.1102230246251565e-16
+    },
+    {
+      "nome": "tail_fan_05_plane_point",
+      "uuid": "9e89ec69-246d-45c5-b4dd-9a6fc1eb69f3",
+      "erro_geometria": 0.0
+    },
+    {
+      "nome": "tail_fan_06_plane_stem",
+      "uuid": "b6b94515-615e-4606-86b8-91be496369e3",
+      "erro_geometria": 0.0
+    },
+    {
+      "nome": "tail_fan_06_plane_vane",
+      "uuid": "3167a6b2-a584-4c28-9164-78cda79b1bec",
+      "erro_geometria": 0.0
+    },
+    {
+      "nome": "tail_fan_06_plane_point",
+      "uuid": "d3234fa4-ccd0-4e59-9449-569d0aaec8e6",
+      "erro_geometria": 8.881784197001252e-16
+    },
+    {
+      "nome": "tail_fan_02_plane_vane",
+      "uuid": "d38390a5-fc4d-9d92-db17-b9d93fefb838",
+      "erro_geometria": 0.0
+    },
+    {
+      "nome": "tail_fan_02_plane_point",
+      "uuid": "a69aec3f-8987-5fe7-8d49-c527655f7c3d",
+      "erro_geometria": 2.7755575615628914e-17
+    },
+    {
+      "nome": "tail_fan_02_plane_vane",
+      "uuid": "e907b0cd-6669-ddb5-125e-301a433fa479",
+      "erro_geometria": 0.0
+    },
+    {
+      "nome": "tail_fan_02_plane_point",
+      "uuid": "76b7c732-8823-3874-1aee-e88f1cbbd71c",
+      "erro_geometria": 2.7755575615628914e-17
+    },
+    {
+      "nome": "beak",
+      "uuid": "8bf3c0c8-dcc8-4cb2-abc2-9b1924bf770d",
+      "erro_geometria": 0.0
+    },
+    {
+      "nome": "beak_tip",
+      "uuid": "37423986-07c9-468c-a33e-35dd3b4a5435",
+      "erro_geometria": 0.0
+    },
+    {
+      "nome": "crest_left_rise",
+      "uuid": "d91bc366-f96e-4619-aedc-08ecb75073bc",
+      "erro_geometria": 0.0
+    },
+    {
+      "nome": "crest_left_eye",
+      "uuid": "a33be2c4-910c-46d1-b595-4565a358cb9b",
+      "erro_geometria": 0.0
+    },
+    {
+      "nome": "crest_right_rise",
+      "uuid": "46eebe3e-f9f5-475c-9400-02be4432ee9b",
+      "erro_geometria": 0.0
+    },
+    {
+      "nome": "crest_right_eye",
+      "uuid": "69e3c1d8-3414-4436-a97e-b1a2d4f44e7e",
+      "erro_geometria": 0.0
+    },
+    {
+      "nome": "skull",
+      "uuid": "33ca5924-7041-4f38-8552-a936b467151c",
+      "erro_geometria": 0.0
+    },
+    {
+      "nome": "neck_lower_avian",
+      "uuid": "aecb77d5-1fc7-427d-8bfd-3dd009746558",
+      "erro_geometria": 0.0
+    },
+    {
+      "nome": "elbow_wing_left_1",
+      "uuid": "6f5a622e-2b25-4704-b20a-b7f901ab944e",
+      "erro_geometria": 0.0
+    },
+    {
+      "nome": "elbow_wing_left_2",
+      "uuid": "c65fc7a1-c4b5-4780-93a7-3d8045c609c2",
+      "erro_geometria": 0.0
+    },
+    {
+      "nome": "elbow_wing_left_3",
+      "uuid": "faf9d189-d2fb-4427-88b1-bef3437d71e1",
+      "erro_geometria": 0.0
+    },
+    {
+      "nome": "back_wing_feather_left_1",
+      "uuid": "e87bccca-936d-41c6-a81b-fd9ef26a9f32",
+      "erro_geometria": 0.0
+    },
+    {
+      "nome": "back_wing_feather_left_2",
+      "uuid": "03d98750-8b87-4df1-9fb3-90382c168882",
+      "erro_geometria": 0.0
+    },
+    {
+      "nome": "back_wing_feather_left_3",
+      "uuid": "c4cbf573-7e67-42da-bda9-5f6e2f995f7f",
+      "erro_geometria": 0.0
+    },
+    {
+      "nome": "elbow_wing_right_1",
+      "uuid": "8a1fb193-8faf-4887-a7da-c25a668a2463",
+      "erro_geometria": 0.0
+    },
+    {
+      "nome": "elbow_wing_right_2",
+      "uuid": "f9c22db9-4305-4c8e-b54e-0d92b4801e56",
+      "erro_geometria": 0.0
+    },
+    {
+      "nome": "elbow_wing_right_3",
+      "uuid": "b8461821-a77d-430e-832c-056d8dd8f537",
+      "erro_geometria": 0.0
+    },
+    {
+      "nome": "upper_arm_left",
+      "uuid": "bb8a85b4-1354-4e81-ad40-cb64c8eaaf73",
+      "erro_geometria": 0.0
+    },
+    {
+      "nome": "forearm_solid_left",
+      "uuid": "ec3b6a48-007c-43d5-afe1-6737623da9d6",
+      "erro_geometria": 0.0
+    },
+    {
+      "nome": "hand_block_left",
+      "uuid": "b1c9e602-9587-49a9-b131-9b3c28d2adb5",
+      "erro_geometria": 0.0
+    },
+    {
+      "nome": "sword_handle_left",
+      "uuid": "18852cf5-6cf0-4f17-8fd4-54d5653f35ca",
+      "erro_geometria": 0.0
+    },
+    {
+      "nome": "sword_guard_left",
+      "uuid": "c64b6ec1-9ede-4228-83a7-ec0c51258f0b",
+      "erro_geometria": 0.0
+    },
+    {
+      "nome": "sword_pommel_left",
+      "uuid": "fd0d1a59-403c-4857-b9b3-a249084a75db",
+      "erro_geometria": 0.0
+    },
+    {
+      "nome": "feather_blade_left",
+      "uuid": "3ee6e0c9-9b2e-4867-8048-e5bba0c105e2",
+      "erro_geometria": 0.0
+    },
+    {
+      "nome": "upper_arm_right",
+      "uuid": "c1d200f4-998e-4264-beb3-fe62f1b367bc",
+      "erro_geometria": 0.0
+    },
+    {
+      "nome": "forearm_solid_right",
+      "uuid": "c876acae-1009-4edd-a84b-99b0f52e56b8",
+      "erro_geometria": 0.0
+    },
+    {
+      "nome": "hand_block_right",
+      "uuid": "76bc14ae-37ca-4b98-b50b-52461ca6ff3e",
+      "erro_geometria": 0.0
+    },
+    {
+      "nome": "sword_handle_right",
+      "uuid": "ccd9ca0b-4273-4b97-a2f3-10531ecb4c03",
+      "erro_geometria": 0.0
+    },
+    {
+      "nome": "sword_pommel_right",
+      "uuid": "6749e14f-eeaa-4a7a-86f5-20e2eb5ccf1e",
+      "erro_geometria": 0.0
+    },
+    {
+      "nome": "feather_blade_right",
+      "uuid": "ef068abd-50d9-423a-831b-5bc6edb549ed",
+      "erro_geometria": 0.0
+    },
+    {
+      "nome": "back_wing_feather_right_3",
+      "uuid": "49035f02-6fc5-eed7-d2c9-d52b8bb63f8d",
+      "erro_geometria": 0.0
+    },
+    {
+      "nome": "back_wing_feather_right_",
+      "uuid": "543829ba-a447-f010-57a1-f744ca07f29f",
+      "erro_geometria": 0.0
+    },
+    {
+      "nome": "back_wing_feather_right_1",
+      "uuid": "5e33393f-0cc2-0e9e-918c-2b369d182e64",
+      "erro_geometria": 0.0
+    },
+    {
+      "nome": "ventral_lappet",
+      "uuid": "8500d1ed-8b71-bb4c-87c9-b29e99e209fc",
+      "erro_geometria": 0.0
+    },
+    {
+      "nome": "elbow_wing_right_1",
+      "uuid": "f6f94b3e-a330-2479-9be9-e5622f013df8",
+      "erro_geometria": 0.0
+    },
+    {
+      "nome": "elbow_wing_right_",
+      "uuid": "e5ced0bd-bf6c-9c75-9cc1-da8ab7090f90",
+      "erro_geometria": 0.0
+    },
+    {
+      "nome": "elbow_wing_right_3",
+      "uuid": "4a971fc5-8c58-7c86-4b79-f213fa0d74cf",
+      "erro_geometria": 0.0
+    },
+    {
+      "nome": "elbow_wing_left_1",
+      "uuid": "f0e0e2c3-b437-3fd0-c04e-89581a993b41",
+      "erro_geometria": 0.0
+    },
+    {
+      "nome": "elbow_wing_left_",
+      "uuid": "8bd78cf7-7365-4266-3af3-82e15bd0f915",
+      "erro_geometria": 0.0
+    },
+    {
+      "nome": "elbow_wing_left_3",
+      "uuid": "745b468c-e8a3-2278-7405-a23bbf5246f0",
+      "erro_geometria": 0.0
+    },
+    {
+      "nome": "sword_guard_right",
+      "uuid": "55ccba4f-a551-fdb2-979c-deb17bf31dc5",
+      "erro_geometria": 0.0
+    },
+    {
+      "nome": "hip_outer_left_point",
+      "uuid": "38797dcf-84ad-6317-d3d7-83b5a87a32c9",
+      "erro_geometria": 0.0
+    },
+    {
+      "nome": "tarsus_left",
+      "uuid": "6887a4e1-b9e0-463b-9c53-b97ccba2b395",
+      "erro_geometria": 1.7763568394002505e-15
+    },
+    {
+      "nome": "tarsus_right",
+      "uuid": "1545967c-d3dc-44b1-a256-7a1adae1b64d",
+      "erro_geometria": 1.7763568394002505e-15
+    },
+    {
+      "nome": "tail_fan_01_plane_point",
+      "uuid": "71ffd996-42ff-1b27-609e-4847a6622398",
+      "erro_geometria": 0.0
+    },
+    {
+      "nome": "tail_fan_02_plane_stem",
+      "uuid": "007eca67-a460-8403-bffc-4817275cbe4d",
+      "erro_geometria": 0.0
+    },
+    {
+      "nome": "tail_fan_03_plane_point",
+      "uuid": "ec6a8f69-4547-ebfc-3a41-45d693b3f47c",
+      "erro_geometria": 1.7763568394002505e-15
+    },
+    {
+      "nome": "tail_fan_04_plane_point",
+      "uuid": "196a2a98-8f8d-a194-5212-ff9a3fad4311",
+      "erro_geometria": 1.7763568394002505e-15
+    },
+    {
+      "nome": "tail_fan_05_plane_point",
+      "uuid": "1c4fb6ee-bdbd-4022-c874-07517c75f77b",
+      "erro_geometria": 0.0
+    },
+    {
+      "nome": "tail_fan_06_plane_point",
+      "uuid": "85eab0b4-be23-680a-19da-887762a6a4e5",
+      "erro_geometria": 8.881784197001252e-16
+    },
+    {
+      "nome": "tail_fan_02_plane_vane",
+      "uuid": "27c86b51-c366-98a1-fdd1-07c2e3f01985",
+      "erro_geometria": 0.0
+    },
+    {
+      "nome": "tail_fan_02_plane_point",
+      "uuid": "befff88b-4967-1b5f-10ef-f7267520e6fb",
+      "erro_geometria": 2.7755575615628914e-17
+    },
+    {
+      "nome": "tail_fan_02_plane_vane",
+      "uuid": "4c4213e7-77e0-4739-925d-91ac83bcda65",
+      "erro_geometria": 0.0
+    },
+    {
+      "nome": "tail_fan_02_plane_point",
+      "uuid": "7c293757-63bb-f551-35d9-0639e8b92270",
+      "erro_geometria": 2.7755575615628914e-17
+    }
+  ],
+  "translacao_vertical": -1.471713043053538,
+  "blocos_uv_reparados": [
+    {
+      "nome": "thigh_left",
+      "uuid": "f867413a-30c4-405d-b43f-979fdd1ac4cf"
+    },
+    {
+      "nome": "shank_left",
+      "uuid": "9242983f-8a74-4db7-a591-c280f2641e1b"
+    },
+    {
+      "nome": "thigh_right",
+      "uuid": "79f2f8f4-379a-4ffe-bbb0-f7d493ec2694"
+    },
+    {
+      "nome": "shank_right",
+      "uuid": "0e9545d3-290c-45ba-a12d-65f5b19a6870"
+    },
+    {
+      "nome": "neck_lower_avian",
+      "uuid": "aecb77d5-1fc7-427d-8bfd-3dd009746558"
+    },
+    {
+      "nome": "tarsus_left",
+      "uuid": "6887a4e1-b9e0-463b-9c53-b97ccba2b395"
+    },
+    {
+      "nome": "tarsus_right",
+      "uuid": "1545967c-d3dc-44b1-a256-7a1adae1b64d"
+    }
+  ],
+  "atlas_anterior_preservado": true,
+  "uv_fora_do_atlas": [],
+  "faces_solidas_transparentes": [],
+  "transparencias_herdadas_f2": [
+    "beak.south",
+    "beak.down"
+  ],
+  "pes": {
+    "left": {
+      "pecas": 5,
+      "dimensoes": [
+        4.512634762464996,
+        1.1500000000000004,
+        7.15014634368704
+      ],
+      "minimo_y": 0.0
+    },
+    "right": {
+      "pecas": 5,
+      "dimensoes": [
+        4.512634762464996,
+        1.1500000000000004,
+        7.15014634368704
+      ],
+      "minimo_y": 0.0
+    }
+  },
+  "escala_dedos_f2": 1.15,
+  "pecas": 109,
+  "ossos": 41,
+  "animacoes": 0,
+  "limite": "Verificação em repouso; não valida poses animadas ou colisões no Roblox. As sobreposições AABB incluem camadas e encaixes herdados da edição manual.",
+  "integridade_ok": true
+}
