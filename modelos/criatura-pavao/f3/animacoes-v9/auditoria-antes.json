@@ -1,0 +1,73 @@
+{
+  "arquivo": "C:\\Users\\enzoc\\dev\\pipeline-criaturas\\modelos\\criatura-pavao\\f3\\animacoes-v8\\criatura-pavao-e3-combate-v8.bbmodel",
+  "clipes": {
+    "combat_enter": {
+      "erro_preensao_nativo": 5.315232319180144e-07,
+      "erro_cauda_nativo": 0.017538424751047138,
+      "desvio_crista_nativo_vs_linear": 0.013594007861422468,
+      "deslocamento_raiz_cauda": 0.0,
+      "canais_no_mesmo_relogio": false,
+      "piores_tempos": {
+        "cauda": [
+          "left",
+          0.08552333333333333
+        ],
+        "mao": [
+          "right",
+          0.3421366666666667
+        ]
+      }
+    },
+    "combat_enter_walk": {
+      "erro_preensao_nativo": 0.022977478197882626,
+      "erro_cauda_nativo": 0.009692333001523753,
+      "desvio_crista_nativo_vs_linear": 0.025249502975352126,
+      "deslocamento_raiz_cauda": 0.0,
+      "canais_no_mesmo_relogio": false,
+      "piores_tempos": {
+        "cauda": [
+          "left",
+          0.10219
+        ],
+        "mao": [
+          "left",
+          0.9671366666666666
+        ]
+      }
+    },
+    "combat_enter_upper": {
+      "erro_preensao_nativo": 0.022977478197883944,
+      "erro_cauda_nativo": 0.00968179154988753,
+      "desvio_crista_nativo_vs_linear": 0.023925278047440893,
+      "deslocamento_raiz_cauda": 0.9486211046935454,
+      "canais_no_mesmo_relogio": false,
+      "piores_tempos": {
+        "cauda": [
+          "left",
+          0.10219
+        ],
+        "mao": [
+          "left",
+          0.9671366666666666
+        ]
+      }
+    },
+    "combat_exit": {
+      "erro_preensao_nativo": 0.000281174773122132,
+      "erro_cauda_nativo": 0.012682745015651286,
+      "desvio_crista_nativo_vs_linear": 0.0072974385774287566,
+      "deslocamento_raiz_cauda": 0.0,
+      "canais_no_mesmo_relogio": false,
+      "piores_tempos": {
+        "mao": [
+          "right",
+          1.2021899999999999
+        ],
+        "cauda": [
+          "left",
+          1.5605233333333333
+        ]
+      }
+    }
+  }
+}

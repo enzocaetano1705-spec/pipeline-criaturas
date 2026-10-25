@@ -34,10 +34,11 @@ def buried(v,name,t,side):
     return (name=='combat_idle' and .48<=t<v.REST_EXIT) or name=='combat_idle_resume'
 
 
-def check(sysmod,names,study=False):
+def check(sysmod,names,study=False,reader_factory=None,sample_offset=0.):
     v=sysmod;g=v.g;R=v.R;point=v.point
     src=v.bbmodelo.ler(v.SOURCE);m=src if study else v.bbmodelo.ler(v.FILE)
     rig=v.new_rig(m);saved=None if study else v.v2.review.Saved(m)
+    if saved is not None and reader_factory:saved=reader_factory(saved)
     report={'fonte_sha256':g.sha(v.SOURCE),'clipes':{},'erros':[]};errors=report['erros']
     if not study:
         report['saida_sha256']=g.sha(v.FILE)
@@ -50,17 +51,22 @@ def check(sysmod,names,study=False):
             assert canonical(a)==canonical(b),name
         report['clipes_aprovados_preservados']=v.APPROVED
         assert np.array_equal(np.array(m.textura),np.array(src.textura))
+        repairs=v.geometry_repairs() if hasattr(v,'geometry_repairs') else {}
         for c,d in zip(m.cubos,src.cubos):
             assert c.uuid==d.uuid and c.faces==d.faces and c.osso==d.osso
-            assert all(np.array_equal(getattr(c,k),getattr(d,k)) for k in ['de','ate','origem','rotacao'])
+            assert all(np.array_equal(getattr(c,k),repairs[c.uuid][k] if c.uuid in repairs and k in ['de','ate'] else getattr(d,k))
+                       for k in ['de','ate','origem','rotacao'])
+        if repairs:report['superficies_recuadas']={uid:data['osso'] for uid,data in repairs.items()}
         assert all(o.pai==src.ossos[n].pai and np.array_equal(o.origem,src.ossos[n].origem) for n,o in m.ossos.items())
 
     def pose(name,t):
         if name not in v.CLIPS:return rig.saved.pose(name,t)
         p=rig.pose(name,t) if study else saved.pose(name,t)
         if name.endswith('upper'):
-            d=v.ENTER if name.startswith('combat_enter') else v.EXIT
-            base=rig.saved.pose('walk',(v.phase(t,d,name.startswith('combat_exit'))%1)*1.5)
+            if hasattr(v,'compose_base'):base=v.compose_base(rig,name,t,saved=saved)
+            else:
+                d=v.ENTER if name.startswith('combat_enter') else v.EXIT
+                base=rig.saved.pose('walk',(v.phase(t,d,name.startswith('combat_exit'))%1)*1.5)
             base.update(p);return base
         return p
 
@@ -68,7 +74,9 @@ def check(sysmod,names,study=False):
     for name in names:
         length=v.CLIPS[name];floor=1e9;air=-1e9;tip=1e9;grip=0.;dock=0.;anchor=0.;hinge=0.;wrist=0.
         elbows=[];ground=0.;root_error=0.;angle_step=0.;last=None;worst={};min_buried=0.;rate=24 if study else 240
-        for t in np.linspace(0,length,round(length*rate)+1):
+        times=np.linspace(0,length,round(length*rate)+1)
+        if sample_offset:times=np.unique(np.r_[0,times[:-1]+sample_offset,length])
+        for t in times:
             t=float(t);p=pose(name,t);mat=rig.mats(p)
             root_error=max(root_error,float(abs(mat['root']-np.eye(4)).max()))
             f=[float(v.v2.review.world_vertices(m,mat,feet[s])[:,1].min()) for s in v.SIDES]
@@ -100,7 +108,8 @@ def check(sysmod,names,study=False):
                 # Endpoints idênticos aos ciclos pacíficos já aprovados podem
                 # conter sua discreta rotação original em X. O gesto novo usa
                 # exclusivamente a dobradiça anatômica em todas as amostras internas.
-                if 1e-8<t<length-1e-8:
+                joint_time=saved.effective_time(name,t,bone='forearm_'+side) if reader_factory else t
+                if 1e-8<joint_time<length-1e-8:
                     e=float(np.linalg.norm(R(p['forearm_'+side]['rotacao'])@axis-axis))
                     if e>hinge:hinge=e;worst['eixo']=[side,t,e]
                 u=g.unit(rig.hinges[side][1]);a=mat['forearm_'+side][:3,:3]@u;b=mat['hand_'+side][:3,:3]@u
@@ -151,7 +160,7 @@ def check(sysmod,names,study=False):
             report['mascaras'][name]=sorted(bones)
     report['alcance_excedido']=rig.max_unreachable
     report['integridade_ok']=not errors
-    g.dump(v.OUT/('_cache/estudo.json' if study else 'validacao.json'),report)
+    g.dump(v.OUT/('_cache/estudo.json' if study else 'validacao-nativa.json' if reader_factory else 'validacao.json'),report)
     print('Resultado:',json_summary(report),flush=True)
     if errors:raise SystemExit(1)
 

@@ -1,0 +1,29 @@
+{
+  "fonte_sha256": "9a75d73d8c7944d2b1d5341b2ab24423808322f9fd61a57a29a1aded07407c89",
+  "saida_sha256": "2868fe1527ce3bd22f202e85678eab1a384f8493c7b13fc8673aa9d49b212733",
+  "clipes_revistos": [
+    "combat_enter",
+    "combat_enter_walk",
+    "combat_enter_upper",
+    "combat_walk_start",
+    "combat_walk_stop",
+    "combat_idle",
+    "combat_idle_resume",
+    "combat_exit",
+    "combat_exit_upper"
+  ],
+  "chaves": {
+    "combat_enter": 19469,
+    "combat_enter_walk": 20459,
+    "combat_enter_upper": 15469,
+    "combat_walk_start": 2792,
+    "combat_walk_stop": 2792,
+    "combat_idle": 34644,
+    "combat_idle_resume": 3648,
+    "combat_exit": 9143,
+    "combat_exit_upper": 6913
+  },
+  "operacoes_ultima_gravacao": 22386,
+  "metodo": "Relógio comum e vínculos rígidos; camadas sem deslocar raízes.",
+  "reparo_superficies": "Pontas recuadas em 0,01 unidade; cristas com espessura 0,01. Contornos/UVs preservados."
+}

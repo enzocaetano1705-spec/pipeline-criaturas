@@ -1,0 +1,146 @@
+{
+  "arquivo": "C:\\Users\\enzoc\\dev\\pipeline-criaturas\\modelos\\criatura-pavao\\f3\\animacoes-v9\\criatura-pavao-e3-combate-v9.bbmodel",
+  "clipes": {
+    "combat_enter": {
+      "erro_preensao_nativo": 6.614765492181568e-09,
+      "erro_cauda_nativo": 0.0032561015999181026,
+      "desvio_crista_nativo_vs_linear": 0.01513322956535839,
+      "deslocamento_raiz_cauda": 0.0,
+      "canais_no_mesmo_relogio": true,
+      "piores_tempos": {
+        "cauda": [
+          "left",
+          0.08552333333333333
+        ],
+        "mao": [
+          "right",
+          0.50219
+        ]
+      }
+    },
+    "combat_enter_walk": {
+      "erro_preensao_nativo": 6.614764073047733e-09,
+      "erro_cauda_nativo": 0.005612880476874096,
+      "desvio_crista_nativo_vs_linear": 0.014799297497972031,
+      "deslocamento_raiz_cauda": 0.0,
+      "canais_no_mesmo_relogio": true,
+      "piores_tempos": {
+        "cauda": [
+          "left",
+          0.10219
+        ],
+        "mao": [
+          "left",
+          0.5088033333333333
+        ]
+      }
+    },
+    "combat_enter_upper": {
+      "erro_preensao_nativo": 6.614764073047733e-09,
+      "erro_cauda_nativo": 0.005612880476874096,
+      "desvio_crista_nativo_vs_linear": 0.014799297497972031,
+      "deslocamento_raiz_cauda": 0.0,
+      "canais_no_mesmo_relogio": true,
+      "piores_tempos": {
+        "cauda": [
+          "left",
+          0.10219
+        ],
+        "mao": [
+          "left",
+          0.5088033333333333
+        ]
+      }
+    },
+    "combat_walk_start": {
+      "erro_preensao_nativo": 6.614762185942828e-09,
+      "erro_cauda_nativo": 0.0,
+      "desvio_crista_nativo_vs_linear": 0.00197207475494721,
+      "deslocamento_raiz_cauda": 0.0,
+      "canais_no_mesmo_relogio": true,
+      "piores_tempos": {
+        "mao": [
+          "right",
+          0.52547
+        ]
+      }
+    },
+    "combat_walk_stop": {
+      "erro_preensao_nativo": 6.61476318812454e-09,
+      "erro_cauda_nativo": 0.0,
+      "desvio_crista_nativo_vs_linear": 0.002593129780278936,
+      "deslocamento_raiz_cauda": 0.0,
+      "canais_no_mesmo_relogio": true,
+      "piores_tempos": {
+        "mao": [
+          "right",
+          0.4338033333333334
+        ]
+      }
+    },
+    "combat_idle": {
+      "erro_preensao_nativo": 0.0044588932883322914,
+      "erro_cauda_nativo": 0.012280026460590277,
+      "desvio_crista_nativo_vs_linear": 0.010786966943943757,
+      "deslocamento_raiz_cauda": 0.0,
+      "canais_no_mesmo_relogio": true,
+      "piores_tempos": {
+        "mao": [
+          "right",
+          6.5521899999999995
+        ],
+        "cauda": [
+          "left",
+          6.910523333333333
+        ]
+      }
+    },
+    "combat_idle_resume": {
+      "erro_preensao_nativo": 6.614764302040215e-09,
+      "erro_cauda_nativo": 0.0,
+      "desvio_crista_nativo_vs_linear": 0.006844747292383334,
+      "deslocamento_raiz_cauda": 0.0,
+      "canais_no_mesmo_relogio": true,
+      "piores_tempos": {
+        "mao": [
+          "left",
+          0.38552333333333333
+        ]
+      }
+    },
+    "combat_exit": {
+      "erro_preensao_nativo": 0.004519044763414773,
+      "erro_cauda_nativo": 0.012683282196731243,
+      "desvio_crista_nativo_vs_linear": 0.00453053362603065,
+      "deslocamento_raiz_cauda": 0.0,
+      "canais_no_mesmo_relogio": true,
+      "piores_tempos": {
+        "mao": [
+          "right",
+          1.2021899999999999
+        ],
+        "cauda": [
+          "left",
+          1.5605233333333333
+        ]
+      }
+    },
+    "combat_exit_upper": {
+      "erro_preensao_nativo": 0.004519044763414773,
+      "erro_cauda_nativo": 0.012683282196731243,
+      "desvio_crista_nativo_vs_linear": 0.00453053362603065,
+      "deslocamento_raiz_cauda": 0.0,
+      "canais_no_mesmo_relogio": true,
+      "piores_tempos": {
+        "mao": [
+          "right",
+          1.2021899999999999
+        ],
+        "cauda": [
+          "left",
+          1.5605233333333333
+        ]
+      }
+    }
+  }
+}

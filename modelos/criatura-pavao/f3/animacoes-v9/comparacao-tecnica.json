@@ -1,0 +1,28 @@
+{
+  "pontas": [
+    {
+      "parte": "tail_fan_04",
+      "distancia_antes": 9.794572676964957e-06,
+      "distancia_depois": 0.010009794572676717
+    },
+    {
+      "parte": "tail_fan_06",
+      "distancia_antes": 9.603502448163326e-06,
+      "distancia_depois": 0.01000960350245017
+    }
+  ],
+  "espessura_cristas": {
+    "crest_left_rise": 0.010000000000001563,
+    "crest_left_eye": 0.010000000000001563,
+    "crest_right_rise": 0.010000000000001563,
+    "crest_right_eye": 0.010000000000001563
+  },
+  "cotovelo_antes": [
+    5.8481758578657965,
+    129.6584633209689
+  ],
+  "cotovelo_depois": [
+    34.264676947325015,
+    128.68061538431314
+  ]
+}
