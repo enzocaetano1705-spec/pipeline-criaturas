@@ -1,0 +1,149 @@
+{
+  "status": "novos-clipes-aguardam-avaliacao-artistica",
+  "modelo": "criatura-pavao-e3-combate-v8.bbmodel",
+  "fonte": "modelos/criatura-pavao/f3/animacoes-v7/criatura-pavao-e3-combate-v7.bbmodel",
+  "fonte_sha256": "53d8fe324dfaac8b6186cc0bcb06a25a030aa68dd1a3fc698a578de512aed38b",
+  "saida_sha256": "9a75d73d8c7944d2b1d5341b2ab24423808322f9fd61a57a29a1aded07407c89",
+  "root_motion": false,
+  "aprovados": [
+    "idle",
+    "walk",
+    "combat_ready",
+    "combat_walk",
+    "combat_enter"
+  ],
+  "clipes_revistos": {
+    "combat_enter_walk": {
+      "duracao": 1.65,
+      "loop": false
+    },
+    "combat_enter_upper": {
+      "duracao": 1.65,
+      "loop": false
+    },
+    "combat_walk_start": {
+      "duracao": 0.6,
+      "loop": false
+    },
+    "combat_walk_stop": {
+      "duracao": 0.6,
+      "loop": false
+    },
+    "combat_idle": {
+      "duracao": 7.1499999999999995,
+      "loop": false
+    },
+    "combat_idle_resume": {
+      "duracao": 1.1,
+      "loop": false
+    },
+    "combat_exit": {
+      "duracao": 1.8,
+      "loop": false
+    },
+    "combat_exit_upper": {
+      "duracao": 1.8,
+      "loop": false
+    }
+  },
+  "lados": {
+    "ombro_e_floreio": "left da criatura",
+    "arrasto_e_espada_cravada": "right da criatura"
+  },
+  "saque": {
+    "GripLeft": 0.3,
+    "GripRight": 0.34,
+    "FlourishStart": 0.7,
+    "FlourishEnd": 1.23,
+    "fim_andando_fase_combat_walk": 0.008333333333333304,
+    "fim_andando_tempo_combat_walk": 0.014999999999999947
+  },
+  "passos": {
+    "start_inicia_em": "combat_ready@0",
+    "start_termina_em": "combat_walk@0.30",
+    "stop_inicia_em": "combat_walk@0",
+    "stop_termina_em": "combat_ready@0",
+    "interrupcoes": "Misturar os estados e preservar a fase na integração futura."
+  },
+  "descanso": {
+    "clipe": "combat_idle",
+    "loop": false,
+    "cravar_ate": 0.72,
+    "ReleaseStart": 0.95,
+    "ReleaseEnd": 1.25,
+    "pausa": [
+      1.25,
+      4.25
+    ],
+    "Regrasp": 4.55,
+    "recuperada_em": 5.35,
+    "DockLeft": 6.55,
+    "DockRight": 6.554654486930031,
+    "fim": 7.1499999999999995,
+    "termina_em": "idle@0",
+    "retomada": "combat_idle_resume",
+    "retomada_origem": "pausa, com mistura de respiração",
+    "retomada_termina_em": "combat_ready@0",
+    "retomada_Regrasp": 0.3,
+    "profundidade_unidades": 30.19755891465722,
+    "espada_solta_imovel": true
+  },
+  "saida": {
+    "andando": "combat_exit",
+    "camada": "combat_exit_upper",
+    "DockLeft": 1.2,
+    "DockRight": 1.204654486930031,
+    "fim_andando_fase_walk": 0.09999999999999987,
+    "fim_andando_tempo_walk": 0.1499999999999998,
+    "floreio_reverso": false
+  },
+  "camadas": {
+    "modo": "substituir canais da máscara; não aditivo",
+    "ossos": [
+      "tail_1",
+      "tail_2",
+      "tail_fan_01",
+      "tail_fan_02",
+      "tail_fan_03",
+      "tail_fan_04",
+      "tail_fan_05",
+      "tail_fan_06",
+      "waist",
+      "torso",
+      "arm_left",
+      "arm_right",
+      "back_feathers_left",
+      "back_feathers_left3",
+      "back_feathers_right",
+      "back_feathers_right2",
+      "forearm_left",
+      "forearm_right",
+      "hand_left",
+      "feather_sword_left",
+      "hand_right",
+      "feather_sword_right",
+      "neck_1",
+      "neck_2",
+      "head",
+      "feather_left_1",
+      "feather_left_2",
+      "feather_right_1",
+      "feather_right_2",
+      "wing_left",
+      "wing_right"
+    ],
+    "base": "walk aprovado na fase descrita abaixo",
+    "fase_enter": "t/1.5 + (1/1.8-1/1.5)*t*t/(2*1.65)",
+    "fase_exit": "t/1.8 + (1/1.5-1/1.8)*t*t/(2*1.8)",
+    "sem_canais": [
+      "root",
+      "body",
+      "pelvis",
+      "leg_*",
+      "shin_*",
+      "foot_*"
+    ]
+  },
+  "validacao": "validacao.json",
+  "golpes": "próxima etapa; não criados nesta revisão"
+}

@@ -1,0 +1,26 @@
+{
+  "fonte_sha256": "53d8fe324dfaac8b6186cc0bcb06a25a030aa68dd1a3fc698a578de512aed38b",
+  "saida_sha256": "9a75d73d8c7944d2b1d5341b2ab24423808322f9fd61a57a29a1aded07407c89",
+  "clipes_revistos": [
+    "combat_enter_walk",
+    "combat_enter_upper",
+    "combat_walk_start",
+    "combat_walk_stop",
+    "combat_idle",
+    "combat_idle_resume",
+    "combat_exit",
+    "combat_exit_upper"
+  ],
+  "chaves": {
+    "combat_enter_walk": 9467,
+    "combat_enter_upper": 7087,
+    "combat_walk_start": 1736,
+    "combat_walk_stop": 2029,
+    "combat_idle": 12423,
+    "combat_idle_resume": 2583,
+    "combat_exit": 6922,
+    "combat_exit_upper": 5177
+  },
+  "operacoes_ultima_gravacao": 28983,
+  "alcance_excedido": 0.39052047853335026
+}

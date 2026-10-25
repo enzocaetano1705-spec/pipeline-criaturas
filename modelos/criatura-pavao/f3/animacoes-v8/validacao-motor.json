@@ -1,0 +1,51 @@
+{
+  "revision": "9a75d73d8c7944d2",
+  "checked": [
+    "combat_walk_start",
+    "combat_walk_stop",
+    "combat_exit",
+    "combat_enter_walk"
+  ],
+  "summary": {
+    "errors": 0,
+    "warnings": 0,
+    "passed": true
+  },
+  "gates": [
+    {
+      "id": "animated_bones_exist",
+      "label": "Animators target groups that exist",
+      "severity": "error",
+      "ran": true,
+      "violations": []
+    },
+    {
+      "id": "keyframe_timing",
+      "label": "Keyframes lie inside the clip and do not collide",
+      "severity": "warning",
+      "ran": true,
+      "violations": []
+    },
+    {
+      "id": "ground_sink",
+      "label": "No part sinks below the ground during a clip",
+      "severity": "warning",
+      "ran": true,
+      "violations": []
+    },
+    {
+      "id": "detachment",
+      "label": "Attached groups stay attached to their parent during a clip",
+      "severity": "warning",
+      "ran": true,
+      "violations": []
+    }
+  ],
+  "skipped_channels": [],
+  "approximated_bezier": [],
+  "capped_clips": [],
+  "contexto": {
+    "chao_do_teste": 0,
+    "motivo": "Piso real"
+  }
+}

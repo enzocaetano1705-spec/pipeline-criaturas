@@ -1,18 +1,18 @@
 {
-  "status": "braco-direito-suavizado-aguarda-revisao",
-  "fonte": "modelos/criatura-pavao/f3/animacoes-v7/criatura-pavao-e3-combate-v7.bbmodel",
-  "sha256": "53d8fe324dfaac8b6186cc0bcb06a25a030aa68dd1a3fc698a578de512aed38b",
+  "status": "oito-transicoes-e-descanso-prontos-para-revisao",
+  "fonte": "modelos/criatura-pavao/f3/animacoes-v8/criatura-pavao-e3-combate-v8.bbmodel",
+  "sha256": "9a75d73d8c7944d2b1d5341b2ab24423808322f9fd61a57a29a1aded07407c89",
   "origem_manual": "modelos/criatura-pavao/f3/animacoes-v3/origem-revisada.bbmodel",
-  "revisao_atual": "Combat_enter: esquerdo rápido da v6 preservado integralmente; braço direito com extração/descida em tempo próprio, chegando ao arrasto aos 1,65 s junto do apoio esquerdo no ombro. Outros doze clipes intactos.",
-  "direcao_atual": "Mesmos braços da marcha aprovada: esquerdo da criatura no ombro, direito no arrasto; confirmado pelo usuário. Demais clipes continuam adiados.",
+  "revisao_atual": "Base v7 aprovada e preservada: idle, walk, combat_ready, combat_walk e combat_enter. V8 completa os oito clipes adiados: saque andando/camada, start/stop, descanso de 3 s com soltura e recuperação, retomada e saída andando/camada. Golpes são a próxima etapa.",
+  "direcao_atual": "Esquerdo no ombro e floreio; direito no arrasto ou cravado durante o descanso. Lados e base aprovados pelo usuário.",
   "aprovacoes": {
     "idle": "aprovado",
     "walk": "aprovado",
-    "combate": "esquerdo-v6-aprovado-direito-v7-em-revisao",
+    "combate": "base-v7-aprovada-pacote-v8-em-revisao",
     "combat_walk": "aprovado",
     "combat_enter_v3": "saque e floreio aprovados; final revisto na v4",
-    "combat_ready": "base aprovada; respiração v5 em avaliação",
-    "combat_enter": "Esquerdo v6 aprovado; v7 suaviza somente direito, com chegada conjunta em 1,65 s."
+    "combat_ready": "aprovado na base v7",
+    "combat_enter": "v7 aprovada integralmente pelo usuário; preservada na v8"
   },
   "animacoes": [
     "idle",
@@ -29,12 +29,9 @@
     "combat_exit",
     "combat_exit_upper"
   ],
-  "metadados": "modelos/criatura-pavao/f3/animacoes-v7/animacoes.json",
+  "metadados": "modelos/criatura-pavao/f3/animacoes-v8/animacoes.json",
   "studio": "não alterado; somente animações e metadados locais",
   "clipes_em_revisao": [
-    "combat_enter"
-  ],
-  "clipes_adiados": [
     "combat_enter_walk",
     "combat_enter_upper",
     "combat_walk_start",
@@ -44,5 +41,7 @@
     "combat_exit",
     "combat_exit_upper"
   ],
-  "fonte_anterior": "modelos/criatura-pavao/f3/animacoes-v6/criatura-pavao-e3-combate-v6.bbmodel"
+  "clipes_adiados": [],
+  "fonte_anterior": "modelos/criatura-pavao/f3/animacoes-v7/criatura-pavao-e3-combate-v7.bbmodel",
+  "proxima_etapa": "Avaliação dos oito novos clipes; depois golpes da F3 a partir da guarda aprovada."
 }
