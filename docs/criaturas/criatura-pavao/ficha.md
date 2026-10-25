@@ -60,16 +60,17 @@ Escolha 1, 2, 3 ou outra categoria e preencha **Categoria confirmada** no estág
 - **Altura no jogo (blocos):** 4.0
 - **Imagens:** e3-conceito.png, e3-frente.png, e3-lado.png, e3-costas.png
 - **O que a imagem não mostra bem:** quatro imagens geradas separadamente. As duas plumas da crista, visíveis na frente e nas costas, são interpretadas como sobrepostas no perfil. Altura inicial de trabalho ajustável, maior que F2; não define a escala final do jogo.
-- **Partes finas (viram planos):** duas plumas arqueadas na cabeça, lâminas de penas nos antebraços, plumagem de ombros/quadris/tornozelos e cauda em camadas com ocelos. Nenhuma asa extra além dos braços emplumados.
-- **Rosto:** avinídeo, bico creme afiado, olhos âmbar e gema dourada na testa. Frente e perfil devem manter a mesma identidade.
-- **Jeito de se mover:** tronco mais ereto e proporções humanoides; pernas digitígradas e cauda grossa de apoio. Combate futuro inspirado em muay thai/kickboxing, adaptado à anatomia: jabs/diretos com lâminas apontadas ao alvo e chutes com garras voltadas ao alvo. Evitar priorizar cotoveladas, joelhadas e golpes com a canela/peito do pé. Jesmon é referência funcional; forma e proporções vêm das imagens, sem flutuação.
+- **Partes finas (viram planos):** cristas precisamente iguais às da F2 e duas penas finas empunhadas, uma por braço. Plumagem de ombros/quadris/tornozelos; penas da cauda mantêm a espessura aprovada na edição manual. Nenhuma asa extra.
+- **Rosto:** cabeça precisamente igual à F2, incluindo medidas do crânio/bico, olhos laterais, cristas, UV e textura. Substitui a interpretação humanoide anterior.
+- **Jeito de se mover:** tronco alto com leve inclinação aviana para frente; pernas digitígradas sustentando o peso e cauda grossa como contrapeso. Braços com aspecto de louva-a-deus e pinças pequenas para empunhar penas. Futuras referências de espadas duplas serão adaptadas às proporções; garras dos pés continuam disponíveis. Sem flutuação.
 - **Escopo atual:** primeira modelagem editável no Blockbench para o usuário revisar à mão. Animações de combate/gameplay serão tratadas depois da aprovação da forma.
 - **Revisão de 25/10:** primeira proposta rejeitada com 3/10; usuário tentou alterar os blocos e removeu a textura. Quatro redesenhos em `revisao-f3/e3-{frente,lado,costas,conceito}.png` servem como alvo de construção, com prioridade para frente/perfil. Não copiar garras indevidas nem microvoxelizar os contornos. As artes originais permanecem referência de identidade.
-- **Proposta atual:** `modelos/criatura-pavao/f3/revisao-v2/criatura-pavao-e3-v2b.bbmodel`, gerada por `scripts/modelar-pavao-f3-v2.py`; aguarda revisão artística. Fonte manual anterior preservada. Comparação e câmeras na pasta da v2; não regerar a versão manual pelo atalho automático.
+- **Revisão de identidade de 25/10:** usuário alterou manualmente bico, peito, pescoço, cristas e pernas e mudou o escopo para penas empunhadas. Prioriza vínculo evolutivo com a F2, paleta menos saturada, cabeça exata e penas finas. Discutida a solução antes de editar, conforme solicitado; usuário autorizou executá-la para avaliar o resultado.
+- **Proposta atual:** `modelos/criatura-pavao/f3/revisao-v3/criatura-pavao-e3-v3b.bbmodel`, gerada por `scripts/revisar-identidade-pavao-f3.py` a partir do snapshot manual. Aguarda revisão artística. Fontes manuais preservadas; mudanças futuras devem sair em outra versão.
 
 ![[e3-conceito.png]]
 
-### Instrução fornecida pelo usuário
+### Instrução inicial fornecida pelo usuário (histórico; revisão acima prevalece)
 
 Criatura maior, avinídea e mais próxima de uma figura humanoide. Penas dos cotovelos
 se tornam lâminas afiadas anexadas aos braços, principal fonte de golpes; garras

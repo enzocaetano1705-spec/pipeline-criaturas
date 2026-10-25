@@ -1,0 +1,347 @@
+{
+  "fonte_manual_sha256": "4ed922a34b45bc9ff7e6866e3d7e0e050959b2edcd5458ceec3796be52f7a2df",
+  "fonte_f2_sha256": "a387d4f84d3913d1f717b1c2cda92f17d794157331ad65f57448e8de29eacd0a",
+  "saida_sha256": "57cec4770860a6a048cfb595602d2e494ad6afe3760e67bc6f9475fd8f55ba85",
+  "motor": {
+    "errors": 0,
+    "warnings": 128,
+    "passed": true
+  },
+  "avisos_por_gate": {
+    "outliner": 0,
+    "unlisted_nodes": 0,
+    "degenerate": 0,
+    "block_limits": 0,
+    "floating": 0,
+    "interpenetration": 128,
+    "mirror": 0
+  },
+  "cabeca_f2": [
+    {
+      "peca": "beak",
+      "erro_maximo": 3.552713678800501e-15,
+      "uv_identica": true
+    },
+    {
+      "peca": "beak_tip",
+      "erro_maximo": 7.105427357601002e-15,
+      "uv_identica": true
+    },
+    {
+      "peca": "crest_left_rise",
+      "erro_maximo": 7.105427357601002e-15,
+      "uv_identica": true
+    },
+    {
+      "peca": "crest_left_eye",
+      "erro_maximo": 7.105427357601002e-15,
+      "uv_identica": true
+    },
+    {
+      "peca": "crest_right_rise",
+      "erro_maximo": 7.105427357601002e-15,
+      "uv_identica": true
+    },
+    {
+      "peca": "crest_right_eye",
+      "erro_maximo": 7.105427357601002e-15,
+      "uv_identica": true
+    },
+    {
+      "peca": "skull",
+      "erro_maximo": 3.552713678800501e-15,
+      "uv_identica": true
+    }
+  ],
+  "textura_f2_identica": true,
+  "dimensoes_preservadas": [
+    {
+      "peca": "ribcage",
+      "dimensoes_preservadas": true
+    },
+    {
+      "peca": "ribcage_lower",
+      "dimensoes_preservadas": true
+    },
+    {
+      "peca": "chest_top",
+      "dimensoes_preservadas": true
+    },
+    {
+      "peca": "hip_plume_left_stem",
+      "dimensoes_preservadas": true
+    },
+    {
+      "peca": "hip_plume_left_vane",
+      "dimensoes_preservadas": true
+    },
+    {
+      "peca": "hip_plume_left_point",
+      "dimensoes_preservadas": true
+    },
+    {
+      "peca": "hip_outer_left_stem",
+      "dimensoes_preservadas": true
+    },
+    {
+      "peca": "hip_outer_left_vane",
+      "dimensoes_preservadas": true
+    },
+    {
+      "peca": "hip_outer_left_point",
+      "dimensoes_preservadas": true
+    },
+    {
+      "peca": "thigh_left",
+      "dimensoes_preservadas": true
+    },
+    {
+      "peca": "shank_left",
+      "dimensoes_preservadas": true
+    },
+    {
+      "peca": "tarsus_left",
+      "dimensoes_preservadas": true
+    },
+    {
+      "peca": "foot_pad_left",
+      "dimensoes_preservadas": true
+    },
+    {
+      "peca": "toe_left_1",
+      "dimensoes_preservadas": true
+    },
+    {
+      "peca": "claw_left_1_base",
+      "dimensoes_preservadas": true
+    },
+    {
+      "peca": "claw_left_1_tip",
+      "dimensoes_preservadas": true
+    },
+    {
+      "peca": "toe_left_2",
+      "dimensoes_preservadas": true
+    },
+    {
+      "peca": "claw_left_2_base",
+      "dimensoes_preservadas": true
+    },
+    {
+      "peca": "claw_left_2_tip",
+      "dimensoes_preservadas": true
+    },
+    {
+      "peca": "toe_left_3",
+      "dimensoes_preservadas": true
+    },
+    {
+      "peca": "claw_left_3_base",
+      "dimensoes_preservadas": true
+    },
+    {
+      "peca": "claw_left_3_tip",
+      "dimensoes_preservadas": true
+    },
+    {
+      "peca": "toe_left_back",
+      "dimensoes_preservadas": true
+    },
+    {
+      "peca": "claw_left_back",
+      "dimensoes_preservadas": true
+    },
+    {
+      "peca": "hip_plume_right_stem",
+      "dimensoes_preservadas": true
+    },
+    {
+      "peca": "hip_plume_right_vane",
+      "dimensoes_preservadas": true
+    },
+    {
+      "peca": "hip_plume_right_point",
+      "dimensoes_preservadas": true
+    },
+    {
+      "peca": "hip_outer_right_stem",
+      "dimensoes_preservadas": true
+    },
+    {
+      "peca": "hip_outer_right_vane",
+      "dimensoes_preservadas": true
+    },
+    {
+      "peca": "hip_outer_right_point",
+      "dimensoes_preservadas": true
+    },
+    {
+      "peca": "thigh_right",
+      "dimensoes_preservadas": true
+    },
+    {
+      "peca": "shank_right",
+      "dimensoes_preservadas": true
+    },
+    {
+      "peca": "tarsus_right",
+      "dimensoes_preservadas": true
+    },
+    {
+      "peca": "foot_pad_right",
+      "dimensoes_preservadas": true
+    },
+    {
+      "peca": "toe_right_1",
+      "dimensoes_preservadas": true
+    },
+    {
+      "peca": "claw_right_1_base",
+      "dimensoes_preservadas": true
+    },
+    {
+      "peca": "claw_right_1_tip",
+      "dimensoes_preservadas": true
+    },
+    {
+      "peca": "toe_right_2",
+      "dimensoes_preservadas": true
+    },
+    {
+      "peca": "claw_right_2_base",
+      "dimensoes_preservadas": true
+    },
+    {
+      "peca": "claw_right_2_tip",
+      "dimensoes_preservadas": true
+    },
+    {
+      "peca": "toe_right_3",
+      "dimensoes_preservadas": true
+    },
+    {
+      "peca": "claw_right_3_base",
+      "dimensoes_preservadas": true
+    },
+    {
+      "peca": "claw_right_3_tip",
+      "dimensoes_preservadas": true
+    },
+    {
+      "peca": "toe_right_back",
+      "dimensoes_preservadas": true
+    },
+    {
+      "peca": "claw_right_back",
+      "dimensoes_preservadas": true
+    },
+    {
+      "peca": "tail_1_solid",
+      "dimensoes_preservadas": true
+    },
+    {
+      "peca": "tail_2_solid",
+      "dimensoes_preservadas": true
+    },
+    {
+      "peca": "tail_fan_01_plane_stem",
+      "dimensoes_preservadas": true
+    },
+    {
+      "peca": "tail_fan_01_plane_vane",
+      "dimensoes_preservadas": true
+    },
+    {
+      "peca": "tail_fan_01_plane_point",
+      "dimensoes_preservadas": true
+    },
+    {
+      "peca": "tail_fan_02_plane_stem",
+      "dimensoes_preservadas": true
+    },
+    {
+      "peca": "tail_fan_03_plane_stem",
+      "dimensoes_preservadas": true
+    },
+    {
+      "peca": "tail_fan_03_plane_vane",
+      "dimensoes_preservadas": true
+    },
+    {
+      "peca": "tail_fan_03_plane_point",
+      "dimensoes_preservadas": true
+    },
+    {
+      "peca": "tail_fan_04_plane_stem",
+      "dimensoes_preservadas": true
+    },
+    {
+      "peca": "tail_fan_04_plane_vane",
+      "dimensoes_preservadas": true
+    },
+    {
+      "peca": "tail_fan_04_plane_point",
+      "dimensoes_preservadas": true
+    },
+    {
+      "peca": "tail_fan_05_plane_stem",
+      "dimensoes_preservadas": true
+    },
+    {
+      "peca": "tail_fan_05_plane_vane",
+      "dimensoes_preservadas": true
+    },
+    {
+      "peca": "tail_fan_05_plane_point",
+      "dimensoes_preservadas": true
+    },
+    {
+      "peca": "tail_fan_06_plane_stem",
+      "dimensoes_preservadas": true
+    },
+    {
+      "peca": "tail_fan_06_plane_vane",
+      "dimensoes_preservadas": true
+    },
+    {
+      "peca": "tail_fan_06_plane_point",
+      "dimensoes_preservadas": true
+    },
+    {
+      "peca": "tail_fan_02_plane_vane",
+      "dimensoes_preservadas": true
+    },
+    {
+      "peca": "tail_fan_02_plane_point",
+      "dimensoes_preservadas": true
+    },
+    {
+      "peca": "tail_fan_02_plane_vane",
+      "dimensoes_preservadas": true
+    },
+    {
+      "peca": "tail_fan_02_plane_point",
+      "dimensoes_preservadas": true
+    }
+  ],
+  "uv_fora_do_atlas": [],
+  "faces_solidas_transparentes": [],
+  "transparencias_herdadas_cabeca_f2": [
+    "beak.south",
+    "beak.down"
+  ],
+  "piso_opaco_minimo": [
+    0.23350204576011047,
+    "claw_left_1_tip"
+  ],
+  "desvio_encaixe_arma": 0.0,
+  "animacoes": 0,
+  "pecas": 103,
+  "ossos": 34,
+  "atlas": [
+    512,
+    512
+  ],
+  "limites": "Revisão de forma e rig em repouso; colisões e desempenho no Roblox ainda não testados. Sobreposições AABB incluem encaixes e camadas.",
+  "integridade_ok": true
+}
