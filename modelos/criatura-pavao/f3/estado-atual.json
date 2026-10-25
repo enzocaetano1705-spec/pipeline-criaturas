@@ -1,14 +1,14 @@
 {
-  "status": "combate-proposta-aguarda-revisao-artistica",
-  "fonte": "modelos/criatura-pavao/f3/animacoes-v2/criatura-pavao-e3-combate-v2c.bbmodel",
-  "sha256": "a6c931f15f44e31b7264ccf209f6d30cbd107b8a7c424bda26dd0463cf5cb195",
-  "origem_manual": "modelos/criatura-pavao/f3/animacoes-v2/origem-revisada.bbmodel",
-  "revisao_atual": "Idle/walk aprovados preservados; saque curto com floreio e versões parado/andando; descanso com soltura e guarda; marcha arrastando lâmina; saída andando e camadas superiores.",
-  "direcao_atual": "Penas 04/06 são as duas armas, sacadas com ombros/cotovelos naturais. Descanso parado tem três segundos de pausa e termina guardando ambas.",
+  "status": "base-combate-aguarda-revisao-artistica",
+  "fonte": "modelos/criatura-pavao/f3/animacoes-v3/criatura-pavao-e3-combate-v3.bbmodel",
+  "sha256": "6842df1247f7141a06da1a5d2ac652e1fc1a0730312bbd20380f1ce10a25cacd",
+  "origem_manual": "modelos/criatura-pavao/f3/animacoes-v3/origem-revisada.bbmodel",
+  "revisao_atual": "Somente combat_ready, combat_walk e combat_enter revistos: guarda com pontas para cima, wings articuladas pela base real, arrasto com cotovelo atrás e saque com guarda estabilizada antes de uma volta completa inclinada 30 graus para fora.",
+  "direcao_atual": "Penas 04/06 são as duas espadas. Usuário autorizou inclinar as lâminas para liberar o piso no floreio. Outros clipes de combate ficam para depois.",
   "aprovacoes": {
     "idle": "aprovado",
     "walk": "aprovado",
-    "combate": "aguarda-revisao-artistica"
+    "combate": "aguarda-revisao-dos-tres-clipes-base"
   },
   "animacoes": [
     "idle",
@@ -25,6 +25,21 @@
     "combat_exit",
     "combat_exit_upper"
   ],
-  "metadados": "modelos/criatura-pavao/f3/animacoes-v2/animacoes.json",
-  "studio": "não alterado; somente animações e metadados locais"
+  "metadados": "modelos/criatura-pavao/f3/animacoes-v3/animacoes.json",
+  "studio": "não alterado; somente animações e metadados locais",
+  "clipes_em_revisao": [
+    "combat_ready",
+    "combat_walk",
+    "combat_enter"
+  ],
+  "clipes_adiados": [
+    "combat_enter_walk",
+    "combat_enter_upper",
+    "combat_walk_start",
+    "combat_walk_stop",
+    "combat_idle",
+    "combat_idle_resume",
+    "combat_exit",
+    "combat_exit_upper"
+  ]
 }

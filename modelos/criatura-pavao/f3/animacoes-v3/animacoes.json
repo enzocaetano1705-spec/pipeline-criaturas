@@ -1,0 +1,63 @@
+{
+  "status": "proposta-para-revisao-artistica",
+  "modelo": "criatura-pavao-e3-combate-v3.bbmodel",
+  "root_motion": false,
+  "aprovados": [
+    "idle",
+    "walk"
+  ],
+  "clipes_revistos": {
+    "combat_ready": {
+      "duracao": 2.4,
+      "loop": true,
+      "fps_chaves": 120
+    },
+    "combat_walk": {
+      "duracao": 1.8,
+      "loop": true,
+      "fps_chaves": 120
+    },
+    "combat_enter": {
+      "duracao": 2.1,
+      "loop": false,
+      "fps_chaves": 120
+    }
+  },
+  "clipes_preservados": [
+    "idle",
+    "walk",
+    "combat_idle",
+    "combat_exit_upper",
+    "combat_enter_upper",
+    "combat_idle_resume",
+    "combat_exit",
+    "combat_walk_start",
+    "combat_walk_stop",
+    "combat_enter_walk"
+  ],
+  "integracao_adiada": [
+    "combat_enter_walk",
+    "combat_enter_upper",
+    "combat_walk_start",
+    "combat_walk_stop",
+    "combat_idle",
+    "combat_idle_resume",
+    "combat_exit",
+    "combat_exit_upper"
+  ],
+  "saque": {
+    "GripLeft": 0.3,
+    "GripRight": 0.34,
+    "FimSaquePreservado": 0.5,
+    "GuardaEstavel": 0.72,
+    "ElevarBracos": 0.9,
+    "FlourishStart": 1.15,
+    "FlourishEnd": 1.68,
+    "Ready": 2.1,
+    "giro_graus": 360,
+    "inclinacao_para_fora_graus": 30,
+    "salto": false
+  },
+  "observacao": "Clipes adiados continuam da v2; não encadear automaticamente com a nova guarda. Os três revistos aguardam aprovação artística.",
+  "validacao": "validacao.json"
+}

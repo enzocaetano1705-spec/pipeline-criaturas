@@ -1,0 +1,34 @@
+{
+  "fonte_sha256": "3c7cfd0803e2675558bc3bb279d1db6c60ed8b596dd4c893e1983c7e27454bc9",
+  "saida_sha256": "6842df1247f7141a06da1a5d2ac652e1fc1a0730312bbd20380f1ce10a25cacd",
+  "clipes_revistos": [
+    "combat_ready",
+    "combat_walk",
+    "combat_enter"
+  ],
+  "operacoes": 25275,
+  "alcance_excedido": 0,
+  "ancoras_reais": {
+    "back_feathers_left": [
+      -3.2133333825572827,
+      36.17227295256328,
+      -6.079344668948607
+    ],
+    "back_feathers_right2": [
+      3.2133333825572827,
+      36.17227295256328,
+      -6.079344668948607
+    ],
+    "wing_left": [
+      -8.100002248267934,
+      27.17924318372106,
+      -8.662400341714218
+    ],
+    "wing_right": [
+      8.100002248267934,
+      27.17924318372106,
+      -8.662400341714218
+    ]
+  },
+  "maior_dobra_punho_nos_clipes_revistos": 72.07005539909777
+}

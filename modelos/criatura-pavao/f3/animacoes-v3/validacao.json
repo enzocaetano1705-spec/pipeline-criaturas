@@ -1,0 +1,97 @@
+{
+  "fonte_sha256": "3c7cfd0803e2675558bc3bb279d1db6c60ed8b596dd4c893e1983c7e27454bc9",
+  "saida_sha256": "6842df1247f7141a06da1a5d2ac652e1fc1a0730312bbd20380f1ce10a25cacd",
+  "clipes": {
+    "combat_ready": {
+      "erro_ancora_penas": 1.2602580164753407e-07,
+      "erro_mao_arma": 4.445936526348105e-08,
+      "min_sola_y": -9.015397371081262e-06,
+      "ambos_pes_fora_chao": 4.9323197085982147e-08,
+      "min_lamina_y": 26.147132442509815,
+      "erro_arrasto": 0.0,
+      "costura_matriz": 0.0,
+      "maior_dobra_punho": 0.3580002916495849,
+      "flexao_cotovelo": [
+        92.90567419676225,
+        92.95755234504523
+      ],
+      "erro_eixo_cotovelo": 1.3363558202149507e-09,
+      "maior_passo_angular_240hz": 0.008190748933847676
+    },
+    "combat_walk": {
+      "erro_ancora_penas": 3.37029538845836e-06,
+      "erro_mao_arma": 4.445937184369277e-08,
+      "min_sola_y": -0.00011790638247095888,
+      "ambos_pes_fora_chao": 5.2581049057470185e-08,
+      "min_lamina_y": -4.379483894823011e-05,
+      "erro_arrasto": 0.0001382070567963467,
+      "costura_matriz": 0.0,
+      "maior_dobra_punho": 15.231123836042375,
+      "flexao_cotovelo": [
+        70.8178145655081,
+        120.38078713132295
+      ],
+      "erro_eixo_cotovelo": 1.769710367772271e-09,
+      "maior_passo_angular_240hz": 0.03822021084165914
+    },
+    "combat_enter": {
+      "erro_ancora_penas": 0.0005871670483020961,
+      "erro_mao_arma": 5.32045266087762e-07,
+      "min_sola_y": -0.0003142009047057754,
+      "ambos_pes_fora_chao": 5.0554925237148345e-08,
+      "min_lamina_y": 0.6066539074653434,
+      "erro_arrasto": 0.0,
+      "costura_matriz": 0,
+      "maior_dobra_punho": 72.0700553795561,
+      "flexao_cotovelo": [
+        47.18189658965243,
+        132.47783905777288
+      ],
+      "erro_eixo_cotovelo": 0.0005815255513081079,
+      "maior_passo_angular_240hz": 8.798552222476971
+    }
+  },
+  "erros": [],
+  "clipes_preservados": [
+    "idle",
+    "walk",
+    "combat_idle",
+    "combat_exit_upper",
+    "combat_enter_upper",
+    "combat_idle_resume",
+    "combat_exit",
+    "combat_walk_start",
+    "combat_walk_stop",
+    "combat_enter_walk"
+  ],
+  "floreio": {
+    "left": {
+      "volta_projetada_yz_graus": 359.9987408254309,
+      "inclinacao_para_fora_graus": [
+        29.99994005773277,
+        30.28929678363958
+      ]
+    },
+    "right": {
+      "volta_projetada_yz_graus": 359.9987408254309,
+      "inclinacao_para_fora_graus": [
+        29.99994005773277,
+        30.28929678363958
+      ]
+    }
+  },
+  "conexoes": [
+    {
+      "de": "combat_enter",
+      "para": "idle",
+      "erro_matriz": 3.1628955809992476e-07
+    },
+    {
+      "de": "combat_enter",
+      "para": "combat_ready",
+      "erro_matriz": 0.0
+    }
+  ],
+  "erro_saque_aprovado_matriz": 2.8309575128560027e-06,
+  "integridade_ok": true
+}
