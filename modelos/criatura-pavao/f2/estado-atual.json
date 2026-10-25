@@ -1,0 +1,19 @@
+{
+  "status": "finalizada-por-ora",
+  "aprovacao_usuario": "2026-10-24",
+  "fonte": "modelos/criatura-pavao/f2/corrida-v2/criatura-pavao-e2-corrida-v2.bbmodel",
+  "sha256": "a387d4f84d3913d1f717b1c2cda92f17d794157331ad65f57448e8de29eacd0a",
+  "animacoes": [
+    "idle",
+    "walk",
+    "attack_stomp",
+    "attack_spin",
+    "attack_tail_kick",
+    "walk_blend",
+    "idle_blend",
+    "run",
+    "run_start",
+    "run_stop"
+  ],
+  "observacao": "Aprovação artística; publicação de animações e integração de gameplay futuras."
+}
