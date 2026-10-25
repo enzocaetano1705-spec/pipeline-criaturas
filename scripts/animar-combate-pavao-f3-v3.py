@@ -242,7 +242,7 @@ def bake(names):
     print('Gravado:',FILE.name,flush=True)
 
 
-def validate(names):
+def validate(names, *, flourish_sides=('left','right'), extra_checks=None):
     m=bbmodelo.ler(FILE);src=bbmodelo.ler(SOURCE);saved=v2.review.Saved(m);rig=Rig(m)
     def canonical(a):
         a=copy.deepcopy(a)
@@ -312,7 +312,7 @@ def validate(names):
         if wrist_bend>80:errors.append(name+': dobra excessiva do punho')
     if 'combat_enter' in names:
         report['floreio']={}
-        for side in ['left','right']:
+        for side in flourish_sides:
             ds=[]
             for t in np.linspace(FLOURISH_START,FLOURISH_END,241):
                 mat=bbmodelo.matrizes_ossos(m,saved.pose('combat_enter',float(t)))
@@ -336,6 +336,7 @@ def validate(names):
                 preserved=max(preserved,float(abs(a[n]-b[n]).max()))
         report['erro_saque_aprovado_matriz']=preserved
         if preserved>.001:errors.append('Trajetória de saque aprovada alterada')
+    if extra_checks:extra_checks(report,m,rig,saved)
     report['integridade_ok']=not errors
     g.dump(OUT/'validacao.json',report)
     print(json.dumps({'integridade_ok':not errors,'erros':errors,'clipes':names},ensure_ascii=False))

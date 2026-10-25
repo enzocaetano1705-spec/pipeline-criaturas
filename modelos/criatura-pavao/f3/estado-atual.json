@@ -1,14 +1,18 @@
 {
-  "status": "base-combate-aguarda-revisao-artistica",
-  "fonte": "modelos/criatura-pavao/f3/animacoes-v3/criatura-pavao-e3-combate-v3.bbmodel",
-  "sha256": "6842df1247f7141a06da1a5d2ac652e1fc1a0730312bbd20380f1ce10a25cacd",
+  "status": "guarda-marcha-e-final-saque-aguardam-revisao",
+  "fonte": "modelos/criatura-pavao/f3/animacoes-v4/criatura-pavao-e3-combate-v4.bbmodel",
+  "sha256": "5db5e41f51a98a1fa6c62877bbbe359d95c3952b43189aa2c075f52138cfd19d",
   "origem_manual": "modelos/criatura-pavao/f3/animacoes-v3/origem-revisada.bbmodel",
-  "revisao_atual": "Somente combat_ready, combat_walk e combat_enter revistos: guarda com pontas para cima, wings articuladas pela base real, arrasto com cotovelo atrás e saque com guarda estabilizada antes de uma volta completa inclinada 30 graus para fora.",
-  "direcao_atual": "Penas 04/06 são as duas espadas. Usuário autorizou inclinar as lâminas para liberar o piso no floreio. Outros clipes de combate ficam para depois.",
+  "revisao_atual": "Combat_walk aprovada e preservada integralmente. Combat_ready usa essa postura parada. Depois do saque, só a espada do ombro floreia; a outra segue para o arrasto. Final coincide com a nova guarda.",
+  "direcao_atual": "Mesmos braços da marcha aprovada: esquerdo da criatura no ombro, direito no arrasto; confirmado pelo usuário. Demais clipes continuam adiados.",
   "aprovacoes": {
     "idle": "aprovado",
     "walk": "aprovado",
-    "combate": "aguarda-revisao-dos-tres-clipes-base"
+    "combate": "guarda-e-final-do-saque-em-revisao",
+    "combat_walk": "aprovado",
+    "combat_enter_v3": "saque e floreio aprovados; final revisto na v4",
+    "combat_ready": "aguarda-avaliacao-v4",
+    "combat_enter": "aguarda-avaliacao-final-v4"
   },
   "animacoes": [
     "idle",
@@ -25,11 +29,10 @@
     "combat_exit",
     "combat_exit_upper"
   ],
-  "metadados": "modelos/criatura-pavao/f3/animacoes-v3/animacoes.json",
+  "metadados": "modelos/criatura-pavao/f3/animacoes-v4/animacoes.json",
   "studio": "não alterado; somente animações e metadados locais",
   "clipes_em_revisao": [
     "combat_ready",
-    "combat_walk",
     "combat_enter"
   ],
   "clipes_adiados": [
@@ -41,5 +44,6 @@
     "combat_idle_resume",
     "combat_exit",
     "combat_exit_upper"
-  ]
+  ],
+  "fonte_anterior": "modelos/criatura-pavao/f3/animacoes-v3/criatura-pavao-e3-combate-v3.bbmodel"
 }
