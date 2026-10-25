@@ -1,0 +1,83 @@
+{
+  "estagio": "e3",
+  "vista": "preparo/frente-grade.png",
+  "itens": {
+    "postura": {
+      "valor": "bípede",
+      "certeza": "visível",
+      "fonte": "imagem"
+    },
+    "pernas": {
+      "valor": 2,
+      "certeza": "visível",
+      "fonte": "imagem"
+    },
+    "bracos": {
+      "valor": 2,
+      "certeza": "visível",
+      "fonte": "imagem"
+    },
+    "asas": {
+      "valor": 0,
+      "certeza": "visível",
+      "fonte": "imagem"
+    },
+    "cauda": {
+      "valor": {
+        "comprimento": "longa",
+        "grossura": "grossa",
+        "segmentos": 3,
+        "leque": true
+      },
+      "certeza": "visível",
+      "fonte": "imagem"
+    },
+    "nadadeiras": {
+      "valor": 0,
+      "certeza": "visível",
+      "fonte": "imagem"
+    },
+    "pescoco": {
+      "valor": "médio",
+      "certeza": "visível",
+      "fonte": "imagem"
+    },
+    "cabeca": {
+      "valor": "média",
+      "certeza": "visível",
+      "fonte": "imagem"
+    },
+    "focinho": {
+      "valor": "bico",
+      "certeza": "visível",
+      "fonte": "imagem"
+    },
+    "orelhas": {
+      "valor": "nenhuma",
+      "certeza": "visível",
+      "fonte": "imagem"
+    },
+    "olhos": {
+      "valor": "médios",
+      "certeza": "visível",
+      "fonte": "imagem"
+    },
+    "cobertura": {
+      "valor": "pena",
+      "certeza": "visível",
+      "fonte": "imagem"
+    },
+    "extras": {
+      "valor": [
+        "duas plumas de crista",
+        "gema frontal dourada",
+        "lâminas de penas nos antebraços",
+        "garras nos pés",
+        "ocelos nas penas caudais"
+      ],
+      "certeza": "visível",
+      "fonte": "imagem"
+    }
+  },
+  "conflitos": []
+}

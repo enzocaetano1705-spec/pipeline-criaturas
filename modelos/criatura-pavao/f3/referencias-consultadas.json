@@ -1,0 +1,902 @@
+[
+  {
+    "nome": "harpymon",
+    "estagio": "Champion",
+    "evo_stage": null,
+    "biblioteca": "C:\\Users\\enzoc\\Downloads\\referencias-criaturas\\the-digimod",
+    "arquivo": "C:\\Users\\enzoc\\Downloads\\referencias-criaturas\\the-digimod\\blockbench\\champions\\harpymon.bbmodel",
+    "geo": null,
+    "dados": null,
+    "biblioteca_animacoes": "C:\\Users\\enzoc\\Downloads\\referencias-criaturas\\the-digimod\\animacoes\\digimons_anims.json",
+    "pecas": 30,
+    "tags": [
+      "asas",
+      "cabeca",
+      "cauda",
+      "corpo",
+      "penas",
+      "pernas",
+      "pescoco"
+    ],
+    "estrutura": {
+      "arquivo": "C:\\Users\\enzoc\\Downloads\\referencias-criaturas\\the-digimod\\blockbench\\champions\\harpymon.bbmodel",
+      "nome": "harpymon",
+      "formato": "free",
+      "contagem": {
+        "pecas": 30,
+        "solidos": 23,
+        "planos": 7,
+        "ossos": 10
+      },
+      "orcamento_observado": {
+        "pecas": 30,
+        "nota": "observação da referência, não meta para a criatura nova"
+      },
+      "tags": [
+        "asas",
+        "cabeca",
+        "cauda",
+        "corpo",
+        "penas",
+        "pernas",
+        "pescoco"
+      ],
+      "motivos_tags": {
+        "penas": [
+          "feather"
+        ],
+        "asas": [
+          "wing",
+          "wing2"
+        ],
+        "cauda": [
+          "tail",
+          "tail2",
+          "tail3"
+        ],
+        "pernas": [
+          "foot",
+          "leg",
+          "leg2"
+        ],
+        "pescoco": [
+          "neck"
+        ],
+        "cabeca": [
+          "head"
+        ],
+        "corpo": [
+          "body",
+          "torso"
+        ]
+      },
+      "nomes_ossos": [
+        "Harpymon",
+        "body",
+        "head",
+        "leg",
+        "leg2",
+        "neck",
+        "tail",
+        "tail2",
+        "wing",
+        "wing2"
+      ],
+      "rotacoes": {
+        "pecas_com_rotacao_propria_ou_herdada": 24,
+        "fracao": 0.8
+      },
+      "proporcoes": {
+        "largura_altura": 0.789,
+        "profundidade_altura": 1.1461,
+        "altura_cabeca_fracao": 0.2519
+      },
+      "volumes": {
+        "metrica": "soma das caixas locais sólidas, sem descontar sobreposição ou inflate",
+        "fracao_por_regiao": {
+          "cabeca": 0.234,
+          "corpo": 0.4369,
+          "outros": 0.3291
+        },
+        "maior_peca_fracao": 0.133
+      },
+      "texturas": {
+        "resolucao_uv": [
+          81,
+          47
+        ],
+        "quantidade": 1,
+        "dimensoes": [
+          [
+            82,
+            47
+          ]
+        ],
+        "uv": {
+          "box": 30
+        }
+      },
+      "animacoes": {
+        "incorporadas": [
+          {
+            "nome": "idle",
+            "duracao_s": 1.56,
+            "loop": "loop",
+            "ossos_animados": 3,
+            "ossos_ausentes": [
+              "arm3",
+              "arm4",
+              "head_"
+            ],
+            "chaves": 20,
+            "canais": {
+              "rotation": 12,
+              "position": 8
+            },
+            "usa_expressoes": false
+          },
+          {
+            "nome": "idle2",
+            "duracao_s": 2.6,
+            "loop": "loop",
+            "ossos_animados": 0,
+            "ossos_ausentes": [],
+            "chaves": 0,
+            "canais": {},
+            "usa_expressoes": false
+          },
+          {
+            "nome": "idle3",
+            "duracao_s": 1.56,
+            "loop": "loop",
+            "ossos_animados": 2,
+            "ossos_ausentes": [
+              "arm3",
+              "arm4"
+            ],
+            "chaves": 8,
+            "canais": {
+              "rotation": 8
+            },
+            "usa_expressoes": false
+          },
+          {
+            "nome": "idle4",
+            "duracao_s": 4.0,
+            "loop": "loop",
+            "ossos_animados": 1,
+            "ossos_ausentes": [
+              "cape"
+            ],
+            "chaves": 1,
+            "canais": {
+              "rotation": 1
+            },
+            "usa_expressoes": true
+          },
+          {
+            "nome": "idle5",
+            "duracao_s": 4.0,
+            "loop": "loop",
+            "ossos_animados": 2,
+            "ossos_ausentes": [
+              "antena",
+              "antena2"
+            ],
+            "chaves": 2,
+            "canais": {
+              "rotation": 2
+            },
+            "usa_expressoes": true
+          },
+          {
+            "nome": "idle6",
+            "duracao_s": 2.0,
+            "loop": "loop",
+            "ossos_animados": 1,
+            "ossos_ausentes": [
+              "leg5"
+            ],
+            "chaves": 1,
+            "canais": {
+              "rotation": 1
+            },
+            "usa_expressoes": true
+          },
+          {
+            "nome": "idle7",
+            "duracao_s": 4.0,
+            "loop": "loop",
+            "ossos_animados": 4,
+            "ossos_ausentes": [
+              "jaw"
+            ],
+            "chaves": 8,
+            "canais": {
+              "rotation": 4,
+              "scale": 3,
+              "position": 1
+            },
+            "usa_expressoes": true
+          },
+          {
+            "nome": "idle8",
+            "duracao_s": 4.0,
+            "loop": "loop",
+            "ossos_animados": 1,
+            "ossos_ausentes": [
+              "jaw"
+            ],
+            "chaves": 1,
+            "canais": {
+              "rotation": 1
+            },
+            "usa_expressoes": true
+          },
+          {
+            "nome": "idle9",
+            "duracao_s": 4.0,
+            "loop": "loop",
+            "ossos_animados": 1,
+            "ossos_ausentes": [
+              "jaw"
+            ],
+            "chaves": 1,
+            "canais": {
+              "rotation": 1
+            },
+            "usa_expressoes": true
+          },
+          {
+            "nome": "bug_fly2",
+            "duracao_s": 1.5,
+            "loop": "loop",
+            "ossos_animados": 6,
+            "ossos_ausentes": [
+              "arm3",
+              "arm4",
+              "wing3",
+              "wing4"
+            ],
+            "chaves": 76,
+            "canais": {
+              "rotation": 76
+            },
+            "usa_expressoes": false
+          },
+          {
+            "nome": "show",
+            "duracao_s": 4.5,
+            "loop": "loop",
+            "ossos_animados": 1,
+            "ossos_ausentes": [
+              "head_"
+            ],
+            "chaves": 12,
+            "canais": {
+              "rotation": 4,
+              "position": 8
+            },
+            "usa_expressoes": false
+          },
+          {
+            "nome": "walk",
+            "duracao_s": 1.5,
+            "loop": "loop",
+            "ossos_animados": 4,
+            "ossos_ausentes": [
+              "arm3",
+              "arm4",
+              "leg3",
+              "leg4"
+            ],
+            "chaves": 33,
+            "canais": {
+              "rotation": 22,
+              "position": 11
+            },
+            "usa_expressoes": false
+          },
+          {
+            "nome": "walk2",
+            "duracao_s": 1.0,
+            "loop": "loop",
+            "ossos_animados": 0,
+            "ossos_ausentes": [],
+            "chaves": 0,
+            "canais": {},
+            "usa_expressoes": false
+          },
+          {
+            "nome": "walk3",
+            "duracao_s": 1.2,
+            "loop": "loop",
+            "ossos_animados": 1,
+            "ossos_ausentes": [
+              "head_"
+            ],
+            "chaves": 3,
+            "canais": {
+              "rotation": 3
+            },
+            "usa_expressoes": false
+          },
+          {
+            "nome": "walk4",
+            "duracao_s": 0.48,
+            "loop": "loop",
+            "ossos_animados": 0,
+            "ossos_ausentes": [],
+            "chaves": 0,
+            "canais": {},
+            "usa_expressoes": false
+          },
+          {
+            "nome": "walk5",
+            "duracao_s": 1.0,
+            "loop": "loop",
+            "ossos_animados": 1,
+            "ossos_ausentes": [
+              "jaw"
+            ],
+            "chaves": 1,
+            "canais": {
+              "rotation": 1
+            },
+            "usa_expressoes": true
+          },
+          {
+            "nome": "walk6",
+            "duracao_s": 1.0,
+            "loop": "loop",
+            "ossos_animados": 3,
+            "ossos_ausentes": [
+              "cape",
+              "toe",
+              "toe2"
+            ],
+            "chaves": 4,
+            "canais": {
+              "rotation": 3,
+              "position": 1
+            },
+            "usa_expressoes": true
+          },
+          {
+            "nome": "walk7",
+            "duracao_s": 1.0,
+            "loop": "loop",
+            "ossos_animados": 4,
+            "ossos_ausentes": [
+              "antena",
+              "antena2",
+              "leg3",
+              "leg4"
+            ],
+            "chaves": 6,
+            "canais": {
+              "rotation": 4,
+              "position": 2
+            },
+            "usa_expressoes": true
+          },
+          {
+            "nome": "walk8",
+            "duracao_s": 2.0,
+            "loop": "loop",
+            "ossos_animados": 8,
+            "ossos_ausentes": [
+              "antena",
+              "antena2",
+              "leg3",
+              "leg4",
+              "leg5",
+              "leg6",
+              "leg7",
+              "leg8"
+            ],
+            "chaves": 8,
+            "canais": {
+              "rotation": 8
+            },
+            "usa_expressoes": true
+          },
+          {
+            "nome": "walk9",
+            "duracao_s": 1.5,
+            "loop": "loop",
+            "ossos_animados": 0,
+            "ossos_ausentes": [],
+            "chaves": 0,
+            "canais": {},
+            "usa_expressoes": false
+          },
+          {
+            "nome": "float",
+            "duracao_s": 1.5,
+            "loop": "loop",
+            "ossos_animados": 1,
+            "ossos_ausentes": [
+              "head_"
+            ],
+            "chaves": 12,
+            "canais": {
+              "rotation": 4,
+              "position": 8
+            },
+            "usa_expressoes": false
+          },
+          {
+            "nome": "bug_fly",
+            "duracao_s": 1.5,
+            "loop": "loop",
+            "ossos_animados": 7,
+            "ossos_ausentes": [
+              "arm3",
+              "arm4",
+              "head_",
+              "wing3",
+              "wing4"
+            ],
+            "chaves": 90,
+            "canais": {
+              "rotation": 81,
+              "position": 9
+            },
+            "usa_expressoes": false
+          },
+          {
+            "nome": "fly",
+            "duracao_s": 1.0,
+            "loop": "loop",
+            "ossos_animados": 3,
+            "ossos_ausentes": [],
+            "chaves": 3,
+            "canais": {
+              "rotation": 3
+            },
+            "usa_expressoes": true
+          },
+          {
+            "nome": "fly2",
+            "duracao_s": 1.0,
+            "loop": "loop",
+            "ossos_animados": 6,
+            "ossos_ausentes": [
+              "bone",
+              "bone2",
+              "bone3"
+            ],
+            "chaves": 8,
+            "canais": {
+              "rotation": 6,
+              "position": 2
+            },
+            "usa_expressoes": true
+          },
+          {
+            "nome": "fly3",
+            "duracao_s": 1.0,
+            "loop": "loop",
+            "ossos_animados": 4,
+            "ossos_ausentes": [
+              "bone",
+              "bone3"
+            ],
+            "chaves": 5,
+            "canais": {
+              "rotation": 4,
+              "position": 1
+            },
+            "usa_expressoes": true
+          },
+          {
+            "nome": "fly4",
+            "duracao_s": 1.0,
+            "loop": "loop",
+            "ossos_animados": 4,
+            "ossos_ausentes": [
+              "bone",
+              "bone3"
+            ],
+            "chaves": 5,
+            "canais": {
+              "rotation": 4,
+              "position": 1
+            },
+            "usa_expressoes": true
+          },
+          {
+            "nome": "fly5",
+            "duracao_s": 1.0,
+            "loop": "loop",
+            "ossos_animados": 4,
+            "ossos_ausentes": [
+              "bone",
+              "bone3"
+            ],
+            "chaves": 5,
+            "canais": {
+              "rotation": 4,
+              "position": 1
+            },
+            "usa_expressoes": true
+          },
+          {
+            "nome": "sit",
+            "duracao_s": 0.0,
+            "loop": "loop",
+            "ossos_animados": 2,
+            "ossos_ausentes": [
+              "preleg",
+              "preleg2"
+            ],
+            "chaves": 2,
+            "canais": {
+              "rotation": 2
+            },
+            "usa_expressoes": false
+          },
+          {
+            "nome": "sit2",
+            "duracao_s": 0.0,
+            "loop": "loop",
+            "ossos_animados": 0,
+            "ossos_ausentes": [],
+            "chaves": 0,
+            "canais": {},
+            "usa_expressoes": false
+          },
+          {
+            "nome": "sit3",
+            "duracao_s": 0.0,
+            "loop": "loop",
+            "ossos_animados": 0,
+            "ossos_ausentes": [],
+            "chaves": 0,
+            "canais": {},
+            "usa_expressoes": false
+          },
+          {
+            "nome": "sit4",
+            "duracao_s": 0.0,
+            "loop": "loop",
+            "ossos_animados": 0,
+            "ossos_ausentes": [],
+            "chaves": 0,
+            "canais": {},
+            "usa_expressoes": false
+          },
+          {
+            "nome": "sit5",
+            "duracao_s": 0.0,
+            "loop": "loop",
+            "ossos_animados": 0,
+            "ossos_ausentes": [],
+            "chaves": 0,
+            "canais": {},
+            "usa_expressoes": false
+          },
+          {
+            "nome": "sit6",
+            "duracao_s": 0.0,
+            "loop": "loop",
+            "ossos_animados": 0,
+            "ossos_ausentes": [],
+            "chaves": 0,
+            "canais": {},
+            "usa_expressoes": false
+          },
+          {
+            "nome": "sit7",
+            "duracao_s": 0.0,
+            "loop": "loop",
+            "ossos_animados": 0,
+            "ossos_ausentes": [],
+            "chaves": 0,
+            "canais": {},
+            "usa_expressoes": false
+          },
+          {
+            "nome": "sit8",
+            "duracao_s": 0.0,
+            "loop": "loop",
+            "ossos_animados": 0,
+            "ossos_ausentes": [],
+            "chaves": 0,
+            "canais": {},
+            "usa_expressoes": false
+          },
+          {
+            "nome": "sit9",
+            "duracao_s": 0.0,
+            "loop": "loop",
+            "ossos_animados": 2,
+            "ossos_ausentes": [
+              "preleg",
+              "preleg2"
+            ],
+            "chaves": 2,
+            "canais": {
+              "rotation": 2
+            },
+            "usa_expressoes": false
+          },
+          {
+            "nome": "shoot",
+            "duracao_s": 0.6,
+            "loop": "hold",
+            "ossos_animados": 1,
+            "ossos_ausentes": [
+              "jaw"
+            ],
+            "chaves": 5,
+            "canais": {
+              "rotation": 5
+            },
+            "usa_expressoes": false
+          },
+          {
+            "nome": "shoot2",
+            "duracao_s": 2.1875,
+            "loop": "once",
+            "ossos_animados": 3,
+            "ossos_ausentes": [
+              "cape",
+              "staff",
+              "toe2"
+            ],
+            "chaves": 15,
+            "canais": {
+              "rotation": 14,
+              "position": 1
+            },
+            "usa_expressoes": false
+          },
+          {
+            "nome": "shoot3",
+            "duracao_s": 2.0,
+            "loop": "once",
+            "ossos_animados": 7,
+            "ossos_ausentes": [
+              "bone",
+              "leg3",
+              "leg4",
+              "leg5",
+              "leg6",
+              "leg7",
+              "leg8"
+            ],
+            "chaves": 93,
+            "canais": {
+              "rotation": 67,
+              "position": 20,
+              "scale": 6
+            },
+            "usa_expressoes": false
+          },
+          {
+            "nome": "shoot4",
+            "duracao_s": 0.75,
+            "loop": "once",
+            "ossos_animados": 1,
+            "ossos_ausentes": [
+              "top"
+            ],
+            "chaves": 3,
+            "canais": {
+              "position": 3
+            },
+            "usa_expressoes": false
+          },
+          {
+            "nome": "shoot5",
+            "duracao_s": 0.6,
+            "loop": "hold",
+            "ossos_animados": 1,
+            "ossos_ausentes": [
+              "jaw"
+            ],
+            "chaves": 3,
+            "canais": {
+              "rotation": 3
+            },
+            "usa_expressoes": false
+          },
+          {
+            "nome": "shoot6",
+            "duracao_s": 0.6,
+            "loop": "hold",
+            "ossos_animados": 1,
+            "ossos_ausentes": [
+              "jaw"
+            ],
+            "chaves": 5,
+            "canais": {
+              "rotation": 5
+            },
+            "usa_expressoes": false
+          },
+          {
+            "nome": "attack",
+            "duracao_s": 1.0,
+            "loop": "once",
+            "ossos_animados": 2,
+            "ossos_ausentes": [
+              "claws2",
+              "jaw"
+            ],
+            "chaves": 7,
+            "canais": {
+              "rotation": 3,
+              "scale": 4
+            },
+            "usa_expressoes": false
+          },
+          {
+            "nome": "attack2",
+            "duracao_s": 1.6875,
+            "loop": "once",
+            "ossos_animados": 1,
+            "ossos_ausentes": [
+              "top"
+            ],
+            "chaves": 3,
+            "canais": {
+              "position": 3
+            },
+            "usa_expressoes": false
+          },
+          {
+            "nome": "attack3",
+            "duracao_s": 1.0,
+            "loop": "once",
+            "ossos_animados": 0,
+            "ossos_ausentes": [],
+            "chaves": 0,
+            "canais": {},
+            "usa_expressoes": false
+          },
+          {
+            "nome": "attack4",
+            "duracao_s": 1.0,
+            "loop": "once",
+            "ossos_animados": 0,
+            "ossos_ausentes": [],
+            "chaves": 0,
+            "canais": {},
+            "usa_expressoes": false
+          },
+          {
+            "nome": "attack5",
+            "duracao_s": 1.0,
+            "loop": "once",
+            "ossos_animados": 3,
+            "ossos_ausentes": [
+              "cape",
+              "staff",
+              "toe2"
+            ],
+            "chaves": 20,
+            "canais": {
+              "rotation": 16,
+              "position": 4
+            },
+            "usa_expressoes": false
+          },
+          {
+            "nome": "attack6",
+            "duracao_s": 1.4375,
+            "loop": "once",
+            "ossos_animados": 4,
+            "ossos_ausentes": [
+              "jaw"
+            ],
+            "chaves": 20,
+            "canais": {
+              "rotation": 16,
+              "scale": 3,
+              "position": 1
+            },
+            "usa_expressoes": false
+          },
+          {
+            "nome": "attack7",
+            "duracao_s": 1.0,
+            "loop": "loop",
+            "ossos_animados": 1,
+            "ossos_ausentes": [
+              "jaw"
+            ],
+            "chaves": 3,
+            "canais": {
+              "rotation": 3
+            },
+            "usa_expressoes": false
+          },
+          {
+            "nome": "attack8",
+            "duracao_s": 1.0,
+            "loop": "once",
+            "ossos_animados": 2,
+            "ossos_ausentes": [
+              "claws2",
+              "jaw"
+            ],
+            "chaves": 7,
+            "canais": {
+              "rotation": 3,
+              "scale": 4
+            },
+            "usa_expressoes": false
+          },
+          {
+            "nome": "attack9",
+            "duracao_s": 1.0,
+            "loop": "once",
+            "ossos_animados": 4,
+            "ossos_ausentes": [
+              "leg5",
+              "sword",
+              "swordsmear",
+              "swordsmear2"
+            ],
+            "chaves": 34,
+            "canais": {
+              "rotation": 24,
+              "position": 10
+            },
+            "usa_expressoes": false
+          },
+          {
+            "nome": "attack10",
+            "duracao_s": 1.0,
+            "loop": "once",
+            "ossos_animados": 4,
+            "ossos_ausentes": [
+              "leg5",
+              "sword",
+              "swordsmear",
+              "swordsmear2"
+            ],
+            "chaves": 34,
+            "canais": {
+              "rotation": 24,
+              "position": 10
+            },
+            "usa_expressoes": false
+          },
+          {
+            "nome": "xp",
+            "duracao_s": 0.24,
+            "loop": "once",
+            "ossos_animados": 0,
+            "ossos_ausentes": [],
+            "chaves": 0,
+            "canais": {},
+            "usa_expressoes": false
+          },
+          {
+            "nome": "hurt2",
+            "duracao_s": 0.0,
+            "loop": "loop",
+            "ossos_animados": 1,
+            "ossos_ausentes": [
+              "fore_arm2"
+            ],
+            "chaves": 1,
+            "canais": {
+              "rotation": 1
+            },
+            "usa_expressoes": false
+          }
+        ],
+        "selecionadas": []
+      },
+      "limites": [
+        "Tags descrevem nomes de peças/ossos; confirmar a função olhando as vistas.",
+        "Volumes e proporções são medidas agregadas; não constituem molde ou transferência de rig."
+      ]
+    }
+  }
+]

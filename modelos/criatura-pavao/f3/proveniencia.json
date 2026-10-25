@@ -1,0 +1,9 @@
+{
+  "saida_sha256": "346114b3cd492576d531b09f4d8fb65719d7341e595bbe8b672cfc678680ec0c",
+  "imagens_fonte": "imagens-fonte.json",
+  "pecas": 91,
+  "ossos": 49,
+  "atlas": 256,
+  "status": "primeira-proposta-aguarda-aprovacao",
+  "modelagem": "poucas_formas; planos recortados para plumagem; volumes sólidos nas articulações"
+}

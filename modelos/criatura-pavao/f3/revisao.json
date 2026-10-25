@@ -1,0 +1,54 @@
+{
+  "fonte_sha256": "346114b3cd492576d531b09f4d8fb65719d7341e595bbe8b672cfc678680ec0c",
+  "motor": {
+    "errors": 0,
+    "warnings": 122,
+    "passed": true
+  },
+  "avisos_por_gate": {
+    "outliner": 0,
+    "unlisted_nodes": 0,
+    "degenerate": 0,
+    "block_limits": 0,
+    "floating": 0,
+    "interpenetration": 122,
+    "mirror": 0
+  },
+  "pecas": 91,
+  "ossos": 49,
+  "locators": 9,
+  "animacoes": 0,
+  "atlas": [
+    256,
+    256
+  ],
+  "faces_solidas_com_transparencia": [],
+  "planos_sem_pixels": [],
+  "uv_fora_do_atlas": [],
+  "vinculos_incorretos": [],
+  "contatos_opacos_distais": [
+    {
+      "plano": "ankle_plume_left_1_plane",
+      "solido": "shank_left",
+      "profundidade": 0.371,
+      "fracao_comprimento_max": 0.4,
+      "amostras": 2,
+      "total": 44
+    },
+    {
+      "plano": "ankle_plume_right_1_plane",
+      "solido": "shank_right",
+      "profundidade": 0.371,
+      "fracao_comprimento_max": 0.4,
+      "amostras": 2,
+      "total": 44
+    }
+  ],
+  "piso_opaco_minimo": {
+    "y": 0.004039165280454782,
+    "peca": "claw_left_1_tip"
+  },
+  "limite": "Interpenetração usa AABB; penas recortadas/rotacionadas e encaixes precisam de revisão visual. Não valida combate nem colisão no Studio.",
+  "contatos_opacos_inesperados": [],
+  "aprovado_tecnicamente": true
+}

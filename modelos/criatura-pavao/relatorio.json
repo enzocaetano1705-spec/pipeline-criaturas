@@ -4,7 +4,7 @@
  "etapas": {
   "ficha": {
    "ok": true,
-   "quando": "2026-10-21T15:51:32",
+   "quando": "2026-10-24T23:36:02",
    "erros": [],
    "avisos": [
     {
@@ -26,13 +26,45 @@
     {
      "codigo": "sem_prompt",
      "texto": "e1: falta o prompt usado na imagem principal"
+    },
+    {
+     "codigo": "sem_palpite",
+     "texto": "e2: 'Categoria (seu palpite)' vazia"
+    },
+    {
+     "codigo": "tamanho_imagem",
+     "texto": "e2: e2-conceito.png tem lado maior 2000 px (recomendado 1024–1536)"
+    },
+    {
+     "codigo": "sem_frente",
+     "texto": "e2: falta e2-frente.png"
+    },
+    {
+     "codigo": "sem_lado",
+     "texto": "e2: falta e2-lado.png (a profundidade será estimada pela tabela)"
+    },
+    {
+     "codigo": "sem_prompt",
+     "texto": "e2: falta o prompt usado na imagem principal"
+    },
+    {
+     "codigo": "sem_palpite",
+     "texto": "e3: 'Categoria (seu palpite)' vazia"
+    },
+    {
+     "codigo": "sem_prompt",
+     "texto": "e3: falta o prompt usado na imagem principal"
+    },
+    {
+     "codigo": "sem_linhagem",
+     "texto": "falta linhagem.png (recomendada)"
     }
    ],
    "arquivos": [
     "modelos/criatura-pavao/entrada.json"
    ],
    "resumo": {
-    "estagios": 1,
+    "estagios": 3,
     "status": "pronta-para-modelagem"
    }
   }

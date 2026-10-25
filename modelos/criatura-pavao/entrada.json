@@ -7,7 +7,7 @@
  ],
  "estilo": "cobblemon",
  "pasta": "docs/criaturas/criatura-pavao",
- "ideia": "primeiro estágio de uma linhagem avinídea; corpo redondo turquesa com duas penas de pavão, olhos âmbar e detalhes dourados.",
+ "ideia": "linhagem avinídea turquesa com penas de pavão, olhos âmbar e detalhes dourados; evolui de corpo redondo para ave corredora e, na F3, para um lutador avinídeo humanoide.",
  "motivos": "penas de pavão, turquesa e dourado. Segundo estágio avinídeo; terceiro avinídeo humanoide, conforme o usuário.",
  "imagem_linhagem": null,
  "estagios": [
@@ -34,6 +34,54 @@
    "rosto": "Olhos âmbar grandes, gema dourada central e sorriso com dentes pequenos.",
    "movimento": "Ainda não definido pelo usuário; corpo sem membros visíveis.",
    "prompt": ""
+  },
+  {
+   "id": "e2",
+   "nome": "criatura-pavao-f2",
+   "estagio": "2 de 3",
+   "estagio_tabela": "meio",
+   "estagio_cobblemon": "2º de 3",
+   "categoria_palpite": null,
+   "categoria_confirmada": {
+    "plano": "bípede com cauda",
+    "nicho": "ave"
+   },
+   "altura_blocos": null,
+   "imagens": {
+    "conceito": "e2-conceito.png",
+    "frente": null,
+    "lado": null,
+    "costas": null
+   },
+   "nao_mostra": "geometria e textura foram remodeladas à mão pelo usuário. A fonte atual é `modelos/criatura-pavao/f2/corrida-v2/criatura-pavao-e2-corrida-v2.bbmodel`.",
+   "partes_finas": "crista dupla, penas dos cotovelos/tornozelos e leque da cauda, presas às respectivas articulações.",
+   "rosto": "bico, olhos âmbar e gema dourada, conforme o modelo aprovado.",
+   "movimento": "walk de ave corredora; corrida com postura baixa e contrapeso da cauda. Pisão baixo, giro cortante e ataque impulsionado pela cauda.",
+   "prompt": ""
+  },
+  {
+   "id": "e3",
+   "nome": "criatura-pavao-f3",
+   "estagio": "3 de 3",
+   "estagio_tabela": "final",
+   "estagio_cobblemon": "3º de 3",
+   "categoria_palpite": null,
+   "categoria_confirmada": {
+    "plano": "bípede com cauda",
+    "nicho": "ave"
+   },
+   "altura_blocos": 4.0,
+   "imagens": {
+    "conceito": "e3-conceito.png",
+    "frente": "e3-frente.png",
+    "lado": "e3-lado.png",
+    "costas": "e3-costas.png"
+   },
+   "nao_mostra": "quatro imagens geradas separadamente. As duas plumas da crista, visíveis na frente e nas costas, são interpretadas como sobrepostas no perfil. Altura inicial de trabalho ajustável, maior que F2; não define a escala final do jogo.",
+   "partes_finas": "duas plumas arqueadas na cabeça, lâminas de penas nos antebraços, plumagem de ombros/quadris/tornozelos e cauda em camadas com ocelos. Nenhuma asa extra além dos braços emplumados.",
+   "rosto": "avinídeo, bico creme afiado, olhos âmbar e gema dourada na testa. Frente e perfil devem manter a mesma identidade.",
+   "movimento": "tronco mais ereto e proporções humanoides; pernas digitígradas e cauda grossa de apoio. Combate futuro inspirado em muay thai/kickboxing, adaptado à anatomia: jabs/diretos com lâminas apontadas ao alvo e chutes com garras voltadas ao alvo. Evitar priorizar cotoveladas, joelhadas e golpes com a canela/peito do pé. Jesmon é referência funcional; forma e proporções vêm das imagens, sem flutuação.",
+   "prompt": ""
   }
  ],
  "erros": [],
@@ -57,6 +105,38 @@
   {
    "codigo": "sem_prompt",
    "texto": "e1: falta o prompt usado na imagem principal"
+  },
+  {
+   "codigo": "sem_palpite",
+   "texto": "e2: 'Categoria (seu palpite)' vazia"
+  },
+  {
+   "codigo": "tamanho_imagem",
+   "texto": "e2: e2-conceito.png tem lado maior 2000 px (recomendado 1024–1536)"
+  },
+  {
+   "codigo": "sem_frente",
+   "texto": "e2: falta e2-frente.png"
+  },
+  {
+   "codigo": "sem_lado",
+   "texto": "e2: falta e2-lado.png (a profundidade será estimada pela tabela)"
+  },
+  {
+   "codigo": "sem_prompt",
+   "texto": "e2: falta o prompt usado na imagem principal"
+  },
+  {
+   "codigo": "sem_palpite",
+   "texto": "e3: 'Categoria (seu palpite)' vazia"
+  },
+  {
+   "codigo": "sem_prompt",
+   "texto": "e3: falta o prompt usado na imagem principal"
+  },
+  {
+   "codigo": "sem_linhagem",
+   "texto": "falta linhagem.png (recomendada)"
   }
  ]
 }

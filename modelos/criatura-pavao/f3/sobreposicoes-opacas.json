@@ -1,0 +1,18 @@
+[
+  {
+    "plano": "ankle_plume_left_1_plane",
+    "solido": "shank_left",
+    "profundidade": 0.371,
+    "fracao_comprimento_max": 0.4,
+    "amostras": 2,
+    "total": 44
+  },
+  {
+    "plano": "ankle_plume_right_1_plane",
+    "solido": "shank_right",
+    "profundidade": 0.371,
+    "fracao_comprimento_max": 0.4,
+    "amostras": 2,
+    "total": 44
+  }
+]

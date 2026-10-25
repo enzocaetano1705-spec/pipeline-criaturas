@@ -1,0 +1,917 @@
+{
+  "revision": "346114b3cd492576",
+  "format": "bedrock",
+  "summary": {
+    "errors": 0,
+    "warnings": 122,
+    "passed": true
+  },
+  "gates": [
+    {
+      "id": "outliner",
+      "label": "Outliner references resolve and UUIDs are unique",
+      "severity": "error",
+      "ran": true,
+      "violations": []
+    },
+    {
+      "id": "unlisted_nodes",
+      "label": "Every group and element is placed in the outliner",
+      "severity": "warning",
+      "ran": true,
+      "violations": []
+    },
+    {
+      "id": "degenerate",
+      "label": "No sliver or inverted cubes",
+      "severity": "warning",
+      "ran": true,
+      "violations": []
+    },
+    {
+      "id": "block_limits",
+      "label": "Geometry stays inside the block-model limits",
+      "severity": "error",
+      "ran": false,
+      "skipped_reason": "Pass block_limits: java_block or bedrock_block to enable.",
+      "violations": []
+    },
+    {
+      "id": "floating",
+      "label": "Every part touches the main body",
+      "severity": "warning",
+      "ran": true,
+      "violations": []
+    },
+    {
+      "id": "interpenetration",
+      "label": "Parts of different groups do not pass through each other",
+      "severity": "warning",
+      "ran": true,
+      "violations": [
+        {
+          "message": "hips and abdomen (different groups) interpenetrate by 1 units.",
+          "targets": [
+            "hips",
+            "abdomen"
+          ]
+        },
+        {
+          "message": "hips and thigh_left (different groups) interpenetrate by 3.25 units.",
+          "targets": [
+            "hips",
+            "thigh_left"
+          ]
+        },
+        {
+          "message": "hips and thigh_right (different groups) interpenetrate by 3.25 units.",
+          "targets": [
+            "hips",
+            "thigh_right"
+          ]
+        },
+        {
+          "message": "hips and tail_1_solid (different groups) interpenetrate by 1.9 units.",
+          "targets": [
+            "hips",
+            "tail_1_solid"
+          ]
+        },
+        {
+          "message": "abdomen and torso (different groups) interpenetrate by 1 units.",
+          "targets": [
+            "abdomen",
+            "torso"
+          ]
+        },
+        {
+          "message": "abdomen and tail_1_solid (different groups) interpenetrate by 1 units.",
+          "targets": [
+            "abdomen",
+            "tail_1_solid"
+          ]
+        },
+        {
+          "message": "torso and neck_lower (different groups) interpenetrate by 1 units.",
+          "targets": [
+            "torso",
+            "neck_lower"
+          ]
+        },
+        {
+          "message": "torso and upper_arm_left (different groups) interpenetrate by 1.34 units.",
+          "targets": [
+            "torso",
+            "upper_arm_left"
+          ]
+        },
+        {
+          "message": "torso and upper_arm_right (different groups) interpenetrate by 1.34 units.",
+          "targets": [
+            "torso",
+            "upper_arm_right"
+          ]
+        },
+        {
+          "message": "neck_lower and neck_upper (different groups) interpenetrate by 1 units.",
+          "targets": [
+            "neck_lower",
+            "neck_upper"
+          ]
+        },
+        {
+          "message": "neck_lower and cheek_plume_left (different groups) interpenetrate by 1.64 units.",
+          "targets": [
+            "neck_lower",
+            "cheek_plume_left"
+          ]
+        },
+        {
+          "message": "neck_lower and cheek_plume_right (different groups) interpenetrate by 1.64 units.",
+          "targets": [
+            "neck_lower",
+            "cheek_plume_right"
+          ]
+        },
+        {
+          "message": "neck_upper and skull (different groups) interpenetrate by 1.5 units.",
+          "targets": [
+            "neck_upper",
+            "skull"
+          ]
+        },
+        {
+          "message": "neck_upper and cheek_plume_left (different groups) interpenetrate by 1.54 units.",
+          "targets": [
+            "neck_upper",
+            "cheek_plume_left"
+          ]
+        },
+        {
+          "message": "neck_upper and cheek_plume_right (different groups) interpenetrate by 1.54 units.",
+          "targets": [
+            "neck_upper",
+            "cheek_plume_right"
+          ]
+        },
+        {
+          "message": "skull and crest_left_plane (different groups) interpenetrate by 1.2 units.",
+          "targets": [
+            "skull",
+            "crest_left_plane"
+          ]
+        },
+        {
+          "message": "skull and crest_right_plane (different groups) interpenetrate by 1.2 units.",
+          "targets": [
+            "skull",
+            "crest_right_plane"
+          ]
+        },
+        {
+          "message": "upper_arm_left and lower_arm_left (different groups) interpenetrate by 1.68 units.",
+          "targets": [
+            "upper_arm_left",
+            "lower_arm_left"
+          ]
+        },
+        {
+          "message": "upper_arm_left and arm_blade_left_1_plane (different groups) interpenetrate by 2.38 units.",
+          "targets": [
+            "upper_arm_left",
+            "arm_blade_left_1_plane"
+          ]
+        },
+        {
+          "message": "upper_arm_left and arm_blade_left_2_plane (different groups) interpenetrate by 1.92 units.",
+          "targets": [
+            "upper_arm_left",
+            "arm_blade_left_2_plane"
+          ]
+        },
+        {
+          "message": "upper_arm_left and arm_blade_left_3_plane (different groups) interpenetrate by 1.53 units.",
+          "targets": [
+            "upper_arm_left",
+            "arm_blade_left_3_plane"
+          ]
+        },
+        {
+          "message": "upper_arm_left and shoulder_plume_left_1 (different groups) interpenetrate by 2.3 units.",
+          "targets": [
+            "upper_arm_left",
+            "shoulder_plume_left_1"
+          ]
+        },
+        {
+          "message": "upper_arm_left and shoulder_plume_left_2 (different groups) interpenetrate by 1.63 units.",
+          "targets": [
+            "upper_arm_left",
+            "shoulder_plume_left_2"
+          ]
+        },
+        {
+          "message": "lower_arm_left and palm_left (different groups) interpenetrate by 0.91 units.",
+          "targets": [
+            "lower_arm_left",
+            "palm_left"
+          ]
+        },
+        {
+          "message": "lower_arm_left and arm_blade_left_1_plane (different groups) interpenetrate by 2.28 units.",
+          "targets": [
+            "lower_arm_left",
+            "arm_blade_left_1_plane"
+          ]
+        },
+        {
+          "message": "lower_arm_left and arm_blade_left_2_plane (different groups) interpenetrate by 2.05 units.",
+          "targets": [
+            "lower_arm_left",
+            "arm_blade_left_2_plane"
+          ]
+        },
+        {
+          "message": "lower_arm_left and arm_blade_left_3_plane (different groups) interpenetrate by 1.58 units.",
+          "targets": [
+            "lower_arm_left",
+            "arm_blade_left_3_plane"
+          ]
+        },
+        {
+          "message": "lower_arm_left and hip_plume_left (different groups) interpenetrate by 1 units.",
+          "targets": [
+            "lower_arm_left",
+            "hip_plume_left"
+          ]
+        },
+        {
+          "message": "palm_left and thumb_left_a (different groups) interpenetrate by 0.7 units.",
+          "targets": [
+            "palm_left",
+            "thumb_left_a"
+          ]
+        },
+        {
+          "message": "palm_left and arm_blade_left_1_plane (different groups) interpenetrate by 1.11 units.",
+          "targets": [
+            "palm_left",
+            "arm_blade_left_1_plane"
+          ]
+        },
+        {
+          "message": "palm_left and arm_blade_left_2_plane (different groups) interpenetrate by 0.88 units.",
+          "targets": [
+            "palm_left",
+            "arm_blade_left_2_plane"
+          ]
+        },
+        {
+          "message": "arm_blade_left_1_plane and arm_blade_left_2_plane (different groups) interpenetrate by 3.76 units.",
+          "targets": [
+            "arm_blade_left_1_plane",
+            "arm_blade_left_2_plane"
+          ]
+        },
+        {
+          "message": "arm_blade_left_1_plane and arm_blade_left_3_plane (different groups) interpenetrate by 2.82 units.",
+          "targets": [
+            "arm_blade_left_1_plane",
+            "arm_blade_left_3_plane"
+          ]
+        },
+        {
+          "message": "arm_blade_left_1_plane and hip_plume_left (different groups) interpenetrate by 0.94 units.",
+          "targets": [
+            "arm_blade_left_1_plane",
+            "hip_plume_left"
+          ]
+        },
+        {
+          "message": "arm_blade_left_1_plane and thigh_left (different groups) interpenetrate by 1.07 units.",
+          "targets": [
+            "arm_blade_left_1_plane",
+            "thigh_left"
+          ]
+        },
+        {
+          "message": "arm_blade_left_1_plane and shank_left (different groups) interpenetrate by 1.36 units.",
+          "targets": [
+            "arm_blade_left_1_plane",
+            "shank_left"
+          ]
+        },
+        {
+          "message": "arm_blade_left_1_plane and tarsus_left (different groups) interpenetrate by 1.03 units.",
+          "targets": [
+            "arm_blade_left_1_plane",
+            "tarsus_left"
+          ]
+        },
+        {
+          "message": "arm_blade_left_1_plane and ankle_plume_left_1_plane (different groups) interpenetrate by 2.47 units.",
+          "targets": [
+            "arm_blade_left_1_plane",
+            "ankle_plume_left_1_plane"
+          ]
+        },
+        {
+          "message": "arm_blade_left_1_plane and ankle_plume_left_2_plane (different groups) interpenetrate by 2.35 units.",
+          "targets": [
+            "arm_blade_left_1_plane",
+            "ankle_plume_left_2_plane"
+          ]
+        },
+        {
+          "message": "arm_blade_left_2_plane and arm_blade_left_3_plane (different groups) interpenetrate by 2.82 units.",
+          "targets": [
+            "arm_blade_left_2_plane",
+            "arm_blade_left_3_plane"
+          ]
+        },
+        {
+          "message": "arm_blade_left_2_plane and hip_plume_left (different groups) interpenetrate by 0.7 units.",
+          "targets": [
+            "arm_blade_left_2_plane",
+            "hip_plume_left"
+          ]
+        },
+        {
+          "message": "arm_blade_left_2_plane and thigh_left (different groups) interpenetrate by 0.86 units.",
+          "targets": [
+            "arm_blade_left_2_plane",
+            "thigh_left"
+          ]
+        },
+        {
+          "message": "arm_blade_left_2_plane and shank_left (different groups) interpenetrate by 1.16 units.",
+          "targets": [
+            "arm_blade_left_2_plane",
+            "shank_left"
+          ]
+        },
+        {
+          "message": "arm_blade_left_2_plane and ankle_plume_left_1_plane (different groups) interpenetrate by 2.47 units.",
+          "targets": [
+            "arm_blade_left_2_plane",
+            "ankle_plume_left_1_plane"
+          ]
+        },
+        {
+          "message": "arm_blade_left_2_plane and ankle_plume_left_2_plane (different groups) interpenetrate by 2.12 units.",
+          "targets": [
+            "arm_blade_left_2_plane",
+            "ankle_plume_left_2_plane"
+          ]
+        },
+        {
+          "message": "shoulder_plume_left_1 and cheek_plume_left (different groups) interpenetrate by 0.69 units.",
+          "targets": [
+            "shoulder_plume_left_1",
+            "cheek_plume_left"
+          ]
+        },
+        {
+          "message": "hip_plume_left and thigh_left (different groups) interpenetrate by 2.05 units.",
+          "targets": [
+            "hip_plume_left",
+            "thigh_left"
+          ]
+        },
+        {
+          "message": "hip_plume_left and shank_left (different groups) interpenetrate by 2.05 units.",
+          "targets": [
+            "hip_plume_left",
+            "shank_left"
+          ]
+        },
+        {
+          "message": "thigh_left and shank_left (different groups) interpenetrate by 2.08 units.",
+          "targets": [
+            "thigh_left",
+            "shank_left"
+          ]
+        },
+        {
+          "message": "thigh_left and tail_1_solid (different groups) interpenetrate by 0.93 units.",
+          "targets": [
+            "thigh_left",
+            "tail_1_solid"
+          ]
+        },
+        {
+          "message": "shank_left and tarsus_left (different groups) interpenetrate by 1.48 units.",
+          "targets": [
+            "shank_left",
+            "tarsus_left"
+          ]
+        },
+        {
+          "message": "shank_left and ankle_plume_left_1_plane (different groups) interpenetrate by 1.95 units.",
+          "targets": [
+            "shank_left",
+            "ankle_plume_left_1_plane"
+          ]
+        },
+        {
+          "message": "shank_left and ankle_plume_left_2_plane (different groups) interpenetrate by 1.79 units.",
+          "targets": [
+            "shank_left",
+            "ankle_plume_left_2_plane"
+          ]
+        },
+        {
+          "message": "tarsus_left and ankle_plume_left_1_plane (different groups) interpenetrate by 0.91 units.",
+          "targets": [
+            "tarsus_left",
+            "ankle_plume_left_1_plane"
+          ]
+        },
+        {
+          "message": "tarsus_left and ankle_plume_left_2_plane (different groups) interpenetrate by 0.96 units.",
+          "targets": [
+            "tarsus_left",
+            "ankle_plume_left_2_plane"
+          ]
+        },
+        {
+          "message": "ankle_plume_left_1_plane and ankle_plume_left_2_plane (different groups) interpenetrate by 1.67 units.",
+          "targets": [
+            "ankle_plume_left_1_plane",
+            "ankle_plume_left_2_plane"
+          ]
+        },
+        {
+          "message": "cheek_plume_left and crest_left_plane (different groups) interpenetrate by 1.45 units.",
+          "targets": [
+            "cheek_plume_left",
+            "crest_left_plane"
+          ]
+        },
+        {
+          "message": "upper_arm_right and lower_arm_right (different groups) interpenetrate by 1.68 units.",
+          "targets": [
+            "upper_arm_right",
+            "lower_arm_right"
+          ]
+        },
+        {
+          "message": "upper_arm_right and arm_blade_right_1_plane (different groups) interpenetrate by 2.38 units.",
+          "targets": [
+            "upper_arm_right",
+            "arm_blade_right_1_plane"
+          ]
+        },
+        {
+          "message": "upper_arm_right and arm_blade_right_2_plane (different groups) interpenetrate by 1.92 units.",
+          "targets": [
+            "upper_arm_right",
+            "arm_blade_right_2_plane"
+          ]
+        },
+        {
+          "message": "upper_arm_right and arm_blade_right_3_plane (different groups) interpenetrate by 1.53 units.",
+          "targets": [
+            "upper_arm_right",
+            "arm_blade_right_3_plane"
+          ]
+        },
+        {
+          "message": "upper_arm_right and shoulder_plume_right_1 (different groups) interpenetrate by 2.3 units.",
+          "targets": [
+            "upper_arm_right",
+            "shoulder_plume_right_1"
+          ]
+        },
+        {
+          "message": "upper_arm_right and shoulder_plume_right_2 (different groups) interpenetrate by 1.63 units.",
+          "targets": [
+            "upper_arm_right",
+            "shoulder_plume_right_2"
+          ]
+        },
+        {
+          "message": "lower_arm_right and palm_right (different groups) interpenetrate by 0.91 units.",
+          "targets": [
+            "lower_arm_right",
+            "palm_right"
+          ]
+        },
+        {
+          "message": "lower_arm_right and arm_blade_right_1_plane (different groups) interpenetrate by 2.28 units.",
+          "targets": [
+            "lower_arm_right",
+            "arm_blade_right_1_plane"
+          ]
+        },
+        {
+          "message": "lower_arm_right and arm_blade_right_2_plane (different groups) interpenetrate by 2.05 units.",
+          "targets": [
+            "lower_arm_right",
+            "arm_blade_right_2_plane"
+          ]
+        },
+        {
+          "message": "lower_arm_right and arm_blade_right_3_plane (different groups) interpenetrate by 1.58 units.",
+          "targets": [
+            "lower_arm_right",
+            "arm_blade_right_3_plane"
+          ]
+        },
+        {
+          "message": "lower_arm_right and hip_plume_right (different groups) interpenetrate by 1 units.",
+          "targets": [
+            "lower_arm_right",
+            "hip_plume_right"
+          ]
+        },
+        {
+          "message": "palm_right and thumb_right_a (different groups) interpenetrate by 0.7 units.",
+          "targets": [
+            "palm_right",
+            "thumb_right_a"
+          ]
+        },
+        {
+          "message": "palm_right and arm_blade_right_1_plane (different groups) interpenetrate by 1.11 units.",
+          "targets": [
+            "palm_right",
+            "arm_blade_right_1_plane"
+          ]
+        },
+        {
+          "message": "palm_right and arm_blade_right_2_plane (different groups) interpenetrate by 0.88 units.",
+          "targets": [
+            "palm_right",
+            "arm_blade_right_2_plane"
+          ]
+        },
+        {
+          "message": "arm_blade_right_1_plane and arm_blade_right_2_plane (different groups) interpenetrate by 3.76 units.",
+          "targets": [
+            "arm_blade_right_1_plane",
+            "arm_blade_right_2_plane"
+          ]
+        },
+        {
+          "message": "arm_blade_right_1_plane and arm_blade_right_3_plane (different groups) interpenetrate by 2.82 units.",
+          "targets": [
+            "arm_blade_right_1_plane",
+            "arm_blade_right_3_plane"
+          ]
+        },
+        {
+          "message": "arm_blade_right_1_plane and hip_plume_right (different groups) interpenetrate by 0.94 units.",
+          "targets": [
+            "arm_blade_right_1_plane",
+            "hip_plume_right"
+          ]
+        },
+        {
+          "message": "arm_blade_right_1_plane and thigh_right (different groups) interpenetrate by 1.07 units.",
+          "targets": [
+            "arm_blade_right_1_plane",
+            "thigh_right"
+          ]
+        },
+        {
+          "message": "arm_blade_right_1_plane and shank_right (different groups) interpenetrate by 1.36 units.",
+          "targets": [
+            "arm_blade_right_1_plane",
+            "shank_right"
+          ]
+        },
+        {
+          "message": "arm_blade_right_1_plane and tarsus_right (different groups) interpenetrate by 1.03 units.",
+          "targets": [
+            "arm_blade_right_1_plane",
+            "tarsus_right"
+          ]
+        },
+        {
+          "message": "arm_blade_right_1_plane and ankle_plume_right_1_plane (different groups) interpenetrate by 2.47 units.",
+          "targets": [
+            "arm_blade_right_1_plane",
+            "ankle_plume_right_1_plane"
+          ]
+        },
+        {
+          "message": "arm_blade_right_1_plane and ankle_plume_right_2_plane (different groups) interpenetrate by 2.35 units.",
+          "targets": [
+            "arm_blade_right_1_plane",
+            "ankle_plume_right_2_plane"
+          ]
+        },
+        {
+          "message": "arm_blade_right_2_plane and arm_blade_right_3_plane (different groups) interpenetrate by 2.82 units.",
+          "targets": [
+            "arm_blade_right_2_plane",
+            "arm_blade_right_3_plane"
+          ]
+        },
+        {
+          "message": "arm_blade_right_2_plane and hip_plume_right (different groups) interpenetrate by 0.7 units.",
+          "targets": [
+            "arm_blade_right_2_plane",
+            "hip_plume_right"
+          ]
+        },
+        {
+          "message": "arm_blade_right_2_plane and thigh_right (different groups) interpenetrate by 0.86 units.",
+          "targets": [
+            "arm_blade_right_2_plane",
+            "thigh_right"
+          ]
+        },
+        {
+          "message": "arm_blade_right_2_plane and shank_right (different groups) interpenetrate by 1.16 units.",
+          "targets": [
+            "arm_blade_right_2_plane",
+            "shank_right"
+          ]
+        },
+        {
+          "message": "arm_blade_right_2_plane and ankle_plume_right_1_plane (different groups) interpenetrate by 2.47 units.",
+          "targets": [
+            "arm_blade_right_2_plane",
+            "ankle_plume_right_1_plane"
+          ]
+        },
+        {
+          "message": "arm_blade_right_2_plane and ankle_plume_right_2_plane (different groups) interpenetrate by 2.12 units.",
+          "targets": [
+            "arm_blade_right_2_plane",
+            "ankle_plume_right_2_plane"
+          ]
+        },
+        {
+          "message": "shoulder_plume_right_1 and cheek_plume_right (different groups) interpenetrate by 0.69 units.",
+          "targets": [
+            "shoulder_plume_right_1",
+            "cheek_plume_right"
+          ]
+        },
+        {
+          "message": "hip_plume_right and thigh_right (different groups) interpenetrate by 2.05 units.",
+          "targets": [
+            "hip_plume_right",
+            "thigh_right"
+          ]
+        },
+        {
+          "message": "hip_plume_right and shank_right (different groups) interpenetrate by 2.05 units.",
+          "targets": [
+            "hip_plume_right",
+            "shank_right"
+          ]
+        },
+        {
+          "message": "thigh_right and shank_right (different groups) interpenetrate by 2.08 units.",
+          "targets": [
+            "thigh_right",
+            "shank_right"
+          ]
+        },
+        {
+          "message": "thigh_right and tail_1_solid (different groups) interpenetrate by 0.93 units.",
+          "targets": [
+            "thigh_right",
+            "tail_1_solid"
+          ]
+        },
+        {
+          "message": "shank_right and tarsus_right (different groups) interpenetrate by 1.48 units.",
+          "targets": [
+            "shank_right",
+            "tarsus_right"
+          ]
+        },
+        {
+          "message": "shank_right and ankle_plume_right_1_plane (different groups) interpenetrate by 1.95 units.",
+          "targets": [
+            "shank_right",
+            "ankle_plume_right_1_plane"
+          ]
+        },
+        {
+          "message": "shank_right and ankle_plume_right_2_plane (different groups) interpenetrate by 1.79 units.",
+          "targets": [
+            "shank_right",
+            "ankle_plume_right_2_plane"
+          ]
+        },
+        {
+          "message": "tarsus_right and ankle_plume_right_1_plane (different groups) interpenetrate by 0.91 units.",
+          "targets": [
+            "tarsus_right",
+            "ankle_plume_right_1_plane"
+          ]
+        },
+        {
+          "message": "tarsus_right and ankle_plume_right_2_plane (different groups) interpenetrate by 0.96 units.",
+          "targets": [
+            "tarsus_right",
+            "ankle_plume_right_2_plane"
+          ]
+        },
+        {
+          "message": "ankle_plume_right_1_plane and ankle_plume_right_2_plane (different groups) interpenetrate by 1.67 units.",
+          "targets": [
+            "ankle_plume_right_1_plane",
+            "ankle_plume_right_2_plane"
+          ]
+        },
+        {
+          "message": "cheek_plume_right and crest_right_plane (different groups) interpenetrate by 1.45 units.",
+          "targets": [
+            "cheek_plume_right",
+            "crest_right_plane"
+          ]
+        },
+        {
+          "message": "tail_1_solid and tail_2_solid (different groups) interpenetrate by 2.15 units.",
+          "targets": [
+            "tail_1_solid",
+            "tail_2_solid"
+          ]
+        },
+        {
+          "message": "tail_2_solid and tail_3_solid (different groups) interpenetrate by 1.85 units.",
+          "targets": [
+            "tail_2_solid",
+            "tail_3_solid"
+          ]
+        },
+        {
+          "message": "tail_2_solid and tail_fan_01_plane (different groups) interpenetrate by 0.99 units.",
+          "targets": [
+            "tail_2_solid",
+            "tail_fan_01_plane"
+          ]
+        },
+        {
+          "message": "tail_2_solid and tail_fan_02_plane (different groups) interpenetrate by 5.13 units.",
+          "targets": [
+            "tail_2_solid",
+            "tail_fan_02_plane"
+          ]
+        },
+        {
+          "message": "tail_3_solid and tail_fan_01_plane (different groups) interpenetrate by 4 units.",
+          "targets": [
+            "tail_3_solid",
+            "tail_fan_01_plane"
+          ]
+        },
+        {
+          "message": "tail_3_solid and tail_fan_02_plane (different groups) interpenetrate by 4 units.",
+          "targets": [
+            "tail_3_solid",
+            "tail_fan_02_plane"
+          ]
+        },
+        {
+          "message": "tail_3_solid and tail_fan_03_plane (different groups) interpenetrate by 3.73 units.",
+          "targets": [
+            "tail_3_solid",
+            "tail_fan_03_plane"
+          ]
+        },
+        {
+          "message": "tail_3_solid and tail_fan_04_plane (different groups) interpenetrate by 3.73 units.",
+          "targets": [
+            "tail_3_solid",
+            "tail_fan_04_plane"
+          ]
+        },
+        {
+          "message": "tail_3_solid and tail_fan_05_plane (different groups) interpenetrate by 4 units.",
+          "targets": [
+            "tail_3_solid",
+            "tail_fan_05_plane"
+          ]
+        },
+        {
+          "message": "tail_3_solid and tail_fan_06_plane (different groups) interpenetrate by 4 units.",
+          "targets": [
+            "tail_3_solid",
+            "tail_fan_06_plane"
+          ]
+        },
+        {
+          "message": "tail_fan_01_plane and tail_fan_02_plane (different groups) interpenetrate by 9.18 units.",
+          "targets": [
+            "tail_fan_01_plane",
+            "tail_fan_02_plane"
+          ]
+        },
+        {
+          "message": "tail_fan_01_plane and tail_fan_03_plane (different groups) interpenetrate by 9.01 units.",
+          "targets": [
+            "tail_fan_01_plane",
+            "tail_fan_03_plane"
+          ]
+        },
+        {
+          "message": "tail_fan_01_plane and tail_fan_04_plane (different groups) interpenetrate by 9.01 units.",
+          "targets": [
+            "tail_fan_01_plane",
+            "tail_fan_04_plane"
+          ]
+        },
+        {
+          "message": "tail_fan_01_plane and tail_fan_05_plane (different groups) interpenetrate by 7.7 units.",
+          "targets": [
+            "tail_fan_01_plane",
+            "tail_fan_05_plane"
+          ]
+        },
+        {
+          "message": "tail_fan_01_plane and tail_fan_06_plane (different groups) interpenetrate by 7.7 units.",
+          "targets": [
+            "tail_fan_01_plane",
+            "tail_fan_06_plane"
+          ]
+        },
+        {
+          "message": "tail_fan_02_plane and tail_fan_03_plane (different groups) interpenetrate by 11.67 units.",
+          "targets": [
+            "tail_fan_02_plane",
+            "tail_fan_03_plane"
+          ]
+        },
+        {
+          "message": "tail_fan_02_plane and tail_fan_04_plane (different groups) interpenetrate by 11.67 units.",
+          "targets": [
+            "tail_fan_02_plane",
+            "tail_fan_04_plane"
+          ]
+        },
+        {
+          "message": "tail_fan_02_plane and tail_fan_05_plane (different groups) interpenetrate by 10.36 units.",
+          "targets": [
+            "tail_fan_02_plane",
+            "tail_fan_05_plane"
+          ]
+        },
+        {
+          "message": "tail_fan_02_plane and tail_fan_06_plane (different groups) interpenetrate by 10.36 units.",
+          "targets": [
+            "tail_fan_02_plane",
+            "tail_fan_06_plane"
+          ]
+        },
+        {
+          "message": "tail_fan_03_plane and tail_fan_04_plane (different groups) interpenetrate by 8.84 units.",
+          "targets": [
+            "tail_fan_03_plane",
+            "tail_fan_04_plane"
+          ]
+        },
+        {
+          "message": "tail_fan_03_plane and tail_fan_05_plane (different groups) interpenetrate by 15.55 units.",
+          "targets": [
+            "tail_fan_03_plane",
+            "tail_fan_05_plane"
+          ]
+        },
+        {
+          "message": "tail_fan_03_plane and tail_fan_06_plane (different groups) interpenetrate by 7.53 units.",
+          "targets": [
+            "tail_fan_03_plane",
+            "tail_fan_06_plane"
+          ]
+        },
+        {
+          "message": "tail_fan_04_plane and tail_fan_05_plane (different groups) interpenetrate by 7.53 units.",
+          "targets": [
+            "tail_fan_04_plane",
+            "tail_fan_05_plane"
+          ]
+        },
+        {
+          "message": "tail_fan_04_plane and tail_fan_06_plane (different groups) interpenetrate by 15.55 units.",
+          "targets": [
+            "tail_fan_04_plane",
+            "tail_fan_06_plane"
+          ]
+        },
+        {
+          "message": "tail_fan_05_plane and tail_fan_06_plane (different groups) interpenetrate by 6.21 units.",
+          "targets": [
+            "tail_fan_05_plane",
+            "tail_fan_06_plane"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mirror",
+      "label": "Left/right parts mirror each other",
+      "severity": "warning",
+      "ran": true,
+      "violations": []
+    }
+  ],
+  "notes": []
+}

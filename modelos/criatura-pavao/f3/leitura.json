@@ -1,0 +1,352 @@
+{
+  "vistas": {
+    "frente": {
+      "imagem": "preparo/frente-grade.png"
+    },
+    "lado": {
+      "imagem": "preparo/lado-grade.png"
+    }
+  },
+  "modelagem": {
+    "abordagem": "poucas_formas",
+    "justificativa": "Grandes volumes nas juntas e planos alfa nas penas; dedos e garras separados só onde contribuem para mãos/pés articuláveis. Caixas de leitura aproximadas; a proposta editável foi construída pelo script de anatomia, sem fatiar silhuetas.",
+    "referencias": [
+      {
+        "nome": "Harpymon",
+        "papel": "estratégia de sólidos e plumagem em planos; estudo existente reutilizado",
+        "caminho": "C:/Users/enzoc/Downloads/referencias-criaturas/the-digimod/blockbench/champions/harpymon.bbmodel"
+      }
+    ]
+  },
+  "partes": [
+    {
+      "id": "body",
+      "pai": null,
+      "tipo": "volume",
+      "simetria": "central",
+      "caixas": {
+        "frente": [
+          11.5,
+          11,
+          20.5,
+          21
+        ],
+        "lado": [
+          7.8,
+          10.5,
+          12.2,
+          21
+        ]
+      }
+    },
+    {
+      "id": "torso",
+      "pai": "body",
+      "tipo": "volume",
+      "simetria": "central",
+      "caixas": {
+        "frente": [
+          11.2,
+          9.2,
+          20.8,
+          15.8
+        ],
+        "lado": [
+          8.2,
+          9.4,
+          12.8,
+          14.5
+        ]
+      }
+    },
+    {
+      "id": "neck_1",
+      "pai": "torso",
+      "tipo": "volume",
+      "simetria": "central",
+      "caixas": {
+        "frente": [
+          13.5,
+          6.8,
+          18.5,
+          11
+        ],
+        "lado": [
+          6.2,
+          6.8,
+          10.3,
+          11.2
+        ]
+      }
+    },
+    {
+      "id": "head",
+      "pai": "neck_1",
+      "tipo": "volume",
+      "simetria": "central",
+      "caixas": {
+        "frente": [
+          13.4,
+          3.8,
+          18.6,
+          7.6
+        ],
+        "lado": [
+          3.7,
+          5.1,
+          9.4,
+          8.7
+        ]
+      }
+    },
+    {
+      "id": "beak",
+      "pai": "head",
+      "tipo": "volume",
+      "simetria": "central",
+      "caixas": {
+        "frente": [
+          14.5,
+          5.8,
+          17.5,
+          7.9
+        ],
+        "lado": [
+          3.4,
+          6.8,
+          6.1,
+          8.4
+        ]
+      }
+    },
+    {
+      "id": "crest_left",
+      "pai": "head",
+      "tipo": "plano",
+      "simetria": "esquerda",
+      "caixas": {
+        "frente": [
+          15.7,
+          0.3,
+          25.0,
+          5.4
+        ],
+        "lado": [
+          4.1,
+          2.2,
+          20.5,
+          8.4
+        ]
+      },
+      "espelho": "crest_right"
+    },
+    {
+      "id": "arm_left",
+      "pai": "torso",
+      "tipo": "volume",
+      "simetria": "esquerda",
+      "caixas": {
+        "frente": [
+          20,
+          10.5,
+          23.5,
+          15.8
+        ],
+        "lado": [
+          10.3,
+          10.2,
+          12.6,
+          15.8
+        ]
+      },
+      "espelho": "arm_right"
+    },
+    {
+      "id": "forearm_left",
+      "pai": "arm_left",
+      "tipo": "volume",
+      "simetria": "esquerda",
+      "caixas": {
+        "frente": [
+          22.5,
+          14.5,
+          25.1,
+          20.2
+        ],
+        "lado": [
+          11.1,
+          14.2,
+          13.7,
+          20.7
+        ]
+      },
+      "espelho": "forearm_right"
+    },
+    {
+      "id": "hand_left",
+      "pai": "forearm_left",
+      "tipo": "volume",
+      "simetria": "esquerda",
+      "caixas": {
+        "frente": [
+          24.2,
+          18.6,
+          26.4,
+          22.1
+        ],
+        "lado": [
+          10.4,
+          17.4,
+          12.7,
+          20.1
+        ]
+      },
+      "espelho": "hand_right"
+    },
+    {
+      "id": "arm_blades_left",
+      "pai": "forearm_left",
+      "tipo": "plano",
+      "simetria": "esquerda",
+      "caixas": {
+        "frente": [
+          22,
+          11.7,
+          28.5,
+          27.5
+        ],
+        "lado": [
+          10.5,
+          12.0,
+          17.1,
+          25.1
+        ]
+      },
+      "espelho": "arm_blades_right"
+    },
+    {
+      "id": "leg_left",
+      "pai": "body",
+      "tipo": "volume",
+      "simetria": "esquerda",
+      "caixas": {
+        "frente": [
+          18.0,
+          19.3,
+          22.8,
+          26.2
+        ],
+        "lado": [
+          7.6,
+          19,
+          10.1,
+          24.7
+        ]
+      },
+      "espelho": "leg_right"
+    },
+    {
+      "id": "shin_left",
+      "pai": "leg_left",
+      "tipo": "volume",
+      "simetria": "esquerda",
+      "caixas": {
+        "frente": [
+          20.4,
+          24.5,
+          23.6,
+          29.9
+        ],
+        "lado": [
+          8.6,
+          23.3,
+          10.5,
+          29.5
+        ]
+      },
+      "espelho": "shin_right"
+    },
+    {
+      "id": "foot_left",
+      "pai": "shin_left",
+      "tipo": "volume",
+      "simetria": "esquerda",
+      "caixas": {
+        "frente": [
+          19.7,
+          28.8,
+          25.3,
+          31.7
+        ],
+        "lado": [
+          4.0,
+          28.8,
+          10.8,
+          31.2
+        ]
+      },
+      "espelho": "foot_right"
+    },
+    {
+      "id": "tail_1",
+      "pai": "body",
+      "tipo": "volume",
+      "simetria": "central",
+      "caixas": {
+        "lado": [
+          11.5,
+          16,
+          20.5,
+          22
+        ]
+      }
+    },
+    {
+      "id": "tail_fan",
+      "pai": "tail_1",
+      "tipo": "plano",
+      "simetria": "central",
+      "caixas": {
+        "frente": [
+          4.1,
+          20.0,
+          28.1,
+          31.3
+        ],
+        "lado": [
+          16.5,
+          19.1,
+          31.6,
+          30.8
+        ]
+      }
+    }
+  ],
+  "papeis_cor": {
+    "primaria": "#0095a1",
+    "clara": "#fee7a8",
+    "escura": "#102c3a",
+    "verde": "#21b798",
+    "dourada": "#ffd747"
+  },
+  "incertezas": [
+    {
+      "parte": "crest_left",
+      "item": "contagem no perfil",
+      "resolucao": "imagem",
+      "nota": "Frente/costas/3/4 mostram duas; o perfil mostra uma sobreposta à outra."
+    },
+    {
+      "parte": "tail_fan",
+      "item": "penas ocultas no perfil",
+      "resolucao": "imagem",
+      "nota": "Seis ocelos/camadas nas costas; não transformar o perfil em uma única pena."
+    },
+    {
+      "parte": "body",
+      "item": "altura física no jogo",
+      "resolucao": "prompt",
+      "nota": "Usuário pediu maior que F2. Proposta inicial de quatro blocos, ajustável após revisão; não define escala do Studio."
+    }
+  ]
+}

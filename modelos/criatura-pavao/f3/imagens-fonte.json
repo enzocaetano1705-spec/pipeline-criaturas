@@ -1,0 +1,22 @@
+{
+  "conceito": {
+    "arquivo": "docs/criaturas/criatura-pavao/e3-conceito.png",
+    "original": "C:\\Users\\enzoc\\Downloads\\Ave Celestial com Crista de Pavão.png",
+    "sha256": "56c51271fb8f5996cd398927532e08a34ce34fc8b11e588363757e7acdf2f9d0"
+  },
+  "costas": {
+    "arquivo": "docs/criaturas/criatura-pavao/e3-costas.png",
+    "original": "C:\\Users\\enzoc\\Downloads\\Imagem do ChatGPT 24 de out. de 2026, 23_20_45.png",
+    "sha256": "bef910e304e7dcea69e4fee56cc1b2068efc7ccd8d87c375ea6f90d36b7eeea9"
+  },
+  "lado": {
+    "arquivo": "docs/criaturas/criatura-pavao/e3-lado.png",
+    "original": "C:\\Users\\enzoc\\Downloads\\Dragão-Ave com Pluma Única.png",
+    "sha256": "3a53f73ed1bef295e99bd89d89fb5e3e78d5ab0659534a16a78d584f63909e4a"
+  },
+  "frente": {
+    "arquivo": "docs/criaturas/criatura-pavao/e3-frente.png",
+    "original": "C:\\Users\\enzoc\\Downloads\\Imagem do ChatGPT 24 de out. de 2026, 23_20_37.png",
+    "sha256": "ba25d999eb8f4c4bc70ce97bae632383e15b0be1aa579abc6aeb2e3f25b562ce"
+  }
+}
