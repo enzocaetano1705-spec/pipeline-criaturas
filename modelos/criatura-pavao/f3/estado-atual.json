@@ -1,9 +1,9 @@
 {
-  "status": "golpes-f3-v5-em-avaliacao",
-  "fonte": "modelos/criatura-pavao/f3/ataques-v5/criatura-pavao-e3-ataques-v5.bbmodel",
-  "sha256": "ae7cc667173109185994087b62bb70fbf2d47e6b5c880b82cbc9f42444e4c2cd",
+  "status": "golpes-f3-v6-em-avaliacao",
+  "fonte": "modelos/criatura-pavao/f3/ataques-v6/criatura-pavao-e3-ataques-v6.bbmodel",
+  "sha256": "9b36df874a85b29edb79dde878bd07be8920c06515973e631ce478287ffb2500",
   "origem_manual": "modelos/criatura-pavao/f3/animacoes-v3/origem-revisada.bbmodel",
-  "revisao_atual": "Low aprovado recebe aceleração concentrada no corte, mantendo a trajetória. Cross separado em attack_right (1,65 s), attack_left (1,50 s) e attack_combo (2,20 s). Direita com continuação/frenagem pelo corpo; combo com impulso, corte diagonal, giro aéreo e impacto duplo na queda. Arquivo salvo, motor e prévias nativas conferidos. Outros 19 clipes e geometria, rig, UVs e atlas preservados; 23 clipes ao todo.",
+  "revisao_atual": "Low v5 aprovado e intacto. Left 1,32 s com aceleração concentrada no corte. Right 1,51 s com intervalo de espera reduzido e retomada axial suave do punho. Combo 2,20 s com golpe duplo fechado e quase paralelo; salto, giro, corpo, cauda, pernas e crista preservados. Só seis canais do combo revistos entre 0,90 e 1,62 s. Outros 20 clipes, incluindo Low, e geometria/rig/UVs/atlas intactos.",
   "direcao_atual": "Esquerdo no ombro e floreio; direito no arrasto ou cravado durante o descanso. Lados e base aprovados pelo usuário.",
   "aprovacoes": {
     "idle": "aprovado",
@@ -14,10 +14,11 @@
     "combat_ready": "aprovado na base v7",
     "combat_enter": "movimento aprovado; v10 repara os valores sem mudar o ritmo",
     "corridas": "seis-clipes-aprovados-pelo-usuario-em-27-10-2026",
-    "golpes": "golpes-v5-para-feedback",
+    "golpes": "ajustes-v6-para-feedback",
     "attack_spin": "rejeitado-e-adiado;preservado-na-v1",
-    "attack_cross_esquerdo": "trajetoria-v4-preservada-em-attack_left-v5-em-avaliacao",
-    "attack_low": "trajetoria-e-peso-v4-aprovados;aceleracao-v5-em-avaliacao"
+    "attack_cross_esquerdo": "trajetoria-v4-preservada;aceleracao-v6-em-avaliacao",
+    "attack_low": "v5-aprovado-integralmente;preservado-na-v6",
+    "attack_combo": "movimento-v5-aprovado;fechamento-v6-em-avaliacao"
   },
   "animacoes": [
     "idle",
@@ -44,17 +45,16 @@
     "attack_left",
     "attack_combo"
   ],
-  "metadados": "modelos/criatura-pavao/f3/ataques-v5/animacoes.json",
+  "metadados": "modelos/criatura-pavao/f3/ataques-v6/animacoes.json",
   "studio": "não alterado; somente animações e metadados locais",
   "clipes_em_revisao": [
-    "attack_low",
-    "attack_right",
     "attack_left",
+    "attack_right",
     "attack_combo"
   ],
   "clipes_adiados": [
     "attack_spin"
   ],
-  "fonte_anterior": "modelos/criatura-pavao/f3/ataques-v4/criatura-pavao-e3-ataques-v4.bbmodel",
-  "proxima_etapa": "Feedback da aceleração/frenagem e do combo aéreo; exportação após aprovação artística."
+  "fonte_anterior": "modelos/criatura-pavao/f3/ataques-v5/criatura-pavao-e3-ataques-v5.bbmodel",
+  "proxima_etapa": "Feedback dos ajustes de Left, retomada do Right e fechamento do combo. Low aprovado; exportação após aprovação artística final."
 }

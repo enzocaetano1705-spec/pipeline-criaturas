@@ -1,0 +1,32 @@
+{
+  "fonte": "modelos/criatura-pavao/f3/ataques-v5/criatura-pavao-e3-ataques-v5.bbmodel",
+  "fonte_sha256": "ae7cc667173109185994087b62bb70fbf2d47e6b5c880b82cbc9f42444e4c2cd",
+  "saida_sha256": "9b36df874a85b29edb79dde878bd07be8920c06515973e631ce478287ffb2500",
+  "clipes": {
+    "attack_low": 1.42,
+    "attack_right": 1.51,
+    "attack_left": 1.32,
+    "attack_combo": 2.2
+  },
+  "preservado": "attack_low e demais 19 clipes",
+  "combo_canais": {
+    "arm_left": [
+      "rotation"
+    ],
+    "arm_right": [
+      "rotation"
+    ],
+    "wing_left": [
+      "rotation",
+      "position"
+    ],
+    "wing_right": [
+      "rotation",
+      "position"
+    ]
+  },
+  "combo_janela": [
+    0.9,
+    1.62
+  ]
+}
