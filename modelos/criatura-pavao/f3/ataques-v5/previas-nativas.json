@@ -1,0 +1,79 @@
+{
+  "saida_sha256": "ae7cc667173109185994087b62bb70fbf2d47e6b5c880b82cbc9f42444e4c2cd",
+  "quadros": {
+    "attack_low": 43,
+    "attack_right": 50,
+    "attack_left": 45,
+    "attack_combo": 66,
+    "attack_combo-front": 66
+  },
+  "cameras": {
+    "attack_low": [
+      "attack_low",
+      [
+        155,
+        95,
+        -230
+      ],
+      [
+        0,
+        28,
+        -2
+      ]
+    ],
+    "attack_right": [
+      "attack_right",
+      [
+        155,
+        95,
+        -230
+      ],
+      [
+        0,
+        28,
+        -2
+      ]
+    ],
+    "attack_left": [
+      "attack_left",
+      [
+        155,
+        95,
+        -230
+      ],
+      [
+        0,
+        28,
+        -2
+      ]
+    ],
+    "attack_combo": [
+      "attack_combo",
+      [
+        155,
+        95,
+        -230
+      ],
+      [
+        0,
+        35,
+        -2
+      ]
+    ],
+    "attack_combo-front": [
+      "attack_combo",
+      [
+        0,
+        48,
+        -290
+      ],
+      [
+        0,
+        38,
+        0
+      ]
+    ]
+  },
+  "camera_fixa_por_clipe": true,
+  "limpeza_view": "registro removido; erro conhecido do listener onContextMenu"
+}

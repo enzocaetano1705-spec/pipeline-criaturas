@@ -1,0 +1,17 @@
+{
+  "fonte": "modelos/criatura-pavao/f3/ataques-v4/criatura-pavao-e3-ataques-v4.bbmodel",
+  "fonte_sha256": "bdde82fff85922f61f35dc77360f2865f2286eab599bd6f601570701c01d7e6f",
+  "saida_sha256": "ae7cc667173109185994087b62bb70fbf2d47e6b5c880b82cbc9f42444e4c2cd",
+  "clipes": {
+    "attack_low": 1.42,
+    "attack_right": 1.65,
+    "attack_left": 1.5,
+    "attack_combo": 2.2
+  },
+  "chaves": {
+    "attack_low": 5558,
+    "attack_right": 6891,
+    "attack_left": 5988,
+    "attack_combo": 10006
+  }
+}

@@ -1,0 +1,355 @@
+{
+  "status": "golpes-v5-em-avaliacao",
+  "modelo": "criatura-pavao-e3-ataques-v5.bbmodel",
+  "fonte": "modelos/criatura-pavao/f3/ataques-v4/criatura-pavao-e3-ataques-v4.bbmodel",
+  "fonte_sha256": "bdde82fff85922f61f35dc77360f2865f2286eab599bd6f601570701c01d7e6f",
+  "saida_sha256": "ae7cc667173109185994087b62bb70fbf2d47e6b5c880b82cbc9f42444e4c2cd",
+  "root_motion": true,
+  "aprovados": [
+    "idle",
+    "walk",
+    "combat_ready",
+    "combat_walk",
+    "run",
+    "run_start",
+    "run_stop",
+    "combat_run",
+    "combat_run_start",
+    "combat_run_stop"
+  ],
+  "clipes_revistos": {
+    "combat_enter": {
+      "duracao": 1.65,
+      "loop": false
+    },
+    "combat_enter_walk": {
+      "duracao": 1.65,
+      "loop": false
+    },
+    "combat_enter_upper": {
+      "duracao": 1.65,
+      "loop": false
+    },
+    "combat_walk_start": {
+      "duracao": 0.6,
+      "loop": false
+    },
+    "combat_walk_stop": {
+      "duracao": 0.6,
+      "loop": false
+    },
+    "combat_idle": {
+      "duracao": 7.1499999999999995,
+      "loop": false
+    },
+    "combat_idle_resume": {
+      "duracao": 1.1,
+      "loop": false
+    },
+    "combat_exit": {
+      "duracao": 1.8,
+      "loop": false
+    },
+    "combat_exit_upper": {
+      "duracao": 1.8,
+      "loop": false
+    }
+  },
+  "lados": {
+    "ombro_e_floreio": "left da criatura",
+    "arrasto_e_espada_cravada": "right da criatura"
+  },
+  "saque": {
+    "GripLeft": 0.3,
+    "GripRight": 0.34,
+    "FlourishStart": 0.7,
+    "FlourishEnd": 1.23,
+    "fim_andando_fase_combat_walk": 0.008333333333333304,
+    "fim_andando_tempo_combat_walk": 0.014999999999999947
+  },
+  "passos": {
+    "start_inicia_em": "combat_ready@0",
+    "start_termina_em": "combat_walk@0.30",
+    "stop_inicia_em": "combat_walk@0",
+    "stop_termina_em": "combat_ready@0",
+    "interrupcoes": "Misturar os estados e preservar a fase na integração futura."
+  },
+  "descanso": {
+    "clipe": "combat_idle",
+    "loop": false,
+    "cravar_ate": 0.72,
+    "ReleaseStart": 0.95,
+    "ReleaseEnd": 1.25,
+    "pausa": [
+      1.25,
+      4.25
+    ],
+    "Regrasp": 4.55,
+    "recuperada_em": 5.35,
+    "DockLeft": 6.55,
+    "DockRight": 6.554654486930031,
+    "fim": 7.1499999999999995,
+    "termina_em": "idle@0",
+    "retomada": "combat_idle_resume",
+    "retomada_origem": "pausa, com mistura de respiração",
+    "retomada_termina_em": "combat_ready@0",
+    "retomada_Regrasp": 0.3,
+    "profundidade_unidades": 30.197191600853962,
+    "espada_solta_imovel": true
+  },
+  "saida": {
+    "andando": "combat_exit",
+    "camada": "combat_exit_upper",
+    "DockLeft": 1.2,
+    "DockRight": 1.204654486930031,
+    "fim_andando_fase_walk": 0.09999999999999987,
+    "fim_andando_tempo_walk": 0.1499999999999998,
+    "floreio_reverso": false
+  },
+  "camadas": {
+    "modo": "substituir canais da máscara; não aditivo",
+    "ossos": [
+      "tail_1",
+      "tail_2",
+      "tail_fan_01",
+      "tail_fan_02",
+      "tail_fan_03",
+      "tail_fan_04",
+      "tail_fan_05",
+      "tail_fan_06",
+      "waist",
+      "torso",
+      "arm_left",
+      "arm_right",
+      "back_feathers_left",
+      "back_feathers_left3",
+      "back_feathers_right",
+      "back_feathers_right2",
+      "forearm_left",
+      "forearm_right",
+      "hand_left",
+      "feather_sword_left",
+      "hand_right",
+      "feather_sword_right",
+      "neck_1",
+      "neck_2",
+      "head",
+      "feather_left_1",
+      "feather_left_2",
+      "feather_right_1",
+      "feather_right_2",
+      "wing_left",
+      "wing_right"
+    ],
+    "base": "corpo, bacia e pernas do clipe completo correspondente, no mesmo tempo",
+    "fase_enter": "t/1.5 + (1/1.8-1/1.5)*t*t/(2*1.65)",
+    "fase_exit": "t/1.8 + (1/1.5-1/1.8)*t*t/(2*1.8)",
+    "sem_canais": [
+      "root",
+      "body",
+      "pelvis",
+      "leg_*",
+      "shin_*",
+      "foot_*"
+    ],
+    "companheiros": {
+      "combat_enter_upper": "combat_enter_walk",
+      "combat_exit_upper": "combat_exit"
+    },
+    "origem_dos_canais": "máscara de canais locais do companheiro; sem translação artificial de waist/tail_1"
+  },
+  "validacao": "validacao-ataques.json",
+  "golpes": {
+    "attack_low": {
+      "duracao": 1.42,
+      "origem": "combat_ready@0",
+      "destino": "combat_ready@0",
+      "loop": false,
+      "marcadores": {
+        "DamageStart": 0.43,
+        "HitFrame": 0.54,
+        "DamageEnd": 0.67,
+        "RecoveryStart": 0.8,
+        "CancelOpen": 1.08
+      }
+    },
+    "attack_right": {
+      "duracao": 1.65,
+      "origem": "combat_ready@0",
+      "destino": "combat_ready@0",
+      "loop": false,
+      "marcadores": {
+        "DamageStart": 0.37,
+        "HitFrame": 0.49,
+        "DamageEnd": 0.64,
+        "RecoveryStart": 0.83,
+        "CancelOpen": 1.12
+      }
+    },
+    "attack_left": {
+      "duracao": 1.5,
+      "origem": "combat_ready@0",
+      "destino": "combat_ready@0",
+      "loop": false,
+      "marcadores": {
+        "DamageStart": 0.28,
+        "HitFrame": 0.49,
+        "DamageEnd": 0.55,
+        "RecoveryStart": 0.78,
+        "CancelOpen": 1.1
+      }
+    },
+    "attack_combo": {
+      "duracao": 2.2,
+      "origem": "combat_ready@0",
+      "destino": "combat_ready@0",
+      "loop": false,
+      "marcadores": {
+        "Takeoff": 0.4,
+        "DamageStart": 0.44,
+        "HitFrame": 0.49,
+        "DamageEnd": 0.57,
+        "SpinEnd": 1.0,
+        "DamageStart2": 1.03,
+        "HitFrame2": 1.19,
+        "GroundImpact": 1.2,
+        "DamageEnd2": 1.24,
+        "RecoveryStart": 1.4,
+        "CancelOpen": 1.82
+      }
+    }
+  },
+  "flicks": {
+    "causa": "Molang interpreta expoentes como expressões; decimais explícitos eliminam deslocamentos de -7/-8.",
+    "formato_valores": "texto decimal sem expoentes; expressões preservadas",
+    "chaves_reparadas_fora_idle": 2831,
+    "outros_12_clipes_numericos_identicos": true,
+    "validacao_nativa": "../animacoes-v10/validacao-nativa.json",
+    "comparacao_tecnica": "../animacoes-v10/comparacao-tecnica.json",
+    "comparacao_render": "../animacoes-v10/comparacao-nativa.png",
+    "compactacao_idle": {
+      "tempos_antes": 864,
+      "tempos_distintos_depois": 740,
+      "chaves_antes": 34644,
+      "chaves_depois": 5866,
+      "tolerancia_graus_por_eixo": 0.01,
+      "tolerancia_unidades_por_eixo": 0.001,
+      "eventos_preservados": [
+        0,
+        0.48,
+        0.72,
+        0.95,
+        1.25,
+        4.25,
+        4.55,
+        5.35,
+        6.55,
+        6.554654486930031,
+        7.1499999999999995
+      ]
+    },
+    "medicao_fps": "../animacoes-v10/medicao-fps.json",
+    "relatorios_historicos": "Arquivos da base v10 preservada; não são medições desta corrida."
+  },
+  "corridas": {
+    "run": {
+      "duracao": 0.84,
+      "loop": true,
+      "eventos": {
+        "FootLeft": 0.0,
+        "FootRight": 0.42,
+        "LiftLeft": 0.35279999999999995,
+        "LiftRight": 0.7727999999999999
+      }
+    },
+    "run_start": {
+      "duracao": 0.6,
+      "loop": false,
+      "origem": "walk",
+      "tempo_origem": 0.0,
+      "destino": "run",
+      "fase_destino": 0.5571428571428572,
+      "tempo_destino": 0.46799999999999997
+    },
+    "run_stop": {
+      "duracao": 0.66,
+      "loop": false,
+      "origem": "run",
+      "tempo_origem": 0.0,
+      "destino": "walk",
+      "fase_destino": 0.6128571428571429,
+      "tempo_destino": 0.9192857142857143
+    },
+    "combat_run": {
+      "duracao": 0.96,
+      "loop": true,
+      "eventos": {
+        "FootLeft": 0.0,
+        "FootRight": 0.48,
+        "LiftLeft": 0.4224,
+        "LiftRight": 0.9023999999999999
+      }
+    },
+    "combat_run_start": {
+      "duracao": 0.66,
+      "loop": false,
+      "origem": "combat_walk",
+      "tempo_origem": 0.0,
+      "destino": "combat_run",
+      "fase_destino": 0.5270833333333333,
+      "tempo_destino": 0.506
+    },
+    "combat_run_stop": {
+      "duracao": 0.72,
+      "loop": false,
+      "origem": "combat_run",
+      "tempo_origem": 0.0,
+      "destino": "combat_walk",
+      "fase_destino": 0.5750000000000001,
+      "tempo_destino": 1.0350000000000001
+    },
+    "integracao": "Somente animações. Reutilizar fase/velocidade e fazer crossfade ao interromper transições; os clipes não implementam esse controle no jogo.",
+    "posturas": {
+      "run": "tronco baixo, peito/pelve contrapostos, cauda em contrapeso e braços recolhidos",
+      "combat_run": "inclinação intermediária, passada pesada, esquerda no ombro e direita no arrasto"
+    },
+    "velocidade_referencia_unidades_s": {
+      "run": 37.414965986394556,
+      "combat_run": 28.882575757575758
+    },
+    "sem_root_motion": true,
+    "aprovacao": "Seis clipes aprovados pelo usuário em 27/10/2026, antes dos golpes."
+  },
+  "referencias_ataques": [
+    "https://calgaryrakushinkan.com/hasuji/",
+    "Guarda/marcha/corridas aprovadas da F3"
+  ],
+  "golpes_adiados": {
+    "attack_spin": "Rejeitado; isolado intacto na versão anterior."
+  },
+  "controle_golpes": "Low aprovado com aceleração revista. Direita ascendente e esquerda descendente independentes. Combo com impulso das pernas, corte a 45 graus, volta completa no ar e impacto duplo na queda; penas presas às raízes.",
+  "aprovacoes_parciais": {
+    "attack_low": "Trajetória e peso v4 aprovados; aceleração v5 em avaliação.",
+    "attack_left": "Trajetória descendente v4 preservada; clipe independente em avaliação."
+  },
+  "referencias_usuario": [
+    "../ataques-v4/referencias/cross-eixo-1.png",
+    "../ataques-v4/referencias/cross-eixo-2.png",
+    "../ataques-v4/referencias/low-amplitude.png"
+  ],
+  "sequencia_sugerida": [
+    "attack_right",
+    "attack_left",
+    "attack_combo"
+  ],
+  "trajetoria_root": {
+    "attack_combo": {
+      "eixo": "Y",
+      "inicio": 0.4,
+      "fim": 1.2,
+      "altura": 20.0,
+      "deslocamento_liquido": 0
+    }
+  },
+  "legado_cross": "attack_cross preservado somente na v4; substituído nesta versão pelos três clipes pedidos."
+}
