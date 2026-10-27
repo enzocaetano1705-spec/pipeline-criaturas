@@ -1,0 +1,19 @@
+{
+  "modelo": "C:\\Users\\enzoc\\dev\\pipeline-criaturas\\modelos\\criatura-pavao\\f3\\corrida-v1\\criatura-pavao-e3-corrida-v1.bbmodel",
+  "fps_clipes": 24,
+  "fps_sequencias": 20,
+  "quadros": {
+    "run": 20,
+    "run_start": 14,
+    "run_stop": 16,
+    "combat_run": 23,
+    "combat_run_start": 16,
+    "combat_run_stop": 17,
+    "sequencia-pacifica": 92,
+    "sequencia-combate": 108
+  },
+  "camera_fixa": true,
+  "sequencias": "walk -> start -> run -> stop -> walk, com fases corretas nos encaixes; sem lÃ³gica de gameplay",
+  "saida_sha256": "8520d957178d02497615fb0b608a8768ea9b82d8363795054ba17db7b1ea3618",
+  "limpeza_view": "Registro removido; erro onContextMenu no descarte do listener. list_views confirmou ausência da vista privada."
+}

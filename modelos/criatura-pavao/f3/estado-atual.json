@@ -1,9 +1,9 @@
 {
-  "status": "reparos-numericos-v10-em-avaliacao",
-  "fonte": "modelos/criatura-pavao/f3/animacoes-v10/criatura-pavao-e3-combate-v10.bbmodel",
-  "sha256": "0b125d7219362f686372e82690432d68097e24170406316fbe5bd5abb23499db",
+  "status": "corridas-f3-v1-em-avaliacao",
+  "fonte": "modelos/criatura-pavao/f3/corrida-v1/criatura-pavao-e3-corrida-v1.bbmodel",
+  "sha256": "8520d957178d02497615fb0b608a8768ea9b82d8363795054ba17db7b1ea3618",
   "origem_manual": "modelos/criatura-pavao/f3/animacoes-v3/origem-revisada.bbmodel",
-  "revisao_atual": "Decimais explícitos corrigem flicks de penas/asas causados por expoentes no Molang. Descanso compactado de 34.644 para 5.866 chaves (-83,1%); eventos preservados, maior desvio visual 0,02561 unidade. Outros 12 clipes numericamente iguais; mesma geometria/UVs/atlas/rig. FPS real ainda sem medida por janela oculta.",
+  "revisao_atual": "Seis clipes novos: run/start/stop e combat_run/start/stop, com posturas próprias, corpo articulado, apoio nos dedos, fase aérea breve e armas vinculadas. Treze clipes, geometria, UVs, textura e rig da v10 preservados. Arquivo/nativo em duas fases, apoios, juntas, arrasto, loops e conexões conferidos; seis GIFs e duas sequências nativas.",
   "direcao_atual": "Esquerdo no ombro e floreio; direito no arrasto ou cravado durante o descanso. Lados e base aprovados pelo usuário.",
   "aprovacoes": {
     "idle": "aprovado",
@@ -12,33 +12,41 @@
     "combat_walk": "aprovado",
     "combat_enter_v3": "saque e floreio aprovados; final revisto na v4",
     "combat_ready": "aprovado na base v7",
-    "combat_enter": "movimento aprovado; v10 repara os valores sem mudar o ritmo"
+    "combat_enter": "movimento aprovado; v10 repara os valores sem mudar o ritmo",
+    "corridas": "proposta-v1-em-avaliacao"
   },
   "animacoes": [
     "idle",
     "walk",
+    "combat_walk",
     "combat_ready",
     "combat_enter",
     "combat_enter_walk",
-    "combat_enter_upper",
-    "combat_walk",
     "combat_walk_start",
     "combat_walk_stop",
-    "combat_idle",
     "combat_idle_resume",
     "combat_exit",
-    "combat_exit_upper"
+    "combat_enter_upper",
+    "combat_exit_upper",
+    "combat_idle",
+    "run",
+    "run_start",
+    "run_stop",
+    "combat_run",
+    "combat_run_start",
+    "combat_run_stop"
   ],
-  "metadados": "modelos/criatura-pavao/f3/animacoes-v10/animacoes.json",
+  "metadados": "modelos/criatura-pavao/f3/corrida-v1/animacoes.json",
   "studio": "não alterado; somente animações e metadados locais",
   "clipes_em_revisao": [
-    "combat_enter",
-    "combat_enter_walk",
-    "combat_walk_start",
-    "combat_walk_stop",
-    "combat_idle"
+    "run",
+    "run_start",
+    "run_stop",
+    "combat_run",
+    "combat_run_start",
+    "combat_run_stop"
   ],
   "clipes_adiados": [],
-  "fonte_anterior": "modelos/criatura-pavao/f3/animacoes-v9/criatura-pavao-e3-combate-v9.bbmodel",
-  "proxima_etapa": "Conferir os cinco reparos e o desempenho do descanso com janela visível; depois golpes da F3."
+  "fonte_anterior": "modelos/criatura-pavao/f3/animacoes-v10/criatura-pavao-e3-combate-v10.bbmodel",
+  "proxima_etapa": "Avaliar as corridas no Blockbench; depois trabalhar os golpes da F3."
 }

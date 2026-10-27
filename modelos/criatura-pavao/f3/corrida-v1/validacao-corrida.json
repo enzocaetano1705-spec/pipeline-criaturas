@@ -1,0 +1,1030 @@
+{
+  "fonte_sha256": "0b125d7219362f686372e82690432d68097e24170406316fbe5bd5abb23499db",
+  "saida_sha256": "8520d957178d02497615fb0b608a8768ea9b82d8363795054ba17db7b1ea3618",
+  "clipes_preservados": [
+    "idle",
+    "walk",
+    "combat_walk",
+    "combat_ready",
+    "combat_enter",
+    "combat_enter_walk",
+    "combat_walk_start",
+    "combat_walk_stop",
+    "combat_idle_resume",
+    "combat_exit",
+    "combat_enter_upper",
+    "combat_exit_upper",
+    "combat_idle"
+  ],
+  "geometria_rig_textura_preservados": true,
+  "linear": {
+    "clipes": {
+      "run": {
+        "min_pes_y": -0.000474033243691914,
+        "min_laminas_y": 17.861117384102677,
+        "erro_mao_arma": 0.0,
+        "erro_cauda_arma": 0.0014472637243863875,
+        "erro_raizes_penas": 0.0003671954520257718,
+        "erro_alvo_pes": 0.0027810348850152984,
+        "erro_root": 0.0,
+        "translacao_juntas": 0.0,
+        "erro_vinculo_lamina_inteira": 0.008794399351739897,
+        "cotovelos_graus": [
+          70.20626806463527,
+          78.20609671151576
+        ],
+        "joelhos_graus": [
+          25.387071012249294,
+          132.91149445110676
+        ],
+        "punho_max_graus": 2.9823432930415352,
+        "fracao_aerea": 0.08866995073891626,
+        "curso_body_xyz": [
+          0.9598838999999999,
+          2.699621231607061,
+          0.7999010939004716
+        ],
+        "oscilacao_peito_graus": [
+          9.269313610722474,
+          4.101963044817345,
+          6.836147936623561
+        ],
+        "oscilacao_cabeca_graus": [
+          5.599501185333956,
+          3.2072338839260017,
+          1.6004169634033927
+        ],
+        "maior_passo_angular": 2.7245666141139444,
+        "piores_amostras": {
+          "piso_espada": [
+            "right",
+            0.15801980198019802,
+            17.861117384102677
+          ]
+        }
+      },
+      "run_start": {
+        "min_pes_y": -0.0005590133936515874,
+        "min_laminas_y": 19.42686931090163,
+        "erro_mao_arma": 0.0,
+        "erro_cauda_arma": 0.0014870632054619659,
+        "erro_raizes_penas": 0.0,
+        "erro_alvo_pes": 0.002995109993348936,
+        "erro_root": 0.0,
+        "translacao_juntas": 0.0,
+        "erro_vinculo_lamina_inteira": 0.009548226675652744,
+        "cotovelos_graus": [
+          71.66498365303296,
+          97.12266421696474
+        ],
+        "joelhos_graus": [
+          25.66259754994896,
+          121.36419830080439
+        ],
+        "punho_max_graus": 2.9823432930406795,
+        "fracao_aerea": 0.04827586206896552,
+        "curso_body_xyz": [
+          0.8038007709769472,
+          3.374887114922519,
+          0.5298500499667487
+        ],
+        "oscilacao_peito_graus": [
+          22.958334719595832,
+          2.2172304364197277,
+          3.36683238055427
+        ],
+        "oscilacao_cabeca_graus": [
+          4.7669483803220025,
+          1.5957003037452908,
+          0.8484063387669716
+        ],
+        "maior_passo_angular": 2.9100248639856607,
+        "piores_amostras": {
+          "piso_espada": [
+            "right",
+            0.32916666666666666,
+            19.42686931090163
+          ]
+        }
+      },
+      "run_stop": {
+        "min_pes_y": -0.000819632004447036,
+        "min_laminas_y": 18.144457504090607,
+        "erro_mao_arma": 0.0,
+        "erro_cauda_arma": 0.0014604218363075334,
+        "erro_raizes_penas": 0.0,
+        "erro_alvo_pes": 0.0034810469535695777,
+        "erro_root": 0.0,
+        "translacao_juntas": 0.0,
+        "erro_vinculo_lamina_inteira": 0.009738787026518939,
+        "cotovelos_graus": [
+          71.94761249423428,
+          97.4115356480783
+        ],
+        "joelhos_graus": [
+          23.141863700309642,
+          125.2637461227178
+        ],
+        "punho_max_graus": 2.982343293040924,
+        "fracao_aerea": 0.0,
+        "curso_body_xyz": [
+          1.0755611439951265,
+          4.132987465905931,
+          0.5664525109859175
+        ],
+        "oscilacao_peito_graus": [
+          24.044672481088384,
+          1.904390907085945,
+          3.2945237094396713
+        ],
+        "oscilacao_cabeca_graus": [
+          4.203267628276697,
+          1.7405633425899447,
+          0.7855911844565646
+        ],
+        "maior_passo_angular": 2.40793950974416,
+        "piores_amostras": {
+          "piso_espada": [
+            "right",
+            0.14620253164556962,
+            18.144457504090607
+          ]
+        }
+      },
+      "combat_run": {
+        "min_pes_y": -0.0006064871328026102,
+        "min_laminas_y": -0.009154340346462675,
+        "erro_mao_arma": 5.057919560092141e-10,
+        "erro_cauda_arma": 0.0,
+        "erro_raizes_penas": 0.00033527215311505905,
+        "erro_alvo_pes": 0.003007483154389805,
+        "erro_root": 0.0,
+        "translacao_juntas": 0.0,
+        "erro_vinculo_lamina_inteira": 8.0564682726774e-10,
+        "cotovelos_graus": [
+          69.49133412375015,
+          120.64641199266507
+        ],
+        "joelhos_graus": [
+          40.99032193136786,
+          126.03952981377284
+        ],
+        "punho_max_graus": 21.404378045905005,
+        "fracao_aerea": 0.04329004329004329,
+        "curso_body_xyz": [
+          0.959910448,
+          2.299785445678296,
+          0.7998980019563877
+        ],
+        "oscilacao_peito_graus": [
+          9.258513861891213,
+          4.06620416348656,
+          6.242514344072216
+        ],
+        "oscilacao_cabeca_graus": [
+          5.599699359427039,
+          3.2045993339142003,
+          1.6020912696281449
+        ],
+        "maior_passo_angular": 2.109314314222837,
+        "piores_amostras": {
+          "piso_espada": [
+            "right",
+            0.5843478260869565,
+            -0.009154340346462675
+          ]
+        }
+      },
+      "combat_run_start": {
+        "min_pes_y": -0.0009263275339672013,
+        "min_laminas_y": -0.008847144011628671,
+        "erro_mao_arma": 4.4459359580705036e-08,
+        "erro_cauda_arma": 0.0,
+        "erro_raizes_penas": 0.0,
+        "erro_alvo_pes": 0.002677465855750413,
+        "erro_root": 0.0,
+        "translacao_juntas": 0.0,
+        "erro_vinculo_lamina_inteira": 4.7032025411179616e-08,
+        "cotovelos_graus": [
+          69.8112967225795,
+          120.38102227302244
+        ],
+        "joelhos_graus": [
+          41.22887684989424,
+          117.97421919356745
+        ],
+        "punho_max_graus": 23.201797560363328,
+        "fracao_aerea": 0.031446540880503145,
+        "curso_body_xyz": [
+          0.6995713249893056,
+          2.6551780809894225,
+          0.5579688509610172
+        ],
+        "oscilacao_peito_graus": [
+          23.000003783627513,
+          2.4367906960669194,
+          3.4042528218680035
+        ],
+        "oscilacao_cabeca_graus": [
+          4.53869279642403,
+          1.6280300564995087,
+          0.8691638907140551
+        ],
+        "maior_passo_angular": 2.1559431731721967,
+        "piores_amostras": {
+          "piso_espada": [
+            "right",
+            0.3550632911392405,
+            -0.008847144011628671
+          ]
+        }
+      },
+      "combat_run_stop": {
+        "min_pes_y": -0.0007057367791760696,
+        "min_laminas_y": -0.00587017129626588,
+        "erro_mao_arma": 4.445936111343737e-08,
+        "erro_cauda_arma": 0.0,
+        "erro_raizes_penas": 0.0,
+        "erro_alvo_pes": 0.003023802400958541,
+        "erro_root": 0.0,
+        "translacao_juntas": 0.0,
+        "erro_vinculo_lamina_inteira": 4.703202399802759e-08,
+        "cotovelos_graus": [
+          69.74887756101255,
+          120.3606029917524
+        ],
+        "joelhos_graus": [
+          40.97996241329662,
+          117.51393677415041
+        ],
+        "punho_max_graus": 22.93494617355908,
+        "fracao_aerea": 0.0,
+        "curso_body_xyz": [
+          0.9291483179987651,
+          3.721801541919156,
+          0.5631372279196271
+        ],
+        "oscilacao_peito_graus": [
+          24.036866764783326,
+          2.3864130565559667,
+          2.798440235445415
+        ],
+        "oscilacao_cabeca_graus": [
+          4.063220795657717,
+          1.6975337106131583,
+          0.800075579099331
+        ],
+        "maior_passo_angular": 1.846781543051408,
+        "piores_amostras": {
+          "piso_espada": [
+            "right",
+            0.07491329479768785,
+            -0.00587017129626588
+          ]
+        }
+      }
+    },
+    "erros": [],
+    "alcance_excedido": 0,
+    "alcance_por_membro": {
+      "leg_left": 0,
+      "leg_right": 0
+    }
+  },
+  "conexoes": [
+    {
+      "de": "run",
+      "t": 0,
+      "para": "run",
+      "t_destino": 0.84,
+      "erro_matriz": 0.0
+    },
+    {
+      "de": "run_start",
+      "t": 0,
+      "para": "walk",
+      "t_destino": 0,
+      "erro_matriz": 0.0
+    },
+    {
+      "de": "run_start",
+      "t": 0.6,
+      "para": "run",
+      "t_destino": 0.46799999999999997,
+      "erro_matriz": 1.0658141036401503e-14
+    },
+    {
+      "de": "run_stop",
+      "t": 0,
+      "para": "run",
+      "t_destino": 0,
+      "erro_matriz": 0.0
+    },
+    {
+      "de": "run_stop",
+      "t": 0.66,
+      "para": "walk",
+      "t_destino": 0.9192857142857143,
+      "erro_matriz": 7.026090820261288e-10
+    },
+    {
+      "de": "combat_run",
+      "t": 0,
+      "para": "combat_run",
+      "t_destino": 0.96,
+      "erro_matriz": 0.0
+    },
+    {
+      "de": "combat_run_start",
+      "t": 0,
+      "para": "combat_walk",
+      "t_destino": 0,
+      "erro_matriz": 0.0
+    },
+    {
+      "de": "combat_run_start",
+      "t": 0.66,
+      "para": "combat_run",
+      "t_destino": 0.506,
+      "erro_matriz": 0.0
+    },
+    {
+      "de": "combat_run_stop",
+      "t": 0,
+      "para": "combat_run",
+      "t_destino": 0,
+      "erro_matriz": 0.0
+    },
+    {
+      "de": "combat_run_stop",
+      "t": 0.72,
+      "para": "combat_walk",
+      "t_destino": 1.0350000000000001,
+      "erro_matriz": 5.622062815291429e-10
+    }
+  ],
+  "nativo": {
+    "clipes": {
+      "run": {
+        "min_pes_y": -0.014023751917720428,
+        "min_laminas_y": 17.858976708501075,
+        "erro_mao_arma": 0.0,
+        "erro_cauda_arma": 0.008573638735486975,
+        "erro_raizes_penas": 0.0015868805077316275,
+        "erro_alvo_pes": 0.04484824837546476,
+        "erro_root": 0.0,
+        "translacao_juntas": 0.0,
+        "erro_vinculo_lamina_inteira": 0.07075312513508654,
+        "cotovelos_graus": [
+          70.20626806456976,
+          78.20609671158125
+        ],
+        "joelhos_graus": [
+          25.38707099738764,
+          132.91149445243022
+        ],
+        "punho_max_graus": 2.9823432930416574,
+        "fracao_aerea": 0.08823529411764706,
+        "curso_body_xyz": [
+          0.9598838999999999,
+          2.6996212319999984,
+          0.799901094
+        ],
+        "oscilacao_peito_graus": [
+          9.271026145587705,
+          4.098603800240207,
+          6.83700471630387
+        ],
+        "oscilacao_cabeca_graus": [
+          5.630215433220478,
+          3.217201091323994,
+          1.602752220135705
+        ],
+        "maior_passo_angular": 2.724589226217539,
+        "piores_amostras": {
+          "piso_espada": [
+            "left",
+            0.5784898019801981,
+            17.858976708501075
+          ]
+        }
+      },
+      "run_start": {
+        "min_pes_y": -0.008658961356084852,
+        "min_laminas_y": 19.421378834115977,
+        "erro_mao_arma": 0.0,
+        "erro_cauda_arma": 0.009516865172655474,
+        "erro_raizes_penas": 0.0,
+        "erro_alvo_pes": 0.037728815668943934,
+        "erro_root": 0.0,
+        "translacao_juntas": 0.0,
+        "erro_vinculo_lamina_inteira": 0.07584410527509737,
+        "cotovelos_graus": [
+          71.66498365303296,
+          97.12266421696474
+        ],
+        "joelhos_graus": [
+          25.662597389545795,
+          121.36419830080439
+        ],
+        "punho_max_graus": 2.9823432930406795,
+        "fracao_aerea": 0.04794520547945205,
+        "curso_body_xyz": [
+          0.8038007709999999,
+          3.374887115,
+          0.5298500500000003
+        ],
+        "oscilacao_peito_graus": [
+          22.960026723003942,
+          2.2190112173843555,
+          3.370904134606919
+        ],
+        "oscilacao_cabeca_graus": [
+          4.799739183689049,
+          1.6075613147108143,
+          0.852579411465723
+        ],
+        "maior_passo_angular": 2.9113380374446733,
+        "piores_amostras": {
+          "piso_espada": [
+            "right",
+            0.33380333333333334,
+            19.421378834115977
+          ]
+        }
+      },
+      "run_stop": {
+        "min_pes_y": -0.011752965509815505,
+        "min_laminas_y": 18.142349916020684,
+        "erro_mao_arma": 0.0,
+        "erro_cauda_arma": 0.00796933016671931,
+        "erro_raizes_penas": 0.0,
+        "erro_alvo_pes": 0.03903810042268027,
+        "erro_root": 0.0,
+        "translacao_juntas": 0.0,
+        "erro_vinculo_lamina_inteira": 0.0432833941578537,
+        "cotovelos_graus": [
+          71.94761249423428,
+          97.4115356480783
+        ],
+        "joelhos_graus": [
+          23.141863700309642,
+          125.26374612754502
+        ],
+        "punho_max_graus": 2.982343293040924,
+        "fracao_aerea": 0.0,
+        "curso_body_xyz": [
+          1.0755611440000004,
+          4.132987466000003,
+          0.5664525110000005
+        ],
+        "oscilacao_peito_graus": [
+          24.046199074131984,
+          1.9197774719602085,
+          3.292280453464742
+        ],
+        "oscilacao_cabeca_graus": [
+          4.211281186577531,
+          1.739896558950269,
+          0.7876219344591889
+        ],
+        "maior_passo_angular": 2.4046612083756442,
+        "piores_amostras": {
+          "piso_espada": [
+            "right",
+            0.14667253164556962,
+            18.142349916020684
+          ]
+        }
+      },
+      "combat_run": {
+        "min_pes_y": -0.01083581554639856,
+        "min_laminas_y": -0.009154340533006788,
+        "erro_mao_arma": 5.057913309864826e-10,
+        "erro_cauda_arma": 0.0,
+        "erro_raizes_penas": 0.0013956494550063318,
+        "erro_alvo_pes": 0.03571069858594986,
+        "erro_root": 0.0,
+        "translacao_juntas": 0.0,
+        "erro_vinculo_lamina_inteira": 8.056473236041971e-10,
+        "cotovelos_graus": [
+          69.49133412365606,
+          120.64641199266504
+        ],
+        "joelhos_graus": [
+          40.9903218658229,
+          126.03952981744575
+        ],
+        "punho_max_graus": 21.404378046216205,
+        "fracao_aerea": 0.04310344827586207,
+        "curso_body_xyz": [
+          0.959910448,
+          2.2997854460000013,
+          0.799898002
+        ],
+        "oscilacao_peito_graus": [
+          9.25851386263276,
+          4.066204163593925,
+          6.242514344165223
+        ],
+        "oscilacao_cabeca_graus": [
+          5.599553992198079,
+          3.2051749409622357,
+          1.602012792527761
+        ],
+        "maior_passo_angular": 2.1093142932146436,
+        "piores_amostras": {
+          "piso_espada": [
+            "right",
+            0.5848178260869564,
+            -0.009154340533006788
+          ]
+        }
+      },
+      "combat_run_start": {
+        "min_pes_y": -0.005305846678904701,
+        "min_laminas_y": -0.008847144232174031,
+        "erro_mao_arma": 4.4459359580705036e-08,
+        "erro_cauda_arma": 0.0,
+        "erro_raizes_penas": 0.0,
+        "erro_alvo_pes": 0.037311322794537194,
+        "erro_root": 0.0,
+        "translacao_juntas": 0.0,
+        "erro_vinculo_lamina_inteira": 4.7032025411179616e-08,
+        "cotovelos_graus": [
+          69.8112967225795,
+          120.38102227308674
+        ],
+        "joelhos_graus": [
+          41.22887684944298,
+          117.97421919555838
+        ],
+        "punho_max_graus": 23.20179756052579,
+        "fracao_aerea": 0.03125,
+        "curso_body_xyz": [
+          0.6995713249999999,
+          2.655178080999999,
+          0.5579688510000002
+        ],
+        "oscilacao_peito_graus": [
+          23.000003784141395,
+          2.436790696503013,
+          3.404252822156071
+        ],
+        "oscilacao_cabeca_graus": [
+          4.538692796530775,
+          1.6278494231272895,
+          0.8701719471148094
+        ],
+        "maior_passo_angular": 2.1559430797388948,
+        "piores_amostras": {
+          "piso_espada": [
+            "right",
+            0.35553329113924054,
+            -0.008847144232174031
+          ]
+        }
+      },
+      "combat_run_stop": {
+        "min_pes_y": -0.009294345048747207,
+        "min_laminas_y": -0.005870171726474638,
+        "erro_mao_arma": 4.445936111343737e-08,
+        "erro_cauda_arma": 0.0,
+        "erro_raizes_penas": 0.0,
+        "erro_alvo_pes": 0.034685329279055745,
+        "erro_root": 0.0,
+        "translacao_juntas": 0.0,
+        "erro_vinculo_lamina_inteira": 4.703202399802759e-08,
+        "cotovelos_graus": [
+          69.74887756062478,
+          120.36060299176395
+        ],
+        "joelhos_graus": [
+          40.97996235934908,
+          117.51393677508116
+        ],
+        "punho_max_graus": 22.93494617366856,
+        "fracao_aerea": 0.0,
+        "curso_body_xyz": [
+          0.9291483180000001,
+          3.721801541999998,
+          0.5631372280000001
+        ],
+        "oscilacao_peito_graus": [
+          24.03686676489901,
+          2.3864130566620996,
+          2.7984402355830573
+        ],
+        "oscilacao_cabeca_graus": [
+          4.068472798330488,
+          1.697857007101762,
+          0.799554793719036
+        ],
+        "maior_passo_angular": 1.846781671308532,
+        "piores_amostras": {
+          "piso_espada": [
+            "right",
+            0.07538329479768785,
+            -0.005870171726474638
+          ]
+        }
+      }
+    },
+    "erros": [],
+    "alcance_excedido": 0,
+    "alcance_por_membro": {
+      "leg_left": 0,
+      "leg_right": 0
+    }
+  },
+  "nativo_segunda_fase": {
+    "clipes": {
+      "run": {
+        "min_pes_y": -0.0008275084786165364,
+        "min_laminas_y": 17.86192792169393,
+        "erro_mao_arma": 0.0,
+        "erro_cauda_arma": 0.0012444416637434612,
+        "erro_raizes_penas": 0.00030871915566240516,
+        "erro_alvo_pes": 0.010163312681776908,
+        "erro_root": 0.0,
+        "translacao_juntas": 0.0,
+        "erro_vinculo_lamina_inteira": 0.006460060736241299,
+        "cotovelos_graus": [
+          70.20771413034122,
+          78.20465064731798
+        ],
+        "joelhos_graus": [
+          25.571737006108375,
+          132.87860420077948
+        ],
+        "punho_max_graus": 2.9823432930416574,
+        "fracao_aerea": 0.0784313725490196,
+        "curso_body_xyz": [
+          0.9598838999999999,
+          2.698343208368456,
+          0.7995172459425408
+        ],
+        "oscilacao_peito_graus": [
+          9.264849296232061,
+          4.100652613144186,
+          6.835268621918939
+        ],
+        "oscilacao_cabeca_graus": [
+          5.592560118297778,
+          3.2053973102273376,
+          1.5990035748151699
+        ],
+        "maior_passo_angular": 2.7218018065302014,
+        "piores_amostras": {
+          "piso_espada": [
+            "left",
+            0.576051386138614,
+            17.86192792169393
+          ]
+        }
+      },
+      "run_start": {
+        "min_pes_y": -0.000539966144160232,
+        "min_laminas_y": 19.42738248075523,
+        "erro_mao_arma": 0.0,
+        "erro_cauda_arma": 0.0012788898712001106,
+        "erro_raizes_penas": 0.0,
+        "erro_alvo_pes": 0.019360183511169617,
+        "erro_root": 0.0,
+        "translacao_juntas": 0.0,
+        "erro_vinculo_lamina_inteira": 0.00824067127779423,
+        "cotovelos_graus": [
+          71.66634882221489,
+          97.12266421696474
+        ],
+        "joelhos_graus": [
+          26.175748510041,
+          121.36190585753002
+        ],
+        "punho_max_graus": 2.9823432930406795,
+        "fracao_aerea": 0.04794520547945205,
+        "curso_body_xyz": [
+          0.8036924346449353,
+          3.374427652838907,
+          0.5297459590510893
+        ],
+        "oscilacao_peito_graus": [
+          22.956130977645316,
+          2.216764590518229,
+          3.3649951379899434
+        ],
+        "oscilacao_cabeca_graus": [
+          4.765027985893178,
+          1.5936443199515855,
+          0.846606991253738
+        ],
+        "maior_passo_angular": 2.9026946793728903,
+        "piores_amostras": {
+          "piso_espada": [
+            "right",
+            0.3313566666666667,
+            19.42738248075523
+          ]
+        }
+      },
+      "run_stop": {
+        "min_pes_y": -0.0006907347817066558,
+        "min_laminas_y": 18.144684894943683,
+        "erro_mao_arma": 0.0,
+        "erro_cauda_arma": 0.0012622593265731294,
+        "erro_raizes_penas": 0.0,
+        "erro_alvo_pes": 0.010346013892217575,
+        "erro_root": 0.0,
+        "translacao_juntas": 0.0,
+        "erro_vinculo_lamina_inteira": 0.009094405878950646,
+        "cotovelos_graus": [
+          71.94761249423428,
+          97.4115356480783
+        ],
+        "joelhos_graus": [
+          23.141863700309642,
+          125.24973094004652
+        ],
+        "punho_max_graus": 2.982343293040924,
+        "fracao_aerea": 0.0,
+        "curso_body_xyz": [
+          1.0755084461952769,
+          4.132195442410726,
+          0.5661058095242195
+        ],
+        "oscilacao_peito_graus": [
+          24.04240154909718,
+          1.9023122328012758,
+          3.2943266798700055
+        ],
+        "oscilacao_cabeca_graus": [
+          4.200073757901165,
+          1.7381906572446795,
+          0.7851520037021598
+        ],
+        "maior_passo_angular": 2.398937906004372,
+        "piores_amostras": {
+          "piso_espada": [
+            "right",
+            0.1442153164556962,
+            18.144684894943683
+          ]
+        }
+      },
+      "combat_run": {
+        "min_pes_y": -0.00047947940590482174,
+        "min_laminas_y": -0.0075309412377695395,
+        "erro_mao_arma": 5.057925475017524e-10,
+        "erro_cauda_arma": 0.0,
+        "erro_raizes_penas": 0.0002866814710260798,
+        "erro_alvo_pes": 0.007016246594810392,
+        "erro_root": 0.0,
+        "translacao_juntas": 0.0,
+        "erro_vinculo_lamina_inteira": 8.056436694946755e-10,
+        "cotovelos_graus": [
+          69.4919260068175,
+          120.64556095217318
+        ],
+        "joelhos_graus": [
+          41.2131639951293,
+          126.02090804443543
+        ],
+        "punho_max_graus": 21.403478066091584,
+        "fracao_aerea": 0.034482758620689655,
+        "curso_body_xyz": [
+          0.959910448,
+          2.298927353098321,
+          0.7996084694846217
+        ],
+        "oscilacao_peito_graus": [
+          9.25217487693055,
+          4.063711371195473,
+          6.242355236171427
+        ],
+        "oscilacao_cabeca_graus": [
+          5.594990393998742,
+          3.202610808518508,
+          1.6008813796414811
+        ],
+        "maior_passo_angular": 2.096149013138354,
+        "piores_amostras": {
+          "piso_espada": [
+            "right",
+            0.5823639130434782,
+            -0.0075309412377695395
+          ]
+        }
+      },
+      "combat_run_start": {
+        "min_pes_y": -0.0008462144793301511,
+        "min_laminas_y": -0.005370030863449671,
+        "erro_mao_arma": 4.4459359580705036e-08,
+        "erro_cauda_arma": 0.0,
+        "erro_raizes_penas": 0.0,
+        "erro_alvo_pes": 0.016224534736421072,
+        "erro_root": 0.0,
+        "translacao_juntas": 0.0,
+        "erro_vinculo_lamina_inteira": 4.7032025411179616e-08,
+        "cotovelos_graus": [
+          69.8112967225795,
+          120.38085225323096
+        ],
+        "joelhos_graus": [
+          41.23359996591387,
+          117.96234160391582
+        ],
+        "punho_max_graus": 23.20106421680296,
+        "fracao_aerea": 0.025,
+        "curso_body_xyz": [
+          0.6995579141041895,
+          2.654970503568986,
+          0.5577864675039639
+        ],
+        "oscilacao_peito_graus": [
+          22.997375583677776,
+          2.4363585599773123,
+          3.402484178428309
+        ],
+        "oscilacao_cabeca_graus": [
+          4.537471936200368,
+          1.6272146372220055,
+          0.8670269624602152
+        ],
+        "maior_passo_angular": 2.152066326029141,
+        "piores_amostras": {
+          "piso_espada": [
+            "right",
+            0.35725329113924054,
+            -0.005370030863449671
+          ]
+        }
+      },
+      "combat_run_stop": {
+        "min_pes_y": -0.0004928329016246609,
+        "min_laminas_y": -0.004345512376289662,
+        "erro_mao_arma": 4.445936111343737e-08,
+        "erro_cauda_arma": 0.0,
+        "erro_raizes_penas": 0.0,
+        "erro_alvo_pes": 0.00592680233553217,
+        "erro_root": 0.0,
+        "translacao_juntas": 0.0,
+        "erro_vinculo_lamina_inteira": 4.703202399802759e-08,
+        "cotovelos_graus": [
+          69.75025274656892,
+          120.36057157959262
+        ],
+        "joelhos_graus": [
+          41.218961914869574,
+          117.50842695552593
+        ],
+        "punho_max_graus": 22.93308164698265,
+        "fracao_aerea": 0.0,
+        "curso_body_xyz": [
+          0.9291015370287637,
+          3.721338702820699,
+          0.5631205083656164
+        ],
+        "oscilacao_peito_graus": [
+          24.034947874362896,
+          2.3856485181616747,
+          2.797539795623239
+        ],
+        "oscilacao_cabeca_graus": [
+          4.059995183704576,
+          1.6962869364967,
+          0.7998606418189635
+        ],
+        "maior_passo_angular": 1.728601202646374,
+        "piores_amostras": {
+          "piso_espada": [
+            "right",
+            0.14785473988439304,
+            -0.004345512376289662
+          ]
+        }
+      }
+    },
+    "erros": [],
+    "alcance_excedido": 0,
+    "alcance_por_membro": {
+      "leg_left": 0,
+      "leg_right": 0
+    }
+  },
+  "conexoes_nativas": [
+    {
+      "de": "run",
+      "t": 0,
+      "para": "run",
+      "t_destino": 0.84,
+      "erro_matriz": 0.0
+    },
+    {
+      "de": "run_start",
+      "t": 0,
+      "para": "walk",
+      "t_destino": 0,
+      "erro_matriz": 0.0
+    },
+    {
+      "de": "run_start",
+      "t": 0.6,
+      "para": "run",
+      "t_destino": 0.46799999999999997,
+      "erro_matriz": 0.0
+    },
+    {
+      "de": "run_stop",
+      "t": 0,
+      "para": "run",
+      "t_destino": 0,
+      "erro_matriz": 0.0
+    },
+    {
+      "de": "run_stop",
+      "t": 0.66,
+      "para": "walk",
+      "t_destino": 0.9192857142857143,
+      "erro_matriz": 7.026090820261288e-10
+    },
+    {
+      "de": "combat_run",
+      "t": 0,
+      "para": "combat_run",
+      "t_destino": 0.96,
+      "erro_matriz": 0.0
+    },
+    {
+      "de": "combat_run_start",
+      "t": 0,
+      "para": "combat_walk",
+      "t_destino": 0,
+      "erro_matriz": 0.0
+    },
+    {
+      "de": "combat_run_start",
+      "t": 0.66,
+      "para": "combat_run",
+      "t_destino": 0.506,
+      "erro_matriz": 0.0
+    },
+    {
+      "de": "combat_run_stop",
+      "t": 0,
+      "para": "combat_run",
+      "t_destino": 0,
+      "erro_matriz": 0.0
+    },
+    {
+      "de": "combat_run_stop",
+      "t": 0.72,
+      "para": "combat_walk",
+      "t_destino": 1.0350000000000001,
+      "erro_matriz": 5.622062815291429e-10
+    }
+  ],
+  "bordas_1_60_s": {
+    "run_start": {
+      "inicio": {
+        "desvio_pivo_unidades": 0.0038168161372977715,
+        "desvio_graus": 0.010137943264388265
+      },
+      "fim": {
+        "desvio_pivo_unidades": 0.0020228804722121816,
+        "desvio_graus": 0.008923122463302896
+      }
+    },
+    "run_stop": {
+      "inicio": {
+        "desvio_pivo_unidades": 0.0015279505432071914,
+        "desvio_graus": 0.00831734683498696
+      },
+      "fim": {
+        "desvio_pivo_unidades": 0.002752048067521213,
+        "desvio_graus": 0.021708719014066256
+      }
+    },
+    "combat_run_start": {
+      "inicio": {
+        "desvio_pivo_unidades": 0.002207812060435839,
+        "desvio_graus": 0.006888855925987593
+      },
+      "fim": {
+        "desvio_pivo_unidades": 0.0024377867104408623,
+        "desvio_graus": 0.01985750934959188
+      }
+    },
+    "combat_run_stop": {
+      "inicio": {
+        "desvio_pivo_unidades": 0.001490278297018453,
+        "desvio_graus": 0.007795402806789416
+      },
+      "fim": {
+        "desvio_pivo_unidades": 0.0018868183782321003,
+        "desvio_graus": 0.008623692437711685
+      }
+    }
+  },
+  "erros": [],
+  "ok": true
+}

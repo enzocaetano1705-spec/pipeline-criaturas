@@ -1,0 +1,42 @@
+{
+  "run_start": {
+    "inicio": {
+      "desvio_pivo_unidades": 0.0038168161372977715,
+      "desvio_graus": 0.010137943264388265
+    },
+    "fim": {
+      "desvio_pivo_unidades": 0.0020228804722121816,
+      "desvio_graus": 0.008923122463302896
+    }
+  },
+  "run_stop": {
+    "inicio": {
+      "desvio_pivo_unidades": 0.0015279505432071914,
+      "desvio_graus": 0.00831734683498696
+    },
+    "fim": {
+      "desvio_pivo_unidades": 0.002752048067521213,
+      "desvio_graus": 0.021708719014066256
+    }
+  },
+  "combat_run_start": {
+    "inicio": {
+      "desvio_pivo_unidades": 0.002207812060435839,
+      "desvio_graus": 0.006888855925987593
+    },
+    "fim": {
+      "desvio_pivo_unidades": 0.0024377867104408623,
+      "desvio_graus": 0.01985750934959188
+    }
+  },
+  "combat_run_stop": {
+    "inicio": {
+      "desvio_pivo_unidades": 0.001490278297018453,
+      "desvio_graus": 0.007795402806789416
+    },
+    "fim": {
+      "desvio_pivo_unidades": 0.0018868183782321003,
+      "desvio_graus": 0.008623692437711685
+    }
+  }
+}

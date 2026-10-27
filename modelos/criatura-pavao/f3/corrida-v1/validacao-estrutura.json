@@ -1,0 +1,34 @@
+{
+  "revision": "8520d957178d0249",
+  "format": "bedrock",
+  "summary": {
+    "errors": 0,
+    "warnings": 0,
+    "passed": true
+  },
+  "gates": [
+    {
+      "id": "outliner",
+      "label": "Outliner references resolve and UUIDs are unique",
+      "severity": "error",
+      "ran": true,
+      "violations": []
+    },
+    {
+      "id": "unlisted_nodes",
+      "label": "Every group and element is placed in the outliner",
+      "severity": "warning",
+      "ran": true,
+      "violations": []
+    },
+    {
+      "id": "degenerate",
+      "label": "No sliver or inverted cubes",
+      "severity": "warning",
+      "ran": true,
+      "violations": []
+    }
+  ],
+  "notes": [],
+  "criterio_espessura": "Cristas de 0,01 herdadas da v9; planos e espessuras a partir de 0,005 são intencionais."
+}

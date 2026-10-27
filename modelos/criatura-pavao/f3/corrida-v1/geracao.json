@@ -1,0 +1,33 @@
+{
+  "fonte": "modelos/criatura-pavao/f3/animacoes-v10/criatura-pavao-e3-combate-v10.bbmodel",
+  "fonte_sha256": "0b125d7219362f686372e82690432d68097e24170406316fbe5bd5abb23499db",
+  "saida_sha256": "8520d957178d02497615fb0b608a8768ea9b82d8363795054ba17db7b1ea3618",
+  "operacoes": 26625,
+  "chaves": {
+    "run": 5306,
+    "run_start": 3137,
+    "run_stop": 3260,
+    "combat_run": 5587,
+    "combat_run_start": 3379,
+    "combat_run_stop": 3585
+  },
+  "clipes": {
+    "run": 0.84,
+    "run_start": 0.6,
+    "run_stop": 0.66,
+    "combat_run": 0.96,
+    "combat_run_start": 0.66,
+    "combat_run_stop": 0.72
+  },
+  "alcance_excedido": 0,
+  "encaixes_exatos": true,
+  "cadeia_arrasto_sincrona": [
+    "arm_right",
+    "body",
+    "forearm_right",
+    "hand_right",
+    "pelvis",
+    "torso",
+    "waist"
+  ]
+}

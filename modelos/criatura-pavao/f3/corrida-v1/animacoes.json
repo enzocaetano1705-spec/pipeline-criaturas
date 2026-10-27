@@ -1,0 +1,257 @@
+{
+  "status": "corridas-f3-em-avaliacao",
+  "modelo": "criatura-pavao-e3-corrida-v1.bbmodel",
+  "fonte": "modelos/criatura-pavao/f3/animacoes-v10/criatura-pavao-e3-combate-v10.bbmodel",
+  "fonte_sha256": "0b125d7219362f686372e82690432d68097e24170406316fbe5bd5abb23499db",
+  "saida_sha256": "8520d957178d02497615fb0b608a8768ea9b82d8363795054ba17db7b1ea3618",
+  "root_motion": false,
+  "aprovados": [
+    "idle",
+    "walk",
+    "combat_ready",
+    "combat_walk"
+  ],
+  "clipes_revistos": {
+    "combat_enter": {
+      "duracao": 1.65,
+      "loop": false
+    },
+    "combat_enter_walk": {
+      "duracao": 1.65,
+      "loop": false
+    },
+    "combat_enter_upper": {
+      "duracao": 1.65,
+      "loop": false
+    },
+    "combat_walk_start": {
+      "duracao": 0.6,
+      "loop": false
+    },
+    "combat_walk_stop": {
+      "duracao": 0.6,
+      "loop": false
+    },
+    "combat_idle": {
+      "duracao": 7.1499999999999995,
+      "loop": false
+    },
+    "combat_idle_resume": {
+      "duracao": 1.1,
+      "loop": false
+    },
+    "combat_exit": {
+      "duracao": 1.8,
+      "loop": false
+    },
+    "combat_exit_upper": {
+      "duracao": 1.8,
+      "loop": false
+    }
+  },
+  "lados": {
+    "ombro_e_floreio": "left da criatura",
+    "arrasto_e_espada_cravada": "right da criatura"
+  },
+  "saque": {
+    "GripLeft": 0.3,
+    "GripRight": 0.34,
+    "FlourishStart": 0.7,
+    "FlourishEnd": 1.23,
+    "fim_andando_fase_combat_walk": 0.008333333333333304,
+    "fim_andando_tempo_combat_walk": 0.014999999999999947
+  },
+  "passos": {
+    "start_inicia_em": "combat_ready@0",
+    "start_termina_em": "combat_walk@0.30",
+    "stop_inicia_em": "combat_walk@0",
+    "stop_termina_em": "combat_ready@0",
+    "interrupcoes": "Misturar os estados e preservar a fase na integração futura."
+  },
+  "descanso": {
+    "clipe": "combat_idle",
+    "loop": false,
+    "cravar_ate": 0.72,
+    "ReleaseStart": 0.95,
+    "ReleaseEnd": 1.25,
+    "pausa": [
+      1.25,
+      4.25
+    ],
+    "Regrasp": 4.55,
+    "recuperada_em": 5.35,
+    "DockLeft": 6.55,
+    "DockRight": 6.554654486930031,
+    "fim": 7.1499999999999995,
+    "termina_em": "idle@0",
+    "retomada": "combat_idle_resume",
+    "retomada_origem": "pausa, com mistura de respiração",
+    "retomada_termina_em": "combat_ready@0",
+    "retomada_Regrasp": 0.3,
+    "profundidade_unidades": 30.197191600853962,
+    "espada_solta_imovel": true
+  },
+  "saida": {
+    "andando": "combat_exit",
+    "camada": "combat_exit_upper",
+    "DockLeft": 1.2,
+    "DockRight": 1.204654486930031,
+    "fim_andando_fase_walk": 0.09999999999999987,
+    "fim_andando_tempo_walk": 0.1499999999999998,
+    "floreio_reverso": false
+  },
+  "camadas": {
+    "modo": "substituir canais da máscara; não aditivo",
+    "ossos": [
+      "tail_1",
+      "tail_2",
+      "tail_fan_01",
+      "tail_fan_02",
+      "tail_fan_03",
+      "tail_fan_04",
+      "tail_fan_05",
+      "tail_fan_06",
+      "waist",
+      "torso",
+      "arm_left",
+      "arm_right",
+      "back_feathers_left",
+      "back_feathers_left3",
+      "back_feathers_right",
+      "back_feathers_right2",
+      "forearm_left",
+      "forearm_right",
+      "hand_left",
+      "feather_sword_left",
+      "hand_right",
+      "feather_sword_right",
+      "neck_1",
+      "neck_2",
+      "head",
+      "feather_left_1",
+      "feather_left_2",
+      "feather_right_1",
+      "feather_right_2",
+      "wing_left",
+      "wing_right"
+    ],
+    "base": "corpo, bacia e pernas do clipe completo correspondente, no mesmo tempo",
+    "fase_enter": "t/1.5 + (1/1.8-1/1.5)*t*t/(2*1.65)",
+    "fase_exit": "t/1.8 + (1/1.5-1/1.8)*t*t/(2*1.8)",
+    "sem_canais": [
+      "root",
+      "body",
+      "pelvis",
+      "leg_*",
+      "shin_*",
+      "foot_*"
+    ],
+    "companheiros": {
+      "combat_enter_upper": "combat_enter_walk",
+      "combat_exit_upper": "combat_exit"
+    },
+    "origem_dos_canais": "máscara de canais locais do companheiro; sem translação artificial de waist/tail_1"
+  },
+  "validacao": "validacao-corrida.json",
+  "golpes": "próxima etapa; não criados nesta revisão",
+  "flicks": {
+    "causa": "Molang interpreta expoentes como expressões; decimais explícitos eliminam deslocamentos de -7/-8.",
+    "formato_valores": "texto decimal sem expoentes; expressões preservadas",
+    "chaves_reparadas_fora_idle": 2831,
+    "outros_12_clipes_numericos_identicos": true,
+    "validacao_nativa": "../animacoes-v10/validacao-nativa.json",
+    "comparacao_tecnica": "../animacoes-v10/comparacao-tecnica.json",
+    "comparacao_render": "../animacoes-v10/comparacao-nativa.png",
+    "compactacao_idle": {
+      "tempos_antes": 864,
+      "tempos_distintos_depois": 740,
+      "chaves_antes": 34644,
+      "chaves_depois": 5866,
+      "tolerancia_graus_por_eixo": 0.01,
+      "tolerancia_unidades_por_eixo": 0.001,
+      "eventos_preservados": [
+        0,
+        0.48,
+        0.72,
+        0.95,
+        1.25,
+        4.25,
+        4.55,
+        5.35,
+        6.55,
+        6.554654486930031,
+        7.1499999999999995
+      ]
+    },
+    "medicao_fps": "../animacoes-v10/medicao-fps.json",
+    "relatorios_historicos": "Arquivos da base v10 preservada; não são medições desta corrida."
+  },
+  "corridas": {
+    "run": {
+      "duracao": 0.84,
+      "loop": true,
+      "eventos": {
+        "FootLeft": 0.0,
+        "FootRight": 0.42,
+        "LiftLeft": 0.35279999999999995,
+        "LiftRight": 0.7727999999999999
+      }
+    },
+    "run_start": {
+      "duracao": 0.6,
+      "loop": false,
+      "origem": "walk",
+      "tempo_origem": 0.0,
+      "destino": "run",
+      "fase_destino": 0.5571428571428572,
+      "tempo_destino": 0.46799999999999997
+    },
+    "run_stop": {
+      "duracao": 0.66,
+      "loop": false,
+      "origem": "run",
+      "tempo_origem": 0.0,
+      "destino": "walk",
+      "fase_destino": 0.6128571428571429,
+      "tempo_destino": 0.9192857142857143
+    },
+    "combat_run": {
+      "duracao": 0.96,
+      "loop": true,
+      "eventos": {
+        "FootLeft": 0.0,
+        "FootRight": 0.48,
+        "LiftLeft": 0.4224,
+        "LiftRight": 0.9023999999999999
+      }
+    },
+    "combat_run_start": {
+      "duracao": 0.66,
+      "loop": false,
+      "origem": "combat_walk",
+      "tempo_origem": 0.0,
+      "destino": "combat_run",
+      "fase_destino": 0.5270833333333333,
+      "tempo_destino": 0.506
+    },
+    "combat_run_stop": {
+      "duracao": 0.72,
+      "loop": false,
+      "origem": "combat_run",
+      "tempo_origem": 0.0,
+      "destino": "combat_walk",
+      "fase_destino": 0.5750000000000001,
+      "tempo_destino": 1.0350000000000001
+    },
+    "integracao": "Somente animações. Reutilizar fase/velocidade e fazer crossfade ao interromper transições; os clipes não implementam esse controle no jogo.",
+    "posturas": {
+      "run": "tronco baixo, peito/pelve contrapostos, cauda em contrapeso e braços recolhidos",
+      "combat_run": "inclinação intermediária, passada pesada, esquerda no ombro e direita no arrasto"
+    },
+    "velocidade_referencia_unidades_s": {
+      "run": 37.414965986394556,
+      "combat_run": 28.882575757575758
+    },
+    "sem_root_motion": true
+  }
+}
