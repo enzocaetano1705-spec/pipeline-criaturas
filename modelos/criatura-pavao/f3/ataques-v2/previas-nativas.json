@@ -1,0 +1,10 @@
+{
+  "modelo": "C:\\Users\\enzoc\\dev\\pipeline-criaturas\\modelos\\criatura-pavao\\f3\\ataques-v2\\criatura-pavao-e3-ataques-v2.bbmodel",
+  "saida_sha256": "60944297848eedfd53369202ea7101d2a63181faa045b684dbedc2a3a732251a",
+  "quadros": {
+    "attack_low": 40,
+    "attack_cross": 58
+  },
+  "camera_fixa": true,
+  "limpeza_view": "registro removido; erro conhecido do listener onContextMenu"
+}

@@ -1,0 +1,14 @@
+{
+  "fonte": "modelos/criatura-pavao/f3/ataques-v1/criatura-pavao-e3-ataques-v1.bbmodel",
+  "fonte_sha256": "006093385217323fab2df3f4278d5b7b74147b94570d16553f71d32f3f1c2299",
+  "saida_sha256": "60944297848eedfd53369202ea7101d2a63181faa045b684dbedc2a3a732251a",
+  "clipes": {
+    "attack_low": 1.35,
+    "attack_cross": 1.95
+  },
+  "chaves": {
+    "attack_low": 5279,
+    "attack_cross": 8256
+  },
+  "spin": "isolado na v1; ausente nesta cópia"
+}

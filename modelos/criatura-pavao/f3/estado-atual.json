@@ -1,9 +1,9 @@
 {
-  "status": "ataques-f3-v1-em-avaliacao",
-  "fonte": "modelos/criatura-pavao/f3/ataques-v1/criatura-pavao-e3-ataques-v1.bbmodel",
-  "sha256": "006093385217323fab2df3f4278d5b7b74147b94570d16553f71d32f3f1c2299",
+  "status": "low-cross-f3-v2-em-avaliacao",
+  "fonte": "modelos/criatura-pavao/f3/ataques-v2/criatura-pavao-e3-ataques-v2.bbmodel",
+  "sha256": "60944297848eedfd53369202ea7101d2a63181faa045b684dbedc2a3a732251a",
   "origem_manual": "modelos/criatura-pavao/f3/animacoes-v3/origem-revisada.bbmodel",
-  "revisao_atual": "Três golpes novos: talho baixo, cruzado em dois tempos e giro de ceifa. Os 19 clipes anteriores, geometria, rig, UVs e textura foram preservados. Conferências do arquivo/semântica nativa e motor passaram; três GIFs locais. Janela do Blockbench vazia e MCP indisponível após abrir; captura nativa pendente.",
+  "revisao_atual": "Low e Cross revistos por cadeia conduzida pelo ombro, extensão do cotovelo, punho estável e fio alinhado. Base de peso do Low retimada; direita ascende da linha baixa, esquerda desce verticalmente do ombro ao chão, com corpo acompanhando. 19 clipes anteriores e geometria/rig/UVs/atlas intactos. Spin adiado na v1, ausente da v2. Arquivo, critérios de fio/extensão, motor e capturas nativas conferidos.",
   "direcao_atual": "Esquerdo no ombro e floreio; direito no arrasto ou cravado durante o descanso. Lados e base aprovados pelo usuário.",
   "aprovacoes": {
     "idle": "aprovado",
@@ -14,7 +14,8 @@
     "combat_ready": "aprovado na base v7",
     "combat_enter": "movimento aprovado; v10 repara os valores sem mudar o ritmo",
     "corridas": "seis-clipes-aprovados-pelo-usuario-em-27-10-2026",
-    "golpes": "primeira-versao-para-feedback"
+    "golpes": "v1-rejeitada-por-anatomia;low-cross-v2-para-feedback",
+    "attack_spin": "rejeitado-e-adiado;preservado-na-v1"
   },
   "animacoes": [
     "idle",
@@ -37,17 +38,17 @@
     "combat_run_start",
     "combat_run_stop",
     "attack_low",
-    "attack_cross",
-    "attack_spin"
+    "attack_cross"
   ],
-  "metadados": "modelos/criatura-pavao/f3/ataques-v1/animacoes.json",
+  "metadados": "modelos/criatura-pavao/f3/ataques-v2/animacoes.json",
   "studio": "não alterado; somente animações e metadados locais",
   "clipes_em_revisao": [
     "attack_low",
-    "attack_cross",
+    "attack_cross"
+  ],
+  "clipes_adiados": [
     "attack_spin"
   ],
-  "clipes_adiados": [],
-  "fonte_anterior": "modelos/criatura-pavao/f3/corrida-v1/criatura-pavao-e3-corrida-v1.bbmodel",
-  "proxima_etapa": "Avaliar os três golpes; conferir reprodução/captura nativa quando o Blockbench voltar a responder."
+  "fonte_anterior": "modelos/criatura-pavao/f3/ataques-v1/criatura-pavao-e3-ataques-v1.bbmodel",
+  "proxima_etapa": "Feedback artístico de Low/Cross; retomar spin depois."
 }
