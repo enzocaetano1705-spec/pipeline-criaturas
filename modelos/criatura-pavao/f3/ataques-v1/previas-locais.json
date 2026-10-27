@@ -1,0 +1,24 @@
+{
+  "saida_sha256": "006093385217323fab2df3f4278d5b7b74147b94570d16553f71d32f3f1c2299",
+  "quadros": {
+    "attack_low": 35,
+    "attack_cross": 46,
+    "attack_spin": 53
+  },
+  "origem": "renderizador local; chaves do arquivo salvo e leitura numérica nativa, sem captura do aplicativo",
+  "camera_fixa_por_clipe": {
+    "attack_low": [
+      75,
+      8
+    ],
+    "attack_cross": [
+      35,
+      8
+    ],
+    "attack_spin": [
+      35,
+      12
+    ]
+  },
+  "fps_aproximado": 30
+}

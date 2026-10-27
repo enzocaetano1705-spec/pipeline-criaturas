@@ -1,9 +1,9 @@
 {
-  "status": "corridas-f3-v1-em-avaliacao",
-  "fonte": "modelos/criatura-pavao/f3/corrida-v1/criatura-pavao-e3-corrida-v1.bbmodel",
-  "sha256": "8520d957178d02497615fb0b608a8768ea9b82d8363795054ba17db7b1ea3618",
+  "status": "ataques-f3-v1-em-avaliacao",
+  "fonte": "modelos/criatura-pavao/f3/ataques-v1/criatura-pavao-e3-ataques-v1.bbmodel",
+  "sha256": "006093385217323fab2df3f4278d5b7b74147b94570d16553f71d32f3f1c2299",
   "origem_manual": "modelos/criatura-pavao/f3/animacoes-v3/origem-revisada.bbmodel",
-  "revisao_atual": "Seis clipes novos: run/start/stop e combat_run/start/stop, com posturas próprias, corpo articulado, apoio nos dedos, fase aérea breve e armas vinculadas. Treze clipes, geometria, UVs, textura e rig da v10 preservados. Arquivo/nativo em duas fases, apoios, juntas, arrasto, loops e conexões conferidos; seis GIFs e duas sequências nativas.",
+  "revisao_atual": "Três golpes novos: talho baixo, cruzado em dois tempos e giro de ceifa. Os 19 clipes anteriores, geometria, rig, UVs e textura foram preservados. Conferências do arquivo/semântica nativa e motor passaram; três GIFs locais. Janela do Blockbench vazia e MCP indisponível após abrir; captura nativa pendente.",
   "direcao_atual": "Esquerdo no ombro e floreio; direito no arrasto ou cravado durante o descanso. Lados e base aprovados pelo usuário.",
   "aprovacoes": {
     "idle": "aprovado",
@@ -13,7 +13,8 @@
     "combat_enter_v3": "saque e floreio aprovados; final revisto na v4",
     "combat_ready": "aprovado na base v7",
     "combat_enter": "movimento aprovado; v10 repara os valores sem mudar o ritmo",
-    "corridas": "proposta-v1-em-avaliacao"
+    "corridas": "seis-clipes-aprovados-pelo-usuario-em-27-10-2026",
+    "golpes": "primeira-versao-para-feedback"
   },
   "animacoes": [
     "idle",
@@ -34,19 +35,19 @@
     "run_stop",
     "combat_run",
     "combat_run_start",
-    "combat_run_stop"
+    "combat_run_stop",
+    "attack_low",
+    "attack_cross",
+    "attack_spin"
   ],
-  "metadados": "modelos/criatura-pavao/f3/corrida-v1/animacoes.json",
+  "metadados": "modelos/criatura-pavao/f3/ataques-v1/animacoes.json",
   "studio": "não alterado; somente animações e metadados locais",
   "clipes_em_revisao": [
-    "run",
-    "run_start",
-    "run_stop",
-    "combat_run",
-    "combat_run_start",
-    "combat_run_stop"
+    "attack_low",
+    "attack_cross",
+    "attack_spin"
   ],
   "clipes_adiados": [],
-  "fonte_anterior": "modelos/criatura-pavao/f3/animacoes-v10/criatura-pavao-e3-combate-v10.bbmodel",
-  "proxima_etapa": "Avaliar as corridas no Blockbench; depois trabalhar os golpes da F3."
+  "fonte_anterior": "modelos/criatura-pavao/f3/corrida-v1/criatura-pavao-e3-corrida-v1.bbmodel",
+  "proxima_etapa": "Avaliar os três golpes; conferir reprodução/captura nativa quando o Blockbench voltar a responder."
 }

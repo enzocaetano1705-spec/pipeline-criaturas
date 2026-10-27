@@ -3,10 +3,13 @@ tipo: sessao
 data: 2026-10-27
 fase: 10
 ia: codex
-status: aguardando-revisao-artistica
+status: aprovado-pelo-usuario
 ---
 
 # F3 — corridas pacífica/armada e suas transições
+
+**Retorno em 27/10:** usuário aprovou as seis animações ("estão ótimas as
+animações") e passou aos golpes. Continuação em [[2026-10-27-golpes-pavao-f3-v1]].
 
 **Para avaliar:** `f3/corrida-v1/criatura-pavao-e3-corrida-v1.bbmodel`,
 aberta no Blockbench. Conferir os seis clipes novos antes dos golpes.
@@ -65,4 +68,4 @@ metadados, hashes, relatórios e GIFs em `f3/corrida-v1/`. Estado atual, ficha,
 plano e retomada atualizados no vault `docs/`. Fase 10 continua aberta.
 Base anterior: commit `9072269`.
 
-**Próximo passo:** avaliação artística das corridas; depois golpes da F3.
+**Próximo passo após aprovação:** golpes da F3, conforme a nota de continuação.

@@ -1,0 +1,20 @@
+{
+  "fonte": "modelos/criatura-pavao/f3/corrida-v1/criatura-pavao-e3-corrida-v1.bbmodel",
+  "fonte_sha256": "8520d957178d02497615fb0b608a8768ea9b82d8363795054ba17db7b1ea3618",
+  "saida_sha256": "006093385217323fab2df3f4278d5b7b74147b94570d16553f71d32f3f1c2299",
+  "clipes": {
+    "attack_low": 1.15,
+    "attack_cross": 1.5,
+    "attack_spin": 1.75
+  },
+  "chaves": {
+    "attack_low": 4566,
+    "attack_cross": 6420,
+    "attack_spin": 7372
+  },
+  "operacoes_ultima_gravacao": 7375,
+  "clipes_ultima_gravacao": [
+    "attack_spin"
+  ],
+  "alcance_excedido": 0
+}
