@@ -1,9 +1,9 @@
 {
-  "status": "low-cross-f3-v3-em-avaliacao",
-  "fonte": "modelos/criatura-pavao/f3/ataques-v3/criatura-pavao-e3-ataques-v3.bbmodel",
-  "sha256": "0c9a90a3c7639c7fab0c25afa74927f97ebe23da553de91be72fdd95a3377cf4",
+  "status": "low-cross-f3-v4-em-avaliacao",
+  "fonte": "modelos/criatura-pavao/f3/ataques-v4/criatura-pavao-e3-ataques-v4.bbmodel",
+  "sha256": "bdde82fff85922f61f35dc77360f2865f2286eab599bd6f601570701c01d7e6f",
   "origem_manual": "modelos/criatura-pavao/f3/animacoes-v3/origem-revisada.bbmodel",
-  "revisao_atual": "Low com espada colinear ao antebraço/punho e braços separados. Cross direito em arco diagonal ascendente conforme desenho frontal; descida esquerda aprovada, corpo/pernas e armas com chaves intactas. Cross completo após 0,725 s preservado. Só rotações de três ossos direitos revistas; 19 clipes, geometria, rig, UVs e pintura intactos. Arquivo, motor e capturas nativas conferidos.",
+  "revisao_atual": "Low 1,65 s com varredura global de 166°, corpo e apoios acompanhando. Cross 2,40 s com espadas colineares aos antebraços, cotovelos externos, primeiro corte mais lento e segundo inclinado 15° à direita da criatura. Recuperação recolhe o braço e abre penas pela raiz. Arquivo salvo, motor e prévias nativas conferidos; 19 outros clipes, geometria, rig, UVs e atlas preservados.",
   "direcao_atual": "Esquerdo no ombro e floreio; direito no arrasto ou cravado durante o descanso. Lados e base aprovados pelo usuário.",
   "aprovacoes": {
     "idle": "aprovado",
@@ -14,9 +14,9 @@
     "combat_ready": "aprovado na base v7",
     "combat_enter": "movimento aprovado; v10 repara os valores sem mudar o ritmo",
     "corridas": "seis-clipes-aprovados-pelo-usuario-em-27-10-2026",
-    "golpes": "low-cross-v3-para-feedback",
+    "golpes": "low-cross-v4-para-feedback",
     "attack_spin": "rejeitado-e-adiado;preservado-na-v1",
-    "attack_cross_esquerdo": "descida-v2-aprovada;preservada-na-v3"
+    "attack_cross_esquerdo": "vertical-v2-v3-aprovada;substituida-pelo-pedido-de-diagonal-leve-v4-em-avaliacao"
   },
   "animacoes": [
     "idle",
@@ -41,7 +41,7 @@
     "attack_low",
     "attack_cross"
   ],
-  "metadados": "modelos/criatura-pavao/f3/ataques-v3/animacoes.json",
+  "metadados": "modelos/criatura-pavao/f3/ataques-v4/animacoes.json",
   "studio": "não alterado; somente animações e metadados locais",
   "clipes_em_revisao": [
     "attack_low",
@@ -50,6 +50,6 @@
   "clipes_adiados": [
     "attack_spin"
   ],
-  "fonte_anterior": "modelos/criatura-pavao/f3/ataques-v2/criatura-pavao-e3-ataques-v2.bbmodel",
-  "proxima_etapa": "Feedback de Low/alinhamento e Cross/arco direito; manter descida esquerda aprovada. Spin adiado."
+  "fonte_anterior": "modelos/criatura-pavao/f3/ataques-v3/criatura-pavao-e3-ataques-v3.bbmodel",
+  "proxima_etapa": "Feedback da amplitude do Low e da anatomia, ritmo e X do Cross. Spin adiado; exportação após aprovação artística."
 }

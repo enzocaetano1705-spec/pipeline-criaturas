@@ -1,0 +1,51 @@
+{
+  "saida_sha256": "bdde82fff85922f61f35dc77360f2865f2286eab599bd6f601570701c01d7e6f",
+  "quadros": {
+    "attack_low": 50,
+    "attack_cross": 72,
+    "attack_cross-3q": 72
+  },
+  "cameras": {
+    "attack_low": [
+      "attack_low",
+      [
+        175,
+        90,
+        -230
+      ],
+      [
+        0,
+        28,
+        -2
+      ]
+    ],
+    "attack_cross": [
+      "attack_cross",
+      [
+        0,
+        28,
+        -285
+      ],
+      [
+        0,
+        28,
+        0
+      ]
+    ],
+    "attack_cross-3q": [
+      "attack_cross",
+      [
+        160,
+        80,
+        -235
+      ],
+      [
+        0,
+        28,
+        -2
+      ]
+    ]
+  },
+  "camera_fixa_por_clipe": true,
+  "limpeza_view": "registro removido; erro conhecido do listener onContextMenu"
+}

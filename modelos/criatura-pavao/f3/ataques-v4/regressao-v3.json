@@ -1,0 +1,33 @@
+{
+  "attack_low": {
+    "pena_penetracao_nova": [
+      0.0,
+      null,
+      null,
+      null
+    ],
+    "cotovelo_distancia_corpo": [
+      3.365816925681714,
+      0.0,
+      "right",
+      "ribcage_lower"
+    ]
+  },
+  "attack_cross": {
+    "pena_penetracao_nova": [
+      2.899949669247384,
+      0.6,
+      "elbow_wing_right_1",
+      "ribcage"
+    ],
+    "cotovelo_distancia_corpo": [
+      1.9918448976587897,
+      0.7666666666666666,
+      "left",
+      "neck_lower_avian"
+    ]
+  },
+  "erros": [
+    "attack_cross: pena do cotovelo entra no corpo"
+  ]
+}
