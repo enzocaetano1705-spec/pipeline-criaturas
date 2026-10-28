@@ -1,0 +1,40 @@
+{
+  "ok": true,
+  "fonte_sha256": "9b36df874a85b29edb79dde878bd07be8920c06515973e631ce478287ffb2500",
+  "saida_sha256": "aa1d03d8bd586bb1efc8e9de121aca1e804b57ea64f03b95be960347c5bf45d1",
+  "clipes": 22,
+  "removidos": [
+    "attack_right"
+  ],
+  "preservados_integralmente": [
+    "idle",
+    "walk",
+    "combat_walk",
+    "combat_ready",
+    "combat_enter",
+    "combat_enter_walk",
+    "combat_walk_start",
+    "combat_walk_stop",
+    "combat_idle_resume",
+    "combat_exit",
+    "combat_enter_upper",
+    "combat_exit_upper",
+    "combat_idle",
+    "run",
+    "run_start",
+    "run_stop",
+    "combat_run",
+    "combat_run_start",
+    "combat_run_stop",
+    "attack_low",
+    "attack_combo",
+    "attack_left"
+  ],
+  "geometria_rig_uv_atlas_locators_preservados": true,
+  "eventos_dos_golpes_preservados": true,
+  "unicas_alteracoes_modelo": [
+    "name",
+    "animations: remoção de attack_right"
+  ],
+  "validacao_de_movimento_origem": "../ataques-v6/validacao-ataques.json"
+}

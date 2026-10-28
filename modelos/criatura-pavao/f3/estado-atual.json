@@ -1,9 +1,9 @@
 {
-  "status": "golpes-f3-v6-em-avaliacao",
-  "fonte": "modelos/criatura-pavao/f3/ataques-v6/criatura-pavao-e3-ataques-v6.bbmodel",
-  "sha256": "9b36df874a85b29edb79dde878bd07be8920c06515973e631ce478287ffb2500",
+  "status": "golpes-f3-aprovados-low-left-combo",
+  "fonte": "modelos/criatura-pavao/f3/ataques-v7/criatura-pavao-e3-ataques-v7.bbmodel",
+  "sha256": "aa1d03d8bd586bb1efc8e9de121aca1e804b57ea64f03b95be960347c5bf45d1",
   "origem_manual": "modelos/criatura-pavao/f3/animacoes-v3/origem-revisada.bbmodel",
-  "revisao_atual": "Low v5 aprovado e intacto. Left 1,32 s com aceleração concentrada no corte. Right 1,51 s com intervalo de espera reduzido e retomada axial suave do punho. Combo 2,20 s com golpe duplo fechado e quase paralelo; salto, giro, corpo, cauda, pernas e crista preservados. Só seis canais do combo revistos entre 0,90 e 1,62 s. Outros 20 clipes, incluindo Low, e geometria/rig/UVs/atlas intactos.",
+  "revisao_atual": "Catálogo aprovado consolidado: attack_low, attack_left e attack_combo. attack_right retirado por decisão do usuário. Low e Left atendem alvos de qualquer altura. Os 22 clipes restantes, suas chaves/UUIDs, eventos, geometria, rig, UVs e atlas são idênticos à v6; só nome do projeto e remoção do clipe mudaram.",
   "direcao_atual": "Esquerdo no ombro e floreio; direito no arrasto ou cravado durante o descanso. Lados e base aprovados pelo usuário.",
   "aprovacoes": {
     "idle": "aprovado",
@@ -14,11 +14,13 @@
     "combat_ready": "aprovado na base v7",
     "combat_enter": "movimento aprovado; v10 repara os valores sem mudar o ritmo",
     "corridas": "seis-clipes-aprovados-pelo-usuario-em-27-10-2026",
-    "golpes": "ajustes-v6-para-feedback",
+    "golpes": "low-left-combo-aprovados-pelo-usuario",
     "attack_spin": "rejeitado-e-adiado;preservado-na-v1",
-    "attack_cross_esquerdo": "trajetoria-v4-preservada;aceleracao-v6-em-avaliacao",
-    "attack_low": "v5-aprovado-integralmente;preservado-na-v6",
-    "attack_combo": "movimento-v5-aprovado;fechamento-v6-em-avaliacao"
+    "attack_cross_esquerdo": "trajetoria-consolidada-em-attack_left-aprovado",
+    "attack_low": "aprovado-v5;intacto-na-v7",
+    "attack_combo": "aprovado-integralmente-v6;intacto-na-v7",
+    "attack_left": "aprovado-mantido-v6;intacto-na-v7",
+    "attack_right": "removido-por-decisao-do-usuario"
   },
   "animacoes": [
     "idle",
@@ -41,20 +43,18 @@
     "combat_run_start",
     "combat_run_stop",
     "attack_low",
-    "attack_right",
     "attack_left",
     "attack_combo"
   ],
-  "metadados": "modelos/criatura-pavao/f3/ataques-v6/animacoes.json",
+  "metadados": "modelos/criatura-pavao/f3/ataques-v7/animacoes.json",
   "studio": "não alterado; somente animações e metadados locais",
-  "clipes_em_revisao": [
-    "attack_left",
-    "attack_right",
-    "attack_combo"
-  ],
+  "clipes_em_revisao": [],
   "clipes_adiados": [
     "attack_spin"
   ],
-  "fonte_anterior": "modelos/criatura-pavao/f3/ataques-v5/criatura-pavao-e3-ataques-v5.bbmodel",
-  "proxima_etapa": "Feedback dos ajustes de Left, retomada do Right e fechamento do combo. Low aprovado; exportação após aprovação artística final."
+  "fonte_anterior": "modelos/criatura-pavao/f3/ataques-v6/criatura-pavao-e3-ataques-v6.bbmodel",
+  "proxima_etapa": "Golpes Low, Left e Combo aprovados e consolidados. Próxima etapa de produção a definir; exportação/integração da F3 no jogo ainda pendentes.",
+  "clipes_removidos": [
+    "attack_right"
+  ]
 }

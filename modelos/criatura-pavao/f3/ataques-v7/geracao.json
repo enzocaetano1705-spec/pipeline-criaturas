@@ -1,0 +1,13 @@
+{
+  "fonte": "modelos/criatura-pavao/f3/ataques-v6/criatura-pavao-e3-ataques-v6.bbmodel",
+  "fonte_sha256": "9b36df874a85b29edb79dde878bd07be8920c06515973e631ce478287ffb2500",
+  "saida_sha256": "aa1d03d8bd586bb1efc8e9de121aca1e804b57ea64f03b95be960347c5bf45d1",
+  "removidos": [
+    "attack_right"
+  ],
+  "golpes": [
+    "attack_low",
+    "attack_left",
+    "attack_combo"
+  ]
+}

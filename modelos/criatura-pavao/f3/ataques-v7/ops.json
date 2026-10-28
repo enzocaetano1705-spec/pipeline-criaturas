@@ -1,0 +1,10 @@
+[
+  {
+    "op": "remove_animation",
+    "animation": "attack_right"
+  },
+  {
+    "op": "set_model_properties",
+    "name": "criatura-pavao-e3-ataques-v7"
+  }
+]
