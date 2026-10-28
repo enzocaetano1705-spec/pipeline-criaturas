@@ -1,0 +1,144 @@
+{
+  "F1": {
+    "idle": {
+      "Length": 2.4,
+      "Loop": true
+    },
+    "walk": {
+      "Length": 1.33,
+      "Loop": true
+    }
+  },
+  "F2": {
+    "idle": {
+      "Length": 2.4,
+      "Loop": true
+    },
+    "walk": {
+      "Length": 1.2,
+      "Loop": true
+    },
+    "attack_stomp": {
+      "Length": 1.25,
+      "Loop": false
+    },
+    "attack_spin": {
+      "Length": 1.65,
+      "Loop": false
+    },
+    "attack_tail_kick": {
+      "Length": 2.15,
+      "Loop": false
+    },
+    "walk_blend": {
+      "Length": 1.2,
+      "Loop": true
+    },
+    "idle_blend": {
+      "Length": 2.4,
+      "Loop": true
+    },
+    "run": {
+      "Length": 0.72,
+      "Loop": true
+    },
+    "run_start": {
+      "Length": 0.54,
+      "Loop": false
+    },
+    "run_stop": {
+      "Length": 0.6,
+      "Loop": false
+    }
+  },
+  "F3": {
+    "idle": {
+      "Length": 3.2,
+      "Loop": true
+    },
+    "walk": {
+      "Length": 1.5,
+      "Loop": true
+    },
+    "combat_walk": {
+      "Length": 1.8,
+      "Loop": true
+    },
+    "combat_ready": {
+      "Length": 2.4,
+      "Loop": true
+    },
+    "combat_enter": {
+      "Length": 1.65,
+      "Loop": false
+    },
+    "combat_enter_walk": {
+      "Length": 1.65,
+      "Loop": false
+    },
+    "combat_walk_start": {
+      "Length": 0.6,
+      "Loop": false
+    },
+    "combat_walk_stop": {
+      "Length": 0.6,
+      "Loop": false
+    },
+    "combat_idle_resume": {
+      "Length": 1.1,
+      "Loop": false
+    },
+    "combat_exit": {
+      "Length": 1.8,
+      "Loop": false
+    },
+    "combat_enter_upper": {
+      "Length": 1.65,
+      "Loop": false
+    },
+    "combat_exit_upper": {
+      "Length": 1.8,
+      "Loop": false
+    },
+    "combat_idle": {
+      "Length": 7.1499999999999995,
+      "Loop": false
+    },
+    "run": {
+      "Length": 0.84,
+      "Loop": true
+    },
+    "run_start": {
+      "Length": 0.6,
+      "Loop": false
+    },
+    "run_stop": {
+      "Length": 0.66,
+      "Loop": false
+    },
+    "combat_run": {
+      "Length": 0.96,
+      "Loop": true
+    },
+    "combat_run_start": {
+      "Length": 0.66,
+      "Loop": false
+    },
+    "combat_run_stop": {
+      "Length": 0.72,
+      "Loop": false
+    },
+    "attack_low": {
+      "Length": 1.42,
+      "Loop": false
+    },
+    "attack_combo": {
+      "Length": 2.2,
+      "Loop": false
+    },
+    "attack_left": {
+      "Length": 1.32,
+      "Loop": false
+    }
+  }
+}

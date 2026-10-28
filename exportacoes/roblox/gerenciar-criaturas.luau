@@ -2,7 +2,7 @@
 -- Selecione Models no Explorer (Ctrl/Shift) e execute por MCP/barra de comandos.
 -- AUDITAR é somente leitura. ARQUIVAR move para ServerStorage; Ctrl+Z desfaz o lote.
 local ACAO = "AUDITAR" -- AUDITAR | ADOTAR | ARQUIVAR | RESTAURAR
-local NOMES_CONHECIDOS = game:GetService("HttpService"):JSONDecode([==[["Pavao_F1", "Pavao_F2"]]==]) -- @REGISTRO@
+local NOMES_CONHECIDOS = game:GetService("HttpService"):JSONDecode([==[["Pavao_F1", "Pavao_F2", "Pavao_F3"]]==]) -- @REGISTRO@
 local NOME_PASTA = "criaturas modeladas blockbench"
 local HTTP = game:GetService("HttpService")
 local conhecidos = {}

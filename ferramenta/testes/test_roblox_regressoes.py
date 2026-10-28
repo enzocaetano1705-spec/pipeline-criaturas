@@ -5,11 +5,51 @@ import json
 import shutil
 import struct
 from types import SimpleNamespace
+from pathlib import Path
+
+import pytest
 
 from PIL import Image
 
 from criaturas import exportar
 from criaturas.caminhos import RAIZ
+
+
+def test_exportacao_espera_projeto_abrir_e_usa_arquivo_quando_resposta_excede_limite(tmp_path, monkeypatch):
+    fonte, destino = tmp_path / "copia.bbmodel", tmp_path / "resultado.glb"
+    destino.write_bytes(b"versao anterior")
+    projetos = iter([None, {"name": "outro"}, {"name": fonte.stem}])
+    chamadas = []
+    monkeypatch.setattr(exportar.desktop, "respondendo", lambda: True)
+    monkeypatch.setattr(exportar.desktop, "abrir", lambda *a, **k: None)
+    monkeypatch.setattr(exportar.time, "sleep", lambda *a: None)
+
+    def chamar(nome, args=None):
+        chamadas.append((nome, args))
+        if nome == "get_capabilities":
+            return {"content": [{"type": "text", "text": json.dumps({"project": next(projetos)})}]}
+        if "path" in args:
+            Path(args["path"]).write_bytes(b"nova exportacao")
+        return {"content": []}
+
+    monkeypatch.setattr(exportar.desktop, "chamar", chamar)
+    assert exportar.exportar_glb(fonte, destino) == {"bytes": 15}
+    assert destino.read_bytes() == b"nova exportacao"
+    exports = [a for n, a in chamadas if n == "export_model"]
+    assert len(exports) == 2 and exports[0]["max_content_length"] == 2_000_000
+    assert exports[1]["path"] != str(destino.resolve())  # arquivo antigo não mascara falha
+
+
+def test_exportacao_sem_arquivo_recusa_resultado_e_preserva_anterior(tmp_path, monkeypatch):
+    destino = tmp_path / "resultado.glb"; destino.write_bytes(b"anterior")
+    fonte = tmp_path / "copia.bbmodel"
+    monkeypatch.setattr(exportar.desktop, "respondendo", lambda: True)
+    monkeypatch.setattr(exportar.desktop, "abrir", lambda *a, **k: None)
+    monkeypatch.setattr(exportar.desktop, "chamar", lambda nome, args=None: {
+        "content": [{"type": "text", "text": json.dumps({"project": {"name": fonte.stem}})}] if nome == "get_capabilities" else []})
+    with pytest.raises(exportar.desktop.DesktopErro, match="não gravou"):
+        exportar.exportar_glb(fonte, destino)
+    assert destino.read_bytes() == b"anterior"
 
 
 def test_reexportacao_recupera_atlas_das_uvs_em_cache(tmp_path, monkeypatch):

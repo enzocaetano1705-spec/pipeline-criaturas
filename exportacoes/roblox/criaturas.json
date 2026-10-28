@@ -48,7 +48,7 @@
         "run_start",
         "run_stop"
       ],
-      "notas": "Ave bípede digitígrada; asas, crista e leque em planos com alfa. walk de avestruz (cinemática inversa). A cabeça (crânio, bico, crista) é superamostrada 4× no próprio atlas: 16 texels por pixel no olho, como o F1. F2 finalizada por ora em 24/10/2026: ataques e corrida/transições aprovados. Preservar a escala ajustada pelo usuário ao preparar uma reimportação. IDs publicados e controle de pet continuam futuros.",
+      "notas": "Ave bípede digitígrada; asas, crista e leque em planos com alfa. walk de avestruz (cinemática inversa). A cabeça (crânio, bico, crista) é superamostrada 4× no próprio atlas: 16 texels por pixel no olho, como o F1. F2 finalizada por ora em 24/10/2026: ataques e corrida/transições aprovados. Preservar a escala ajustada pelo usuário ao preparar uma reimportação. Laboratório de pets instalado em testesblockbench.rbxl; publicação dos IDs e integração ao jogo principal continuam futuras.",
       "arquivo": "exportacoes/roblox/pavao/Pavao_F2.glb",
       "ids_publicados": {},
       "walk_studs_por_s": 2.08,
@@ -59,6 +59,48 @@
         ],
         "fator": 4
       }
+    },
+    {
+      "nome": "Pavao_F3",
+      "colisao": {
+        "tipo": "composta_ossos",
+        "planos_alfa": true,
+        "espessura_planos": 0.25,
+        "max_partes": 192
+      },
+      "especie": "pavao",
+      "estagio": "3 de 3 (avinídeo guerreiro)",
+      "fonte": "modelos/criatura-pavao/f3/ataques-v7/criatura-pavao-e3-ataques-v7.bbmodel",
+      "escala_studio": 3,
+      "animacoes": [
+        "idle",
+        "walk",
+        "combat_walk",
+        "combat_ready",
+        "combat_enter",
+        "combat_enter_walk",
+        "combat_walk_start",
+        "combat_walk_stop",
+        "combat_idle_resume",
+        "combat_exit",
+        "combat_enter_upper",
+        "combat_exit_upper",
+        "combat_idle",
+        "run",
+        "run_start",
+        "run_stop",
+        "combat_run",
+        "combat_run_start",
+        "combat_run_stop",
+        "attack_low",
+        "attack_combo",
+        "attack_left"
+      ],
+      "notas": "Fonte aprovada com Low, Left e Combo; Right removido. Preparada para o protótipo de pets no Studio. Animações locais de teste, publicação futura.",
+      "arquivo": "exportacoes/roblox/pavao/Pavao_F3.glb",
+      "ids_publicados": {},
+      "material_pbr": true,
+      "walk_studs_por_s": 2.5
     }
   ],
   "_unidades": "1 unidade do Blockbench = 1/16 stud na escala 1; walk_studs_por_s vale na escala_studio."

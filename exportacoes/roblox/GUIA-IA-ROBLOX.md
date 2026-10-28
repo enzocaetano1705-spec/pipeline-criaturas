@@ -22,6 +22,13 @@ Roblox Studio, normalmente pelo MCP do Studio (`execute_luau`, `search_game_tree
 **Nomes:** `<Especie>_F<estágio>`, por exemplo `Pavao_F1` e `Pavao_F2`. O nome do `.glb` é o nome do Model no Studio.
 Nunca renomeie no Studio sem atualizar o `criaturas.json`.
 
+O laboratório local de pets instalado em `testesblockbench.rbxl` está documentado
+em [teste-pets/LEIA-ME.md](teste-pets/LEIA-ME.md). É um protótipo separado do jogo:
+remotes/estado/dano no servidor e animações temporárias no cliente. Os originais
+ficam na pasta ativa; templates e clipes compartilhados são cópias do laboratório.
+Reinstale em Edit após preparar uma nova importação. Não substitua o carregamento
+por IDs inventados nem publique animações sem passar pelo fluxo da conta correta.
+
 Para organizar uploads e iterar sem acumular cópias, leia [Biblioteca e iteração](BIBLIOTECA-E-ITERACAO.md):
 pastas nativas do Asset Manager, Reimport e histórico reversível do place.
 

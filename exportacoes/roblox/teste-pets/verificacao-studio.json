@@ -1,0 +1,21 @@
+{
+  "data": "2026-10-27",
+  "lugar": "testesblockbench.rbxl",
+  "tipo": "ensaio do prototipo pelo MCP; nao equivale a aprovacao artistica",
+  "formas_prontas": {"F1": 2, "F2": 10, "F3": 22},
+  "ensaios": {
+    "shift": {"walk_speed": 16, "run_speed": 28, "pet_parado": 0, "trocas_rapidas": "idle sem erro"},
+    "f1_pequeno": {"nivel": 1, "impactos": [6, 6, 6, 6], "ataque_provisorio": true},
+    "f2_pequeno": {"pisao": 14},
+    "f2_grande": {"catapulta": 24},
+    "f2_skill": {"dano_por_alvo": 22, "alvos_no_mesmo_impacto": ["Small", "Large"], "cooldown_s": 3, "retry_bloqueado": true},
+    "recall": {"nenhum_impacto_apos_cancelar": true},
+    "f3_pequeno": {"nivel": 1, "low": 22, "left": 28, "combo": [22, 44]},
+    "f3_grande": {"nivel": 2, "low": 23, "left": 30, "combo": [23, 47]},
+    "f3_corrida_combate": ["combat_enter_upper", "combat_run_start", "combat_run"],
+    "respawn": {"pet_novo": true, "quantidade": 1, "forma_mantida": "F3", "walk_speed": 16},
+    "hud_hp": {"pequeno": "250 / 250", "grande": "1200 / 1200"}
+  },
+  "console_final": "sem erros de execucao",
+  "encerrado_em": "Edit"
+}

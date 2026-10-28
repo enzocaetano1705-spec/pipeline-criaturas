@@ -17,6 +17,8 @@ import json
 import shutil
 import struct
 import subprocess
+import tempfile
+import time
 from pathlib import Path
 
 from PIL import Image
@@ -557,22 +559,36 @@ def exportar_roblox(arquivo: Path, nome: str, pasta: Path, separar: dict | None 
 
 
 def exportar_glb(copia: Path, saida: Path) -> dict:
-    """Abre a cópia no Blockbench desktop e exporta o .glb pelo export_model (conteúdo embutido na resposta)."""
+    """Exporta pelo desktop, usando arquivo temporário quando excede o limite da resposta MCP."""
     if not desktop.respondendo():
         desktop.abrir(copia)
     else:
         desktop.abrir(copia, esperar_ms=30000)
-    info = json.loads(desktop.texto(desktop.chamar("get_capabilities")))
-    projeto = info.get("project", {}).get("name")
+    projeto = None
+    for _ in range(20):
+        info = json.loads(desktop.texto(desktop.chamar("get_capabilities")))
+        projeto = (info.get("project") or {}).get("name")
+        if projeto == copia.stem:
+            break
+        time.sleep(.25)
     if projeto != copia.stem:
         raise desktop.DesktopErro(f"o projeto ativo no Blockbench é {projeto!r}, não {copia.stem!r}")
     r = desktop.chamar("export_model", {"codec_id": "gltf", "options": OPCOES_GLTF, "result_format": "embedded",
                                         "max_content_length": 2_000_000})
     blob = next((c["resource"]["blob"] for c in r["content"] if c.get("type") == "resource" and "blob" in c.get("resource", {})), None)
-    if blob is None:
-        raise desktop.DesktopErro("o export_model não devolveu o .glb (grande demais para vir embutido?)")
     saida.parent.mkdir(parents=True, exist_ok=True)
-    saida.write_bytes(base64.b64decode(blob))
+    if blob is None:
+        # O plugin limita a resposta embutida a 2 MB; rigs maiores usam o
+        # caminho de exportação nativo, sujeito à permissão de arquivos do app.
+        with tempfile.TemporaryDirectory(prefix="export-glb-", dir=saida.parent) as pasta:
+            temporario = Path(pasta) / saida.name
+            desktop.chamar("export_model", {"codec_id": "gltf", "options": OPCOES_GLTF,
+                            "path": str(temporario.resolve()), "overwrite": True, "max_content_length": 0})
+            if not temporario.is_file() or temporario.stat().st_size == 0:
+                raise desktop.DesktopErro("o export_model não gravou o .glb no caminho solicitado")
+            temporario.replace(saida)
+    else:
+        saida.write_bytes(base64.b64decode(blob))
     return {"bytes": saida.stat().st_size}
 
 
