@@ -1,5 +1,7 @@
 """Gera configuração e instalador do laboratório local de pets; não publica assets."""
 import json
+import math
+import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -42,11 +44,26 @@ def gerar():
                           "attack_left": {"Duration": 1.32, "Hits": [{"Time": .42538078, "Damage": 28}]},
                           "attack_combo": {"Duration": 2.2, "Hits": [{"Time": .49, "Damage": 22}, {"Time": 1.19, "Damage": 44}]}}}
     payload = json.dumps(config, ensure_ascii=False, separators=(",", ":"))
-    (OUT / "Config.luau").write_text('-- Gerado por scripts/gerar-teste-pets.py\nreturn game:GetService("HttpService"):JSONDecode([====[' + payload + ']====])\n', encoding="utf-8")
+    config_path=OUT / "Config.luau"
+    previous=config_path.read_text(encoding="utf-8") if config_path.exists() else ""
+    scales={ident: 1.0 for ident in forms}
+    for ident,value in re.findall(r"config\.Forms\.(\w+)\.Scale\s*=\s*([^\s;]+)",previous):
+        number=float(value)
+        if not math.isfinite(number) or number<=0:
+            raise ValueError(f"Scale inválido para {ident}: {value}")
+        if ident in scales: scales[ident]=number
+    # Campos editáveis no topo; regenerar preserva os valores locais.
+    header='-- Gerado por scripts/gerar-teste-pets.py; os Scale abaixo são editáveis.\n'
+    header+='local config={Forms={'+','.join(ident+'={}' for ident in forms)+'}}\n'
+    header+='-- Tamanho relativo ao template: 1 = atual; 0.5 = metade; 2 = dobro.\n'
+    header+='\n'.join(f'config.Forms.{ident}.Scale = {value!r}' for ident,value in scales.items())+'\n\n'
+    header+='local dados=game:GetService("HttpService"):JSONDecode([====['+payload+']====])\n'
+    header+='for id,form in dados.Forms do form.Scale=config.Forms[id].Scale end\nreturn dados\n'
+    config_path.write_text(header,encoding="utf-8")
     (OUT / "animacoes-origem.json").write_text(json.dumps(all_clips, indent=2) + "\n", encoding="utf-8")
     sources = {p.stem: p.read_text(encoding="utf-8") for p in OUT.glob("*.luau") if p.stem != "Instalar"}
     installer = (ROOT / "scripts/templates/instalar-teste-pets.luau").read_text(encoding="utf-8")
-    for name in ("Config", "AnimationDriver", "Dummies", "Server", "Client"):
+    for name in ("Config", "RigScale", "AnimationDriver", "Dummies", "Server", "Client"):
         installer = installer.replace("-- SOURCE:" + name, "[========[" + sources[name] + "]========]")
     (OUT / "Instalar.luau").write_text(installer, encoding="utf-8")
     print(f"Teste de pets: {len(forms)} formas, {sum(map(len, all_clips.values()))} clipes; instalador gerado.")

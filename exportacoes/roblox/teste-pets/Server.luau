@@ -5,6 +5,7 @@ local ServerStorage=game:GetService("ServerStorage")
 local RunService=game:GetService("RunService")
 local kit=ReplicatedStorage:WaitForChild("PipelinePetTest")
 local Config=require(kit.Config)
+local RigScale=require(kit.RigScale)
 local Command,Feed=kit.Command,kit.Feed
 local world=workspace:WaitForChild("PipelinePetTest")
 local pets=world:WaitForChild("Pets")
@@ -47,14 +48,19 @@ end
 local function spawnPet(player,s,id)
 	local form=Config.Forms[id];local template=form and templates:FindFirstChild(form.Name)
 	if not template then send(player,s,"Essa forma ainda precisa da importação atualizada.");return end
+	local scale=form.Scale;if scale==nil then scale=1 end
+	if not RigScale.IsValid(scale) then send(player,s,"Scale da "..id.." precisa ser positivo e finito.");return end
 	local root=player.Character and player.Character:FindFirstChild("HumanoidRootPart");if not root then return end
 	local clone=template:Clone();clone.Name="Pet_"..player.UserId
+	local offset=RigScale.Apply(clone,scale)
 	if s.Model then s.Model:Destroy() end
 	s.Form=id;s.Model=clone;s.Attack=nil;s.Target=nil;s.Combat=false;s.Speed=0;s.Serial=0;s.SkillQueued=false;s.ReadyAt=0;s.ComboIndex=0
+	s.Scale=scale;s.Range=form.Range*scale;s.AreaRadius=Config.SkillRadius*scale
+	clone:SetAttribute("AttackRange",s.Range);clone:SetAttribute("SkillRadius",s.AreaRadius)
 	clone:SetAttribute("OwnerUserId",player.UserId);clone:SetAttribute("FormId",id);clone:SetAttribute("Level",s.Level)
 	clone:SetAttribute("Motion","Idle");clone:SetAttribute("Combat",false);clone:SetAttribute("ActionSerial",0);clone:SetAttribute("Speed",0)
-	s.Offset=clone:GetAttribute("PetAnchorToPivot");assert(typeof(s.Offset)=="CFrame","Template sem referencial")
-	local offset=Vector3.new(table.unpack(Config.FollowOffset));local p=ground(root.CFrame:PointToWorldSpace(offset))
+	s.Offset=offset
+	local followOffset=Vector3.new(table.unpack(Config.FollowOffset));local p=ground(root.CFrame:PointToWorldSpace(followOffset))
 	s.Anchor=CFrame.lookAt(p,p+flat(root.CFrame.LookVector));s.Model:PivotTo(s.Anchor*s.Offset);s.Model.Parent=pets
 	s.Model:SetAttribute("Status","Seguindo");send(player,s)
 end
@@ -83,8 +89,8 @@ local function updateAttack(player,s,t)
 	while a.NextHit<=#a.Spec.Hits and elapsed>=a.Spec.Hits[a.NextHit].Time do
 		local hit=a.Spec.Hits[a.NextHit];a.NextHit+=1
 		if a.Spec.Area then
-			for id in targets.Items do if targets:Distance(id,s.Anchor.Position)<=Config.SkillRadius then damage(player,s,id,hit.Damage) end end
-		elseif s.Target==a.Target and targets:Alive(a.Target) and targets:Distance(a.Target,s.Anchor.Position)<=Config.Forms[s.Form].Range+2 then
+			for id in targets.Items do if targets:Distance(id,s.Anchor.Position)<=s.AreaRadius then damage(player,s,id,hit.Damage) end end
+		elseif s.Target==a.Target and targets:Alive(a.Target) and targets:Distance(a.Target,s.Anchor.Position)<=s.Range+2*s.Scale then
 			damage(player,s,a.Target,hit.Damage)
 		end
 	end
@@ -95,7 +101,6 @@ local function update(player,s,dt,t)
 	local model=s.Model;if not model or not model.Parent then return end
 	local char=player.Character;local root=char and char:FindFirstChild("HumanoidRootPart");local hum=char and char:FindFirstChildOfClass("Humanoid")
 	if not root or not hum or hum.Health<=0 then return end
-	local form=Config.Forms[s.Form]
 	local destination=root.CFrame:PointToWorldSpace(Vector3.new(table.unpack(Config.FollowOffset)))
 	local face=flat(root.CFrame.LookVector);local target=s.Target and targets:Get(s.Target)
 	local inRange=false
@@ -104,8 +109,8 @@ local function update(player,s,dt,t)
 		if delta.Magnitude>.01 then face=delta.Unit end
 		local radius=math.max(target.Core.Size.X,target.Core.Size.Z)*.5
 		-- A tolerância de parada deve ficar inteiramente dentro do alcance do golpe.
-		destination=target.Core.Position-face*(radius+form.Range-.8)
-		inRange=targets:Distance(s.Target,s.Anchor.Position)<=form.Range+.15
+		destination=target.Core.Position-face*(radius+s.Range-.8*s.Scale)
+		inRange=targets:Distance(s.Target,s.Anchor.Position)<=s.Range+.15*s.Scale
 		if inRange then destination=s.Anchor.Position end
 	end
 	updateAttack(player,s,t)
@@ -122,7 +127,7 @@ local function update(player,s,dt,t)
 	local delta=flat(destination-s.Anchor.Position);local distance=delta.Magnitude
 	local movingOwner=hum.MoveDirection.Magnitude>.05
 	local maxSpeed=(s.Sprint and movingOwner and Config.RunSpeed or Config.WalkSpeed)+(target and 0 or 3)
-	local stopTolerance=target and .2 or .65
+	local stopTolerance=target and .2*s.Scale or .65
 	local desired=distance>stopTolerance and math.min(maxSpeed,distance*3) or 0
 	if s.Attack then desired=0 end
 	s.Speed=approach(s.Speed,desired,dt*(desired<s.Speed and Config.Deceleration or Config.Acceleration))
@@ -132,7 +137,7 @@ local function update(player,s,dt,t)
 	local rotation=s.Anchor.Rotation:Lerp(CFrame.lookAt(Vector3.zero,face),1-math.exp(-10*dt))
 	s.Anchor=CFrame.new(pos)*rotation
 	local lunge=0
-	if s.Attack and s.Attack.Clip=="F1" then lunge=.55*math.sin(math.clamp((t-s.Attack.Started)/.7,0,1)*math.pi) end
+	if s.Attack and s.Attack.Clip=="F1" then lunge=.55*s.Scale*math.sin(math.clamp((t-s.Attack.Started)/.7,0,1)*math.pi) end
 	model:PivotTo(s.Anchor*CFrame.new(0,0,-lunge)*s.Offset)
 	local motion="Idle"
 	if distance>28 then s.Catching=true elseif distance<12 then s.Catching=false end

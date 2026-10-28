@@ -20,10 +20,60 @@ local ok,result=xpcall(function()
 	local function source(parent,name,class,code)
 		local obj=owned(parent,name,class);obj.Source=code;return obj
 	end
-	local config=source(rs,"Config","ModuleScript",[========[-- Gerado por scripts/gerar-teste-pets.py
-return game:GetService("HttpService"):JSONDecode([====[{"Version":1,"WalkSpeed":16,"RunSpeed":28,"FollowOffset":[-7,0,11],"Acceleration":38,"Deceleration":55,"DummyRespawn":3,"SkillCooldown":3,"SkillRadius":17,"Forms":{"F1":{"Id":"F1","Name":"Pavao_F1","Animations":{"idle":{"Length":2.4,"Loop":true},"walk":{"Length":1.33,"Loop":true}},"WalkUnits":13.333333,"RunUnits":37.414966,"CombatWalkUnits":11.111111,"CombatRunUnits":28.882576,"Range":2.8,"SourceHash":"9604fa4c679be7e52ea95941735099613ecc0fe54eadfd33f1df95125c0185eb"},"F2":{"Id":"F2","Name":"Pavao_F2","Animations":{"idle":{"Length":2.4,"Loop":true},"walk":{"Length":1.2,"Loop":true},"attack_stomp":{"Length":1.25,"Loop":false},"attack_spin":{"Length":1.65,"Loop":false},"attack_tail_kick":{"Length":2.15,"Loop":false},"walk_blend":{"Length":1.2,"Loop":true},"idle_blend":{"Length":2.4,"Loop":true},"run":{"Length":0.72,"Loop":true},"run_start":{"Length":0.54,"Loop":false},"run_stop":{"Length":0.6,"Loop":false}},"WalkUnits":11.111111,"RunUnits":44.444444,"CombatWalkUnits":11.111111,"CombatRunUnits":28.882576,"Range":6.5,"SourceHash":"a387d4f84d3913d1f717b1c2cda92f17d794157331ad65f57448e8de29eacd0a","Phases":{"run_start":0.432,"run_stop":0.8}},"F3":{"Id":"F3","Name":"Pavao_F3","Animations":{"idle":{"Length":3.2,"Loop":true},"walk":{"Length":1.5,"Loop":true},"combat_walk":{"Length":1.8,"Loop":true},"combat_ready":{"Length":2.4,"Loop":true},"combat_enter":{"Length":1.65,"Loop":false},"combat_enter_walk":{"Length":1.65,"Loop":false},"combat_walk_start":{"Length":0.6,"Loop":false},"combat_walk_stop":{"Length":0.6,"Loop":false},"combat_idle_resume":{"Length":1.1,"Loop":false},"combat_exit":{"Length":1.8,"Loop":false},"combat_enter_upper":{"Length":1.65,"Loop":false},"combat_exit_upper":{"Length":1.8,"Loop":false},"combat_idle":{"Length":7.1499999999999995,"Loop":false},"run":{"Length":0.84,"Loop":true},"run_start":{"Length":0.6,"Loop":false},"run_stop":{"Length":0.66,"Loop":false},"combat_run":{"Length":0.96,"Loop":true},"combat_run_start":{"Length":0.66,"Loop":false},"combat_run_stop":{"Length":0.72,"Loop":false},"attack_low":{"Length":1.42,"Loop":false},"attack_combo":{"Length":2.2,"Loop":false},"attack_left":{"Length":1.32,"Loop":false}},"WalkUnits":13.333333,"RunUnits":37.414966,"CombatWalkUnits":11.111111,"CombatRunUnits":28.882576,"Range":9.5,"SourceHash":"aa1d03d8bd586bb1efc8e9de121aca1e804b57ea64f03b95be960347c5bf45d1","UpperBones":["tail_1","tail_2","tail_fan_01","tail_fan_02","tail_fan_03","tail_fan_04","tail_fan_05","tail_fan_06","waist","torso","arm_left","arm_right","back_feathers_left","back_feathers_left3","back_feathers_right","back_feathers_right2","forearm_left","forearm_right","hand_left","feather_sword_left","hand_right","feather_sword_right","neck_1","neck_2","head","feather_left_1","feather_left_2","feather_right_1","feather_right_2","wing_left","wing_right"],"Phases":{"run_start":0.46799999999999997,"run_stop":0.9192857142857143,"combat_run_start":0.506,"combat_run_stop":1.0350000000000001,"combat_walk_start":0.3}}},"Dummies":{"Small":{"Name":"AlvoPequeno","Label":"Alvo pequeno","Size":[3,3,3],"HP":250,"X":-7,"Z":-32},"Large":{"Name":"AlvoGrande","Label":"Alvo médio / grande","Size":[10,10,10],"HP":1200,"X":9,"Z":-32}},"Attacks":{"F1":{"Duration":0.7,"Hits":[{"Time":0.3,"Damage":6}]},"attack_stomp":{"Duration":1.25,"Hits":[{"Time":0.575,"Damage":14}]},"attack_tail_kick":{"Duration":2.15,"Hits":[{"Time":0.762857,"Damage":24}]},"attack_spin":{"Duration":1.65,"Area":true,"Hits":[{"Time":0.64,"Damage":22}]},"attack_low":{"Duration":1.42,"Hits":[{"Time":0.54,"Damage":22}]},"attack_left":{"Duration":1.32,"Hits":[{"Time":0.42538078,"Damage":28}]},"attack_combo":{"Duration":2.2,"Hits":[{"Time":0.49,"Damage":22},{"Time":1.19,"Damage":44}]}}}]====])
+	local savedScales={}
+	local previous=rs:FindFirstChild("Config")
+	if previous then
+		assert(previous:GetAttribute("PetTestOwned"),"Config existente não pertence ao teste")
+		local temp=previous:Clone();local loaded,old=pcall(require,temp);temp:Destroy()
+		assert(loaded,"Config existente inválida; corrigir antes de reinstalar")
+		for id,form in old.Forms do if form.Scale~=nil then savedScales[id]=form.Scale end end
+	end
+	local config=source(rs,"Config","ModuleScript",[========[-- Gerado por scripts/gerar-teste-pets.py; os Scale abaixo são editáveis.
+local config={Forms={F1={},F2={},F3={}}}
+-- Tamanho relativo ao template: 1 = atual; 0.5 = metade; 2 = dobro.
+config.Forms.F1.Scale = 1.0
+config.Forms.F2.Scale = 1.0
+config.Forms.F3.Scale = 1.0
+
+local dados=game:GetService("HttpService"):JSONDecode([====[{"Version":1,"WalkSpeed":16,"RunSpeed":28,"FollowOffset":[-7,0,11],"Acceleration":38,"Deceleration":55,"DummyRespawn":3,"SkillCooldown":3,"SkillRadius":17,"Forms":{"F1":{"Id":"F1","Name":"Pavao_F1","Animations":{"idle":{"Length":2.4,"Loop":true},"walk":{"Length":1.33,"Loop":true}},"WalkUnits":13.333333,"RunUnits":37.414966,"CombatWalkUnits":11.111111,"CombatRunUnits":28.882576,"Range":2.8,"SourceHash":"9604fa4c679be7e52ea95941735099613ecc0fe54eadfd33f1df95125c0185eb"},"F2":{"Id":"F2","Name":"Pavao_F2","Animations":{"idle":{"Length":2.4,"Loop":true},"walk":{"Length":1.2,"Loop":true},"attack_stomp":{"Length":1.25,"Loop":false},"attack_spin":{"Length":1.65,"Loop":false},"attack_tail_kick":{"Length":2.15,"Loop":false},"walk_blend":{"Length":1.2,"Loop":true},"idle_blend":{"Length":2.4,"Loop":true},"run":{"Length":0.72,"Loop":true},"run_start":{"Length":0.54,"Loop":false},"run_stop":{"Length":0.6,"Loop":false}},"WalkUnits":11.111111,"RunUnits":44.444444,"CombatWalkUnits":11.111111,"CombatRunUnits":28.882576,"Range":6.5,"SourceHash":"a387d4f84d3913d1f717b1c2cda92f17d794157331ad65f57448e8de29eacd0a","Phases":{"run_start":0.432,"run_stop":0.8}},"F3":{"Id":"F3","Name":"Pavao_F3","Animations":{"idle":{"Length":3.2,"Loop":true},"walk":{"Length":1.5,"Loop":true},"combat_walk":{"Length":1.8,"Loop":true},"combat_ready":{"Length":2.4,"Loop":true},"combat_enter":{"Length":1.65,"Loop":false},"combat_enter_walk":{"Length":1.65,"Loop":false},"combat_walk_start":{"Length":0.6,"Loop":false},"combat_walk_stop":{"Length":0.6,"Loop":false},"combat_idle_resume":{"Length":1.1,"Loop":false},"combat_exit":{"Length":1.8,"Loop":false},"combat_enter_upper":{"Length":1.65,"Loop":false},"combat_exit_upper":{"Length":1.8,"Loop":false},"combat_idle":{"Length":7.1499999999999995,"Loop":false},"run":{"Length":0.84,"Loop":true},"run_start":{"Length":0.6,"Loop":false},"run_stop":{"Length":0.66,"Loop":false},"combat_run":{"Length":0.96,"Loop":true},"combat_run_start":{"Length":0.66,"Loop":false},"combat_run_stop":{"Length":0.72,"Loop":false},"attack_low":{"Length":1.42,"Loop":false},"attack_combo":{"Length":2.2,"Loop":false},"attack_left":{"Length":1.32,"Loop":false}},"WalkUnits":13.333333,"RunUnits":37.414966,"CombatWalkUnits":11.111111,"CombatRunUnits":28.882576,"Range":9.5,"SourceHash":"aa1d03d8bd586bb1efc8e9de121aca1e804b57ea64f03b95be960347c5bf45d1","UpperBones":["tail_1","tail_2","tail_fan_01","tail_fan_02","tail_fan_03","tail_fan_04","tail_fan_05","tail_fan_06","waist","torso","arm_left","arm_right","back_feathers_left","back_feathers_left3","back_feathers_right","back_feathers_right2","forearm_left","forearm_right","hand_left","feather_sword_left","hand_right","feather_sword_right","neck_1","neck_2","head","feather_left_1","feather_left_2","feather_right_1","feather_right_2","wing_left","wing_right"],"Phases":{"run_start":0.46799999999999997,"run_stop":0.9192857142857143,"combat_run_start":0.506,"combat_run_stop":1.0350000000000001,"combat_walk_start":0.3}}},"Dummies":{"Small":{"Name":"AlvoPequeno","Label":"Alvo pequeno","Size":[3,3,3],"HP":250,"X":-7,"Z":-32},"Large":{"Name":"AlvoGrande","Label":"Alvo médio / grande","Size":[10,10,10],"HP":1200,"X":9,"Z":-32}},"Attacks":{"F1":{"Duration":0.7,"Hits":[{"Time":0.3,"Damage":6}]},"attack_stomp":{"Duration":1.25,"Hits":[{"Time":0.575,"Damage":14}]},"attack_tail_kick":{"Duration":2.15,"Hits":[{"Time":0.762857,"Damage":24}]},"attack_spin":{"Duration":1.65,"Area":true,"Hits":[{"Time":0.64,"Damage":22}]},"attack_low":{"Duration":1.42,"Hits":[{"Time":0.54,"Damage":22}]},"attack_left":{"Duration":1.32,"Hits":[{"Time":0.42538078,"Damage":28}]},"attack_combo":{"Duration":2.2,"Hits":[{"Time":0.49,"Damage":22},{"Time":1.19,"Damage":44}]}}}]====])
+for id,form in dados.Forms do form.Scale=config.Forms[id].Scale end
+return dados
 ]========]
 	)
+	-- Preserva escalas editadas no Studio ao atualizar scripts/templates.
+	for id,value in savedScales do
+		assert(typeof(value)=="number" and value>0 and value<math.huge,"Scale inválido: "..id)
+		local pattern="(config%.Forms%."..id.."%.Scale%s*=%s*)[^%s;]+"
+		config.Source=string.gsub(config.Source,pattern,function(prefix) return prefix..string.format("%.17g",value) end)
+	end
+	local rigScale=source(rs,"RigScale","ModuleScript",[========[-- Scale é um multiplicador do template preparado: 1 mantém o tamanho atual.
+local RigScale={}
+
+function RigScale.IsValid(value)
+	return typeof(value)=="number" and value>0 and value<math.huge
+end
+
+function RigScale.Apply(model,multiplier)
+	assert(RigScale.IsValid(multiplier),"Scale precisa ser um número positivo e finito")
+	local base=model:GetAttribute("PetBaseScale") or model:GetScale()
+	assert(RigScale.IsValid(base),"Escala de referência inválida")
+	model:ScaleTo(base*multiplier)
+	local body
+	for _,item in model:GetDescendants() do if item:IsA("Bone") and item.Name=="body" then body=item;break end end
+	assert(body and model:FindFirstChild("Hitbox"),"Rig preparado sem body/Hitbox")
+	local box,size=model:GetBoundingBox()
+	local anchor=CFrame.new(body.WorldPosition.X,box.Position.Y-size.Y/2,body.WorldPosition.Z)*model.Hitbox.CFrame.Rotation
+	local offset=anchor:ToObjectSpace(model:GetPivot())
+	model:SetAttribute("PetBaseScale",base)
+	model:SetAttribute("PetScaleMultiplier",multiplier)
+	model:SetAttribute("PetAnchorToPivot",offset)
+	return offset
+end
+
+return RigScale
+]========]
+	)
+	local scaleModule=require(rigScale:Clone())
 	source(rs,"AnimationDriver","ModuleScript",[========[-- IDs temporários são registrados no cliente que os reproduz (teste no Studio).
 local RunService=game:GetService("RunService")
 local Provider=game:GetService("KeyframeSequenceProvider")
@@ -237,6 +287,7 @@ local ServerStorage=game:GetService("ServerStorage")
 local RunService=game:GetService("RunService")
 local kit=ReplicatedStorage:WaitForChild("PipelinePetTest")
 local Config=require(kit.Config)
+local RigScale=require(kit.RigScale)
 local Command,Feed=kit.Command,kit.Feed
 local world=workspace:WaitForChild("PipelinePetTest")
 local pets=world:WaitForChild("Pets")
@@ -279,14 +330,19 @@ end
 local function spawnPet(player,s,id)
 	local form=Config.Forms[id];local template=form and templates:FindFirstChild(form.Name)
 	if not template then send(player,s,"Essa forma ainda precisa da importação atualizada.");return end
+	local scale=form.Scale;if scale==nil then scale=1 end
+	if not RigScale.IsValid(scale) then send(player,s,"Scale da "..id.." precisa ser positivo e finito.");return end
 	local root=player.Character and player.Character:FindFirstChild("HumanoidRootPart");if not root then return end
 	local clone=template:Clone();clone.Name="Pet_"..player.UserId
+	local offset=RigScale.Apply(clone,scale)
 	if s.Model then s.Model:Destroy() end
 	s.Form=id;s.Model=clone;s.Attack=nil;s.Target=nil;s.Combat=false;s.Speed=0;s.Serial=0;s.SkillQueued=false;s.ReadyAt=0;s.ComboIndex=0
+	s.Scale=scale;s.Range=form.Range*scale;s.AreaRadius=Config.SkillRadius*scale
+	clone:SetAttribute("AttackRange",s.Range);clone:SetAttribute("SkillRadius",s.AreaRadius)
 	clone:SetAttribute("OwnerUserId",player.UserId);clone:SetAttribute("FormId",id);clone:SetAttribute("Level",s.Level)
 	clone:SetAttribute("Motion","Idle");clone:SetAttribute("Combat",false);clone:SetAttribute("ActionSerial",0);clone:SetAttribute("Speed",0)
-	s.Offset=clone:GetAttribute("PetAnchorToPivot");assert(typeof(s.Offset)=="CFrame","Template sem referencial")
-	local offset=Vector3.new(table.unpack(Config.FollowOffset));local p=ground(root.CFrame:PointToWorldSpace(offset))
+	s.Offset=offset
+	local followOffset=Vector3.new(table.unpack(Config.FollowOffset));local p=ground(root.CFrame:PointToWorldSpace(followOffset))
 	s.Anchor=CFrame.lookAt(p,p+flat(root.CFrame.LookVector));s.Model:PivotTo(s.Anchor*s.Offset);s.Model.Parent=pets
 	s.Model:SetAttribute("Status","Seguindo");send(player,s)
 end
@@ -315,8 +371,8 @@ local function updateAttack(player,s,t)
 	while a.NextHit<=#a.Spec.Hits and elapsed>=a.Spec.Hits[a.NextHit].Time do
 		local hit=a.Spec.Hits[a.NextHit];a.NextHit+=1
 		if a.Spec.Area then
-			for id in targets.Items do if targets:Distance(id,s.Anchor.Position)<=Config.SkillRadius then damage(player,s,id,hit.Damage) end end
-		elseif s.Target==a.Target and targets:Alive(a.Target) and targets:Distance(a.Target,s.Anchor.Position)<=Config.Forms[s.Form].Range+2 then
+			for id in targets.Items do if targets:Distance(id,s.Anchor.Position)<=s.AreaRadius then damage(player,s,id,hit.Damage) end end
+		elseif s.Target==a.Target and targets:Alive(a.Target) and targets:Distance(a.Target,s.Anchor.Position)<=s.Range+2*s.Scale then
 			damage(player,s,a.Target,hit.Damage)
 		end
 	end
@@ -327,7 +383,6 @@ local function update(player,s,dt,t)
 	local model=s.Model;if not model or not model.Parent then return end
 	local char=player.Character;local root=char and char:FindFirstChild("HumanoidRootPart");local hum=char and char:FindFirstChildOfClass("Humanoid")
 	if not root or not hum or hum.Health<=0 then return end
-	local form=Config.Forms[s.Form]
 	local destination=root.CFrame:PointToWorldSpace(Vector3.new(table.unpack(Config.FollowOffset)))
 	local face=flat(root.CFrame.LookVector);local target=s.Target and targets:Get(s.Target)
 	local inRange=false
@@ -336,8 +391,8 @@ local function update(player,s,dt,t)
 		if delta.Magnitude>.01 then face=delta.Unit end
 		local radius=math.max(target.Core.Size.X,target.Core.Size.Z)*.5
 		-- A tolerância de parada deve ficar inteiramente dentro do alcance do golpe.
-		destination=target.Core.Position-face*(radius+form.Range-.8)
-		inRange=targets:Distance(s.Target,s.Anchor.Position)<=form.Range+.15
+		destination=target.Core.Position-face*(radius+s.Range-.8*s.Scale)
+		inRange=targets:Distance(s.Target,s.Anchor.Position)<=s.Range+.15*s.Scale
 		if inRange then destination=s.Anchor.Position end
 	end
 	updateAttack(player,s,t)
@@ -354,7 +409,7 @@ local function update(player,s,dt,t)
 	local delta=flat(destination-s.Anchor.Position);local distance=delta.Magnitude
 	local movingOwner=hum.MoveDirection.Magnitude>.05
 	local maxSpeed=(s.Sprint and movingOwner and Config.RunSpeed or Config.WalkSpeed)+(target and 0 or 3)
-	local stopTolerance=target and .2 or .65
+	local stopTolerance=target and .2*s.Scale or .65
 	local desired=distance>stopTolerance and math.min(maxSpeed,distance*3) or 0
 	if s.Attack then desired=0 end
 	s.Speed=approach(s.Speed,desired,dt*(desired<s.Speed and Config.Deceleration or Config.Acceleration))
@@ -364,7 +419,7 @@ local function update(player,s,dt,t)
 	local rotation=s.Anchor.Rotation:Lerp(CFrame.lookAt(Vector3.zero,face),1-math.exp(-10*dt))
 	s.Anchor=CFrame.new(pos)*rotation
 	local lunge=0
-	if s.Attack and s.Attack.Clip=="F1" then lunge=.55*math.sin(math.clamp((t-s.Attack.Started)/.7,0,1)*math.pi) end
+	if s.Attack and s.Attack.Clip=="F1" then lunge=.55*s.Scale*math.sin(math.clamp((t-s.Attack.Started)/.7,0,1)*math.pi) end
 	model:PivotTo(s.Anchor*CFrame.new(0,0,-lunge)*s.Offset)
 	local motion="Idle"
 	if distance>28 then s.Catching=true elseif distance<12 then s.Catching=false end
@@ -565,11 +620,7 @@ Command:FireServer("Sync")
 				if item:IsA("BaseScript") then item.Enabled=false end
 				if item:IsA("BasePart") then item.CanTouch=false end
 			end
-			local box,size=copy:GetBoundingBox();local body
-			for _,item in copy:GetDescendants() do if item:IsA("Bone") and item.Name=="body" then body=item;break end end
-			assert(body,"Rig sem body")
-			local anchor=CFrame.new(body.WorldPosition.X,box.Position.Y-size.Y/2,body.WorldPosition.Z)*copy.Hitbox.CFrame.Rotation
-			copy:SetAttribute("PetAnchorToPivot",anchor:ToObjectSpace(copy:GetPivot()));copy:SetAttribute("PetTestOwned",true)
+			copy:SetAttribute("PetBaseScale",copy:GetScale());scaleModule.Apply(copy,1);copy:SetAttribute("PetTestOwned",true)
 			copy.Hitbox.Anchored=true
 			local old=templates:FindFirstChild(form.Name);if old then assert(old:GetAttribute("PetTestOwned"));old:Destroy() end
 			copy.Parent=templates;task.wait();status[id]="pronto ("..#list:GetChildren().." clipes)"

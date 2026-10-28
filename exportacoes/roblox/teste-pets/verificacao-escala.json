@@ -1,0 +1,183 @@
+{
+  "data": "2026-10-28",
+  "tipo": "fixtures descartaveis em Edit e ensaio funcional no Play",
+  "edit": {
+    "Pavao_F3": {
+      "1": {
+        "factor": 0.5,
+        "colliderOffsetError": 0,
+        "colliderSizeError": 0,
+        "floorError": 0,
+        "scale": 3.4418797492980957
+      },
+      "2": {
+        "factor": 1,
+        "colliderOffsetError": 0,
+        "colliderSizeError": 0,
+        "floorError": 0,
+        "scale": 6.883759498596191
+      },
+      "3": {
+        "factor": 1.5,
+        "colliderOffsetError": 0,
+        "colliderSizeError": 0,
+        "floorError": 0,
+        "scale": 10.325639724731445
+      }
+    },
+    "Pavao_F2": {
+      "1": {
+        "factor": 0.5,
+        "colliderOffsetError": 0,
+        "colliderSizeError": 0,
+        "floorError": 0,
+        "scale": 2.588057279586792
+      },
+      "2": {
+        "factor": 1,
+        "colliderOffsetError": 0,
+        "colliderSizeError": 0,
+        "floorError": 0,
+        "scale": 5.176114559173584
+      },
+      "3": {
+        "factor": 1.5,
+        "colliderOffsetError": 0,
+        "colliderSizeError": 0,
+        "floorError": 0,
+        "scale": 7.764171600341797
+      }
+    },
+    "Pavao_F1": {
+      "1": {
+        "factor": 0.5,
+        "colliderOffsetError": 0,
+        "colliderSizeError": 0,
+        "floorError": 0,
+        "scale": 1.7550723552703857
+      },
+      "2": {
+        "factor": 1,
+        "colliderOffsetError": 0,
+        "colliderSizeError": 0,
+        "floorError": 0,
+        "scale": 3.5101447105407715
+      },
+      "3": {
+        "factor": 1.5,
+        "colliderOffsetError": 0,
+        "colliderSizeError": 0,
+        "floorError": 0,
+        "scale": 5.265216827392578
+      }
+    }
+  },
+  "play": {
+    "F1": {
+      "factor": 0.5,
+      "tracks": {
+        "1": "idle"
+      },
+      "scale": 1.7550723552703857,
+      "areaRadius": 8.5,
+      "range": 1.4,
+      "hits": {
+        "1": {
+          "target": "Small",
+          "amount": 6
+        },
+        "2": {
+          "target": "Small",
+          "amount": 6
+        },
+        "3": {
+          "target": "Small",
+          "amount": 6
+        },
+        "4": {
+          "target": "Small",
+          "amount": 6
+        },
+        "5": {
+          "target": "Small",
+          "amount": 6
+        }
+      }
+    },
+    "F2": {
+      "factor": 0.75,
+      "tracks": {
+        "1": "attack_stomp",
+        "2": "idle_blend"
+      },
+      "scale": 3.8820858001708984,
+      "areaRadius": 12.75,
+      "range": 4.875,
+      "hits": {
+        "1": {
+          "target": "Small",
+          "amount": 14
+        },
+        "2": {
+          "target": "Small",
+          "amount": 14
+        },
+        "3": {
+          "target": "Small",
+          "amount": 14
+        }
+      }
+    },
+    "F3": {
+      "factor": 1.5,
+      "tracks": {
+        "1": "combat_ready",
+        "2": "attack_low"
+      },
+      "scale": 10.325639724731445,
+      "areaRadius": 25.5,
+      "range": 14.25,
+      "hits": {
+        "1": {
+          "target": "Large",
+          "amount": 22
+        },
+        "2": {
+          "target": "Large",
+          "amount": 28
+        },
+        "3": {
+          "target": "Large",
+          "amount": 22
+        },
+        "4": {
+          "target": "Large",
+          "amount": 44
+        },
+        "5": {
+          "target": "Large",
+          "amount": 22
+        }
+      }
+    }
+  },
+  "preservacao": {
+    "reinstalacaoStudio": {
+      "F2": 0.75,
+      "passou": true
+    },
+    "geracaoLocal": {
+      "F2": 0.75,
+      "idempotente": true,
+      "zeroRecusadoSemSobrescrita": true
+    }
+  },
+  "estadoFinal": {
+    "Play": "parado",
+    "F1": 1,
+    "F2": 1,
+    "F3": 1,
+    "ConfigSelecionada": true,
+    "gravacaoRbxlConfirmada": false
+  }
+}

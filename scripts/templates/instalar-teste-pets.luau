@@ -20,8 +20,25 @@ local ok,result=xpcall(function()
 	local function source(parent,name,class,code)
 		local obj=owned(parent,name,class);obj.Source=code;return obj
 	end
+	local savedScales={}
+	local previous=rs:FindFirstChild("Config")
+	if previous then
+		assert(previous:GetAttribute("PetTestOwned"),"Config existente não pertence ao teste")
+		local temp=previous:Clone();local loaded,old=pcall(require,temp);temp:Destroy()
+		assert(loaded,"Config existente inválida; corrigir antes de reinstalar")
+		for id,form in old.Forms do if form.Scale~=nil then savedScales[id]=form.Scale end end
+	end
 	local config=source(rs,"Config","ModuleScript",-- SOURCE:Config
 	)
+	-- Preserva escalas editadas no Studio ao atualizar scripts/templates.
+	for id,value in savedScales do
+		assert(typeof(value)=="number" and value>0 and value<math.huge,"Scale inválido: "..id)
+		local pattern="(config%.Forms%."..id.."%.Scale%s*=%s*)[^%s;]+"
+		config.Source=string.gsub(config.Source,pattern,function(prefix) return prefix..string.format("%.17g",value) end)
+	end
+	local rigScale=source(rs,"RigScale","ModuleScript",-- SOURCE:RigScale
+	)
+	local scaleModule=require(rigScale:Clone())
 	source(rs,"AnimationDriver","ModuleScript",-- SOURCE:AnimationDriver
 	)
 	source(ss,"Dummies","ModuleScript",-- SOURCE:Dummies
@@ -55,11 +72,7 @@ local ok,result=xpcall(function()
 				if item:IsA("BaseScript") then item.Enabled=false end
 				if item:IsA("BasePart") then item.CanTouch=false end
 			end
-			local box,size=copy:GetBoundingBox();local body
-			for _,item in copy:GetDescendants() do if item:IsA("Bone") and item.Name=="body" then body=item;break end end
-			assert(body,"Rig sem body")
-			local anchor=CFrame.new(body.WorldPosition.X,box.Position.Y-size.Y/2,body.WorldPosition.Z)*copy.Hitbox.CFrame.Rotation
-			copy:SetAttribute("PetAnchorToPivot",anchor:ToObjectSpace(copy:GetPivot()));copy:SetAttribute("PetTestOwned",true)
+			copy:SetAttribute("PetBaseScale",copy:GetScale());scaleModule.Apply(copy,1);copy:SetAttribute("PetTestOwned",true)
 			copy.Hitbox.Anchored=true
 			local old=templates:FindFirstChild(form.Name);if old then assert(old:GetAttribute("PetTestOwned"));old:Destroy() end
 			copy.Parent=templates;task.wait();status[id]="pronto ("..#list:GetChildren().." clipes)"

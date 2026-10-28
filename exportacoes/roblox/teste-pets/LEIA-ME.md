@@ -22,6 +22,32 @@ F2 usa pisão no cubo pequeno e catapulta no grande. O spin é a única skill.
 F1 ainda não tem clipes de ataque/corrida: neste laboratório usa walk acelerado e
 uma investida curta provisória para causar dano, claramente indicada no status.
 
+## Tamanho de cada forma
+
+Com Play parado, abra no Explorer **ReplicatedStorage → PipelinePetTest → Config**.
+Os primeiros campos são:
+
+```lua
+config.Forms.F1.Scale = 1
+config.Forms.F2.Scale = 1
+config.Forms.F3.Scale = 1
+```
+
+`1` mantém o tamanho do template preparado; `0.5` usa metade e `2` usa o dobro.
+Cada forma é independente. Use números positivos e finitos, com ponto decimal.
+Salve e inicie o Play novamente para aplicar. Os valores de teste foram restaurados
+para `1` nas três formas.
+
+O servidor escala uma cópia inteira, recalcula seu apoio no chão e ajusta alcance,
+raio da skill e margem de aproximação na mesma proporção. Os colisores acompanham
+o tamanho dos ossos; o driver usa a escala efetiva para ajustar o ritmo da marcha.
+Dano, nível e cooldown permanecem iguais. Os originais na Workspace são preservados.
+
+O gerador preserva os Scale editados no arquivo local `Config.luau`; reinstalar o
+laboratório também preserva os Scale existentes no Config do Studio. As duas
+cópias são independentes: uma edição no Studio é salva no `.rbxl`, sem escrever
+automaticamente no repositório. Na reinstalação, prevalecem os valores do Studio.
+
 ## Instalar / atualizar
 
 1. Importe os GLBs atualizados de `../pavao/` pelo importador 3D, rig **Custom**.
@@ -41,7 +67,7 @@ não publica o place, não modifica a geometria nem os clipes da fonte artístic
 
 ## Organização
 
-- `ReplicatedStorage.PipelinePetTest`: Config, AnimationDriver, remotes e animações
+- `ReplicatedStorage.PipelinePetTest`: Config, RigScale, AnimationDriver, remotes e animações
   compartilhadas por forma, evitando clonagem de milhares de Poses a cada pet.
 - `ServerStorage.PipelinePetTestTemplates`: rigs preparados, sem clipes duplicados.
 - `ServerScriptService.PipelinePetTest`: servidor e criação dos alvos.
