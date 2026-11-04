@@ -1,0 +1,24 @@
+{
+  "versao": 1,
+  "id": "sint_blender_f1",
+  "familia_esqueleto": "bipede",
+  "arquivo": "sint_blender_f1-base.glb",
+  "textura": "textura-base-roblox.png",
+  "animacoes": "animacoes.json",
+  "locators": "locators.json",
+  "escala_studio": 1,
+  "altura_repouso_studs": 1.25,
+  "frente_gltf": [
+    0,
+    0,
+    -1
+  ],
+  "importacao": "Rig Type Custom; uma MeshPart com Bones. Conferir orientação da Hitbox pelo bico.",
+  "material": {
+    "ResampleMode": "Pixelated",
+    "AlphaMode": "Transparency",
+    "Metalness": 0,
+    "Roughness": 1
+  },
+  "status": "fixture; validada em arquivo/Blender; ensaio no Roblox pendente"
+}

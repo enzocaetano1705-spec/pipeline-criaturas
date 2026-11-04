@@ -1,0 +1,467 @@
+{
+  "base": {
+    "ok": true,
+    "erros": [],
+    "khronos": {
+      "erros": 0,
+      "avisos": 0,
+      "infos": 10,
+      "mensagens": [
+        {
+          "codigo": "NODE_EMPTY",
+          "texto": "Empty node encountered.",
+          "gravidade": 2,
+          "ponteiro": "/nodes/0"
+        },
+        {
+          "codigo": "NODE_EMPTY",
+          "texto": "Empty node encountered.",
+          "gravidade": 2,
+          "ponteiro": "/nodes/3"
+        },
+        {
+          "codigo": "NODE_EMPTY",
+          "texto": "Empty node encountered.",
+          "gravidade": 2,
+          "ponteiro": "/nodes/4"
+        },
+        {
+          "codigo": "NODE_EMPTY",
+          "texto": "Empty node encountered.",
+          "gravidade": 2,
+          "ponteiro": "/nodes/6"
+        },
+        {
+          "codigo": "NODE_EMPTY",
+          "texto": "Empty node encountered.",
+          "gravidade": 2,
+          "ponteiro": "/nodes/8"
+        },
+        {
+          "codigo": "NODE_EMPTY",
+          "texto": "Empty node encountered.",
+          "gravidade": 2,
+          "ponteiro": "/nodes/10"
+        },
+        {
+          "codigo": "NODE_EMPTY",
+          "texto": "Empty node encountered.",
+          "gravidade": 2,
+          "ponteiro": "/nodes/14"
+        },
+        {
+          "codigo": "NODE_EMPTY",
+          "texto": "Empty node encountered.",
+          "gravidade": 2,
+          "ponteiro": "/nodes/18"
+        },
+        {
+          "codigo": "NODE_EMPTY",
+          "texto": "Empty node encountered.",
+          "gravidade": 2,
+          "ponteiro": "/nodes/21"
+        },
+        {
+          "codigo": "NODE_EMPTY",
+          "texto": "Empty node encountered.",
+          "gravidade": 2,
+          "ponteiro": "/nodes/23"
+        }
+      ],
+      "info": {
+        "version": "2.0",
+        "generator": "Khronos glTF Blender I/O v5.1.19",
+        "resources": [
+          {
+            "pointer": "/buffers/0",
+            "mimeType": "application/gltf-buffer",
+            "storage": "glb",
+            "byteLength": 347724
+          },
+          {
+            "pointer": "/images/0",
+            "mimeType": "image/png",
+            "storage": "buffer-view",
+            "image": {
+              "width": 1024,
+              "height": 1024,
+              "format": "rgba",
+              "primaries": "srgb",
+              "transfer": "srgb",
+              "bits": 8
+            }
+          }
+        ],
+        "animationCount": 4,
+        "materialCount": 1,
+        "hasMorphTargets": false,
+        "hasSkins": true,
+        "hasTextures": true,
+        "hasDefaultScene": true,
+        "drawCallCount": 1,
+        "totalVertexCount": 336,
+        "totalTriangleCount": 168,
+        "maxUVs": 1,
+        "maxInfluences": 4,
+        "maxAttributes": 5
+      }
+    },
+    "triangulos": 168,
+    "uv": [
+      0.015625,
+      0.984375
+    ],
+    "influencias_max": 1,
+    "ossos": [
+      "Raiz",
+      "root",
+      "body",
+      "head",
+      "beak",
+      "crest",
+      "arm_left",
+      "arm_right",
+      "leg_left",
+      "shin_left",
+      "foot_left",
+      "leg_right",
+      "shin_right",
+      "foot_right",
+      "tail_1",
+      "tail_2"
+    ],
+    "clipes": {
+      "attack_physical": {
+        "duracao": 1.2,
+        "canais": 48
+      },
+      "idle": {
+        "duracao": 2.4,
+        "canais": 48
+      },
+      "run": {
+        "duracao": 0.8,
+        "canais": 48
+      },
+      "walk": {
+        "duracao": 1.2,
+        "canais": 48
+      }
+    },
+    "textura": [
+      1024,
+      1024
+    ],
+    "erro_repouso_unidades": 1.1e-06
+  },
+  "ambar": {
+    "ok": true,
+    "erros": [],
+    "khronos": {
+      "erros": 0,
+      "avisos": 0,
+      "infos": 10,
+      "mensagens": [
+        {
+          "codigo": "NODE_EMPTY",
+          "texto": "Empty node encountered.",
+          "gravidade": 2,
+          "ponteiro": "/nodes/0"
+        },
+        {
+          "codigo": "NODE_EMPTY",
+          "texto": "Empty node encountered.",
+          "gravidade": 2,
+          "ponteiro": "/nodes/3"
+        },
+        {
+          "codigo": "NODE_EMPTY",
+          "texto": "Empty node encountered.",
+          "gravidade": 2,
+          "ponteiro": "/nodes/4"
+        },
+        {
+          "codigo": "NODE_EMPTY",
+          "texto": "Empty node encountered.",
+          "gravidade": 2,
+          "ponteiro": "/nodes/6"
+        },
+        {
+          "codigo": "NODE_EMPTY",
+          "texto": "Empty node encountered.",
+          "gravidade": 2,
+          "ponteiro": "/nodes/8"
+        },
+        {
+          "codigo": "NODE_EMPTY",
+          "texto": "Empty node encountered.",
+          "gravidade": 2,
+          "ponteiro": "/nodes/10"
+        },
+        {
+          "codigo": "NODE_EMPTY",
+          "texto": "Empty node encountered.",
+          "gravidade": 2,
+          "ponteiro": "/nodes/14"
+        },
+        {
+          "codigo": "NODE_EMPTY",
+          "texto": "Empty node encountered.",
+          "gravidade": 2,
+          "ponteiro": "/nodes/18"
+        },
+        {
+          "codigo": "NODE_EMPTY",
+          "texto": "Empty node encountered.",
+          "gravidade": 2,
+          "ponteiro": "/nodes/21"
+        },
+        {
+          "codigo": "NODE_EMPTY",
+          "texto": "Empty node encountered.",
+          "gravidade": 2,
+          "ponteiro": "/nodes/23"
+        }
+      ],
+      "info": {
+        "version": "2.0",
+        "generator": "Khronos glTF Blender I/O v5.1.19",
+        "resources": [
+          {
+            "pointer": "/buffers/0",
+            "mimeType": "application/gltf-buffer",
+            "storage": "glb",
+            "byteLength": 347724
+          },
+          {
+            "pointer": "/images/0",
+            "mimeType": "image/png",
+            "storage": "buffer-view",
+            "image": {
+              "width": 1024,
+              "height": 1024,
+              "format": "rgba",
+              "primaries": "srgb",
+              "transfer": "srgb",
+              "bits": 8
+            }
+          }
+        ],
+        "animationCount": 4,
+        "materialCount": 1,
+        "hasMorphTargets": false,
+        "hasSkins": true,
+        "hasTextures": true,
+        "hasDefaultScene": true,
+        "drawCallCount": 1,
+        "totalVertexCount": 336,
+        "totalTriangleCount": 168,
+        "maxUVs": 1,
+        "maxInfluences": 4,
+        "maxAttributes": 5
+      }
+    },
+    "triangulos": 168,
+    "uv": [
+      0.015625,
+      0.984375
+    ],
+    "influencias_max": 1,
+    "ossos": [
+      "Raiz",
+      "root",
+      "body",
+      "head",
+      "beak",
+      "crest",
+      "arm_left",
+      "arm_right",
+      "leg_left",
+      "shin_left",
+      "foot_left",
+      "leg_right",
+      "shin_right",
+      "foot_right",
+      "tail_1",
+      "tail_2"
+    ],
+    "clipes": {
+      "attack_physical": {
+        "duracao": 1.2,
+        "canais": 48
+      },
+      "idle": {
+        "duracao": 2.4,
+        "canais": 48
+      },
+      "run": {
+        "duracao": 0.8,
+        "canais": 48
+      },
+      "walk": {
+        "duracao": 1.2,
+        "canais": 48
+      }
+    },
+    "textura": [
+      1024,
+      1024
+    ],
+    "erro_repouso_unidades": 1.1e-06
+  },
+  "violeta": {
+    "ok": true,
+    "erros": [],
+    "khronos": {
+      "erros": 0,
+      "avisos": 0,
+      "infos": 10,
+      "mensagens": [
+        {
+          "codigo": "NODE_EMPTY",
+          "texto": "Empty node encountered.",
+          "gravidade": 2,
+          "ponteiro": "/nodes/0"
+        },
+        {
+          "codigo": "NODE_EMPTY",
+          "texto": "Empty node encountered.",
+          "gravidade": 2,
+          "ponteiro": "/nodes/3"
+        },
+        {
+          "codigo": "NODE_EMPTY",
+          "texto": "Empty node encountered.",
+          "gravidade": 2,
+          "ponteiro": "/nodes/4"
+        },
+        {
+          "codigo": "NODE_EMPTY",
+          "texto": "Empty node encountered.",
+          "gravidade": 2,
+          "ponteiro": "/nodes/6"
+        },
+        {
+          "codigo": "NODE_EMPTY",
+          "texto": "Empty node encountered.",
+          "gravidade": 2,
+          "ponteiro": "/nodes/8"
+        },
+        {
+          "codigo": "NODE_EMPTY",
+          "texto": "Empty node encountered.",
+          "gravidade": 2,
+          "ponteiro": "/nodes/10"
+        },
+        {
+          "codigo": "NODE_EMPTY",
+          "texto": "Empty node encountered.",
+          "gravidade": 2,
+          "ponteiro": "/nodes/14"
+        },
+        {
+          "codigo": "NODE_EMPTY",
+          "texto": "Empty node encountered.",
+          "gravidade": 2,
+          "ponteiro": "/nodes/18"
+        },
+        {
+          "codigo": "NODE_EMPTY",
+          "texto": "Empty node encountered.",
+          "gravidade": 2,
+          "ponteiro": "/nodes/21"
+        },
+        {
+          "codigo": "NODE_EMPTY",
+          "texto": "Empty node encountered.",
+          "gravidade": 2,
+          "ponteiro": "/nodes/23"
+        }
+      ],
+      "info": {
+        "version": "2.0",
+        "generator": "Khronos glTF Blender I/O v5.1.19",
+        "resources": [
+          {
+            "pointer": "/buffers/0",
+            "mimeType": "application/gltf-buffer",
+            "storage": "glb",
+            "byteLength": 347720
+          },
+          {
+            "pointer": "/images/0",
+            "mimeType": "image/png",
+            "storage": "buffer-view",
+            "image": {
+              "width": 1024,
+              "height": 1024,
+              "format": "rgba",
+              "primaries": "srgb",
+              "transfer": "srgb",
+              "bits": 8
+            }
+          }
+        ],
+        "animationCount": 4,
+        "materialCount": 1,
+        "hasMorphTargets": false,
+        "hasSkins": true,
+        "hasTextures": true,
+        "hasDefaultScene": true,
+        "drawCallCount": 1,
+        "totalVertexCount": 336,
+        "totalTriangleCount": 168,
+        "maxUVs": 1,
+        "maxInfluences": 4,
+        "maxAttributes": 5
+      }
+    },
+    "triangulos": 168,
+    "uv": [
+      0.015625,
+      0.984375
+    ],
+    "influencias_max": 1,
+    "ossos": [
+      "Raiz",
+      "root",
+      "body",
+      "head",
+      "beak",
+      "crest",
+      "arm_left",
+      "arm_right",
+      "leg_left",
+      "shin_left",
+      "foot_left",
+      "leg_right",
+      "shin_right",
+      "foot_right",
+      "tail_1",
+      "tail_2"
+    ],
+    "clipes": {
+      "attack_physical": {
+        "duracao": 1.2,
+        "canais": 48
+      },
+      "idle": {
+        "duracao": 2.4,
+        "canais": 48
+      },
+      "run": {
+        "duracao": 0.8,
+        "canais": 48
+      },
+      "walk": {
+        "duracao": 1.2,
+        "canais": 48
+      }
+    },
+    "textura": [
+      1024,
+      1024
+    ],
+    "erro_repouso_unidades": 1.1e-06
+  }
+}

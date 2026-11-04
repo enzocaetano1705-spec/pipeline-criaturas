@@ -1,0 +1,36 @@
+{
+  "versao": 1,
+  "animacoes": {
+    "idle": {
+      "duracao": 2.4,
+      "loop": true
+    },
+    "walk": {
+      "duracao": 1.2,
+      "loop": true
+    },
+    "run": {
+      "duracao": 0.8,
+      "loop": true
+    },
+    "attack_physical": {
+      "duracao": 1.2,
+      "loop": false
+    }
+  },
+  "golpes": {
+    "attack_physical": {
+      "eventos": {
+        "HitFrame": 0.48,
+        "CancelOpen": 0.72,
+        "RecoveryStart": 0.6
+      }
+    }
+  },
+  "mapa_consumidor": {
+    "idle": "idle",
+    "walk": "walk",
+    "run": "run",
+    "attack_basic": "attack_physical"
+  }
+}

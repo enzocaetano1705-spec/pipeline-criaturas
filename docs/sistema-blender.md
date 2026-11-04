@@ -173,3 +173,5 @@ aprovação artística ou importação testada no Roblox. O
 **Retomada:** aguardar imagens, prompt, estágio/categoria da primeira criatura
 comparativa. Confirmar categoria e folha conforme skill. Preparar o adapter dessa
 anatomia a partir das entradas congeladas, sem copiar a solução final da outra tentativa.
+
+Resultados do ensaio desta versão em [validação Blender v1](validacao/blender-v1/LEIA-ME.md).

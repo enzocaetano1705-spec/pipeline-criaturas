@@ -1,0 +1,62 @@
+{
+  "idle": {
+    "piso_min_unidades": -1e-06,
+    "erro_skin_unidades": 5.3e-05,
+    "erro_pe_ik_unidades": 1e-06,
+    "erro_locators_unidades": 5.2e-05,
+    "passo_max_por_amostra": 0.009658,
+    "loop_erro_unidades": 0.0,
+    "loop_erro_velocidade": 0.019226,
+    "deslizamento_apoio_por_amostra": 0.0,
+    "triagem_obb_penetracao": 0.0,
+    "triagem_pior_par": null,
+    "projecao_body_fora_apoio_max": 0.0,
+    "amostras": 577,
+    "taxa_hz": 240
+  },
+  "walk": {
+    "piso_min_unidades": -7.9e-05,
+    "erro_skin_unidades": 0.001876,
+    "erro_pe_ik_unidades": 0.0011,
+    "erro_locators_unidades": 0.0011,
+    "passo_max_por_amostra": 0.043241,
+    "loop_erro_unidades": 0.0,
+    "loop_erro_velocidade": 0.554466,
+    "deslizamento_apoio_por_amostra": 7.8e-05,
+    "triagem_obb_penetracao": 0.0,
+    "triagem_pior_par": null,
+    "projecao_body_fora_apoio_max": 0.972736,
+    "amostras": 289,
+    "taxa_hz": 240
+  },
+  "run": {
+    "piso_min_unidades": -0.000393,
+    "erro_skin_unidades": 0.007018,
+    "erro_pe_ik_unidades": 0.002696,
+    "erro_locators_unidades": 0.002696,
+    "passo_max_por_amostra": 0.084995,
+    "loop_erro_unidades": 0.0,
+    "loop_erro_velocidade": 2.209396,
+    "deslizamento_apoio_por_amostra": 0.000389,
+    "triagem_obb_penetracao": 0.0,
+    "triagem_pior_par": null,
+    "projecao_body_fora_apoio_max": 0.962327,
+    "amostras": 193,
+    "taxa_hz": 240
+  },
+  "attack_physical": {
+    "piso_min_unidades": -0.00036,
+    "erro_skin_unidades": 0.009732,
+    "erro_pe_ik_unidades": 0.000378,
+    "erro_locators_unidades": 0.011035,
+    "passo_max_por_amostra": 0.274308,
+    "loop_erro_unidades": 0.0,
+    "loop_erro_velocidade": 0.076675,
+    "deslizamento_apoio_por_amostra": 0.0,
+    "triagem_obb_penetracao": 0.0,
+    "triagem_pior_par": null,
+    "projecao_body_fora_apoio_max": 0.0,
+    "amostras": 289,
+    "taxa_hz": 240
+  }
+}

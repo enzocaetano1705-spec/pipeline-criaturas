@@ -1,0 +1,97 @@
+{
+  "unidade": "1/16 stud por unidade",
+  "eixos": "Y-up, frente -Z",
+  "locators": [
+    {
+      "nome": "loc_head_look",
+      "osso": "head",
+      "posicao": [
+        0.0,
+        14.25,
+        -1.5
+      ]
+    },
+    {
+      "nome": "loc_mouth",
+      "osso": "beak",
+      "posicao": [
+        0.0,
+        13.0,
+        -6.0
+      ]
+    },
+    {
+      "nome": "loc_hand_left",
+      "osso": "arm_left",
+      "posicao": [
+        -3.8,
+        7.3,
+        0.0
+      ]
+    },
+    {
+      "nome": "loc_hand_right",
+      "osso": "arm_right",
+      "posicao": [
+        3.8,
+        7.3,
+        0.0
+      ]
+    },
+    {
+      "nome": "loc_foot_left",
+      "osso": "foot_left",
+      "posicao": [
+        -1.8,
+        0.0,
+        -0.6
+      ]
+    },
+    {
+      "nome": "loc_foot_right",
+      "osso": "foot_right",
+      "posicao": [
+        1.8,
+        0.0,
+        -0.6
+      ]
+    },
+    {
+      "nome": "loc_tail_tip",
+      "osso": "tail_2",
+      "posicao": [
+        0.0,
+        8.0,
+        9.0
+      ]
+    },
+    {
+      "nome": "loc_center",
+      "osso": "body",
+      "posicao": [
+        0.0,
+        9.5,
+        0.0
+      ]
+    },
+    {
+      "nome": "loc_top",
+      "osso": "head",
+      "posicao": [
+        0.0,
+        22.0,
+        -1.5
+      ]
+    },
+    {
+      "nome": "loc_ground",
+      "osso": "root",
+      "posicao": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    }
+  ],
+  "studio": "criar Attachments nos Bones; empty glTF pode ser descartado"
+}

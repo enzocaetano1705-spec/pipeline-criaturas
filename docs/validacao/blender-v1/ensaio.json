@@ -1,0 +1,122 @@
+{
+  "tipo_custo": "engenharia do backend; não produção recorrente de criatura real",
+  "data": "2026-11-04",
+  "harness": {
+    "produto": "Codex desktop",
+    "familia_modelo_contexto": "GPT-6",
+    "id_exato_modelo": null,
+    "esforco": null,
+    "contexto": "repositório, pedido anexado, protocolos e documentação oficial",
+    "tokens": null,
+    "creditos": null,
+    "custo_monetario": null,
+    "fonte_uso": "não exposto pelo harness"
+  },
+  "reconstrucao": {
+    "ok": true,
+    "semantica_sha256": "78363b2931cc2c1855a44b342296edfe35f9caca39ea7c17ba8f3be8683d6df9",
+    "pastas": [
+      "C:\\Users\\enzoc\\dev\\pipeline-criaturas\\modelos\\_blender\\minimo-v1",
+      "C:\\Users\\enzoc\\dev\\pipeline-criaturas\\modelos\\_blender\\minimo-v1-reconstrucao"
+    ],
+    "glbs_identicos": {
+      "sint_blender_f1-ambar.glb": true,
+      "sint_blender_f1-base.glb": true,
+      "sint_blender_f1-violeta.glb": true
+    }
+  },
+  "execucoes": [
+    {
+      "gerado_utc": "2026-11-04T23:43:58.699472+00:00",
+      "duracoes_segundos": {
+        "preparo": 0.11463939998066053,
+        "processo_construcao": 34.25631520000752,
+        "validacao_e_previas": 7.045643999997992,
+        "total": 41.41659899998922
+      },
+      "entrada_sha256": "7a5399299244b60938c1f4e1c0dc0f9d0330d92070b8849999fc9df5bad151de",
+      "glb_sha256": {
+        "sint_blender_f1-ambar.glb": "54a2f2b123b1173ef3e1538f26cb64722f22669fe5d3322cfdd7e69791c6c849",
+        "sint_blender_f1-base.glb": "9aaec591c6b0c976147ec7b726a766e7e22fada55afcab4e46de5929af45f3dc",
+        "sint_blender_f1-violeta.glb": "00241d689914564daaee388606c1e324d19c858c10910c704fbb19c9d7a7da8f"
+      }
+    },
+    {
+      "gerado_utc": "2026-11-04T23:45:05.506264+00:00",
+      "duracoes_segundos": {
+        "preparo": 0.08783490001223981,
+        "processo_construcao": 30.64997859997675,
+        "validacao_e_previas": 7.8638237999984995,
+        "total": 38.60163749998901
+      },
+      "entrada_sha256": "7a5399299244b60938c1f4e1c0dc0f9d0330d92070b8849999fc9df5bad151de",
+      "glb_sha256": {
+        "sint_blender_f1-ambar.glb": "54a2f2b123b1173ef3e1538f26cb64722f22669fe5d3322cfdd7e69791c6c849",
+        "sint_blender_f1-base.glb": "9aaec591c6b0c976147ec7b726a766e7e22fada55afcab4e46de5929af45f3dc",
+        "sint_blender_f1-violeta.glb": "00241d689914564daaee388606c1e324d19c858c10910c704fbb19c9d7a7da8f"
+      }
+    }
+  ],
+  "preservacao": {
+    "arquivos_conferidos": 236,
+    "alterados_desde_snapshot": [],
+    "snapshot_sha256": "2ab045b2382dd7ebfb9c1b5a41b2594e43d21eb04dbbfc0c0caa3bd45e51447a"
+  },
+  "auditoria_pavao": {
+    "Pavao_F1": {
+      "glb_sha256": "d3a8ce0715a901fdcd9834dbc889cfe8ab4697187db18914fdef36265d5aac5d",
+      "uv": [
+        0.000244140625,
+        1.0
+      ],
+      "dentro_tolerancia_original_0_002": true,
+      "imagens_embutidas": 2,
+      "materiais": 1,
+      "malhas": 1,
+      "superamostrar": null,
+      "acao": "somente leitura; sem reexportação"
+    },
+    "Pavao_F2": {
+      "glb_sha256": "dfc17b31d4ddad90d92a94da196eff7dc1ad1ea2e634869595919497440e4b48",
+      "uv": [
+        0.0,
+        1.00006103515625
+      ],
+      "dentro_tolerancia_original_0_002": true,
+      "imagens_embutidas": 1,
+      "materiais": 1,
+      "malhas": 1,
+      "superamostrar": {
+        "ossos": [
+          "head"
+        ],
+        "fator": 4
+      },
+      "acao": "somente leitura; sem reexportação"
+    },
+    "Pavao_F3": {
+      "glb_sha256": "6c907ec5bb750a1927594f2372bc8161af0d69d625fdde75a180a3d66d9b43c8",
+      "uv": [
+        0.0,
+        1.0
+      ],
+      "dentro_tolerancia_original_0_002": true,
+      "imagens_embutidas": 2,
+      "materiais": 1,
+      "malhas": 1,
+      "superamostrar": null,
+      "acao": "somente leitura; sem reexportação"
+    }
+  },
+  "falhas_retrabalho_engenharia": [
+    "Icosphere de exibição criada pelo importador contada inicialmente como segunda malha; conferir malha com armature.",
+    "Frames iniciados em 1 deslocavam timestamps de exportação; autoria ajustada para t=0.",
+    "FPS 24 do processo limpo antes de importar distorcia tempo; configurar FPS antes do importador.",
+    "AABB acusava falso contato ao girar corpo; triagem trocada por SAT de caixas orientadas.",
+    "Amostragem 60 Hz insuficiente para tolerância escolhida no ataque; bake 120 Hz e revisão 240 Hz.",
+    "Máscara genérica incluía olhos; índice 0 agora protege detalhes e regiões incluem margens."
+  ],
+  "aprovacao_artistica": "pendente; fixture técnica",
+  "teste_roblox": "não executado",
+  "vencedor": null
+}

@@ -1,0 +1,31 @@
+{
+  "clipes": {
+    "idle": {
+      "erro_superficie_unidades": 7.7e-06,
+      "erro_pivos_unidades": 3e-06,
+      "erro_locators_unidades": 4.2e-06,
+      "amostras": 577
+    },
+    "walk": {
+      "erro_superficie_unidades": 7.8e-06,
+      "erro_pivos_unidades": 4.8e-06,
+      "erro_locators_unidades": 4.1e-06,
+      "amostras": 289
+    },
+    "run": {
+      "erro_superficie_unidades": 9.8e-06,
+      "erro_pivos_unidades": 4.8e-06,
+      "erro_locators_unidades": 6.4e-06,
+      "amostras": 193
+    },
+    "attack_physical": {
+      "erro_superficie_unidades": 8e-06,
+      "erro_pivos_unidades": 3.8e-06,
+      "erro_locators_unidades": 5.8e-06,
+      "amostras": 289
+    }
+  },
+  "malhas": 1,
+  "vertices_reimportados": 336,
+  "versao_blender": "5.1.1"
+}

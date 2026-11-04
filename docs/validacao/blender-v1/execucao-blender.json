@@ -1,0 +1,16 @@
+{
+  "versao": "5.1.1",
+  "build_hash": "b70da489d7f4",
+  "parametros": {
+    "background": true,
+    "factory_startup": true,
+    "threads": 2,
+    "fps": 120,
+    "seed": null
+  },
+  "duracoes_segundos": {
+    "construcao_e_bake": 2.772121599991806,
+    "medicao_e_exportacao": 13.347253899963107,
+    "previas": 15.51505809999071
+  }
+}

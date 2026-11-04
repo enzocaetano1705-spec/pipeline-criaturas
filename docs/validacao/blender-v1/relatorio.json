@@ -1,0 +1,19 @@
+{
+  "ok": true,
+  "erros": [],
+  "avisos": [
+    "walk: pivô body fora do envelope de apoio aproximado em até 0.972736 un; revisar dinâmica visual",
+    "run: pivô body fora do envelope de apoio aproximado em até 0.962327 un; revisar dinâmica visual"
+  ],
+  "validacao": {
+    "automatica": true,
+    "artistica": "não avaliada pelo usuário",
+    "roblox": "não ensaiado nesta sessão"
+  },
+  "duracoes_segundos": {
+    "preparo": 0.11463939998066053,
+    "processo_construcao": 34.25631520000752,
+    "validacao_e_previas": 7.045643999997992,
+    "total": 41.41659899998922
+  }
+}

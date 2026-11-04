@@ -269,5 +269,5 @@ o padrão Blockbench/Minecraft. Decisão [[0009-backend-blender-opcional]].
 
 - [x] B.1 Registrar isolamento, contratos compartilhados/próprios, auditoria oficial de textura e protocolo justo de comparação futura.
 - [x] B.2 Construir backend em lote com fixture própria, atlas/máscaras/duas variantes, rig rígido, locators, idle/walk/run/ataque e prévias identificadas.
-- [ ] B.3 Validar GLB e reimportação, reconstrução e integridade, regressão Blockbench; registrar resultados e limitações para outro harness.
+- [x] B.3 Validar GLB e reimportação, reconstrução e integridade, regressão Blockbench; registrar resultados e limitações para outro harness. [[2026-11-04-backend-blender]]; evidência em `docs/validacao/blender-v1/`.
 - [ ] B.4 Após referências do usuário: categoria/folha aprovadas, primeira criatura comparativa e ensaio equivalente no Roblox. Fora do escopo de construção deste chat.

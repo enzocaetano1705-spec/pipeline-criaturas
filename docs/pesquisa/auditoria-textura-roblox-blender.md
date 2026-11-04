@@ -33,9 +33,9 @@ uma malha/material, lâmina com espessura e orçamento menor para validar o cami
   Nenhuma dessas rotinas foi removida ou alterada neste experimento.
 - `superamostrar` realoca faces de ossos selecionados no **mesmo atlas**, repetindo
   pixels. É redistribuição do orçamento para detalhes pequenos, sem criação de
-  detalhe artístico. No catálogo F2 usa cabeça/crista/bico com fator 4; F3 também
-  tem configuração própria. Precisa ser comparado por densidade efetiva e motivo
-  visível, não pelo tamanho do PNG.
+  detalhe artístico. No catálogo F2 usa `ossos: [head]`, incluindo descendentes,
+  com fator 4; F3 não usa `superamostrar` no catálogo atual. Precisa ser comparado
+  por densidade efetiva e motivo visível, não pelo tamanho do PNG.
 - `separar_textura` cria material/malha extra e muda cópia para formato genérico;
   guia registra problema de giro e o considera experimental. Backend novo mantém
   uma malha/material; não adota esse caminho como solução.

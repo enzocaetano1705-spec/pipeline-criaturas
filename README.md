@@ -8,6 +8,7 @@ Transforma o conceito de uma criatura (imagens livres + o prompt usado) em model
 - **Preparar uma criatura:** [docs/criaturas/LEIA-ME.md](docs/criaturas/LEIA-ME.md)
 - **Modelar uma criatura (IA):** [skills/criaturas-3d/SKILL.md](skills/criaturas-3d/SKILL.md)
 - **Estudar referências reais:** [skills/criaturas-3d/referencias.md](skills/criaturas-3d/referencias.md) — ilustração, vistas, volumes, textura e animação antes de criar a geometria.
+- **Backend Blender opcional:** [docs/sistema-blender.md](docs/sistema-blender.md) — criação em lote, fixture e GLB verificados; Blockbench continua padrão.
 - **Ficha no chat do claude.ai:** envie `skills-chat/criaturas-3d-chat.zip` como skill
 
 ## Uso rápido
