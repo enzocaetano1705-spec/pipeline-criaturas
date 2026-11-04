@@ -94,6 +94,11 @@ def montar_parser() -> argparse.ArgumentParser:
     parser.add_argument("--version", action="version", version=f"criaturas {__version__}")
     sub = parser.add_subparsers(dest="comando", metavar="<comando>")
 
+    from criaturas.blender_backend import executar as blender
+
+    p = sub.add_parser("blender", help="backend opcional Blender: construir/conferir/comparar fixtures em lote")
+    blender.opcoes(p)
+
     from criaturas import etapas
 
     etapas.carregar()

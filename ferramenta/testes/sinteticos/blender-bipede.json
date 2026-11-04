@@ -1,0 +1,58 @@
+{
+  "versao": 1,
+  "tipo": "sintetica",
+  "id": "sint_blender_f1",
+  "estagio": "e1",
+  "categoria": {"plano": "bípede com cauda", "nicho": "outros"},
+  "briefing": {"origem": "Fixture técnica original; não representa conceito nem criatura aprovada.", "objetivo": "Exercitar cubos, recorte alfa, máscara, IK, clipes e ida/volta GLB."},
+  "interpretacao": {"fonte": "verdade sintética", "incertezas": [], "abordagem": "poucas_formas", "identidade": ["cabeça grande", "bico", "cauda curta", "crista recortada"]},
+  "plano": {
+    "nome": "sint_blender_f1", "resolucao": {"largura": 128, "altura": 128},
+    "ossos": [
+      {"nome":"root","pai":null,"pivo":[0,0,0]},
+      {"nome":"body","pai":"root","pivo":[0,7.2,0]},
+      {"nome":"head","pai":"body","pivo":[0,11.5,-1]},
+      {"nome":"beak","pai":"head","pivo":[0,13,-4]},
+      {"nome":"crest","pai":"head","pivo":[0,16,-1]},
+      {"nome":"arm_left","pai":"body","pivo":[-3.5,11,0]},
+      {"nome":"arm_right","pai":"body","pivo":[3.5,11,0]},
+      {"nome":"leg_left","pai":"body","pivo":[-1.8,7.2,0]},
+      {"nome":"shin_left","pai":"leg_left","pivo":[-1.8,3.8,0]},
+      {"nome":"foot_left","pai":"shin_left","pivo":[-1.8,0.8,0]},
+      {"nome":"leg_right","pai":"body","pivo":[1.8,7.2,0]},
+      {"nome":"shin_right","pai":"leg_right","pivo":[1.8,3.8,0]},
+      {"nome":"foot_right","pai":"shin_right","pivo":[1.8,0.8,0]},
+      {"nome":"tail_1","pai":"body","pivo":[0,8,2.5]},
+      {"nome":"tail_2","pai":"tail_1","pivo":[0,8,6]}
+    ],
+    "cubos": [
+      {"nome":"body_cube","osso":"body","tipo":"volume","from":[-3,7,-2.5],"to":[3,12,2.5],"regiao":"primaria"},
+      {"nome":"head_cube","osso":"head","tipo":"volume","from":[-3.5,11.5,-4],"to":[3.5,17,1],"regiao":"primaria","pintura":"olhos"},
+      {"nome":"beak_cube","osso":"beak","tipo":"volume","from":[-1.5,12.2,-6],"to":[1.5,13.8,-4],"regiao":"bico"},
+      {"nome":"crest_plane","osso":"crest","tipo":"plano","from":[-2,16.8,-1],"to":[2,20,-1],"regiao":"destaque","recorte":"losango"},
+      {"nome":"arm_left_cube","osso":"arm_left","tipo":"volume","from":[-4.6,7.3,-0.7],"to":[-3,11,0.7],"regiao":"destaque"},
+      {"nome":"arm_right_cube","osso":"arm_right","tipo":"volume","from":[3,7.3,-0.7],"to":[4.6,11,0.7],"regiao":"destaque"},
+      {"nome":"leg_left_cube","osso":"leg_left","tipo":"volume","from":[-2.4,3.8,-0.6],"to":[-1.2,7.2,0.6],"regiao":"primaria"},
+      {"nome":"leg_right_cube","osso":"leg_right","tipo":"volume","from":[1.2,3.8,-0.6],"to":[2.4,7.2,0.6],"regiao":"primaria"},
+      {"nome":"shin_left_cube","osso":"shin_left","tipo":"volume","from":[-2.3,0.8,-0.5],"to":[-1.3,3.8,0.5],"regiao":"pes"},
+      {"nome":"shin_right_cube","osso":"shin_right","tipo":"volume","from":[1.3,0.8,-0.5],"to":[2.3,3.8,0.5],"regiao":"pes"},
+      {"nome":"foot_left_cube","osso":"foot_left","tipo":"volume","from":[-2.6,0,-2],"to":[-1,0.8,0.8],"regiao":"pes"},
+      {"nome":"foot_right_cube","osso":"foot_right","tipo":"volume","from":[1,0,-2],"to":[2.6,0.8,0.8],"regiao":"pes"},
+      {"nome":"tail_1_cube","osso":"tail_1","tipo":"volume","from":[-1.3,7.3,2.5],"to":[1.3,8.7,6],"regiao":"primaria"},
+      {"nome":"tail_2_cube","osso":"tail_2","tipo":"volume","from":[-0.8,7.5,6],"to":[0.8,8.5,9],"regiao":"destaque"}
+    ]
+  },
+  "textura": {
+    "resolucao": 128, "densidade": 2, "margem": 2, "escala_exportacao": 8,
+    "regioes": {"primaria":{"cor":"#4298b8","mutavel":true},"destaque":{"cor":"#b55f9c","mutavel":true},"bico":{"cor":"#e5bc59","mutavel":false},"pes":{"cor":"#694c52","mutavel":false}},
+    "variantes": {"ambar":{"primaria":"#c98942","destaque":"#6f9c55"},"violeta":{"primaria":"#8668bb","destaque":"#c85f79"}}
+  },
+  "animacao": {
+    "helper": "bipede_ik_v1", "fps": 120,
+    "duracoes": {"idle":2.4,"walk":1.2,"run":0.8,"attack_physical":1.2},
+    "passo_walk": 2.2, "passo_run": 3.6, "altura_walk":0.7,"altura_run":1.3,
+    "apoio_walk":0.64,"apoio_run":0.52,
+    "eventos": {"attack_physical":{"HitFrame":0.48,"CancelOpen":0.72,"RecoveryStart":0.6}}
+  },
+  "limites": {"cubos":32,"triangulos":2000,"espessura_planos":0.08,"erro_reimportacao_unidades":0.015,"penetracao_piso":0.02,"deslizamento_apoio":0.03,"salto_quadro_unidades":0.8}
+}
