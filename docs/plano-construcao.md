@@ -261,3 +261,13 @@ Prioridade solicitada pelo usuário, em paralelo à conclusão artística do pil
 - [x] 11.9 Instalar laboratório local de pets no lugar confirmado: seleção F1/F2/F3, Shift e transições, alvos por tamanho com HP/dano, R, nível/XP e skill de área F2 com cooldown de 3 s; exportar/importar as revisões atuais, preservar originais e conferir no Play. [[2026-10-27-laboratorio-pets-studio]].
 - [ ] 11.10 Incorporar retorno visual/de gameplay do laboratório; publicar IDs e integrar ao jogo principal somente quando solicitado.
 - [x] 11.11 Expor `Scale` independente por forma no Config do laboratório, recalcular apoio/colisão/alcance e preservar valores em geração/reinstalação; conferir miniaturas e ampliações em fixtures e no Play. [[2026-10-28-escala-pets-f1-f2-f3]].
+
+## Extensão autorizada — Backend Blender (04/11/2026)
+
+Experimento isolado solicitado pelo usuário; não fecha as fases 10/11 nem muda
+o padrão Blockbench/Minecraft. Decisão [[0009-backend-blender-opcional]].
+
+- [x] B.1 Registrar isolamento, contratos compartilhados/próprios, auditoria oficial de textura e protocolo justo de comparação futura.
+- [ ] B.2 Construir backend em lote com fixture própria, atlas/máscaras/duas variantes, rig rígido, locators, idle/walk/run/ataque e prévias identificadas.
+- [ ] B.3 Validar GLB e reimportação, reconstrução e integridade, regressão Blockbench; registrar resultados e limitações para outro harness.
+- [ ] B.4 Após referências do usuário: categoria/folha aprovadas, primeira criatura comparativa e ensaio equivalente no Roblox. Fora do escopo de construção deste chat.
