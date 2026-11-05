@@ -1,0 +1,54 @@
+{
+  "arquivo": "C:\\Users\\enzoc\\dev\\pipeline-criaturas\\modelos\\fera-fera-agil-das-sombras\\comparativo-v1\\blender-v3\\fera-sombras-e3-blender-v3.blend",
+  "blender": "5.1.1",
+  "autoria": "Blender independente",
+  "elementos": 59,
+  "quads": 290,
+  "triangulos": 580,
+  "uv_finitas": true,
+  "coordenadas_finitas": true,
+  "limites": {
+    "min": [
+      -10.950046036451699,
+      -0.043714377000104054,
+      -9.1
+    ],
+    "max": [
+      10.950046036451699,
+      32.88453199063743,
+      20.8485788870303
+    ]
+  },
+  "render": "Blender EEVEE comum às duas autorias",
+  "camera": {
+    "tipo": "ortografica",
+    "escala": 43,
+    "alvo_canonico": [
+      0,
+      16,
+      4
+    ],
+    "vistas": {
+      "frente": [
+        0,
+        0
+      ],
+      "lado": [
+        90,
+        0
+      ],
+      "costas": [
+        180,
+        0
+      ],
+      "3-4": [
+        55,
+        10
+      ]
+    }
+  },
+  "textura": "cores/recortes de bloqueio, 128², nearest; pintura final pendente",
+  "rig": "grupos de edição; rig/animações não concluídos",
+  "geometria_aprovada": false,
+  "origem_B_sha256": "97cd24114c3463f2a0fe17acbbdf2f7e467f30175078820ec78d4fc20f543930"
+}

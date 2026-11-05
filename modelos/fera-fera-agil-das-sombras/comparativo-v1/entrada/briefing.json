@@ -1,0 +1,99 @@
+{
+  "criatura": "Fera-fera Ágil das Sombras",
+  "base": "preguiça gigante",
+  "arquetipo": "rogue",
+  "estagio": "3 de 3",
+  "categoria": {
+    "plano": "bípede com cauda",
+    "nicho": "outros",
+    "base": "preguiça gigante",
+    "arquetipo": "rogue",
+    "fonte": "resposta do usuário à pergunta de categoria; tabela sem nicho próprio de preguiça"
+  },
+  "imagem_sha256": "baa929fdfc84418ad325c49e14676acb4b33f7dabbca3b943805330d7fb6231d",
+  "estilo": "Cubificado Cobblemon/Digimod; poucos volumes grandes e planos recortados para pelos/tecidos; sem arredondamento por microcubos",
+  "altura_normalizada_unidades": 32,
+  "altura_jogo": "não definida; escala técnica de comparação",
+  "resolucao_bloqueio": 128,
+  "densidade_texels_por_unidade": 1,
+  "teto_elementos": 110,
+  "pontos_criticos": [
+    "crânio/focinho sem feições caninas inventadas",
+    "juba espigada sem orelhas inventadas",
+    "braços e antebraços dominantes, mãos com três garras claras longas",
+    "pernas compactas e fletidas, pés largos com três garras escuras",
+    "cauda ampla e peluda atrás da bacia, marca creme",
+    "tecido vinho no pescoço com duas pontas soltas e roupa curta rasgada na cintura",
+    "broche/fivela dourados e faixas escuras",
+    "nenhuma asa"
+  ],
+  "proporcoes_alvo": {
+    "cranio_sobre_altura": 0.21,
+    "altura_total_com_juba": 32,
+    "peito_largura": 8,
+    "cintura_largura": 6,
+    "comprimento_braco_sem_garra": 12,
+    "garra_mao_comprimento": 6,
+    "comprimento_perna_apoio": 14,
+    "cauda_comprimento": 18,
+    "cauda_espessura_max": 7
+  },
+  "incertezas": [
+    {
+      "item": "profundidades",
+      "resolucao": "estimadas da vista oblíqua; revisão pendente"
+    },
+    {
+      "item": "região oculta das costas e tecido",
+      "resolucao": "continuidade simples sem novos adornos"
+    },
+    {
+      "item": "simetria",
+      "resolucao": "anatomia bilateral; pose neutralizada para comparar, sem assumir que assimetria da perspectiva é anatomia"
+    },
+    {
+      "item": "orelhas",
+      "resolucao": "não distinguidas; nenhuma parte de orelha adicionada"
+    }
+  ],
+  "referencias": [
+    {
+      "nome": "Weregarurumon Digimod",
+      "papel": "economia de volumes nos membros, poucas peças rotacionadas e rosto pintado; não copiar anatomia de lobo",
+      "arquivo_externo": "C:/Users/enzoc/Downloads/referencias-criaturas/the-digimod/blockbench/ultimates/weregarurumon.bbmodel",
+      "estrutura": "27 peças: 18 volumes e 9 planos; 7 ossos; atlas 80²; render real consultado"
+    },
+    {
+      "nome": "Estudo Koromon",
+      "papel": "planos recortados e detalhes pintados; sem usar sua proporção de bebê",
+      "estudo_externo": "C:/Users/enzoc/Downloads/referencias-criaturas/estudos/koromon/estudo-koromon.md"
+    }
+  ],
+  "comparacao": {
+    "ordem": "Blockbench A e Blender B; scripts de geometria independentes",
+    "render_apresentacao": "ambos no Blender para câmera, escala, luz e material equivalentes; identificar autoria separadamente do renderizador",
+    "partilha": "briefing e funções utilitárias; nenhuma tentativa lê geometria/atlas/refinamento exclusivo da outra durante a autoria",
+    "contexto": "mesmo agente com acesso às folhas conjuntas; não é ensaio cego; ordem e revisões internas compartilhadas registradas"
+  },
+  "aprovacoes": {
+    "conceito": true,
+    "categoria": true,
+    "estagio": true,
+    "geometria": false,
+    "textura": false
+  },
+  "revisoes_compartilhadas": [
+    {
+      "revisao": "v1",
+      "descricao": "primeira construção; revista internamente sem aprovação humana"
+    },
+    {
+      "revisao": "v2",
+      "descricao": "visibilidade de manchas, fixação do tecido e correspondência dos índices dos dedos; correções aplicadas a ambas"
+    },
+    {
+      "revisao": "v3",
+      "descricao": "rosto e peito passam a marcas pintadas diretamente nos volumes, sem sobreposição de adesivos; mesmas regras de cor para ambas"
+    }
+  ]
+}

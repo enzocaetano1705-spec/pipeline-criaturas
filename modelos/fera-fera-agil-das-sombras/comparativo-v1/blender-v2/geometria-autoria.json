@@ -1,0 +1,4420 @@
+{
+  "ossos": [
+    {
+      "nome": "root",
+      "pai": null,
+      "pivo": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "nome": "body",
+      "pai": "root",
+      "pivo": [
+        0,
+        14,
+        0
+      ]
+    },
+    {
+      "nome": "torso",
+      "pai": "body",
+      "pivo": [
+        0,
+        17,
+        0
+      ]
+    },
+    {
+      "nome": "neck_1",
+      "pai": "torso",
+      "pivo": [
+        0,
+        24,
+        -1
+      ]
+    },
+    {
+      "nome": "head",
+      "pai": "neck_1",
+      "pivo": [
+        0,
+        26,
+        -2
+      ]
+    },
+    {
+      "nome": "arm_left",
+      "pai": "torso",
+      "pivo": [
+        -4.6,
+        23.8,
+        -0.2
+      ]
+    },
+    {
+      "nome": "forearm_left",
+      "pai": "arm_left",
+      "pivo": [
+        -7.2,
+        18.7,
+        -0.2
+      ]
+    },
+    {
+      "nome": "hand_left",
+      "pai": "forearm_left",
+      "pivo": [
+        -8.4,
+        13.3,
+        -3.4
+      ]
+    },
+    {
+      "nome": "leg_left",
+      "pai": "body",
+      "pivo": [
+        -2.5,
+        14.3,
+        0.2
+      ]
+    },
+    {
+      "nome": "shin_left",
+      "pai": "leg_left",
+      "pivo": [
+        -4.2,
+        8.5,
+        -1.6
+      ]
+    },
+    {
+      "nome": "foot_left",
+      "pai": "shin_left",
+      "pivo": [
+        -4.3,
+        2.8,
+        0.2
+      ]
+    },
+    {
+      "nome": "arm_right",
+      "pai": "torso",
+      "pivo": [
+        4.6,
+        23.8,
+        -0.2
+      ]
+    },
+    {
+      "nome": "forearm_right",
+      "pai": "arm_right",
+      "pivo": [
+        7.2,
+        18.7,
+        -0.2
+      ]
+    },
+    {
+      "nome": "hand_right",
+      "pai": "forearm_right",
+      "pivo": [
+        8.4,
+        13.3,
+        -3.4
+      ]
+    },
+    {
+      "nome": "leg_right",
+      "pai": "body",
+      "pivo": [
+        2.5,
+        14.3,
+        0.2
+      ]
+    },
+    {
+      "nome": "shin_right",
+      "pai": "leg_right",
+      "pivo": [
+        4.2,
+        8.5,
+        -1.6
+      ]
+    },
+    {
+      "nome": "foot_right",
+      "pai": "shin_right",
+      "pivo": [
+        4.3,
+        2.8,
+        0.2
+      ]
+    },
+    {
+      "nome": "tail_1",
+      "pai": "body",
+      "pivo": [
+        0,
+        14,
+        2.2
+      ]
+    },
+    {
+      "nome": "tail_2",
+      "pai": "tail_1",
+      "pivo": [
+        0,
+        13.6,
+        7.2
+      ]
+    },
+    {
+      "nome": "tail_3",
+      "pai": "tail_2",
+      "pivo": [
+        0,
+        11.3,
+        13.2
+      ]
+    },
+    {
+      "nome": "scarf",
+      "pai": "torso",
+      "pivo": [
+        0,
+        25,
+        -1
+      ]
+    }
+  ],
+  "cubos": [
+    {
+      "name": "pelvis",
+      "bone": "body",
+      "from": [
+        -3.0,
+        12.1,
+        -2.1
+      ],
+      "to": [
+        3.0,
+        17.1,
+        2.9
+      ],
+      "role": "shadow",
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "origin": [
+        0,
+        14.6,
+        0.4
+      ],
+      "cut": null,
+      "eye": false
+    },
+    {
+      "name": "ribcage",
+      "bone": "torso",
+      "from": [
+        -4.0,
+        16.7,
+        -3.4
+      ],
+      "to": [
+        4.0,
+        24.7,
+        2.6
+      ],
+      "role": "fur",
+      "rotation": [
+        -13,
+        0,
+        0
+      ],
+      "origin": [
+        0,
+        17,
+        0
+      ],
+      "cut": null,
+      "eye": false
+    },
+    {
+      "name": "pectoral_mark",
+      "bone": "torso",
+      "from": [
+        -3.0,
+        17.2,
+        -3.42
+      ],
+      "to": [
+        3.0,
+        24.2,
+        -3.42
+      ],
+      "role": "cream",
+      "rotation": [
+        -13,
+        0,
+        0
+      ],
+      "origin": [
+        0,
+        17,
+        0
+      ],
+      "cut": "fur",
+      "eye": false
+    },
+    {
+      "name": "neck",
+      "bone": "neck_1",
+      "from": [
+        -3.0,
+        22.7,
+        -4.0
+      ],
+      "to": [
+        3.0,
+        26.7,
+        1.0
+      ],
+      "role": "shadow",
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "origin": [
+        0,
+        24.7,
+        -1.5
+      ],
+      "cut": null,
+      "eye": false
+    },
+    {
+      "name": "skull",
+      "bone": "head",
+      "from": [
+        -3.5,
+        25.0,
+        -6.5
+      ],
+      "to": [
+        3.5,
+        31.0,
+        0.5
+      ],
+      "role": "fur",
+      "rotation": [
+        -7,
+        0,
+        0
+      ],
+      "origin": [
+        0,
+        26,
+        -2
+      ],
+      "cut": null,
+      "eye": false
+    },
+    {
+      "name": "mask_front",
+      "bone": "head",
+      "from": [
+        -3.5,
+        24.8,
+        -6.65
+      ],
+      "to": [
+        3.5,
+        29.8,
+        -6.65
+      ],
+      "role": "cream",
+      "rotation": [
+        -7,
+        0,
+        0
+      ],
+      "origin": [
+        0,
+        26,
+        -2
+      ],
+      "cut": null,
+      "eye": true
+    },
+    {
+      "name": "muzzle",
+      "bone": "head",
+      "from": [
+        -2.5,
+        25.0,
+        -8.5
+      ],
+      "to": [
+        2.5,
+        28.0,
+        -5.5
+      ],
+      "role": "cream",
+      "rotation": [
+        -5,
+        0,
+        0
+      ],
+      "origin": [
+        0,
+        26,
+        -2
+      ],
+      "cut": null,
+      "eye": false
+    },
+    {
+      "name": "nose",
+      "bone": "head",
+      "from": [
+        -1.5,
+        25.7,
+        -9.1
+      ],
+      "to": [
+        1.5,
+        27.7,
+        -8.1
+      ],
+      "role": "shadow",
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "origin": [
+        0,
+        26.7,
+        -8.6
+      ],
+      "cut": null,
+      "eye": false
+    },
+    {
+      "name": "lower_lip",
+      "bone": "head",
+      "from": [
+        -2.5,
+        24.5,
+        -8.4
+      ],
+      "to": [
+        2.5,
+        25.5,
+        -4.4
+      ],
+      "role": "shadow",
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "origin": [
+        0,
+        25,
+        -6.4
+      ],
+      "cut": null,
+      "eye": false
+    },
+    {
+      "name": "mane_side_left",
+      "bone": "head",
+      "from": [
+        -3.8,
+        24.0,
+        -5.0
+      ],
+      "to": [
+        -3.8,
+        32.0,
+        3.0
+      ],
+      "role": "fur",
+      "rotation": [
+        -12,
+        -12,
+        -15
+      ],
+      "origin": [
+        -3,
+        27,
+        -1
+      ],
+      "cut": "mane",
+      "eye": false
+    },
+    {
+      "name": "mane_lower_left",
+      "bone": "head",
+      "from": [
+        -3.7,
+        22.5,
+        -5.6
+      ],
+      "to": [
+        -3.7,
+        27.5,
+        -0.5999999999999996
+      ],
+      "role": "shadow",
+      "rotation": [
+        0,
+        -12,
+        -19
+      ],
+      "origin": [
+        -3,
+        27,
+        -2
+      ],
+      "cut": "fur",
+      "eye": false
+    },
+    {
+      "name": "mask_side_left",
+      "bone": "head",
+      "from": [
+        -3.52,
+        24.8,
+        -6.1
+      ],
+      "to": [
+        -3.52,
+        29.8,
+        -1.0999999999999996
+      ],
+      "role": "cream",
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "origin": [
+        -3.52,
+        27.3,
+        -3.6
+      ],
+      "cut": null,
+      "eye": true
+    },
+    {
+      "name": "mane_front_left",
+      "bone": "head",
+      "from": [
+        -6.1,
+        23.0,
+        -5.1
+      ],
+      "to": [
+        -2.0999999999999996,
+        31.0,
+        -5.1
+      ],
+      "role": "fur",
+      "rotation": [
+        0,
+        0,
+        -18
+      ],
+      "origin": [
+        -3.5,
+        28,
+        -5.1
+      ],
+      "cut": "mane",
+      "eye": false
+    },
+    {
+      "name": "mane_side_right",
+      "bone": "head",
+      "from": [
+        3.8,
+        24.0,
+        -5.0
+      ],
+      "to": [
+        3.8,
+        32.0,
+        3.0
+      ],
+      "role": "fur",
+      "rotation": [
+        -12,
+        12,
+        15
+      ],
+      "origin": [
+        3,
+        27,
+        -1
+      ],
+      "cut": "mane",
+      "eye": false
+    },
+    {
+      "name": "mane_lower_right",
+      "bone": "head",
+      "from": [
+        3.7,
+        22.5,
+        -5.6
+      ],
+      "to": [
+        3.7,
+        27.5,
+        -0.5999999999999996
+      ],
+      "role": "shadow",
+      "rotation": [
+        0,
+        12,
+        19
+      ],
+      "origin": [
+        3,
+        27,
+        -2
+      ],
+      "cut": "fur",
+      "eye": false
+    },
+    {
+      "name": "mask_side_right",
+      "bone": "head",
+      "from": [
+        3.52,
+        24.8,
+        -6.1
+      ],
+      "to": [
+        3.52,
+        29.8,
+        -1.0999999999999996
+      ],
+      "role": "cream",
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "origin": [
+        3.52,
+        27.3,
+        -3.6
+      ],
+      "cut": null,
+      "eye": true
+    },
+    {
+      "name": "mane_front_right",
+      "bone": "head",
+      "from": [
+        2.0999999999999996,
+        23.0,
+        -5.1
+      ],
+      "to": [
+        6.1,
+        31.0,
+        -5.1
+      ],
+      "role": "fur",
+      "rotation": [
+        0,
+        0,
+        18
+      ],
+      "origin": [
+        3.5,
+        28,
+        -5.1
+      ],
+      "cut": "mane",
+      "eye": false
+    },
+    {
+      "name": "mane_crown",
+      "bone": "head",
+      "from": [
+        -3.5,
+        31.2,
+        -4.5
+      ],
+      "to": [
+        3.5,
+        31.2,
+        2.5
+      ],
+      "role": "fur",
+      "rotation": [
+        16,
+        0,
+        0
+      ],
+      "origin": [
+        0,
+        30,
+        -2
+      ],
+      "cut": "mane",
+      "eye": false
+    },
+    {
+      "name": "arm_left_box",
+      "bone": "arm_left",
+      "from": [
+        -6.6,
+        23.8,
+        -2.7
+      ],
+      "to": [
+        -2.5999999999999996,
+        29.8,
+        2.3
+      ],
+      "role": "fur",
+      "rotation": [
+        0.0,
+        0,
+        152.98733465206146
+      ],
+      "origin": [
+        -4.6,
+        23.8,
+        -0.2
+      ],
+      "cut": null,
+      "eye": false
+    },
+    {
+      "name": "forearm_left_box",
+      "bone": "forearm_left",
+      "from": [
+        -9.2,
+        18.7,
+        -2.2
+      ],
+      "to": [
+        -5.199999999999999,
+        24.7,
+        1.7999999999999998
+      ],
+      "role": "wrap",
+      "rotation": [
+        -30.048575267968083,
+        0,
+        167.47119229084848
+      ],
+      "origin": [
+        -7.2,
+        18.7,
+        -0.2
+      ],
+      "cut": null,
+      "eye": false
+    },
+    {
+      "name": "palm_left",
+      "bone": "hand_left",
+      "from": [
+        -10.5,
+        10.7,
+        -5.8
+      ],
+      "to": [
+        -6.5,
+        13.7,
+        -1.7999999999999998
+      ],
+      "role": "fur",
+      "rotation": [
+        -12,
+        0,
+        -9
+      ],
+      "origin": [
+        -8.4,
+        13.3,
+        -3.4
+      ],
+      "cut": null,
+      "eye": false
+    },
+    {
+      "name": "shoulder_fur_left",
+      "bone": "arm_left",
+      "from": [
+        -8.1,
+        19.5,
+        2.2
+      ],
+      "to": [
+        -3.0999999999999996,
+        24.5,
+        2.2
+      ],
+      "role": "fur",
+      "rotation": [
+        0,
+        -20,
+        -20
+      ],
+      "origin": [
+        -4.6,
+        23.8,
+        -0.2
+      ],
+      "cut": "fur",
+      "eye": false
+    },
+    {
+      "name": "talon_left_0_0",
+      "bone": "hand_left",
+      "from": [
+        -7.5,
+        11.6,
+        -5.5
+      ],
+      "to": [
+        -6.5,
+        14.6,
+        -4.5
+      ],
+      "role": "cream",
+      "rotation": [
+        -17.354024636261325,
+        0,
+        -180.0
+      ],
+      "origin": [
+        -7.0,
+        11.6,
+        -5
+      ],
+      "cut": null,
+      "eye": false
+    },
+    {
+      "name": "talon_left_0_1",
+      "bone": "hand_left",
+      "from": [
+        -7.5,
+        8.4,
+        -6.5
+      ],
+      "to": [
+        -6.5,
+        11.4,
+        -5.5
+      ],
+      "role": "cream",
+      "rotation": [
+        11.689369175439184,
+        0,
+        -180.0
+      ],
+      "origin": [
+        -7.0,
+        8.4,
+        -6
+      ],
+      "cut": null,
+      "eye": false
+    },
+    {
+      "name": "talon_left_1_0",
+      "bone": "hand_left",
+      "from": [
+        -9.0,
+        11.6,
+        -5.5
+      ],
+      "to": [
+        -8.0,
+        14.6,
+        -4.5
+      ],
+      "role": "cream",
+      "rotation": [
+        -17.354024636261325,
+        0,
+        -180.0
+      ],
+      "origin": [
+        -8.5,
+        11.6,
+        -5
+      ],
+      "cut": null,
+      "eye": false
+    },
+    {
+      "name": "talon_left_1_1",
+      "bone": "hand_left",
+      "from": [
+        -9.0,
+        8.4,
+        -6.5
+      ],
+      "to": [
+        -8.0,
+        11.4,
+        -5.5
+      ],
+      "role": "cream",
+      "rotation": [
+        11.689369175439184,
+        0,
+        -180.0
+      ],
+      "origin": [
+        -8.5,
+        8.4,
+        -6
+      ],
+      "cut": null,
+      "eye": false
+    },
+    {
+      "name": "talon_left_2_0",
+      "bone": "hand_left",
+      "from": [
+        -10.5,
+        11.6,
+        -5.5
+      ],
+      "to": [
+        -9.5,
+        14.6,
+        -4.5
+      ],
+      "role": "cream",
+      "rotation": [
+        -17.354024636261325,
+        0,
+        -180.0
+      ],
+      "origin": [
+        -10.0,
+        11.6,
+        -5
+      ],
+      "cut": null,
+      "eye": false
+    },
+    {
+      "name": "talon_left_2_1",
+      "bone": "hand_left",
+      "from": [
+        -10.5,
+        8.4,
+        -6.5
+      ],
+      "to": [
+        -9.5,
+        11.4,
+        -5.5
+      ],
+      "role": "cream",
+      "rotation": [
+        11.689369175439184,
+        0,
+        -180.0
+      ],
+      "origin": [
+        -10.0,
+        8.4,
+        -6
+      ],
+      "cut": null,
+      "eye": false
+    },
+    {
+      "name": "leg_left_box",
+      "bone": "leg_left",
+      "from": [
+        -4.5,
+        14.3,
+        -2.3
+      ],
+      "to": [
+        -0.5,
+        20.3,
+        2.7
+      ],
+      "role": "fur",
+      "rotation": [
+        -16.584360626235828,
+        0,
+        163.66395711028153
+      ],
+      "origin": [
+        -2.5,
+        14.3,
+        0.2
+      ],
+      "cut": null,
+      "eye": false
+    },
+    {
+      "name": "shin_left_box",
+      "bone": "shin_left",
+      "from": [
+        -5.7,
+        8.5,
+        -3.1
+      ],
+      "to": [
+        -2.7,
+        14.5,
+        -0.10000000000000009
+      ],
+      "role": "wrap",
+      "rotation": [
+        17.523036960231156,
+        0,
+        178.99491399474581
+      ],
+      "origin": [
+        -4.2,
+        8.5,
+        -1.6
+      ],
+      "cut": null,
+      "eye": false
+    },
+    {
+      "name": "paw_left",
+      "bone": "foot_left",
+      "from": [
+        -6.8,
+        0.0,
+        -3.8
+      ],
+      "to": [
+        -1.7999999999999998,
+        3.0,
+        1.2000000000000002
+      ],
+      "role": "cream",
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "origin": [
+        -4.3,
+        1.5,
+        -1.3
+      ],
+      "cut": null,
+      "eye": false
+    },
+    {
+      "name": "foot_claw_left_0",
+      "bone": "foot_left",
+      "from": [
+        -3.1999999999999997,
+        -0.09999999999999998,
+        -5.25
+      ],
+      "to": [
+        -2.1999999999999997,
+        1.9,
+        -3.25
+      ],
+      "role": "shadow",
+      "rotation": [
+        12,
+        0,
+        0
+      ],
+      "origin": [
+        -2.6999999999999997,
+        2,
+        -3.2
+      ],
+      "cut": null,
+      "eye": false
+    },
+    {
+      "name": "foot_claw_left_1",
+      "bone": "foot_left",
+      "from": [
+        -4.8,
+        -0.09999999999999998,
+        -5.25
+      ],
+      "to": [
+        -3.8,
+        1.9,
+        -3.25
+      ],
+      "role": "shadow",
+      "rotation": [
+        12,
+        0,
+        0
+      ],
+      "origin": [
+        -4.3,
+        2,
+        -3.2
+      ],
+      "cut": null,
+      "eye": false
+    },
+    {
+      "name": "foot_claw_left_2",
+      "bone": "foot_left",
+      "from": [
+        -6.4,
+        -0.09999999999999998,
+        -5.25
+      ],
+      "to": [
+        -5.4,
+        1.9,
+        -3.25
+      ],
+      "role": "shadow",
+      "rotation": [
+        12,
+        0,
+        0
+      ],
+      "origin": [
+        -5.9,
+        2,
+        -3.2
+      ],
+      "cut": null,
+      "eye": false
+    },
+    {
+      "name": "arm_right_box",
+      "bone": "arm_right",
+      "from": [
+        2.5999999999999996,
+        23.8,
+        -2.7
+      ],
+      "to": [
+        6.6,
+        29.8,
+        2.3
+      ],
+      "role": "fur",
+      "rotation": [
+        0.0,
+        0,
+        -152.98733465206146
+      ],
+      "origin": [
+        4.6,
+        23.8,
+        -0.2
+      ],
+      "cut": null,
+      "eye": false
+    },
+    {
+      "name": "forearm_right_box",
+      "bone": "forearm_right",
+      "from": [
+        5.2,
+        18.7,
+        -2.2
+      ],
+      "to": [
+        9.2,
+        24.7,
+        1.7999999999999998
+      ],
+      "role": "wrap",
+      "rotation": [
+        -30.048575267968083,
+        0,
+        -167.47119229084848
+      ],
+      "origin": [
+        7.2,
+        18.7,
+        -0.2
+      ],
+      "cut": null,
+      "eye": false
+    },
+    {
+      "name": "palm_right",
+      "bone": "hand_right",
+      "from": [
+        6.5,
+        10.7,
+        -5.8
+      ],
+      "to": [
+        10.5,
+        13.7,
+        -1.7999999999999998
+      ],
+      "role": "fur",
+      "rotation": [
+        -12,
+        0,
+        9
+      ],
+      "origin": [
+        8.4,
+        13.3,
+        -3.4
+      ],
+      "cut": null,
+      "eye": false
+    },
+    {
+      "name": "shoulder_fur_right",
+      "bone": "arm_right",
+      "from": [
+        3.0999999999999996,
+        19.5,
+        2.2
+      ],
+      "to": [
+        8.1,
+        24.5,
+        2.2
+      ],
+      "role": "fur",
+      "rotation": [
+        0,
+        20,
+        20
+      ],
+      "origin": [
+        4.6,
+        23.8,
+        -0.2
+      ],
+      "cut": "fur",
+      "eye": false
+    },
+    {
+      "name": "talon_right_0_0",
+      "bone": "hand_right",
+      "from": [
+        6.5,
+        11.6,
+        -5.5
+      ],
+      "to": [
+        7.5,
+        14.6,
+        -4.5
+      ],
+      "role": "cream",
+      "rotation": [
+        -17.354024636261325,
+        0,
+        -180.0
+      ],
+      "origin": [
+        7.0,
+        11.6,
+        -5
+      ],
+      "cut": null,
+      "eye": false
+    },
+    {
+      "name": "talon_right_0_1",
+      "bone": "hand_right",
+      "from": [
+        6.5,
+        8.4,
+        -6.5
+      ],
+      "to": [
+        7.5,
+        11.4,
+        -5.5
+      ],
+      "role": "cream",
+      "rotation": [
+        11.689369175439184,
+        0,
+        -180.0
+      ],
+      "origin": [
+        7.0,
+        8.4,
+        -6
+      ],
+      "cut": null,
+      "eye": false
+    },
+    {
+      "name": "talon_right_1_0",
+      "bone": "hand_right",
+      "from": [
+        8.0,
+        11.6,
+        -5.5
+      ],
+      "to": [
+        9.0,
+        14.6,
+        -4.5
+      ],
+      "role": "cream",
+      "rotation": [
+        -17.354024636261325,
+        0,
+        -180.0
+      ],
+      "origin": [
+        8.5,
+        11.6,
+        -5
+      ],
+      "cut": null,
+      "eye": false
+    },
+    {
+      "name": "talon_right_1_1",
+      "bone": "hand_right",
+      "from": [
+        8.0,
+        8.4,
+        -6.5
+      ],
+      "to": [
+        9.0,
+        11.4,
+        -5.5
+      ],
+      "role": "cream",
+      "rotation": [
+        11.689369175439184,
+        0,
+        -180.0
+      ],
+      "origin": [
+        8.5,
+        8.4,
+        -6
+      ],
+      "cut": null,
+      "eye": false
+    },
+    {
+      "name": "talon_right_2_0",
+      "bone": "hand_right",
+      "from": [
+        9.5,
+        11.6,
+        -5.5
+      ],
+      "to": [
+        10.5,
+        14.6,
+        -4.5
+      ],
+      "role": "cream",
+      "rotation": [
+        -17.354024636261325,
+        0,
+        -180.0
+      ],
+      "origin": [
+        10.0,
+        11.6,
+        -5
+      ],
+      "cut": null,
+      "eye": false
+    },
+    {
+      "name": "talon_right_2_1",
+      "bone": "hand_right",
+      "from": [
+        9.5,
+        8.4,
+        -6.5
+      ],
+      "to": [
+        10.5,
+        11.4,
+        -5.5
+      ],
+      "role": "cream",
+      "rotation": [
+        11.689369175439184,
+        0,
+        -180.0
+      ],
+      "origin": [
+        10.0,
+        8.4,
+        -6
+      ],
+      "cut": null,
+      "eye": false
+    },
+    {
+      "name": "leg_right_box",
+      "bone": "leg_right",
+      "from": [
+        0.5,
+        14.3,
+        -2.3
+      ],
+      "to": [
+        4.5,
+        20.3,
+        2.7
+      ],
+      "role": "fur",
+      "rotation": [
+        -16.584360626235828,
+        0,
+        -163.66395711028153
+      ],
+      "origin": [
+        2.5,
+        14.3,
+        0.2
+      ],
+      "cut": null,
+      "eye": false
+    },
+    {
+      "name": "shin_right_box",
+      "bone": "shin_right",
+      "from": [
+        2.7,
+        8.5,
+        -3.1
+      ],
+      "to": [
+        5.7,
+        14.5,
+        -0.10000000000000009
+      ],
+      "role": "wrap",
+      "rotation": [
+        17.523036960231156,
+        0,
+        -178.99491399474581
+      ],
+      "origin": [
+        4.2,
+        8.5,
+        -1.6
+      ],
+      "cut": null,
+      "eye": false
+    },
+    {
+      "name": "paw_right",
+      "bone": "foot_right",
+      "from": [
+        1.7999999999999998,
+        0.0,
+        -3.8
+      ],
+      "to": [
+        6.8,
+        3.0,
+        1.2000000000000002
+      ],
+      "role": "cream",
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "origin": [
+        4.3,
+        1.5,
+        -1.3
+      ],
+      "cut": null,
+      "eye": false
+    },
+    {
+      "name": "foot_claw_right_0",
+      "bone": "foot_right",
+      "from": [
+        2.1999999999999997,
+        -0.09999999999999998,
+        -5.25
+      ],
+      "to": [
+        3.1999999999999997,
+        1.9,
+        -3.25
+      ],
+      "role": "shadow",
+      "rotation": [
+        12,
+        0,
+        0
+      ],
+      "origin": [
+        2.6999999999999997,
+        2,
+        -3.2
+      ],
+      "cut": null,
+      "eye": false
+    },
+    {
+      "name": "foot_claw_right_1",
+      "bone": "foot_right",
+      "from": [
+        3.8,
+        -0.09999999999999998,
+        -5.25
+      ],
+      "to": [
+        4.8,
+        1.9,
+        -3.25
+      ],
+      "role": "shadow",
+      "rotation": [
+        12,
+        0,
+        0
+      ],
+      "origin": [
+        4.3,
+        2,
+        -3.2
+      ],
+      "cut": null,
+      "eye": false
+    },
+    {
+      "name": "foot_claw_right_2",
+      "bone": "foot_right",
+      "from": [
+        5.4,
+        -0.09999999999999998,
+        -5.25
+      ],
+      "to": [
+        6.4,
+        1.9,
+        -3.25
+      ],
+      "role": "shadow",
+      "rotation": [
+        12,
+        0,
+        0
+      ],
+      "origin": [
+        5.9,
+        2,
+        -3.2
+      ],
+      "cut": null,
+      "eye": false
+    },
+    {
+      "name": "tail_1_box",
+      "bone": "tail_1",
+      "from": [
+        -2.5,
+        14.0,
+        -0.2999999999999998
+      ],
+      "to": [
+        2.5,
+        19.0,
+        4.7
+      ],
+      "role": "fur",
+      "rotation": [
+        85.42607874009914,
+        0,
+        -180.0
+      ],
+      "origin": [
+        0,
+        14,
+        2.2
+      ],
+      "cut": null,
+      "eye": false
+    },
+    {
+      "name": "tail_2_box",
+      "bone": "tail_2",
+      "from": [
+        -3.5,
+        13.600000000000001,
+        3.7
+      ],
+      "to": [
+        3.5,
+        19.6,
+        10.7
+      ],
+      "role": "fur",
+      "rotation": [
+        69.0265065786792,
+        0,
+        -180.0
+      ],
+      "origin": [
+        0,
+        13.6,
+        7.2
+      ],
+      "cut": null,
+      "eye": false
+    },
+    {
+      "name": "tail_3_box",
+      "bone": "tail_3",
+      "from": [
+        -3.0,
+        11.3,
+        9.7
+      ],
+      "to": [
+        3.0,
+        18.3,
+        16.7
+      ],
+      "role": "fur",
+      "rotation": [
+        51.20344790169184,
+        0,
+        -180.0
+      ],
+      "origin": [
+        0,
+        11.3,
+        13.2
+      ],
+      "cut": null,
+      "eye": false
+    },
+    {
+      "name": "tail_fringe",
+      "bone": "tail_3",
+      "from": [
+        -3.5,
+        3.5,
+        18.2
+      ],
+      "to": [
+        3.5,
+        10.5,
+        18.2
+      ],
+      "role": "fur",
+      "rotation": [
+        -30,
+        0,
+        0
+      ],
+      "origin": [
+        0,
+        9,
+        17
+      ],
+      "cut": "fur",
+      "eye": false
+    },
+    {
+      "name": "neck_wrap",
+      "bone": "scarf",
+      "from": [
+        -4.5,
+        23.1,
+        -4.5
+      ],
+      "to": [
+        4.5,
+        26.1,
+        2.5
+      ],
+      "role": "wine",
+      "rotation": [
+        -15,
+        0,
+        0
+      ],
+      "origin": [
+        0,
+        24,
+        -1
+      ],
+      "cut": null,
+      "eye": false
+    },
+    {
+      "name": "ribbon_left",
+      "bone": "scarf",
+      "from": [
+        -1.2,
+        24.5,
+        1.5
+      ],
+      "to": [
+        -1.2,
+        29.5,
+        12.5
+      ],
+      "role": "wine",
+      "rotation": [
+        -10,
+        -16,
+        -5
+      ],
+      "origin": [
+        -1.2,
+        25,
+        2
+      ],
+      "cut": "ribbon",
+      "eye": false
+    },
+    {
+      "name": "ribbon_right",
+      "bone": "scarf",
+      "from": [
+        1.4,
+        25.0,
+        1.7999999999999998
+      ],
+      "to": [
+        1.4,
+        30.0,
+        12.8
+      ],
+      "role": "wine",
+      "rotation": [
+        -17,
+        20,
+        -3
+      ],
+      "origin": [
+        1.4,
+        25,
+        2
+      ],
+      "cut": "ribbon",
+      "eye": false
+    },
+    {
+      "name": "brooch",
+      "bone": "scarf",
+      "from": [
+        -3.5,
+        23.8,
+        -5.2
+      ],
+      "to": [
+        -1.5,
+        26.8,
+        -5.2
+      ],
+      "role": "gold",
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "origin": [
+        -2.5,
+        25.3,
+        -5.2
+      ],
+      "cut": "diamond",
+      "eye": false
+    },
+    {
+      "name": "waist_wrap",
+      "bone": "body",
+      "from": [
+        -3.5,
+        14.0,
+        -3.1
+      ],
+      "to": [
+        3.5,
+        16.0,
+        2.9
+      ],
+      "role": "wrap",
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "origin": [
+        0,
+        15,
+        -0.1
+      ],
+      "cut": null,
+      "eye": false
+    },
+    {
+      "name": "buckle",
+      "bone": "body",
+      "from": [
+        -1.0,
+        14.0,
+        -3.3
+      ],
+      "to": [
+        1.0,
+        16.0,
+        -3.3
+      ],
+      "role": "gold",
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "origin": [
+        0,
+        15,
+        -3.3
+      ],
+      "cut": "diamond",
+      "eye": false
+    },
+    {
+      "name": "front_cloth",
+      "bone": "body",
+      "from": [
+        -2.5,
+        6.699999999999999,
+        -3.4
+      ],
+      "to": [
+        2.5,
+        14.7,
+        -3.4
+      ],
+      "role": "wine",
+      "rotation": [
+        -8,
+        0,
+        0
+      ],
+      "origin": [
+        0,
+        14,
+        -3.4
+      ],
+      "cut": "tabard",
+      "eye": false
+    },
+    {
+      "name": "side_cloth",
+      "bone": "body",
+      "from": [
+        -2.7,
+        7.800000000000001,
+        -2.2
+      ],
+      "to": [
+        -2.7,
+        14.8,
+        2.8
+      ],
+      "role": "wine",
+      "rotation": [
+        0,
+        -15,
+        0
+      ],
+      "origin": [
+        -2.7,
+        14,
+        0
+      ],
+      "cut": "tabard",
+      "eye": false
+    },
+    {
+      "name": "pouch",
+      "bone": "body",
+      "from": [
+        -5.1,
+        13.5,
+        0.19999999999999996
+      ],
+      "to": [
+        -3.0999999999999996,
+        16.5,
+        3.2
+      ],
+      "role": "shadow",
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "origin": [
+        -4.1,
+        15,
+        1.7
+      ],
+      "cut": null,
+      "eye": false
+    }
+  ],
+  "faces": {
+    "pelvis": {
+      "north": {
+        "uv": [
+          1,
+          1,
+          7,
+          6
+        ]
+      },
+      "south": {
+        "uv": [
+          9,
+          1,
+          15,
+          6
+        ]
+      },
+      "east": {
+        "uv": [
+          17,
+          1,
+          22,
+          6
+        ]
+      },
+      "west": {
+        "uv": [
+          24,
+          1,
+          29,
+          6
+        ]
+      },
+      "up": {
+        "uv": [
+          31,
+          1,
+          37,
+          6
+        ]
+      },
+      "down": {
+        "uv": [
+          39,
+          1,
+          45,
+          6
+        ]
+      }
+    },
+    "ribcage": {
+      "north": {
+        "uv": [
+          47,
+          1,
+          55,
+          9
+        ]
+      },
+      "south": {
+        "uv": [
+          57,
+          1,
+          65,
+          9
+        ]
+      },
+      "east": {
+        "uv": [
+          67,
+          1,
+          73,
+          9
+        ]
+      },
+      "west": {
+        "uv": [
+          75,
+          1,
+          81,
+          9
+        ]
+      },
+      "up": {
+        "uv": [
+          83,
+          1,
+          91,
+          7
+        ]
+      },
+      "down": {
+        "uv": [
+          93,
+          1,
+          101,
+          7
+        ]
+      }
+    },
+    "pectoral_mark": {
+      "north": {
+        "uv": [
+          103,
+          1,
+          109,
+          8
+        ]
+      },
+      "south": {
+        "uv": [
+          111,
+          1,
+          117,
+          8
+        ]
+      }
+    },
+    "neck": {
+      "north": {
+        "uv": [
+          119,
+          1,
+          125,
+          5
+        ]
+      },
+      "south": {
+        "uv": [
+          1,
+          11,
+          7,
+          15
+        ]
+      },
+      "east": {
+        "uv": [
+          9,
+          11,
+          14,
+          15
+        ]
+      },
+      "west": {
+        "uv": [
+          16,
+          11,
+          21,
+          15
+        ]
+      },
+      "up": {
+        "uv": [
+          23,
+          11,
+          29,
+          16
+        ]
+      },
+      "down": {
+        "uv": [
+          31,
+          11,
+          37,
+          16
+        ]
+      }
+    },
+    "skull": {
+      "north": {
+        "uv": [
+          39,
+          11,
+          46,
+          17
+        ]
+      },
+      "south": {
+        "uv": [
+          48,
+          11,
+          55,
+          17
+        ]
+      },
+      "east": {
+        "uv": [
+          57,
+          11,
+          64,
+          17
+        ]
+      },
+      "west": {
+        "uv": [
+          66,
+          11,
+          73,
+          17
+        ]
+      },
+      "up": {
+        "uv": [
+          75,
+          11,
+          82,
+          18
+        ]
+      },
+      "down": {
+        "uv": [
+          84,
+          11,
+          91,
+          18
+        ]
+      }
+    },
+    "mask_front": {
+      "north": {
+        "uv": [
+          93,
+          11,
+          100,
+          16
+        ]
+      },
+      "south": {
+        "uv": [
+          102,
+          11,
+          109,
+          16
+        ]
+      }
+    },
+    "muzzle": {
+      "north": {
+        "uv": [
+          111,
+          11,
+          116,
+          14
+        ]
+      },
+      "south": {
+        "uv": [
+          118,
+          11,
+          123,
+          14
+        ]
+      },
+      "east": {
+        "uv": [
+          1,
+          20,
+          4,
+          23
+        ]
+      },
+      "west": {
+        "uv": [
+          6,
+          20,
+          9,
+          23
+        ]
+      },
+      "up": {
+        "uv": [
+          11,
+          20,
+          16,
+          23
+        ]
+      },
+      "down": {
+        "uv": [
+          18,
+          20,
+          23,
+          23
+        ]
+      }
+    },
+    "nose": {
+      "north": {
+        "uv": [
+          25,
+          20,
+          28,
+          22
+        ]
+      },
+      "south": {
+        "uv": [
+          30,
+          20,
+          33,
+          22
+        ]
+      },
+      "east": {
+        "uv": [
+          35,
+          20,
+          36,
+          22
+        ]
+      },
+      "west": {
+        "uv": [
+          38,
+          20,
+          39,
+          22
+        ]
+      },
+      "up": {
+        "uv": [
+          41,
+          20,
+          44,
+          21
+        ]
+      },
+      "down": {
+        "uv": [
+          46,
+          20,
+          49,
+          21
+        ]
+      }
+    },
+    "lower_lip": {
+      "north": {
+        "uv": [
+          51,
+          20,
+          56,
+          21
+        ]
+      },
+      "south": {
+        "uv": [
+          58,
+          20,
+          63,
+          21
+        ]
+      },
+      "east": {
+        "uv": [
+          65,
+          20,
+          69,
+          21
+        ]
+      },
+      "west": {
+        "uv": [
+          71,
+          20,
+          75,
+          21
+        ]
+      },
+      "up": {
+        "uv": [
+          77,
+          20,
+          82,
+          24
+        ]
+      },
+      "down": {
+        "uv": [
+          84,
+          20,
+          89,
+          24
+        ]
+      }
+    },
+    "mane_side_left": {
+      "east": {
+        "uv": [
+          91,
+          20,
+          99,
+          28
+        ]
+      },
+      "west": {
+        "uv": [
+          101,
+          20,
+          109,
+          28
+        ]
+      }
+    },
+    "mane_lower_left": {
+      "east": {
+        "uv": [
+          111,
+          20,
+          116,
+          25
+        ]
+      },
+      "west": {
+        "uv": [
+          118,
+          20,
+          123,
+          25
+        ]
+      }
+    },
+    "mask_side_left": {
+      "east": {
+        "uv": [
+          1,
+          30,
+          6,
+          35
+        ]
+      },
+      "west": {
+        "uv": [
+          8,
+          30,
+          13,
+          35
+        ]
+      }
+    },
+    "mane_front_left": {
+      "north": {
+        "uv": [
+          15,
+          30,
+          19,
+          38
+        ]
+      },
+      "south": {
+        "uv": [
+          21,
+          30,
+          25,
+          38
+        ]
+      }
+    },
+    "mane_side_right": {
+      "east": {
+        "uv": [
+          27,
+          30,
+          35,
+          38
+        ]
+      },
+      "west": {
+        "uv": [
+          37,
+          30,
+          45,
+          38
+        ]
+      }
+    },
+    "mane_lower_right": {
+      "east": {
+        "uv": [
+          47,
+          30,
+          52,
+          35
+        ]
+      },
+      "west": {
+        "uv": [
+          54,
+          30,
+          59,
+          35
+        ]
+      }
+    },
+    "mask_side_right": {
+      "east": {
+        "uv": [
+          61,
+          30,
+          66,
+          35
+        ]
+      },
+      "west": {
+        "uv": [
+          68,
+          30,
+          73,
+          35
+        ]
+      }
+    },
+    "mane_front_right": {
+      "north": {
+        "uv": [
+          75,
+          30,
+          79,
+          38
+        ]
+      },
+      "south": {
+        "uv": [
+          81,
+          30,
+          85,
+          38
+        ]
+      }
+    },
+    "mane_crown": {
+      "up": {
+        "uv": [
+          87,
+          30,
+          94,
+          37
+        ]
+      },
+      "down": {
+        "uv": [
+          96,
+          30,
+          103,
+          37
+        ]
+      }
+    },
+    "arm_left_box": {
+      "north": {
+        "uv": [
+          105,
+          30,
+          109,
+          36
+        ]
+      },
+      "south": {
+        "uv": [
+          111,
+          30,
+          115,
+          36
+        ]
+      },
+      "east": {
+        "uv": [
+          117,
+          30,
+          122,
+          36
+        ]
+      },
+      "west": {
+        "uv": [
+          1,
+          40,
+          6,
+          46
+        ]
+      },
+      "up": {
+        "uv": [
+          8,
+          40,
+          12,
+          45
+        ]
+      },
+      "down": {
+        "uv": [
+          14,
+          40,
+          18,
+          45
+        ]
+      }
+    },
+    "forearm_left_box": {
+      "north": {
+        "uv": [
+          20,
+          40,
+          24,
+          46
+        ]
+      },
+      "south": {
+        "uv": [
+          26,
+          40,
+          30,
+          46
+        ]
+      },
+      "east": {
+        "uv": [
+          32,
+          40,
+          36,
+          46
+        ]
+      },
+      "west": {
+        "uv": [
+          38,
+          40,
+          42,
+          46
+        ]
+      },
+      "up": {
+        "uv": [
+          44,
+          40,
+          48,
+          44
+        ]
+      },
+      "down": {
+        "uv": [
+          50,
+          40,
+          54,
+          44
+        ]
+      }
+    },
+    "palm_left": {
+      "north": {
+        "uv": [
+          56,
+          40,
+          60,
+          43
+        ]
+      },
+      "south": {
+        "uv": [
+          62,
+          40,
+          66,
+          43
+        ]
+      },
+      "east": {
+        "uv": [
+          68,
+          40,
+          72,
+          43
+        ]
+      },
+      "west": {
+        "uv": [
+          74,
+          40,
+          78,
+          43
+        ]
+      },
+      "up": {
+        "uv": [
+          80,
+          40,
+          84,
+          44
+        ]
+      },
+      "down": {
+        "uv": [
+          86,
+          40,
+          90,
+          44
+        ]
+      }
+    },
+    "shoulder_fur_left": {
+      "north": {
+        "uv": [
+          92,
+          40,
+          97,
+          45
+        ]
+      },
+      "south": {
+        "uv": [
+          99,
+          40,
+          104,
+          45
+        ]
+      }
+    },
+    "talon_left_0_0": {
+      "north": {
+        "uv": [
+          106,
+          40,
+          107,
+          43
+        ]
+      },
+      "south": {
+        "uv": [
+          109,
+          40,
+          110,
+          43
+        ]
+      },
+      "east": {
+        "uv": [
+          112,
+          40,
+          113,
+          43
+        ]
+      },
+      "west": {
+        "uv": [
+          115,
+          40,
+          116,
+          43
+        ]
+      },
+      "up": {
+        "uv": [
+          118,
+          40,
+          119,
+          41
+        ]
+      },
+      "down": {
+        "uv": [
+          121,
+          40,
+          122,
+          41
+        ]
+      }
+    },
+    "talon_left_0_1": {
+      "north": {
+        "uv": [
+          124,
+          40,
+          125,
+          43
+        ]
+      },
+      "south": {
+        "uv": [
+          1,
+          48,
+          2,
+          51
+        ]
+      },
+      "east": {
+        "uv": [
+          4,
+          48,
+          5,
+          51
+        ]
+      },
+      "west": {
+        "uv": [
+          7,
+          48,
+          8,
+          51
+        ]
+      },
+      "up": {
+        "uv": [
+          10,
+          48,
+          11,
+          49
+        ]
+      },
+      "down": {
+        "uv": [
+          13,
+          48,
+          14,
+          49
+        ]
+      }
+    },
+    "talon_left_1_0": {
+      "north": {
+        "uv": [
+          16,
+          48,
+          17,
+          51
+        ]
+      },
+      "south": {
+        "uv": [
+          19,
+          48,
+          20,
+          51
+        ]
+      },
+      "east": {
+        "uv": [
+          22,
+          48,
+          23,
+          51
+        ]
+      },
+      "west": {
+        "uv": [
+          25,
+          48,
+          26,
+          51
+        ]
+      },
+      "up": {
+        "uv": [
+          28,
+          48,
+          29,
+          49
+        ]
+      },
+      "down": {
+        "uv": [
+          31,
+          48,
+          32,
+          49
+        ]
+      }
+    },
+    "talon_left_1_1": {
+      "north": {
+        "uv": [
+          34,
+          48,
+          35,
+          51
+        ]
+      },
+      "south": {
+        "uv": [
+          37,
+          48,
+          38,
+          51
+        ]
+      },
+      "east": {
+        "uv": [
+          40,
+          48,
+          41,
+          51
+        ]
+      },
+      "west": {
+        "uv": [
+          43,
+          48,
+          44,
+          51
+        ]
+      },
+      "up": {
+        "uv": [
+          46,
+          48,
+          47,
+          49
+        ]
+      },
+      "down": {
+        "uv": [
+          49,
+          48,
+          50,
+          49
+        ]
+      }
+    },
+    "talon_left_2_0": {
+      "north": {
+        "uv": [
+          52,
+          48,
+          53,
+          51
+        ]
+      },
+      "south": {
+        "uv": [
+          55,
+          48,
+          56,
+          51
+        ]
+      },
+      "east": {
+        "uv": [
+          58,
+          48,
+          59,
+          51
+        ]
+      },
+      "west": {
+        "uv": [
+          61,
+          48,
+          62,
+          51
+        ]
+      },
+      "up": {
+        "uv": [
+          64,
+          48,
+          65,
+          49
+        ]
+      },
+      "down": {
+        "uv": [
+          67,
+          48,
+          68,
+          49
+        ]
+      }
+    },
+    "talon_left_2_1": {
+      "north": {
+        "uv": [
+          70,
+          48,
+          71,
+          51
+        ]
+      },
+      "south": {
+        "uv": [
+          73,
+          48,
+          74,
+          51
+        ]
+      },
+      "east": {
+        "uv": [
+          76,
+          48,
+          77,
+          51
+        ]
+      },
+      "west": {
+        "uv": [
+          79,
+          48,
+          80,
+          51
+        ]
+      },
+      "up": {
+        "uv": [
+          82,
+          48,
+          83,
+          49
+        ]
+      },
+      "down": {
+        "uv": [
+          85,
+          48,
+          86,
+          49
+        ]
+      }
+    },
+    "leg_left_box": {
+      "north": {
+        "uv": [
+          88,
+          48,
+          92,
+          54
+        ]
+      },
+      "south": {
+        "uv": [
+          94,
+          48,
+          98,
+          54
+        ]
+      },
+      "east": {
+        "uv": [
+          100,
+          48,
+          105,
+          54
+        ]
+      },
+      "west": {
+        "uv": [
+          107,
+          48,
+          112,
+          54
+        ]
+      },
+      "up": {
+        "uv": [
+          114,
+          48,
+          118,
+          53
+        ]
+      },
+      "down": {
+        "uv": [
+          120,
+          48,
+          124,
+          53
+        ]
+      }
+    },
+    "shin_left_box": {
+      "north": {
+        "uv": [
+          1,
+          56,
+          4,
+          62
+        ]
+      },
+      "south": {
+        "uv": [
+          6,
+          56,
+          9,
+          62
+        ]
+      },
+      "east": {
+        "uv": [
+          11,
+          56,
+          14,
+          62
+        ]
+      },
+      "west": {
+        "uv": [
+          16,
+          56,
+          19,
+          62
+        ]
+      },
+      "up": {
+        "uv": [
+          21,
+          56,
+          24,
+          59
+        ]
+      },
+      "down": {
+        "uv": [
+          26,
+          56,
+          29,
+          59
+        ]
+      }
+    },
+    "paw_left": {
+      "north": {
+        "uv": [
+          31,
+          56,
+          36,
+          59
+        ]
+      },
+      "south": {
+        "uv": [
+          38,
+          56,
+          43,
+          59
+        ]
+      },
+      "east": {
+        "uv": [
+          45,
+          56,
+          50,
+          59
+        ]
+      },
+      "west": {
+        "uv": [
+          52,
+          56,
+          57,
+          59
+        ]
+      },
+      "up": {
+        "uv": [
+          59,
+          56,
+          64,
+          61
+        ]
+      },
+      "down": {
+        "uv": [
+          66,
+          56,
+          71,
+          61
+        ]
+      }
+    },
+    "foot_claw_left_0": {
+      "north": {
+        "uv": [
+          73,
+          56,
+          74,
+          58
+        ]
+      },
+      "south": {
+        "uv": [
+          76,
+          56,
+          77,
+          58
+        ]
+      },
+      "east": {
+        "uv": [
+          79,
+          56,
+          81,
+          58
+        ]
+      },
+      "west": {
+        "uv": [
+          83,
+          56,
+          85,
+          58
+        ]
+      },
+      "up": {
+        "uv": [
+          87,
+          56,
+          88,
+          58
+        ]
+      },
+      "down": {
+        "uv": [
+          90,
+          56,
+          91,
+          58
+        ]
+      }
+    },
+    "foot_claw_left_1": {
+      "north": {
+        "uv": [
+          93,
+          56,
+          94,
+          58
+        ]
+      },
+      "south": {
+        "uv": [
+          96,
+          56,
+          97,
+          58
+        ]
+      },
+      "east": {
+        "uv": [
+          99,
+          56,
+          101,
+          58
+        ]
+      },
+      "west": {
+        "uv": [
+          103,
+          56,
+          105,
+          58
+        ]
+      },
+      "up": {
+        "uv": [
+          107,
+          56,
+          108,
+          58
+        ]
+      },
+      "down": {
+        "uv": [
+          110,
+          56,
+          111,
+          58
+        ]
+      }
+    },
+    "foot_claw_left_2": {
+      "north": {
+        "uv": [
+          113,
+          56,
+          114,
+          58
+        ]
+      },
+      "south": {
+        "uv": [
+          116,
+          56,
+          117,
+          58
+        ]
+      },
+      "east": {
+        "uv": [
+          119,
+          56,
+          121,
+          58
+        ]
+      },
+      "west": {
+        "uv": [
+          123,
+          56,
+          125,
+          58
+        ]
+      },
+      "up": {
+        "uv": [
+          1,
+          64,
+          2,
+          66
+        ]
+      },
+      "down": {
+        "uv": [
+          4,
+          64,
+          5,
+          66
+        ]
+      }
+    },
+    "arm_right_box": {
+      "north": {
+        "uv": [
+          7,
+          64,
+          11,
+          70
+        ]
+      },
+      "south": {
+        "uv": [
+          13,
+          64,
+          17,
+          70
+        ]
+      },
+      "east": {
+        "uv": [
+          19,
+          64,
+          24,
+          70
+        ]
+      },
+      "west": {
+        "uv": [
+          26,
+          64,
+          31,
+          70
+        ]
+      },
+      "up": {
+        "uv": [
+          33,
+          64,
+          37,
+          69
+        ]
+      },
+      "down": {
+        "uv": [
+          39,
+          64,
+          43,
+          69
+        ]
+      }
+    },
+    "forearm_right_box": {
+      "north": {
+        "uv": [
+          45,
+          64,
+          49,
+          70
+        ]
+      },
+      "south": {
+        "uv": [
+          51,
+          64,
+          55,
+          70
+        ]
+      },
+      "east": {
+        "uv": [
+          57,
+          64,
+          61,
+          70
+        ]
+      },
+      "west": {
+        "uv": [
+          63,
+          64,
+          67,
+          70
+        ]
+      },
+      "up": {
+        "uv": [
+          69,
+          64,
+          73,
+          68
+        ]
+      },
+      "down": {
+        "uv": [
+          75,
+          64,
+          79,
+          68
+        ]
+      }
+    },
+    "palm_right": {
+      "north": {
+        "uv": [
+          81,
+          64,
+          85,
+          67
+        ]
+      },
+      "south": {
+        "uv": [
+          87,
+          64,
+          91,
+          67
+        ]
+      },
+      "east": {
+        "uv": [
+          93,
+          64,
+          97,
+          67
+        ]
+      },
+      "west": {
+        "uv": [
+          99,
+          64,
+          103,
+          67
+        ]
+      },
+      "up": {
+        "uv": [
+          105,
+          64,
+          109,
+          68
+        ]
+      },
+      "down": {
+        "uv": [
+          111,
+          64,
+          115,
+          68
+        ]
+      }
+    },
+    "shoulder_fur_right": {
+      "north": {
+        "uv": [
+          117,
+          64,
+          122,
+          69
+        ]
+      },
+      "south": {
+        "uv": [
+          1,
+          72,
+          6,
+          77
+        ]
+      }
+    },
+    "talon_right_0_0": {
+      "north": {
+        "uv": [
+          8,
+          72,
+          9,
+          75
+        ]
+      },
+      "south": {
+        "uv": [
+          11,
+          72,
+          12,
+          75
+        ]
+      },
+      "east": {
+        "uv": [
+          14,
+          72,
+          15,
+          75
+        ]
+      },
+      "west": {
+        "uv": [
+          17,
+          72,
+          18,
+          75
+        ]
+      },
+      "up": {
+        "uv": [
+          20,
+          72,
+          21,
+          73
+        ]
+      },
+      "down": {
+        "uv": [
+          23,
+          72,
+          24,
+          73
+        ]
+      }
+    },
+    "talon_right_0_1": {
+      "north": {
+        "uv": [
+          26,
+          72,
+          27,
+          75
+        ]
+      },
+      "south": {
+        "uv": [
+          29,
+          72,
+          30,
+          75
+        ]
+      },
+      "east": {
+        "uv": [
+          32,
+          72,
+          33,
+          75
+        ]
+      },
+      "west": {
+        "uv": [
+          35,
+          72,
+          36,
+          75
+        ]
+      },
+      "up": {
+        "uv": [
+          38,
+          72,
+          39,
+          73
+        ]
+      },
+      "down": {
+        "uv": [
+          41,
+          72,
+          42,
+          73
+        ]
+      }
+    },
+    "talon_right_1_0": {
+      "north": {
+        "uv": [
+          44,
+          72,
+          45,
+          75
+        ]
+      },
+      "south": {
+        "uv": [
+          47,
+          72,
+          48,
+          75
+        ]
+      },
+      "east": {
+        "uv": [
+          50,
+          72,
+          51,
+          75
+        ]
+      },
+      "west": {
+        "uv": [
+          53,
+          72,
+          54,
+          75
+        ]
+      },
+      "up": {
+        "uv": [
+          56,
+          72,
+          57,
+          73
+        ]
+      },
+      "down": {
+        "uv": [
+          59,
+          72,
+          60,
+          73
+        ]
+      }
+    },
+    "talon_right_1_1": {
+      "north": {
+        "uv": [
+          62,
+          72,
+          63,
+          75
+        ]
+      },
+      "south": {
+        "uv": [
+          65,
+          72,
+          66,
+          75
+        ]
+      },
+      "east": {
+        "uv": [
+          68,
+          72,
+          69,
+          75
+        ]
+      },
+      "west": {
+        "uv": [
+          71,
+          72,
+          72,
+          75
+        ]
+      },
+      "up": {
+        "uv": [
+          74,
+          72,
+          75,
+          73
+        ]
+      },
+      "down": {
+        "uv": [
+          77,
+          72,
+          78,
+          73
+        ]
+      }
+    },
+    "talon_right_2_0": {
+      "north": {
+        "uv": [
+          80,
+          72,
+          81,
+          75
+        ]
+      },
+      "south": {
+        "uv": [
+          83,
+          72,
+          84,
+          75
+        ]
+      },
+      "east": {
+        "uv": [
+          86,
+          72,
+          87,
+          75
+        ]
+      },
+      "west": {
+        "uv": [
+          89,
+          72,
+          90,
+          75
+        ]
+      },
+      "up": {
+        "uv": [
+          92,
+          72,
+          93,
+          73
+        ]
+      },
+      "down": {
+        "uv": [
+          95,
+          72,
+          96,
+          73
+        ]
+      }
+    },
+    "talon_right_2_1": {
+      "north": {
+        "uv": [
+          98,
+          72,
+          99,
+          75
+        ]
+      },
+      "south": {
+        "uv": [
+          101,
+          72,
+          102,
+          75
+        ]
+      },
+      "east": {
+        "uv": [
+          104,
+          72,
+          105,
+          75
+        ]
+      },
+      "west": {
+        "uv": [
+          107,
+          72,
+          108,
+          75
+        ]
+      },
+      "up": {
+        "uv": [
+          110,
+          72,
+          111,
+          73
+        ]
+      },
+      "down": {
+        "uv": [
+          113,
+          72,
+          114,
+          73
+        ]
+      }
+    },
+    "leg_right_box": {
+      "north": {
+        "uv": [
+          116,
+          72,
+          120,
+          78
+        ]
+      },
+      "south": {
+        "uv": [
+          122,
+          72,
+          126,
+          78
+        ]
+      },
+      "east": {
+        "uv": [
+          1,
+          80,
+          6,
+          86
+        ]
+      },
+      "west": {
+        "uv": [
+          8,
+          80,
+          13,
+          86
+        ]
+      },
+      "up": {
+        "uv": [
+          15,
+          80,
+          19,
+          85
+        ]
+      },
+      "down": {
+        "uv": [
+          21,
+          80,
+          25,
+          85
+        ]
+      }
+    },
+    "shin_right_box": {
+      "north": {
+        "uv": [
+          27,
+          80,
+          30,
+          86
+        ]
+      },
+      "south": {
+        "uv": [
+          32,
+          80,
+          35,
+          86
+        ]
+      },
+      "east": {
+        "uv": [
+          37,
+          80,
+          40,
+          86
+        ]
+      },
+      "west": {
+        "uv": [
+          42,
+          80,
+          45,
+          86
+        ]
+      },
+      "up": {
+        "uv": [
+          47,
+          80,
+          50,
+          83
+        ]
+      },
+      "down": {
+        "uv": [
+          52,
+          80,
+          55,
+          83
+        ]
+      }
+    },
+    "paw_right": {
+      "north": {
+        "uv": [
+          57,
+          80,
+          62,
+          83
+        ]
+      },
+      "south": {
+        "uv": [
+          64,
+          80,
+          69,
+          83
+        ]
+      },
+      "east": {
+        "uv": [
+          71,
+          80,
+          76,
+          83
+        ]
+      },
+      "west": {
+        "uv": [
+          78,
+          80,
+          83,
+          83
+        ]
+      },
+      "up": {
+        "uv": [
+          85,
+          80,
+          90,
+          85
+        ]
+      },
+      "down": {
+        "uv": [
+          92,
+          80,
+          97,
+          85
+        ]
+      }
+    },
+    "foot_claw_right_0": {
+      "north": {
+        "uv": [
+          99,
+          80,
+          100,
+          82
+        ]
+      },
+      "south": {
+        "uv": [
+          102,
+          80,
+          103,
+          82
+        ]
+      },
+      "east": {
+        "uv": [
+          105,
+          80,
+          107,
+          82
+        ]
+      },
+      "west": {
+        "uv": [
+          109,
+          80,
+          111,
+          82
+        ]
+      },
+      "up": {
+        "uv": [
+          113,
+          80,
+          114,
+          82
+        ]
+      },
+      "down": {
+        "uv": [
+          116,
+          80,
+          117,
+          82
+        ]
+      }
+    },
+    "foot_claw_right_1": {
+      "north": {
+        "uv": [
+          119,
+          80,
+          120,
+          82
+        ]
+      },
+      "south": {
+        "uv": [
+          122,
+          80,
+          123,
+          82
+        ]
+      },
+      "east": {
+        "uv": [
+          125,
+          80,
+          127,
+          82
+        ]
+      },
+      "west": {
+        "uv": [
+          1,
+          88,
+          3,
+          90
+        ]
+      },
+      "up": {
+        "uv": [
+          5,
+          88,
+          6,
+          90
+        ]
+      },
+      "down": {
+        "uv": [
+          8,
+          88,
+          9,
+          90
+        ]
+      }
+    },
+    "foot_claw_right_2": {
+      "north": {
+        "uv": [
+          11,
+          88,
+          12,
+          90
+        ]
+      },
+      "south": {
+        "uv": [
+          14,
+          88,
+          15,
+          90
+        ]
+      },
+      "east": {
+        "uv": [
+          17,
+          88,
+          19,
+          90
+        ]
+      },
+      "west": {
+        "uv": [
+          21,
+          88,
+          23,
+          90
+        ]
+      },
+      "up": {
+        "uv": [
+          25,
+          88,
+          26,
+          90
+        ]
+      },
+      "down": {
+        "uv": [
+          28,
+          88,
+          29,
+          90
+        ]
+      }
+    },
+    "tail_1_box": {
+      "north": {
+        "uv": [
+          31,
+          88,
+          36,
+          93
+        ]
+      },
+      "south": {
+        "uv": [
+          38,
+          88,
+          43,
+          93
+        ]
+      },
+      "east": {
+        "uv": [
+          45,
+          88,
+          50,
+          93
+        ]
+      },
+      "west": {
+        "uv": [
+          52,
+          88,
+          57,
+          93
+        ]
+      },
+      "up": {
+        "uv": [
+          59,
+          88,
+          64,
+          93
+        ]
+      },
+      "down": {
+        "uv": [
+          66,
+          88,
+          71,
+          93
+        ]
+      }
+    },
+    "tail_2_box": {
+      "north": {
+        "uv": [
+          73,
+          88,
+          80,
+          94
+        ]
+      },
+      "south": {
+        "uv": [
+          82,
+          88,
+          89,
+          94
+        ]
+      },
+      "east": {
+        "uv": [
+          91,
+          88,
+          98,
+          94
+        ]
+      },
+      "west": {
+        "uv": [
+          100,
+          88,
+          107,
+          94
+        ]
+      },
+      "up": {
+        "uv": [
+          109,
+          88,
+          116,
+          95
+        ]
+      },
+      "down": {
+        "uv": [
+          118,
+          88,
+          125,
+          95
+        ]
+      }
+    },
+    "tail_3_box": {
+      "north": {
+        "uv": [
+          1,
+          97,
+          7,
+          104
+        ]
+      },
+      "south": {
+        "uv": [
+          9,
+          97,
+          15,
+          104
+        ]
+      },
+      "east": {
+        "uv": [
+          17,
+          97,
+          24,
+          104
+        ]
+      },
+      "west": {
+        "uv": [
+          26,
+          97,
+          33,
+          104
+        ]
+      },
+      "up": {
+        "uv": [
+          35,
+          97,
+          41,
+          104
+        ]
+      },
+      "down": {
+        "uv": [
+          43,
+          97,
+          49,
+          104
+        ]
+      }
+    },
+    "tail_fringe": {
+      "north": {
+        "uv": [
+          51,
+          97,
+          58,
+          104
+        ]
+      },
+      "south": {
+        "uv": [
+          60,
+          97,
+          67,
+          104
+        ]
+      }
+    },
+    "neck_wrap": {
+      "north": {
+        "uv": [
+          69,
+          97,
+          78,
+          100
+        ]
+      },
+      "south": {
+        "uv": [
+          80,
+          97,
+          89,
+          100
+        ]
+      },
+      "east": {
+        "uv": [
+          91,
+          97,
+          98,
+          100
+        ]
+      },
+      "west": {
+        "uv": [
+          100,
+          97,
+          107,
+          100
+        ]
+      },
+      "up": {
+        "uv": [
+          109,
+          97,
+          118,
+          104
+        ]
+      },
+      "down": {
+        "uv": [
+          1,
+          106,
+          10,
+          113
+        ]
+      }
+    },
+    "ribbon_left": {
+      "east": {
+        "uv": [
+          12,
+          106,
+          23,
+          111
+        ]
+      },
+      "west": {
+        "uv": [
+          25,
+          106,
+          36,
+          111
+        ]
+      }
+    },
+    "ribbon_right": {
+      "east": {
+        "uv": [
+          38,
+          106,
+          49,
+          111
+        ]
+      },
+      "west": {
+        "uv": [
+          51,
+          106,
+          62,
+          111
+        ]
+      }
+    },
+    "brooch": {
+      "north": {
+        "uv": [
+          64,
+          106,
+          66,
+          109
+        ]
+      },
+      "south": {
+        "uv": [
+          68,
+          106,
+          70,
+          109
+        ]
+      }
+    },
+    "waist_wrap": {
+      "north": {
+        "uv": [
+          72,
+          106,
+          79,
+          108
+        ]
+      },
+      "south": {
+        "uv": [
+          81,
+          106,
+          88,
+          108
+        ]
+      },
+      "east": {
+        "uv": [
+          90,
+          106,
+          96,
+          108
+        ]
+      },
+      "west": {
+        "uv": [
+          98,
+          106,
+          104,
+          108
+        ]
+      },
+      "up": {
+        "uv": [
+          106,
+          106,
+          113,
+          112
+        ]
+      },
+      "down": {
+        "uv": [
+          115,
+          106,
+          122,
+          112
+        ]
+      }
+    },
+    "buckle": {
+      "north": {
+        "uv": [
+          124,
+          106,
+          126,
+          108
+        ]
+      },
+      "south": {
+        "uv": [
+          1,
+          115,
+          3,
+          117
+        ]
+      }
+    },
+    "front_cloth": {
+      "north": {
+        "uv": [
+          5,
+          115,
+          10,
+          123
+        ]
+      },
+      "south": {
+        "uv": [
+          12,
+          115,
+          17,
+          123
+        ]
+      }
+    },
+    "side_cloth": {
+      "east": {
+        "uv": [
+          19,
+          115,
+          24,
+          122
+        ]
+      },
+      "west": {
+        "uv": [
+          26,
+          115,
+          31,
+          122
+        ]
+      }
+    },
+    "pouch": {
+      "north": {
+        "uv": [
+          33,
+          115,
+          35,
+          118
+        ]
+      },
+      "south": {
+        "uv": [
+          37,
+          115,
+          39,
+          118
+        ]
+      },
+      "east": {
+        "uv": [
+          41,
+          115,
+          44,
+          118
+        ]
+      },
+      "west": {
+        "uv": [
+          46,
+          115,
+          49,
+          118
+        ]
+      },
+      "up": {
+        "uv": [
+          51,
+          115,
+          53,
+          118
+        ]
+      },
+      "down": {
+        "uv": [
+          55,
+          115,
+          57,
+          118
+        ]
+      }
+    }
+  },
+  "paleta": {
+    "fur": "#915640",
+    "cream": "#ecd8bc",
+    "shadow": "#482c28",
+    "wrap": "#664339",
+    "wine": "#813137",
+    "gold": "#cc8637",
+    "iris": "#d9823c"
+  },
+  "tipo": "real",
+  "estagio": "e3",
+  "autoria": "Blender; definida a partir da entrada comum; não lê tentativa Blockbench"
+}

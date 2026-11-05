@@ -1,0 +1,1907 @@
+{
+  "ossos": [
+    {
+      "nome": "root",
+      "pai": null,
+      "pivo": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "nome": "body",
+      "pai": "root",
+      "pivo": [
+        0,
+        14,
+        0
+      ]
+    },
+    {
+      "nome": "torso",
+      "pai": "body",
+      "pivo": [
+        0,
+        16,
+        0
+      ]
+    },
+    {
+      "nome": "neck_1",
+      "pai": "torso",
+      "pivo": [
+        0,
+        24,
+        -1
+      ]
+    },
+    {
+      "nome": "head",
+      "pai": "neck_1",
+      "pivo": [
+        0,
+        26,
+        -1
+      ]
+    },
+    {
+      "nome": "arm_left",
+      "pai": "torso",
+      "pivo": [
+        -4.4,
+        23.5,
+        0.1
+      ]
+    },
+    {
+      "nome": "forearm_left",
+      "pai": "arm_left",
+      "pivo": [
+        -6.8,
+        18.5,
+        -0.5
+      ]
+    },
+    {
+      "nome": "hand_left",
+      "pai": "forearm_left",
+      "pivo": [
+        -8.3,
+        13.2,
+        -3
+      ]
+    },
+    {
+      "nome": "leg_left",
+      "pai": "body",
+      "pivo": [
+        -2.6,
+        14.2,
+        0
+      ]
+    },
+    {
+      "nome": "shin_left",
+      "pai": "leg_left",
+      "pivo": [
+        -4.1,
+        8.6,
+        -1.1
+      ]
+    },
+    {
+      "nome": "foot_left",
+      "pai": "shin_left",
+      "pivo": [
+        -4.1,
+        2.8,
+        0.4
+      ]
+    },
+    {
+      "nome": "arm_right",
+      "pai": "torso",
+      "pivo": [
+        4.4,
+        23.5,
+        0.1
+      ]
+    },
+    {
+      "nome": "forearm_right",
+      "pai": "arm_right",
+      "pivo": [
+        6.8,
+        18.5,
+        -0.5
+      ]
+    },
+    {
+      "nome": "hand_right",
+      "pai": "forearm_right",
+      "pivo": [
+        8.3,
+        13.2,
+        -3
+      ]
+    },
+    {
+      "nome": "leg_right",
+      "pai": "body",
+      "pivo": [
+        2.6,
+        14.2,
+        0
+      ]
+    },
+    {
+      "nome": "shin_right",
+      "pai": "leg_right",
+      "pivo": [
+        4.1,
+        8.6,
+        -1.1
+      ]
+    },
+    {
+      "nome": "foot_right",
+      "pai": "shin_right",
+      "pivo": [
+        4.1,
+        2.8,
+        0.4
+      ]
+    },
+    {
+      "nome": "tail_1",
+      "pai": "body",
+      "pivo": [
+        0,
+        14,
+        2
+      ]
+    },
+    {
+      "nome": "tail_2",
+      "pai": "tail_1",
+      "pivo": [
+        0,
+        13,
+        7
+      ]
+    },
+    {
+      "nome": "tail_3",
+      "pai": "tail_2",
+      "pivo": [
+        0,
+        11,
+        13
+      ]
+    },
+    {
+      "nome": "scarf",
+      "pai": "torso",
+      "pivo": [
+        0,
+        25,
+        -0.3
+      ]
+    }
+  ],
+  "cubos": [
+    {
+      "name": "hips",
+      "bone": "body",
+      "from": [
+        -3.0,
+        12.0,
+        -2.0
+      ],
+      "to": [
+        3.0,
+        17.0,
+        3.0
+      ],
+      "role": "shadow",
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "origin": [
+        0,
+        14.5,
+        0.5
+      ],
+      "cut": null,
+      "eye": false
+    },
+    {
+      "name": "chest",
+      "bone": "torso",
+      "from": [
+        -4.0,
+        16.0,
+        -3.0
+      ],
+      "to": [
+        4.0,
+        24.0,
+        3.0
+      ],
+      "role": "fur",
+      "rotation": [
+        -10,
+        0,
+        0
+      ],
+      "origin": [
+        0,
+        17,
+        0
+      ],
+      "cut": null,
+      "eye": false
+    },
+    {
+      "name": "chest_mark",
+      "bone": "torso",
+      "from": [
+        -3.0,
+        16.5,
+        -3.02
+      ],
+      "to": [
+        3.0,
+        23.5,
+        -3.02
+      ],
+      "role": "cream",
+      "rotation": [
+        -10,
+        0,
+        0
+      ],
+      "origin": [
+        0,
+        17,
+        0
+      ],
+      "cut": "fur",
+      "eye": false
+    },
+    {
+      "name": "neck_mass",
+      "bone": "neck_1",
+      "from": [
+        -3.0,
+        23.0,
+        -3.5
+      ],
+      "to": [
+        3.0,
+        27.0,
+        1.5
+      ],
+      "role": "shadow",
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "origin": [
+        0,
+        25,
+        -1
+      ],
+      "cut": null,
+      "eye": false
+    },
+    {
+      "name": "head_mass",
+      "bone": "head",
+      "from": [
+        -3.5,
+        25.0,
+        -6.0
+      ],
+      "to": [
+        3.5,
+        31.0,
+        1.0
+      ],
+      "role": "fur",
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "origin": [
+        0,
+        28,
+        -2.5
+      ],
+      "cut": null,
+      "eye": false
+    },
+    {
+      "name": "face_mask",
+      "bone": "head",
+      "from": [
+        -3.5,
+        25.0,
+        -6.02
+      ],
+      "to": [
+        3.5,
+        30.0,
+        -6.02
+      ],
+      "role": "cream",
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "origin": [
+        0,
+        27.5,
+        -6.02
+      ],
+      "cut": null,
+      "eye": true
+    },
+    {
+      "name": "snout",
+      "bone": "head",
+      "from": [
+        -2.5,
+        25.0,
+        -8.0
+      ],
+      "to": [
+        2.5,
+        28.0,
+        -5.0
+      ],
+      "role": "cream",
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "origin": [
+        0,
+        26.5,
+        -6.5
+      ],
+      "cut": null,
+      "eye": false
+    },
+    {
+      "name": "nose",
+      "bone": "head",
+      "from": [
+        -1.5,
+        25.5,
+        -8.6
+      ],
+      "to": [
+        1.5,
+        27.5,
+        -7.6
+      ],
+      "role": "shadow",
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "origin": [
+        0,
+        26.5,
+        -8.1
+      ],
+      "cut": null,
+      "eye": false
+    },
+    {
+      "name": "chin",
+      "bone": "head",
+      "from": [
+        -2.5,
+        24.4,
+        -7.5
+      ],
+      "to": [
+        2.5,
+        25.4,
+        -3.5
+      ],
+      "role": "shadow",
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "origin": [
+        0,
+        24.9,
+        -5.5
+      ],
+      "cut": null,
+      "eye": false
+    },
+    {
+      "name": "mane_left",
+      "bone": "head",
+      "from": [
+        -4.2,
+        22.5,
+        -5.0
+      ],
+      "to": [
+        -4.2,
+        31.5,
+        3.0
+      ],
+      "role": "fur",
+      "rotation": [
+        0,
+        0,
+        -18
+      ],
+      "origin": [
+        -3,
+        28,
+        -1
+      ],
+      "cut": "mane",
+      "eye": false
+    },
+    {
+      "name": "cheek_left",
+      "bone": "head",
+      "from": [
+        -3.6,
+        22.5,
+        -6.1
+      ],
+      "to": [
+        -3.6,
+        27.5,
+        -1.0999999999999996
+      ],
+      "role": "shadow",
+      "rotation": [
+        0,
+        -15,
+        -15
+      ],
+      "origin": [
+        -3.5,
+        27,
+        -3
+      ],
+      "cut": "fur",
+      "eye": false
+    },
+    {
+      "name": "head_side_mask_left",
+      "bone": "head",
+      "from": [
+        -3.52,
+        25.0,
+        -5.6
+      ],
+      "to": [
+        -3.52,
+        30.0,
+        -0.5999999999999996
+      ],
+      "role": "cream",
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "origin": [
+        -3.52,
+        27.5,
+        -3.1
+      ],
+      "cut": null,
+      "eye": true
+    },
+    {
+      "name": "mane_front_left",
+      "bone": "head",
+      "from": [
+        -5.9,
+        23.0,
+        -4.9
+      ],
+      "to": [
+        -1.9000000000000004,
+        31.0,
+        -4.9
+      ],
+      "role": "fur",
+      "rotation": [
+        0,
+        0,
+        -20
+      ],
+      "origin": [
+        -3.5,
+        28,
+        -4.9
+      ],
+      "cut": "mane",
+      "eye": false
+    },
+    {
+      "name": "mane_right",
+      "bone": "head",
+      "from": [
+        4.2,
+        22.5,
+        -5.0
+      ],
+      "to": [
+        4.2,
+        31.5,
+        3.0
+      ],
+      "role": "fur",
+      "rotation": [
+        0,
+        0,
+        18
+      ],
+      "origin": [
+        3,
+        28,
+        -1
+      ],
+      "cut": "mane",
+      "eye": false
+    },
+    {
+      "name": "cheek_right",
+      "bone": "head",
+      "from": [
+        3.6,
+        22.5,
+        -6.1
+      ],
+      "to": [
+        3.6,
+        27.5,
+        -1.0999999999999996
+      ],
+      "role": "shadow",
+      "rotation": [
+        0,
+        15,
+        15
+      ],
+      "origin": [
+        3.5,
+        27,
+        -3
+      ],
+      "cut": "fur",
+      "eye": false
+    },
+    {
+      "name": "head_side_mask_right",
+      "bone": "head",
+      "from": [
+        3.52,
+        25.0,
+        -5.6
+      ],
+      "to": [
+        3.52,
+        30.0,
+        -0.5999999999999996
+      ],
+      "role": "cream",
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "origin": [
+        3.52,
+        27.5,
+        -3.1
+      ],
+      "cut": null,
+      "eye": true
+    },
+    {
+      "name": "mane_front_right",
+      "bone": "head",
+      "from": [
+        1.9,
+        23.0,
+        -4.9
+      ],
+      "to": [
+        5.9,
+        31.0,
+        -4.9
+      ],
+      "role": "fur",
+      "rotation": [
+        0,
+        0,
+        20
+      ],
+      "origin": [
+        3.5,
+        28,
+        -4.9
+      ],
+      "cut": "mane",
+      "eye": false
+    },
+    {
+      "name": "mane_top",
+      "bone": "head",
+      "from": [
+        -3.5,
+        31.0,
+        -4.5
+      ],
+      "to": [
+        3.5,
+        31.0,
+        2.5
+      ],
+      "role": "fur",
+      "rotation": [
+        15,
+        0,
+        0
+      ],
+      "origin": [
+        0,
+        30,
+        -1
+      ],
+      "cut": "mane",
+      "eye": false
+    },
+    {
+      "name": "arm_left_volume",
+      "bone": "arm_left",
+      "from": [
+        -6.4,
+        23.5,
+        -2.4
+      ],
+      "to": [
+        -2.4000000000000004,
+        29.5,
+        2.6
+      ],
+      "role": "fur",
+      "rotation": [
+        -6.174403278046156,
+        0,
+        154.35899417569473
+      ],
+      "origin": [
+        -4.4,
+        23.5,
+        0.1
+      ],
+      "cut": null,
+      "eye": false
+    },
+    {
+      "name": "forearm_left_volume",
+      "bone": "forearm_left",
+      "from": [
+        -8.8,
+        18.5,
+        -2.5
+      ],
+      "to": [
+        -4.800000000000001,
+        24.5,
+        1.5
+      ],
+      "role": "wrap",
+      "rotation": [
+        -24.41190963978177,
+        0,
+        164.19748604606448
+      ],
+      "origin": [
+        -6.8,
+        18.5,
+        -0.5
+      ],
+      "cut": null,
+      "eye": false
+    },
+    {
+      "name": "hand_left_volume",
+      "bone": "hand_left",
+      "from": [
+        -10.4,
+        10.5,
+        -5.3
+      ],
+      "to": [
+        -6.4,
+        13.5,
+        -1.2999999999999998
+      ],
+      "role": "fur",
+      "rotation": [
+        -10,
+        0,
+        -8
+      ],
+      "origin": [
+        -8.3,
+        13.2,
+        -3
+      ],
+      "cut": null,
+      "eye": false
+    },
+    {
+      "name": "elbow_fur_left",
+      "bone": "arm_left",
+      "from": [
+        -8.8,
+        17.0,
+        1.1
+      ],
+      "to": [
+        -4.800000000000001,
+        22.0,
+        1.1
+      ],
+      "role": "fur",
+      "rotation": [
+        0,
+        -25,
+        -18
+      ],
+      "origin": [
+        -6.8,
+        18.5,
+        -0.5
+      ],
+      "cut": "fur",
+      "eye": false
+    },
+    {
+      "name": "claw_left_0_base",
+      "bone": "hand_left",
+      "from": [
+        -7.5,
+        11.6,
+        -5.2
+      ],
+      "to": [
+        -6.5,
+        14.6,
+        -4.2
+      ],
+      "role": "cream",
+      "rotation": [
+        -14.036243467926479,
+        0,
+        -180.0
+      ],
+      "origin": [
+        -7.0,
+        11.6,
+        -4.7
+      ],
+      "cut": null,
+      "eye": false
+    },
+    {
+      "name": "claw_left_0_tip",
+      "bone": "hand_left",
+      "from": [
+        -7.5,
+        8.4,
+        -6.0
+      ],
+      "to": [
+        -6.5,
+        11.4,
+        -5.0
+      ],
+      "role": "cream",
+      "rotation": [
+        14.036243467926479,
+        0,
+        -180.0
+      ],
+      "origin": [
+        -7.0,
+        8.4,
+        -5.5
+      ],
+      "cut": null,
+      "eye": false
+    },
+    {
+      "name": "claw_left_1_base",
+      "bone": "hand_left",
+      "from": [
+        -8.9,
+        11.6,
+        -5.2
+      ],
+      "to": [
+        -7.9,
+        14.6,
+        -4.2
+      ],
+      "role": "cream",
+      "rotation": [
+        -14.036243467926479,
+        0,
+        -180.0
+      ],
+      "origin": [
+        -8.4,
+        11.6,
+        -4.7
+      ],
+      "cut": null,
+      "eye": false
+    },
+    {
+      "name": "claw_left_1_tip",
+      "bone": "hand_left",
+      "from": [
+        -8.9,
+        8.4,
+        -6.0
+      ],
+      "to": [
+        -7.9,
+        11.4,
+        -5.0
+      ],
+      "role": "cream",
+      "rotation": [
+        14.036243467926479,
+        0,
+        -180.0
+      ],
+      "origin": [
+        -8.4,
+        8.4,
+        -5.5
+      ],
+      "cut": null,
+      "eye": false
+    },
+    {
+      "name": "claw_left_2_base",
+      "bone": "hand_left",
+      "from": [
+        -10.3,
+        11.6,
+        -5.2
+      ],
+      "to": [
+        -9.3,
+        14.6,
+        -4.2
+      ],
+      "role": "cream",
+      "rotation": [
+        -14.036243467926479,
+        0,
+        -180.0
+      ],
+      "origin": [
+        -9.8,
+        11.6,
+        -4.7
+      ],
+      "cut": null,
+      "eye": false
+    },
+    {
+      "name": "claw_left_2_tip",
+      "bone": "hand_left",
+      "from": [
+        -10.3,
+        8.4,
+        -6.0
+      ],
+      "to": [
+        -9.3,
+        11.4,
+        -5.0
+      ],
+      "role": "cream",
+      "rotation": [
+        14.036243467926479,
+        0,
+        -180.0
+      ],
+      "origin": [
+        -9.8,
+        8.4,
+        -5.5
+      ],
+      "cut": null,
+      "eye": false
+    },
+    {
+      "name": "leg_left_volume",
+      "bone": "leg_left",
+      "from": [
+        -4.6,
+        14.2,
+        -2.5
+      ],
+      "to": [
+        -0.5999999999999996,
+        20.2,
+        2.5
+      ],
+      "role": "fur",
+      "rotation": [
+        -10.743577249765838,
+        0,
+        165.004920870824
+      ],
+      "origin": [
+        -2.6,
+        14.2,
+        0
+      ],
+      "cut": null,
+      "eye": false
+    },
+    {
+      "name": "shin_left_volume",
+      "bone": "shin_left",
+      "from": [
+        -5.6,
+        8.6,
+        -2.6
+      ],
+      "to": [
+        -2.5999999999999996,
+        14.6,
+        0.3999999999999999
+      ],
+      "role": "wrap",
+      "rotation": [
+        14.500166766552566,
+        0,
+        -180.0
+      ],
+      "origin": [
+        -4.1,
+        8.6,
+        -1.1
+      ],
+      "cut": null,
+      "eye": false
+    },
+    {
+      "name": "foot_left_volume",
+      "bone": "foot_left",
+      "from": [
+        -6.6,
+        0.0,
+        -3.5
+      ],
+      "to": [
+        -1.5999999999999996,
+        3.0,
+        1.5
+      ],
+      "role": "cream",
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "origin": [
+        -4.1,
+        1.5,
+        -1
+      ],
+      "cut": null,
+      "eye": false
+    },
+    {
+      "name": "toe_left_0",
+      "bone": "foot_left",
+      "from": [
+        -2.9999999999999996,
+        0.0,
+        -5.0
+      ],
+      "to": [
+        -1.9999999999999996,
+        2.0,
+        -3.0
+      ],
+      "role": "shadow",
+      "rotation": [
+        16,
+        0,
+        0
+      ],
+      "origin": [
+        -2.4999999999999996,
+        2,
+        -3
+      ],
+      "cut": null,
+      "eye": false
+    },
+    {
+      "name": "toe_left_1",
+      "bone": "foot_left",
+      "from": [
+        -4.6,
+        0.0,
+        -5.0
+      ],
+      "to": [
+        -3.5999999999999996,
+        2.0,
+        -3.0
+      ],
+      "role": "shadow",
+      "rotation": [
+        16,
+        0,
+        0
+      ],
+      "origin": [
+        -4.1,
+        2,
+        -3
+      ],
+      "cut": null,
+      "eye": false
+    },
+    {
+      "name": "toe_left_2",
+      "bone": "foot_left",
+      "from": [
+        -6.199999999999999,
+        0.0,
+        -5.0
+      ],
+      "to": [
+        -5.199999999999999,
+        2.0,
+        -3.0
+      ],
+      "role": "shadow",
+      "rotation": [
+        16,
+        0,
+        0
+      ],
+      "origin": [
+        -5.699999999999999,
+        2,
+        -3
+      ],
+      "cut": null,
+      "eye": false
+    },
+    {
+      "name": "arm_right_volume",
+      "bone": "arm_right",
+      "from": [
+        2.4000000000000004,
+        23.5,
+        -2.4
+      ],
+      "to": [
+        6.4,
+        29.5,
+        2.6
+      ],
+      "role": "fur",
+      "rotation": [
+        -6.174403278046156,
+        0,
+        -154.35899417569473
+      ],
+      "origin": [
+        4.4,
+        23.5,
+        0.1
+      ],
+      "cut": null,
+      "eye": false
+    },
+    {
+      "name": "forearm_right_volume",
+      "bone": "forearm_right",
+      "from": [
+        4.8,
+        18.5,
+        -2.5
+      ],
+      "to": [
+        8.8,
+        24.5,
+        1.5
+      ],
+      "role": "wrap",
+      "rotation": [
+        -24.41190963978177,
+        0,
+        -164.19748604606448
+      ],
+      "origin": [
+        6.8,
+        18.5,
+        -0.5
+      ],
+      "cut": null,
+      "eye": false
+    },
+    {
+      "name": "hand_right_volume",
+      "bone": "hand_right",
+      "from": [
+        6.4,
+        10.5,
+        -5.3
+      ],
+      "to": [
+        10.4,
+        13.5,
+        -1.2999999999999998
+      ],
+      "role": "fur",
+      "rotation": [
+        -10,
+        0,
+        8
+      ],
+      "origin": [
+        8.3,
+        13.2,
+        -3
+      ],
+      "cut": null,
+      "eye": false
+    },
+    {
+      "name": "elbow_fur_right",
+      "bone": "arm_right",
+      "from": [
+        4.8,
+        17.0,
+        1.1
+      ],
+      "to": [
+        8.8,
+        22.0,
+        1.1
+      ],
+      "role": "fur",
+      "rotation": [
+        0,
+        25,
+        18
+      ],
+      "origin": [
+        6.8,
+        18.5,
+        -0.5
+      ],
+      "cut": "fur",
+      "eye": false
+    },
+    {
+      "name": "claw_right_0_base",
+      "bone": "hand_right",
+      "from": [
+        6.5,
+        11.6,
+        -5.2
+      ],
+      "to": [
+        7.5,
+        14.6,
+        -4.2
+      ],
+      "role": "cream",
+      "rotation": [
+        -14.036243467926479,
+        0,
+        -180.0
+      ],
+      "origin": [
+        7.0,
+        11.6,
+        -4.7
+      ],
+      "cut": null,
+      "eye": false
+    },
+    {
+      "name": "claw_right_0_tip",
+      "bone": "hand_right",
+      "from": [
+        6.5,
+        8.4,
+        -6.0
+      ],
+      "to": [
+        7.5,
+        11.4,
+        -5.0
+      ],
+      "role": "cream",
+      "rotation": [
+        14.036243467926479,
+        0,
+        -180.0
+      ],
+      "origin": [
+        7.0,
+        8.4,
+        -5.5
+      ],
+      "cut": null,
+      "eye": false
+    },
+    {
+      "name": "claw_right_1_base",
+      "bone": "hand_right",
+      "from": [
+        7.9,
+        11.6,
+        -5.2
+      ],
+      "to": [
+        8.9,
+        14.6,
+        -4.2
+      ],
+      "role": "cream",
+      "rotation": [
+        -14.036243467926479,
+        0,
+        -180.0
+      ],
+      "origin": [
+        8.4,
+        11.6,
+        -4.7
+      ],
+      "cut": null,
+      "eye": false
+    },
+    {
+      "name": "claw_right_1_tip",
+      "bone": "hand_right",
+      "from": [
+        7.9,
+        8.4,
+        -6.0
+      ],
+      "to": [
+        8.9,
+        11.4,
+        -5.0
+      ],
+      "role": "cream",
+      "rotation": [
+        14.036243467926479,
+        0,
+        -180.0
+      ],
+      "origin": [
+        8.4,
+        8.4,
+        -5.5
+      ],
+      "cut": null,
+      "eye": false
+    },
+    {
+      "name": "claw_right_2_base",
+      "bone": "hand_right",
+      "from": [
+        9.3,
+        11.6,
+        -5.2
+      ],
+      "to": [
+        10.3,
+        14.6,
+        -4.2
+      ],
+      "role": "cream",
+      "rotation": [
+        -14.036243467926479,
+        0,
+        -180.0
+      ],
+      "origin": [
+        9.8,
+        11.6,
+        -4.7
+      ],
+      "cut": null,
+      "eye": false
+    },
+    {
+      "name": "claw_right_2_tip",
+      "bone": "hand_right",
+      "from": [
+        9.3,
+        8.4,
+        -6.0
+      ],
+      "to": [
+        10.3,
+        11.4,
+        -5.0
+      ],
+      "role": "cream",
+      "rotation": [
+        14.036243467926479,
+        0,
+        -180.0
+      ],
+      "origin": [
+        9.8,
+        8.4,
+        -5.5
+      ],
+      "cut": null,
+      "eye": false
+    },
+    {
+      "name": "leg_right_volume",
+      "bone": "leg_right",
+      "from": [
+        0.6000000000000001,
+        14.2,
+        -2.5
+      ],
+      "to": [
+        4.6,
+        20.2,
+        2.5
+      ],
+      "role": "fur",
+      "rotation": [
+        -10.743577249765838,
+        0,
+        -165.004920870824
+      ],
+      "origin": [
+        2.6,
+        14.2,
+        0
+      ],
+      "cut": null,
+      "eye": false
+    },
+    {
+      "name": "shin_right_volume",
+      "bone": "shin_right",
+      "from": [
+        2.5999999999999996,
+        8.6,
+        -2.6
+      ],
+      "to": [
+        5.6,
+        14.6,
+        0.3999999999999999
+      ],
+      "role": "wrap",
+      "rotation": [
+        14.500166766552566,
+        0,
+        -180.0
+      ],
+      "origin": [
+        4.1,
+        8.6,
+        -1.1
+      ],
+      "cut": null,
+      "eye": false
+    },
+    {
+      "name": "foot_right_volume",
+      "bone": "foot_right",
+      "from": [
+        1.5999999999999996,
+        0.0,
+        -3.5
+      ],
+      "to": [
+        6.6,
+        3.0,
+        1.5
+      ],
+      "role": "cream",
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "origin": [
+        4.1,
+        1.5,
+        -1
+      ],
+      "cut": null,
+      "eye": false
+    },
+    {
+      "name": "toe_right_0",
+      "bone": "foot_right",
+      "from": [
+        1.9999999999999996,
+        0.0,
+        -5.0
+      ],
+      "to": [
+        2.9999999999999996,
+        2.0,
+        -3.0
+      ],
+      "role": "shadow",
+      "rotation": [
+        16,
+        0,
+        0
+      ],
+      "origin": [
+        2.4999999999999996,
+        2,
+        -3
+      ],
+      "cut": null,
+      "eye": false
+    },
+    {
+      "name": "toe_right_1",
+      "bone": "foot_right",
+      "from": [
+        3.5999999999999996,
+        0.0,
+        -5.0
+      ],
+      "to": [
+        4.6,
+        2.0,
+        -3.0
+      ],
+      "role": "shadow",
+      "rotation": [
+        16,
+        0,
+        0
+      ],
+      "origin": [
+        4.1,
+        2,
+        -3
+      ],
+      "cut": null,
+      "eye": false
+    },
+    {
+      "name": "toe_right_2",
+      "bone": "foot_right",
+      "from": [
+        5.199999999999999,
+        0.0,
+        -5.0
+      ],
+      "to": [
+        6.199999999999999,
+        2.0,
+        -3.0
+      ],
+      "role": "shadow",
+      "rotation": [
+        16,
+        0,
+        0
+      ],
+      "origin": [
+        5.699999999999999,
+        2,
+        -3
+      ],
+      "cut": null,
+      "eye": false
+    },
+    {
+      "name": "tail_1_volume",
+      "bone": "tail_1",
+      "from": [
+        -2.5,
+        14.0,
+        -0.5
+      ],
+      "to": [
+        2.5,
+        19.0,
+        4.5
+      ],
+      "role": "fur",
+      "rotation": [
+        78.69006752597979,
+        0,
+        -180.0
+      ],
+      "origin": [
+        0,
+        14,
+        2
+      ],
+      "cut": null,
+      "eye": false
+    },
+    {
+      "name": "tail_2_volume",
+      "bone": "tail_2",
+      "from": [
+        -3.5,
+        13.0,
+        3.5
+      ],
+      "to": [
+        3.5,
+        19.0,
+        10.5
+      ],
+      "role": "fur",
+      "rotation": [
+        71.56505117707799,
+        0,
+        -180.0
+      ],
+      "origin": [
+        0,
+        13,
+        7
+      ],
+      "cut": null,
+      "eye": false
+    },
+    {
+      "name": "tail_3_volume",
+      "bone": "tail_3",
+      "from": [
+        -3.0,
+        11.0,
+        9.5
+      ],
+      "to": [
+        3.0,
+        17.0,
+        16.5
+      ],
+      "role": "fur",
+      "rotation": [
+        51.34019174590991,
+        0,
+        -180.0
+      ],
+      "origin": [
+        0,
+        11,
+        13
+      ],
+      "cut": null,
+      "eye": false
+    },
+    {
+      "name": "tail_tip_fur",
+      "bone": "tail_3",
+      "from": [
+        -3.5,
+        3.0,
+        18.0
+      ],
+      "to": [
+        3.5,
+        10.0,
+        18.0
+      ],
+      "role": "fur",
+      "rotation": [
+        -35,
+        0,
+        0
+      ],
+      "origin": [
+        0,
+        8.5,
+        17
+      ],
+      "cut": "fur",
+      "eye": false
+    },
+    {
+      "name": "scarf_collar",
+      "bone": "scarf",
+      "from": [
+        -4.5,
+        23.0,
+        -4.5
+      ],
+      "to": [
+        4.5,
+        26.0,
+        2.5
+      ],
+      "role": "wine",
+      "rotation": [
+        -12,
+        0,
+        0
+      ],
+      "origin": [
+        0,
+        24,
+        -1
+      ],
+      "cut": null,
+      "eye": false
+    },
+    {
+      "name": "scarf_ribbon_0",
+      "bone": "scarf",
+      "from": [
+        -1.4,
+        24.9,
+        1.5
+      ],
+      "to": [
+        -1.4,
+        29.9,
+        12.5
+      ],
+      "role": "wine",
+      "rotation": [
+        -12,
+        -12,
+        -4
+      ],
+      "origin": [
+        -1.4,
+        26,
+        2
+      ],
+      "cut": "ribbon",
+      "eye": false
+    },
+    {
+      "name": "scarf_ribbon_1",
+      "bone": "scarf",
+      "from": [
+        1.5,
+        24.9,
+        1.5
+      ],
+      "to": [
+        1.5,
+        29.9,
+        12.5
+      ],
+      "role": "wine",
+      "rotation": [
+        -12,
+        18,
+        -4
+      ],
+      "origin": [
+        1.5,
+        26,
+        2
+      ],
+      "cut": "ribbon",
+      "eye": false
+    },
+    {
+      "name": "scarf_brooch",
+      "bone": "scarf",
+      "from": [
+        -3.7,
+        23.8,
+        -5.15
+      ],
+      "to": [
+        -1.7000000000000002,
+        26.8,
+        -5.15
+      ],
+      "role": "gold",
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "origin": [
+        -2.7,
+        25.3,
+        -5.15
+      ],
+      "cut": "diamond",
+      "eye": false
+    },
+    {
+      "name": "belt",
+      "bone": "body",
+      "from": [
+        -3.5,
+        14.0,
+        -3.1
+      ],
+      "to": [
+        3.5,
+        16.0,
+        2.9
+      ],
+      "role": "wrap",
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "origin": [
+        0,
+        15,
+        -0.1
+      ],
+      "cut": null,
+      "eye": false
+    },
+    {
+      "name": "belt_buckle",
+      "bone": "body",
+      "from": [
+        -1.0,
+        14.0,
+        -3.2
+      ],
+      "to": [
+        1.0,
+        16.0,
+        -3.2
+      ],
+      "role": "gold",
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "origin": [
+        0,
+        15,
+        -3.2
+      ],
+      "cut": "diamond",
+      "eye": false
+    },
+    {
+      "name": "tabard_front",
+      "bone": "body",
+      "from": [
+        -2.5,
+        6.6,
+        -3.35
+      ],
+      "to": [
+        2.5,
+        14.6,
+        -3.35
+      ],
+      "role": "wine",
+      "rotation": [
+        -7,
+        0,
+        0
+      ],
+      "origin": [
+        0,
+        14,
+        -3.35
+      ],
+      "cut": "tabard",
+      "eye": false
+    },
+    {
+      "name": "tabard_side",
+      "bone": "body",
+      "from": [
+        -2.4,
+        7.699999999999999,
+        -2.3
+      ],
+      "to": [
+        -2.4,
+        14.7,
+        2.7
+      ],
+      "role": "wine",
+      "rotation": [
+        0,
+        -12,
+        0
+      ],
+      "origin": [
+        -2.5,
+        14,
+        0
+      ],
+      "cut": "tabard",
+      "eye": false
+    },
+    {
+      "name": "belt_pouch",
+      "bone": "body",
+      "from": [
+        -5.0,
+        13.5,
+        0.10000000000000009
+      ],
+      "to": [
+        -3.0,
+        16.5,
+        3.1
+      ],
+      "role": "shadow",
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "origin": [
+        -4,
+        15,
+        1.6
+      ],
+      "cut": null,
+      "eye": false
+    }
+  ],
+  "paleta": {
+    "fur": "#915640",
+    "cream": "#ecd8bc",
+    "shadow": "#482c28",
+    "wrap": "#664339",
+    "wine": "#813137",
+    "gold": "#cc8637",
+    "iris": "#d9823c"
+  },
+  "tipo": "real",
+  "estagio": "e3"
+}

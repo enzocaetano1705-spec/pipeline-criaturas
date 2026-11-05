@@ -1,0 +1,99 @@
+{
+  "vista": "conceito-grade.png",
+  "itens": {
+    "postura": {
+      "valor": "bípede",
+      "certeza": "visível",
+      "fonte": "imagem"
+    },
+    "pernas": {
+      "valor": {
+        "n": 2,
+        "frac_alt": 0.48
+      },
+      "certeza": "visível",
+      "fonte": "imagem",
+      "nota": "Pernas dobradas; medida aparente da articulacao superior ao apoio."
+    },
+    "bracos": {
+      "valor": 2,
+      "certeza": "visível",
+      "fonte": "imagem"
+    },
+    "asas": {
+      "valor": 0,
+      "certeza": "visível",
+      "fonte": "imagem",
+      "nota": "Elemento vinho no alto e tecido, nao asa."
+    },
+    "cauda": {
+      "valor": {
+        "comprimento_alt": 0.8,
+        "grossura": "grossa",
+        "leque": false
+      },
+      "certeza": "incerto",
+      "fonte": "imagem",
+      "nota": "Cauda volumosa visivel; comprimento tridimensional encurtado pela perspectiva."
+    },
+    "nadadeiras": {
+      "valor": 0,
+      "certeza": "visível",
+      "fonte": "imagem"
+    },
+    "pescoco": {
+      "valor": "curto",
+      "certeza": "incerto",
+      "fonte": "imagem",
+      "nota": "Base encoberta pela juba e pelo tecido."
+    },
+    "cabeca": {
+      "valor": {
+        "frac_alt": 0.24
+      },
+      "certeza": "incerto",
+      "fonte": "imagem",
+      "nota": "Estimativa do cranio e focinho; exclui os espigados longos da juba."
+    },
+    "focinho": {
+      "valor": {
+        "razao_cranio": 0.65
+      },
+      "certeza": "incerto",
+      "fonte": "imagem",
+      "nota": "Focinho projetado na vista obliqua."
+    },
+    "orelhas": {
+      "valor": null,
+      "certeza": "oculto",
+      "fonte": "imagem",
+      "nota": "Nao ha limites claros de orelhas; nao inventar orelhas separadas."
+    },
+    "olhos": {
+      "valor": {
+        "frac_alt": 0.025
+      },
+      "certeza": "visível",
+      "fonte": "imagem"
+    },
+    "cobertura": {
+      "valor": "pelo",
+      "certeza": "visível",
+      "fonte": "imagem"
+    },
+    "extras": {
+      "valor": [
+        "juba",
+        "garras longas",
+        "tecido vinho",
+        "broche dourado",
+        "faixas nos antebracos e tornozelos",
+        "pano de cintura"
+      ],
+      "certeza": "visível",
+      "fonte": "imagem"
+    }
+  },
+  "conflitos": [],
+  "estagio": "e3"
+}

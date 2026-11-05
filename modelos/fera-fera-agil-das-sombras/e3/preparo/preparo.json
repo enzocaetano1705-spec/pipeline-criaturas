@@ -1,0 +1,36 @@
+{
+ "estagio": "e3",
+ "celulas_altura": 32,
+ "altura_silhueta_px": 1024,
+ "vistas": {
+  "conceito": {
+   "origem": "docs/criaturas/fera-fera-agil-das-sombras/e3-conceito.png",
+   "metodo_fundo": "bordas",
+   "tamanho_original": [
+    1536,
+    1024
+   ],
+   "caixa_original": [
+    56,
+    18,
+    1501,
+    1011
+   ],
+   "fator_escala": 1.03122,
+   "espelhada": false,
+   "celulas_largura": 46.562,
+   "px_por_celula_grade": 15.678,
+   "margem_grade_px": 34,
+   "recorte": "conceito-recorte.png",
+   "grade": "conceito-grade.png",
+   "img768": "conceito-768.png",
+   "mascara": "conceito-mascara.png"
+  }
+ },
+ "avisos": [
+  {
+   "codigo": "sem_lado",
+   "texto": "e3: sem vista lateral; a profundidade será estimada"
+  }
+ ]
+}

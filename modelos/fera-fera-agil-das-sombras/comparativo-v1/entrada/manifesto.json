@@ -1,0 +1,65 @@
+{
+  "criado_em": "2026-11-05T16:32:03.119125-03:00",
+  "fuso_cliente": "America/Sao_Paulo",
+  "status": "aguardando_aprovacao_da_folha_de_geometria",
+  "imagem": {
+    "origem": "C:\\Users\\enzoc\\Downloads\\Fera-fera Ágil das Sombras.png",
+    "arquivo": "conceito.png",
+    "sha256": "baa929fdfc84418ad325c49e14676acb4b33f7dabbca3b943805330d7fb6231d",
+    "aprovacao_conceito": "usuario declarou satisfatoria e solicitou modelagem"
+  },
+  "estagio": {
+    "texto": "3 de 3",
+    "indice": 3,
+    "total": 3,
+    "confirmado_pelo_usuario": true,
+    "id": "e3"
+  },
+  "categoria_confirmada": {
+    "plano": "bípede com cauda",
+    "nicho": "outros",
+    "base": "preguiça gigante",
+    "arquetipo": "rogue",
+    "fonte": "resposta do usuário à pergunta de categoria; tabela sem nicho próprio de preguiça"
+  },
+  "prompt_original": null,
+  "estilo": "cubificado Cobblemon/Digimod do repositorio, equivalente nas duas ferramentas",
+  "blender_executavel": "C:\\Program Files\\Blender Foundation\\Blender 5.1\\blender.exe",
+  "vistas_disponiveis": [
+    "conceito"
+  ],
+  "vistas_ortograficas_aprovadas": false,
+  "tentativas": {
+    "blockbench": {
+      "iniciada": true,
+      "revisao": "v3",
+      "arquivo": "modelos\\fera-fera-agil-das-sombras\\comparativo-v1\\blockbench-v3\\fera-sombras-e3-blockbench-v3.bbmodel",
+      "sha256": "13b6e607edcf6f63347b02c40d032fad1fca5badd1a9465ccbbfd9319a1e4bc8",
+      "geometria_aprovada": false,
+      "textura_final_aprovada": false,
+      "elementos": 59,
+      "planos": 16
+    },
+    "blender": {
+      "iniciada": true,
+      "revisao": "v3",
+      "arquivo": "modelos\\fera-fera-agil-das-sombras\\comparativo-v1\\blender-v3\\fera-sombras-e3-blender-v3.blend",
+      "sha256": "fffc6aa5cf1455ce6f2b02bf5e3b3ad3616e7fe2ac6b9a732c1354e249be6439",
+      "geometria_aprovada": false,
+      "textura_final_aprovada": false,
+      "elementos": 59,
+      "planos": 16
+    }
+  },
+  "escopo": "duas modelagens até a folha de geometria; pintura final e rig/animação após aprovação",
+  "restricoes": [
+    "preservar partes e proporcoes da imagem",
+    "geometrias independentes; nao converter o resultado da tentativa A para fabricar B",
+    "mesmas entradas e criterios visuais; renders comparaveis",
+    "anatomia oculta precisa de registro de incerteza"
+  ],
+  "folha": "modelos\\fera-fera-agil-das-sombras\\comparativo-v1\\comparativo-geometria-v3.png",
+  "render_apresentacao": "Blender EEVEE para as duas geometrias; não é captura da interface Blockbench",
+  "avaliacao": "mesmo agente e contexto; autorias separadas por script, sem conversão A para B; não é benchmark cego entre agentes",
+  "custo_chat_tokens_creditos": null
+}

@@ -1,0 +1,20 @@
+{
+  "metodo_fundo": "bordas",
+  "tamanho_original": [
+    1536,
+    1024
+  ],
+  "caixa_original": [
+    56,
+    18,
+    1501,
+    1011
+  ],
+  "fator_escala": 1.0312185297079557,
+  "espelhada": false,
+  "fracao_borda": 0.0,
+  "celulas_altura": 32,
+  "celulas_largura": 46.5625,
+  "px_por_celula_grade": 15.677852348993289,
+  "vista": "conceito obliquo; nao equivale a frente ou lado ortografico"
+}

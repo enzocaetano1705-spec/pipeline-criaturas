@@ -1,0 +1,540 @@
+{
+  "revision": "c8a29f8c0644b3fc",
+  "format": "bedrock",
+  "summary": {
+    "errors": 0,
+    "warnings": 68,
+    "passed": true
+  },
+  "gates": [
+    {
+      "id": "outliner",
+      "label": "Outliner references resolve and UUIDs are unique",
+      "severity": "error",
+      "ran": true,
+      "violations": []
+    },
+    {
+      "id": "unlisted_nodes",
+      "label": "Every group and element is placed in the outliner",
+      "severity": "warning",
+      "ran": true,
+      "violations": []
+    },
+    {
+      "id": "degenerate",
+      "label": "No sliver or inverted cubes",
+      "severity": "warning",
+      "ran": true,
+      "violations": []
+    },
+    {
+      "id": "block_limits",
+      "label": "Geometry stays inside the block-model limits",
+      "severity": "error",
+      "ran": false,
+      "skipped_reason": "Pass block_limits: java_block or bedrock_block to enable.",
+      "violations": []
+    },
+    {
+      "id": "floating",
+      "label": "Every part touches the main body",
+      "severity": "warning",
+      "ran": true,
+      "violations": [
+        {
+          "message": "scarf_ribbon_1 touches nothing in the main body. Add to free_elements if intended.",
+          "targets": [
+            "scarf_ribbon_1"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "interpenetration",
+      "label": "Parts of different groups do not pass through each other",
+      "severity": "warning",
+      "ran": true,
+      "violations": [
+        {
+          "message": "hips and chest (different groups) interpenetrate by 1.51 units.",
+          "targets": [
+            "hips",
+            "chest"
+          ]
+        },
+        {
+          "message": "hips and leg_left_volume (different groups) interpenetrate by 2.45 units.",
+          "targets": [
+            "hips",
+            "leg_left_volume"
+          ]
+        },
+        {
+          "message": "hips and leg_right_volume (different groups) interpenetrate by 2.45 units.",
+          "targets": [
+            "hips",
+            "leg_right_volume"
+          ]
+        },
+        {
+          "message": "hips and tail_1_volume (different groups) interpenetrate by 1.49 units.",
+          "targets": [
+            "hips",
+            "tail_1_volume"
+          ]
+        },
+        {
+          "message": "hips and tail_1_cream (different groups) interpenetrate by 2.11 units.",
+          "targets": [
+            "hips",
+            "tail_1_cream"
+          ]
+        },
+        {
+          "message": "chest and neck_mass (different groups) interpenetrate by 1.41 units.",
+          "targets": [
+            "chest",
+            "neck_mass"
+          ]
+        },
+        {
+          "message": "chest and mane_left (different groups) interpenetrate by 0.94 units.",
+          "targets": [
+            "chest",
+            "mane_left"
+          ]
+        },
+        {
+          "message": "chest and cheek_left (different groups) interpenetrate by 1.31 units.",
+          "targets": [
+            "chest",
+            "cheek_left"
+          ]
+        },
+        {
+          "message": "chest and mane_right (different groups) interpenetrate by 0.94 units.",
+          "targets": [
+            "chest",
+            "mane_right"
+          ]
+        },
+        {
+          "message": "chest and cheek_right (different groups) interpenetrate by 1.31 units.",
+          "targets": [
+            "chest",
+            "cheek_right"
+          ]
+        },
+        {
+          "message": "chest and arm_left_volume (different groups) interpenetrate by 1.52 units.",
+          "targets": [
+            "chest",
+            "arm_left_volume"
+          ]
+        },
+        {
+          "message": "chest and arm_right_volume (different groups) interpenetrate by 1.52 units.",
+          "targets": [
+            "chest",
+            "arm_right_volume"
+          ]
+        },
+        {
+          "message": "chest and tail_1_volume (different groups) interpenetrate by 0.96 units.",
+          "targets": [
+            "chest",
+            "tail_1_volume"
+          ]
+        },
+        {
+          "message": "chest and scarf_collar (different groups) interpenetrate by 2.12 units.",
+          "targets": [
+            "chest",
+            "scarf_collar"
+          ]
+        },
+        {
+          "message": "chest and belt_pouch (different groups) interpenetrate by 1 units.",
+          "targets": [
+            "chest",
+            "belt_pouch"
+          ]
+        },
+        {
+          "message": "neck_mass and head_mass (different groups) interpenetrate by 2 units.",
+          "targets": [
+            "neck_mass",
+            "head_mass"
+          ]
+        },
+        {
+          "message": "neck_mass and scarf_collar (different groups) interpenetrate by 3.68 units.",
+          "targets": [
+            "neck_mass",
+            "scarf_collar"
+          ]
+        },
+        {
+          "message": "neck_mass and scarf_ribbon_0 (different groups) interpenetrate by 0.77 units.",
+          "targets": [
+            "neck_mass",
+            "scarf_ribbon_0"
+          ]
+        },
+        {
+          "message": "head_mass and scarf_collar (different groups) interpenetrate by 1.68 units.",
+          "targets": [
+            "head_mass",
+            "scarf_collar"
+          ]
+        },
+        {
+          "message": "chin and scarf_collar (different groups) interpenetrate by 1 units.",
+          "targets": [
+            "chin",
+            "scarf_collar"
+          ]
+        },
+        {
+          "message": "mane_left and arm_left_volume (different groups) interpenetrate by 1.47 units.",
+          "targets": [
+            "mane_left",
+            "arm_left_volume"
+          ]
+        },
+        {
+          "message": "mane_left and scarf_collar (different groups) interpenetrate by 1.44 units.",
+          "targets": [
+            "mane_left",
+            "scarf_collar"
+          ]
+        },
+        {
+          "message": "cheek_left and arm_left_volume (different groups) interpenetrate by 1.84 units.",
+          "targets": [
+            "cheek_left",
+            "arm_left_volume"
+          ]
+        },
+        {
+          "message": "cheek_left and scarf_collar (different groups) interpenetrate by 1.81 units.",
+          "targets": [
+            "cheek_left",
+            "scarf_collar"
+          ]
+        },
+        {
+          "message": "mane_right and arm_right_volume (different groups) interpenetrate by 1.47 units.",
+          "targets": [
+            "mane_right",
+            "arm_right_volume"
+          ]
+        },
+        {
+          "message": "mane_right and scarf_collar (different groups) interpenetrate by 1.44 units.",
+          "targets": [
+            "mane_right",
+            "scarf_collar"
+          ]
+        },
+        {
+          "message": "cheek_right and arm_right_volume (different groups) interpenetrate by 1.84 units.",
+          "targets": [
+            "cheek_right",
+            "arm_right_volume"
+          ]
+        },
+        {
+          "message": "cheek_right and scarf_collar (different groups) interpenetrate by 1.81 units.",
+          "targets": [
+            "cheek_right",
+            "scarf_collar"
+          ]
+        },
+        {
+          "message": "mane_top and scarf_ribbon_0 (different groups) interpenetrate by 1.81 units.",
+          "targets": [
+            "mane_top",
+            "scarf_ribbon_0"
+          ]
+        },
+        {
+          "message": "arm_left_volume and forearm_left_volume (different groups) interpenetrate by 2.83 units.",
+          "targets": [
+            "arm_left_volume",
+            "forearm_left_volume"
+          ]
+        },
+        {
+          "message": "arm_left_volume and scarf_collar (different groups) interpenetrate by 2.02 units.",
+          "targets": [
+            "arm_left_volume",
+            "scarf_collar"
+          ]
+        },
+        {
+          "message": "forearm_left_volume and hand_left_volume (different groups) interpenetrate by 2.17 units.",
+          "targets": [
+            "forearm_left_volume",
+            "hand_left_volume"
+          ]
+        },
+        {
+          "message": "forearm_left_volume and elbow_fur_left (different groups) interpenetrate by 1.22 units.",
+          "targets": [
+            "forearm_left_volume",
+            "elbow_fur_left"
+          ]
+        },
+        {
+          "message": "forearm_left_volume and leg_left_volume (different groups) interpenetrate by 1.53 units.",
+          "targets": [
+            "forearm_left_volume",
+            "leg_left_volume"
+          ]
+        },
+        {
+          "message": "leg_left_volume and shin_left_volume (different groups) interpenetrate by 1.44 units.",
+          "targets": [
+            "leg_left_volume",
+            "shin_left_volume"
+          ]
+        },
+        {
+          "message": "leg_left_volume and tail_1_volume (different groups) interpenetrate by 0.95 units.",
+          "targets": [
+            "leg_left_volume",
+            "tail_1_volume"
+          ]
+        },
+        {
+          "message": "leg_left_volume and tail_1_cream (different groups) interpenetrate by 1.95 units.",
+          "targets": [
+            "leg_left_volume",
+            "tail_1_cream"
+          ]
+        },
+        {
+          "message": "leg_left_volume and belt (different groups) interpenetrate by 1.17 units.",
+          "targets": [
+            "leg_left_volume",
+            "belt"
+          ]
+        },
+        {
+          "message": "leg_left_volume and tabard_front (different groups) interpenetrate by 0.97 units.",
+          "targets": [
+            "leg_left_volume",
+            "tabard_front"
+          ]
+        },
+        {
+          "message": "leg_left_volume and tabard_side (different groups) interpenetrate by 1.04 units.",
+          "targets": [
+            "leg_left_volume",
+            "tabard_side"
+          ]
+        },
+        {
+          "message": "leg_left_volume and belt_pouch (different groups) interpenetrate by 1.67 units.",
+          "targets": [
+            "leg_left_volume",
+            "belt_pouch"
+          ]
+        },
+        {
+          "message": "shin_left_volume and foot_left_volume (different groups) interpenetrate by 0.58 units.",
+          "targets": [
+            "shin_left_volume",
+            "foot_left_volume"
+          ]
+        },
+        {
+          "message": "arm_right_volume and forearm_right_volume (different groups) interpenetrate by 2.83 units.",
+          "targets": [
+            "arm_right_volume",
+            "forearm_right_volume"
+          ]
+        },
+        {
+          "message": "arm_right_volume and scarf_collar (different groups) interpenetrate by 2.02 units.",
+          "targets": [
+            "arm_right_volume",
+            "scarf_collar"
+          ]
+        },
+        {
+          "message": "forearm_right_volume and hand_right_volume (different groups) interpenetrate by 2.17 units.",
+          "targets": [
+            "forearm_right_volume",
+            "hand_right_volume"
+          ]
+        },
+        {
+          "message": "forearm_right_volume and elbow_fur_right (different groups) interpenetrate by 1.22 units.",
+          "targets": [
+            "forearm_right_volume",
+            "elbow_fur_right"
+          ]
+        },
+        {
+          "message": "forearm_right_volume and leg_right_volume (different groups) interpenetrate by 1.53 units.",
+          "targets": [
+            "forearm_right_volume",
+            "leg_right_volume"
+          ]
+        },
+        {
+          "message": "leg_right_volume and shin_right_volume (different groups) interpenetrate by 1.44 units.",
+          "targets": [
+            "leg_right_volume",
+            "shin_right_volume"
+          ]
+        },
+        {
+          "message": "leg_right_volume and tail_1_volume (different groups) interpenetrate by 0.95 units.",
+          "targets": [
+            "leg_right_volume",
+            "tail_1_volume"
+          ]
+        },
+        {
+          "message": "leg_right_volume and tail_1_cream (different groups) interpenetrate by 1.95 units.",
+          "targets": [
+            "leg_right_volume",
+            "tail_1_cream"
+          ]
+        },
+        {
+          "message": "leg_right_volume and belt (different groups) interpenetrate by 1.17 units.",
+          "targets": [
+            "leg_right_volume",
+            "belt"
+          ]
+        },
+        {
+          "message": "leg_right_volume and tabard_front (different groups) interpenetrate by 0.97 units.",
+          "targets": [
+            "leg_right_volume",
+            "tabard_front"
+          ]
+        },
+        {
+          "message": "shin_right_volume and foot_right_volume (different groups) interpenetrate by 0.58 units.",
+          "targets": [
+            "shin_right_volume",
+            "foot_right_volume"
+          ]
+        },
+        {
+          "message": "tail_1_volume and tail_2_volume (different groups) interpenetrate by 1.5 units.",
+          "targets": [
+            "tail_1_volume",
+            "tail_2_volume"
+          ]
+        },
+        {
+          "message": "tail_1_volume and tail_2_cream (different groups) interpenetrate by 2.54 units.",
+          "targets": [
+            "tail_1_volume",
+            "tail_2_cream"
+          ]
+        },
+        {
+          "message": "tail_1_volume and belt (different groups) interpenetrate by 1.39 units.",
+          "targets": [
+            "tail_1_volume",
+            "belt"
+          ]
+        },
+        {
+          "message": "tail_1_volume and tabard_side (different groups) interpenetrate by 0.58 units.",
+          "targets": [
+            "tail_1_volume",
+            "tabard_side"
+          ]
+        },
+        {
+          "message": "tail_1_cream and belt (different groups) interpenetrate by 1.06 units.",
+          "targets": [
+            "tail_1_cream",
+            "belt"
+          ]
+        },
+        {
+          "message": "tail_1_cream and tabard_side (different groups) interpenetrate by 0.58 units.",
+          "targets": [
+            "tail_1_cream",
+            "tabard_side"
+          ]
+        },
+        {
+          "message": "tail_2_volume and tail_3_volume (different groups) interpenetrate by 2.99 units.",
+          "targets": [
+            "tail_2_volume",
+            "tail_3_volume"
+          ]
+        },
+        {
+          "message": "tail_2_volume and tail_3_cream (different groups) interpenetrate by 2.54 units.",
+          "targets": [
+            "tail_2_volume",
+            "tail_3_cream"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mirror",
+      "label": "Left/right parts mirror each other",
+      "severity": "warning",
+      "ran": true,
+      "violations": [
+        {
+          "message": "root/body/torso/arm_left/forearm_left/hand_left/claw_left_0_base (x -10.3…-9.3, size 1,3.15,1.7) does not mirror root/body/torso/arm_right/forearm_right/hand_right/claw_right_0_base (x 6.5…7.5, size 1,3.15,1.7) across x = 0.",
+          "targets": [
+            "claw_left_0_base",
+            "claw_right_0_base"
+          ]
+        },
+        {
+          "message": "root/body/torso/arm_left/forearm_left/hand_left/claw_left_0_tip (x -10.3…-9.3, size 1,3.15,1.7) does not mirror root/body/torso/arm_right/forearm_right/hand_right/claw_right_0_tip (x 6.5…7.5, size 1,3.15,1.7) across x = 0.",
+          "targets": [
+            "claw_left_0_tip",
+            "claw_right_0_tip"
+          ]
+        },
+        {
+          "message": "root/body/torso/arm_left/forearm_left/hand_left/claw_left_2_base (x -7.5…-6.5, size 1,3.15,1.7) does not mirror root/body/torso/arm_right/forearm_right/hand_right/claw_right_2_base (x 9.3…10.3, size 1,3.15,1.7) across x = 0.",
+          "targets": [
+            "claw_left_2_base",
+            "claw_right_2_base"
+          ]
+        },
+        {
+          "message": "root/body/torso/arm_left/forearm_left/hand_left/claw_left_2_tip (x -7.5…-6.5, size 1,3.15,1.7) does not mirror root/body/torso/arm_right/forearm_right/hand_right/claw_right_2_tip (x 9.3…10.3, size 1,3.15,1.7) across x = 0.",
+          "targets": [
+            "claw_left_2_tip",
+            "claw_right_2_tip"
+          ]
+        },
+        {
+          "message": "root/body/leg_left/shin_left/foot_left/toe_left_0 (x -6.2…-5.2, size 1,2.47,2.47) does not mirror root/body/leg_right/shin_right/foot_right/toe_right_0 (x 2…3, size 1,2.47,2.47) across x = 0.",
+          "targets": [
+            "toe_left_0",
+            "toe_right_0"
+          ]
+        },
+        {
+          "message": "root/body/leg_left/shin_left/foot_left/toe_left_2 (x -3…-2, size 1,2.47,2.47) does not mirror root/body/leg_right/shin_right/foot_right/toe_right_2 (x 5.2…6.2, size 1,2.47,2.47) across x = 0.",
+          "targets": [
+            "toe_left_2",
+            "toe_right_2"
+          ]
+        }
+      ]
+    }
+  ],
+  "notes": []
+}

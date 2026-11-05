@@ -1,0 +1,312 @@
+{
+  "vistas": {
+    "conceito": {
+      "imagem": "entrada/conceito-grade.png",
+      "celulas_largura": 46.6,
+      "celulas_altura": 32
+    }
+  },
+  "partes": [
+    {
+      "id": "body",
+      "pai": null,
+      "tipo": "volume",
+      "simetria": "central",
+      "caixas": {
+        "conceito": [
+          14,
+          12,
+          22.8,
+          19
+        ]
+      },
+      "papel_cor": "shadow"
+    },
+    {
+      "id": "torso",
+      "pai": "body",
+      "tipo": "volume",
+      "simetria": "central",
+      "caixas": {
+        "conceito": [
+          13,
+          8.5,
+          23.5,
+          15
+        ]
+      },
+      "papel_cor": "fur"
+    },
+    {
+      "id": "head",
+      "pai": "torso",
+      "tipo": "volume",
+      "simetria": "central",
+      "caixas": {
+        "conceito": [
+          0.8,
+          4.1,
+          13.2,
+          10
+        ]
+      },
+      "papel_cor": "cream"
+    },
+    {
+      "id": "mane",
+      "pai": "head",
+      "tipo": "plano",
+      "simetria": "central",
+      "caixas": {
+        "conceito": [
+          3,
+          0,
+          24,
+          11.5
+        ]
+      },
+      "papel_cor": "fur"
+    },
+    {
+      "id": "arm_left",
+      "pai": "torso",
+      "tipo": "volume",
+      "simetria": "esquerda",
+      "caixas": {
+        "conceito": [
+          20.5,
+          7.5,
+          30,
+          17
+        ]
+      },
+      "papel_cor": "fur"
+    },
+    {
+      "id": "arm_right",
+      "pai": "torso",
+      "tipo": "volume",
+      "simetria": "direita",
+      "caixas": {
+        "conceito": [
+          4,
+          12.4,
+          14,
+          18
+        ]
+      },
+      "papel_cor": "fur"
+    },
+    {
+      "id": "hand_left",
+      "pai": "arm_left",
+      "tipo": "volume",
+      "simetria": "esquerda",
+      "caixas": {
+        "conceito": [
+          23.2,
+          15,
+          28,
+          19
+        ]
+      },
+      "papel_cor": "fur"
+    },
+    {
+      "id": "hand_right",
+      "pai": "arm_right",
+      "tipo": "volume",
+      "simetria": "direita",
+      "caixas": {
+        "conceito": [
+          1.5,
+          16,
+          7,
+          20
+        ]
+      },
+      "papel_cor": "fur"
+    },
+    {
+      "id": "claws_left",
+      "pai": "hand_left",
+      "tipo": "volume",
+      "simetria": "esquerda",
+      "caixas": {
+        "conceito": [
+          21,
+          16,
+          27.7,
+          25.8
+        ]
+      },
+      "papel_cor": "cream"
+    },
+    {
+      "id": "claws_right",
+      "pai": "hand_right",
+      "tipo": "volume",
+      "simetria": "direita",
+      "caixas": {
+        "conceito": [
+          0.8,
+          17.8,
+          6.4,
+          25.5
+        ]
+      },
+      "papel_cor": "cream"
+    },
+    {
+      "id": "leg_left",
+      "pai": "body",
+      "tipo": "volume",
+      "simetria": "esquerda",
+      "caixas": {
+        "conceito": [
+          21.5,
+          23,
+          26.5,
+          29.8
+        ]
+      },
+      "papel_cor": "fur"
+    },
+    {
+      "id": "leg_right",
+      "pai": "body",
+      "tipo": "volume",
+      "simetria": "direita",
+      "caixas": {
+        "conceito": [
+          7.3,
+          15,
+          16.4,
+          27.5
+        ]
+      },
+      "papel_cor": "fur"
+    },
+    {
+      "id": "foot_left",
+      "pai": "leg_left",
+      "tipo": "volume",
+      "simetria": "esquerda",
+      "caixas": {
+        "conceito": [
+          21.6,
+          28,
+          30.1,
+          32
+        ]
+      },
+      "papel_cor": "cream"
+    },
+    {
+      "id": "foot_right",
+      "pai": "leg_right",
+      "tipo": "volume",
+      "simetria": "direita",
+      "caixas": {
+        "conceito": [
+          3.9,
+          27,
+          12,
+          31.5
+        ]
+      },
+      "papel_cor": "cream"
+    },
+    {
+      "id": "tail_1",
+      "pai": "body",
+      "tipo": "volume",
+      "simetria": "central",
+      "caixas": {
+        "conceito": [
+          27,
+          17.2,
+          46.5,
+          32
+        ]
+      },
+      "papel_cor": "fur"
+    },
+    {
+      "id": "scarf",
+      "pai": "torso",
+      "tipo": "plano",
+      "simetria": "central",
+      "caixas": {
+        "conceito": [
+          9.4,
+          1,
+          36.8,
+          11.5
+        ]
+      },
+      "papel_cor": "wine"
+    },
+    {
+      "id": "tabard",
+      "pai": "body",
+      "tipo": "plano",
+      "simetria": "central",
+      "caixas": {
+        "conceito": [
+          14.5,
+          14.2,
+          23.4,
+          25.5
+        ]
+      },
+      "papel_cor": "wine"
+    }
+  ],
+  "papeis_cor": {
+    "fur": "#915640",
+    "cream": "#ecd8bc",
+    "shadow": "#482c28",
+    "wrap": "#664339",
+    "wine": "#813137",
+    "gold": "#cc8637",
+    "iris": "#d9823c"
+  },
+  "modelagem": {
+    "abordagem": "poucas_formas",
+    "justificativa": "Volumes do tronco/crânio/membros/cauda e planos largos para juba/tecidos; marcas pintadas; leitura oblíqua não alimenta medir como frente falsa. Construção por scripts de autoria com estimativas explícitas.",
+    "referencias": [
+      {
+        "nome": "Weregarurumon",
+        "papel": "membros e rosto pintado com poucas peças; anatomia original preservada",
+        "caminho": "C:/Users/enzoc/Downloads/referencias-criaturas/estudos/weregarurumon-estrutura.json"
+      }
+    ]
+  },
+  "incertezas": [
+    {
+      "parte": "body",
+      "item": "profundidade",
+      "resolucao": "imagem",
+      "nota": "Estimativa de autoria pela vista oblíqua, com faixas do plano apenas como referência; não medida ortográfica. Conferir na folha."
+    },
+    {
+      "parte": "head",
+      "item": "orelhas",
+      "resolucao": "imagem",
+      "nota": "não distinguíveis; não acrescentadas"
+    },
+    {
+      "parte": "scarf",
+      "item": "fixação posterior",
+      "resolucao": "imagem",
+      "nota": "continuidade simples da parte visível; sem novos adornos"
+    },
+    {
+      "parte": "arm_left",
+      "item": "lado anatômico",
+      "resolucao": "imagem",
+      "nota": "convenção provisória pela vista oblíqua, lado próximo denominado esquerdo; confirmar nas vistas da modelagem"
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+ "criatura": "fera-fera-agil-das-sombras",
+ "estagio": "e3",
+ "etapas": {
+  "preparar": {
+   "ok": true,
+   "quando": "2026-11-05T16:39:59",
+   "erros": [],
+   "avisos": [
+    {
+     "codigo": "sem_lado",
+     "texto": "e3: sem vista lateral; a profundidade será estimada"
+    }
+   ],
+   "arquivos": [
+    "modelos/fera-fera-agil-das-sombras/e3/preparo/preparo.json"
+   ],
+   "resumo": {
+    "vistas": [
+     "conceito"
+    ]
+   }
+  },
+  "classificar": {
+   "ok": true,
+   "quando": "2026-11-05T16:44:37",
+   "erros": [],
+   "avisos": [],
+   "arquivos": [
+    "modelos/fera-fera-agil-das-sombras/e3/classificacao.json"
+   ],
+   "resumo": {
+    "sugestao_1": "bípede com cauda › canídeo",
+    "parar": false
+   }
+  }
+ }
+}

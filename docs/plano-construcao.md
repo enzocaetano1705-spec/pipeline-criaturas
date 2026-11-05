@@ -271,6 +271,8 @@ o padrão Blockbench/Minecraft. Decisão [[0009-backend-blender-opcional]].
 - [x] B.2 Construir backend em lote com fixture própria, atlas/máscaras/duas variantes, rig rígido, locators, idle/walk/run/ataque e prévias identificadas.
 - [x] B.3 Validar GLB e reimportação, reconstrução e integridade, regressão Blockbench; registrar resultados e limitações para outro harness. [[2026-11-04-backend-blender]]; evidência em `docs/validacao/blender-v1/`.
 - [ ] B.4 Após referências do usuário: categoria/folha aprovadas, primeira criatura comparativa e ensaio equivalente no Roblox. Fora do escopo de construção deste chat.
+  - [x] Receber a preguiça gigante rogue F3 e entregar primeiras geometrias Blockbench/Blender com render equivalente para revisão; [[2026-11-05-comparativo-fera-sombras]].
+  - [ ] Aprovação da geometria comparativa, pintura/rig e ensaio posterior no motor, se solicitado.
 
 ## Exploração autorizada — Criação de conceitos e direção de arte (05/11/2026)
 

@@ -1,0 +1,14 @@
+{
+  "cores": {
+    "fur": "#915640",
+    "cream": "#ecd8bc",
+    "shadow": "#482c28",
+    "wrap": "#664339",
+    "wine": "#813137",
+    "gold": "#cc8637",
+    "iris": "#d9823c"
+  },
+  "origem": "amostragem da imagem fornecida",
+  "metodo": "fur, cream, shadow, wrap e wine: cores da quantização global 18 cores da prévia 384x256; gold e iris: mediana dos pixels quentes nas regiões do broche/olho",
+  "uso": "cores de bloqueio para geometria; não representa pintura final aprovada"
+}

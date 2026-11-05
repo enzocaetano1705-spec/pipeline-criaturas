@@ -1,0 +1,46 @@
+{
+ "sugestoes": [
+  {
+   "plano": "bípede com cauda",
+   "nicho": "canídeo",
+   "confianca": 0.504,
+   "tracos": [
+    "de pé em 2 pernas",
+    "pelo",
+    "cauda cheia"
+   ]
+  },
+  {
+   "plano": "bípede com cauda",
+   "nicho": "roedor/pequeno mamífero",
+   "confianca": 0.252,
+   "tracos": [
+    "de pé em 2 pernas",
+    "pelo",
+    "pescoço 1 (típico 1)"
+   ]
+  },
+  {
+   "plano": "bípede com cauda",
+   "nicho": "humanoide",
+   "confianca": 0.244,
+   "tracos": [
+    "de pé em 2 pernas",
+    "de pé com braços",
+    "pescoço 1 (típico 1)"
+   ]
+  }
+ ],
+ "estagio_aparente": {
+  "estagio_tabela": "final",
+  "cabeca_alt": 0.24,
+  "olho_alt": 0.025,
+  "nota": "pela cabeça e pelo olho"
+ },
+ "conflitos": [],
+ "categoria_usada": {
+  "plano": "bípede com cauda",
+  "nicho": "outros",
+  "fonte": "confirmada"
+ }
+}
