@@ -138,9 +138,11 @@ dependente de treinar um modelo pesado. Isso exigiria escolher modelo, resoluç�
 quantização/offload, RAM e medir consumo/tempo na configuração real. Nada foi
 instalado ou ensaiado localmente nesta sessão.
 
-Só considerar treinamento quando houver um conjunto curado e evidência de que
-o gargalo é **acabamento visual repetidamente inconsistente**, mesmo com boas
-referências. Se o problema for ideia fraca, LoRA de traço não resolve a causa.
+O piloto Sutruga mostrou falhas de **linguagem de formas, proporções e acabamento**,
+além de decisões incorretas no prompt. Isso justifica estudar LoRA seriamente,
+sem afirmar que treino é obrigatório ou que resolverá sozinho a direção artística.
+O [plano atual](plano-lora-estilo.md) inclui inventário do catálogo, curadoria,
+controle com/sem adaptador e orçamento completo antes de qualquer gasto.
 
 Estimativa de referência, consultada em 05/11/2026:
 

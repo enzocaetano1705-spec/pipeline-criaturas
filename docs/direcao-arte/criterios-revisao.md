@@ -12,6 +12,7 @@ heurísticas do piloto, não certificação de qualidade. A aprovação é do us
 | História incorporada | marcas/postura/partes/poderes têm função ligada ao modo de vida; sem decoração arbitrária |
 | Evolução | causa e transformação por estágio, promessa da forma final e âncoras reconhecíveis |
 | Silhueta/proporção | leitura em thumbnail, corpo/rosto/característica dominante distintos e coerentes |
+| Gramática de formas | desproporções deliberadas, hierarquia de massas, cauda, armas e espaços negativos preservam o caráter da referência sem normalizar para humano atlético |
 | Paleta/acabamento | papéis de cor, contraste de valores, hierarquia de detalhe e compatibilidade com o guia escolhido |
 | Personalidade/movimento | comportamento observável e gesto/locomoção que diferenciem a espécie |
 | Arquétipo de combate | mecanismo legível de atuação, assinatura de movimento e limitações coerentes; separar proposta de kit já aprovado |

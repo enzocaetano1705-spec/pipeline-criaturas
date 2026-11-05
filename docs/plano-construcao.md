@@ -285,3 +285,5 @@ R$ 50 uma única vez, sem gasto mensal novo; Gemini e chat já disponíveis.
       - [x] Diagnosticar rejeição explícita da v1/v2 comparando com Niojade (Turtudi terceira forma, evo=2); registrar falhas, adagas solicitadas e referência dominante, corrigir vetos inventados e preservar histórico.
     - [ ] A.2.2b Replanejar a F3 rejeitada, produzir nova direção visual e aprovar; depois desenvolver F1/F2, revisar família e produzir vistas aprovadas.
 - [ ] A.3 Só se o piloto mostrar necessidade: avaliar LoRA com dataset permitido/curado e orçamento completo, sem assinatura ou compra automática.
+  - [x] A.3.1 Após retorno sobre v3/v4: diagnosticar gramática de formas, auditar metadados do catálogo inteiro e registrar experimento LoRA controlado com orçamento pendente, sem treino/compra.
+  - [ ] A.3.2 Curar conjunto e testes reservados por família, confirmar condições de uso, escolher modelo/ambiente e obter orçamento executável dentro do teto antes de treinar.

@@ -20,6 +20,11 @@ Se a tentativa anterior foi rejeitada, rever essas decisões antes de uma ediç�
 não pedir preservação automática de sua paleta/pose/anatomia. Preservar apenas
 aspectos explicitamente aprovados. Comparar resultado e referência lado a lado.
 
+Revisar primeiro silhueta, proporções relativas, cauda, gesto e morfologia das
+armas. Acabamento polido ou mais detalhe não compensam gramática de formas
+incompatível. Separar estudo de massas/contornos da pintura quando houver esse
+gargalo; não gerar mais uma ilustração acabada só para repetir a anatomia-padrão.
+
 Preparar instrução de imagem com: personagem inteiro, pose expressiva legível,
 fundo neutro; silhueta e proporções da ficha; formas dominantes e inventário
 anatômico; materiais e hierarquia de detalhe; paleta por papéis; expressão/gesto;

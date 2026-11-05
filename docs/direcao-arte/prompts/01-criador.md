@@ -23,6 +23,12 @@ Primeira entrega: três propostas curtas e estruturalmente diferentes, com até
 - duas ou três âncoras de família e mudança dominante em cada estágio;
 - direção de silhueta/paleta e diferenças concretas da referência mais próxima.
 
+Antes de detalhar figurino/superfícies, descrever a gramática de formas: massas
+dominantes, desproporções intencionais cabeça/tronco/braços/pernas, papel da cauda
+e proporção/morfologia das armas. Não corrigir automaticamente para anatomia
+humana atlética. Não impor cauda curta ou adagas convencionais quando a referência
+resolve esses elementos por exagero. Harmonia vem das relações, não da simetria.
+
 Não escolher a vencedora nem gerar imagens nesta primeira entrega. Não aumentar
 o número de estágios para imitar o catálogo. Não usar “mais forte/mais sábio” como
 única mudança. Não forçar a forma final a ficar humanoide, ter asas ou armadura.

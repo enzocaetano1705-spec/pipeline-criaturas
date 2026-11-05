@@ -85,3 +85,10 @@ Fonte consultada somente para leitura:
 O [diagnóstico](pilotos/tartaruga-monge-rogue/diagnostico-rejeicao-niojade.md)
 substitui a leitura de que a tentativa estava próxima da meta. Não tratar as
 outras referências como média que dilui essa solução prioritária.
+
+**Retorno sobre v3/v4:** o usuário reconheceu melhora de leitura, mas destacou
+que o estilo continua distante. O alvo inclui desproporções caricatas harmônicas,
+parte superior/armas dominantes em relação aos inferiores, cauda com papel na
+composição e lâminas de jade na linguagem do Kai em Kung Fu Panda (comparação do
+usuário, sem atribuição autoral comprovada). Não normalizar para humano musculoso
+com cauda curta/adagas comuns. Ver [estudo de LoRA e formas](plano-lora-estilo.md).

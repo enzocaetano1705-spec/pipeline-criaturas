@@ -1,7 +1,7 @@
 {
   "versao": 1,
   "id": "tartaruga-monge-rogue",
-  "status": "arte-f3-v1-v2-rejeitadas-replanejar-a-partir-de-niojade",
+  "status": "linguagem-visual-nao-aprovada-estudar-formas-e-lora",
   "direcao_escolhida": "Sutruga — o Voto do Último Passo",
   "conceitos": [
     "monge",
@@ -79,13 +79,13 @@
   ],
   "restricoes": [
     "Os três eixos precisam influenciar forma, comportamento ou movimento.",
-    "Evitar bastão de jade, dragões e arco específico da referência 769.",
     "Não maximizar defesa, velocidade e dano sem limitações de jogo.",
     "O desaparecimento/inalvejabilidade breve do golpe final está autorizado como referência do Ataque Alfa. Não estender isso a invisibilidade, intangibilidade ou furtividade permanentes.",
     "Mecanismo de velocidade precisa de linguagem visual e animação legível.",
     "Direção Sutruga, raridade Mítico e três formas estão confirmadas; categoria, nomes por forma, anatomia/arte finais e valores de combate continuam abertos.",
     "Adagas, figurino, barba e postura erguida são permitidos; selecionar os que sustentam a leitura solicitada, sem copiar a identidade de Niojade.",
-    "Cores e anatomia das tentativas rejeitadas não são invariantes. Replanejar em vez de apenas reduzir volumes."
+    "Cores e anatomia das tentativas rejeitadas não são invariantes. Replanejar em vez de apenas reduzir volumes.",
+    "Jade é material desejado para as armas; não substituir a morfologia específica por adagas genéricas nem copiar a identidade completa da referência."
   ],
   "geradores_disponiveis": [
     "Gemini",
@@ -120,7 +120,7 @@
     ],
     "uso": "inspiração de soluções; não copiar identidade completa"
   },
-  "armamento_solicitado": "adagas; não substituir por lâminas de antebraço como regra",
+  "armamento_solicitado": "lâminas de jade com linguagem de formas semelhante às do Kai em Kung Fu Panda, não adagas convencionais pequenas",
   "rejeicao_usuario": {
     "arte": [
       "f3-conceito-v1.png",
@@ -147,5 +147,22 @@
     "três formas",
     "especial final inspirado no Ataque Alfa",
     "adagas solicitadas no retorno atual"
-  ]
+  ],
+  "referencia_visual_adicional": {
+    "nome": "Kai, Kung Fu Panda",
+    "funcao": "morfologia/material/presença das lâminas",
+    "origem": "comparação fornecida pelo usuário; influência autoral de Niojade não verificada"
+  },
+  "proporcoes_alvo": [
+    "desproporções intencionais e harmonizadas, não anatomia humana musculosa convencional",
+    "superiores/armas dominantes e inferiores compactos conforme estudo de Niojade",
+    "cauda expressiva participando da silhueta; remover imposição arbitrária de cauda curta",
+    "família de formas compartilhada entre corpo, armas e cauda"
+  ],
+  "avaliacao_rodada_v3_v4": {
+    "status": "não aprovada",
+    "melhoria_informal_usuario": "cerca de 70%, sem significado de métrica",
+    "avaliacao": "muito distante do estilo desejado",
+    "proximo_foco": "gramática de formas e viabilidade de LoRA curado"
+  }
 }

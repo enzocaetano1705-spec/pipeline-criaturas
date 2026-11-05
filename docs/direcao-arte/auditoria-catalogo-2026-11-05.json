@@ -1,0 +1,82 @@
+{
+  "fonte": "https://worldofmiscrits.com/miscrits.json",
+  "registros_linhagens": 439,
+  "entradas_de_estagio": 1756,
+  "contagem_formas": {
+    "4": 439
+  },
+  "prefixos_candidatos": {
+    "Dark": 64,
+    "Foil": 15,
+    "Light": 28,
+    "Blighted": 5
+  },
+  "variantes_com_base_identificada_por_nome": 112,
+  "grupos_distintos_por_nome": 327,
+  "exemplos_variantes": [
+    {
+      "id": 23,
+      "nome": "Dark Flue",
+      "base_id": 1,
+      "base_nome": "Flue",
+      "prefixo": "Dark"
+    },
+    {
+      "id": 24,
+      "nome": "Dark Flowerpiller",
+      "base_id": 2,
+      "base_nome": "Flowerpiller",
+      "prefixo": "Dark"
+    },
+    {
+      "id": 25,
+      "nome": "Dark Prawnja",
+      "base_id": 3,
+      "base_nome": "Prawnja",
+      "prefixo": "Dark"
+    },
+    {
+      "id": 74,
+      "nome": "Dark Kiloray",
+      "base_id": 32,
+      "base_nome": "Kiloray",
+      "prefixo": "Dark"
+    },
+    {
+      "id": 75,
+      "nome": "Dark Croaky",
+      "base_id": 37,
+      "base_nome": "Croaky",
+      "prefixo": "Dark"
+    },
+    {
+      "id": 77,
+      "nome": "Dark Cubsprout",
+      "base_id": 5,
+      "base_nome": "Cubsprout",
+      "prefixo": "Dark"
+    },
+    {
+      "id": 78,
+      "nome": "Dark Sparkitten",
+      "base_id": 54,
+      "base_nome": "Sparkitten",
+      "prefixo": "Dark"
+    },
+    {
+      "id": 79,
+      "nome": "Dark Snortus",
+      "base_id": 8,
+      "base_nome": "Snortus",
+      "prefixo": "Dark"
+    }
+  ],
+  "limites": "Agrupamento por nome/prefixo, não duplicidade visual ou autoria/licença. Sem baixar imagens, treino ou upload.",
+  "catalogo_sha256": "2b6db6a07505d38cb0820b95fc641e4d4e940a17bf25e012e66a7b0e8f6ba81b",
+  "resolucao_cache_seletivo": {
+    "artes": 44,
+    "maximo_maior_lado_px": 507,
+    "todas_menores_512_maior_lado": true,
+    "nao_representa_catalogo_inteiro": true
+  }
+}

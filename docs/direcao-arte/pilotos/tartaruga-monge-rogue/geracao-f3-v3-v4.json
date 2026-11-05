@@ -1,0 +1,71 @@
+{
+  "versao": 1,
+  "data": "2026-11-05",
+  "ferramenta": "image_gen.imagegen nativo",
+  "chamadas_da_rodada_anterior": 2,
+  "chamadas_nesta_avaliacao": 0,
+  "modo": "v3 redesenho guiado por Niojade; v4 correção de enquadramento",
+  "modelo": null,
+  "seed": null,
+  "tokens": null,
+  "custo_monetario_informado": null,
+  "arte_aprovada": false,
+  "imagens": {
+    "f3-conceito-v3.png": {
+      "sha256": "baa9decc5bd946def888ab370ea2b53f81be8bb60c9c2a8adad65e17243f5e25",
+      "dimensoes": [
+        1312,
+        1199
+      ]
+    },
+    "f3-conceito-v3-768.png": {
+      "sha256": "8602cfcfd6974447f833e2e4d7e4f0a4d66b2478513dacb699d7825f26ad9134",
+      "dimensoes": [
+        768,
+        702
+      ]
+    },
+    "f3-conceito-v4.png": {
+      "sha256": "1b736be2bb96f3273ddd66edf174359732401106c625a77f7167b2fa0649a7a9",
+      "dimensoes": [
+        1312,
+        1199
+      ]
+    },
+    "f3-conceito-v4-768.png": {
+      "sha256": "50c9de968c54c900af0f79f12291bcd5367c4b8d08a60516afd16f069065b7b0",
+      "dimensoes": [
+        768,
+        702
+      ]
+    }
+  },
+  "prompts": {
+    "prompt-arte-f3-v3.txt": "9ff92c0ba6a914d33941391cfce6833ba8cd7339b15ad695567d8bf5319b5dc3",
+    "prompt-arte-f3-v4.txt": "7e860955b301e9ee8d271e2e068cb44edd57116a4ab466f55b0f5e9be9f48d82"
+  },
+  "referencias_enviadas": {
+    "v3": {
+      "nome": "Niojade",
+      "arquivo_externo": "C:\\Users\\enzoc\\Downloads\\referencias-criaturas\\estudos\\miscrits\\niojade_back.png",
+      "sha256": "fee55198d09240c3b764cc69980270d234f54629c003f2ba294897ec131fd835"
+    },
+    "v4": {
+      "arquivo": "arte/f3-conceito-v3-768.png",
+      "sha256": "8602cfcfd6974447f833e2e4d7e4f0a4d66b2478513dacb699d7825f26ad9134"
+    }
+  },
+  "retorno_usuario": {
+    "melhoria": "usuário estimou informalmente cerca de 70% de melhora; não é métrica de validação",
+    "resultado": "ainda muito distante do estilo desejado; não aprovado",
+    "problemas": [
+      "anatomia excessivamente humana",
+      "desproporções braço/tronco/perna não traduzidas",
+      "cauda curta sem papel na composição",
+      "adagas convencionais em vez de lâminas de jade como Kai",
+      "acabamento distante da linguagem Miscrits"
+    ],
+    "hipotese": "considerar seriamente LoRA de estilo com acervo maior"
+  },
+  "proximo_passo": "estudar gramática de formas, auditar/curar dados e planejar experimento controlado; nenhum treino executado"
+}

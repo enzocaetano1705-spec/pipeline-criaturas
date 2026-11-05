@@ -11,6 +11,11 @@ adagas abaixo não são requisitos atuais. Este documento preserva a tentativa;
 usar o [diagnóstico com Niojade](diagnostico-rejeicao-niojade.md) e o briefing
 atual para replanejar. Sutruga, Mítico/três formas, rogue e especial Alfa continuam.
 
+**Rodada posterior v3/v4:** houve melhora de leitura reconhecida pelo usuário,
+mas estilo/proporções/cauda/armas continuam sem aprovação. O foco atual é o
+[estudo de formas e LoRA](../../plano-lora-estilo.md). Metadados dessa rodada em
+`geracao-f3-v3-v4.json`; as artes não são fontes canônicas de modelagem.
+
 **Confirmado pelo usuário:** direção Sutruga; monge + tartaruga; arquétipo rogue;
 raridade **Mítico**, portanto **três formas**; especial inspirado no Ataque Alfa
 do Master Yi, pelo menos na forma final. Abaixo, história, anatomia e leitura
