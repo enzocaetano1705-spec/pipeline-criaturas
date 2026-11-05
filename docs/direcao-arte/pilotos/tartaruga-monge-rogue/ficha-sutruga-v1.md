@@ -1,9 +1,15 @@
 ---
 data: 2026-11-05
-status: proposta de desenvolvimento; arte/anatomia ainda não aprovadas
+status: histórico da proposta rejeitada; inventário e paleta não são briefing ativo
 ---
 
 # Sutruga — o Voto do Último Passo
+
+**REJEITADA PELO USUÁRIO:** as artes v1/v2 e sua solução de coloração/design/
+conceito foram rejeitadas. A imposição de quadrúpede e os vetos a barba/figurino/
+adagas abaixo não são requisitos atuais. Este documento preserva a tentativa;
+usar o [diagnóstico com Niojade](diagnostico-rejeicao-niojade.md) e o briefing
+atual para replanejar. Sutruga, Mítico/três formas, rogue e especial Alfa continuam.
 
 **Confirmado pelo usuário:** direção Sutruga; monge + tartaruga; arquétipo rogue;
 raridade **Mítico**, portanto **três formas**; especial inspirado no Ataque Alfa

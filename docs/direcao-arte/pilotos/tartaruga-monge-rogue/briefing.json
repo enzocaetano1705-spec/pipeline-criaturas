@@ -1,9 +1,12 @@
 {
   "versao": 1,
   "id": "tartaruga-monge-rogue",
-  "status": "sutruga-escolhida-ficha-e-arte-em-desenvolvimento",
+  "status": "arte-f3-v1-v2-rejeitadas-replanejar-a-partir-de-niojade",
   "direcao_escolhida": "Sutruga — o Voto do Último Passo",
-  "conceitos": ["monge", "tartaruga"],
+  "conceitos": [
+    "monge",
+    "tartaruga"
+  ],
   "arquetipo_combate": "rogue / ladino",
   "contraste_central": "serenidade e aparente peso de uma tartaruga monge versus velocidade, reposicionamento e precisão de um rogue",
   "numero_estagios": 3,
@@ -17,28 +20,132 @@
     "nome_de_trabalho": "Voto do Instante",
     "balanceamento": "dano, alcance, número de impactos/alvos, duração, recarga, repetição em alvo único e regras de saída ainda em aberto"
   },
-  "categoria": {"plano_corpo": "a confirmar com arte", "nicho": "a confirmar com arte"},
+  "categoria": {
+    "plano_corpo": "a confirmar com arte",
+    "nicho": "a confirmar com arte"
+  },
   "guia_visual": "docs/direcao-arte/guia-visual-v0.1.md",
   "preferencias": [
-    {"id": 619, "aspectos": ["conceito", "cores", "evolucao"]},
-    {"id": 721, "evo_no_link": 0, "aspectos": ["cores"]},
-    {"id": 594, "evo_no_link": 3, "aspectos": ["conceito"]},
-    {"id": 214, "aspectos": ["conceito", "evolucao"]},
-    {"id": 613, "evo_no_link": 0, "aspectos": ["evolucao"]},
-    {"id": 642, "evo_no_link": 0, "aspectos": ["cores", "conceito"]},
-    {"id": 433, "aspectos": ["conceito"]}
+    {
+      "id": 619,
+      "aspectos": [
+        "conceito",
+        "cores",
+        "evolucao"
+      ]
+    },
+    {
+      "id": 721,
+      "evo_no_link": 0,
+      "aspectos": [
+        "cores"
+      ]
+    },
+    {
+      "id": 594,
+      "evo_no_link": 3,
+      "aspectos": [
+        "conceito"
+      ]
+    },
+    {
+      "id": 214,
+      "aspectos": [
+        "conceito",
+        "evolucao"
+      ]
+    },
+    {
+      "id": 613,
+      "evo_no_link": 0,
+      "aspectos": [
+        "evolucao"
+      ]
+    },
+    {
+      "id": 642,
+      "evo_no_link": 0,
+      "aspectos": [
+        "cores",
+        "conceito"
+      ]
+    },
+    {
+      "id": 433,
+      "aspectos": [
+        "conceito"
+      ]
+    }
   ],
   "restricoes": [
     "Os três eixos precisam influenciar forma, comportamento ou movimento.",
-    "Não fazer apenas Turtudi com máscara, roupa ou punhais.",
     "Evitar bastão de jade, dragões e arco específico da referência 769.",
     "Não maximizar defesa, velocidade e dano sem limitações de jogo.",
     "O desaparecimento/inalvejabilidade breve do golpe final está autorizado como referência do Ataque Alfa. Não estender isso a invisibilidade, intangibilidade ou furtividade permanentes.",
     "Mecanismo de velocidade precisa de linguagem visual e animação legível.",
-    "Direção Sutruga, raridade Mítico e três formas estão confirmadas; categoria, nomes por forma, anatomia/arte finais e valores de combate continuam abertos."
+    "Direção Sutruga, raridade Mítico e três formas estão confirmadas; categoria, nomes por forma, anatomia/arte finais e valores de combate continuam abertos.",
+    "Adagas, figurino, barba e postura erguida são permitidos; selecionar os que sustentam a leitura solicitada, sem copiar a identidade de Niojade.",
+    "Cores e anatomia das tentativas rejeitadas não são invariantes. Replanejar em vez de apenas reduzir volumes."
   ],
-  "geradores_disponiveis": ["Gemini", "este chat"],
-  "orcamento": {"brl_maximo_unico": 50, "brl_mensal_novo": 0, "gasto_autorizado_agora": 0},
-  "limites_piloto": {"propostas_texto": 3, "revisoes_por_etapa": 2, "geracao_paga_automatica": false},
-  "aprovacoes": {"direcao": true, "arte": false, "vistas": false}
+  "geradores_disponiveis": [
+    "Gemini",
+    "este chat"
+  ],
+  "orcamento": {
+    "brl_maximo_unico": 50,
+    "brl_mensal_novo": 0,
+    "gasto_autorizado_agora": 0
+  },
+  "limites_piloto": {
+    "propostas_texto": 3,
+    "revisoes_por_etapa": 2,
+    "geracao_paga_automatica": false
+  },
+  "aprovacoes": {
+    "direcao": false,
+    "arte": false,
+    "vistas": false
+  },
+  "referencia_dominante": {
+    "nome": "Niojade",
+    "linhagem": "Turtudi",
+    "indice_evo": 2,
+    "forma_humana": 3,
+    "url": "https://worldofmiscrits.com/miscripedia/769?evo=2",
+    "funcoes": [
+      "organização corporal",
+      "leitura de monge armado",
+      "integração de cor/material",
+      "hierarquia e presença"
+    ],
+    "uso": "inspiração de soluções; não copiar identidade completa"
+  },
+  "armamento_solicitado": "adagas; não substituir por lâminas de antebraço como regra",
+  "rejeicao_usuario": {
+    "arte": [
+      "f3-conceito-v1.png",
+      "f3-conceito-v2.png"
+    ],
+    "aspectos": [
+      "coloração",
+      "design",
+      "conceito"
+    ],
+    "estado": "rejeitadas, não base aprovada",
+    "restricoes_anteriores_revogadas": [
+      "quadrúpede obrigatório",
+      "proibição de barba e figurino",
+      "proibição de adagas empunhadas",
+      "preservar paleta/rosto/pose das tentativas rejeitadas"
+    ]
+  },
+  "estado_direcao": "A ideia-base permanece; a solução de personagem, visual e narrativa anterior está reaberta após rejeição. Não tratar lore/proporções/paleta anteriores como cânone.",
+  "confirmacoes_preservadas": [
+    "monge + tartaruga",
+    "rogue",
+    "Mítico",
+    "três formas",
+    "especial final inspirado no Ataque Alfa",
+    "adagas solicitadas no retorno atual"
+  ]
 }

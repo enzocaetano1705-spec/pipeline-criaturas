@@ -7,7 +7,7 @@ heurísticas do piloto, não certificação de qualidade. A aprovação é do us
 | Critério | Evidência que o revisor precisa apontar |
 |---|---|
 | Identidade | tese legível em uma frase; combinação específica de forma, comportamento e papel |
-| Integração dos conceitos | ambos moldam anatomia/comportamento, com menos dependência de roupas e props genéricos |
+| Integração dos conceitos | anatomia, rosto, gesto, figurino e armamento sustentam juntos o personagem; não aplicar veto automático a roupa/arma/barba |
 | Originalidade relativa | diferença concreta das referências próximas e do catálogo próprio; listar colisões conhecidas |
 | História incorporada | marcas/postura/partes/poderes têm função ligada ao modo de vida; sem decoração arbitrária |
 | Evolução | causa e transformação por estágio, promessa da forma final e âncoras reconhecíveis |
@@ -22,6 +22,9 @@ heurísticas do piloto, não certificação de qualidade. A aprovação é do us
 reprodução da solução específica de referência, parte obrigatória faltando,
 anatomia incompatível entre vistas, estágio sem identidade de família ou origem
 incerta de um detalhe tratado como canônico. Não encaminhar para modelagem.
+Comparar o resultado à referência dominante por função/qualidade de solução;
+obedecer à lista de cores e membros de um prompt não comprova sucesso. Uma
+tentativa rejeitada não pode ganhar status de base aprovada por revisão do autor.
 
 **Formato de devolutiva:**
 

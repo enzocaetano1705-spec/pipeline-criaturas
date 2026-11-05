@@ -12,6 +12,14 @@ Receber anexados: ficha canônica aprovada; referências de estilo com função;
 decisões de família; estágio a desenhar; imagens já aprovadas pertinentes à
 criação da família; lista de elementos a evitar copiar.
 
+Identificar referência dominante e o que ela resolve em corpo, rosto, arma,
+materiais, paleta e presença. Confirmar quais imagens foram efetivamente
+fornecidas à ferramenta; citar arquivo/nome no texto não equivale a anexar imagem.
+Não inventar vetos a figurino/barba/armas ou impor quadrúpede sem direção do usuário.
+Se a tentativa anterior foi rejeitada, rever essas decisões antes de uma edição;
+não pedir preservação automática de sua paleta/pose/anatomia. Preservar apenas
+aspectos explicitamente aprovados. Comparar resultado e referência lado a lado.
+
 Preparar instrução de imagem com: personagem inteiro, pose expressiva legível,
 fundo neutro; silhueta e proporções da ficha; formas dominantes e inventário
 anatômico; materiais e hierarquia de detalhe; paleta por papéis; expressão/gesto;

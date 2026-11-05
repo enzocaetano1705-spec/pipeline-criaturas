@@ -1,5 +1,11 @@
 # Revisão do conceito final Sutruga — v1 e v2
 
+**Resultado posterior: REJEITADO pelo usuário em coloração, design e conceito.**
+Os comentários abaixo preservam a revisão anterior do próprio harness e não
+representam validação artística. O diagnóstico atual está na
+[comparação com Niojade](diagnostico-rejeicao-niojade.md). Não preservar v2 como
+base aprovada nem confundir redução de volume com correção da direção.
+
 Revisão visual do próprio harness, não de agente independente. Arte ainda sem
 aprovação humana. Originais 1536×1024 preservados; inspeção em prévias 768×512.
 Ferramenta nativa `imagegen`: uma geração e uma edição direcionada, sem API/CLI

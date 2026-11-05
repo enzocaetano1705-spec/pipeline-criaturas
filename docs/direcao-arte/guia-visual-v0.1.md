@@ -29,8 +29,9 @@ identificado como foco. Sem parâmetro, não presumir um estágio preferido espe
 
 ## Síntese a testar
 
-1. **A ideia transforma a criatura.** Matéria, função, comportamento e gesto
-   devem carregar a fantasia, com menos dependência de um acessório explicativo.
+1. **A ideia organiza o personagem.** Matéria, anatomia, rosto, comportamento,
+   gesto, figurino e armamento podem carregar a fantasia. Não converter integração
+   em veto a acessórios: Niojade usa esses recursos de maneira importante.
 2. **Evoluir pode revelar, libertar ou especializar.** Manter sinais de parentesco,
    mas mudar o significado de partes/motivos. Acrescentar espinhos e ornamentos
    por estágio não basta.
@@ -61,9 +62,10 @@ precisam de revisão visual. Resultados completos permanecem na biblioteca exter
 
 Rogue/Ladino é requisito de combate confirmado pelo usuário. Explorar contraste
 entre serenidade/defesa da tartaruga e arrancadas, reposicionamento e precisão.
-Monge precisa aparecer na postura, disciplina, ritual ou comportamento; tartaruga,
-na cabeça, casco, implantação de membros e movimento. Não depender só de capuz,
-máscara, punhais ou bastão. Movimento rápido não exige invisibilidade/teleporte
+Monge precisa aparecer na postura, rosto e demais marcadores escolhidos;
+tartaruga, na cabeça/casco e no conjunto corporal. Adagas são requisito posterior
+explicitado pelo usuário; mãos livres e postura marcial precisam sustentá-las.
+Barba, figurino ou armas não são proibidos por princípio. Movimento rápido não exige invisibilidade/teleporte
 em todo rogue. **Atualização do piloto:** o usuário escolheu Sutruga e autorizou
 o especial final inspirado no Ataque Alfa do Master Yi, com desaparecimento breve.
 
@@ -77,3 +79,9 @@ importar quatro estágios das referências nem impor três a toda linhagem.
 **Atualização:** usuário confirmou Sutruga **Mítico**, portanto **três formas**.
 Fonte consultada somente para leitura:
 `../jogo-criaturas/docs/decisoes/0022-raridades-formas-e-arquetipos.md`.
+
+**Atualização após rejeição:** o usuário rejeitou a Sutruga v1/v2 e apontou
+**Niojade, terceira forma da Turtudi (`evo=2`)**, como referência dominante.
+O [diagnóstico](pilotos/tartaruga-monge-rogue/diagnostico-rejeicao-niojade.md)
+substitui a leitura de que a tentativa estava próxima da meta. Não tratar as
+outras referências como média que dilui essa solução prioritária.

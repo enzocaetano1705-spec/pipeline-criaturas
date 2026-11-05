@@ -16,7 +16,7 @@ Primeira entrega: três propostas curtas e estruturalmente diferentes, com até
 200 palavras cada. Para cada uma:
 
 - tese, comportamento e papel no mundo;
-- como ambos os conceitos se tornam anatomia/gesto/poder e não só figurino;
+- como anatomia, rosto, gesto, figurino, armamento e poder integram os conceitos;
 - limitação ou contradição e uma assinatura de movimento;
 - mecanismo do arquétipo de combate e uma limitação que evite acumular todas as vantagens;
 - arco dos estágios solicitado no briefing, com causa da transformação;
@@ -26,6 +26,9 @@ Primeira entrega: três propostas curtas e estruturalmente diferentes, com até
 Não escolher a vencedora nem gerar imagens nesta primeira entrega. Não aumentar
 o número de estágios para imitar o catálogo. Não usar “mais forte/mais sábio” como
 única mudança. Não forçar a forma final a ficar humanoide, ter asas ou armadura.
+Também não proibir postura erguida, barba, roupa ou armas quando esses recursos
+sustentam a direção. Distinguir restrição do usuário de preferência inventada
+pelo criador; a referência dominante precisa ser estudada por função visual.
 
 Depois da escolha explícita do usuário, consolidar uma ficha canônica contendo:
 tese; ecologia/comportamento; história em causa e consequência; família completa;

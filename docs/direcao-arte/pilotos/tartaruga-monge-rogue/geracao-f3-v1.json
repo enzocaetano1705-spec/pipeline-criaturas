@@ -99,5 +99,18 @@
         "fracao": 0.0595
       }
     ]
+  },
+  "entrada_snapshot": "briefing-geracao-f3-rejeitada.json",
+  "git_geracao": "3a92fd7",
+  "status_arte_atual": "v1 e v2 rejeitadas pelo usuário",
+  "retorno_usuario": {
+    "aspectos": [
+      "coloração",
+      "design",
+      "conceito"
+    ],
+    "referencia_dominante": "Niojade, terceira forma de Turtudi, evo=2",
+    "diagnostico": "diagnostico-rejeicao-niojade.md",
+    "nova_geracao_neste_diagnostico": false
   }
 }

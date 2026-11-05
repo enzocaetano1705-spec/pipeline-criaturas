@@ -282,5 +282,6 @@ R$ 50 uma única vez, sem gasto mensal novo; Gemini e chat já disponíveis.
   - [x] A.2.1 Analisar sete escolhas por função/estágio, registrar guia v0.1 e três direções de monge + tartaruga com arquétipo rogue obrigatório; preservar formas/raridade em aberto e validar briefing exploratório.
   - [ ] A.2.2 Escolher direção, confirmar raridade/quantidade de formas e produzir/revisar arte canônica e vistas com aprovação do usuário.
     - [x] A.2.2a Confirmar Sutruga Mítico/três formas e especial final inspirado no Ataque Alfa; planejar família e gerar/revisar primeiro conceito F3 em versões preservadas, com arte pendente de avaliação humana.
-    - [ ] A.2.2b Aprovar/refinar F3, desenvolver F1/F2, revisar família e produzir vistas aprovadas.
+      - [x] Diagnosticar rejeição explícita da v1/v2 comparando com Niojade (Turtudi terceira forma, evo=2); registrar falhas, adagas solicitadas e referência dominante, corrigir vetos inventados e preservar histórico.
+    - [ ] A.2.2b Replanejar a F3 rejeitada, produzir nova direção visual e aprovar; depois desenvolver F1/F2, revisar família e produzir vistas aprovadas.
 - [ ] A.3 Só se o piloto mostrar necessidade: avaliar LoRA com dataset permitido/curado e orçamento completo, sem assinatura ou compra automática.

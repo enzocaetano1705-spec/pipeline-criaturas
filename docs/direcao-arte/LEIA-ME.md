@@ -85,8 +85,9 @@ um experimento futuro, não meta de gasto nesta etapa.
 - Papel no mundo: habitat, comportamento e relação com outras criaturas.
 - Uma contradição produtiva ou limitação: desejo/medo/custo que evita uma ficha
   genérica de “ser poderoso e proteger a floresta”.
-- Anatomia que incorpora os conceitos. Profissão não deve virar apenas chapéu,
-  roupa ou arma colocada num animal comum.
+- Integração dos conceitos na anatomia, rosto, pose, figurino e/ou armamento.
+  Roupa, barba, adagas e ornamentos são recursos válidos; não proibi-los por
+  princípio. Avaliar se formam um personagem específico e coeso, além de rótulos.
 - Arco de evolução com causa: o que aprende/sofre/muda em cada estágio e como
   isso aparece no corpo, postura, comportamento e técnica de combate.
 - Duas ou três âncoras visuais de família; uma transformação dominante por estágio.
@@ -189,8 +190,9 @@ imagem nova ou linhagem original foi aprovada nesta sessão.
 Curadoria posterior: [guia visual v0.1](guia-visual-v0.1.md) a partir das sete
 escolhas do usuário; piloto atual [monge + tartaruga + rogue](pilotos/tartaruga-monge-rogue/propostas.md).
 Direção escolhida: [Sutruga Mítico/três formas](pilotos/tartaruga-monge-rogue/ficha-sutruga-v1.md),
-com primeiro conceito F3 em [revisão visual](pilotos/tartaruga-monge-rogue/revisao-arte-f3.md).
-Arte ainda não aprovada; a habilidade final tem referência explícita no Ataque Alfa.
+com primeiro conceito F3 [rejeitado pelo usuário](pilotos/tartaruga-monge-rogue/diagnostico-rejeicao-niojade.md).
+Replanejar com Niojade como referência dominante e adagas solicitadas; a habilidade
+final mantém a referência explícita no Ataque Alfa. Nenhuma arte está aprovada.
 
 ## Fontes técnicas consultadas
 
