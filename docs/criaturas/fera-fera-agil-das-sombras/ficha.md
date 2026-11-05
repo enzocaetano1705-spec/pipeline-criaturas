@@ -17,7 +17,7 @@ estagios: 3
 - **Estágio:** 3 de 3
 - **Categoria (seu palpite):** bípede com cauda › outros
 - **Categoria confirmada:** bípede com cauda › outros
-- **Altura no jogo (blocos):** 
+- **Altura no jogo (blocos):**
 - **Imagens:** e3-conceito.png
 - **O que a imagem não mostra bem:** Única vista oblíqua. Profundidade do tronco, costas, fixação do tecido e lado oculto estimados e sujeitos à revisão na folha.
 - **Partes finas (viram planos):**

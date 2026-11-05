@@ -20,7 +20,7 @@ As cores são de bloqueio; pintura final e rig dependem da revisão. A skill exi
 **bípede com cauda › outros**, pois a tabela não tem nicho de preguiça.
 Isso substitui a sugestão inicial canídea; não repetir aquela pergunta.
 
-**Feito:** imagem preservada, SHA-256
+**Feito:** geometrias, entradas e scripts no commit `acdde70`. Imagem preservada, SHA-256
 `baa929fdfc84418ad325c49e14676acb4b33f7dabbca3b943805330d7fb6231d`.
 Briefing, paleta amostrada, grade, leitura semântica da vista real e manifesto em
 `modelos/fera-fera-agil-das-sombras/comparativo-v1/entrada/`.
