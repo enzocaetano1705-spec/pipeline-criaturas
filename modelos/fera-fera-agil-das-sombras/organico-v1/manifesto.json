@@ -1,0 +1,52 @@
+{
+  "criado_em_utc": "2026-11-05T20:48:22.006807+00:00",
+  "status": "aguardando_revisao_de_geometria_e_conexao_MCP",
+  "revisao_atual": "r05",
+  "arquivo": "r05/fera-sombras-organica.blend",
+  "folha": "r05/folha-geometria.png",
+  "hash_blend": "3b64322b925e772af921e8edfbfe573cee9a32454cf53a3378c4ceb11e21f9df",
+  "entrada_sha256": "a675d8325ef34458d93baef7baaf0704c48e9dcdf42b741a7beca9c7685ca329",
+  "metodo": "autoria Python/Blender CLI; não utiliza geometria do comparativo cubificado",
+  "estagio": "3 de 3",
+  "base": "preguiça gigante",
+  "arquetipo": "rogue",
+  "triangulos_visiveis": 19516,
+  "mestre_triangulos": 140512,
+  "continuidade_corporal": {
+    "componentes": 1,
+    "bordas_abertas": 0,
+    "reabertura_erros": []
+  },
+  "mcp": {
+    "get_addon_status": "falhou por conexão indisponível",
+    "look_render": "falhou por conexão indisponível",
+    "chamadas_de_autoria": 0,
+    "conferencia_ao_vivo": "pendente"
+  },
+  "revisoes": {
+    "r01": "falha da API de triangulação; nenhum modelo salvo",
+    "r02": "primeira prévia; corrigidos olhos salientes e faixas escondidas",
+    "r03": "redução a ~20 mil triângulos e cores de estudo",
+    "r04": "gate detectou dois artefatos de voxel de 8 vértices; nenhum modelo entregue",
+    "r05": "juba facial/manto/nariz revistos; artefatos de 1–2 voxels removidos com limites geométricos e registro"
+  },
+  "auditoria_checkpoint": "auditoria/06-fechamento.json",
+  "consumo_ate_checkpoint": {
+    "input_tokens": 5702156,
+    "cached_input_tokens": 5672832,
+    "output_tokens": 47721,
+    "reasoning_output_tokens": 25611,
+    "total_tokens": 5749877,
+    "uncached_input_tokens": 29324
+  },
+  "consumo_limite_percentual_atribuivel": null,
+  "custo_monetario": null,
+  "limites": [
+    "conferência MCP ainda não realizada",
+    "cores de estudo por vértice/procedural; UV e bake finais pendentes",
+    "cópia reduzida por decimação; não é retopologia pronta para deformação",
+    "rig/animação e importação no Roblox não realizados",
+    "aprovação artística não presumida",
+    "checkpoint exclui os tokens produzidos depois da última medição"
+  ]
+}

@@ -280,7 +280,7 @@ Pedido explícito com quatro referências da preguiça gigante rogue; decisão 0
 Não substitui o fluxo cubificado nem flexibiliza seus validadores.
 
 - [x] O.1 Preservar as referências, estágio/categoria e divergências; capturar baseline e checkpoints de consumo desde a mensagem do pedido.
-- [ ] O.2 Construir mestre orgânico conectado e cópia reduzida por Python CLI; preservar arquivos anteriores, renderizar a folha e conferir a reabertura. [[2026-11-05-ensaio-organico-fera]].
+- [x] O.2 Construir mestre orgânico conectado e cópia reduzida por Python CLI; preservar arquivos anteriores, renderizar a folha e conferir a reabertura. [[2026-11-05-ensaio-organico-fera]].
 - [ ] O.3 Conferir pelo MCP quando a conexão estiver ativa e obter avaliação/aprovação da geometria.
 - [ ] O.4 Após aprovação: retopologia para deformação, UV/pintura/bake e rig no escopo solicitado.
 

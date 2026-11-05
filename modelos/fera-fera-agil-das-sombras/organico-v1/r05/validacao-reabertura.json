@@ -1,0 +1,14 @@
+{
+  "arquivo": "C:\\Users\\enzoc\\dev\\pipeline-criaturas\\modelos\\fera-fera-agil-das-sombras\\organico-v1\\r05\\fera-sombras-organica.blend",
+  "reaberto_em_processo_limpo": true,
+  "corpo_componentes": [
+    4236
+  ],
+  "corpo_bordas_abertas": 0,
+  "corpo_arestas_nao_manifold": 0,
+  "volume_corpo_positivo": true,
+  "maior_malha_triangulos": 8500,
+  "mestre_preservado": true,
+  "erros": [],
+  "validacao": "arquivo/Blender; não equivale a importação Roblox ou aprovação artística"
+}

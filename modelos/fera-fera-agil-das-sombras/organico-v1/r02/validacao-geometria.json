@@ -1,0 +1,27 @@
+{
+  "corpo_componentes": [
+    5244
+  ],
+  "corpo_arestas_abertas": 0,
+  "corpo_arestas_nao_manifold": 0,
+  "triangulos_visiveis": 29700,
+  "malhas_visiveis": 39,
+  "coordenadas_finitas": true,
+  "garras_mao": 6,
+  "garras_pe": 6,
+  "blender": "5.1.1",
+  "rig": "não criado; retopologia e pesos pendentes",
+  "UV": "pintura UV e bake pendentes; cores por vértice/procedurais de estudo",
+  "arquivo_pronto_roblox": false,
+  "aprovacao_artistica": false,
+  "mcp": "autoria não usa MCP; conferência dependerá da conexão",
+  "mestre_componentes": [
+    69742
+  ],
+  "mestre_vertices": 69742,
+  "mestre_triangulos": 139496,
+  "corpo_preview_componentes": [
+    5244
+  ],
+  "erros": []
+}

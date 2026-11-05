@@ -1,0 +1,10 @@
+{
+  "duracao_segundos": 5.889831200009212,
+  "blender": "5.1.1",
+  "script_sha256": "2893f39e5ce23f237b57dd7562c83833fbae22cb43b44988186fc8f3950c4ed6",
+  "arquivo": "C:\\Users\\enzoc\\dev\\pipeline-criaturas\\modelos\\fera-fera-agil-das-sombras\\organico-v1\\r03\\fera-sombras-organica.blend",
+  "arquivo_sha256": "28be51216f64ca97e200d1b356475dbee6fba7c96d9e66ac8ebd08661d93c861",
+  "referencias_sha256": "a675d8325ef34458d93baef7baaf0704c48e9dcdf42b741a7beca9c7685ca329",
+  "metodo": "Python CLI; MCP não executou autoria",
+  "revisao": "r03"
+}
