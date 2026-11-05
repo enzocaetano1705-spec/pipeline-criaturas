@@ -279,4 +279,6 @@ R$ 50 uma única vez, sem gasto mensal novo; Gemini e chat já disponíveis.
 
 - [x] A.1 Estudar seletivamente Miscrits, conferir custos e hardware, preparar briefing/prompts de criador/revisor/arte/vistas e critérios de revisão; validar preparação local sem cobrança. Kit em `docs/direcao-arte/`.
 - [ ] A.2 Curar referências favoritas e aprovar guia visual; executar piloto artístico com os acessos existentes, registrando falhas, revisões e preferência do usuário.
+  - [x] A.2.1 Analisar sete escolhas por função/estágio, registrar guia v0.1 e três direções de monge + tartaruga com arquétipo rogue obrigatório; preservar formas/raridade em aberto e validar briefing exploratório.
+  - [ ] A.2.2 Escolher direção, confirmar raridade/quantidade de formas e produzir/revisar arte canônica e vistas com aprovação do usuário.
 - [ ] A.3 Só se o piloto mostrar necessidade: avaliar LoRA com dataset permitido/curado e orçamento completo, sem assinatura ou compra automática.

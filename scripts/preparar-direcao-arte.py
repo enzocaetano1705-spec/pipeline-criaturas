@@ -20,11 +20,16 @@ def main():
     args = parser.parse_args()
     try:
         data = json.loads(args.briefing.read_text(encoding="utf-8"))
-        for key in ("versao", "id", "conceitos", "numero_estagios", "orcamento", "limites_piloto"):
+        for key in ("versao", "id", "conceitos", "arquetipo_combate", "numero_estagios", "orcamento", "limites_piloto"):
             if key not in data:
                 raise ValueError(f"briefing sem {key}")
-        if data["versao"] != 1 or not isinstance(data["numero_estagios"], int) or not 1 <= data["numero_estagios"] <= 5:
+        stages = data["numero_estagios"]
+        if data["versao"] != 1 or (stages is not None and (type(stages) is not int or not 1 <= stages <= 5)):
             raise ValueError("versão ou quantidade de estágios inválida")
+        if stages is None and any(data.get("aprovacoes", {}).get(k) for k in ("arte", "vistas")):
+            raise ValueError("quantidade de estágios deve estar definida antes de aprovar arte/vistas")
+        if not isinstance(data["arquetipo_combate"], str) or not data["arquetipo_combate"].strip():
+            raise ValueError("informe o arquétipo de combate no briefing")
         if not isinstance(data["conceitos"], list) or len(data["conceitos"]) < 2 or any(not isinstance(c, str) or not c.strip() for c in data["conceitos"]):
             raise ValueError("informe pelo menos dois conceitos em texto")
         json.dumps(data, allow_nan=False)

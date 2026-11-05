@@ -11,6 +11,8 @@ incorporada, evolução, silhueta/proporção, paleta/acabamento, personalidade,
 viabilidade de tradução e consistência de vistas quando houver. Notas 0–4 com
 justificativa e “não avaliado” para evidência ausente. Nota alta não supera uma
 contradição anatômica ou a reprodução da solução específica de uma referência.
+Conferir também o arquétipo de combate: ele precisa aparecer em comportamento,
+gesto/movimento e hipótese de kit, sem atribuir mecânicas ainda não aprovadas.
 
 Devolva:
 

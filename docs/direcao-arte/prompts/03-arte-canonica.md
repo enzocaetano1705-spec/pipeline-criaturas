@@ -3,6 +3,8 @@
 Execute somente depois da escolha da direção, plano da linhagem e referências
 de estilo. Se ainda não houver essa escolha, devolver as pendências; o briefing
 inicial sozinho não autoriza inventar uma direção vencedora.
+Confirmar quantidade de formas pela raridade antes de desenhar a família; não
+preencher um valor nulo como três ou quatro por conveniência.
 
 {{BRIEFING_JSON}}
 

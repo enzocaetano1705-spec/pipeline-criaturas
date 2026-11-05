@@ -14,6 +14,7 @@ heurísticas do piloto, não certificação de qualidade. A aprovação é do us
 | Silhueta/proporção | leitura em thumbnail, corpo/rosto/característica dominante distintos e coerentes |
 | Paleta/acabamento | papéis de cor, contraste de valores, hierarquia de detalhe e compatibilidade com o guia escolhido |
 | Personalidade/movimento | comportamento observável e gesto/locomoção que diferenciem a espécie |
+| Arquétipo de combate | mecanismo legível de atuação, assinatura de movimento e limitações coerentes; separar proposta de kit já aprovado |
 | Viabilidade de tradução | partes/volumes distinguíveis, juntas e apêndices compreensíveis sem forçar aparência de cubos no conceito |
 | Consistência de vistas | contagem, implantações, lados, proporções, espessuras e marcas se conservam ao girar |
 

@@ -59,8 +59,10 @@ ou quando houver impasse, em vez de gerar indefinidamente.
    por função e registre o que não quer repetir.
 2. Escrever três propostas de texto para um par de conceitos. Elas devem diferir
    na ideia central, no arco e na silhueta, não só em nomes/cores. Escolher uma.
-3. Planejar todos os estágios antes da primeira arte. Default deste jogo: três;
-   os quatro estágios da amostra Miscrits são referência de método, não obrigação.
+3. Planejar todos os estágios antes da primeira arte. Neste jogo, a raridade
+   determina formas: Comum 1, Raro 2, Épico em diante 3. Quantidade ainda aberta
+   pode ser `null` na exploração textual; confirmar antes da arte. Os quatro
+   estágios das referências Miscrits não são obrigação.
 4. Fazer a arte canônica dos estágios. Usar o estágio inicial e final para resolver
    a promessa visual; desenhar o estágio intermediário como transformação real.
    Manter as descrições de todos disponíveis e corrigir contradições.
@@ -91,6 +93,9 @@ um experimento futuro, não meta de gasto nesta etapa.
 - Paleta por papéis e proporções, contraste de valores e hierarquia de detalhes.
   Paleta distinta não exige que nenhuma cor apareça em outra espécie.
 - Assinatura de movimento: maneira de respirar, andar, reagir e atacar.
+- Arquétipo de combate obrigatório no briefing; mecanismo e limitações que se
+  expressem no movimento. Animal/tema não fixam classe, e nenhuma hipótese de
+  kit vira automaticamente regra do jogo.
 - Lista do que evitar copiar e do que permanece incerto.
 
 Manter um catálogo **dos originais próprios** com animal/plano de corpo, bioma,
@@ -180,6 +185,9 @@ O script só prepara arquivos e hashes, sem instalação, rede ou cobrança.
 Fontes e observações em [estudo Miscrits](estudo-miscrits.md), critérios em
 [revisão](criterios-revisao.md). O kit é uma primeira versão de método; nenhuma
 imagem nova ou linhagem original foi aprovada nesta sessão.
+
+Curadoria posterior: [guia visual v0.1](guia-visual-v0.1.md) a partir das sete
+escolhas do usuário; piloto atual [monge + tartaruga + rogue](pilotos/tartaruga-monge-rogue/propostas.md).
 
 ## Fontes técnicas consultadas
 

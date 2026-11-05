@@ -35,3 +35,11 @@ originalidade, custo e preservação do personagem.
 automatização de provedores, treino e qualidade artística não foram validados.
 Manter até duas revisões por etapa e levar impasses ao usuário. Reversão: retirar
 o preparador e kit; nenhum backend depende deles. Ver `docs/direcao-arte/`.
+
+**Complemento em 05/11:** usuário confirmou monge + tartaruga com arquétipo
+rogue e forneceu sete referências por função. O arquétipo entra como campo
+obrigatório no briefing e critério de revisão. A quantidade pode ficar nula na
+exploração textual e deve ser definida antes de aprovação de arte/vistas.
+Regra já confirmada no jogo, consultada somente para leitura: Comum 1 forma,
+Raro 2, Épico em diante 3. Isso corrige a suposição inicial de três por padrão;
+não atribui raridade ao piloto nem muda a regra do consumidor.

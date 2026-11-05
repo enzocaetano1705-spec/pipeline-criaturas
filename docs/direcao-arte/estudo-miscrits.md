@@ -5,6 +5,10 @@ status: amostra seletiva; hipóteses para curadoria do usuário
 
 # Estudo inicial de linguagem e evolução
 
+Após este estudo exploratório, o usuário selecionou sete referências por função.
+A leitura atual está no [guia v0.1](guia-visual-v0.1.md); esses exemplos iniciais
+não substituem a curadoria explícita do usuário.
+
 Foram conferidas artes dos quatro estágios de quatro linhagens: o exemplo do
 usuário e três casos estruturalmente diferentes. Os originais, folhas de até
 768 px e cache de consulta estão na biblioteca externa:

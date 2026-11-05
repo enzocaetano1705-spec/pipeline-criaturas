@@ -7,12 +7,18 @@ do usuário, inspiradas pelas qualidades selecionadas de Miscrits.
 
 {{BRIEFING_JSON}}
 
+O arquétipo de combate é uma entrada obrigatória e precisa influenciar a proposta
+desde o começo. Tema/animal não definem automaticamente classe. Se a quantidade
+de estágios estiver nula, explorar progressão conceitual sem fixar formas;
+raridade e quantidade serão confirmadas antes da arte da família.
+
 Primeira entrega: três propostas curtas e estruturalmente diferentes, com até
 200 palavras cada. Para cada uma:
 
 - tese, comportamento e papel no mundo;
 - como ambos os conceitos se tornam anatomia/gesto/poder e não só figurino;
 - limitação ou contradição e uma assinatura de movimento;
+- mecanismo do arquétipo de combate e uma limitação que evite acumular todas as vantagens;
 - arco dos estágios solicitado no briefing, com causa da transformação;
 - duas ou três âncoras de família e mudança dominante em cada estágio;
 - direção de silhueta/paleta e diferenças concretas da referência mais próxima.

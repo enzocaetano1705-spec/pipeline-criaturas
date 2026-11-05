@@ -1,5 +1,10 @@
 # Exemplo de raciocínio — monge e tartaruga
 
+Exercício anterior à confirmação do arquétipo **rogue**. O briefing atual e as
+novas direções estão em [tartaruga-monge-rogue](pilotos/tartaruga-monge-rogue/propostas.md).
+Este texto não substitui esse requisito de combate. As três linhas abaixo
+ilustram um arco, sem definir quantidade de formas ou raridade para o jogo.
+
 Exercício textual original e provisório, não criatura aprovada ou prova de
 qualidade do pipeline. A combinação já existe na referência 769; este exemplo
 explora outra solução para demonstrar o método, sem gerar ou modelar arte.

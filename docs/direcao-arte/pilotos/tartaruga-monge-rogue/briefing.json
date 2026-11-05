@@ -1,0 +1,35 @@
+{
+  "versao": 1,
+  "id": "tartaruga-monge-rogue",
+  "status": "tres-direcoes-textuais-para-escolha",
+  "conceitos": ["monge", "tartaruga"],
+  "arquetipo_combate": "rogue / ladino",
+  "contraste_central": "serenidade e aparente peso de uma tartaruga monge versus velocidade, reposicionamento e precisão de um rogue",
+  "numero_estagios": null,
+  "raridade": null,
+  "politica_formas": "A definir após escolha/raridade. Comum: 1; Raro: 2; Épico/Lendário/Mítico/Ultra: 3. Não impor quatro estágios das referências.",
+  "categoria": {"plano_corpo": "a confirmar com arte", "nicho": "a confirmar com arte"},
+  "guia_visual": "docs/direcao-arte/guia-visual-v0.1.md",
+  "preferencias": [
+    {"id": 619, "aspectos": ["conceito", "cores", "evolucao"]},
+    {"id": 721, "evo_no_link": 0, "aspectos": ["cores"]},
+    {"id": 594, "evo_no_link": 3, "aspectos": ["conceito"]},
+    {"id": 214, "aspectos": ["conceito", "evolucao"]},
+    {"id": 613, "evo_no_link": 0, "aspectos": ["evolucao"]},
+    {"id": 642, "evo_no_link": 0, "aspectos": ["cores", "conceito"]},
+    {"id": 433, "aspectos": ["conceito"]}
+  ],
+  "restricoes": [
+    "Os três eixos precisam influenciar forma, comportamento ou movimento.",
+    "Não fazer apenas Turtudi com máscara, roupa ou punhais.",
+    "Evitar bastão de jade, dragões e arco específico da referência 769.",
+    "Não maximizar defesa, velocidade e dano sem limitações de jogo.",
+    "Não assumir invisibilidade, teleporte, veneno ou furtividade permanente como requisitos já aprovados.",
+    "Mecanismo de velocidade precisa de linguagem visual e animação legível.",
+    "Raridade, quantidade de formas, categoria e direção vencedora permanecem abertas."
+  ],
+  "geradores_disponiveis": ["Gemini", "este chat"],
+  "orcamento": {"brl_maximo_unico": 50, "brl_mensal_novo": 0, "gasto_autorizado_agora": 0},
+  "limites_piloto": {"propostas_texto": 3, "revisoes_por_etapa": 2, "geracao_paga_automatica": false},
+  "aprovacoes": {"direcao": false, "arte": false, "vistas": false}
+}
