@@ -1,0 +1,13 @@
+{
+  "observado": "início do ensaio; limites globais da conta, não atribuíveis exclusivamente ao trabalho",
+  "primary": {
+    "usedPercent": 46,
+    "windowDurationMins": 300,
+    "resetsAt": 1793924951
+  },
+  "secondary": {
+    "usedPercent": 54,
+    "windowDurationMins": 10080,
+    "resetsAt": 1794429961
+  }
+}

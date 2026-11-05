@@ -1,0 +1,13 @@
+{
+  "observacao": "Limites globais; variação pode incluir outras tarefas e não é atribuída exclusivamente ao ensaio",
+  "primary": {
+    "usedPercent": 70,
+    "windowDurationMins": 300,
+    "resetsAt": 1793924949
+  },
+  "secondary": {
+    "usedPercent": 58,
+    "windowDurationMins": 10080,
+    "resetsAt": 1794429960
+  }
+}

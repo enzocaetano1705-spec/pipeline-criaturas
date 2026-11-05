@@ -1,0 +1,87 @@
+{
+  "nome": "Fera das Sombras — ensaio orgânico",
+  "estagio": "3 de 3",
+  "categoria": {
+    "plano": "bípede com cauda",
+    "nicho": "outros"
+  },
+  "base": "preguiça gigante",
+  "arquetipo": "rogue",
+  "referencias": {
+    "conceito": {
+      "origem": "C:\\Users\\enzoc\\Downloads\\Fera-fera Ágil das Sombras.png",
+      "arquivo": "conceito.png",
+      "sha256": "baa929fdfc84418ad325c49e14676acb4b33f7dabbca3b943805330d7fb6231d",
+      "tamanho": [
+        1536,
+        1024
+      ]
+    },
+    "lado": {
+      "origem": "C:\\Users\\enzoc\\Downloads\\Rogue Tamanduá com Cauda Imponente.png",
+      "arquivo": "lado.png",
+      "sha256": "8066a4fabf05326cc3aff045a872abe8f66297a1ffae1cf54868b9254becde50",
+      "tamanho": [
+        1254,
+        1254
+      ]
+    },
+    "costas": {
+      "origem": "C:\\Users\\enzoc\\Downloads\\Criatura Feral com Manto Vinho de Costas.png",
+      "arquivo": "costas.png",
+      "sha256": "b9f2664ddce9b7b084645cbe66ba0ba751d8b456ee44907f49c8aaae0ed8abdd",
+      "tamanho": [
+        1254,
+        1254
+      ]
+    },
+    "frente": {
+      "origem": "C:\\Users\\enzoc\\Downloads\\Criatura Preguiça Guerreira em Pose Agressiva.png",
+      "arquivo": "frente.png",
+      "sha256": "3b7906d421adb9159c832dc89f4673dd41bc1ded960d3b53bb2c8d6f9473b4b9",
+      "tamanho": [
+        1254,
+        1254
+      ]
+    }
+  },
+  "precedencia": {
+    "frente": "proporções/rosto/distribuição lateral",
+    "lado": "profundidade, inclinação do tronco, focinho e cauda",
+    "costas": "manto, bolsa, marcas dorsais",
+    "conceito": "identidade geral e hierarquia das formas"
+  },
+  "divergencias": [
+    "referências geradas não são projeções ortográficas perfeitamente concordantes",
+    "pose frontal abaixada e perfil mais alto: reconstruir repouso levemente agachado",
+    "comprimento das garras varia: preservar três garras longas por mão",
+    "tecido é um manto com uma ponta recortada longa, não asa",
+    "nomes dos arquivos não mudam a base confirmada de preguiça gigante"
+  ],
+  "identidade": [
+    "focinho curto projetado e nariz escuro",
+    "olhos âmbar estreitos e máscara creme/marrom",
+    "juba voltada para trás sem orelhas inventadas",
+    "braços dominantes, três dedos/garras longas claras por mão",
+    "pernas compactas fletidas e três unhas escuras por pé",
+    "cauda grande peluda, larga no meio, ponta afinada e marca creme",
+    "manto vinho, broche/fivela dourados, faixas e bolsa na lateral esquerda"
+  ],
+  "metodo": "escultura procedural por volumes/lofts próprios fundidos, mestre preservado, cópia reduzida para apresentação",
+  "construcao": "somente Python executado por CLI; MCP só leitura/conferência",
+  "destino": "Roblox; importação/rig/pintura final fora desta revisão de geometria",
+  "eixos_blender": {
+    "cima": "+Z",
+    "frente": "-Y",
+    "direita": "+X"
+  },
+  "altura_tecnica_aproximada": 3.8,
+  "aprovacoes": {
+    "categoria": true,
+    "estagio": true,
+    "imagens_entrada": true,
+    "geometria": false,
+    "pintura_final": false,
+    "rig": false
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "etapa": "01-primeira-autoria",
+  "instante_utc": "2026-11-05T20:35:17.146098+00:00",
+  "inicio_pedido": {
+    "timestamp": "2026-11-05T20:25:55.324Z",
+    "acumulado": {
+      "input_tokens": 46322720,
+      "cached_input_tokens": 45719168,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 277368,
+      "reasoning_output_tokens": 113160,
+      "total_tokens": 46600088
+    }
+  },
+  "ultimo_evento_uso_utc": "2026-11-05T20:35:08.830Z",
+  "acumulado_atual": {
+    "input_tokens": 47704372,
+    "cached_input_tokens": 47078528,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 296703,
+    "reasoning_output_tokens": 120539,
+    "total_tokens": 48001075
+  },
+  "consumo_desde_pedido": {
+    "input_tokens": 1381652,
+    "cached_input_tokens": 1359360,
+    "output_tokens": 19335,
+    "reasoning_output_tokens": 7379,
+    "total_tokens": 1400987,
+    "uncached_input_tokens": 22292
+  },
+  "preco": null,
+  "percentual_assinatura_atribuivel": null,
+  "limites": [
+    "contador atualizado apenas até o último evento disponível",
+    "cache está incluído na entrada; raciocínio está incluído na saída",
+    "inclui preparação/revisão/documentação deste pedido",
+    "sem divisão artificial por MCP ou tempo de subprocesso"
+  ]
+}

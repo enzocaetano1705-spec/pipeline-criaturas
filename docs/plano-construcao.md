@@ -274,6 +274,16 @@ o padrão Blockbench/Minecraft. Decisão [[0009-backend-blender-opcional]].
   - [x] Receber a preguiça gigante rogue F3 e entregar primeiras geometrias Blockbench/Blender com render equivalente para revisão; [[2026-11-05-comparativo-fera-sombras]].
   - [ ] Aprovação da geometria comparativa, pintura/rig e ensaio posterior no motor, se solicitado.
 
+## Ensaio autorizado — Blender orgânico por código (05/11/2026)
+
+Pedido explícito com quatro referências da preguiça gigante rogue; decisão 0011.
+Não substitui o fluxo cubificado nem flexibiliza seus validadores.
+
+- [x] O.1 Preservar as referências, estágio/categoria e divergências; capturar baseline e checkpoints de consumo desde a mensagem do pedido.
+- [ ] O.2 Construir mestre orgânico conectado e cópia reduzida por Python CLI; preservar arquivos anteriores, renderizar a folha e conferir a reabertura. [[2026-11-05-ensaio-organico-fera]].
+- [ ] O.3 Conferir pelo MCP quando a conexão estiver ativa e obter avaliação/aprovação da geometria.
+- [ ] O.4 Após aprovação: retopologia para deformação, UV/pintura/bake e rig no escopo solicitado.
+
 ## Exploração autorizada — Criação de conceitos e direção de arte (05/11/2026)
 
 Etapa anterior à tradução 3D, sem alterar contratos dos backends. Teto informado:
