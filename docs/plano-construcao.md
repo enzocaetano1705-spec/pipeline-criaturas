@@ -281,4 +281,6 @@ R$ 50 uma única vez, sem gasto mensal novo; Gemini e chat já disponíveis.
 - [ ] A.2 Curar referências favoritas e aprovar guia visual; executar piloto artístico com os acessos existentes, registrando falhas, revisões e preferência do usuário.
   - [x] A.2.1 Analisar sete escolhas por função/estágio, registrar guia v0.1 e três direções de monge + tartaruga com arquétipo rogue obrigatório; preservar formas/raridade em aberto e validar briefing exploratório.
   - [ ] A.2.2 Escolher direção, confirmar raridade/quantidade de formas e produzir/revisar arte canônica e vistas com aprovação do usuário.
+    - [x] A.2.2a Confirmar Sutruga Mítico/três formas e especial final inspirado no Ataque Alfa; planejar família e gerar/revisar primeiro conceito F3 em versões preservadas, com arte pendente de avaliação humana.
+    - [ ] A.2.2b Aprovar/refinar F3, desenvolver F1/F2, revisar família e produzir vistas aprovadas.
 - [ ] A.3 Só se o piloto mostrar necessidade: avaliar LoRA com dataset permitido/curado e orçamento completo, sem assinatura ou compra automática.

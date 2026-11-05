@@ -63,15 +63,17 @@ Rogue/Ladino é requisito de combate confirmado pelo usuário. Explorar contrast
 entre serenidade/defesa da tartaruga e arrancadas, reposicionamento e precisão.
 Monge precisa aparecer na postura, disciplina, ritual ou comportamento; tartaruga,
 na cabeça, casco, implantação de membros e movimento. Não depender só de capuz,
-máscara, punhais ou bastão. Movimento rápido não exige invisibilidade/teleporte.
+máscara, punhais ou bastão. Movimento rápido não exige invisibilidade/teleporte
+em todo rogue. **Atualização do piloto:** o usuário escolheu Sutruga e autorizou
+o especial final inspirado no Ataque Alfa do Master Yi, com desaparecimento breve.
 
 O corpo pode sugerir robustez sem virar automaticamente um tanque. Qualquer
 combinação de proteção, velocidade e dano precisa de janelas/limitações a discutir;
 nenhum número de balanceamento ou kit foi implementado. O jogo ainda não tem uma
 definição fechada de especializações de Ladino.
 
-Quantidade de formas **não confirmada**: no jogo, Comum tem 1, Raro 2 e Épico
-em diante 3. Não importar quatro estágios das referências nem impor três a toda
-linhagem. A raridade deste piloto permanece aberta; marcos narrativos podem ser
-estudados antes de fixar as formas. Fonte consultada somente para leitura:
+Quantidade de formas: no jogo, Comum tem 1, Raro 2 e Épico em diante 3. Não
+importar quatro estágios das referências nem impor três a toda linhagem.
+**Atualização:** usuário confirmou Sutruga **Mítico**, portanto **três formas**.
+Fonte consultada somente para leitura:
 `../jogo-criaturas/docs/decisoes/0022-raridades-formas-e-arquetipos.md`.

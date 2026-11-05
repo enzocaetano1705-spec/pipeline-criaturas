@@ -1,5 +1,10 @@
 # Três direções — tartaruga, monge e rogue
 
+**Atualização:** o usuário escolheu **Sutruga**, confirmou **Mítico / três formas**
+e especial final inspirado no Ataque Alfa do Master Yi. Abaixo permanece o registro
+da exploração anterior. Estado atual em [ficha Sutruga](ficha-sutruga-v1.md) e
+[revisão da arte F3](revisao-arte-f3.md); arte ainda não aprovada.
+
 Propostas exploratórias, nomes de trabalho. Nenhuma vencedora/arte aprovada.
 Progressão é apresentada como transformação de ideia, não quantidade fixa de
 formas; a raridade ainda não foi escolhida. As limitações abaixo são hipóteses

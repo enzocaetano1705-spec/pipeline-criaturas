@@ -1,0 +1,103 @@
+{
+  "versao": 1,
+  "modo": "imagegen nativo; generate + edit",
+  "ferramenta": "image_gen.imagegen",
+  "classificacao": "stylized-concept",
+  "data": "2026-11-05",
+  "chamadas": 2,
+  "modelo": "não exposto pela ferramenta",
+  "seed": null,
+  "consumo_harness": null,
+  "custo_monetario_informado": null,
+  "aprovacao_usuario_arte": false,
+  "raridade_confirmada": "Mítico",
+  "formas_confirmadas": 3,
+  "forma_desenhada": "final/F3",
+  "imagens": {
+    "f3-conceito-v1-768.png": {
+      "sha256": "64ff5aa014a9092a23713bceedf3effaf02e4ff4be3139b42db99f3239c9749a",
+      "dimensoes": [
+        768,
+        512
+      ]
+    },
+    "f3-conceito-v1.png": {
+      "sha256": "3e967cbdf4f7952ba68de81a29a6936a16ff2256a4607dc9f4c4b3ce62f477e8",
+      "dimensoes": [
+        1536,
+        1024
+      ]
+    },
+    "f3-conceito-v2-768.png": {
+      "sha256": "791a940eb0b1a75650d36646b415bbd69dd7095149b79704c8092fec8e064ebc",
+      "dimensoes": [
+        768,
+        512
+      ]
+    },
+    "f3-conceito-v2.png": {
+      "sha256": "c785fec69f45fee09585184226df6a09ddddc90b7e86506553429ac692715504",
+      "dimensoes": [
+        1536,
+        1024
+      ]
+    }
+  },
+  "prompts": {
+    "prompt-arte-f3-v1.txt": "de756b2000bb6953d7fee753da115807bacf95d9972e4e3dc6945cfdcaefc45d",
+    "prompt-arte-f3-v2.txt": "d5207f88e345ca8310b49d1bf8316fa3681198be6145896188a5627778fc2957"
+  },
+  "entrada_sha256": "2568e1434a7bc6a466cdf621ddaa35d28a2803195fd7ce0444ffa558abd1bd09",
+  "fonte_referencia_habilidade": "https://ddragon.leagueoflegends.com/cdn/16.22.1/data/pt_BR/champion/MasterYi.json",
+  "revisao": "do próprio harness; sem revisor independente nesta etapa",
+  "limites": [
+    "conceito F3 exploratório; F1/F2 ainda sem arte",
+    "anatomia/categoria/vistas e modelagem não aprovadas",
+    "atributos e regras exatas do especial não implementados no jogo"
+  ],
+  "paleta_medida": {
+    "metodo": "quantização median-cut de 10 cores, excluindo fundo claro aproximadamente por RGB; inclui sombras e não define cores por parte",
+    "cores": [
+      {
+        "hex": "#24423f",
+        "fracao": 0.1429
+      },
+      {
+        "hex": "#30534c",
+        "fracao": 0.1382
+      },
+      {
+        "hex": "#40695f",
+        "fracao": 0.1254
+      },
+      {
+        "hex": "#172322",
+        "fracao": 0.113
+      },
+      {
+        "hex": "#b07952",
+        "fracao": 0.1001
+      },
+      {
+        "hex": "#994831",
+        "fracao": 0.0903
+      },
+      {
+        "hex": "#d3af81",
+        "fracao": 0.0865
+      },
+      {
+        "hex": "#af957a",
+        "fracao": 0.0827
+      },
+      {
+        "hex": "#e4c297",
+        "fracao": 0.0613
+      },
+      {
+        "hex": "#607566",
+        "fracao": 0.0595
+      }
+    ]
+  }
+}

@@ -188,6 +188,9 @@ imagem nova ou linhagem original foi aprovada nesta sessão.
 
 Curadoria posterior: [guia visual v0.1](guia-visual-v0.1.md) a partir das sete
 escolhas do usuário; piloto atual [monge + tartaruga + rogue](pilotos/tartaruga-monge-rogue/propostas.md).
+Direção escolhida: [Sutruga Mítico/três formas](pilotos/tartaruga-monge-rogue/ficha-sutruga-v1.md),
+com primeiro conceito F3 em [revisão visual](pilotos/tartaruga-monge-rogue/revisao-arte-f3.md).
+Arte ainda não aprovada; a habilidade final tem referência explícita no Ataque Alfa.
 
 ## Fontes técnicas consultadas
 

@@ -1,13 +1,22 @@
 {
   "versao": 1,
   "id": "tartaruga-monge-rogue",
-  "status": "tres-direcoes-textuais-para-escolha",
+  "status": "sutruga-escolhida-ficha-e-arte-em-desenvolvimento",
+  "direcao_escolhida": "Sutruga — o Voto do Último Passo",
   "conceitos": ["monge", "tartaruga"],
   "arquetipo_combate": "rogue / ladino",
   "contraste_central": "serenidade e aparente peso de uma tartaruga monge versus velocidade, reposicionamento e precisão de um rogue",
-  "numero_estagios": null,
-  "raridade": null,
-  "politica_formas": "A definir após escolha/raridade. Comum: 1; Raro: 2; Épico/Lendário/Mítico/Ultra: 3. Não impor quatro estágios das referências.",
+  "numero_estagios": 3,
+  "raridade": "Mítico",
+  "politica_formas": "Usuário confirmou Mítico: três formas totais. Arte, anatomia final e categoria ainda requerem revisão.",
+  "habilidade_final_confirmada": {
+    "referencia": "Ataque Alfa/Alpha do Master Yi, League of Legends",
+    "fonte_oficial": "https://www.leagueoflegends.com/pt-br/champions/masteryi/",
+    "leitura": "desaparecimento breve/inalvejabilidade durante sequência muito rápida de golpes entre alvos e reaparição ao terminar",
+    "disponibilidade": "confirmada pelo usuário pelo menos na forma final; versões anteriores são propostas",
+    "nome_de_trabalho": "Voto do Instante",
+    "balanceamento": "dano, alcance, número de impactos/alvos, duração, recarga, repetição em alvo único e regras de saída ainda em aberto"
+  },
   "categoria": {"plano_corpo": "a confirmar com arte", "nicho": "a confirmar com arte"},
   "guia_visual": "docs/direcao-arte/guia-visual-v0.1.md",
   "preferencias": [
@@ -24,12 +33,12 @@
     "Não fazer apenas Turtudi com máscara, roupa ou punhais.",
     "Evitar bastão de jade, dragões e arco específico da referência 769.",
     "Não maximizar defesa, velocidade e dano sem limitações de jogo.",
-    "Não assumir invisibilidade, teleporte, veneno ou furtividade permanente como requisitos já aprovados.",
+    "O desaparecimento/inalvejabilidade breve do golpe final está autorizado como referência do Ataque Alfa. Não estender isso a invisibilidade, intangibilidade ou furtividade permanentes.",
     "Mecanismo de velocidade precisa de linguagem visual e animação legível.",
-    "Raridade, quantidade de formas, categoria e direção vencedora permanecem abertas."
+    "Direção Sutruga, raridade Mítico e três formas estão confirmadas; categoria, nomes por forma, anatomia/arte finais e valores de combate continuam abertos."
   ],
   "geradores_disponiveis": ["Gemini", "este chat"],
   "orcamento": {"brl_maximo_unico": 50, "brl_mensal_novo": 0, "gasto_autorizado_agora": 0},
   "limites_piloto": {"propostas_texto": 3, "revisoes_por_etapa": 2, "geracao_paga_automatica": false},
-  "aprovacoes": {"direcao": false, "arte": false, "vistas": false}
+  "aprovacoes": {"direcao": true, "arte": false, "vistas": false}
 }
