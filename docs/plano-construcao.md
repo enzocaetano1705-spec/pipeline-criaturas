@@ -271,3 +271,12 @@ o padrão Blockbench/Minecraft. Decisão [[0009-backend-blender-opcional]].
 - [x] B.2 Construir backend em lote com fixture própria, atlas/máscaras/duas variantes, rig rígido, locators, idle/walk/run/ataque e prévias identificadas.
 - [x] B.3 Validar GLB e reimportação, reconstrução e integridade, regressão Blockbench; registrar resultados e limitações para outro harness. [[2026-11-04-backend-blender]]; evidência em `docs/validacao/blender-v1/`.
 - [ ] B.4 Após referências do usuário: categoria/folha aprovadas, primeira criatura comparativa e ensaio equivalente no Roblox. Fora do escopo de construção deste chat.
+
+## Exploração autorizada — Criação de conceitos e direção de arte (05/11/2026)
+
+Etapa anterior à tradução 3D, sem alterar contratos dos backends. Teto informado:
+R$ 50 uma única vez, sem gasto mensal novo; Gemini e chat já disponíveis.
+
+- [x] A.1 Estudar seletivamente Miscrits, conferir custos e hardware, preparar briefing/prompts de criador/revisor/arte/vistas e critérios de revisão; validar preparação local sem cobrança. Kit em `docs/direcao-arte/`.
+- [ ] A.2 Curar referências favoritas e aprovar guia visual; executar piloto artístico com os acessos existentes, registrando falhas, revisões e preferência do usuário.
+- [ ] A.3 Só se o piloto mostrar necessidade: avaliar LoRA com dataset permitido/curado e orçamento completo, sem assinatura ou compra automática.

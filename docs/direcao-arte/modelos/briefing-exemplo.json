@@ -1,0 +1,26 @@
+{
+  "versao": 1,
+  "id": "estudo-monge-tartaruga",
+  "status": "exploracao-nao-aprovada",
+  "conceitos": ["monge", "tartaruga"],
+  "universo": "criaturas originais do jogo; linguagem visual a definir com curadoria",
+  "numero_estagios": 3,
+  "categoria": {"plano_corpo": "a confirmar após arte", "nicho": "a confirmar após arte"},
+  "tom": "expressivo, carismático, com história ligada a comportamento e evolução",
+  "solicitacao": "Três direções de conceito em texto; ainda não gerar arte nem escolher uma automaticamente.",
+  "restricoes": [
+    "Os dois conceitos precisam influenciar forma ou comportamento, sem depender só de roupa ou objeto.",
+    "As formas devem ser adequadas para posterior tradução cubificada, sem impor cubos à concept art.",
+    "Planejar a família inteira; não repetir a mesma criatura maior e com mais ornamentos.",
+    "Não reproduzir bastão de jade, dragões associados e arco narrativo específico da linhagem de referência 769."
+  ],
+  "referencias": [
+    {"url": "https://worldofmiscrits.com/miscripedia/769?evo=0", "funcao": "estudo de relação entre história e evolução; solução conhecida a diferenciar"},
+    {"arquivo": "docs/direcao-arte/estudo-miscrits.md", "funcao": "hipóteses de linguagem visual; ainda sem aprovação de estilo"}
+  ],
+  "biblioteca_originais_proprios": "a preencher; não presumir acesso a imagens só por ler um caminho",
+  "geradores_disponiveis": ["Gemini", "este chat"],
+  "orcamento": {"brl_maximo_unico": 50, "brl_mensal_novo": 0, "gasto_autorizado_agora": 0},
+  "limites_piloto": {"propostas_texto": 3, "revisoes_por_etapa": 2, "geracao_paga_automatica": false},
+  "aprovacoes": {"direcao": false, "arte": false, "vistas": false}
+}
