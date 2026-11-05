@@ -1,0 +1,44 @@
+{
+  "fonte": "eventos token_count do registro local deste chat; diferenca dos acumulados antes do pedido comparativo e antes da pergunta sobre uso",
+  "periodo_marcadores_utc": {
+    "inicio": "2026-11-05T19:30:08.858Z",
+    "fim": "2026-11-05T20:10:06.537Z"
+  },
+  "escopo": "preparacao, perguntas, construcao A/B, revisoes, verificacoes e documentacao; exclui a auditoria de uso desta resposta",
+  "antes": {
+    "input_tokens": 35692449,
+    "cached_input_tokens": 35234176,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 206361,
+    "reasoning_output_tokens": 82897,
+    "total_tokens": 35898810
+  },
+  "depois": {
+    "input_tokens": 42846547,
+    "cached_input_tokens": 42283648,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 264213,
+    "reasoning_output_tokens": 105023,
+    "total_tokens": 43110760
+  },
+  "delta": {
+    "input_tokens": 7154098,
+    "cached_input_tokens": 7049472,
+    "output_tokens": 57852,
+    "reasoning_output_tokens": 22126,
+    "total_tokens": 7211950,
+    "uncached_input_tokens": 104626
+  },
+  "por_ferramenta": {
+    "blockbench": null,
+    "blender": null
+  },
+  "custo_monetario": null,
+  "percentual_de_limite_do_plano_atribuivel": null,
+  "limitacoes": [
+    "entradas cacheadas estao incluidas nas entradas e no total; raciocinio esta incluido na saida; nao somar novamente",
+    "nao converte tokens em percentual de assinatura nem valor de fatura",
+    "mesmo agente/contexto e funcoes compartilhadas de pintura e recorte; consumo por ferramenta nao foi isolado",
+    "tempos de subprocessos nao medem raciocinio e os renders comuns atendem as duas ferramentas"
+  ]
+}

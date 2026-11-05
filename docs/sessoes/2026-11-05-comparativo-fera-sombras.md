@@ -86,3 +86,22 @@ pavão editados pelo usuário permanecem fora do commit.
 **Próximo passo:** receber avaliação/aprovação das duas folhas; ajustar as partes
 indicadas e contatos; depois completar pintura/rig conforme o escopo escolhido.
 B.4 permanece aberta, sem tag de fase. Nenhuma aprovação visual ou de Studio presumida.
+
+## Retorno e auditoria de uso
+
+Usuário observou diferença visual irrisória e os mesmos defeitos de textura/partes,
+e pediu consumo separado. As rotinas de pintura/recorte em `comum.py` e a
+decomposição quase igual limitaram o ensaio. Dois arquivos/scripts próprios não
+produziram soluções artísticas suficientemente independentes; não atribuir os
+defeitos comuns à capacidade de cada aplicativo.
+
+Recuperado o consumo **conjunto** pelos eventos `token_count` do registro local
+deste chat, entre o pedido do comparativo e a pergunta sobre uso. Evidência em
+`modelos/fera-fera-agil-das-sombras/comparativo-v1/auditoria-uso.json`:
+7.154.098 tokens de entrada (7.049.472 em cache; 104.626 sem cache), 57.852 de
+saída, total 7.211.950. Raciocínio faz parte da saída; cache faz parte da entrada.
+O total inclui preparação/revisões/documentação e exclui esta auditoria.
+Consumo por ferramenta, percentual de limite atribuível e custo monetário
+continuam indisponíveis. Não estimar uma divisão a partir de subprocessos/chamadas.
+Para novo ensaio, separar execuções/medição e permitir soluções próprias de
+geometria/pintura dentro do estilo comum. Modelos permanecem sem aprovação.
