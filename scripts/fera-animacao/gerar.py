@@ -4,6 +4,8 @@ Uso: uv run python scripts/fera-animacao/gerar.py <base-com-garras.bbmodel> <pas
 
 Grava <pasta>/fera-sombras-e3-animacoes.bbmodel (cópia da base + clipes), animacoes.json (duração,
 loop, velocidade de deslocamento para o jogo), previa-<clipe>.gif (lado e 3/4) e relatorio.json.
+Se a base tiver pálpebras (palpebras.py), grava também o clipe `blink` (camada que só mexe nelas) e
+previa-blink.gif (close da cabeça em idle, walk e run com a piscada por cima).
 As chaves são assadas (30 por segundo, sem Molang), como o Roblox precisa. Não anima `root`.
 """
 
@@ -33,17 +35,21 @@ def r3(v):
 def para_ops(nome, T, loop, quadros):
     ops = [{"op": "add_animation", "name": nome, "length": round(T, 4), "loop": "loop" if loop else "once",
             "snapping": FPS}]
-    anterior = None
+    todas, anterior = [], None
     for t, pose in quadros:
-        ch = chaves(pose, anterior)
+        anterior = chaves(pose, anterior)
+        todas.append((t, anterior))
+    # trilha de posição inteira (com os zeros) para todo osso que translada em algum quadro do clipe:
+    # sem a chave zero no começo/fim, o Blockbench segura o primeiro/último valor fora dela
+    move = {o for _t, ch in todas for o, e in ch.items() if "posicao" in e and np.any(np.abs(e["posicao"]) > 1e-4)}
+    for t, ch in todas:
         for osso, e in ch.items():
             if "rotacao" in e:
                 ops.append({"op": "set_keyframe", "animation": nome, "bone": osso, "channel": "rotation",
                             "time": round(t, 4), "value": r3(e["rotacao"]), "interpolation": "linear"})
-            if "posicao" in e and np.any(np.abs(e["posicao"]) > 1e-4):
+            if osso in move:
                 ops.append({"op": "set_keyframe", "animation": nome, "bone": osso, "channel": "position",
-                            "time": round(t, 4), "value": r3(e["posicao"]), "interpolation": "linear"})
-        anterior = ch
+                            "time": round(t, 4), "value": r3(e.get("posicao", np.zeros(3))), "interpolation": "linear"})
     return ops
 
 
@@ -68,6 +74,43 @@ def gif(rig, quadros, destino, titulo):
         d.text((4, 2), f"{titulo}  t={t:.2f}s", fill=(40, 40, 50))
         imgs.append(f.convert("P", palette=Image.ADAPTIVE, colors=128))
     imgs[0].save(destino, save_all=True, append_images=imgs[1:], duration=int(2000 / FPS), loop=0, disposal=2)
+
+
+def gif_piscada(rig, locomocao, blink, destino, janela=1.4):
+    """Close da cabeça (câmera seguindo) em idle, walk e run, com a piscada tocando por cima no meio."""
+    m = rig.m
+    cab = [c for c in m.cubos if c.osso == "head"]
+    paineis = []
+    for nome, quadros in locomocao:
+        ciclo = quadros[:-1]  # o último quadro do loop repete o primeiro
+        n = int(round(janela * FPS))
+        sel = [ciclo[i % len(ciclo)] for i in range(n)]
+        i0 = n // 2 - len(blink) // 2
+        ims = []
+        for i, (_t, pose) in enumerate(sel):
+            p = dict(pose)
+            if 0 <= i - i0 < len(blink):
+                p.update(blink[i - i0][1])
+            mats = rig.mats(p)
+            lo, hi = np.full(3, np.inf), np.full(3, -np.inf)
+            for c in cab:
+                a, b = bbmodelo.caixa_mundo(m, c, mats)
+                lo, hi = np.minimum(lo, a), np.maximum(hi, b)
+            centro = (lo + hi) / 2
+            im = render.renderizar(m, (60, 10), escala=13, limites=(centro - 9, centro + 9), mats=mats, fundo=(236, 238, 242))[0]
+            ImageDraw.Draw(im).text((4, 2), nome, fill=(40, 40, 50))
+            ims.append(im)
+        paineis.append(ims)
+    n = min(len(p) for p in paineis)
+    quadros_gif = []
+    for i in range(n):
+        f = Image.new("RGB", (sum(p[i].width + 4 for p in paineis), max(p[i].height for p in paineis)), (255, 255, 255))
+        x = 0
+        for p in paineis:
+            f.paste(p[i], (x, 0))
+            x += p[i].width + 4
+        quadros_gif.append(f.convert("P", palette=Image.ADAPTIVE, colors=160))
+    quadros_gif[0].save(destino, save_all=True, append_images=quadros_gif[1:], duration=int(1000 / FPS), loop=0, disposal=2)
 
 
 def tiras(rig, clipes, destino, n=8):
@@ -144,6 +187,10 @@ def main():
 
     clipes = [("idle", T_idle, True, idle), ("walk", T_walk, True, walk), ("run", T_run, True, run),
               ("run_start", 0.5, False, partida), ("run_stop", 0.7, False, parada)]
+    tem_palpebras = all(o in rig.ossos for o in ("eyelid_left", "eyelid_right"))
+    if tem_palpebras:
+        T_blink, blink, _ = loc.piscar()
+        clipes.append(("blink", T_blink, False, blink))
     ops = []
     for nome, T, loop, quadros in clipes:
         ops += para_ops(nome, T, loop, quadros)
@@ -153,9 +200,12 @@ def main():
     val = motor.validar_animacoes(arquivo)
     erros, avisos, linhas = motor.resumo_validacao(val) if isinstance(val, dict) else (0, 0, [str(val)[:200]])
 
-    for nome, T, loop, quadros in clipes:
+    corpo = [c for c in clipes if c[0] != "blink"]
+    for nome, T, loop, quadros in corpo:
         gif(rig, quadros, pasta / f"previa-{nome}.gif", nome)
-    tiras(rig, clipes, pasta / "tiras.png")
+    tiras(rig, corpo, pasta / "tiras.png")
+    if tem_palpebras:
+        gif_piscada(rig, [(n, q) for n, _T, _l, q in corpo if n in ("idle", "walk", "run")], blink, pasta / "previa-blink.gif")
 
     uni = 16.0  # unidades por bloco
     anim = {
@@ -166,6 +216,14 @@ def main():
         },
         "nota": "Mover o modelo nessa velocidade (× escala do Studio) para os pés não patinarem.",
     }
+    if tem_palpebras:
+        anim["clipes"]["blink"].update({
+            "camada": True, "ossos": ["eyelid_left", "eyelid_left_lower", "eyelid_right", "eyelid_right_lower"],
+            "intervalo_s": [2.5, 6.0],
+            "nota": "Tocar por cima de idle, walk e run (e do que vier depois) num intervalo aleatório: só mexe nas "
+                    "pálpebras, por posição. Se o exportador gravar poses dos outros ossos, zerar o peso delas "
+                    "(como o papel 'upper' do AnimationDriver).",
+        })
     (pasta / "animacoes.json").write_text(json.dumps(anim, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     rel = {"arquivo": arquivo.name, "chaves": sum(1 for o in ops if o["op"] == "set_keyframe"),
            "validacao_animacoes": {"erros": erros, "avisos": avisos, "linhas": linhas[:8]},

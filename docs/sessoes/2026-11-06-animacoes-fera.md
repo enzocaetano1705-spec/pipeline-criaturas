@@ -47,3 +47,19 @@ cauda estranha e partes se soltando. Causa medida: quique, tronco e cachecol em 
 da gordura na própria frequência, tronco transladando 2,8. Novo `pose_galope`: galope rotativo de
 0,66 s, tudo travado na fase da passada, só o `body` translada, cauda com elevação fixa. `medir.py`
 confere ritmo (1 ciclo/passada), translações e frestas. 0 erros, 0 avisos.
+
+## r06 — pés retos e piscada sem escala
+
+Run aprovado. O usuário endireitou os pés na aba aberta (cubo do pé de ±35° para ±5° em Y) e pediu
+piscada sem escala para idle, walk e run. `trazer_edicao.py` lê a aba exportada sem salvar e leva as
+mudanças de cubo para o rig (genérico: from/to/origin/rotation pelo uuid; pivô junto; recusa rotação
+de repouso em osso). `palpebras.py`: olhos pintados nas laterais do focinho (`head_2`); duas tiras por
+olho, cada uma num osso (`eyelid_<lado>`, `eyelid_<lado>_lower`), escondidas 0,4 atrás da face e
+empurradas 0,46 para fora pela posição (meio fechado, depois fechado). Tentativas que ficaram pelo
+caminho, vistas no Blockbench: um osso só com as tiras em profundidades diferentes deixava degrau e
+filete de borda; bordas opacas pegavam luz; tira do tamanho exato do olho deixava ver o contorno
+escuro pela fresta. Final: tiras na mesma altura, 0,06 à frente, um pixel além do contorno, bordas
+transparentes, textura feita dos pixels do olho num canto livre do atlas. `blink` (0,17 s) é camada
+para tocar a cada 2,5–6 s (embutir em loops de 0,66–1,6 s piscaria demais). Medições iguais (sem
+frestas, pernas × braços 3,0/3,4), 0 erros, 0 avisos. Posição X no formato 5.0 do Blockbench é no
+sentido da cena (o motor documenta a troca de sinal da 4.x), conferido no próprio Blockbench.

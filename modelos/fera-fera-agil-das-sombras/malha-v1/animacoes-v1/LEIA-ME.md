@@ -1,6 +1,30 @@
 # Animações v1 — locomoção da preguiça rogue (06/11/2026)
 
-Atual: **r05/fera-sombras-e3-animacoes.bbmodel** (base `rig-v3/base-rig-v3.bbmodel`).
+Atual: **r06/fera-sombras-e3-animacoes.bbmodel** (base `rig-v4/base-rig-v4.bbmodel`).
+
+**r06 (pés retos e piscada):** run aprovado ("agora ficou bem bom"). O usuário endireitou os pés no
+Blockbench (rotação Y do cubo de ±35° para ±5°: os dedos apontavam para fora) e pediu uma piscada sem
+escala para idle, walk e run.
+- Pés: `trazer_edicao.py` leu a aba aberta (exportada sem salvar) e levou a rotação para o rig
+  (`rig-v4/base-pes.bbmodel`, diferença em `rig-v4/edicao-pes.json`). Só o cubo gira em torno do
+  próprio centro; o tornozelo continua onde está. Medido: nenhuma fresta, pernas × braços 3,0 no walk e
+  3,4 no run (nenhum quadro encosta), 0 erros, 0 avisos.
+- Piscada (`palpebras.py` → `rig-v4/base-rig-v4.bbmodel`): os olhos são pintados nas laterais do
+  focinho (`head_2`). Cada olho ganhou duas tiras de pálpebra, cada uma no seu osso, escondidas 0,4
+  atrás da face: `eyelid_<lado>` (pele por cima do olho e a borda escura da pálpebra) e
+  `eyelid_<lado>_lower` (pele sobre o resto do olho). A piscada empurra os ossos para fora pela
+  posição (0,46): só a de cima = meio fechado; as duas = fechado (a linha emenda na listra escura da
+  cara). Mostradas, ficam 0,06 à frente da face, passam um pixel além do contorno do olho (pela
+  fresta só aparece pele) e têm as bordas transparentes (sem filete pegando luz). A textura delas foi
+  feita com os pixels do próprio olho (pele no lugar da íris) e foi para um canto livre do atlas (UV
+  1,1 e 1,7): 128 pixels novos, nenhum pixel usado mudou. Conferido no Blockbench de quatro ângulos
+  (`r06/previa-blink-blockbench.png`).
+- Clipe `blink` (0,17 s: meio, fechado, fechado, meio, aberto) só mexe nas 4 pálpebras. É uma
+  camada: o jogo toca por cima de idle, walk e run num intervalo aleatório de 2,5–6 s (anotado no
+  `animacoes.json`). Embutir nos loops não serve: o run dura 0,66 s e piscaria 1,5 vez por segundo.
+  `previa-blink.gif` mostra a piscada por cima dos três.
+- `gerar.py` agora grava a trilha de posição inteira (com os zeros) de todo osso que translada em
+  algum quadro; antes a chave zero do começo/fim era pulada e o Blockbench segurava o valor vizinho.
 
 **r05 (run refeito):** retorno "o walk ficou bom; no run a frente parece fazer 2 ciclos e a traseira 1,
 balança demais, não parece galope, a cauda mexe estranho e partes se desconectam". Medido na r04:
@@ -28,11 +52,21 @@ Ideia do usuário: preguiça-gigante pesada, com camada de gordura, mas muito ve
 vira quadrúpede apoiada nos nós das mãos, com as garras dobradas para dentro (como tamanduás e
 preguiças-gigantes faziam), e o corpo todo balança.
 
-## Preparo do rig (só pivôs e ossos; geometria/UV/textura iguais, conferido)
+## Preparo do rig
 - `base-garras.bbmodel`: 6 ossos novos `claw_<lado>_<1..3>`, pivô na base de cada garra.
 - `base-rig.bbmodel`: pivôs de `shin_*` e `foot_*` movidos para onde estão os cubos que o usuário
   recuou (joelho no topo da canela, tornozelo na base dela, na altura do pé). Sem isso o pé girava
   em torno de um ponto 3 unidades à frente e se soltava da canela.
+- `rig-v3/base-rig-v3.bbmodel`: pernas recuadas pelo usuário, com os pivôs (`pernas_recuadas.py`).
+- `rig-v4/base-pes.bbmodel`: pés endireitados pelo usuário (`trazer_edicao.py`).
+- `rig-v4/base-rig-v4.bbmodel`: + 4 ossos de pálpebra com as tiras e a textura delas (`palpebras.py`).
+
+```powershell
+uv run python scripts/fera-animacao/trazer_edicao.py <rig-v3>/base-rig-v3.bbmodel <aba-exportada>.bbmodel <rig-v4>/base-pes.bbmodel edicao-pes
+uv run python scripts/fera-animacao/palpebras.py <rig-v4>/base-pes.bbmodel <rig-v4>/base-rig-v4.bbmodel
+```
+`trazer_edicao.py` serve para qualquer edição futura de cubos feita na aba aberta: compara pelo uuid,
+copia from/to/origin/rotation, leva pivô mudado junto e recusa rotação de repouso em osso.
 
 ## Clipes (chaves assadas a 30/s, sem Molang; `root` não é animado)
 | clipe | duração | loop | o que faz |
@@ -42,6 +76,7 @@ preguiças-gigantes faziam), e o corpo todo balança.
 | `run` | 0,66 s | sim | galope rotativo (trás esq., trás dir., frente dir., frente esq., voo recolhido), tudo no ritmo da passada: coluna estica/encolhe uma vez, gordura no mesmo balanço com atraso, cabeça firme, cauda e cachecol em onda |
 | `run_start` | 0,5 s | não | recua, recolhe as garras com estalo e mergulha para os quatro apoios |
 | `run_stop` | 0,7 s | não | derrapa nos nós das mãos, passa do ponto, assenta e abre as garras |
+| `blink` | 0,17 s | não | camada: só as pálpebras, por posição; tocar por cima dos outros a cada 2,5–6 s |
 
 Peso sem escala (o Roblox não anima escala de osso): no walk, tronco e pescoço seguem o corpo por
 molas amortecidas (atrasam e passam do ponto); no run não há mola solta (ela tremia no próprio ritmo
@@ -50,12 +85,13 @@ em onda da base para a ponta. Mãos e pés pisam no chão por IK. Validação do
 posições das juntas foram conferidas contra o motor do Blockbench (`bbmodel_sample_pose`).
 
 `animacoes.json`: duração/loop e velocidade de deslocamento (walk 0,47 bloco/s; run 2,84 blocos/s)
-para o jogo mover o modelo sem os pés patinarem. Prévias: `previa-<clipe>.gif` (lado e 3/4) e
-`tiras.png` (8 quadros por clipe).
+para o jogo mover o modelo sem os pés patinarem, e como tocar a piscada. Prévias:
+`previa-<clipe>.gif` (lado e 3/4), `previa-blink.gif` (close da cabeça) e `tiras.png` (8 quadros por
+clipe).
 
 ```powershell
-uv run python scripts/fera-animacao/gerar.py modelos/fera-fera-agil-das-sombras/malha-v1/animacoes-v1/rig-v3/base-rig-v3.bbmodel modelos/fera-fera-agil-das-sombras/malha-v1/animacoes-v1/r05
-uv run python scripts/fera-animacao/medir.py modelos/fera-fera-agil-das-sombras/malha-v1/animacoes-v1/rig-v3/base-rig-v3.bbmodel run
+uv run python scripts/fera-animacao/gerar.py modelos/fera-fera-agil-das-sombras/malha-v1/animacoes-v1/rig-v4/base-rig-v4.bbmodel modelos/fera-fera-agil-das-sombras/malha-v1/animacoes-v1/r06
+uv run python scripts/fera-animacao/medir.py modelos/fera-fera-agil-das-sombras/malha-v1/animacoes-v1/rig-v4/base-rig-v4.bbmodel run
 ```
 `medir.py` diz quantos ciclos por passada cada canal faz (tudo deve dar 1 no run), quais ossos
 transladam, as frestas nas juntas e a menor distância entre pernas e braços.

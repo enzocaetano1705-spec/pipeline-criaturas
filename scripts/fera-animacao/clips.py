@@ -122,6 +122,24 @@ class Locomocao:
             else:
                 e["rotacao"] = np.asarray(e.get("rotacao", [0, 0, 0]), float) + np.array([-ang, 0.0, 0.0])
 
+    def piscar(self):
+        """Piscada sem escala: as tiras de pálpebra saem de dentro do focinho pela posição dos ossos.
+
+        Meio fechado (só a tira de cima), fechado (as duas, 2 quadros), meio, aberto: 0,17 s. Só mexe em
+        eyelid_*, para tocar como camada por cima de idle, walk e run sem brigar com eles.
+        """
+        from palpebras import DESLOCA as D
+
+        passos = [(0, 0), (D, 0), (D, D), (D, D), (D, 0), (0, 0)]  # (tira de cima, tira de baixo)
+        quadros = []
+        for i, (cima, baixo) in enumerate(passos):
+            pose = {}
+            for lado, s in (("right", 1.0), ("left", -1.0)):
+                pose[f"eyelid_{lado}"] = {"posicao": np.array([s * cima, 0.0, 0.0])}
+                pose[f"eyelid_{lado}_lower"] = {"posicao": np.array([s * baixo, 0.0, 0.0])}
+            quadros.append((i / FPS, pose))
+        return (len(passos) - 1) / FPS, quadros, {}
+
     @staticmethod
     def _mat_cubo(c):
         M = np.eye(4)
