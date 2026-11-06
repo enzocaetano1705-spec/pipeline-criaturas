@@ -1,0 +1,30 @@
+{
+  "foot_left": {
+    "rotation": {
+      "antes": [
+        0,
+        35,
+        0
+      ],
+      "depois": [
+        0,
+        5,
+        0
+      ]
+    }
+  },
+  "foot_right": {
+    "rotation": {
+      "antes": [
+        0,
+        -35,
+        0
+      ],
+      "depois": [
+        0,
+        -5,
+        0
+      ]
+    }
+  }
+}
