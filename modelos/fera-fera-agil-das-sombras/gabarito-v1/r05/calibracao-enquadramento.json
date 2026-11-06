@@ -1,0 +1,48 @@
+{
+  "frente": {
+    "iou_previsto_calibracao_2d": 0.7561215892151144,
+    "fator_escala_global": 1.0233333333333334,
+    "translacao_pixel": [
+      1.511666666666656,
+      6.546666666666681
+    ],
+    "metodo": "uma escala uniforme e translação por câmera; sem deformação de partes",
+    "projecao_original_conhecida": false,
+    "camera_aplicada": {
+      "localizacao": [
+        -0.01605650782585144,
+        -19.795682907104492,
+        4.4823222160339355
+      ],
+      "rotacao": [
+        1.4311699867248535,
+        -0.0,
+        0.0
+      ],
+      "escala": 6.840391159057617
+    }
+  },
+  "costas": {
+    "iou_previsto_calibracao_2d": 0.7313836692859583,
+    "fator_escala_global": 0.9653333333333334,
+    "translacao_pixel": [
+      10.98266666666666,
+      37.96533333333332
+    ],
+    "metodo": "uma escala uniforme e translação por câmera; sem deformação de partes",
+    "projecao_original_conhecida": false,
+    "camera_aplicada": {
+      "localizacao": [
+        0.12366380542516708,
+        19.20111083984375,
+        7.856241226196289
+      ],
+      "rotacao": [
+        1.2740905284881592,
+        8.36027922446192e-08,
+        3.1415927410125732
+      ],
+      "escala": 6.496967315673828
+    }
+  }
+}

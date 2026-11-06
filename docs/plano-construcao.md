@@ -284,6 +284,15 @@ Não substitui o fluxo cubificado nem flexibiliza seus validadores.
 - [ ] O.3 Conferir pelo MCP quando a conexão estiver ativa e obter avaliação/aprovação da geometria.
 - [ ] O.4 Após aprovação: retopologia para deformação, UV/pintura/bake e rig no escopo solicitado.
 
+## Ensaio autorizado — Reconstrução com gabarito multivista (05/11/2026)
+
+Usuário rejeitou a forma/cor do orgânico r05 e forneceu seis capturas consistentes.
+Decisão 0012, nota [[2026-11-05-gabarito-silhueta-fera]].
+
+- [x] G.1 Preservar referências, retirar fundo variável, traçar contornos e registrar landmarks/hipóteses de câmera e consumo deste novo pedido.
+- [x] G.2 Construir estudo guiado com imagem de fundo, conferir seis silhuetas por sobreposição/IoU e incorporar o protocolo às instruções da skill.
+- [ ] G.3 Refinar volumes transversais e partes internas com as diferenças expostas nas vistas, obter aprovação da forma antes da pintura; generalização do método ainda não avaliada.
+
 ## Exploração autorizada — Criação de conceitos e direção de arte (05/11/2026)
 
 Etapa anterior à tradução 3D, sem alterar contratos dos backends. Teto informado:

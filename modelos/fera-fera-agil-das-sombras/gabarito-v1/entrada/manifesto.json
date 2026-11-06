@@ -1,0 +1,160 @@
+{
+  "fontes": {
+    "perfil_direito": {
+      "arquivo": "perfil_direito.png",
+      "sha256": "bab78ef163195b2c8483519f006439c7dd4ccb0c3d6d867c7239ef1f78d7b9eb",
+      "tamanho": [
+        704,
+        471
+      ],
+      "bbox": [
+        71,
+        85,
+        588,
+        402
+      ],
+      "area_mascara": 74873,
+      "fundo_rgb": [
+        45.5,
+        46.5,
+        48.5
+      ],
+      "modelo_fundo": "quadrático ajustado às bordas sem modelo",
+      "erro_borda_max": 3.0452570867576694,
+      "limiar_distancia_rgb": 30,
+      "rotulo_camera": "provisório; estimar projeção antes de medir em 3D"
+    },
+    "frente": {
+      "arquivo": "frente.png",
+      "sha256": "87ea723f9cf485238757828af74e23c8780b455f9dec9d0a64356d4a405edcbb",
+      "tamanho": [
+        644,
+        497
+      ],
+      "bbox": [
+        123,
+        100,
+        516,
+        423
+      ],
+      "area_mascara": 64779,
+      "fundo_rgb": [
+        47.0,
+        48.0,
+        51.0
+      ],
+      "modelo_fundo": "quadrático ajustado às bordas sem modelo",
+      "erro_borda_max": 2.4879845999457917,
+      "limiar_distancia_rgb": 30,
+      "rotulo_camera": "provisório; estimar projeção antes de medir em 3D"
+    },
+    "perfil_esquerdo": {
+      "arquivo": "perfil_esquerdo.png",
+      "sha256": "bc1c93aee2edf709a383a42901335c189750f98ff048cf910be9e57a0db2d300",
+      "tamanho": [
+        728,
+        466
+      ],
+      "bbox": [
+        112,
+        77,
+        630,
+        395
+      ],
+      "area_mascara": 77875,
+      "fundo_rgb": [
+        44.0,
+        46.0,
+        48.0
+      ],
+      "modelo_fundo": "quadrático ajustado às bordas sem modelo",
+      "erro_borda_max": 2.930963873873156,
+      "limiar_distancia_rgb": 30,
+      "rotulo_camera": "provisório; estimar projeção antes de medir em 3D"
+    },
+    "superior": {
+      "arquivo": "superior.png",
+      "sha256": "e4967a44b5541c0313e9fbda95937f7b46a94e355fa2e039f26db600349a22fd",
+      "tamanho": [
+        546,
+        609
+      ],
+      "bbox": [
+        106,
+        78,
+        448,
+        588
+      ],
+      "area_mascara": 76508,
+      "fundo_rgb": [
+        46.5,
+        48.0,
+        50.5
+      ],
+      "modelo_fundo": "quadrático ajustado às bordas sem modelo",
+      "erro_borda_max": 2.9581979774943092,
+      "limiar_distancia_rgb": 30,
+      "rotulo_camera": "provisório; estimar projeção antes de medir em 3D"
+    },
+    "costas": {
+      "arquivo": "costas.png",
+      "sha256": "ac5c8367360a65d47bf662ccf5e953ed99db56cb15b083a0512584484639d7e5",
+      "tamanho": [
+        577,
+        524
+      ],
+      "bbox": [
+        143,
+        101,
+        464,
+        506
+      ],
+      "area_mascara": 61134,
+      "fundo_rgb": [
+        49.0,
+        50.0,
+        52.0
+      ],
+      "modelo_fundo": "quadrático ajustado às bordas sem modelo",
+      "erro_borda_max": 2.724366912719617,
+      "limiar_distancia_rgb": 30,
+      "rotulo_camera": "provisório; estimar projeção antes de medir em 3D"
+    },
+    "inferior": {
+      "arquivo": "inferior.png",
+      "sha256": "2b5348e483528d79e3030d9da910431bee8f430bd82cb2581898275f1c434d47",
+      "tamanho": [
+        579,
+        653
+      ],
+      "bbox": [
+        113,
+        67,
+        482,
+        602
+      ],
+      "area_mascara": 79485,
+      "fundo_rgb": [
+        44.0,
+        45.0,
+        47.5
+      ],
+      "modelo_fundo": "quadrático ajustado às bordas sem modelo",
+      "erro_borda_max": 2.830418385331416,
+      "limiar_distancia_rgb": 30,
+      "rotulo_camera": "provisório; estimar projeção antes de medir em 3D"
+    }
+  },
+  "forma_dominante": "capturas fornecidas do mesmo modelo; perfil esquerdo como âncora",
+  "cores": "ilustrações originais; nenhuma textura nesta revisão",
+  "estado": "calibração e reconstrução em estudo",
+  "estagio": "3 de 3",
+  "base": "preguiça gigante",
+  "arquetipo": "rogue",
+  "incertezas": [
+    "projeção/FOV/elevação não fornecidos",
+    "rótulos superior/inferior são provisórios",
+    "mesmo objeto entre vistas ajuda consistência, mas não fornece geometria oculta ou câmera exata"
+  ],
+  "aprovacao_modelo_anterior": "r05 orgânico rejeitado por silhueta e textura"
+}

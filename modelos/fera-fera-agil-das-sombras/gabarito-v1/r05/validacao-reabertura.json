@@ -1,0 +1,13 @@
+{
+  "arquivo": "C:\\Users\\enzoc\\dev\\pipeline-criaturas\\modelos\\fera-fera-agil-das-sombras\\gabarito-v1\\r05\\fera-gabarito-360.blend",
+  "processo_limpo": true,
+  "volumes": 33,
+  "triangulos": 4162,
+  "geometria_preservada_na_calibracao": true,
+  "gabarito_no_fundo": true,
+  "gabarito_excluido_do_render": true,
+  "cameras_de_conferencia": 8,
+  "erros": [],
+  "aprovacao_artistica": false,
+  "pronto_para_roblox": false
+}

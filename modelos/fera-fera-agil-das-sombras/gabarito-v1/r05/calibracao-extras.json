@@ -1,0 +1,71 @@
+{
+  "perfil_oposto": {
+    "iou_previsto_calibracao_2d": 0.8583955516422015,
+    "fator_escala_global": 1.004,
+    "translacao_pixel": [
+      -17.47800000000001,
+      6.496000000000009
+    ],
+    "metodo": "uma escala uniforme e translação por câmera; sem deformação de partes",
+    "projecao_original_conhecida": false,
+    "camera_aplicada": {
+      "localizacao": [
+        -20.0,
+        -0.14922139048576355,
+        1.8003274202346802
+      ],
+      "rotacao": [
+        1.5707963705062866,
+        -0.0,
+        -1.5707963705062866
+      ],
+      "escala": 7.621687889099121
+    }
+  },
+  "superior": {
+    "iou_previsto_calibracao_2d": 0.7626903991618408,
+    "fator_escala_global": 0.9460000000000001,
+    "translacao_pixel": [
+      -0.026999999999986812,
+      38.36500000000001
+    ],
+    "metodo": "uma escala uniforme e translação por câmera; sem deformação de partes",
+    "projecao_original_conhecida": false,
+    "camera_aplicada": {
+      "localizacao": [
+        -0.0003102972696069628,
+        -0.3208148777484894,
+        21.75
+      ],
+      "rotacao": [
+        -0.0,
+        -0.0,
+        3.141592502593994
+      ],
+      "escala": 6.9974260330200195
+    }
+  },
+  "inferior": {
+    "iou_previsto_calibracao_2d": 0.7655258583224684,
+    "fator_escala_global": 0.9846666666666667,
+    "translacao_pixel": [
+      3.992333333333306,
+      6.023000000000025
+    ],
+    "metodo": "uma escala uniforme e translação por câmera; sem deformação de partes",
+    "projecao_original_conhecida": false,
+    "camera_aplicada": {
+      "localizacao": [
+        0.044070687144994736,
+        0.1864868402481079,
+        -18.25
+      ],
+      "rotacao": [
+        8.742277657347586e-08,
+        3.1415927410125732,
+        -8.742277657347586e-08
+      ],
+      "escala": 7.2083539962768555
+    }
+  }
+}

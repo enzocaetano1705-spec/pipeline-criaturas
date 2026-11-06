@@ -1,0 +1,18 @@
+{
+  "cabeca_juba": {
+    "iou_recorte": 0.9294744990109228,
+    "nota": "recortes podem sobrepor partes/oclusões; não são máscaras anatômicas isoladas"
+  },
+  "braco_mao": {
+    "iou_recorte": 0.8518283660959628,
+    "nota": "recortes podem sobrepor partes/oclusões; não são máscaras anatômicas isoladas"
+  },
+  "perna_pe": {
+    "iou_recorte": 0.9369604725124944,
+    "nota": "recortes podem sobrepor partes/oclusões; não são máscaras anatômicas isoladas"
+  },
+  "cauda": {
+    "iou_recorte": 0.9456074854685507,
+    "nota": "recortes podem sobrepor partes/oclusões; não são máscaras anatômicas isoladas"
+  }
+}

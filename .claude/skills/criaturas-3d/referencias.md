@@ -1,5 +1,32 @@
 # Modelar com referências reais
 
+## Gabarito de silhueta fornecido pelo usuário
+
+Quando houver capturas de um mesmo modelo em giro, adote-as como referência de
+volume/pose conforme a direção do usuário e use a arte colorida para a paleta.
+Registre as divergências. Capturas consistentes ajudam mais que vistas geradas
+independentemente, mas as câmeras ainda precisam ser estimadas.
+
+Antes da primeira geometria, preserve imagens/hashes e segmente o fundo. Fundos
+com vinheta não devem ser removidos por uma única cor fixa. Alinhe escala/chão,
+marque os pontos anatômicos e trace contornos por parte no perfil. No Blender,
+coloque a imagem como fundo/empty da câmera lateral, excluída do render medido.
+Na tradução cubificada, use as mesmas medidas/contornos, respeitando as restrições
+de peças e evitando transformar cada pixel em cubo.
+
+Construa largura/profundidade com frente, costas e vistas superior/inferior, sem
+achatar o modelo para ganhar apenas no perfil. Confira render e referência por
+sobreposição: interseção, falta, excesso e IoU; acrescente recortes de rosto,
+mãos, pés e cauda para a cauda grande não esconder defeitos locais. IoU não é nota
+artística nem prova de topologia/deformação.
+
+Guarde câmera e enquadramento usados. Uma escala/translação global de câmera é
+calibração; deformar partes diferentes em cada render para aumentar a métrica é
+inválido. Não prometa 100% quando perspectiva/FOV/pose são desconhecidos.
+Confira a geometria sem pintura antes de texturizar e mantenha a aprovação da
+folha. O ensaio em `scripts/gabarito-fera/` é específico da preguiça e não substitui
+o gerador padrão. Protocolo/limites na decisão 0012.
+
 Use antes da primeira geometria de uma criatura, ou quando uma revisão mostrar que falta uma solução de forma, textura ou movimento. O objetivo é decidir **como traduzir a imagem com poucas peças**, comparando ilustração, modelo renderizado, atlas e estrutura do arquivo. Não repetir a pesquisa em cada ajuste: reutilize o estudo já conferido.
 
 ## Encontrar um caso próximo

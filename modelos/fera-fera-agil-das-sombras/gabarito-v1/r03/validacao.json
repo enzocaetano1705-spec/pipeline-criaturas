@@ -1,0 +1,87 @@
+{
+  "triangulos": 2936,
+  "volumes": 31,
+  "volumes_abertos": [],
+  "cameras": {
+    "perfil": {
+      "tipo": "ortográfica",
+      "localizacao": [
+        20.0,
+        0.043478261679410934,
+        1.7608696222305298
+      ],
+      "rotacao": [
+        1.5707963705062866,
+        -0.0,
+        1.5707963705062866
+      ],
+      "escala": 7.913043022155762,
+      "resolucao": [
+        728,
+        466
+      ],
+      "elevacao_assumida": 0
+    },
+    "frente": {
+      "tipo": "ortográfica",
+      "localizacao": [
+        0.0,
+        -19.805360794067383,
+        4.413462162017822
+      ],
+      "rotacao": [
+        1.4311699867248535,
+        -0.0,
+        0.0
+      ],
+      "escala": 7.000000476837158,
+      "resolucao": [
+        644,
+        497
+      ],
+      "elevacao_assumida": 8
+    },
+    "costas": {
+      "tipo": "ortográfica",
+      "localizacao": [
+        0.0,
+        19.326095581054688,
+        7.447433948516846
+      ],
+      "rotacao": [
+        1.2740905284881592,
+        8.36027922446192e-08,
+        3.1415927410125732
+      ],
+      "escala": 6.2717390060424805,
+      "resolucao": [
+        577,
+        524
+      ],
+      "elevacao_assumida": 17
+    },
+    "3-4": {
+      "tipo": "ortográfica",
+      "localizacao": [
+        13.51041030883789,
+        -13.390410423278809,
+        7.610804557800293
+      ],
+      "rotacao": [
+        1.2707754373550415,
+        -7.660929668418248e-08,
+        0.7853981852531433
+      ],
+      "escala": 6.599999904632568,
+      "resolucao": [
+        640,
+        640
+      ],
+      "elevacao_assumida": null
+    }
+  },
+  "referencia_renderizada": false,
+  "textura": "nenhuma; cinza para julgar forma",
+  "rig": "pendente",
+  "segundos": 2.246487199969124
+}

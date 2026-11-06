@@ -1,0 +1,35 @@
+{
+  "perfil": {
+    "intersecao": 55979,
+    "uniao": 85919,
+    "iou": 0.6515322571258977,
+    "referencia_area": 77875,
+    "render_area": 64023,
+    "falta": 21896,
+    "excesso": 8044,
+    "alinhamento": "câmera do blend, sem ajuste pós-render",
+    "camera_calibrada": false
+  },
+  "frente": {
+    "intersecao": 46945,
+    "uniao": 77717,
+    "iou": 0.6040505938211717,
+    "referencia_area": 64779,
+    "render_area": 59883,
+    "falta": 17834,
+    "excesso": 12938,
+    "alinhamento": "câmera do blend, sem ajuste pós-render",
+    "camera_calibrada": false
+  },
+  "costas": {
+    "intersecao": 48867,
+    "uniao": 81839,
+    "iou": 0.597111401654468,
+    "referencia_area": 61134,
+    "render_area": 69572,
+    "falta": 12267,
+    "excesso": 20705,
+    "alinhamento": "câmera do blend, sem ajuste pós-render",
+    "camera_calibrada": false
+  }
+}

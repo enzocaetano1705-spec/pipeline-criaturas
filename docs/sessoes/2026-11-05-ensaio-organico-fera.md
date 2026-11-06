@@ -3,12 +3,12 @@ tipo: sessao
 data: 2026-11-05
 fase: ensaio orgânico autorizado
 ia: codex
-status: geometria entregue; conferência MCP e aprovação artística pendentes
+status: rejeitado artisticamente; reconstrução com gabarito em novo ensaio
 ---
 
 # Ensaio orgânico da preguiça gigante rogue
 
-**Pendência para o usuário (a sessão parou aqui):** ativar a conexão MCP no Blender
+**Pendência histórica no momento da entrega:** ativar a conexão MCP no Blender
 para concluir a conferência solicitada e avaliar a folha de geometria. O modelo
 editável e a folha já estão em `modelos/fera-fera-agil-das-sombras/organico-v1/r05/`.
 A skill exige “Folha de vistas ainda não aprovada numa criatura real (passo 7)”.
@@ -62,3 +62,11 @@ ensaio. Sem compras ou geradores 3D pagos. Tempos CLI separados nos `execucao.js
 forma e então corrigir a anatomia indicada. Pintura UV/bake, retopologia/rig e
 exportação são etapas posteriores; não presumir aprovação por existir `.blend`.
 Modelos do pavão/documentos pessoais e cenas abertas permanecem preservados.
+
+## Retorno posterior do usuário
+
+O usuário rejeitou silhueta e textura/cores, embora tenha reconhecido a continuidade
+das partes. R05 não está aprovada. Forneceu seis capturas de um modelo consistente
+em giro e pediu construção sobre o perfil. Nova direção em
+[[2026-11-05-gabarito-silhueta-fera]], decisão 0012 e pasta `gabarito-v1/`.
+O arquivo orgânico permanece preservado como tentativa rejeitada.

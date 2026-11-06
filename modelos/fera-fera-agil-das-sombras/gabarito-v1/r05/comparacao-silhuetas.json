@@ -1,0 +1,74 @@
+{
+  "perfil": {
+    "intersecao": 73803,
+    "uniao": 82576,
+    "iou": 0.8937584770393334,
+    "referencia_area": 77875,
+    "render_area": 78504,
+    "falta": 4072,
+    "excesso": 4701,
+    "alinhamento": "câmera do blend, sem ajuste pós-render",
+    "camera_original_conhecida": false,
+    "enquadramento_estimado": false
+  },
+  "frente": {
+    "intersecao": 58294,
+    "uniao": 77104,
+    "iou": 0.7560437850176385,
+    "referencia_area": 64779,
+    "render_area": 70619,
+    "falta": 6485,
+    "excesso": 12325,
+    "alinhamento": "câmera do blend, sem ajuste pós-render",
+    "camera_original_conhecida": false,
+    "enquadramento_estimado": true
+  },
+  "costas": {
+    "intersecao": 53516,
+    "uniao": 73168,
+    "iou": 0.7314126394052045,
+    "referencia_area": 61134,
+    "render_area": 65550,
+    "falta": 7618,
+    "excesso": 12034,
+    "alinhamento": "câmera do blend, sem ajuste pós-render",
+    "camera_original_conhecida": false,
+    "enquadramento_estimado": true
+  },
+  "perfil_oposto": {
+    "intersecao": 71312,
+    "uniao": 82755,
+    "iou": 0.8617243671077276,
+    "referencia_area": 74873,
+    "render_area": 79194,
+    "falta": 3561,
+    "excesso": 7882,
+    "alinhamento": "câmera do blend, sem ajuste pós-render",
+    "camera_original_conhecida": false,
+    "enquadramento_estimado": true
+  },
+  "superior": {
+    "intersecao": 66268,
+    "uniao": 86799,
+    "iou": 0.7634650168780747,
+    "referencia_area": 76508,
+    "render_area": 76559,
+    "falta": 10240,
+    "excesso": 10291,
+    "alinhamento": "câmera do blend, sem ajuste pós-render",
+    "camera_original_conhecida": false,
+    "enquadramento_estimado": true
+  },
+  "inferior": {
+    "intersecao": 70472,
+    "uniao": 91997,
+    "iou": 0.7660249790754047,
+    "referencia_area": 79485,
+    "render_area": 82984,
+    "falta": 9013,
+    "excesso": 12512,
+    "alinhamento": "câmera do blend, sem ajuste pós-render",
+    "camera_original_conhecida": false,
+    "enquadramento_estimado": true
+  }
+}

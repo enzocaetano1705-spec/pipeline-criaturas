@@ -1,6 +1,6 @@
 {
   "criado_em_utc": "2026-11-05T20:48:22.006807+00:00",
-  "status": "aguardando_revisao_de_geometria_e_conexao_MCP",
+  "status": "rejeitado_artisticamente_pelo_usuario",
   "revisao_atual": "r05",
   "arquivo": "r05/fera-sombras-organica.blend",
   "folha": "r05/folha-geometria.png",
@@ -48,5 +48,11 @@
     "rig/animação e importação no Roblox não realizados",
     "aprovação artística não presumida",
     "checkpoint exclui os tokens produzidos depois da última medição"
-  ]
+  ],
+  "retorno_usuario": {
+    "silhueta": "rejeitada",
+    "textura_cores": "rejeitada",
+    "continuidade_das_partes": "reconhecida como fluida",
+    "nova_direcao": "gabarito multivista fornecido; modelar sobre o perfil e conferir 360"
+  }
 }
