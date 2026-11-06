@@ -57,3 +57,12 @@ específico deste retorno, em `textura-v3/auditoria/`; não equivale a preço.
 **Próximo:** avaliar a recuperação do desenho e do contraste. Não marcar r05
 como aprovada, não retomar o gerador orgânico e não regenerar a geometria sobre
 as edições do usuário. Eventuais novas correções continuam em versões novas.
+
+## Continuação (Claude, 06/11) — textura v4
+
+Retorno sobre a r03: fita com "partes voando", pelo pintado de vinho e focinho que devia ser todo
+pigmentado. O Codex começou a v4 (r01: `focinho_integral` e `pano_somente_scarf` em `restaurar.py`,
+sobre o arquivo que o usuário salvou) e parou no limite. Claude conferiu a r01 e fez a r02 com
+`fita_continua.py`: recorte dos 5 planos da fita a partir de uma fita única (pano no ar, fora dos
+cubos sólidos), contorno só na borda real; geometria/UV/ossos iguais, 0 erros. Atual:
+`modelos/fera-fera-agil-das-sombras/malha-v1/textura-v4/r02/`. Aprovação artística pendente.

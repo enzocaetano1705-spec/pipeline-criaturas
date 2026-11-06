@@ -1,0 +1,269 @@
+{
+  "original": "modelos\\fera-fera-agil-das-sombras\\malha-v1\\textura-v2\\entrada-blockbench.bbmodel",
+  "entrada_editada": "modelos\\fera-fera-agil-das-sombras\\malha-v1\\textura-v4\\entrada-blockbench.bbmodel",
+  "saida": "C:\\Users\\enzoc\\dev\\pipeline-criaturas\\modelos\\fera-fera-agil-das-sombras\\malha-v1\\textura-v4\\r01\\fera-sombras-e3-textura-v4-r01.bbmodel",
+  "sha256_original": "e18ecce8b1d38aac7b46836700ca1512603dae4af36a0606144154eceb3b15d9",
+  "sha256_editada": "ec8446027568b4bf77a1be2d69e66108221adb6c45ba8fa8da2a6c1b517abe88",
+  "sha256_saida": "73f038199b0e48af841d073aa78b44c12d4641cd4544f4c081bafddaa6698a1c",
+  "forma_editada_preservada": true,
+  "assinatura_forma": "670be0891d17035873d9ea922bfbbcc12fca632951ad6a15dec965055206886e",
+  "uv_alteradas_apenas_colar": true,
+  "uv_colar": [
+    0,
+    96
+  ],
+  "sobreposicoes_uv": 0,
+  "cores_textura": 52,
+  "faces_protegidas_integras": {
+    "pelvis": true,
+    "foot_left": true,
+    "foot_right": true,
+    "forearm_left": true,
+    "forearm_right": true,
+    "hand_right": true,
+    "head": true,
+    "tail_1": true,
+    "tail_2": true,
+    "tail_3": true,
+    "tail_4": true,
+    "tail_5": true,
+    "pelvis_fur": true,
+    "tail_1_fur": true,
+    "tail_2_fur": true,
+    "tail_3_fur": true,
+    "tail_4_fur": true,
+    "tail_5_fur": true
+  },
+  "textura": [
+    512,
+    512
+  ],
+  "uv": [
+    256,
+    256
+  ],
+  "alteracoes": [
+    {
+      "cubo": "torso",
+      "face": "north",
+      "pixels": 110
+    },
+    {
+      "cubo": "torso",
+      "face": "south",
+      "pixels": 84
+    },
+    {
+      "cubo": "torso",
+      "face": "east",
+      "pixels": 186
+    },
+    {
+      "cubo": "torso",
+      "face": "west",
+      "pixels": 186
+    },
+    {
+      "cubo": "torso",
+      "face": "up",
+      "pixels": 334
+    },
+    {
+      "cubo": "torso",
+      "face": "down",
+      "pixels": 94
+    },
+    {
+      "cubo": "leg_left",
+      "face": "west",
+      "pixels": 1
+    },
+    {
+      "cubo": "shin_left",
+      "face": "south",
+      "pixels": 1
+    },
+    {
+      "cubo": "shin_left",
+      "face": "up",
+      "pixels": 3
+    },
+    {
+      "cubo": "arm_left",
+      "face": "north",
+      "pixels": 11
+    },
+    {
+      "cubo": "arm_left",
+      "face": "west",
+      "pixels": 8
+    },
+    {
+      "cubo": "neck_1",
+      "face": "south",
+      "pixels": 14
+    },
+    {
+      "cubo": "neck_1",
+      "face": "east",
+      "pixels": 169
+    },
+    {
+      "cubo": "neck_1",
+      "face": "west",
+      "pixels": 169
+    },
+    {
+      "cubo": "neck_1",
+      "face": "up",
+      "pixels": 10
+    },
+    {
+      "cubo": "neck_1",
+      "face": "down",
+      "pixels": 216
+    },
+    {
+      "cubo": "head_2",
+      "face": "north",
+      "pixels": 16
+    },
+    {
+      "cubo": "head_2",
+      "face": "east",
+      "pixels": 26
+    },
+    {
+      "cubo": "head_2",
+      "face": "west",
+      "pixels": 26
+    },
+    {
+      "cubo": "head_3",
+      "face": "north",
+      "pixels": 120
+    },
+    {
+      "cubo": "head_3",
+      "face": "south",
+      "pixels": 120
+    },
+    {
+      "cubo": "head_3",
+      "face": "east",
+      "pixels": 100
+    },
+    {
+      "cubo": "head_3",
+      "face": "west",
+      "pixels": 100
+    },
+    {
+      "cubo": "head_3",
+      "face": "up",
+      "pixels": 120
+    },
+    {
+      "cubo": "head_3",
+      "face": "down",
+      "pixels": 120
+    },
+    {
+      "cubo": "scarf_1",
+      "face": "north",
+      "pixels": 540
+    },
+    {
+      "cubo": "scarf_1",
+      "face": "south",
+      "pixels": 540
+    },
+    {
+      "cubo": "scarf_2",
+      "face": "north",
+      "pixels": 160
+    },
+    {
+      "cubo": "scarf_2",
+      "face": "south",
+      "pixels": 160
+    },
+    {
+      "cubo": "scarf_3",
+      "face": "north",
+      "pixels": 288
+    },
+    {
+      "cubo": "scarf_3",
+      "face": "south",
+      "pixels": 288
+    },
+    {
+      "cubo": "scarf_4",
+      "face": "north",
+      "pixels": 196
+    },
+    {
+      "cubo": "scarf_4",
+      "face": "south",
+      "pixels": 196
+    },
+    {
+      "cubo": "scarf_5",
+      "face": "north",
+      "pixels": 180
+    },
+    {
+      "cubo": "scarf_5",
+      "face": "south",
+      "pixels": 180
+    },
+    {
+      "cubo": "scarf_collar_1",
+      "face": "north",
+      "pixels": 900
+    },
+    {
+      "cubo": "scarf_collar_1",
+      "face": "south",
+      "pixels": 900
+    },
+    {
+      "cubo": "scarf_collar_1",
+      "face": "east",
+      "pixels": 180
+    },
+    {
+      "cubo": "scarf_collar_1",
+      "face": "west",
+      "pixels": 180
+    },
+    {
+      "cubo": "scarf_collar_1",
+      "face": "up",
+      "pixels": 180
+    },
+    {
+      "cubo": "scarf_collar_1",
+      "face": "down",
+      "pixels": 180
+    },
+    {
+      "cubo": "head_fur",
+      "face": "east",
+      "pixels": 2
+    },
+    {
+      "cubo": "head_fur",
+      "face": "west",
+      "pixels": 2
+    }
+  ],
+  "validacao": {
+    "erros": 0,
+    "avisos": 57
+  },
+  "aprovacao_artistica": false,
+  "head_fur_rgb_preservado": true,
+  "alfa_orfao_removido": 4
+}

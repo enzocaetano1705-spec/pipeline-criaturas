@@ -85,6 +85,26 @@ def nariz(rgb,cfg):
     return out
 
 
+def focinho_inteiro(L,cubo,face,cfg):
+    """Rinário largo: toda a última peça do focinho recebe pigmentação, não um ponto no bege."""
+    p=cfg["focinho"]
+    center=(cubo.de+cubo.ate)/2
+    size=cubo.ate-cubo.de
+    x=(L[...,0]-center[0])/(size[0]/2)
+    y=(L[...,1]-cubo.de[1])/size[1]
+    z=(L[...,2]-cubo.de[2])/size[2]
+    out=np.empty(L.shape,np.uint8);out[:]=p["base"]
+    out[y>.64]=p["meio"]
+    out[(y>.82)&(np.abs(x)<.68)&(z<.8)]=p["luz"]
+    out[y<.23]=p["sombra"]
+    if face=="north":
+        # Duas narinas, ponte central e reflexão superior, mantendo o desenho em pixels.
+        nostrils=(np.abs(np.abs(x)-.46)<.19)&(np.abs(y-.46)<.16)
+        out[nostrils]=p["narina"]
+        out[(np.abs(x)<.18)&(y>.38)&(y<.68)]=p["meio"]
+    return out
+
+
 def pintar(original,editado,cfg):
     atlas = np.asarray(original.textura).copy()
     source = atlas.copy()
@@ -120,7 +140,11 @@ def pintar(original,editado,cfg):
                 for comp in componentes(alpha > 127):
                     if len(comp) <= 2:
                         yy,xx=np.array(comp).T;alpha[yy,xx]=0
-            if c.nome in ("arm_left","leg_left","hand_left"):
+            if cfg.get("pano_somente_scarf",False) and c.nome!="head_3":
+                # Material vem do papel da peça. Nunca transformar pelo em pano
+                # só porque um campo 3D ou a cor da malha cruzou sua superfície.
+                rgb=preencher(rgb,vinho(rgb)&(alpha>127),alpha>127)
+            elif c.nome in ("arm_left","leg_left","hand_left"):
                 stains = vinho(rgb) & (alpha > 127)
                 tiny = np.zeros(stains.shape,bool)
                 for comp in componentes(stains):
@@ -129,9 +153,11 @@ def pintar(original,editado,cfg):
                 rgb = preencher(rgb,tiny,alpha>127)
             if c.nome == "head_2" and f in ("east","west","north"):
                 rgb,_ = recuperar_olho(rgb,f,cfg)
-            if c.nome == "head_3" and f == "north":
+            if c.nome=="head_3" and cfg.get("focinho_integral",False):
+                rgb=focinho_inteiro(L,c,f,cfg)
+            elif c.nome == "head_3" and f == "north":
                 rgb = nariz(rgb,cfg)
-            if c.nome in ("neck_1","torso","neck_1_fur","torso_fur"):
+            if not cfg.get("pano_somente_scarf",False) and c.nome in ("neck_1","torso","neck_1_fur","torso_fur"):
                 if c.nome == "neck_1":
                     mask=(Q[...,2] >= -16.8)&(Q[...,1] >= collar.de[1])&(Q[...,1] <= collar.ate[1])
                 else:

@@ -1,0 +1,22 @@
+{
+  "entrada": "fera-sombras-e3-textura-v4-r01.bbmodel",
+  "saida": "fera-sombras-e3-textura-v4-r02.bbmodel",
+  "pontos_da_fita": 1486,
+  "geometria_uv_ossos_iguais": true,
+  "pixels_alterados": {
+    "scarf_1.north": 513,
+    "scarf_1.south": 513,
+    "scarf_2.north": 147,
+    "scarf_2.south": 147,
+    "scarf_3.north": 262,
+    "scarf_3.south": 262,
+    "scarf_4.north": 177,
+    "scarf_4.south": 177,
+    "scarf_5.north": 154,
+    "scarf_5.south": 154
+  },
+  "validacao": {
+    "erros": 0,
+    "avisos": 57
+  }
+}

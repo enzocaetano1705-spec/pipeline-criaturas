@@ -98,6 +98,14 @@ e faz patches locais. Preserva as faces protegidas byte a byte e confere
 geometria/rig, permitindo mudar apenas a UV da gola. Configuração e exemplo:
 `modelos/fera-fera-agil-das-sombras/malha-v1/textura-v3/LEIA-ME.md`.
 
+## Fita contínua (planos do cachecol)
+
+`fita_continua.py` refaz só o recorte dos planos `scarf_N` de um `.bbmodel` pronto: todos usam a
+mesma fita (volume de pano vinho da malha no ar, fora dos cubos sólidos), com contorno escuro só na
+borda real. Tira as emendas que faziam a fita parecer pedaços voando e a lâmina do 1º plano sobre o
+ombro. Não muda geometria, UV nem ossos (conferido). Exemplo em
+`modelos/fera-fera-agil-das-sombras/malha-v1/textura-v4/LEIA-ME.md`.
+
 ## Limites conhecidos (v1)
 
 - Só o plano "bípede com cauda" tem regras de papéis.

@@ -13,3 +13,5 @@
 - `textura-v3/r03/fera-sombras-e3-textura-v3-r03.bbmodel`: revisão atual, com a gola editada pelo usuário, UV da gola separada e textura anterior recuperada com reparos localizados. Prévia nativa em `textura-v3/r03/previa-nativa.png`. Avaliação artística pendente.
 
 Para refazer: ver `scripts/malha-para-cubos/LEIA-ME.md`.
+
+Modelo mais recente (textura): `textura-v4/r02/fera-sombras-e3-textura-v4-r02.bbmodel` — ver `textura-v4/LEIA-ME.md`.
