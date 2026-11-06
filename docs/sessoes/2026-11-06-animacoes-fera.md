@@ -39,3 +39,11 @@ pé +9; os pivôs tinham ficado para trás. `pernas_recuadas.py` aplicou a ediç
 relativas ao tornozelo. Antes: pernas encostando nos braços em 25/25 quadros do walk e 7/10 do run;
 agora a menor distância é 3,2 e nenhum encosta. 0 erros e 0 avisos. `loc_ground` (+11, atrás dos pés,
 provavelmente arrastado na seleção) ficou no lugar original — confirmar com o usuário.
+
+## r05 — run refeito como galope
+
+Retorno: walk aprovado; run com frente em ritmo de 2 ciclos contra 1 da traseira, balanço demais,
+cauda estranha e partes se soltando. Causa medida: quique, tronco e cachecol em 2× a passada, mola
+da gordura na própria frequência, tronco transladando 2,8. Novo `pose_galope`: galope rotativo de
+0,66 s, tudo travado na fase da passada, só o `body` translada, cauda com elevação fixa. `medir.py`
+confere ritmo (1 ciclo/passada), translações e frestas. 0 erros, 0 avisos.

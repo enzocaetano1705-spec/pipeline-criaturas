@@ -1,6 +1,16 @@
 # Animações v1 — locomoção da preguiça rogue (06/11/2026)
 
-Atual: **r04/fera-sombras-e3-animacoes.bbmodel** (base `rig-v3/base-rig-v3.bbmodel`).
+Atual: **r05/fera-sombras-e3-animacoes.bbmodel** (base `rig-v3/base-rig-v3.bbmodel`).
+
+**r05 (run refeito):** retorno "o walk ficou bom; no run a frente parece fazer 2 ciclos e a traseira 1,
+balança demais, não parece galope, a cauda mexe estranho e partes se desconectam". Medido na r04:
+quique do corpo, deslocamento do tronco e cachecol batiam 2× por passada e a mola da gordura tremia na
+própria frequência; o tronco transladava 2,8 unidades (abria fresta) e girava 16°, a cauda 20°.
+Agora o run é um galope rotativo (trás esq., trás dir., frente dir., frente esq., voo recolhido) de
+0,66 s em que tudo que balança está travado na fase da passada (`medir.py`: todos os canais do corpo
+com 1 ciclo por passada), só o `body` translada, coluna estica/encolhe uma vez, gordura = mesmo
+balanço com fase atrasada, cauda e cachecol em onda uma vez por passada, elevação da cauda fixa
+(sem correção quadro a quadro). Nenhuma fresta nas juntas; 0 erros, 0 avisos. Walk igual à r04.
 
 **r04:** o usuário recuou as pernas no Blockbench (coxa +10 em Z, canela e pé +9) porque nas
 animações elas entravam nos braços. `scripts/fera-animacao/pernas_recuadas.py` levou essa edição para

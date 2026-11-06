@@ -245,21 +245,83 @@ class Locomocao:
         return T, self.ciclo(T, cfg), {"curso": cfg["curso"] / cfg["duty"]}
 
     def run(self):
-        T = 0.62
+        """Galope pesado com UM ritmo: tudo que balança (corpo, coluna, gordura, cabeça, cauda,
+        cachecol) está travado na fase da passada — nada oscila na própria frequência."""
+        T = 0.66
         cfg = dict(
-            duty=0.34, curso=9.0, alt_pe=4.2, alt_mao=5.5, abre_pe=1.05, dz_pe=-1.9, x_mao=10.5, z_mao=-19.0,
-            altura=-1.4, avanco=-1.0, pitch0=-10.0, torso0=-5.0, olhar=8.0,
-            fases={"pe_left": 0.0, "pe_right": 0.07, "mao_left": 0.48, "mao_right": 0.56},
-            bob=lambda f: 1.35 * math.cos(4 * math.pi * (f - 0.22)),
-            pitch=lambda f: 7.0 * math.sin(2 * math.pi * (f - 0.1)),
-            roll=lambda f: 1.5 * math.sin(2 * math.pi * f),
-            yaw=lambda f: 1.2 * math.sin(2 * math.pi * f + 0.5),
-            flex=lambda f: 11.0 * math.sin(2 * math.pi * (f + 0.15)),
-            mola_freq=3.2, mola_amort=0.22,
-            cauda_pitch=9.0, cauda_freq=1.0, cauda_yaw=4.0, cauda_ergue=-12.0,
-            fita_freq=2.0, fita_amp=13.0,
+            duty=0.30, curso=9.0, alt_pe=3.6, alt_mao=4.0, abre_pe=1.05, dz_pe=-1.9, x_mao=10.5, z_mao=-19.0,
+            altura=-1.6, avanco=-1.0, pitch0=-9.0, torso0=-4.0, olhar=6.0,
+            # galope rotativo: trás esq., trás dir., frente dir., frente esq.; depois o voo recolhido
+            fases={"pe_left": 0.0, "pe_right": 0.10, "mao_right": 0.42, "mao_left": 0.52},
+            mao_pitch=20.0, pe_pitch=-22.0,
         )
-        return T, self.ciclo(T, cfg), {"curso": cfg["curso"] / cfg["duty"]}
+        n = int(round(T * FPS))
+        quadros = [(i * T / n, self.pose_galope(i / n, cfg)) for i in range(n)]
+        # cauda: uma elevação fixa (calculada no ciclo todo) em vez de correções quadro a quadro
+        falta = max(self.falta_cauda(p) for _t, p in quadros)
+        if falta > 0:
+            quadros = [(i * T / n, self.pose_galope(i / n, cfg, ergue_extra=falta)) for i in range(n)]
+        quadros.append((T, quadros[0][1]))
+        return T, quadros, {"curso": cfg["curso"] / cfg["duty"]}
+
+    def pose_galope(self, f, cfg, ergue_extra=0.0):
+        """Pose do galope na fase f ∈ [0,1). Só o `body` translada (sobe e desce); o resto gira."""
+        r = self.r
+        tau = 2 * math.pi
+        pose = {}
+        # corpo: um quique por passada (mais alto no voo recolhido, mais baixo quando as patas de trás
+        # chegam e amortecem) + cadeira de balanço (nariz sobe no impulso de trás, desce na chegada da frente)
+        y = 1.05 * math.cos(tau * (f - 0.9)) + 0.22 * math.cos(2 * tau * (f - 0.45))
+        pitch = 5.0 * math.sin(tau * (f - 0.05))
+        roll = 1.0 * math.sin(tau * (f - 0.2))
+        pose["body"] = {"rotacao": [cfg["pitch0"] + pitch, 0.0, roll], "posicao": [0.0, cfg["altura"] + y, cfg["avanco"]]}
+        # coluna: estica quando as patas da frente alcançam, encolhe quando as de trás chegam por baixo
+        ext = 7.0 * math.cos(tau * (f - 0.5))
+        # gordura: o peito segue o balanço do corpo com atraso (mesma frequência, fase atrasada)
+        atraso = 0.45 * (5.0 * math.sin(tau * (f - 0.05 - 0.09)) - pitch)
+        pose["pelvis"] = {"rotacao": [-0.6 * ext, 0.0, 0.0]}
+        pose["waist"] = {"rotacao": [0.25 * ext + 0.4 * atraso, 0.0, -0.5 * roll]}
+        pose["torso"] = {"rotacao": [cfg["torso0"] + 0.35 * ext + 0.6 * atraso, 0.0, -0.4 * roll]}
+        for lado, s in LADOS:
+            u = (f - cfg["fases"][f"pe_{lado}"]) % 1.0
+            dz, h = self.passo(u, cfg["duty"], cfg["curso"], cfg["alt_pe"])
+            base = r.piv(f"foot_{lado}")
+            alvo = np.array([base[0] * cfg["abre_pe"], self.chao + self.alt_tornozelo + h, base[2] + cfg["dz_pe"] + dz])
+            voo = (u - cfg["duty"]) / (1 - cfg["duty"]) if u >= cfg["duty"] else -1
+            self.perna(pose, lado, s, alvo, cfg["pe_pitch"] * math.sin(math.pi * voo) if voo >= 0 else 0.0)
+        for lado, s in LADOS:
+            u = (f - cfg["fases"][f"mao_{lado}"]) % 1.0
+            dz, h = self.passo(u, cfg["duty"], cfg["curso"], cfg["alt_mao"])
+            alvo = np.array([s * cfg["x_mao"], self.chao + self.alt_punho + h, cfg["z_mao"] + dz])
+            voo = (u - cfg["duty"]) / (1 - cfg["duty"]) if u >= cfg["duty"] else -1
+            self.braco(pose, lado, s, alvo, cfg["mao_pitch"] * math.sin(math.pi * voo) if voo >= 0 else 0.0)
+        self.garras(pose, 1.0)
+        # cabeça firme (predador focado); o pescoço absorve um pouco do balanço, atrasado
+        self.cabeca_estavel(pose, pitch=cfg["olhar"], yaw=0.0, roll=0.0, rigidez=0.85)
+        R1 = pose["neck_1"]["matriz"]
+        pose["neck_1"] = {"matriz": R1 @ rx(-0.5 * atraso)}
+        # cauda: contrapeso em onda, uma vez por passada, da base para a ponta
+        cauda = []
+        for k in range(5):
+            onda_k = math.sin(tau * (f - 0.3 - 0.07 * k))
+            cauda.append([5.0 * (0.8 + 0.15 * k) * onda_k - 0.5 * pitch * (k == 0), 1.8 * math.sin(tau * (f - 0.2 - 0.07 * k)), 0.0])
+        cauda[0][0] += -9.0 - ergue_extra
+        self.corrente(pose, [f"tail_{k}" for k in range(1, 6)], cauda)
+        # cachecol: a fita esvoaça para trás no mesmo ritmo (uma onda por passada)
+        fita = []
+        for k in range(5):
+            a = tau * (f - 0.1 - 0.08 * (k + 1))
+            fita.append([8.0 * (0.6 + 0.15 * k) * math.sin(a), 4.0 * math.sin(a + 1.2), 0.0])
+        self.corrente(pose, [f"scarf_{k}" for k in range(1, 6)], fita)
+        return pose
+
+    def falta_cauda(self, pose, folga=0.6):
+        """Quanto (em graus na base) a cauda precisa subir para não tocar o chão nessa pose."""
+        teste = {k: dict(v) for k, v in pose.items()}
+        antes = np.asarray(teste["tail_1"]["rotacao"], float).copy()
+        self.cauda_acima_do_chao(teste, folga)
+        depois = np.asarray(teste["tail_1"]["rotacao"], float)
+        return float(antes[0] - depois[0])
 
     def pose_idle(self, t, T, molas, dt):
         """De pé, curvada, lenta: respira, olha devagar, mexe as garras."""
