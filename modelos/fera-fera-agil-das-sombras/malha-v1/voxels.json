@@ -1,0 +1,28 @@
+{
+  "entrada": "fera-tripo.fbx",
+  "comprimento": 64.0,
+  "voxel": 0.5,
+  "escala_aplicada": 64.03126526624328,
+  "limites": [
+    [
+      -21.995,
+      0.0,
+      -32.0
+    ],
+    [
+      21.995,
+      38.05,
+      32.0
+    ]
+  ],
+  "dims": [
+    91,
+    80,
+    131
+  ],
+  "voxels_ocupados": 83209,
+  "voxels_superficie": 22289,
+  "triangulos": 10304,
+  "texturas": 1,
+  "segundos": 2.5
+}

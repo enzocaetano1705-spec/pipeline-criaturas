@@ -1,0 +1,52 @@
+{
+  "iou_por_vista": {
+    "frente": 0.674,
+    "lado": 0.701,
+    "costas": 0.674,
+    "3/4": 0.688
+  },
+  "lacunas_juntas": [],
+  "cubos_com_rotacao_em_2_ou_3_eixos": 21,
+  "cubos_mais_fora_da_malha": [
+    [
+      "hand_left_claw_1",
+      1.0
+    ],
+    [
+      "hand_left_claw_2",
+      1.0
+    ],
+    [
+      "hand_left_claw_3",
+      1.0
+    ],
+    [
+      "hand_right_claw_1",
+      1.0
+    ],
+    [
+      "hand_right_claw_3",
+      1.0
+    ],
+    [
+      "hand_right_claw_2",
+      0.98
+    ],
+    [
+      "hand_right",
+      0.9
+    ],
+    [
+      "hand_left",
+      0.89
+    ],
+    [
+      "forearm_left",
+      0.63
+    ],
+    [
+      "forearm_right",
+      0.63
+    ]
+  ]
+}

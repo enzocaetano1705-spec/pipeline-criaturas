@@ -1,0 +1,137 @@
+{
+  "_origem": "Ajustes do usuário (2026-11-05), lidos da aba aberta no Blockbench e pedidos no chat. Cauda: subiu 4 e recuou 2 (bloco da base sobe metade). Braços: fechados 18° ('braços muito abertos'). Pernas e ligação da cauda: geometria exata que o usuário deixou no Blockbench (canela recuada, alongada até o pé e inclinada 12,5°; pé recuado e chato; ligação da cauda 2 mais alta).",
+  "transladar": [
+    {
+      "a_partir_de": "tail_1",
+      "manter_primeiro_cubo": true,
+      "delta": [
+        0,
+        4,
+        2
+      ]
+    }
+  ],
+  "girar_membros": [
+    {
+      "osso": "arm",
+      "eixo": [
+        0,
+        0,
+        1
+      ],
+      "graus": 18
+    }
+  ],
+  "substituir_cubos": {
+    "shin_left": {
+      "from": [
+        -9.5,
+        2.5,
+        -8.5
+      ],
+      "to": [
+        -5.5,
+        12.5,
+        -2.5
+      ],
+      "origin": [
+        -7.5,
+        9.0,
+        -5.5
+      ],
+      "rotation": [
+        -12.5,
+        0.0,
+        -7.5
+      ]
+    },
+    "shin_right": {
+      "from": [
+        5.5,
+        2.5,
+        -8.5
+      ],
+      "to": [
+        9.5,
+        12.5,
+        -2.5
+      ],
+      "origin": [
+        7.5,
+        9.0,
+        -5.5
+      ],
+      "rotation": [
+        -12.5,
+        0.0,
+        7.5
+      ]
+    },
+    "foot_left": {
+      "from": [
+        -11.5,
+        1.0,
+        -9.75
+      ],
+      "to": [
+        -7.5,
+        3.0,
+        -0.75
+      ],
+      "origin": [
+        -9.5,
+        4.0,
+        -5.25
+      ],
+      "rotation": [
+        0.0,
+        35.0,
+        0.0
+      ]
+    },
+    "foot_right": {
+      "from": [
+        7.5,
+        1.0,
+        -9.75
+      ],
+      "to": [
+        11.5,
+        3.0,
+        -0.75
+      ],
+      "origin": [
+        9.5,
+        4.0,
+        -5.25
+      ],
+      "rotation": [
+        0.0,
+        -35.0,
+        0.0
+      ]
+    },
+    "tail_1": {
+      "from": [
+        -6.25,
+        14.25,
+        -2.0
+      ],
+      "to": [
+        5.75,
+        24.25,
+        3.0
+      ],
+      "origin": [
+        -0.25,
+        18.25,
+        0.5
+      ],
+      "rotation": [
+        45.0,
+        0.0,
+        0.0
+      ]
+    }
+  }
+}

@@ -1,0 +1,82 @@
+{
+  "arquivo": "fera-sombras-e3-malha.bbmodel",
+  "sha256": "a12ba408406cf05147986759dde76070da50cf406bcde043c34cff5e0c05f137",
+  "aviso_versao": null,
+  "cubos": 45,
+  "ossos": 31,
+  "locators": 10,
+  "textura": [
+    512,
+    512
+  ],
+  "uv": [
+    256,
+    256
+  ],
+  "tipo_textura": "projetada",
+  "garras": 3,
+  "estilo": "equilibrio",
+  "iou_3d": 0.434,
+  "malha_coberta": 0.607,
+  "cubo_dentro_da_malha": 0.603,
+  "planos": [
+    "scarf_1",
+    "scarf_2",
+    "scarf_3",
+    "scarf_4",
+    "scarf_5",
+    "pelvis_fur",
+    "tail_1_fur",
+    "tail_2_fur",
+    "tail_3_fur",
+    "tail_4_fur",
+    "tail_5_fur",
+    "torso_fur",
+    "neck_1_fur",
+    "head_fur"
+  ],
+  "ajustes_do_usuario": [
+    "tail_1 e filhos movidos [0.0, 4.0, 2.0]",
+    "arm fechado 18°",
+    "cubos editados à mão: shin_left, shin_right, foot_left, foot_right, tail_1"
+  ],
+  "removidos_na_limpeza": [],
+  "validacao": {
+    "erros": 0,
+    "avisos": 57
+  },
+  "por_osso": {
+    "root": 0,
+    "body": 0,
+    "pelvis": 2,
+    "leg_left": 1,
+    "shin_left": 1,
+    "foot_left": 1,
+    "leg_right": 1,
+    "shin_right": 1,
+    "foot_right": 1,
+    "tail_1": 3,
+    "tail_2": 2,
+    "tail_3": 2,
+    "tail_4": 2,
+    "tail_5": 2,
+    "waist": 0,
+    "torso": 2,
+    "arm_left": 1,
+    "forearm_left": 1,
+    "hand_left": 4,
+    "arm_right": 1,
+    "forearm_right": 1,
+    "hand_right": 4,
+    "neck_1": 2,
+    "neck_2": 0,
+    "head": 4,
+    "scarf": 1,
+    "scarf_1": 1,
+    "scarf_2": 1,
+    "scarf_3": 1,
+    "scarf_4": 1,
+    "scarf_5": 1
+  },
+  "segundos": 30.5
+}
