@@ -29,3 +29,13 @@ iguais às do motor (`bbmodel_sample_pose`, diferença ≤ 0,1). Roblox não ani
 vem de molas no tronco/pescoço, quique e ondas na cauda e no cachecol.
 
 **Próximo passo:** avaliação do usuário; depois postura de combate, ataque básico e habilidades.
+
+## r04 — pernas recuadas
+
+Retorno: o usuário recuou as pernas no Blockbench porque nas animações elas entravam nos braços, e
+apareceu um pedaço de textura solto. Lido da aba aberta (sem salvar): cubos da coxa +10 em Z, canela e
+pé +9; os pivôs tinham ficado para trás. `pernas_recuadas.py` aplicou a edição e moveu os pivôs junto;
+`limpar_ilhas.py` tirou o tufo do `pelvis_fur` que ficou boiando; a passada usa as patas de trás
+relativas ao tornozelo. Antes: pernas encostando nos braços em 25/25 quadros do walk e 7/10 do run;
+agora a menor distância é 3,2 e nenhum encosta. 0 erros e 0 avisos. `loc_ground` (+11, atrás dos pés,
+provavelmente arrastado na seleção) ficou no lugar original — confirmar com o usuário.

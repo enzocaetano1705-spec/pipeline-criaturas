@@ -1,6 +1,17 @@
 # Animações v1 — locomoção da preguiça rogue (06/11/2026)
 
-Atual: **r03/fera-sombras-e3-animacoes.bbmodel** (textura e geometria da `textura-v4/r03`, aprovada).
+Atual: **r04/fera-sombras-e3-animacoes.bbmodel** (base `rig-v3/base-rig-v3.bbmodel`).
+
+**r04:** o usuário recuou as pernas no Blockbench (coxa +10 em Z, canela e pé +9) porque nas
+animações elas entravam nos braços. `scripts/fera-animacao/pernas_recuadas.py` levou essa edição para
+o rig movendo também os pivôs (quadril, joelho e tornozelo andam com os seus cubos; geometria em
+`edicao-pernas.json`). O plano de pelo do quadril tinha um tufo que encostava na coxa e ficou boiando:
+`limpar_ilhas.py` tirou (36 texels). A passada agora mede as patas de trás a partir do tornozelo de
+repouso. Medido: antes as pernas encostavam nos braços em 25/25 quadros do walk e 7/10 do run; agora
+a menor distância é 3,2 e nenhum quadro encosta. Validação: 0 erros, 0 avisos. O marcador
+`loc_ground`, que tinha ido junto na seleção (+11 em Z, atrás dos pés), ficou no lugar original.
+
+r03 (anterior) usava a geometria da `textura-v4/r03`.
 
 Ideia do usuário: preguiça-gigante pesada, com camada de gordura, mas muito veloz. Andando e correndo
 vira quadrúpede apoiada nos nós das mãos, com as garras dobradas para dentro (como tamanduás e

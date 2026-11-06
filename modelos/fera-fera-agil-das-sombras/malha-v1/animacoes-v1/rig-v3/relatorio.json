@@ -1,0 +1,17 @@
+{
+  "entrada": "base-rig-v2.bbmodel",
+  "saida": "base-rig-v3.bbmodel",
+  "ilhas_removidas": {
+    "pelvis_fur.east": [
+      36
+    ],
+    "pelvis_fur.west": [
+      36
+    ]
+  },
+  "geometria_uv_ossos_iguais": true,
+  "validacao": {
+    "erros": 0,
+    "avisos": 67
+  }
+}

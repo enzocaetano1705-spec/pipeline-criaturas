@@ -173,7 +173,8 @@ class Locomocao:
             u = (fase - cfg["fases"][f"pe_{lado}"]) % 1.0
             dz, h = self.passo(u, cfg["duty"], cfg["curso"], cfg["alt_pe"])
             base = r.piv(f"foot_{lado}")
-            alvo = np.array([base[0] * cfg["abre_pe"], self.chao + self.alt_tornozelo + h, cfg["z_pe"] + dz])
+            # patas de trás relativas ao tornozelo de repouso (acompanham as pernas que o usuário recuou)
+            alvo = np.array([base[0] * cfg["abre_pe"], self.chao + self.alt_tornozelo + h, base[2] + cfg["dz_pe"] + dz])
             em_voo = u >= cfg["duty"]
             pe_pitch = (-25 * math.sin(math.pi * (u - cfg["duty"]) / (1 - cfg["duty"])) if em_voo else 0.0)
             self.perna(pose, lado, s, alvo, pe_pitch)
@@ -229,7 +230,7 @@ class Locomocao:
     def walk(self):
         T = 1.6
         cfg = dict(
-            duty=0.7, curso=8.5, alt_pe=2.4, alt_mao=3.2, abre_pe=1.0, z_pe=-7.0, x_mao=11.0, z_mao=-17.5,
+            duty=0.7, curso=8.5, alt_pe=2.4, alt_mao=3.2, abre_pe=1.0, dz_pe=-2.9, x_mao=11.0, z_mao=-17.5,
             altura=-2.6, avanco=-0.5, pitch0=-7.0, torso0=-6.0, olhar=4.0,
             fases={"pe_left": 0.0, "mao_left": 0.25, "pe_right": 0.5, "mao_right": 0.75},
             bob=lambda f: 0.45 * math.cos(4 * math.pi * f),
@@ -246,7 +247,7 @@ class Locomocao:
     def run(self):
         T = 0.62
         cfg = dict(
-            duty=0.34, curso=9.0, alt_pe=4.2, alt_mao=5.5, abre_pe=1.05, z_pe=-6.0, x_mao=10.5, z_mao=-19.0,
+            duty=0.34, curso=9.0, alt_pe=4.2, alt_mao=5.5, abre_pe=1.05, dz_pe=-1.9, x_mao=10.5, z_mao=-19.0,
             altura=-1.4, avanco=-1.0, pitch0=-10.0, torso0=-5.0, olhar=8.0,
             fases={"pe_left": 0.0, "pe_right": 0.07, "mao_left": 0.48, "mao_right": 0.56},
             bob=lambda f: 1.35 * math.cos(4 * math.pi * (f - 0.22)),
