@@ -1,0 +1,23 @@
+{
+  "reproducao_atlas": true,
+  "forma_editada_intacta": true,
+  "colisoes_uv_antes": 220,
+  "colisoes_uv_depois": 0,
+  "olhos": {
+    "north": {
+      "pixels": 0,
+      "margem_lateral": null
+    },
+    "east": {
+      "pixels": 10,
+      "margem_lateral": 1
+    },
+    "west": {
+      "pixels": 10,
+      "margem_lateral": 1
+    }
+  },
+  "alfa_orfao_removido": 4,
+  "avisos_motor_identicos": true,
+  "py_compile": true
+}

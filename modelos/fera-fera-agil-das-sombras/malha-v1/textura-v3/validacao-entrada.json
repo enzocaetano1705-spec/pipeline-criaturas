@@ -1,0 +1,462 @@
+{
+  "revision": "f5cfbef16503785e",
+  "format": "bedrock",
+  "summary": {
+    "errors": 0,
+    "warnings": 57,
+    "passed": true
+  },
+  "gates": [
+    {
+      "id": "outliner",
+      "label": "Outliner references resolve and UUIDs are unique",
+      "severity": "error",
+      "ran": true,
+      "violations": []
+    },
+    {
+      "id": "unlisted_nodes",
+      "label": "Every group and element is placed in the outliner",
+      "severity": "warning",
+      "ran": true,
+      "violations": []
+    },
+    {
+      "id": "degenerate",
+      "label": "No sliver or inverted cubes",
+      "severity": "warning",
+      "ran": true,
+      "violations": []
+    },
+    {
+      "id": "block_limits",
+      "label": "Geometry stays inside the block-model limits",
+      "severity": "error",
+      "ran": false,
+      "skipped_reason": "Pass block_limits: java_block or bedrock_block to enable.",
+      "violations": []
+    },
+    {
+      "id": "floating",
+      "label": "Every part touches the main body",
+      "severity": "warning",
+      "ran": true,
+      "violations": []
+    },
+    {
+      "id": "interpenetration",
+      "label": "Parts of different groups do not pass through each other",
+      "severity": "warning",
+      "ran": true,
+      "violations": [
+        {
+          "message": "pelvis and torso (different groups) interpenetrate by 5.46 units.",
+          "targets": [
+            "pelvis",
+            "torso"
+          ]
+        },
+        {
+          "message": "pelvis and leg_left (different groups) interpenetrate by 6.15 units.",
+          "targets": [
+            "pelvis",
+            "leg_left"
+          ]
+        },
+        {
+          "message": "pelvis and leg_right (different groups) interpenetrate by 6.15 units.",
+          "targets": [
+            "pelvis",
+            "leg_right"
+          ]
+        },
+        {
+          "message": "pelvis and arm_left (different groups) interpenetrate by 0.83 units.",
+          "targets": [
+            "pelvis",
+            "arm_left"
+          ]
+        },
+        {
+          "message": "pelvis and arm_right (different groups) interpenetrate by 0.83 units.",
+          "targets": [
+            "pelvis",
+            "arm_right"
+          ]
+        },
+        {
+          "message": "pelvis and tail_1 (different groups) interpenetrate by 8.24 units.",
+          "targets": [
+            "pelvis",
+            "tail_1"
+          ]
+        },
+        {
+          "message": "pelvis and tail_1_2 (different groups) interpenetrate by 4.09 units.",
+          "targets": [
+            "pelvis",
+            "tail_1_2"
+          ]
+        },
+        {
+          "message": "pelvis and scarf_1 (different groups) interpenetrate by 2.36 units.",
+          "targets": [
+            "pelvis",
+            "scarf_1"
+          ]
+        },
+        {
+          "message": "torso and leg_left (different groups) interpenetrate by 1.31 units.",
+          "targets": [
+            "torso",
+            "leg_left"
+          ]
+        },
+        {
+          "message": "torso and leg_right (different groups) interpenetrate by 1.31 units.",
+          "targets": [
+            "torso",
+            "leg_right"
+          ]
+        },
+        {
+          "message": "torso and arm_left (different groups) interpenetrate by 2.33 units.",
+          "targets": [
+            "torso",
+            "arm_left"
+          ]
+        },
+        {
+          "message": "torso and arm_right (different groups) interpenetrate by 2.33 units.",
+          "targets": [
+            "torso",
+            "arm_right"
+          ]
+        },
+        {
+          "message": "torso and neck_1 (different groups) interpenetrate by 7.99 units.",
+          "targets": [
+            "torso",
+            "neck_1"
+          ]
+        },
+        {
+          "message": "torso and scarf_1 (different groups) interpenetrate by 9.02 units.",
+          "targets": [
+            "torso",
+            "scarf_1"
+          ]
+        },
+        {
+          "message": "torso and scarf_2 (different groups) interpenetrate by 3.26 units.",
+          "targets": [
+            "torso",
+            "scarf_2"
+          ]
+        },
+        {
+          "message": "torso and scarf_collar_1 (different groups) interpenetrate by 8.36 units.",
+          "targets": [
+            "torso",
+            "scarf_collar_1"
+          ]
+        },
+        {
+          "message": "leg_left and leg_right (different groups) interpenetrate by 2.04 units.",
+          "targets": [
+            "leg_left",
+            "leg_right"
+          ]
+        },
+        {
+          "message": "leg_left and shin_left (different groups) interpenetrate by 5.41 units.",
+          "targets": [
+            "leg_left",
+            "shin_left"
+          ]
+        },
+        {
+          "message": "leg_left and arm_left (different groups) interpenetrate by 4.43 units.",
+          "targets": [
+            "leg_left",
+            "arm_left"
+          ]
+        },
+        {
+          "message": "leg_left and forearm_left (different groups) interpenetrate by 1.27 units.",
+          "targets": [
+            "leg_left",
+            "forearm_left"
+          ]
+        },
+        {
+          "message": "leg_left and tail_1 (different groups) interpenetrate by 3.76 units.",
+          "targets": [
+            "leg_left",
+            "tail_1"
+          ]
+        },
+        {
+          "message": "leg_right and shin_right (different groups) interpenetrate by 5.41 units.",
+          "targets": [
+            "leg_right",
+            "shin_right"
+          ]
+        },
+        {
+          "message": "leg_right and arm_right (different groups) interpenetrate by 4.43 units.",
+          "targets": [
+            "leg_right",
+            "arm_right"
+          ]
+        },
+        {
+          "message": "leg_right and forearm_right (different groups) interpenetrate by 1.27 units.",
+          "targets": [
+            "leg_right",
+            "forearm_right"
+          ]
+        },
+        {
+          "message": "leg_right and tail_1 (different groups) interpenetrate by 3.76 units.",
+          "targets": [
+            "leg_right",
+            "tail_1"
+          ]
+        },
+        {
+          "message": "shin_left and foot_left (different groups) interpenetrate by 1.2 units.",
+          "targets": [
+            "shin_left",
+            "foot_left"
+          ]
+        },
+        {
+          "message": "shin_right and foot_right (different groups) interpenetrate by 1.2 units.",
+          "targets": [
+            "shin_right",
+            "foot_right"
+          ]
+        },
+        {
+          "message": "arm_left and forearm_left (different groups) interpenetrate by 5.47 units.",
+          "targets": [
+            "arm_left",
+            "forearm_left"
+          ]
+        },
+        {
+          "message": "arm_left and neck_1 (different groups) interpenetrate by 0.83 units.",
+          "targets": [
+            "arm_left",
+            "neck_1"
+          ]
+        },
+        {
+          "message": "arm_left and scarf_1 (different groups) interpenetrate by 3.14 units.",
+          "targets": [
+            "arm_left",
+            "scarf_1"
+          ]
+        },
+        {
+          "message": "arm_left and scarf_collar_1 (different groups) interpenetrate by 2.83 units.",
+          "targets": [
+            "arm_left",
+            "scarf_collar_1"
+          ]
+        },
+        {
+          "message": "arm_right and forearm_right (different groups) interpenetrate by 5.47 units.",
+          "targets": [
+            "arm_right",
+            "forearm_right"
+          ]
+        },
+        {
+          "message": "arm_right and neck_1 (different groups) interpenetrate by 0.83 units.",
+          "targets": [
+            "arm_right",
+            "neck_1"
+          ]
+        },
+        {
+          "message": "arm_right and scarf_collar_1 (different groups) interpenetrate by 2.83 units.",
+          "targets": [
+            "arm_right",
+            "scarf_collar_1"
+          ]
+        },
+        {
+          "message": "forearm_left and hand_left (different groups) interpenetrate by 4.31 units.",
+          "targets": [
+            "forearm_left",
+            "hand_left"
+          ]
+        },
+        {
+          "message": "forearm_left and hand_left_claw_1 (different groups) interpenetrate by 2.82 units.",
+          "targets": [
+            "forearm_left",
+            "hand_left_claw_1"
+          ]
+        },
+        {
+          "message": "forearm_left and hand_left_claw_2 (different groups) interpenetrate by 1.11 units.",
+          "targets": [
+            "forearm_left",
+            "hand_left_claw_2"
+          ]
+        },
+        {
+          "message": "forearm_left and hand_left_claw_3 (different groups) interpenetrate by 1.85 units.",
+          "targets": [
+            "forearm_left",
+            "hand_left_claw_3"
+          ]
+        },
+        {
+          "message": "forearm_right and hand_right (different groups) interpenetrate by 4.31 units.",
+          "targets": [
+            "forearm_right",
+            "hand_right"
+          ]
+        },
+        {
+          "message": "forearm_right and hand_right_claw_1 (different groups) interpenetrate by 2.82 units.",
+          "targets": [
+            "forearm_right",
+            "hand_right_claw_1"
+          ]
+        },
+        {
+          "message": "forearm_right and hand_right_claw_2 (different groups) interpenetrate by 1.11 units.",
+          "targets": [
+            "forearm_right",
+            "hand_right_claw_2"
+          ]
+        },
+        {
+          "message": "forearm_right and hand_right_claw_3 (different groups) interpenetrate by 1.85 units.",
+          "targets": [
+            "forearm_right",
+            "hand_right_claw_3"
+          ]
+        },
+        {
+          "message": "neck_1 and head (different groups) interpenetrate by 5.32 units.",
+          "targets": [
+            "neck_1",
+            "head"
+          ]
+        },
+        {
+          "message": "neck_1 and scarf_1 (different groups) interpenetrate by 5.68 units.",
+          "targets": [
+            "neck_1",
+            "scarf_1"
+          ]
+        },
+        {
+          "message": "neck_1 and scarf_collar_1 (different groups) interpenetrate by 10.22 units.",
+          "targets": [
+            "neck_1",
+            "scarf_collar_1"
+          ]
+        },
+        {
+          "message": "head and scarf_collar_1 (different groups) interpenetrate by 1.19 units.",
+          "targets": [
+            "head",
+            "scarf_collar_1"
+          ]
+        },
+        {
+          "message": "tail_1 and tail_2 (different groups) interpenetrate by 2.39 units.",
+          "targets": [
+            "tail_1",
+            "tail_2"
+          ]
+        },
+        {
+          "message": "tail_1_2 and tail_2 (different groups) interpenetrate by 5.83 units.",
+          "targets": [
+            "tail_1_2",
+            "tail_2"
+          ]
+        },
+        {
+          "message": "tail_2 and tail_3 (different groups) interpenetrate by 3.85 units.",
+          "targets": [
+            "tail_2",
+            "tail_3"
+          ]
+        },
+        {
+          "message": "tail_3 and tail_4 (different groups) interpenetrate by 4.03 units.",
+          "targets": [
+            "tail_3",
+            "tail_4"
+          ]
+        },
+        {
+          "message": "tail_4 and tail_5 (different groups) interpenetrate by 5.85 units.",
+          "targets": [
+            "tail_4",
+            "tail_5"
+          ]
+        },
+        {
+          "message": "scarf_1 and scarf_2 (different groups) interpenetrate by 4.52 units.",
+          "targets": [
+            "scarf_1",
+            "scarf_2"
+          ]
+        },
+        {
+          "message": "scarf_1 and scarf_3 (different groups) interpenetrate by 2.98 units.",
+          "targets": [
+            "scarf_1",
+            "scarf_3"
+          ]
+        },
+        {
+          "message": "scarf_1 and scarf_collar_1 (different groups) interpenetrate by 6.05 units.",
+          "targets": [
+            "scarf_1",
+            "scarf_collar_1"
+          ]
+        },
+        {
+          "message": "scarf_2 and scarf_3 (different groups) interpenetrate by 2.47 units.",
+          "targets": [
+            "scarf_2",
+            "scarf_3"
+          ]
+        },
+        {
+          "message": "scarf_3 and scarf_4 (different groups) interpenetrate by 3.15 units.",
+          "targets": [
+            "scarf_3",
+            "scarf_4"
+          ]
+        },
+        {
+          "message": "scarf_4 and scarf_5 (different groups) interpenetrate by 1.83 units.",
+          "targets": [
+            "scarf_4",
+            "scarf_5"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mirror",
+      "label": "Left/right parts mirror each other",
+      "severity": "warning",
+      "ran": true,
+      "violations": []
+    }
+  ],
+  "notes": []
+}

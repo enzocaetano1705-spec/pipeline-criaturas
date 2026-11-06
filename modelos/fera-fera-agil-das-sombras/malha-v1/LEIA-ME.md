@@ -9,6 +9,7 @@
 - `ops.json`: lote enviado ao `bbmodel_edit`. `textura-bloqueio.png`: cores medianas por face.
 - `comparacao.png`: malha × cubos (render do motor). `folha.png`: conceito + 4 vistas.
 - `relatorio.json`: métricas da conversão v11 e validação (0 erros; sobreposições nas juntas documentadas).
-- `textura-v2/r05/fera-sombras-e3-textura-r05.bbmodel`: revisão atual da textura, em nova aba, preservando exatamente a estrutura do v11. Antes/depois em `textura-v2/r05/comparacao.png`; captura nativa em `textura-v2/r05/blockbench.png`. Avaliação visual pendente.
+- `textura-v2/r05/fera-sombras-e3-textura-r05.bbmodel`: revisão rejeitada pelo usuário por simplificação excessiva da textura; preservada como histórico.
+- `textura-v3/r03/fera-sombras-e3-textura-v3-r03.bbmodel`: revisão atual, com a gola editada pelo usuário, UV da gola separada e textura anterior recuperada com reparos localizados. Prévia nativa em `textura-v3/r03/previa-nativa.png`. Avaliação artística pendente.
 
 Para refazer: ver `scripts/malha-para-cubos/LEIA-ME.md`.

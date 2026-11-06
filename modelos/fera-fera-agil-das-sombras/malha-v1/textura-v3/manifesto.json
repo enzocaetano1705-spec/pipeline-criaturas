@@ -1,0 +1,60 @@
+{
+  "status": "revisao v3/r03 para avaliacao; r05 reprovada",
+  "atual": "r03/fera-sombras-e3-textura-v3-r03.bbmodel",
+  "base_cor": "../textura-v2/entrada-blockbench.bbmodel",
+  "entrada_forma": "entrada-editada.bbmodel",
+  "script": "scripts/malha-para-cubos/restaurar.py",
+  "conferencia": {
+    "reproducao_atlas": true,
+    "forma_editada_intacta": true,
+    "colisoes_uv_antes": 220,
+    "colisoes_uv_depois": 0,
+    "olhos": {
+      "north": {
+        "pixels": 0,
+        "margem_lateral": null
+      },
+      "east": {
+        "pixels": 10,
+        "margem_lateral": 1
+      },
+      "west": {
+        "pixels": 10,
+        "margem_lateral": 1
+      }
+    },
+    "alfa_orfao_removido": 4,
+    "avisos_motor_identicos": true,
+    "py_compile": true
+  },
+  "arquivos": [
+    {
+      "arquivo": "modelos/fera-fera-agil-das-sombras/malha-v1/textura-v3/entrada-editada.bbmodel",
+      "sha256": "f5cfbef16503785ef78ed291a831d4ed54214cf72be4c820703e2533a12e3922"
+    },
+    {
+      "arquivo": "modelos/fera-fera-agil-das-sombras/malha-v1/textura-v3/referencia-original.png",
+      "sha256": "3814cf4ad498577c29f0a10339fb70744ec7d53dfff649caa1b4bd2b4a8766e2"
+    },
+    {
+      "arquivo": "modelos/fera-fera-agil-das-sombras/malha-v1/textura-v3/arte.json",
+      "sha256": "2642bfa03b7377395ebc4e26d956a874970ae22027f97fcf40aea20b56df16d4"
+    },
+    {
+      "arquivo": "modelos/fera-fera-agil-das-sombras/malha-v1/textura-v3/r03/fera-sombras-e3-textura-v3-r03.bbmodel",
+      "sha256": "7c3a67a1d88336ec817f400eccc9554a6b4738d3947327cbd3a675e21af91c59"
+    },
+    {
+      "arquivo": "modelos/fera-fera-agil-das-sombras/malha-v1/textura-v3/r03/textura.png",
+      "sha256": "c848b6abf79b1a98cc9846bfba69e5cf128c75c21f76e5475d97e694bc9e951a"
+    },
+    {
+      "arquivo": "modelos/fera-fera-agil-das-sombras/malha-v1/textura-v3/r03/previa-nativa.png",
+      "sha256": "a8b9d5253a873bbeaa3e7e7f1bc9c928380f65a5aeecaaf18e4ae2f46a06d0a6"
+    },
+    {
+      "arquivo": "scripts/malha-para-cubos/restaurar.py",
+      "sha256": "76a194415320f86d669f13c0ebb26ee9bbcc3bed708a34a86c7af0c2d861995c"
+    }
+  ]
+}

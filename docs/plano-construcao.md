@@ -299,7 +299,9 @@ Usuário adotou a geometria preparada no Claude e pediu correções do cachecol,
 focinho, olho e emendas. Nota [[2026-11-06-retoque-textura-fera]], decisão 0013.
 
 - [x] T.1 Preservar a aba atual, retocar o atlas em nova versão por operações do motor e conferir reprodução, estrutura/UV/ossos/locators idênticos e render nativo do Blockbench.
-- [ ] T.2 Avaliação artística do retoque r05 pelo usuário antes de avançar para animação/exportação.
+- [x] T.2 Receber avaliação da r05: usuário reprovou a simplificação da textura, embora os defeitos tenham melhorado; forneceu referência original e editou a gola.
+- [x] T.3 Preservar a gola editada, corrigir sua colisão UV e recuperar o atlas v11 com reparos localizados, dobras do pano e broche; conferir estrutura e faces protegidas. [[2026-11-06-restauracao-textura-fera]].
+- [ ] T.4 Avaliação artística da revisão `textura-v3/r03` pelo usuário antes de animação/exportação.
 
 ## Exploração autorizada — Criação de conceitos e direção de arte (05/11/2026)
 

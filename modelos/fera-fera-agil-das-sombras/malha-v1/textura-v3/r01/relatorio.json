@@ -1,0 +1,221 @@
+{
+  "original": "modelos\\fera-fera-agil-das-sombras\\malha-v1\\textura-v2\\entrada-blockbench.bbmodel",
+  "entrada_editada": "modelos\\fera-fera-agil-das-sombras\\malha-v1\\textura-v3\\entrada-editada.bbmodel",
+  "saida": "C:\\Users\\enzoc\\dev\\pipeline-criaturas\\modelos\\fera-fera-agil-das-sombras\\malha-v1\\textura-v3\\r01\\fera-sombras-e3-textura-v3-r01.bbmodel",
+  "sha256_original": "e18ecce8b1d38aac7b46836700ca1512603dae4af36a0606144154eceb3b15d9",
+  "sha256_editada": "f5cfbef16503785ef78ed291a831d4ed54214cf72be4c820703e2533a12e3922",
+  "sha256_saida": "a5b795c94aaac20287835a81e1d0a781e3f53af99e5dad67c6c58ac34448f6c0",
+  "forma_editada_preservada": true,
+  "assinatura_forma": "670be0891d17035873d9ea922bfbbcc12fca632951ad6a15dec965055206886e",
+  "uv_alteradas_apenas_colar": true,
+  "uv_colar": [
+    0,
+    96
+  ],
+  "sobreposicoes_uv": 0,
+  "cores_textura": 52,
+  "faces_protegidas_integras": {
+    "pelvis": true,
+    "shin_left": true,
+    "foot_left": true,
+    "forearm_left": true,
+    "head": true,
+    "tail_1": true,
+    "tail_2": true,
+    "tail_3": true,
+    "tail_4": true,
+    "tail_5": true,
+    "pelvis_fur": true,
+    "tail_1_fur": true,
+    "tail_2_fur": true,
+    "tail_3_fur": true,
+    "tail_4_fur": true,
+    "tail_5_fur": true,
+    "head_fur": true
+  },
+  "textura": [
+    512,
+    512
+  ],
+  "uv": [
+    256,
+    256
+  ],
+  "alteracoes": [
+    {
+      "cubo": "torso",
+      "face": "south",
+      "pixels": 374
+    },
+    {
+      "cubo": "torso",
+      "face": "east",
+      "pixels": 146
+    },
+    {
+      "cubo": "torso",
+      "face": "west",
+      "pixels": 146
+    },
+    {
+      "cubo": "torso",
+      "face": "up",
+      "pixels": 392
+    },
+    {
+      "cubo": "leg_left",
+      "face": "west",
+      "pixels": 1
+    },
+    {
+      "cubo": "neck_1",
+      "face": "south",
+      "pixels": 484
+    },
+    {
+      "cubo": "neck_1",
+      "face": "east",
+      "pixels": 198
+    },
+    {
+      "cubo": "neck_1",
+      "face": "west",
+      "pixels": 198
+    },
+    {
+      "cubo": "neck_1",
+      "face": "up",
+      "pixels": 198
+    },
+    {
+      "cubo": "neck_1",
+      "face": "down",
+      "pixels": 198
+    },
+    {
+      "cubo": "head_2",
+      "face": "north",
+      "pixels": 16
+    },
+    {
+      "cubo": "head_2",
+      "face": "east",
+      "pixels": 26
+    },
+    {
+      "cubo": "head_2",
+      "face": "west",
+      "pixels": 26
+    },
+    {
+      "cubo": "head_3",
+      "face": "north",
+      "pixels": 24
+    },
+    {
+      "cubo": "scarf_1",
+      "face": "north",
+      "pixels": 540
+    },
+    {
+      "cubo": "scarf_1",
+      "face": "south",
+      "pixels": 540
+    },
+    {
+      "cubo": "scarf_2",
+      "face": "north",
+      "pixels": 160
+    },
+    {
+      "cubo": "scarf_2",
+      "face": "south",
+      "pixels": 160
+    },
+    {
+      "cubo": "scarf_3",
+      "face": "north",
+      "pixels": 288
+    },
+    {
+      "cubo": "scarf_3",
+      "face": "south",
+      "pixels": 288
+    },
+    {
+      "cubo": "scarf_4",
+      "face": "north",
+      "pixels": 196
+    },
+    {
+      "cubo": "scarf_4",
+      "face": "south",
+      "pixels": 196
+    },
+    {
+      "cubo": "scarf_5",
+      "face": "north",
+      "pixels": 180
+    },
+    {
+      "cubo": "scarf_5",
+      "face": "south",
+      "pixels": 180
+    },
+    {
+      "cubo": "scarf_collar_1",
+      "face": "north",
+      "pixels": 900
+    },
+    {
+      "cubo": "scarf_collar_1",
+      "face": "south",
+      "pixels": 900
+    },
+    {
+      "cubo": "scarf_collar_1",
+      "face": "east",
+      "pixels": 180
+    },
+    {
+      "cubo": "scarf_collar_1",
+      "face": "west",
+      "pixels": 180
+    },
+    {
+      "cubo": "scarf_collar_1",
+      "face": "up",
+      "pixels": 180
+    },
+    {
+      "cubo": "scarf_collar_1",
+      "face": "down",
+      "pixels": 180
+    },
+    {
+      "cubo": "torso_fur",
+      "face": "east",
+      "pixels": 672
+    },
+    {
+      "cubo": "torso_fur",
+      "face": "west",
+      "pixels": 672
+    },
+    {
+      "cubo": "neck_1_fur",
+      "face": "east",
+      "pixels": 144
+    },
+    {
+      "cubo": "neck_1_fur",
+      "face": "west",
+      "pixels": 144
+    }
+  ],
+  "validacao": {
+    "erros": 0,
+    "avisos": 57
+  },
+  "aprovacao_artistica": false
+}

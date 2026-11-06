@@ -1,5 +1,5 @@
 {
-  "status": "revisao de textura entregue; aguardando avaliacao artistica",
+  "status": "rejeitada artisticamente pelo usuario por simplificacao excessiva",
   "atual": "r05/fera-sombras-e3-textura-r05.bbmodel",
   "entrada": "entrada-blockbench.bbmodel",
   "escopo": "textura da preguica rogue F3, sem reconstruir geometria",
@@ -53,5 +53,6 @@
       "arquivo": "scripts/malha-para-cubos/retocar.py",
       "sha256": "98eb44c618a676dca4d687598fa925dc8f8043172d089134b516760770db5c12"
     }
-  ]
+  ],
+  "substituida_por": "../textura-v3/r03/fera-sombras-e3-textura-v3-r03.bbmodel"
 }

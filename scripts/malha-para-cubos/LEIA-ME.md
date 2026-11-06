@@ -90,7 +90,16 @@ antes/depois. Paleta e desenho do olho ficam na configuração; campos 3D de pan
 e marca do ombro evitam contornos artificiais independentes nas faces. Limpeza
 de componentes pequenos preserva marcas maiores e não usa suavização.
 
+## Restauração da textura anterior
+
+`restaurar.py` é a revisão seguinte, após rejeição do acabamento plano da r05.
+Combina o atlas anterior com a geometria editada, separa a UV da gola ampliada
+e faz patches locais. Preserva as faces protegidas byte a byte e confere
+geometria/rig, permitindo mudar apenas a UV da gola. Configuração e exemplo:
+`modelos/fera-fera-agil-das-sombras/malha-v1/textura-v3/LEIA-ME.md`.
+
 ## Limites conhecidos (v1)
+
 - Só o plano "bípede com cauda" tem regras de papéis.
 - Garras e cachecol dependem da cor (garra clara, pano vinho); outra paleta pede ajuste em
   `cremoso`/`vermelho`.

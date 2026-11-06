@@ -3,10 +3,15 @@ tipo: sessao
 data: 2026-11-06
 fase: retoque da textura do protótipo Tripo -> Blockbench
 ia: codex
-status: revisão r05 entregue para avaliação visual
+status: r05 rejeitada artisticamente; substituída pela restauração v3
 ---
 
 # Preguiça rogue — textura do cachecol, rosto e emendas
+
+**Retorno posterior:** o usuário considera a textura anterior mais bonita;
+a r05 corrigiu defeitos, mas simplificou demais sombras, máscara e marcas.
+Ele editou a gola e enviou a referência Tripo original. Revisão atual em
+[[2026-11-06-restauracao-textura-fera]], `textura-v3/r03/`. R05 é histórico reprovado.
 
 **Revisão visual:** conferir a nova aba `fera-sombras-e3-textura-r05` e
 `modelos/fera-fera-agil-das-sombras/malha-v1/textura-v2/r05/comparacao.png`.

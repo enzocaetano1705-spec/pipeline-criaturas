@@ -1,6 +1,11 @@
 # Revisão da textura — 06/11/2026
 
-Atual: **r05/fera-sombras-e3-textura-r05.bbmodel**, aberto em uma nova aba do
+**Histórico reprovado:** usuário considerou a textura anterior mais bonita;
+a revisão r05 simplificou demais o desenho. Atual em
+`../textura-v3/r03/fera-sombras-e3-textura-v3-r03.bbmodel`, preservando também
+a edição posterior da gola feita pelo usuário.
+
+Resultado desta rodada: **r05/fera-sombras-e3-textura-r05.bbmodel**, aberto em uma nova aba do
 Blockbench. `r05/comparacao.png` mostra antes/depois; `r05/blockbench.png` é a
 conferência nativa, em viewport privado, sem alterar a câmera do usuário.
 

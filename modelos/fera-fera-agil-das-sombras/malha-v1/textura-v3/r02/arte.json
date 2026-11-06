@@ -1,0 +1,18 @@
+{
+  "colar_uv": [0, 96],
+  "pano": [[71, 20, 31], [88, 23, 37], [116, 28, 44], [149, 36, 54], [172, 49, 65]],
+  "mascara_sombra": [70, 34, 24],
+  "iris": [226, 145, 42],
+  "iris_luz": [250, 192, 71],
+  "nariz": {
+    "linha": 2,
+    "desenho": [".HHHH.", "HMMMMH", "MDMMDM", ".DDDD.", "..DD.."],
+    "cores": {"H": [119, 64, 48], "M": [85, 42, 34], "D": [47, 25, 23]}
+  },
+  "broche": {
+    "z": -14.75, "y": 32.7, "raio_z": 1.35, "raio_y": 2.8,
+    "borda": [78, 39, 20], "luz": [240, 185, 65],
+    "sombra": [175, 106, 29], "brilho": [255, 220, 121]
+  },
+  "preservar_integral": ["head", "head_fur", "head_2_fur", "pelvis", "pelvis_fur", "forearm_left", "forearm_right", "hand_right", "shin_left", "shin_right", "foot_left", "foot_right", "tail_1", "tail_2", "tail_3", "tail_4", "tail_5", "tail_1_fur", "tail_2_fur", "tail_3_fur", "tail_4_fur", "tail_5_fur", "claw_left_1", "claw_left_2", "claw_left_3", "claw_right_1", "claw_right_2", "claw_right_3"]
+}
