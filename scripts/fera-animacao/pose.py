@@ -173,7 +173,8 @@ class Rig:
         """
         W = self.mats(pose)[cima]
         pa, pb, pc = self.piv(a), self.piv(b), self.piv(c)
-        S = W[:3, :3] @ pa + W[:3, 3]
+        desloca = np.asarray(pose.get(a, {}).get("posicao", np.zeros(3)), float)  # ex.: escápula deslizando
+        S = W[:3, :3] @ (pa + desloca) + W[:3, 3]
         L1, L2 = np.linalg.norm(pb - pa), np.linalg.norm(pc - pb)
         v = np.asarray(alvo, float) - S
         d = float(np.clip(np.linalg.norm(v), abs(L1 - L2) + 1e-3, L1 + L2 - 1e-3))

@@ -87,3 +87,15 @@ corpo inteiro. A IK deixava solto o giro de cada osso em volta do próprio eixo 
 alinha também o eixo da junta (só no combate). Com o corpo empinado o braço neutro aponta para a
 frente; levar a garra de trás para trás do quadril fazia a ponta do bloco do braço sair pelo ombro →
 as duas garras à frente (guarda de lutador). Base menos funda para a coxa não deitar. 0 erros, 0 avisos.
+
+## r09 — garra de trás com anatomia, ataque básico e habilidades
+
+Retorno: o braço direito entrava no tórax; a garra de trás atrás do quadril era viável, só faltava
+anatomia; o resto ok; fazer a correção e seguir para as próximas animações na mesma rodada. Anatomia
+passou a ser medida (`anatomia_braco`: saliência da quina do ombro e fração enterrada no tronco) e
+corrigida por busca (punho, cotovelo, escápula deslizando): a garra de trás atrás do quadril sai com
+0,4 de saliência (walk aprovado: 1,5). Golpes por poses-chave com ajuste automático de anatomia por
+chave e trava de braço enterrado por quadro: attack_1 (saque da garra de trás), attack_2 (corte da
+frente), habilidade 1 em partes (arremesso com a garra sumindo no antebraço, espera em loop, captura,
+dois golpes de teleporte alternáveis) e habilidade 2 (sequência no chefe, 6 acertos). Instantes de
+acerto e marcas solta/pega no animacoes.json. 16 clipes, 0 erros, 0 avisos.

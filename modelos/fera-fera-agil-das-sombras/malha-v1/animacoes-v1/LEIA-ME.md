@@ -1,6 +1,40 @@
-# Animações v1 — locomoção da preguiça rogue (06/11/2026)
+# Animações v1 — locomoção e combate da preguiça rogue (06/11/2026)
 
-Atual: **r08/fera-sombras-e3-animacoes.bbmodel** (base `rig-v4/base-rig-v4.bbmodel`).
+Atual: **r09/fera-sombras-e3-animacoes.bbmodel** (base `rig-v4/base-rig-v4.bbmodel`), 16 clipes.
+
+**r09 (garra de trás atrás do quadril, ataque básico e habilidades):** retorno: "o braço direito ainda
+está muito para dentro do tórax, e a ideia de deixar para trás é viável, era só corrigir a anatomia;
+as outras partes ficaram ok; pode já fazer essa correção e seguir para as próximas animações".
+- Anatomia medida, não no olho: `Combate.anatomia_braco` diz o quanto a quina do bloco do braço que
+  no repouso fica escondida no tronco sai pelo ombro (saliência, em unidades) e quanto do braço,
+  antebraço e mão entra no tronco ou nas coxas. Referência: walk e run aprovados chegam a 1,5; a garra
+  de trás atrás do quadril da r07 chegava a 3,4 (o "ombro invertido"). Busca em grade: punho bem atrás
+  e abaixo, cotovelo para trás, escápula deslizando menos de uma unidade (posição do osso do braço)
+  → saliência 0,4 e 1% enterrado, com o punho 3,6 atrás do quadril. A guarda voltou a ter a garra de
+  trás guardada atrás do quadril (a diagonal da r07), agora limpa.
+- Golpes por poses-chave (`combate.py`, `GOLPES`): punhos, direção das garras, torção, avanço, salto,
+  cauda e cabeça interpolados com curvas (carrega devagar, solta rápido), quadros do meio por IK de
+  dobradiça; o cachecol atrasa por molas puxadas pelo corpo. Em cada pose-chave um ajuste automático
+  corrige a anatomia do braço que golpeia (até 4 unidades em volta do ponto pedido, cotovelo e
+  escápula); em cada quadro, se o braço entrar no tronco, o punho é empurrado para a frente/fora (o
+  golpe faz o arco por fora do corpo). Ajustes feitos ficam em `relatorio.json`.
+- Clipes novos (tabela abaixo): `attack_1` (saque da garra de trás), `attack_2` (corte da garra da
+  frente), habilidade 1 em partes para o jogo encadear (`skill1_throw` → `skill1_wait` em loop →
+  `skill1_catch` → `skill1_strike_a`/`skill1_strike_b` alternando, um por marcado, com o teleporte
+  feito pelo jogo) e `skill2` (sequência no chefe com 6 acertos). Todos piscam (aperta os olhos no
+  impacto). A garra arremessada some dentro do antebraço no quadro em que é solta (gira alinhada com
+  ele; medido: 100% escondida até a captura) e volta na captura: o jogo cria o projétil na marca
+  `solta` e o recolhe na marca `pega` (tempos no `animacoes.json`, junto com os instantes de acerto).
+- Medido em todos os quadros: guarda, ataques, arremesso, espera e captura ficam no limite (no máximo
+  um quadro de passagem acima); os teleportes têm 1 quadro entre 2,2 e 2,8; a habilidade 2 tem 14 de
+  76 quadros entre 2,2 e 2,5, nas passagens rápidas (nenhum acima de 2,6). Validação: 0 erros, 0
+  avisos. Conferido no Blockbench (guarda de trás e de 3/4, acertos dos ataques, pulo da habilidade 2).
+
+Como o jogo usa a habilidade 1: tocar `skill1_throw` (na marca `solta`, criar o projétil na mão
+direita) → `skill1_wait` em loop enquanto a garra ricocheteia → quando ela voltar, `skill1_catch` (na
+marca `pega`, apagar o projétil) → para cada inimigo marcado: teleportar o modelo e tocar
+`skill1_strike_a` ou `skill1_strike_b` alternando (começam e terminam na mesma pose agachada) → por
+fim `combat_ready`.
 
 **r08 (juntas da guarda):** retorno: "a ideia da postura ficou bem legal, mas a junta com as costas
 está desconexa, o ombro parece invertido com relação ao cotovelo e a relação das coxas com as pernas
@@ -119,6 +153,14 @@ copia from/to/origin/rotation, leva pivô mudado junto e recusa rotação de rep
 | `combat_ready` | 3,2 s | sim | normal, 0,9 s | guarda em tripé de lutador (r08); respira pesado, garra da frente se crispa e estala |
 | `combat_enter` | 0,6 s | não | rápida, 0,04 s | idle → guarda: antecipação, pulinho, cai na base com as garras estalando |
 | `combat_exit` | 0,7 s | não | normal, 0,3 s | guarda → idle: pulinho de volta e solta as garras |
+| `attack_1` | 0,62 s | não | rápida, 0,26 s | saque da garra de trás: sai de trás do quadril e sobe em diagonal pela frente, corpo girando para dentro do golpe; acerto em 0,26 s |
+| `attack_2` | 0,56 s | não | rápida, 0,18 s | corte horizontal da garra da frente, da esquerda para a direita, girando o corpo; acerto em 0,18 s |
+| `skill1_throw` | 0,8 s | não | rápida, 0,36 s | enrola o corpo e arremessa de lado a garra do meio da mão direita (some no antebraço em 0,34 s, marca `solta`); termina vigiando |
+| `skill1_wait` | 1,2 s | sim | normal, 0,55 s | vigia a garra ricocheteando: cabeça acompanha de um lado para o outro, garra da frente apontando |
+| `skill1_catch` | 0,5 s | não | rápida, 0,18 s | pega a garra de volta (reaparece em 0,18 s, marca `pega`) e agacha pronta para sumir |
+| `skill1_strike_a` | 0,42 s | não | rápida, 0,14 s | golpe de teleporte: garra direita no alto e corte de cima para baixo com um pulinho; começa e termina agachada |
+| `skill1_strike_b` | 0,42 s | não | rápida, 0,14 s | golpe de teleporte: gancho subindo com a garra esquerda; começa e termina agachada |
+| `skill2` | 2,5 s | não | normal, 1,64 s | sequência no chefe: bote com estocada, três cortes alternados, X com as duas garras, pulo com as garras no alto e golpe de cima com as duas; acertos em 0,30/0,42/0,54/0,66/0,96/1,62 s |
 
 Peso sem escala (o Roblox não anima escala de osso): no walk, tronco e pescoço seguem o corpo por
 molas amortecidas (atrasam e passam do ponto); no run não há mola solta (ela tremia no próprio ritmo
@@ -132,7 +174,7 @@ para o jogo mover o modelo sem os pés patinarem, e quando cada clipe pisca. Pr�
 `tiras.png` (8 quadros por clipe).
 
 ```powershell
-uv run python scripts/fera-animacao/gerar.py modelos/fera-fera-agil-das-sombras/malha-v1/animacoes-v1/rig-v4/base-rig-v4.bbmodel modelos/fera-fera-agil-das-sombras/malha-v1/animacoes-v1/r08
+uv run python scripts/fera-animacao/gerar.py modelos/fera-fera-agil-das-sombras/malha-v1/animacoes-v1/rig-v4/base-rig-v4.bbmodel modelos/fera-fera-agil-das-sombras/malha-v1/animacoes-v1/r09
 uv run python scripts/fera-animacao/medir.py modelos/fera-fera-agil-das-sombras/malha-v1/animacoes-v1/rig-v4/base-rig-v4.bbmodel run
 ```
 `medir.py` diz quantos ciclos por passada cada canal faz (tudo deve dar 1 no run), quais ossos
@@ -142,7 +184,9 @@ Parâmetros de cada marcha (duração, curso, altura do quique, gordura, cauda, 
 `scripts/fera-animacao/combate.py` (`GUARDA`: empinar, torcer, agachar, base, punhos e direção das
 garras, cauda, olhar).
 
-## Próximo (na ordem combinada)
-Ataque básico saindo e voltando para a guarda; depois as habilidades. Habilidade 1 (decidida com o usuário):
+## Próximo
+Locomoção e habilidades prontas para o primeiro teste no jogo. Faltam, se o jogo precisar: andar em
+guarda (combat_walk), levar dano (hurt), cair (faint) e a exportação para o Roblox (a textura é de
+512 px numa UV de 256; o ×8 do exportador passaria do recomendado de 1024 px e precisa de ajuste). Habilidade 1 (decidida com o usuário):
 uma garra arremessada ricocheteia marcando os inimigos da onda, volta para a mão e então a preguiça
 teleporta e dá um golpe curto em cada marcado. Habilidade 2: sequência focada no chefe.

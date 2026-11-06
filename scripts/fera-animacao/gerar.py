@@ -37,6 +37,10 @@ PISCADA_POR_CLIPE = {
     "idle": (2.6, "lenta"), "walk": (1.9, "normal"), "run": (1.62, "rapida"),
     "run_start": (0.06, "rapida"), "run_stop": (0.12, "normal"),
     "combat_ready": (0.9, "normal"), "combat_enter": (0.04, "rapida"), "combat_exit": (0.3, "normal"),
+    # golpes: aperta os olhos no impacto (dá peso ao golpe)
+    "attack_1": (0.26, "rapida"), "attack_2": (0.18, "rapida"),
+    "skill1_throw": (0.36, "rapida"), "skill1_wait": (0.55, "normal"), "skill1_catch": (0.18, "rapida"),
+    "skill1_strike_a": (0.14, "rapida"), "skill1_strike_b": (0.14, "rapida"), "skill2": (1.64, "normal"),
 }
 
 
@@ -213,6 +217,12 @@ def main():
               ("run_start", 0.5, False, partida), ("run_stop", 0.7, False, parada),
               ("combat_ready", T_g, True, guarda), ("combat_enter", entrada[-1][0], False, entrada),
               ("combat_exit", saida[-1][0], False, saida)]
+    # golpes (ataque básico e habilidades), com a anatomia dos braços corrigida em cada pose-chave
+    ajustes = {}
+    infos = {}
+    for nome, (T, quadros, loop, info) in cmb.golpes(relatorio=ajustes).items():
+        clipes.append((nome, T, loop, quadros))
+        infos[nome] = info
     tem_palpebras = all(o in rig.ossos for o in ("eyelid_left", "eyelid_right"))
     piscadas = {}
     if tem_palpebras:
@@ -237,7 +247,8 @@ def main():
 
     uni = 16.0  # unidades por bloco
     anim = {
-        "clipes": {n: {"duracao": round(T, 3), "loop": lp, **({"piscada": piscadas[n]} if n in piscadas else {})}
+        "clipes": {n: {"duracao": round(T, 3), "loop": lp, **({"piscada": piscadas[n]} if n in piscadas else {}),
+                       **infos.get(n, {})}
                    for n, T, lp, _q in clipes},
         "deslocamento": {
             "walk": {"unidades_por_s": round(info_w["curso"] / T_walk, 2), "blocos_por_s": round(info_w["curso"] / T_walk / uni, 3)},
@@ -250,6 +261,7 @@ def main():
     (pasta / "animacoes.json").write_text(json.dumps(anim, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     rel = {"arquivo": arquivo.name, "chaves": sum(1 for o in ops if o["op"] == "set_keyframe"),
            "validacao_animacoes": {"erros": erros, "avisos": avisos, "linhas": linhas[:8]},
+           "ajustes_anatomia": {n: [[t, {l: list(v) for l, v in r.items()}] for t, r in lst] for n, lst in ajustes.items()},
            "segundos": round(time.time() - t0, 1)}
     (pasta / "relatorio.json").write_text(json.dumps(rel, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(f"{arquivo.name}: {len(clipes)} clipes, {rel['chaves']} chaves · validação: {erros} erros, {avisos} avisos")
