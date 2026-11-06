@@ -1,0 +1,23 @@
+{
+  "criatura": "preguiça gigante rogue / forma 3 de 3",
+  "limpeza_area": 5,
+  "recorte_area": 2,
+  "olho": {
+    "z": -26.6, "y": 28.3, "pixels_por_unidade": 2,
+    "desenho": ["..DDDD", "DDDAAD", "DAAPAD", ".DDDD."]
+  },
+  "paleta": {
+    "vinho": [112, 27, 40],
+    "vinho_sombra": [88, 21, 32],
+    "vinho_luz": [131, 36, 49],
+    "creme": [234, 190, 128],
+    "creme_sombra": [205, 157, 96],
+    "pelo": [123, 59, 31],
+    "pelo_luz": [143, 74, 39],
+    "pelo_sombra": [84, 39, 24],
+    "escuro": [60, 30, 22],
+    "nariz_luz": [95, 50, 33],
+    "ambar": [230, 151, 48],
+    "pupila": [27, 16, 13]
+  }
+}

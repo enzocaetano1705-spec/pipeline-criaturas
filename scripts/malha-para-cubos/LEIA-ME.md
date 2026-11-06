@@ -73,6 +73,23 @@ Se uma junta ou ponta sair no lugar errado, crie `<pasta>/juntas-corrigidas.json
 ```
 As posições estão em `juntas.json` e na imagem `diagnostico-juntas.png`.
 
+## Retoque da textura já gerada
+
+`retocar.py` trabalha sobre um `.bbmodel` existente sem reconstruir o esqueleto ou
+a geometria. É uma revisão **específica da preguiça rogue**, com os nomes de peças
+do protótipo; não é um corretor universal de criaturas. Recebe fonte, configuração
+e destino novo; recusa sobrescrever um destino. As escritas passam por operações
+do motor, e a assinatura estrutural completa deve permanecer igual à entrada.
+
+```powershell
+uv run python scripts/malha-para-cubos/retocar.py modelos/fera-fera-agil-das-sombras/malha-v1/textura-v2/entrada-blockbench.bbmodel modelos/fera-fera-agil-das-sombras/malha-v1/textura-v2/retoque.json modelos/fera-fera-agil-das-sombras/malha-v1/textura-v2/nova-revisao/fera-sombras-e3-textura.bbmodel
+```
+
+Produz `textura.png`, `ops.json`, modelo, validação, relatório, folha e comparação
+antes/depois. Paleta e desenho do olho ficam na configuração; campos 3D de pano
+e marca do ombro evitam contornos artificiais independentes nas faces. Limpeza
+de componentes pequenos preserva marcas maiores e não usa suavização.
+
 ## Limites conhecidos (v1)
 - Só o plano "bípede com cauda" tem regras de papéis.
 - Garras e cachecol dependem da cor (garra clara, pano vinho); outra paleta pede ajuste em

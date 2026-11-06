@@ -1,0 +1,22 @@
+[
+  {
+    "arquivo": "referencias/cachecol-costas.png",
+    "sha256": "368e61ecc6f6620d3e01582e12a00ff8ac8ef503668292b5a04fdfb91a15a5f4"
+  },
+  {
+    "arquivo": "referencias/peito.png",
+    "sha256": "8a0aeb7c2d8c2c2abd3e6ae050bfeb96d0104b1f95477b297f56ef0b200dcdd4"
+  },
+  {
+    "arquivo": "referencias/focinho.png",
+    "sha256": "91cc7ae407c86713b14cca4dd5e69a5b75c0b751ec3787918d845829ab939fc4"
+  },
+  {
+    "arquivo": "referencias/olho.png",
+    "sha256": "837622e668d36e441b9be9071137f07758d7fef1673da3cbfaef4ab37d60e4ce"
+  },
+  {
+    "arquivo": "referencias/ombro.png",
+    "sha256": "fa641cea8948409a811db535e9edd9690984c67bb91cef29bfacf497a5f16f79"
+  }
+]

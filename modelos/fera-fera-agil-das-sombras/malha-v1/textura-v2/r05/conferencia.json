@@ -1,0 +1,12 @@
+{
+  "atlas_reproduzido_pixel_a_pixel": true,
+  "geometria_uv_hierarquia_locators_animacoes_identicos": true,
+  "achados_motor_identicos": true,
+  "alfa_removido_pixels": 4,
+  "conferencia_nativa": "r05/blockbench.png",
+  "render": "Blockbench 5.2.2 / MCP / offscreen 768x768",
+  "origem_preservada": true,
+  "py_compile": true,
+  "erros": 0,
+  "avisos": 57
+}

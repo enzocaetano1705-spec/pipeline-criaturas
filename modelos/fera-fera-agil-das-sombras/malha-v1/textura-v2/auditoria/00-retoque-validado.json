@@ -1,0 +1,40 @@
+{
+  "etapa": "00-retoque-validado",
+  "instante_utc": "2026-11-06T03:29:17.066668+00:00",
+  "inicio_pedido": {
+    "timestamp": "2026-11-06T03:11:40.956Z",
+    "acumulado": {
+      "input_tokens": 61327994,
+      "cached_input_tokens": 59792768,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 408422,
+      "reasoning_output_tokens": 193702,
+      "total_tokens": 61736416
+    }
+  },
+  "ultimo_evento_uso_utc": "2026-11-06T03:28:43.880Z",
+  "acumulado_atual": {
+    "input_tokens": 65435792,
+    "cached_input_tokens": 63745408,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 440058,
+    "reasoning_output_tokens": 210712,
+    "total_tokens": 65875850
+  },
+  "consumo_desde_pedido": {
+    "input_tokens": 4107798,
+    "cached_input_tokens": 3952640,
+    "output_tokens": 31636,
+    "reasoning_output_tokens": 17010,
+    "total_tokens": 4139434,
+    "uncached_input_tokens": 155158
+  },
+  "preco": null,
+  "percentual_assinatura_atribuivel": null,
+  "limites": [
+    "contador atualizado apenas até o último evento disponível",
+    "cache está incluído na entrada; raciocínio está incluído na saída",
+    "inclui preparação/revisão/documentação deste pedido",
+    "sem divisão artificial por MCP ou tempo de subprocesso"
+  ]
+}

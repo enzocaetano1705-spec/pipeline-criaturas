@@ -293,6 +293,14 @@ Decisão 0012, nota [[2026-11-05-gabarito-silhueta-fera]].
 - [x] G.2 Construir estudo guiado com imagem de fundo, conferir seis silhuetas por sobreposição/IoU e incorporar o protocolo às instruções da skill.
 - [ ] G.3 Refinar volumes transversais e partes internas com as diferenças expostas nas vistas, obter aprovação da forma antes da pintura; generalização do método ainda não avaliada.
 
+## Retoque autorizado — Textura da conversão Tripo/Blockbench (06/11/2026)
+
+Usuário adotou a geometria preparada no Claude e pediu correções do cachecol,
+focinho, olho e emendas. Nota [[2026-11-06-retoque-textura-fera]], decisão 0013.
+
+- [x] T.1 Preservar a aba atual, retocar o atlas em nova versão por operações do motor e conferir reprodução, estrutura/UV/ossos/locators idênticos e render nativo do Blockbench.
+- [ ] T.2 Avaliação artística do retoque r05 pelo usuário antes de avançar para animação/exportação.
+
 ## Exploração autorizada — Criação de conceitos e direção de arte (05/11/2026)
 
 Etapa anterior à tradução 3D, sem alterar contratos dos backends. Teto informado:

@@ -1,0 +1,57 @@
+{
+  "status": "revisao de textura entregue; aguardando avaliacao artistica",
+  "atual": "r05/fera-sombras-e3-textura-r05.bbmodel",
+  "entrada": "entrada-blockbench.bbmodel",
+  "escopo": "textura da preguica rogue F3, sem reconstruir geometria",
+  "script": "scripts/malha-para-cubos/retocar.py",
+  "config": "retoque.json",
+  "revisoes": {
+    "r01": "falha antes de aplicar textura",
+    "r02": "estudo inicial",
+    "r03": "estudo de continuidade",
+    "r04": "estudo de manto",
+    "r05": "atual"
+  },
+  "verificacoes": {
+    "atlas_reproduzido_pixel_a_pixel": true,
+    "geometria_uv_hierarquia_locators_animacoes_identicos": true,
+    "achados_motor_identicos": true,
+    "alfa_removido_pixels": 4,
+    "conferencia_nativa": "r05/blockbench.png",
+    "render": "Blockbench 5.2.2 / MCP / offscreen 768x768",
+    "origem_preservada": true,
+    "py_compile": true,
+    "erros": 0,
+    "avisos": 57
+  },
+  "arquivos": [
+    {
+      "arquivo": "modelos/fera-fera-agil-das-sombras/malha-v1/textura-v2/entrada-blockbench.bbmodel",
+      "sha256": "e18ecce8b1d38aac7b46836700ca1512603dae4af36a0606144154eceb3b15d9"
+    },
+    {
+      "arquivo": "modelos/fera-fera-agil-das-sombras/malha-v1/textura-v2/r05/fera-sombras-e3-textura-r05.bbmodel",
+      "sha256": "9259b9783fe3fcc89e80e22487bc25c1ea81551c2175860098b676fe4bdf4633"
+    },
+    {
+      "arquivo": "modelos/fera-fera-agil-das-sombras/malha-v1/textura-v2/r05/textura.png",
+      "sha256": "f770fa87f17c918a06259ef39a6507757da23fb91f4b0b4e852528101e2f47f0"
+    },
+    {
+      "arquivo": "modelos/fera-fera-agil-das-sombras/malha-v1/textura-v2/r05/blockbench.png",
+      "sha256": "598d845602a2c69e0fcb2dfdeae390cb956b497b4c093bcf82e36ae2f39d36fc"
+    },
+    {
+      "arquivo": "modelos/fera-fera-agil-das-sombras/malha-v1/textura-v2/r05/comparacao.png",
+      "sha256": "9a31c570ea165e8345f472b4a68992875456adb07476ca88051783678532b119"
+    },
+    {
+      "arquivo": "modelos/fera-fera-agil-das-sombras/malha-v1/textura-v2/retoque.json",
+      "sha256": "d65300717e76ffe8ea5728a7b05c71a5ebdfd85c9eb46f6869ea4f0c0059a811"
+    },
+    {
+      "arquivo": "scripts/malha-para-cubos/retocar.py",
+      "sha256": "98eb44c618a676dca4d687598fa925dc8f8043172d089134b516760770db5c12"
+    }
+  ]
+}
