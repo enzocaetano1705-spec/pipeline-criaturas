@@ -66,3 +66,8 @@ sobre o arquivo que o usuário salvou) e parou no limite. Claude conferiu a r01 
 `fita_continua.py`: recorte dos 5 planos da fita a partir de uma fita única (pano no ar, fora dos
 cubos sólidos), contorno só na borda real; geometria/UV/ossos iguais, 0 erros. Atual:
 `modelos/fera-fera-agil-das-sombras/malha-v1/textura-v4/r02/`. Aprovação artística pendente.
+
+**r03:** retorno "só esses dois bugs na textura e fechamos" — tufo da base da cauda boiando no ar e
+fragmento solto da fita. `limpar_ilhas.py` remove recortes que não encostam no corpo; conferência em
+48 ângulos sem peças soltas. Atual: `textura-v4/r03/`. Pendente: confirmação final do usuário e,
+depois, animação e exportação para o Studio.

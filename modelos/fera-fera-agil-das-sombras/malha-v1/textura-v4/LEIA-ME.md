@@ -1,6 +1,6 @@
 # Textura v4 — focinho inteiro, pano só no cachecol, fita contínua (06/11/2026)
 
-Atual: **r02/fera-sombras-e3-textura-v4-r02.bbmodel**.
+Atual: **r03/fera-sombras-e3-textura-v4-r03.bbmodel**.
 
 Entrada: `entrada-blockbench.bbmodel` — o arquivo que o usuário salvou no Blockbench (gola
 ampliada para 15×15×3 e as edições anteriores). A geometria, a UV, os ossos e os locators não
@@ -18,6 +18,13 @@ que eram para ser pelo e foram pintadas; o focinho é para ser basicamente todo 
   plano tinha contorno escuro também na emenda com o vizinho (pedaços "voando") e o `scarf_1`
   herdava o pano que fica sobre o ombro (uma lâmina atravessando o corpo). Agora o contorno fica só
   na borda real da fita. 0 erros; geometria/UV/ossos conferidos iguais à r01.
+
+- **r03 (Claude, `limpar_ilhas.py`):** retorno "só esses dois bugs na textura": um tufo da base da
+  cauda (`tail_1_fur`, 15 texels) boiando no ar entre a fita e as costas e um fragmento de 8 texels
+  no `scarf_1`. Tufos que não encostam em nenhum cubo sólido (até 0,75) e poeira de pixels viram
+  transparentes; na fita cada plano guarda só o pedaço principal. Conferência automática em 48
+  ângulos: nenhuma peça solta na tela (resta só um traço de 2 px da ponta da fita exatamente de
+  perfil). Geometria/UV/ossos iguais, 0 erros. `r03/antes-depois.png` mostra r02 × r03 de lado.
 
 Vista de trás e de cima, a fita aparece como uma linha fina: é o plano de perfil, não uma peça solta.
 

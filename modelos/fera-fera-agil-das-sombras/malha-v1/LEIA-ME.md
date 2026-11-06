@@ -14,4 +14,4 @@
 
 Para refazer: ver `scripts/malha-para-cubos/LEIA-ME.md`.
 
-Modelo mais recente (textura): `textura-v4/r02/fera-sombras-e3-textura-v4-r02.bbmodel` — ver `textura-v4/LEIA-ME.md`.
+Modelo mais recente (textura): `textura-v4/r03/fera-sombras-e3-textura-v4-r03.bbmodel` — ver `textura-v4/LEIA-ME.md`.

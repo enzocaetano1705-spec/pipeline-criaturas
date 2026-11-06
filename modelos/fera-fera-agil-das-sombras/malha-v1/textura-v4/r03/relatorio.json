@@ -1,0 +1,29 @@
+{
+  "entrada": "fera-sombras-e3-textura-v4-r02.bbmodel",
+  "saida": "fera-sombras-e3-textura-v4-r03.bbmodel",
+  "ilhas_removidas": {
+    "scarf_1.north": [
+      8
+    ],
+    "scarf_1.south": [
+      8
+    ],
+    "tail_1_fur.east": [
+      15
+    ],
+    "tail_1_fur.west": [
+      15
+    ],
+    "head_fur.east": [
+      11
+    ],
+    "head_fur.west": [
+      11
+    ]
+  },
+  "geometria_uv_ossos_iguais": true,
+  "validacao": {
+    "erros": 0,
+    "avisos": 57
+  }
+}

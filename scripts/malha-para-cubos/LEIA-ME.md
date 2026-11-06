@@ -106,6 +106,12 @@ borda real. Tira as emendas que faziam a fita parecer pedaços voando e a lâmin
 ombro. Não muda geometria, UV nem ossos (conferido). Exemplo em
 `modelos/fera-fera-agil-das-sombras/malha-v1/textura-v4/LEIA-ME.md`.
 
+## Ilhas soltas nos planos
+
+`limpar_ilhas.py <modelo> <saida>` tira de um `.bbmodel` pronto os pedaços de recorte que não
+encostam em nenhum cubo sólido (tufos boiando no ar) e a poeira de pixels; na fita do cachecol cada
+plano guarda só o pedaço principal. Só o alfa muda; geometria, UV e ossos são conferidos iguais.
+
 ## Limites conhecidos (v1)
 
 - Só o plano "bípede com cauda" tem regras de papéis.
