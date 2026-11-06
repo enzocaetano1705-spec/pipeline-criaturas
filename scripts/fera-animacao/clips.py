@@ -68,9 +68,10 @@ class Locomocao:
                 Rf = Rf @ rx(-18 * flex) @ rz(4 * flex * lado)
             pose[nome] = {"matriz": Rf}
 
-    def perna(self, pose, lado, s, alvo_tornozelo, pe_pitch=0.0):
-        polo = np.array([0.35 * s, 0.0, -1.0])  # joelho para a frente (mamífero) e um pouco para fora
-        self.r.ik(pose, "pelvis", f"leg_{lado}", f"shin_{lado}", f"foot_{lado}", alvo_tornozelo, polo)
+    def perna(self, pose, lado, s, alvo_tornozelo, pe_pitch=0.0, charneira=False, polo=None):
+        if polo is None:
+            polo = np.array([0.35 * s, 0.0, -1.0])  # joelho para a frente (mamífero) e um pouco para fora
+        self.r.ik(pose, "pelvis", f"leg_{lado}", f"shin_{lado}", f"foot_{lado}", alvo_tornozelo, polo, charneira)
         self.r.mundo_para_local(pose, f"foot_{lado}", rx(pe_pitch))
 
     def plantar_pernas(self, pose):

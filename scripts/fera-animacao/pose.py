@@ -79,6 +79,18 @@ def rot_min(a, b):
     return np.eye(3) + K + K @ K * ((1 - c) / (s * s))
 
 
+def alinhar(d0, n0, d1, n1):
+    """Rotação que leva d0 em d1 e n0 em n1 (pares perpendiculares, unitários)."""
+    F0 = np.column_stack([d0, n0, np.cross(d0, n0)])
+    F1 = np.column_stack([d1, n1, np.cross(d1, n1)])
+    U, _s, Vt = np.linalg.svd(F1 @ F0.T)  # ortonormaliza (pares quase perpendiculares)
+    R = U @ Vt
+    if np.linalg.det(R) < 0:
+        U[:, -1] *= -1
+        R = U @ Vt
+    return R
+
+
 def eixo_angulo(eixo, graus):
     e = np.asarray(eixo, float)
     e = e / (np.linalg.norm(e) or 1)
@@ -151,10 +163,13 @@ class Rig:
             mat(n)
         return feitas
 
-    def ik(self, pose, cima, a, b, c, alvo, polo):
+    def ik(self, pose, cima, a, b, c, alvo, polo, charneira=False):
         """IK de dois ossos (a -> b -> c, pivôs de repouso). Grava rotações locais de a e b em `pose`.
 
         `cima` = osso pai de `a` (já posado). Devolve a rotação de mundo do osso b (para o efetor).
+        charneira=True: além da direção, leva o eixo da junta do repouso (normal do plano a-b-c) para
+        o eixo novo, então a e b dobram em volta do mesmo eixo, como dobradiça (joelho/cotovelo não
+        torcem para fora do próprio bloco). Sem isso, a rotação mínima deixa o giro em volta do osso solto.
         """
         W = self.mats(pose)[cima]
         pa, pb, pc = self.piv(a), self.piv(b), self.piv(c)
@@ -171,8 +186,15 @@ class Rig:
         K = S + dv * aa + p * h
         T = S + dv * d
         Rp = W[:3, :3]
-        RA = rot_min(Rp @ ((pb - pa) / L1), (K - S) / L1) @ Rp
-        RB = rot_min(RA @ ((pc - pb) / L2), (T - K) / L2) @ RA
+        n0 = np.cross(pb - pa, pc - pb)
+        n1 = np.cross(K - S, T - K)
+        if charneira and np.linalg.norm(n0) > 1e-6 and np.linalg.norm(n1) > 1e-6:
+            n0, n1 = n0 / np.linalg.norm(n0), n1 / np.linalg.norm(n1)
+            RA = alinhar((pb - pa) / L1, n0, (K - S) / L1, n1)
+            RB = alinhar((pc - pb) / L2, n0, (T - K) / L2, n1)
+        else:
+            RA = rot_min(Rp @ ((pb - pa) / L1), (K - S) / L1) @ Rp
+            RB = rot_min(RA @ ((pc - pb) / L2), (T - K) / L2) @ RA
         self._gravar(pose, a, Rp.T @ RA)
         self._gravar(pose, b, RA.T @ RB)
         return RB

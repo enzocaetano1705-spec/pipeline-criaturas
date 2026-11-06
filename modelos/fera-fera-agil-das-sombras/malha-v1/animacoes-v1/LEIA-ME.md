@@ -1,6 +1,25 @@
 # Animações v1 — locomoção da preguiça rogue (06/11/2026)
 
-Atual: **r07/fera-sombras-e3-animacoes.bbmodel** (base `rig-v4/base-rig-v4.bbmodel`).
+Atual: **r08/fera-sombras-e3-animacoes.bbmodel** (base `rig-v4/base-rig-v4.bbmodel`).
+
+**r08 (juntas da guarda):** retorno: "a ideia da postura ficou bem legal, mas a junta com as costas
+está desconexa, o ombro parece invertido com relação ao cotovelo e a relação das coxas com as pernas
+fica meio estranha nessa postura baixa". Causas vistas de perto:
+- costas: o tronco dobrava 28° para a frente bem na emenda com a pelve (e torcia 10° ali); os blocos
+  são rígidos, então abria uma fresta clara. Agora a coluna fica reta e a inclinação vem do corpo
+  inteiro (empina 26°, torce 24°); repouso, idle e guarda ficam com a mesma emenda contínua.
+- ombro e cotovelo, coxa e canela: a IK girava cada osso pelo caminho mínimo e deixava solto o giro em
+  volta do próprio eixo; o joelho e o cotovelo dobravam fora do eixo do bloco. `pose.ik(...,
+  charneira=True)` leva também o eixo da junta do repouso para o eixo novo: os dois ossos dobram em
+  volta do mesmo eixo, como dobradiça (só no combate; walk e run aprovados seguem iguais). O
+  cotovelo aponta para onde aponta no repouso, girado com o tronco.
+- ombro: com o corpo empinado, o braço "neutro" do repouso aponta para a frente; levar a garra de trás
+  para trás do quadril girava o bloco do braço (5×9×8) e a ponta de cima dele saía pelo ombro. A
+  guarda agora tem as duas garras à frente: a da frente estendida e baixa, a de trás dobrada perto do
+  peito, armada.
+- coxa: base um pouco menos funda (agacha 3,0 em vez de 5,0) e joelho menos aberto; a coxa fica na
+  diagonal em vez de deitada.
+Conferido no Blockbench de trás, de cima, de lado e de 3/4. Validação: 0 erros, 0 avisos.
 
 **r07 (piscada em todas as animações e postura de combate):** retorno sobre a r06: "uma animação só
 para blink não faz sentido, deve piscar em todas as animações, inclusive as de combate"; "pode aplicar
@@ -97,7 +116,7 @@ copia from/to/origin/rotation, leva pivô mudado junto e recusa rotação de rep
 | `run` | 3,3 s | sim | rápida, 1,62 s | 5 passadas de galope rotativo (trás esq., trás dir., frente dir., frente esq., voo recolhido), tudo no ritmo da passada |
 | `run_start` | 0,5 s | não | rápida, 0,06 s | recua, recolhe as garras com estalo e mergulha para os quatro apoios |
 | `run_stop` | 0,7 s | não | normal, 0,12 s | derrapa nos nós das mãos, passa do ponto, assenta e abre as garras |
-| `combat_ready` | 3,2 s | sim | normal, 0,9 s | guarda em tripé de assassino (acima); respira pesado, garra da frente se crispa e estala |
+| `combat_ready` | 3,2 s | sim | normal, 0,9 s | guarda em tripé de lutador (r08); respira pesado, garra da frente se crispa e estala |
 | `combat_enter` | 0,6 s | não | rápida, 0,04 s | idle → guarda: antecipação, pulinho, cai na base com as garras estalando |
 | `combat_exit` | 0,7 s | não | normal, 0,3 s | guarda → idle: pulinho de volta e solta as garras |
 
@@ -113,7 +132,7 @@ para o jogo mover o modelo sem os pés patinarem, e quando cada clipe pisca. Pr�
 `tiras.png` (8 quadros por clipe).
 
 ```powershell
-uv run python scripts/fera-animacao/gerar.py modelos/fera-fera-agil-das-sombras/malha-v1/animacoes-v1/rig-v4/base-rig-v4.bbmodel modelos/fera-fera-agil-das-sombras/malha-v1/animacoes-v1/r07
+uv run python scripts/fera-animacao/gerar.py modelos/fera-fera-agil-das-sombras/malha-v1/animacoes-v1/rig-v4/base-rig-v4.bbmodel modelos/fera-fera-agil-das-sombras/malha-v1/animacoes-v1/r08
 uv run python scripts/fera-animacao/medir.py modelos/fera-fera-agil-das-sombras/malha-v1/animacoes-v1/rig-v4/base-rig-v4.bbmodel run
 ```
 `medir.py` diz quantos ciclos por passada cada canal faz (tudo deve dar 1 no run), quais ossos

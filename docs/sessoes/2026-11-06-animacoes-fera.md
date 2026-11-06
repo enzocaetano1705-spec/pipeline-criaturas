@@ -77,3 +77,13 @@ olhando renders: garra erguida sobre a cabeça (parecia coçando a cabeça), cau
 chão (tronco de árvore), cauda muito erguida (esquilo), cotovelo de trás para cima (asa de frango),
 canela da perna de trás deitando no chão (resolvido com o pé na ponta). Entrada e saída com pulinho
 (esconde a troca dos pés), travas de mão/garra/cauda acima do chão. 0 erros, 0 avisos.
+
+## r08 — juntas da guarda
+
+Retorno: a ideia da guarda agradou; faltava corrigir a junta das costas (desconexa), o ombro
+"invertido" em relação ao cotovelo e a coxa × canela estranha na base baixa. Visto de perto: a dobra
+de 28° do tronco bem na emenda com a pelve abria fresta (blocos rígidos) → coluna reta, inclinação no
+corpo inteiro. A IK deixava solto o giro de cada osso em volta do próprio eixo → `ik(charneira=True)`
+alinha também o eixo da junta (só no combate). Com o corpo empinado o braço neutro aponta para a
+frente; levar a garra de trás para trás do quadril fazia a ponta do bloco do braço sair pelo ombro →
+as duas garras à frente (guarda de lutador). Base menos funda para a coxa não deitar. 0 erros, 0 avisos.

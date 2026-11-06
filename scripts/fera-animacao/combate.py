@@ -1,12 +1,17 @@
 """Combate da preguiça rogue: postura em tripé (patas de trás + cauda) com cara de assassino.
 
 Ideia: o tamanduá-bandeira, ameaçado, fica de pé nas patas de trás apoiado na cauda e abre as garras;
-para não virar um urso de pelúcia em pé, a guarda é a de um ninja (Greninja): base baixa, larga e
-escalonada, joelhos bem dobrados, o tronco empinado sobre o quadril mas curvado para a frente
-(ombros rolados, cabeça baixa e firme no alvo), corpo torcido mostrando o ombro da frente, a garra da
-frente baixa apontando para o alvo e a de trás recolhida atrás do quadril (lâmina guardada), o pé de
-trás na ponta (pronto para o bote). A cauda apoia no chão atrás como a terceira perna, com a ponta
-subindo pouco (erguida demais lembra esquilo). Tudo respira pesado (gordura), pronto para sumir.
+para não virar um urso de pelúcia em pé, a guarda é a de um lutador (Greninja): base baixa, larga e
+escalonada, joelhos dobrados, corpo empinado sobre o quadril e inclinado para a frente, cabeça baixa
+e firme no alvo, corpo torcido mostrando o ombro da frente, as duas garras à frente (a da frente
+estendida e baixa apontando para o alvo, a de trás dobrada perto do peito, armada), o pé de trás na
+ponta (pronto para o bote). A cauda apoia no chão atrás como a terceira perna, com a ponta subindo
+pouco (erguida demais lembra esquilo). Tudo respira pesado (gordura), pronto para sumir.
+
+Juntas (os blocos são rígidos e grandes): a coluna fica reta (dobrar na emenda pelve × peito abre
+fresta nas costas); braços e pernas dobram como dobradiça (`ik(..., charneira=True)`), com o cotovelo
+apontando para onde aponta no repouso; o braço não vai para trás do corpo (o bloco gira e a ponta de
+cima sai pelo ombro); a base não é funda demais (a coxa deita e o joelho sobra).
 """
 
 from __future__ import annotations
@@ -19,25 +24,31 @@ from clips import FPS, LADOS, Locomocao
 from pose import eixo_angulo, matriz, rot_min, rx, suave
 
 GUARDA = dict(
-    empina=36.0,  # corpo gira para cima em volta do quadril (o tripé)
-    torce=-26.0,  # corpo de lado, ombro esquerdo para o alvo
+    empina=26.0,  # corpo gira para cima em volta do quadril (o tripé)
+    torce=-24.0,  # corpo de lado, ombro esquerdo para o alvo (só o corpo inteiro torce: sem fresta)
     inclina=0.0,
-    agacha=5.0,  # quadril desce (joelhos bem dobrados)
+    agacha=3.0,  # quadril desce (joelhos dobrados; mais fundo, a coxa deita e o joelho sobra)
     recua=1.0,  # quadril vai um pouco para trás (peso na cauda)
-    pelve=0.0, cintura=-8.0, peito=-20.0,  # corcunda: o tronco se curva para a frente por cima do quadril
-    torce_cintura=6.0, torce_peito=4.0,
-    abre=1.3,  # base larga
+    # coluna reta: qualquer dobra na emenda pelve × peito abre fresta nas costas (blocos rígidos);
+    # a inclinação vem do corpo inteiro
+    pelve=0.0, cintura=0.0, peito=0.0,
+    torce_cintura=0.0, torce_peito=0.0,
+    abre=1.25,  # base larga
     passo_left=-6.0, passo_right=3.5,  # pé esquerdo à frente, direito atrás
     ponta_left=6.0,  # o da frente quase chato (calcanhar um tiquinho erguido)
     ponta_right=28.0,  # pé de trás na ponta: calcanhar erguido (graus); a canela não deita no chão
-    # garra da frente (esquerda): baixa, à frente, apontando para o alvo
-    punho_frente=(-1.0, -7.0, -13.5), garra_frente=(0.05, -0.08, -1.0), giro_frente=-20.0,
-    polo_frente=(-0.8, -0.5, 0.3),
-    # garra de trás (direita): recolhida atrás do quadril, garras para trás e para baixo (lâmina guardada)
-    punho_tras=(2.0, -8.0, 6.0), garra_tras=(0.3, -0.5, 0.8), giro_tras=0.0,
-    polo_tras=(0.5, -0.7, 0.6),  # cotovelo para baixo e para trás (para cima vira asa de frango)
+    polo_joelho=(0.22, 0.0, -1.0),  # joelho para a frente, pouco para fora (× lado)
+    # Com o corpo empinado, o braço "neutro" do repouso aponta para a frente: a guarda usa as duas
+    # garras à frente (guarda de lutador). Forçar a garra para baixo/trás gira o bloco grande do braço
+    # e a ponta de cima dele sai pelo ombro.
+    # garra da frente (esquerda): estendida e baixa, apontando para o alvo
+    punho_frente=(-0.5, -5.0, -12.0), garra_frente=(0.05, -0.15, -1.0), giro_frente=-20.0,
+    polo_frente=None,  # cotovelo como no repouso, girado com o tronco
+    # garra de trás (direita): dobrada perto do peito, garras para a frente e para cima (armada)
+    punho_tras=(-3.0, -3.5, -7.5), garra_tras=(-0.2, 0.45, -0.87), giro_tras=10.0,
+    polo_tras=None,
     curva_garras=0.35,  # garras abertas e um pouco curvadas
-    olhar=-10.0, inclina_cabeca=-6.0,  # cabeça baixa (olha por baixo da testa) e um pouco inclinada
+    olhar=-8.0, inclina_cabeca=-6.0,  # cabeça baixa (olha por baixo da testa) e um pouco inclinada
     cauda=(-59.0, -20.0, 6.0, 18.0, 26.0),  # inclinação de mundo de cada gomo: apoia e a ponta sobe pouco
     fita=(10.0, 8.0, 6.0, 5.0, 4.0),  # cachecol caído para trás
 )
@@ -51,9 +62,14 @@ class Combate:
         self.P = r.piv("body")
         self.quadril = (r.piv("leg_left") + r.piv("leg_right")) / 2
         self.d_garras = {}
+        self.cotovelo = {}  # para onde o cotovelo aponta no repouso (fora da linha ombro-punho)
         for lado, _s in LADOS:
             ds = [loc._ponta_garra(f"claw_{lado}_{n}") - r.piv(f"claw_{lado}_{n}") for n in (1, 2, 3)]
             self.d_garras[lado] = np.mean(ds, axis=0)
+            o, c, p = r.piv(f"arm_{lado}"), r.piv(f"forearm_{lado}"), r.piv(f"hand_{lado}")
+            u = (p - o) / np.linalg.norm(p - o)
+            e = (c - o) - ((c - o) @ u) * u
+            self.cotovelo[lado] = e / np.linalg.norm(e)
         # gomos da cauda: direção de repouso de cada um (pivô ao próximo; o último segue o próprio cubo)
         self.gomos = [f"tail_{k}" for k in range(1, 6)]
         self.d_gomo = {}
@@ -71,13 +87,17 @@ class Combate:
         H = self.quadril + np.array([0.0, -cfg["agacha"] + sobe, cfg["recua"]])
         pose["body"] = {"matriz": R, "posicao": H - self.P - R @ (self.quadril - self.P)}
 
-    def braco(self, pose, lado, s, punho_rel, garra_dir, giro, polo):
-        """Punho num ponto relativo ao ombro (no mundo), garras apontando para garra_dir."""
+    def braco(self, pose, lado, s, punho_rel, garra_dir, giro, polo=None):
+        """Punho num ponto relativo ao ombro (no mundo), garras apontando para garra_dir.
+
+        Sem polo, o cotovelo aponta para onde aponta no repouso, girado junto com o tronco: o braço
+        dobra do jeito natural do bloco (sem ombro "invertido" em relação ao cotovelo)."""
         r = self.r
         W = r.mats(pose)["torso"]
         ombro = W[:3, :3] @ r.piv(f"arm_{lado}") + W[:3, 3]
         alvo = ombro + np.asarray(punho_rel, float)
-        r.ik(pose, "torso", f"arm_{lado}", f"forearm_{lado}", f"hand_{lado}", alvo, np.asarray(polo, float))
+        polo = W[:3, :3] @ self.cotovelo[lado] if polo is None else np.asarray(polo, float)
+        r.ik(pose, "torso", f"arm_{lado}", f"forearm_{lado}", f"hand_{lado}", alvo, polo, charneira=True)
         d = np.asarray(garra_dir, float)
         d = d / np.linalg.norm(d)
         r.mundo_para_local(pose, f"hand_{lado}", eixo_angulo(d, giro) @ rot_min(self.d_garras[lado], d))
@@ -116,12 +136,14 @@ class Combate:
                 hi = mid
         montar(lo)
 
-    def pe(self, pose, lado, s, alvo, ponta=0.0):
-        """Pé plantado; ponta > 0 ergue o calcanhar (só a ponta no chão), subindo o tornozelo o preciso."""
+    def pe(self, pose, lado, s, alvo, ponta=0.0, polo=(0.35, 0.0, -1.0)):
+        """Pé plantado; ponta > 0 ergue o calcanhar (só a ponta no chão), subindo o tornozelo o preciso.
+        A perna dobra como dobradiça (coxa e canela no mesmo eixo do joelho)."""
         loc = self.loc
         alvo = np.array(alvo, float)
+        polo = np.array([polo[0] * s, polo[1], polo[2]])
         for _ in range(4):
-            loc.perna(pose, lado, s, alvo, -ponta)
+            loc.perna(pose, lado, s, alvo, -ponta, charneira=True, polo=polo)
             falta = loc.chao - self._menor_y(pose, (f"foot_{lado}",))
             if abs(falta) < 1e-3:
                 break
@@ -176,12 +198,12 @@ class Combate:
         resp_atr = math.sin(4 * math.pi * (fase - 0.04))
         self.corpo(pose, cfg, extra=np.array([0.9 * resp, 0.0, 0.7 * math.sin(2 * math.pi * (fase - 0.2))]), sobe=0.3 * resp)
         pose["pelvis"] = {"rotacao": [cfg["pelve"], 0.0, 0.0]}
-        pose["waist"] = {"rotacao": [cfg["cintura"] + 0.8 * resp_atr, cfg["torce_cintura"], 0.0]}
-        pose["torso"] = {"rotacao": [cfg["peito"] + 1.5 * math.sin(4 * math.pi * (fase - 0.08)), cfg["torce_peito"], 0.0]}
+        pose["waist"] = {"rotacao": [cfg["cintura"] + 0.3 * resp_atr, cfg["torce_cintura"], 0.0]}  # coluna quase parada (emenda)
+        pose["torso"] = {"rotacao": [cfg["peito"] + 0.5 * math.sin(4 * math.pi * (fase - 0.08)), cfg["torce_peito"], 0.0]}
         for lado, s in LADOS:
             base = r.piv(f"foot_{lado}")
             alvo = np.array([base[0] * cfg["abre"], loc.chao + loc.alt_tornozelo, base[2] + cfg[f"passo_{lado}"]])
-            self.pe(pose, lado, s, alvo, cfg.get(f"ponta_{lado}", 0.0))
+            self.pe(pose, lado, s, alvo, cfg.get(f"ponta_{lado}", 0.0), cfg["polo_joelho"])
         cauda = np.asarray(cfg["cauda"], float) + np.array([0, 0, 0, 3.0, 6.0]) * math.sin(2 * math.pi * (fase - 0.3))
         self.cauda_tripe(pose, cauda, yaw=2.0 * math.sin(2 * math.pi * (fase - 0.45)))
         # garras: a da frente acompanha o peito e desenha um círculo pequeno; a de trás fica armada
@@ -235,7 +257,7 @@ class Combate:
             for lado, s in LADOS:
                 Rpe = mats[f"foot_{lado}"][:3, :3]  # orientação do pé misturada (pé chato ↔ na ponta)
                 alvo = Ai[lado] + (Af[lado] - Ai[lado]) * u + np.array([0.0, altura * no_ar, 0.0])
-                self.r.ik(pose, "pelvis", f"leg_{lado}", f"shin_{lado}", f"foot_{lado}", alvo, np.array([0.35 * s, 0.0, -1.0]))
+                self.r.ik(pose, "pelvis", f"leg_{lado}", f"shin_{lado}", f"foot_{lado}", alvo, np.array([GUARDA["polo_joelho"][0] * s, 0.0, -1.0]), charneira=True)
                 self.r.mundo_para_local(pose, f"foot_{lado}", rx(-8.0 * no_ar) @ Rpe)
             self.loc.cauda_acima_do_chao(pose)
             self.maos_acima_do_chao(pose)
