@@ -10,7 +10,8 @@ Agora o run é um galope rotativo (trás esq., trás dir., frente dir., frente e
 0,66 s em que tudo que balança está travado na fase da passada (`medir.py`: todos os canais do corpo
 com 1 ciclo por passada), só o `body` translada, coluna estica/encolhe uma vez, gordura = mesmo
 balanço com fase atrasada, cauda e cachecol em onda uma vez por passada, elevação da cauda fixa
-(sem correção quadro a quadro). Nenhuma fresta nas juntas; 0 erros, 0 avisos. Walk igual à r04.
+(sem correção quadro a quadro). Nenhuma fresta nas juntas; pernas e braços a no mínimo 3,4 de
+distância (nenhum quadro encosta); 0 erros, 0 avisos. Walk igual à r04.
 
 **r04:** o usuário recuou as pernas no Blockbench (coxa +10 em Z, canela e pé +9) porque nas
 animações elas entravam nos braços. `scripts/fera-animacao/pernas_recuadas.py` levou essa edição para
@@ -38,22 +39,26 @@ preguiças-gigantes faziam), e o corpo todo balança.
 |---|---|---|---|
 | `idle` | 4,0 s | sim | de pé, curvada, lenta: respira, olha devagar para um lado e para o outro, espreguiça as garras |
 | `walk` | 1,6 s | sim | quatro apoios em sequência lateral, nos nós das mãos, garras dobradas; peso passando de lado a lado, barriga atrasada |
-| `run` | 0,62 s | sim | galope pesado: patas da frente juntas e depois as de trás, coluna encolhe/estica, quique forte, gordura sacudindo, cabeça firme, cauda de contrapeso e cachecol em onda |
+| `run` | 0,66 s | sim | galope rotativo (trás esq., trás dir., frente dir., frente esq., voo recolhido), tudo no ritmo da passada: coluna estica/encolhe uma vez, gordura no mesmo balanço com atraso, cabeça firme, cauda e cachecol em onda |
 | `run_start` | 0,5 s | não | recua, recolhe as garras com estalo e mergulha para os quatro apoios |
 | `run_stop` | 0,7 s | não | derrapa nos nós das mãos, passa do ponto, assenta e abre as garras |
 
-Peso sem escala (o Roblox não anima escala de osso): tronco e pescoço seguem o corpo por molas
-amortecidas (atrasam e passam do ponto), cauda e cachecol em onda da base para a ponta. Mãos e pés
-pisam no chão por IK. Validação do motor: 0 erros, 0 avisos (nada afunda, nada se solta). As
+Peso sem escala (o Roblox não anima escala de osso): no walk, tronco e pescoço seguem o corpo por
+molas amortecidas (atrasam e passam do ponto); no run não há mola solta (ela tremia no próprio ritmo
+e brigava com a passada): a gordura é o mesmo balanço do corpo com a fase atrasada. Cauda e cachecol
+em onda da base para a ponta. Mãos e pés pisam no chão por IK. Validação do motor: 0 erros, 0 avisos (nada afunda, nada se solta). As
 posições das juntas foram conferidas contra o motor do Blockbench (`bbmodel_sample_pose`).
 
-`animacoes.json`: duração/loop e velocidade de deslocamento (walk 0,47 bloco/s; run 2,67 blocos/s)
+`animacoes.json`: duração/loop e velocidade de deslocamento (walk 0,47 bloco/s; run 2,84 blocos/s)
 para o jogo mover o modelo sem os pés patinarem. Prévias: `previa-<clipe>.gif` (lado e 3/4) e
 `tiras.png` (8 quadros por clipe).
 
 ```powershell
-uv run python scripts/fera-animacao/gerar.py modelos/fera-fera-agil-das-sombras/malha-v1/animacoes-v1/base-rig.bbmodel modelos/fera-fera-agil-das-sombras/malha-v1/animacoes-v1/r04
+uv run python scripts/fera-animacao/gerar.py modelos/fera-fera-agil-das-sombras/malha-v1/animacoes-v1/rig-v3/base-rig-v3.bbmodel modelos/fera-fera-agil-das-sombras/malha-v1/animacoes-v1/r05
+uv run python scripts/fera-animacao/medir.py modelos/fera-fera-agil-das-sombras/malha-v1/animacoes-v1/rig-v3/base-rig-v3.bbmodel run
 ```
+`medir.py` diz quantos ciclos por passada cada canal faz (tudo deve dar 1 no run), quais ossos
+transladam, as frestas nas juntas e a menor distância entre pernas e braços.
 Parâmetros de cada marcha (duração, curso, altura do quique, gordura, cauda, cachecol) ficam em
 `scripts/fera-animacao/clips.py` (`walk()`, `run()`, `pose_idle()`).
 

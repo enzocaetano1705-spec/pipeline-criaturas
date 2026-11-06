@@ -83,6 +83,18 @@ def main():
             pior[filho] = max(pior.get(filho, 0), d)
     frestas = sorted(((d, n) for n, d in pior.items() if d > 1.2), reverse=True)
     print("frestas nas juntas (> 1,2):", [(n, round(d, 1)) for d, n in frestas] or "nenhuma")
+    # perna × braço: amostras no centro de células de 1 unidade, então < 1,0 = cubos se tocando ou entrando
+    pernas = {f"{o}_{l}" for o in ("leg", "shin", "foot") for l in ("left", "right")}
+    bracos = {f"{o}_{l}" for o in ("arm", "forearm", "hand") for l in ("left", "right")}
+    bracos |= {n for n in rig.ossos if n.startswith("claw_")}
+    dist = []
+    for t, pose in q:
+        mats = rig.mats(pose)
+        A, B = pontos(rig.m, mats, pernas), pontos(rig.m, mats, bracos)
+        dist.append((float(np.sqrt(((A[:, None] - B[None]) ** 2).sum(-1)).min()), t))
+    dmin, tmin = min(dist)
+    encosta = sum(1 for d, _t in dist if d < 1.0)
+    print(f"perna × braço: menor distância {dmin:.1f} (t={tmin:.2f}s); quadros encostando: {encosta}/{len(dist)}")
 
 
 if __name__ == "__main__":
