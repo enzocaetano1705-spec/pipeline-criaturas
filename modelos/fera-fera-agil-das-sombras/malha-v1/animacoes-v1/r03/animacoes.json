@@ -1,0 +1,35 @@
+{
+  "clipes": {
+    "idle": {
+      "duracao": 4.0,
+      "loop": true
+    },
+    "walk": {
+      "duracao": 1.6,
+      "loop": true
+    },
+    "run": {
+      "duracao": 0.62,
+      "loop": true
+    },
+    "run_start": {
+      "duracao": 0.5,
+      "loop": false
+    },
+    "run_stop": {
+      "duracao": 0.7,
+      "loop": false
+    }
+  },
+  "deslocamento": {
+    "walk": {
+      "unidades_por_s": 7.59,
+      "blocos_por_s": 0.474
+    },
+    "run": {
+      "unidades_por_s": 42.69,
+      "blocos_por_s": 2.668
+    }
+  },
+  "nota": "Mover o modelo nessa velocidade (× escala do Studio) para os pés não patinarem."
+}
