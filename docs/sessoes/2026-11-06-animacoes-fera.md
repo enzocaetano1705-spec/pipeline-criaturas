@@ -63,3 +63,17 @@ transparentes, textura feita dos pixels do olho num canto livre do atlas. `blink
 para tocar a cada 2,5–6 s (embutir em loops de 0,66–1,6 s piscaria demais). Medições iguais (sem
 frestas, pernas × braços 3,0/3,4), 0 erros, 0 avisos. Posição X no formato 5.0 do Blockbench é no
 sentido da cena (o motor documenta a troca de sinal da 4.x), conferido no próprio Blockbench.
+
+## r07 — piscada em todas as animações e guarda em tripé
+
+Retorno: o clipe de piscada separado não fazia sentido para o usuário; cada animação deve piscar,
+inclusive as de combate. `piscar_em` põe a piscada dentro de cada clipe (lenta no idle, normal no
+walk, rápida no run, nas transições e no combate). Para não piscar a cada 0,66 s, o walk ganhou 2
+passadas e o run 5 por loop (piscada a cada ~3 s, mesma velocidade). Guarda de combate em tripé
+(`combate.py`), pedida "maneira, tipo Greninja": corpo empinado 36° no quadril com a cauda apoiada,
+base baixa, larga e escalonada, pé de trás na ponta, tronco curvado e torcido, cabeça baixa no alvo,
+garra da frente baixa apontando, garra de trás guardada atrás do quadril. Iterações descartadas
+olhando renders: garra erguida sobre a cabeça (parecia coçando a cabeça), cauda deitada inteira no
+chão (tronco de árvore), cauda muito erguida (esquilo), cotovelo de trás para cima (asa de frango),
+canela da perna de trás deitando no chão (resolvido com o pé na ponta). Entrada e saída com pulinho
+(esconde a troca dos pés), travas de mão/garra/cauda acima do chão. 0 erros, 0 avisos.

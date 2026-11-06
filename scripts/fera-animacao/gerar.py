@@ -4,8 +4,9 @@ Uso: uv run python scripts/fera-animacao/gerar.py <base-com-garras.bbmodel> <pas
 
 Grava <pasta>/fera-sombras-e3-animacoes.bbmodel (cópia da base + clipes), animacoes.json (duração,
 loop, velocidade de deslocamento para o jogo), previa-<clipe>.gif (lado e 3/4) e relatorio.json.
-Se a base tiver pálpebras (palpebras.py), grava também o clipe `blink` (camada que só mexe nelas) e
-previa-blink.gif (close da cabeça em idle, walk e run com a piscada por cima).
+Se a base tiver pálpebras (palpebras.py), cada clipe ganha uma piscada (PISCADA_POR_CLIPE) e sai
+previa-piscadas.gif (close da cabeça em volta da piscada de cada clipe). Também gera o combate:
+combat_ready (guarda em tripé), combat_enter e combat_exit (combate.py).
 As chaves são assadas (30 por segundo, sem Molang), como o Roblox precisa. Não anima `root`.
 """
 
@@ -22,10 +23,21 @@ import numpy as np
 from PIL import Image, ImageDraw
 
 sys.path.insert(0, str(Path(__file__).parent))
-from clips import FPS, Locomocao, transicao  # noqa: E402
+from clips import FPS, PISCADAS, Locomocao, piscar_em, repetir, transicao  # noqa: E402
+from combate import Combate  # noqa: E402
 from pose import Rig, chaves, rx  # noqa: E402
 
 from criaturas import bbmodelo, motor, render  # noqa: E402
+
+
+VOLTAS = {"walk": 2, "run": 5}  # passadas por loop (uma piscada por loop)
+# quando cada clipe pisca (início, em s) e o jeito: devagar parada, rápido correndo, na antecipação
+# das transições e virando a cabeça no idle
+PISCADA_POR_CLIPE = {
+    "idle": (2.6, "lenta"), "walk": (1.9, "normal"), "run": (1.62, "rapida"),
+    "run_start": (0.06, "rapida"), "run_stop": (0.12, "normal"),
+    "combat_ready": (0.9, "normal"), "combat_enter": (0.04, "rapida"), "combat_exit": (0.3, "normal"),
+}
 
 
 def r3(v):
@@ -42,14 +54,20 @@ def para_ops(nome, T, loop, quadros):
     # trilha de posição inteira (com os zeros) para todo osso que translada em algum quadro do clipe:
     # sem a chave zero no começo/fim, o Blockbench segura o primeiro/último valor fora dela
     move = {o for _t, ch in todas for o, e in ch.items() if "posicao" in e and np.any(np.abs(e["posicao"]) > 1e-4)}
+    trilhas = {}
     for t, ch in todas:
         for osso, e in ch.items():
             if "rotacao" in e:
-                ops.append({"op": "set_keyframe", "animation": nome, "bone": osso, "channel": "rotation",
-                            "time": round(t, 4), "value": r3(e["rotacao"]), "interpolation": "linear"})
+                trilhas.setdefault((osso, "rotation"), []).append((round(t, 4), r3(e["rotacao"])))
             if osso in move:
-                ops.append({"op": "set_keyframe", "animation": nome, "bone": osso, "channel": "position",
-                            "time": round(t, 4), "value": r3(e.get("posicao", np.zeros(3))), "interpolation": "linear"})
+                trilhas.setdefault((osso, "position"), []).append((round(t, 4), r3(e.get("posicao", np.zeros(3)))))
+    for (osso, canal), chs in trilhas.items():
+        for i, (t, v) in enumerate(chs):
+            # chave no meio de um trecho parado (igual à anterior e à seguinte) não muda nada: fica de fora
+            if 0 < i < len(chs) - 1 and v == chs[i - 1][1] and v == chs[i + 1][1]:
+                continue
+            ops.append({"op": "set_keyframe", "animation": nome, "bone": osso, "channel": canal,
+                        "time": t, "value": v, "interpolation": "linear"})
     return ops
 
 
@@ -76,22 +94,19 @@ def gif(rig, quadros, destino, titulo):
     imgs[0].save(destino, save_all=True, append_images=imgs[1:], duration=int(2000 / FPS), loop=0, disposal=2)
 
 
-def gif_piscada(rig, locomocao, blink, destino, janela=1.4):
-    """Close da cabeça (câmera seguindo) em idle, walk e run, com a piscada tocando por cima no meio."""
+def gif_piscadas(rig, itens, destino, antes=0.4, depois=0.6):
+    """Close da cabeça (câmera seguindo) em volta da piscada de cada clipe: itens = [(nome, quadros, t0)]."""
     m = rig.m
     cab = [c for c in m.cubos if c.osso == "head"]
     paineis = []
-    for nome, quadros in locomocao:
-        ciclo = quadros[:-1]  # o último quadro do loop repete o primeiro
-        n = int(round(janela * FPS))
-        sel = [ciclo[i % len(ciclo)] for i in range(n)]
-        i0 = n // 2 - len(blink) // 2
+    for nome, quadros, t0 in itens:
+        # todos os painéis alinhados no início da piscada (clipe curto repete o primeiro/último quadro)
+        i0 = next(i for i, (t, _p) in enumerate(quadros) if t >= t0 - 1e-6)
+        idx = [min(max(i0 + k, 0), len(quadros) - 1) for k in range(-int(antes * FPS), int(depois * FPS))]
+        sel = [quadros[i] for i in idx]
         ims = []
-        for i, (_t, pose) in enumerate(sel):
-            p = dict(pose)
-            if 0 <= i - i0 < len(blink):
-                p.update(blink[i - i0][1])
-            mats = rig.mats(p)
+        for _t, pose in sel:
+            mats = rig.mats(pose)
             lo, hi = np.full(3, np.inf), np.full(3, -np.inf)
             for c in cab:
                 a, b = bbmodelo.caixa_mundo(m, c, mats)
@@ -102,13 +117,13 @@ def gif_piscada(rig, locomocao, blink, destino, janela=1.4):
             ims.append(im)
         paineis.append(ims)
     n = min(len(p) for p in paineis)
+    cols = 3
+    w, h = paineis[0][0].width + 4, paineis[0][0].height + 4
     quadros_gif = []
     for i in range(n):
-        f = Image.new("RGB", (sum(p[i].width + 4 for p in paineis), max(p[i].height for p in paineis)), (255, 255, 255))
-        x = 0
-        for p in paineis:
-            f.paste(p[i], (x, 0))
-            x += p[i].width + 4
+        f = Image.new("RGB", (w * min(cols, len(paineis)), h * ((len(paineis) + cols - 1) // cols)), (255, 255, 255))
+        for j, p in enumerate(paineis):
+            f.paste(p[i], ((j % cols) * w, (j // cols) * h))
         quadros_gif.append(f.convert("P", palette=Image.ADAPTIVE, colors=160))
     quadros_gif[0].save(destino, save_all=True, append_images=quadros_gif[1:], duration=int(1000 / FPS), loop=0, disposal=2)
 
@@ -160,9 +175,12 @@ def main():
     loc = Locomocao(rig)
 
     T_idle, idle, _ = loc.idle()
-    T_walk, walk, info_w = loc.walk()
-    T_run, run, info_r = loc.run()
-    inicio_run, fim_run = run[0][1], idle[0][1]
+    T_w1, walk1, info_w1 = loc.walk()
+    T_r1, run1, info_r1 = loc.run()
+    # uma piscada por loop num ritmo natural: o walk vira 2 passadas (3,2 s) e o run 5 (3,3 s);
+    # a velocidade de deslocamento não muda (curso e tempo multiplicados juntos)
+    T_walk, walk, info_w = VOLTAS["walk"] * T_w1, repetir(walk1, T_w1, VOLTAS["walk"]), {"curso": info_w1["curso"] * VOLTAS["walk"]}
+    T_run, run, info_r = VOLTAS["run"] * T_r1, repetir(run1, T_r1, VOLTAS["run"]), {"curso": info_r1["curso"] * VOLTAS["run"]}
 
     def acento_partida(t, w, pose):
         pose["body"]["posicao"] = pose["body"]["posicao"] + np.array([0.0, -1.1 * math.sin(math.pi * w), 0.0])
@@ -185,12 +203,23 @@ def main():
     partida = transicao(idle[0][1], run[0][1], 0.5, acento_partida)
     parada = transicao(run[0][1], idle[0][1], 0.7, acento_parada)
 
+    # combate: guarda em tripé, entrar e sair
+    cmb = Combate(loc)
+    T_g, guarda, _ = cmb.guarda()
+    entrada = cmb.entrar(idle[0][1], guarda[0][1])
+    saida = cmb.sair(guarda[0][1], idle[0][1])
+
     clipes = [("idle", T_idle, True, idle), ("walk", T_walk, True, walk), ("run", T_run, True, run),
-              ("run_start", 0.5, False, partida), ("run_stop", 0.7, False, parada)]
+              ("run_start", 0.5, False, partida), ("run_stop", 0.7, False, parada),
+              ("combat_ready", T_g, True, guarda), ("combat_enter", entrada[-1][0], False, entrada),
+              ("combat_exit", saida[-1][0], False, saida)]
     tem_palpebras = all(o in rig.ossos for o in ("eyelid_left", "eyelid_right"))
+    piscadas = {}
     if tem_palpebras:
-        T_blink, blink, _ = loc.piscar()
-        clipes.append(("blink", T_blink, False, blink))
+        for nome, _T, _l, quadros in clipes:
+            t_p, tipo = PISCADA_POR_CLIPE[nome]
+            piscar_em(quadros, t_p, tipo)
+            piscadas[nome] = {"t": t_p, "tipo": tipo, "duracao": round(len(PISCADAS[tipo]) / FPS, 3)}
     ops = []
     for nome, T, loop, quadros in clipes:
         ops += para_ops(nome, T, loop, quadros)
@@ -200,30 +229,24 @@ def main():
     val = motor.validar_animacoes(arquivo)
     erros, avisos, linhas = motor.resumo_validacao(val) if isinstance(val, dict) else (0, 0, [str(val)[:200]])
 
-    corpo = [c for c in clipes if c[0] != "blink"]
-    for nome, T, loop, quadros in corpo:
+    for nome, T, loop, quadros in clipes:
         gif(rig, quadros, pasta / f"previa-{nome}.gif", nome)
-    tiras(rig, corpo, pasta / "tiras.png")
+    tiras(rig, clipes, pasta / "tiras.png")
     if tem_palpebras:
-        gif_piscada(rig, [(n, q) for n, _T, _l, q in corpo if n in ("idle", "walk", "run")], blink, pasta / "previa-blink.gif")
+        gif_piscadas(rig, [(n, q, piscadas[n]["t"]) for n, _T, _l, q in clipes], pasta / "previa-piscadas.gif")
 
     uni = 16.0  # unidades por bloco
     anim = {
-        "clipes": {n: {"duracao": round(T, 3), "loop": lp} for n, T, lp, _q in clipes},
+        "clipes": {n: {"duracao": round(T, 3), "loop": lp, **({"piscada": piscadas[n]} if n in piscadas else {})}
+                   for n, T, lp, _q in clipes},
         "deslocamento": {
             "walk": {"unidades_por_s": round(info_w["curso"] / T_walk, 2), "blocos_por_s": round(info_w["curso"] / T_walk / uni, 3)},
             "run": {"unidades_por_s": round(info_r["curso"] / T_run, 2), "blocos_por_s": round(info_r["curso"] / T_run / uni, 3)},
         },
-        "nota": "Mover o modelo nessa velocidade (× escala do Studio) para os pés não patinarem.",
+        "nota": "Mover o modelo nessa velocidade (× escala do Studio) para os pés não patinarem. Cada clipe "
+                "já pisca sozinho (pálpebras por posição, sem escala); walk tem 2 passadas e run 5 para a "
+                "piscada cair a cada ~3 s.",
     }
-    if tem_palpebras:
-        anim["clipes"]["blink"].update({
-            "camada": True, "ossos": ["eyelid_left", "eyelid_left_lower", "eyelid_right", "eyelid_right_lower"],
-            "intervalo_s": [2.5, 6.0],
-            "nota": "Tocar por cima de idle, walk e run (e do que vier depois) num intervalo aleatório: só mexe nas "
-                    "pálpebras, por posição. Se o exportador gravar poses dos outros ossos, zerar o peso delas "
-                    "(como o papel 'upper' do AnimationDriver).",
-        })
     (pasta / "animacoes.json").write_text(json.dumps(anim, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     rel = {"arquivo": arquivo.name, "chaves": sum(1 for o in ops if o["op"] == "set_keyframe"),
            "validacao_animacoes": {"erros": erros, "avisos": avisos, "linhas": linhas[:8]},

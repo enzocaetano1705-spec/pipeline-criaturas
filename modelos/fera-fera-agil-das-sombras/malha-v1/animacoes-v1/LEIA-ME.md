@@ -1,6 +1,27 @@
 # Animações v1 — locomoção da preguiça rogue (06/11/2026)
 
-Atual: **r06/fera-sombras-e3-animacoes.bbmodel** (base `rig-v4/base-rig-v4.bbmodel`).
+Atual: **r07/fera-sombras-e3-animacoes.bbmodel** (base `rig-v4/base-rig-v4.bbmodel`).
+
+**r07 (piscada em todas as animações e postura de combate):** retorno sobre a r06: "uma animação só
+para blink não faz sentido, deve piscar em todas as animações, inclusive as de combate"; "pode aplicar
+a postura de tripé mas não pode ficar ridículo... precisa ser maneiro, igual o Greninja".
+- Piscada dentro de cada clipe (`piscar_em` em `clips.py`, tempos em `PISCADA_POR_CLIPE` no
+  `gerar.py`): lenta no idle (preguiça; fecha enquanto vira a cabeça), normal no walk, rápida no run,
+  na antecipação de run_start, na derrapada de run_stop, na guarda, na entrada e na saída do combate.
+  Para cada loop ter uma piscada só, num ritmo natural, o walk passou a ter 2 passadas (3,2 s) e o
+  run 5 (3,3 s); a velocidade de deslocamento é a mesma. O clipe `blink` separado saiu.
+- Postura de combate (`combate.py`): tripé de assassino, não urso em pé. O corpo empina 36° em volta
+  do quadril e a cauda apoia no chão atrás com a ponta subindo pouco (erguida demais lembra esquilo);
+  base baixa, larga e escalonada, joelhos bem dobrados, pé de trás na ponta (pronto para o bote);
+  tronco curvado para a frente, corpo torcido 26° mostrando o ombro, cabeça baixa e firme no alvo;
+  garra da frente baixa apontando para o alvo, garra de trás recolhida atrás do quadril com o cotovelo
+  para baixo (para cima virava asa de frango). Respira pesado, a garra da frente se crispa e estala
+  aberta uma vez por loop, ponta da cauda e cachecol não param.
+- `combat_enter`: encolhe e fecha as garras (antecipação), pulinho, cai na base com as garras
+  estalando abertas; o pulo esconde a troca de lugar dos pés. `combat_exit`: pulinho de volta para a
+  base do idle. Nas duas, mão, garra e cauda nunca entram no chão.
+- `gerar.py` tira chaves repetidas no meio de trechos parados (o arquivo não incha com as pálpebras
+  escondidas). 15 538 chaves, 4,8 MB. Validação: 0 erros, 0 avisos.
 
 **r06 (pés retos e piscada):** run aprovado ("agora ficou bem bom"). O usuário endireitou os pés no
 Blockbench (rotação Y do cubo de ±35° para ±5°: os dedos apontavam para fora) e pediu uma piscada sem
@@ -69,14 +90,16 @@ uv run python scripts/fera-animacao/palpebras.py <rig-v4>/base-pes.bbmodel <rig-
 copia from/to/origin/rotation, leva pivô mudado junto e recusa rotação de repouso em osso.
 
 ## Clipes (chaves assadas a 30/s, sem Molang; `root` não é animado)
-| clipe | duração | loop | o que faz |
-|---|---|---|---|
-| `idle` | 4,0 s | sim | de pé, curvada, lenta: respira, olha devagar para um lado e para o outro, espreguiça as garras |
-| `walk` | 1,6 s | sim | quatro apoios em sequência lateral, nos nós das mãos, garras dobradas; peso passando de lado a lado, barriga atrasada |
-| `run` | 0,66 s | sim | galope rotativo (trás esq., trás dir., frente dir., frente esq., voo recolhido), tudo no ritmo da passada: coluna estica/encolhe uma vez, gordura no mesmo balanço com atraso, cabeça firme, cauda e cachecol em onda |
-| `run_start` | 0,5 s | não | recua, recolhe as garras com estalo e mergulha para os quatro apoios |
-| `run_stop` | 0,7 s | não | derrapa nos nós das mãos, passa do ponto, assenta e abre as garras |
-| `blink` | 0,17 s | não | camada: só as pálpebras, por posição; tocar por cima dos outros a cada 2,5–6 s |
+| clipe | duração | loop | piscada | o que faz |
+|---|---|---|---|---|
+| `idle` | 4,0 s | sim | lenta, 2,6 s | de pé, curvada, lenta: respira, olha devagar para um lado e para o outro, espreguiça as garras |
+| `walk` | 3,2 s | sim | normal, 1,9 s | 2 passadas de quatro apoios em sequência lateral, nos nós das mãos, garras dobradas; peso passando de lado a lado, barriga atrasada |
+| `run` | 3,3 s | sim | rápida, 1,62 s | 5 passadas de galope rotativo (trás esq., trás dir., frente dir., frente esq., voo recolhido), tudo no ritmo da passada |
+| `run_start` | 0,5 s | não | rápida, 0,06 s | recua, recolhe as garras com estalo e mergulha para os quatro apoios |
+| `run_stop` | 0,7 s | não | normal, 0,12 s | derrapa nos nós das mãos, passa do ponto, assenta e abre as garras |
+| `combat_ready` | 3,2 s | sim | normal, 0,9 s | guarda em tripé de assassino (acima); respira pesado, garra da frente se crispa e estala |
+| `combat_enter` | 0,6 s | não | rápida, 0,04 s | idle → guarda: antecipação, pulinho, cai na base com as garras estalando |
+| `combat_exit` | 0,7 s | não | normal, 0,3 s | guarda → idle: pulinho de volta e solta as garras |
 
 Peso sem escala (o Roblox não anima escala de osso): no walk, tronco e pescoço seguem o corpo por
 molas amortecidas (atrasam e passam do ponto); no run não há mola solta (ela tremia no próprio ritmo
@@ -85,20 +108,22 @@ em onda da base para a ponta. Mãos e pés pisam no chão por IK. Validação do
 posições das juntas foram conferidas contra o motor do Blockbench (`bbmodel_sample_pose`).
 
 `animacoes.json`: duração/loop e velocidade de deslocamento (walk 0,47 bloco/s; run 2,84 blocos/s)
-para o jogo mover o modelo sem os pés patinarem, e como tocar a piscada. Prévias:
-`previa-<clipe>.gif` (lado e 3/4), `previa-blink.gif` (close da cabeça) e `tiras.png` (8 quadros por
-clipe).
+para o jogo mover o modelo sem os pés patinarem, e quando cada clipe pisca. Prévias:
+`previa-<clipe>.gif` (lado e 3/4), `previa-piscadas.gif` (close da cabeça na piscada de cada clipe) e
+`tiras.png` (8 quadros por clipe).
 
 ```powershell
-uv run python scripts/fera-animacao/gerar.py modelos/fera-fera-agil-das-sombras/malha-v1/animacoes-v1/rig-v4/base-rig-v4.bbmodel modelos/fera-fera-agil-das-sombras/malha-v1/animacoes-v1/r06
+uv run python scripts/fera-animacao/gerar.py modelos/fera-fera-agil-das-sombras/malha-v1/animacoes-v1/rig-v4/base-rig-v4.bbmodel modelos/fera-fera-agil-das-sombras/malha-v1/animacoes-v1/r07
 uv run python scripts/fera-animacao/medir.py modelos/fera-fera-agil-das-sombras/malha-v1/animacoes-v1/rig-v4/base-rig-v4.bbmodel run
 ```
 `medir.py` diz quantos ciclos por passada cada canal faz (tudo deve dar 1 no run), quais ossos
 transladam, as frestas nas juntas e a menor distância entre pernas e braços.
 Parâmetros de cada marcha (duração, curso, altura do quique, gordura, cauda, cachecol) ficam em
-`scripts/fera-animacao/clips.py` (`walk()`, `run()`, `pose_idle()`).
+`scripts/fera-animacao/clips.py` (`walk()`, `run()`, `pose_idle()`); os da guarda em
+`scripts/fera-animacao/combate.py` (`GUARDA`: empinar, torcer, agachar, base, punhos e direção das
+garras, cauda, olhar).
 
 ## Próximo (na ordem combinada)
-Postura de combate e ataque básico; depois as habilidades. Habilidade 1 (decidida com o usuário):
+Ataque básico saindo e voltando para a guarda; depois as habilidades. Habilidade 1 (decidida com o usuário):
 uma garra arremessada ricocheteia marcando os inimigos da onda, volta para a mão e então a preguiça
 teleporta e dá um golpe curto em cada marcado. Habilidade 2: sequência focada no chefe.

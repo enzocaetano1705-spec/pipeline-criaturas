@@ -57,9 +57,11 @@ class Locomocao:
 
     # ---------- pedaços de pose ----------
 
-    def garras(self, pose, dobra=1.0, flex=0.0):
+    def garras(self, pose, dobra=1.0, flex=0.0, lados=("left", "right")):
         """dobra: 0 = garras soltas (repouso), 1 = dobradas para dentro. flex: curva leve no idle."""
         for nome, R in self.dobra.items():
+            if not any(f"_{lado}_" in nome for lado in lados):
+                continue
             Rf = fracao(R, min(1.0, max(0.0, dobra)))
             if flex:
                 lado = 1.0 if "right" in nome else -1.0
@@ -121,24 +123,6 @@ class Locomocao:
                 e["matriz"] = e["matriz"] @ rx(-ang)
             else:
                 e["rotacao"] = np.asarray(e.get("rotacao", [0, 0, 0]), float) + np.array([-ang, 0.0, 0.0])
-
-    def piscar(self):
-        """Piscada sem escala: as tiras de pálpebra saem de dentro do focinho pela posição dos ossos.
-
-        Meio fechado (só a tira de cima), fechado (as duas, 2 quadros), meio, aberto: 0,17 s. Só mexe em
-        eyelid_*, para tocar como camada por cima de idle, walk e run sem brigar com eles.
-        """
-        from palpebras import DESLOCA as D
-
-        passos = [(0, 0), (D, 0), (D, D), (D, D), (D, 0), (0, 0)]  # (tira de cima, tira de baixo)
-        quadros = []
-        for i, (cima, baixo) in enumerate(passos):
-            pose = {}
-            for lado, s in (("right", 1.0), ("left", -1.0)):
-                pose[f"eyelid_{lado}"] = {"posicao": np.array([s * cima, 0.0, 0.0])}
-                pose[f"eyelid_{lado}_lower"] = {"posicao": np.array([s * baixo, 0.0, 0.0])}
-            quadros.append((i / FPS, pose))
-        return (len(passos) - 1) / FPS, quadros, {}
 
     @staticmethod
     def _mat_cubo(c):
@@ -385,6 +369,48 @@ class Locomocao:
                     quadros.append((i * dt, pose))
         quadros.append((T, quadros[0][1]))
         return T, quadros, {}
+
+
+# Piscada sem escala, dentro de cada clipe: 0,5 = só a tira de cima (meio fechado), 1 = fechado.
+# Um quadro por valor (30/s), depois abre. A preguiça pisca devagar parada e rápido correndo.
+PISCADAS = {
+    "rapida": [0.5, 1.0, 0.5],
+    "normal": [0.5, 1.0, 1.0, 0.5],
+    "lenta": [0.5, 0.5, 1.0, 1.0, 1.0, 1.0, 0.5, 0.5],
+}
+
+
+def piscar_em(quadros, t0, tipo="normal"):
+    """Põe uma piscada começando em t0 (pálpebras saem de dentro do focinho pela posição).
+
+    Todo quadro recebe as pálpebras (escondidas fora da piscada): sem isso o Blockbench seguraria o
+    valor da piscada antes e depois dela.
+    """
+    from palpebras import DESLOCA as D
+
+    perfil = PISCADAS[tipo]
+    vistos = set()
+    for i, (t, pose) in enumerate(quadros):
+        if id(pose) in vistos:  # o quadro que fecha o loop costuma ser o mesmo objeto do primeiro
+            pose = {k: dict(v) for k, v in pose.items()}
+            quadros[i] = (t, pose)
+        vistos.add(id(pose))
+        k = int(round((t - t0) * FPS))
+        v = perfil[k] if 0 <= k < len(perfil) else 0.0
+        cima, baixo = (D if v >= 0.5 else 0.0), (D if v >= 1.0 else 0.0)
+        for lado, s in (("right", 1.0), ("left", -1.0)):
+            pose[f"eyelid_{lado}"] = {"posicao": np.array([s * cima, 0.0, 0.0])}
+            pose[f"eyelid_{lado}_lower"] = {"posicao": np.array([s * baixo, 0.0, 0.0])}
+    return quadros
+
+
+def repetir(quadros, T, n):
+    """n voltas de um loop (o último quadro de `quadros` repete o primeiro), com cópias das poses."""
+    base = quadros[:-1]
+    copia = lambda p: {k: dict(v) for k, v in p.items()}  # noqa: E731
+    out = [(c * T + t, copia(p)) for c in range(n) for t, p in base]
+    out.append((n * T, copia(base[0][1])))
+    return out
 
 
 def misturar(a, b, w):

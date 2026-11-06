@@ -1,0 +1,87 @@
+{
+  "clipes": {
+    "idle": {
+      "duracao": 4.0,
+      "loop": true,
+      "piscada": {
+        "t": 2.6,
+        "tipo": "lenta",
+        "duracao": 0.267
+      }
+    },
+    "walk": {
+      "duracao": 3.2,
+      "loop": true,
+      "piscada": {
+        "t": 1.9,
+        "tipo": "normal",
+        "duracao": 0.133
+      }
+    },
+    "run": {
+      "duracao": 3.3,
+      "loop": true,
+      "piscada": {
+        "t": 1.62,
+        "tipo": "rapida",
+        "duracao": 0.1
+      }
+    },
+    "run_start": {
+      "duracao": 0.5,
+      "loop": false,
+      "piscada": {
+        "t": 0.06,
+        "tipo": "rapida",
+        "duracao": 0.1
+      }
+    },
+    "run_stop": {
+      "duracao": 0.7,
+      "loop": false,
+      "piscada": {
+        "t": 0.12,
+        "tipo": "normal",
+        "duracao": 0.133
+      }
+    },
+    "combat_ready": {
+      "duracao": 3.2,
+      "loop": true,
+      "piscada": {
+        "t": 0.9,
+        "tipo": "normal",
+        "duracao": 0.133
+      }
+    },
+    "combat_enter": {
+      "duracao": 0.6,
+      "loop": false,
+      "piscada": {
+        "t": 0.04,
+        "tipo": "rapida",
+        "duracao": 0.1
+      }
+    },
+    "combat_exit": {
+      "duracao": 0.7,
+      "loop": false,
+      "piscada": {
+        "t": 0.3,
+        "tipo": "normal",
+        "duracao": 0.133
+      }
+    }
+  },
+  "deslocamento": {
+    "walk": {
+      "unidades_por_s": 7.59,
+      "blocos_por_s": 0.474
+    },
+    "run": {
+      "unidades_por_s": 45.45,
+      "blocos_por_s": 2.841
+    }
+  },
+  "nota": "Mover o modelo nessa velocidade (× escala do Studio) para os pés não patinarem. Cada clipe já pisca sozinho (pálpebras por posição, sem escala); walk tem 2 passadas e run 5 para a piscada cair a cada ~3 s."
+}
