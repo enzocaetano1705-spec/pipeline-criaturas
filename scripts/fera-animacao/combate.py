@@ -1,22 +1,20 @@
-"""Combate da preguiça rogue: guarda em tripé, ataque básico e as duas habilidades.
+"""Combate da preguiça rogue no conceito "fera de quatro" (escolhido na folha de poses, 07/11/2026).
 
-Guarda: o tamanduá-bandeira, ameaçado, fica de pé nas patas de trás apoiado na cauda e abre as garras;
-para não virar um urso de pelúcia em pé, a guarda é a de um lutador (Greninja): base baixa, larga e
-escalonada, joelhos dobrados, corpo empinado sobre o quadril e inclinado para a frente, cabeça baixa
-e firme no alvo, corpo torcido mostrando o ombro da frente, a garra da frente estendida e baixa
-apontando para o alvo, a garra de trás guardada atrás do quadril (lâmina embainhada), o pé de trás na
-ponta (pronto para o bote). A cauda apoia no chão atrás como a terceira perna, com a ponta subindo
-pouco (erguida demais lembra esquilo). Tudo respira pesado (gordura), pronto para sumir.
+Retorno da r09: a guarda de lutador em pé e os golpes de espada "não combinam com a criatura" (o walk e
+o run aprovados são de bicho: corpo horizontal, pesado, nos nós das mãos). Na folha de poses
+(`conceitos_combate.py`) o usuário escolheu a fera de quatro, um carcaju/texugo-do-mel: o combate
+continua nos quatro apoios e as garras trabalham como gancho (puxa, rasga, cava), não como lâmina.
 
-Juntas (os blocos são rígidos e grandes): a coluna fica reta (dobrar na emenda pelve × peito abre
-fresta nas costas); braços e pernas dobram como dobradiça (`ik(..., charneira=True)`); a base não é
-funda demais (a coxa deita e o joelho sobra). Braço para trás: medido com `anatomia_braco` (quanto a
-quina do bloco do braço escondida no tronco sai pelo ombro, e quanto do braço entra no tórax); a
-garra de trás atrás do quadril sai limpa com o cotovelo para trás e a escápula deslizando um pouco.
+Guarda: agachada nos quatro, garras abertas cravadas no chão, cauda baixa (erguida vira esquilo),
+cabeça baixa. Golpes saem dela: garrada de uma pata, bote com as duas, e as habilidades (arremesso da
+garra levantando só um pouco nas patas de trás, golpes de teleporte em bote, e o frenesi que rasga o
+chefe cavando como num cupinzeiro).
 
-Golpes: poses-chave (`clipe`) com curvas de tempo (carrega devagar, solta rápido), quadros do meio
-resolvidos por IK; o cachecol segue o corpo com atraso (molas). Os clipes de golpe começam e terminam
-na guarda (ou na pose "pronta para sumir" dos teleportes) para encadear.
+Máquina (a mesma da r09): poses-chave (`clipe`) com curvas de tempo e IK de dobradiça; a mão pode estar
+solta (punho relativo ao ombro) ou apoiada (ponto do chão, altura resolvida para as garras encostarem),
+com `apoio` misturando as duas; cauda livre (sem tripé), longe do chão; cachecol em molas; anatomia dos
+braços medida (`anatomia_braco`) e corrigida por chave (`ajustar_chave`) e por quadro (`_desenterrar`).
+Coluna reta (dobrar na emenda pelve × peito abre fresta nas costas).
 """
 
 from __future__ import annotations
@@ -26,37 +24,30 @@ import math
 import numpy as np
 
 from clips import FPS, LADOS, Locomocao
-from pose import Mola, eixo_angulo, matriz, rot_min, rx, suave
+from pose import Mola, eixo_angulo, matriz, rot_min, rx, ry, suave
+
+SUF = {"left": "esq", "right": "dir"}
 
 GUARDA = dict(
-    empina=26.0,  # corpo gira para cima em volta do quadril (o tripé)
-    torce=-24.0,  # corpo de lado, ombro esquerdo para o alvo (só o corpo inteiro torce: sem fresta)
-    inclina=0.0,
-    agacha=3.0,  # quadril desce (joelhos dobrados; mais fundo, a coxa deita e o joelho sobra)
-    recua=1.0,  # quadril vai um pouco para trás (peso na cauda)
-    avanco=0.0, lateral=0.0, sobe=0.0, salto=0.0,  # deslocamentos do quadril (golpes)
-    # coluna reta: qualquer dobra na emenda pelve × peito abre fresta nas costas (blocos rígidos)
-    pelve=0.0, cintura=0.0, peito=0.0,
-    abre=1.25,  # base larga
-    passo_left=-6.0, passo_right=3.5,  # pé esquerdo à frente, direito atrás
-    ponta_left=6.0,  # o da frente quase chato (calcanhar um tiquinho erguido)
-    ponta_right=28.0,  # pé de trás na ponta: calcanhar erguido (graus); a canela não deita no chão
-    ergue_left=0.0, ergue_right=0.0,  # pé no ar (passo)
-    polo_joelho=(0.22, 0.0, -1.0),  # joelho para a frente, pouco para fora (× lado)
-    # garra da frente (esquerda): estendida e baixa, apontando para o alvo
-    punho_frente=(-0.5, -5.0, -12.0), garra_frente=(0.05, -0.15, -1.0), giro_frente=-20.0,
-    polo_frente=None, escapula_frente=(0.0, 0.0, 0.0),  # cotovelo como no repouso, girado com o tronco
-    # garra de trás (direita): guardada atrás do quadril, garras para trás e para baixo. Busca de
-    # anatomia: punho bem atrás e abaixo, cotovelo para trás, escápula desliza para dentro, para cima e
-    # para a frente → a quina do ombro sai 0,4 (o walk aprovado chega a 1,5) e o braço não entra no tórax
-    punho_tras=(4.0, -13.0, 9.0), garra_tras=(0.3, -0.5, 0.8), giro_tras=0.0,
-    polo_tras=(0.4, -0.4, 0.9), escapula_tras=(-0.4, 0.5, -0.6),
-    curva_frente=0.35, curva_tras=0.35, crispa=0.0,  # garras abertas e um pouco curvadas
+    empina=-8.0,  # nariz para baixo, em volta do quadril
+    torce=0.0, inclina=0.0,
+    agacha=2.0, recua=0.5,  # quadril baixo e um pouco para trás
+    avanco=0.0, lateral=0.0, sobe=0.0, salto=0.0,
+    pelve=0.0, cintura=0.0, peito=0.0,  # coluna reta (blocos rígidos: dobrar abre fresta nas costas)
+    abre=1.15,
+    passo_esq=0.0, passo_dir=0.0, ponta_esq=0.0, ponta_dir=0.0, ergue_esq=0.0, ergue_dir=0.0,
+    polo_joelho=(0.25, 0.0, -1.0),
+    # mãos apoiadas com as garras abertas cravadas no chão; o punho solto vale quando a mão sai do chão
+    apoio_esq=1.0, apoio_dir=1.0,
+    chao_esq=(-12.0, -22.0), chao_dir=(12.0, -22.0), ergue_mao_esq=0.0, ergue_mao_dir=0.0,
+    punho_esq=(-1.5, -6.0, -10.0), punho_dir=(1.5, -6.0, -10.0),
+    garra_esq=(-0.12, -0.15, -1.0), garra_dir=(0.12, -0.15, -1.0), giro_esq=0.0, giro_dir=0.0,
+    polo_esq=None, polo_dir=None, escapula_esq=(0.0, 0.0, 0.0), escapula_dir=(0.0, 0.0, 0.0),
+    curva_esq=0.05, curva_dir=0.05, dobra_esq=0.0, dobra_dir=0.0,
     recolhe=0.0,  # 1 = a garra do meio da mão direita foi arremessada (escondida no antebraço)
-    olhar=-8.0, yaw_cabeca=0.0, inclina_cabeca=-6.0,  # cabeça baixa (olha por baixo da testa)
-    cauda=(-59.0, -20.0, 6.0, 18.0, 26.0),  # inclinação de mundo de cada gomo: apoia e a ponta sobe pouco
-    cauda_yaw=0.0, cauda_solta=0.0,  # cauda_solta: sobe do chão (no ar, golpes)
-    fita=(10.0, 8.0, 6.0, 5.0, 4.0),  # cachecol caído para trás
+    olhar=-6.0, yaw_cabeca=0.0, inclina_cabeca=0.0,
+    cauda_livre=(-12.0, -6.0, 0.0, 4.0, 6.0), cauda_yaw=0.0,  # cauda baixa, ponta subindo pouco
+    fita=(10.0, 8.0, 6.0, 5.0, 4.0),
 )
 T_GUARDA = 3.2  # um loop com uma piscada (ritmo natural)
 SALTA = {"recolhe"}  # canais que trocam de valor de uma vez (no instante da chave), sem meio-termo
@@ -84,6 +75,10 @@ def interpolar(a, b, w):
     return out
 
 
+def _mao(lado):
+    return (f"hand_{lado}",) + tuple(f"claw_{lado}_{n}" for n in (1, 2, 3))
+
+
 class Combate:
     def __init__(self, loc: Locomocao):
         self.loc, self.r = loc, loc.r
@@ -101,24 +96,17 @@ class Combate:
             self.cotovelo[lado] = e / np.linalg.norm(e)
         d = loc._ponta_garra("claw_right_2") - r.piv("claw_right_2")
         self.d_arremesso = d / np.linalg.norm(d)  # garra arremessada (a do meio da mão direita)
-        # gomos da cauda: direção de repouso de cada um (pivô ao próximo; o último segue o próprio cubo)
         self.gomos = [f"tail_{k}" for k in range(1, 6)]
-        self.d_gomo = {}
-        for i, g in enumerate(self.gomos):
-            if i + 1 < len(self.gomos):
-                self.d_gomo[g] = r.piv(self.gomos[i + 1]) - r.piv(g)
-            else:
-                c = next(c for c in r.m.cubos if c.osso == g)
-                self.d_gomo[g] = (c.de + c.ate) / 2 - r.piv(g)
 
     # ---------- pedaços ----------
 
-    def braco(self, pose, lado, s, punho_rel, garra_dir, giro, polo=None, escapula=None):
-        """Punho num ponto relativo ao ombro (no mundo), garras apontando para garra_dir.
+    def ombro(self, pose, lado):
+        W = self.r.mats(pose)["torso"]
+        return W[:3, :3] @ self.r.piv(f"arm_{lado}") + W[:3, 3]
 
-        Sem polo, o cotovelo aponta para onde aponta no repouso, girado junto com o tronco: o braço
-        dobra do jeito natural do bloco (sem ombro "invertido" em relação ao cotovelo). `escapula`
-        desliza o ombro (no referencial do tronco), como a escápula faz quando o braço vai para trás."""
+    def braco(self, pose, lado, s, punho_rel, garra_dir, giro, polo=None, escapula=None):
+        """Punho num ponto relativo ao ombro (no mundo), garras apontando para garra_dir. Sem polo, o
+        cotovelo aponta para onde aponta no repouso, girado com o tronco. `escapula` desliza o ombro."""
         r = self.r
         W = r.mats(pose)["torso"]
         ombro = W[:3, :3] @ r.piv(f"arm_{lado}") + W[:3, 3]
@@ -131,62 +119,74 @@ class Combate:
         d = d / np.linalg.norm(d)
         r.mundo_para_local(pose, f"hand_{lado}", eixo_angulo(d, giro) @ rot_min(self.d_garras[lado], d))
 
-    def esconder_garra(self, pose):
-        """A garra arremessada some: gira para trás, alinhada com o antebraço, e fica dentro dele
-        (antebraço 14 de comprido e 4×5 de seção; a garra tem 10 por 2×2)."""
-        r = self.r
-        mats = r.mats(pose)
-        Wf = mats["forearm_right"]
-        eixo = Wf[:3, :3] @ (r.piv("hand_right") - r.piv("forearm_right"))  # do cotovelo para o punho
-        r.mundo_para_local(pose, "claw_right_2", rot_min(self.d_arremesso, -eixo))
+    def mao(self, pose, lado, s, cfg, mov, R):
+        """Braço de um lado: mistura o punho solto (relativo ao ombro) com a mão apoiada (ponto do chão, na
+        altura em que garras ou nós encostam) pelo `apoio`. Mão solta não entra no corpo (_desenterrar)."""
+        X = SUF[lado]
+        apoio = float(np.clip(cfg[f"apoio_{X}"], 0.0, 1.0))
+        ombro = self.ombro(pose, lado)
+        livre = ombro + np.asarray(cfg[f"punho_{X}"], float) + mov
+        args = (cfg[f"garra_{X}"], cfg[f"giro_{X}"], cfg[f"polo_{X}"], cfg[f"escapula_{X}"])
 
-    def cauda_tripe(self, pose, angulos, yaw=0.0, folga=0.0):
-        """Cada gomo com a inclinação de mundo pedida (negativa = desce); escala até a cauda tocar o chão
-        (ou ficar `folga` acima dele, no ar)."""
-        r = self.r
+        def aplicar(alvo):
+            self.braco(pose, lado, s, np.asarray(alvo, float) - ombro, *args)
+            self.loc.garras(pose, cfg[f"dobra_{X}"], flex=cfg[f"curva_{X}"], lados=(lado,))
 
-        def montar(esc):
-            for g, beta in zip(self.gomos, angulos):
-                pose[g] = {"matriz": np.eye(3)}
-                Wp = r.mats(pose)[r.ossos[g].pai][:3, :3]
-                d = self.d_gomo[g]
-                alvo = math.radians(beta * esc)
-
-                def elev(a):
-                    v = Wp @ rx(a) @ d
-                    return math.atan2(v[1], math.hypot(v[0], v[2]))
-
-                lo, hi = -120.0, 120.0  # rotação em X positiva baixa o que fica atrás do pivô
-                for _ in range(40):
-                    mid = (lo + hi) / 2
-                    if elev(mid) > alvo:
-                        lo = mid
-                    else:
-                        hi = mid
-                pose[g] = {"matriz": rx((lo + hi) / 2) @ matriz([0, yaw, 0])}
-            return self._menor_y_cauda(pose)
-
-        lo, hi = 0.0, 1.6
-        for _ in range(25):  # o quanto a cauda desce até encostar (folga de 0,05)
-            mid = (lo + hi) / 2
-            if montar(mid) > self.loc.chao + 0.05 + folga:
-                lo = mid
-            else:
-                hi = mid
-        montar(lo)
-
-    def pe(self, pose, lado, s, alvo, ponta=0.0, polo=(0.35, 0.0, -1.0), ergue=0.0):
-        """Pé plantado; ponta > 0 ergue o calcanhar (só a ponta no chão), subindo o tornozelo o preciso.
-        A perna dobra como dobradiça. ergue > 0 tira o pé do chão (dedos apontando para baixo)."""
-        loc = self.loc
-        alvo = np.array(alvo, float)
-        polo = np.array([polo[0] * s, polo[1], polo[2]])
-        for _ in range(4):
-            loc.perna(pose, lado, s, alvo, -ponta, charneira=True, polo=polo)
-            falta = loc.chao - self._menor_y(pose, (f"foot_{lado}",))
+        if apoio <= 1e-3:
+            aplicar(livre)
+            self._desenterrar(pose, lado, s, cfg, livre - ombro, R)
+            return
+        cx, cz = cfg[f"chao_{X}"]
+        y = self.loc.chao + 3.0
+        for _ in range(6):
+            aplicar((cx, y, cz))
+            falta = self.loc.chao + 0.05 - self._menor_y(pose, _mao(lado))
             if abs(falta) < 1e-3:
                 break
-            alvo[1] += falta
+            y += falta
+        ergue = cfg[f"ergue_mao_{X}"]
+        if apoio < 1.0 - 1e-3 or ergue > 1e-3:
+            aplicar(livre * (1.0 - apoio) + np.array([cx, y + ergue, cz]) * apoio)
+            if apoio < 0.5:
+                self._desenterrar(pose, lado, s, cfg, livre * (1.0 - apoio) + np.array([cx, y + ergue, cz]) * apoio - ombro, R)
+
+    def esconder_garra(self, pose):
+        """A garra arremessada some: gira para trás, alinhada com o antebraço, e fica dentro dele."""
+        r = self.r
+        Wf = r.mats(pose)["forearm_right"]
+        eixo = Wf[:3, :3] @ (r.piv("hand_right") - r.piv("forearm_right"))
+        r.mundo_para_local(pose, "claw_right_2", rot_min(self.d_arremesso, -eixo))
+
+    def pe(self, pose, lado, s, alvo, ponta=0.0, polo=(0.35, 0.0, -1.0), ergue=0.0):
+        """Pé plantado (dobradiça); ponta > 0 ergue o calcanhar; ergue > 0 tira o pé do chão. Agachada
+        fundo, a canela deitaria no chão: o calcanhar sobe sozinho o mínimo preciso (ponta dos pés, como
+        bicho agachado), achado por bisseção para variar suave entre quadros."""
+        loc = self.loc
+        alvo0 = np.array(alvo, float)
+        polo = np.array([polo[0] * s, polo[1], polo[2]])
+
+        def plantar(pt):
+            alvo = alvo0.copy()
+            for _ in range(4):
+                loc.perna(pose, lado, s, alvo, -pt, charneira=True, polo=polo)
+                falta = loc.chao - self._menor_y(pose, (f"foot_{lado}",))
+                if abs(falta) < 1e-3:
+                    break
+                alvo[1] += falta
+            return alvo
+
+        alvo = plantar(ponta)
+        if self._menor_y(pose, (f"shin_{lado}",)) < loc.chao + 0.05:
+            lo, hi = ponta, 70.0
+            for _ in range(7):
+                mid = (lo + hi) / 2
+                plantar(mid)
+                if self._menor_y(pose, (f"shin_{lado}",)) < loc.chao + 0.05:
+                    lo = mid
+                else:
+                    hi = mid
+            ponta = hi
+            alvo = plantar(ponta)
         if ergue > 1e-3:
             loc.perna(pose, lado, s, alvo + np.array([0.0, ergue, 0.0]), -ponta - 14.0 * min(1.0, ergue / 2.5),
                       charneira=True, polo=polo)
@@ -194,7 +194,6 @@ class Combate:
     # ---------- anatomia do braço (blocos grandes e rígidos) ----------
 
     def _pontos(self, c, passo=0.75):
-        """Pontos de grade dentro do cubo, no espaço de repouso (com a rotação própria do cubo)."""
         eixos = [np.arange(c.de[k] + passo / 2, c.ate[k], passo) if c.ate[k] - c.de[k] > passo else np.array([(c.de[k] + c.ate[k]) / 2])
                  for k in range(3)]
         g = np.stack(np.meshgrid(*eixos, indexing="ij"), -1).reshape(-1, 3)
@@ -224,7 +223,6 @@ class Combate:
                 self._anat[osso] = (pts, self._dentro_de(pts, tronco, repouso))
 
     def _fora(self, pts, cubos, mats):
-        """Distância de cada ponto até o cubo mais próximo da lista (0 se estiver dentro de algum)."""
         d = np.full(len(pts), np.inf)
         for c in cubos:
             M = mats[c.osso] @ self.loc._mat_cubo(c)
@@ -233,9 +231,8 @@ class Combate:
         return d
 
     def anatomia_braco(self, pose, lado):
-        """(saliência, enterrado): o quanto (em unidades) a quina do bloco do braço que no repouso fica
-        dentro do tronco sai para fora dele (ombro "estourado"), e a fração da parte visível de braço,
-        antebraço e mão que entra no tronco ou nas coxas (braço enterrado no tórax)."""
+        """(saliência, enterrado): o quanto (em unidades) a quina do bloco do braço escondida no tronco no
+        repouso sai pelo ombro, e a fração do braço visível que entra no tronco ou nas coxas."""
         self._preparar_anatomia()
         mats = self.r.mats(pose)
         saliencia, enterrado, total = 0.0, 0, 0
@@ -250,9 +247,9 @@ class Combate:
             total += int((~oculto).sum())
         return saliencia, enterrado / max(total, 1)
 
-    def _desenterrar(self, pose, lado, s, suf, cfg, punho, R, limite=0.02):
-        """Se o braço entrar no tronco ou nas coxas, empurra o punho para a frente e para fora (no sentido
-        para onde o corpo olha) até sair: o golpe faz o arco por fora do corpo em vez de atravessá-lo."""
+    def _desenterrar(self, pose, lado, s, cfg, punho, R, limite=0.02):
+        """Mão solta entrando no tronco ou nas coxas: empurra o punho para a frente e para fora até sair."""
+        X = SUF[lado]
         sal, ent = self.anatomia_braco(pose, lado)
         if ent <= limite:
             return
@@ -267,7 +264,7 @@ class Combate:
             for j in (0.0, 1.5, 3.0):
                 p = {n: dict(v) for n, v in pose.items()}
                 p.pop(f"arm_{lado}", None)
-                self.braco(p, lado, s, punho + k * f + j * o, cfg[f"garra_{suf}"], cfg[f"giro_{suf}"], cfg[f"polo_{suf}"], cfg[f"escapula_{suf}"])
+                self.braco(p, lado, s, punho + k * f + j * o, cfg[f"garra_{X}"], cfg[f"giro_{X}"], cfg[f"polo_{X}"], cfg[f"escapula_{X}"])
                 sal2, ent2 = self.anatomia_braco(p, lado)
                 custo = 40 * max(0.0, ent2 - limite) + max(0.0, sal2 - max(sal, 1.7)) + 0.05 * (k + j)
                 if melhor is None or custo < melhor[0]:
@@ -279,24 +276,20 @@ class Combate:
         for n in (f"arm_{lado}", f"forearm_{lado}", f"hand_{lado}"):
             pose[n] = melhor[1][n]
 
-    def maos_acima_do_chao(self, pose, folga=0.3):
-        """Se a mão ou uma garra encostar no chão, gira o braço no ombro até sair."""
+    def maos_acima_do_chao(self, pose, folga=0.3, lados=("left", "right")):
+        """Mão ou garra encostando no chão: gira o braço no ombro até sair."""
         r = self.r
-        for lado, _s in LADOS:
-            ossos = (f"hand_{lado}",) + tuple(f"claw_{lado}_{n}" for n in (1, 2, 3))
+        for lado in lados:
             for _ in range(4):
-                menor, ponto = self._menor_ponto(pose, ossos)
+                menor, ponto = self._menor_ponto(pose, _mao(lado))
                 falta = self.loc.chao + folga - menor
                 if falta <= 1e-3:
                     break
                 W = r.mats(pose)[f"arm_{lado}"]
                 v = ponto - (W[:3, :3] @ r.piv(f"arm_{lado}") + W[:3, 3])
-                eixo = np.cross(v, [0.0, 1.0, 0.0])  # girar em volta deste eixo levanta o ponto
+                eixo = np.cross(v, [0.0, 1.0, 0.0])
                 ang = math.degrees(math.atan2(falta, max(np.linalg.norm(v), 1.0))) * 1.1
                 r.mundo_para_local(pose, f"arm_{lado}", eixo_angulo(eixo, ang) @ W[:3, :3])
-
-    def _menor_y_cauda(self, pose):
-        return self._menor_y(pose, tuple(self.gomos))
 
     def _menor_y(self, pose, ossos):
         return self._menor_ponto(pose, ossos)[0]
@@ -318,51 +311,57 @@ class Combate:
     # ---------- pose a partir dos parâmetros ----------
 
     def pose_de(self, cfg, t=0.0, T=T_GUARDA, respira=1.0, fita_extra=None):
-        """Pose completa a partir dos parâmetros (GUARDA + mudanças). `respira` liga a respiração e o
-        movimento miúdo da garra da frente; `fita_extra` = [(pitch, yaw)] do cachecol (molas)."""
+        """Pose completa a partir dos parâmetros (GUARDA + mudanças)."""
         cfg = dict(GUARDA, **cfg)
         loc, r = self.loc, self.r
         pose = {}
         fase = t / T
-        resp = respira * math.sin(4 * math.pi * fase)  # duas respirações por loop (~1,6 s cada)
-        R = matriz([cfg["empina"] + 0.9 * resp, cfg["torce"], cfg["inclina"] + respira * 0.7 * math.sin(2 * math.pi * (fase - 0.2))])
+        resp = respira * math.sin(4 * math.pi * fase)  # duas respirações por loop
+        R = matriz([cfg["empina"] + 0.9 * resp, cfg["torce"], cfg["inclina"]])
         H = self.quadril + np.array([cfg["lateral"], -cfg["agacha"] + cfg["sobe"] + cfg["salto"] + 0.3 * resp, cfg["recua"] + cfg["avanco"]])
         pose["body"] = {"matriz": R, "posicao": H - self.P - R @ (self.quadril - self.P)}
         pose["pelvis"] = {"rotacao": [cfg["pelve"], 0.0, 0.0]}
         pose["waist"] = {"rotacao": [cfg["cintura"] + 0.3 * respira * math.sin(4 * math.pi * (fase - 0.04)), 0.0, 0.0]}
         pose["torso"] = {"rotacao": [cfg["peito"] + 0.5 * respira * math.sin(4 * math.pi * (fase - 0.08)), 0.0, 0.0]}
         for lado, s in LADOS:
+            X = SUF[lado]
             base = r.piv(f"foot_{lado}")
-            alvo = np.array([base[0] * cfg["abre"], loc.chao + loc.alt_tornozelo, base[2] + cfg[f"passo_{lado}"]])
-            self.pe(pose, lado, s, alvo, cfg[f"ponta_{lado}"], cfg["polo_joelho"], cfg["salto"] + cfg[f"ergue_{lado}"])
-        cauda = np.asarray(cfg["cauda"], float) + respira * np.array([0, 0, 0, 3.0, 6.0]) * math.sin(2 * math.pi * (fase - 0.3))
-        self.cauda_tripe(pose, cauda, yaw=cfg["cauda_yaw"] + 2.0 * respira * math.sin(2 * math.pi * (fase - 0.45)),
-                         folga=cfg["salto"] + 6.0 * cfg["cauda_solta"])
-        mov = respira * np.array([0.3 * math.cos(2 * math.pi * fase), 0.4 * math.sin(4 * math.pi * (fase - 0.1)), 0.3 * math.sin(2 * math.pi * fase)])
-        for lado, s, suf, m_ in (("left", -1.0, "frente", mov), ("right", 1.0, "tras", 0.5 * mov)):
-            punho = np.asarray(cfg[f"punho_{suf}"], float) + m_
-            self.braco(pose, lado, s, punho, cfg[f"garra_{suf}"], cfg[f"giro_{suf}"], cfg[f"polo_{suf}"], cfg[f"escapula_{suf}"])
-            self._desenterrar(pose, lado, s, suf, cfg, punho, R)
-        loc.garras(pose, 0.0, flex=cfg["curva_frente"] + 0.6 * cfg["crispa"], lados=("left",))
-        loc.garras(pose, 0.0, flex=cfg["curva_tras"], lados=("right",))
+            alvo = np.array([base[0] * cfg["abre"], loc.chao + loc.alt_tornozelo, base[2] + cfg[f"passo_{X}"]])
+            self.pe(pose, lado, s, alvo, cfg[f"ponta_{X}"], cfg["polo_joelho"], cfg["salto"] + cfg[f"ergue_{X}"])
+        # cauda livre (sem tripé): ângulos locais de cada gomo, curva para o lado em cauda_yaw, longe do chão
+        cl = np.asarray(cfg["cauda_livre"], float) + respira * np.array([0, 0, 0, 3.0, 6.0]) * math.sin(2 * math.pi * (fase - 0.3))
+        for k, g in enumerate(self.gomos):
+            pose[g] = {"matriz": ry(cfg["cauda_yaw"] * (0.6 + 0.2 * k) / 1.4) @ rx(float(cl[k]))}
+        loc.cauda_acima_do_chao(pose, 0.3)
+        mov = respira * np.array([0.0, 0.3 * math.sin(4 * math.pi * (fase - 0.1)), 0.0])
+        for lado, s in LADOS:
+            self.mao(pose, lado, s, cfg, mov, R)
         if cfg["recolhe"] >= 0.5:
             self.esconder_garra(pose)
+        soltas = tuple(l for l, _s in LADOS if cfg[f"apoio_{SUF[l]}"] < 0.5)
+        if soltas:
+            self.maos_acima_do_chao(pose, 0.3, soltas)
         loc.cabeca_estavel(pose, pitch=cfg["olhar"] + 0.8 * resp, yaw=cfg["yaw_cabeca"], roll=cfg["inclina_cabeca"], rigidez=0.95)
         extra = fita_extra or [(0.0, 0.0)] * 5
         fita = [[cfg["fita"][k] + 3.0 * respira * math.sin(2 * math.pi * (fase - 0.1 * (k + 1))) + extra[k][0],
                  2.5 * respira * math.sin(2 * math.pi * (fase - 0.12 * k)) + extra[k][1], 0.0] for k in range(5)]
         loc.corrente(pose, [f"scarf_{k}" for k in range(1, 6)], fita)
-        if cfg["salto"] > 0.05:
-            self.maos_acima_do_chao(pose)
         return pose
 
     def pose_guarda(self, cfg=None, t=0.0, T=T_GUARDA):
-        """Guarda em tripé no tempo t do loop: respiração pesada (2 por loop), a garra da frente se
-        crispa e estala uma vez, a ponta da cauda e o cachecol não param."""
-        u = (t - 0.55 * T) / (0.16 * T)
-        crispa = suave(u / 0.7) if u < 0.7 else (1 - suave((u - 0.7) / 0.12)) - 0.25 * math.sin(math.pi * min(1.0, max(0.0, (u - 0.82) / 0.3)))
-        crispa = crispa if 0 <= u <= 1.12 else 0.0
-        return self.pose_de(dict(cfg or {}, crispa=crispa), t, T)
+        """Guarda de quatro no tempo t do loop: respira pesado, joga o peso de um lado para o outro, a
+        cabeça vasculha, a mão direita cava o chão uma vez (garras se fecham arrastando e abrem) e a ponta
+        da cauda não para."""
+        f = t / T
+        vida = dict(lateral=0.5 * math.sin(2 * math.pi * f), inclina=2.0 * math.sin(2 * math.pi * (f - 0.05)),
+                    yaw_cabeca=6.0 * math.sin(2 * math.pi * (f - 0.1)))
+        u = (f - 0.55) / 0.22
+        if 0.0 <= u <= 1.0:
+            cava = math.sin(math.pi * u)
+            vida["curva_dir"] = GUARDA["curva_dir"] + 0.7 * cava
+            vida["chao_dir"] = (GUARDA["chao_dir"][0], GUARDA["chao_dir"][1] + 1.6 * cava)
+            vida["ergue_mao_dir"] = 0.6 * max(0.0, math.sin(math.pi * (u - 0.5) * 2)) if u > 0.5 else 0.0
+        return self.pose_de(dict(cfg or {}, **vida), t, T)
 
     def guarda(self, T=T_GUARDA, cfg=None):
         n = int(round(T * FPS))
@@ -374,9 +373,8 @@ class Combate:
 
     def clipe(self, chaves, respira=0.25, loop=False):
         """chaves = [(t, mudanças sobre GUARDA, curva até esta chave)]; a primeira em t=0, a última em T.
-        Os parâmetros (punhos, direção das garras, torção, avanço, salto, cauda...) são interpolados
-        com a curva de cada trecho e a pose de cada quadro é resolvida por IK. O cachecol atrasa (molas
-        puxadas pela torção, pelo avanço e pelo salto do corpo)."""
+        Parâmetros interpolados com a curva de cada trecho; pose de cada quadro por IK. O cachecol atrasa
+        (molas puxadas pela torção, pelo avanço e pelo salto do corpo)."""
         cfgs = [(t, dict(GUARDA, **ov), curva) for t, ov, curva in chaves]
         T = cfgs[-1][0]
         n = int(round(T * FPS))
@@ -387,11 +385,10 @@ class Combate:
             (ta, ca, _), (tb, cb, curva) = cfgs[k], cfgs[k + 1]
             w = CURVAS[curva](min(1.0, max(0.0, (t - ta) / (tb - ta))))
             por_quadro.append((t, interpolar(ca, cb, w)))
-        # cachecol: molas puxadas pela velocidade do corpo (atrasa na torção, esvoaça no avanço e no salto)
         molas = [Mola(3.2, 0.32, 2) for _ in range(5)]
         dt = T / n
         extras = []
-        for voltas in range(2 if loop else 1):
+        for _volta in range(2 if loop else 1):
             extras = []
             for i, (t, c) in enumerate(por_quadro):
                 j = i - 1 if i > 0 else (len(por_quadro) - 2 if loop else 0)
@@ -433,69 +430,68 @@ class Combate:
             no_ar = math.sin(math.pi * min(1.0, max(0.0, (t - a) / (b - a))))
             mats = self.r.mats(pose)
             for lado, s in LADOS:
-                Rpe = mats[f"foot_{lado}"][:3, :3]  # orientação do pé misturada (pé chato ↔ na ponta)
+                Rpe = mats[f"foot_{lado}"][:3, :3]
                 alvo = Ai[lado] + (Af[lado] - Ai[lado]) * u + np.array([0.0, altura * no_ar, 0.0])
                 self.r.ik(pose, "pelvis", f"leg_{lado}", f"shin_{lado}", f"foot_{lado}", alvo, np.array([GUARDA["polo_joelho"][0] * s, 0.0, -1.0]), charneira=True)
                 self.r.mundo_para_local(pose, f"foot_{lado}", rx(-8.0 * no_ar) @ Rpe)
             self.loc.cauda_acima_do_chao(pose)
-            self.maos_acima_do_chao(pose)
+            self.maos_acima_do_chao(pose, folga=0.0)  # só não deixa entrar no chão (a mão apoiada fica)
             quadros.append((t, pose))
         return quadros
 
     def entrar(self, idle0, guarda0, T=0.6):
-        """Idle → guarda: encolhe e fecha as garras (antecipação), pula de leve, cai na base com a cauda
-        batendo no chão e as garras estalando abertas."""
+        """Idle → guarda: encolhe e fecha as garras (antecipação), cai nas mãos com as garras abrindo no
+        impacto, e assenta pesada."""
         loc = self.loc
 
         def acento(t, w, pose):
-            enc = math.sin(math.pi * min(1.0, t / 0.18))
-            pulo = math.sin(math.pi * min(1.0, max(0.0, (t - 0.16) / 0.3)))
-            assenta = -math.sin(math.pi * min(1.0, max(0.0, (t - 0.42) / 0.18)))
-            dy = -0.9 * enc * (t < 0.18) + 2.0 * pulo + 0.8 * assenta
-            pose["body"]["posicao"] = pose["body"]["posicao"] + np.array([0.0, dy, 0.0])
-            pose["body"]["matriz"] = pose["body"]["matriz"] @ rx(4.0 * enc * (t < 0.18) - 3.0 * assenta)
-            fecha = suave(t / 0.16) * (1 - suave((t - 0.38) / 0.08))  # fecha as garras e estala na queda
-            estalo = 0.3 * math.sin(math.pi * min(1.0, max(0.0, (t - 0.42) / 0.14)))
-            loc.garras(pose, 0.0, flex=GUARDA["curva_frente"] * w + 0.9 * fecha - estalo)
+            enc = math.sin(math.pi * min(1.0, t / 0.16))
+            queda = -math.sin(math.pi * min(1.0, max(0.0, (t - 0.34) / 0.2)))
+            pose["body"]["posicao"] = pose["body"]["posicao"] + np.array([0.0, 0.6 * enc * (t < 0.16) + 0.7 * queda, 0.0])
+            pose["body"]["matriz"] = pose["body"]["matriz"] @ rx(3.0 * enc * (t < 0.16))
+            fecha = suave(t / 0.14) * (1 - suave((t - 0.3) / 0.08))
+            loc.garras(pose, 0.0, flex=GUARDA["curva_esq"] * w + 0.7 * fecha)
 
-        return self._troca(idle0, guarda0, T, acento)
+        return self._troca(idle0, guarda0, T, acento, pulo=(0.14, 0.4), altura=1.2)
 
     def sair(self, guarda0, idle0, T=0.7):
-        """Guarda → idle: relaxa, pula de volta para a base de pé e solta as garras."""
+        """Guarda → idle: empurra o chão, levanta e solta as garras."""
         loc = self.loc
 
         def acento(t, w, pose):
-            pulo = math.sin(math.pi * min(1.0, max(0.0, (t - 0.12) / 0.32)))
-            assenta = -math.sin(math.pi * min(1.0, max(0.0, (t - 0.44) / 0.22)))
-            pose["body"]["posicao"] = pose["body"]["posicao"] + np.array([0.0, 1.4 * pulo + 0.5 * assenta, 0.0])
-            loc.garras(pose, 0.0, flex=GUARDA["curva_frente"] * (1 - w) + 0.25 * math.sin(math.pi * w))
+            empurra = math.sin(math.pi * min(1.0, max(0.0, (t - 0.08) / 0.3)))
+            assenta = -math.sin(math.pi * min(1.0, max(0.0, (t - 0.42) / 0.22)))
+            pose["body"]["posicao"] = pose["body"]["posicao"] + np.array([0.0, 1.0 * empurra + 0.4 * assenta, 0.0])
+            loc.garras(pose, 0.0, flex=GUARDA["curva_esq"] * (1 - w) + 0.25 * math.sin(math.pi * w))
 
-        return self._troca(guarda0, idle0, T, acento, pulo=(0.12, 0.5), altura=1.6)
+        return self._troca(guarda0, idle0, T, acento, pulo=(0.1, 0.46), altura=1.4)
 
     # ---------- golpes ----------
 
     def ajustar_chave(self, ov, limite_sal=1.5, limite_ent=0.01):
-        """Corrige a anatomia dos braços numa pose-chave: em volta do punho pedido (até 2 unidades),
-        procura punho, direção do cotovelo e deslize da escápula que deixam a quina do ombro dentro do
-        tronco (saliência) e o braço fora do tórax (enterrado), ficando perto da intenção do golpe.
-        Devolve as mudanças corrigidas e o relatório (antes → depois)."""
+        """Corrige a anatomia do braço solto numa pose-chave (a mão apoiada fica como está): em volta do
+        punho pedido, procura punho, cotovelo e deslize da escápula que deixam a quina do ombro dentro do
+        tronco e o braço fora do tórax, perto da intenção do golpe."""
         cfg = dict(GUARDA, **ov)
         base = self.pose_de(cfg, respira=0.0)
         rel, novo = {}, dict(ov)
-        for lado, s, sufixo in (("left", -1.0, "frente"), ("right", 1.0, "tras")):
+        for lado, s in LADOS:
+            X = SUF[lado]
+            if cfg[f"apoio_{X}"] >= 0.5:
+                continue
             sal0, ent0 = self.anatomia_braco(base, lado)
             if sal0 <= limite_sal + 0.2 and ent0 <= limite_ent + 0.01:
                 continue
-            p0 = np.asarray(cfg[f"punho_{sufixo}"], float)
-            polos = [cfg[f"polo_{sufixo}"], None, (s * 1.0, 0.0, 0.0), (s * 0.7, -0.4, 0.6), (s * 0.5, 0.5, 0.7), (s * 0.9, -0.3, -0.3)]
-            escs = [tuple(cfg[f"escapula_{sufixo}"]), (0.0, 0.0, 0.0), (-0.4, 0.5, -0.6), (0.4, 0.3, -0.8), (-0.3, -0.3, 0.6)]
+            p0 = np.asarray(cfg[f"punho_{X}"], float)
+            polos = [cfg[f"polo_{X}"], None, (s * 1.0, 0.0, 0.0), (s * 0.7, -0.4, 0.6), (s * 0.5, 0.5, 0.7), (s * 0.9, -0.3, -0.3)]
+            escs = [tuple(cfg[f"escapula_{X}"]), (0.0, 0.0, 0.0), (-0.4, 0.5, -0.6), (0.4, 0.3, -0.8), (-0.3, -0.3, 0.6)]
             melhor = None
 
             def provar(dp, polo, esc):
                 nonlocal melhor
                 p = {k: dict(v) for k, v in base.items()}
                 p.pop(f"arm_{lado}", None)
-                self.braco(p, lado, s, p0 + dp, cfg[f"garra_{sufixo}"], cfg[f"giro_{sufixo}"], polo, esc)
+                self.braco(p, lado, s, p0 + dp, cfg[f"garra_{X}"], cfg[f"giro_{X}"], polo, esc)
                 sal, ent = self.anatomia_braco(p, lado)
                 custo = max(0.0, sal - limite_sal) + 40 * max(0.0, ent - limite_ent) + 0.02 * float(dp @ dp)
                 if melhor is None or custo < melhor[0]:
@@ -506,8 +502,6 @@ class Combate:
                     for esc in escs:
                         provar(dp, polo, esc)
             if melhor[1] > limite_sal + 0.5 or melhor[2] > limite_ent + 0.02:
-                # segunda passada, mais larga: punho até 4 unidades e escápula subindo/recuando (braço no alto
-                # ou atrás, como num arremesso)
                 rng = np.random.default_rng(7)
                 escs2 = escs + [(0.6, 1.0, 0.8), (0.0, 1.2, 0.0), (-0.6, 0.8, 0.4), (0.3, 0.9, -0.5)]
                 for _ in range(600):
@@ -515,7 +509,7 @@ class Combate:
                     esc = escs2[rng.integers(len(escs2))] if rng.random() < 0.6 else tuple(rng.uniform(-1.0, 1.0, 3) * 0.9)
                     provar(dp, polos[rng.integers(len(polos))], esc)
             _c, sal, ent, punho, polo, esc = melhor
-            novo[f"punho_{sufixo}"], novo[f"polo_{sufixo}"], novo[f"escapula_{sufixo}"] = punho, polo, esc
+            novo[f"punho_{X}"], novo[f"polo_{X}"], novo[f"escapula_{X}"] = punho, polo, esc
             rel[lado] = (round(sal0, 2), round(ent0, 3), round(sal, 2), round(ent, 3))
         return novo, rel
 
@@ -540,140 +534,139 @@ class Combate:
         return out
 
 
-# Poses de apoio dos golpes (mudanças sobre a GUARDA)
-VIGIA = dict(  # habilidade 1: acompanha a garra ricocheteando, garra da frente apontando
-    torce=-12.0, agacha=2.4, empina=30.0, punho_frente=(-0.5, -2.0, -14.0), garra_frente=(0.0, 0.05, -1.0),
-    punho_tras=(3.5, -12.0, 7.0), recolhe=1.0, olhar=-4.0,
-)
-PRONTO = dict(  # habilidade 1: agachada, pronta para sumir no teleporte (começo e fim de cada golpe)
-    agacha=4.2, empina=22.0, torce=-18.0, punho_frente=(-2.0, -8.5, -10.0), garra_frente=(-0.1, -0.4, -0.9),
-    olhar=-12.0, curva_frente=0.2, curva_tras=0.2,
-)
-POLO_ALTO = (0.7, -0.4, 0.6)  # cotovelo direito para fora e para trás quando a garra vem para a frente
-
-
 def _com(base, **kw):
     return dict(base, **kw)
 
 
+# ---------- poses de apoio ----------
+
+NO_AR = dict(  # bote: no ar, esticada, garras à frente, patas de trás arrastando para trás
+    agacha=1.2, salto=3.0, empina=-2.0, apoio_esq=0.0, apoio_dir=0.0,
+    punho_esq=(-1.5, -3.0, -15.0), punho_dir=(1.5, -3.0, -15.0),
+    garra_esq=(-0.15, -0.3, -0.94), garra_dir=(0.15, -0.3, -0.94), curva_esq=0.1, curva_dir=0.1,
+    passo_esq=5.0, passo_dir=5.0, ponta_esq=40.0, ponta_dir=40.0, ergue_esq=1.0, ergue_dir=1.0,
+    cauda_livre=(-4.0, -2.0, 0.0, 2.0, 2.0), olhar=-4.0,
+)
+CRAVA = dict(  # cai rasgando: as duas garras cravam no chão à frente
+    agacha=3.0, salto=0.0, empina=-12.0, apoio_esq=1.0, apoio_dir=1.0,
+    chao_esq=(-11.0, -31.0), chao_dir=(11.0, -31.0),
+    garra_esq=(-0.1, -0.85, -0.5), garra_dir=(0.1, -0.85, -0.5), curva_esq=0.7, curva_dir=0.7,
+    passo_esq=1.0, passo_dir=1.0, cauda_livre=(-14.0, -8.0, -2.0, 4.0, 6.0), olhar=-10.0,  # cauda alta vira esquilo
+)
+VIGIA = dict(  # habilidade 1: agachada nos quatro, cabeça alta seguindo a garra ricocheteando
+    agacha=2.4, empina=-4.0, olhar=4.0, recolhe=1.0,
+)
+PRONTO = dict(  # habilidade 1: encolhida nos quatro, patas de trás carregadas, pronta para sumir
+    agacha=3.6, empina=-12.0, avanco=1.0, olhar=-10.0, ponta_esq=12.0, ponta_dir=12.0, curva_esq=0.3, curva_dir=0.3,
+)
+CAVA = dict(agacha=2.8, avanco=-3.0, empina=-10.0, olhar=-10.0, chao_esq=(-10.0, -27.0), chao_dir=(10.0, -27.0))
+LEVANTA_DIR = dict(apoio_dir=0.0, punho_dir=(1.0, -2.0, -13.0), garra_dir=(0.1, 0.2, -0.97), curva_dir=0.2)
+LEVANTA_ESQ = dict(apoio_esq=0.0, punho_esq=(-1.0, -2.0, -13.0), garra_esq=(-0.1, 0.2, -0.97), curva_esq=0.2)
+RASGA_DIR = dict(apoio_dir=1.0, garra_dir=(0.1, -0.9, -0.4), curva_dir=0.9)
+RASGA_ESQ = dict(apoio_esq=1.0, garra_esq=(-0.1, -0.9, -0.4), curva_esq=0.9)
+
 GOLPES = {
-    # Ataque básico 1: saque da garra de trás (iaido) — sai de trás do quadril, sobe em diagonal pela
-    # frente até o alto do outro lado, com o corpo girando para dentro do golpe e um passo de avanço.
+    # Ataque 1, garrada: a pata direita sai do chão, abre por fora e rasga para dentro e para baixo
+    # (gancho de urso/carcaju), com o corpo avançando atrás dela; depois volta a apoiar.
     "attack_1": ([
         (0.00, {}, "suave"),
-        (0.12, dict(torce=-34.0, agacha=3.6, punho_tras=(4.5, -13.5, 10.5), garra_tras=(0.25, -0.55, 0.8),
-                    punho_frente=(-0.5, -4.0, -13.0), olhar=-11.0, cauda_yaw=3.0), "suave"),
-        (0.20, dict(torce=-8.0, avanco=-1.2, agacha=3.3, punho_tras=(3.0, -10.0, -3.0), garra_tras=(0.25, -0.6, -0.76),
-                    polo_tras=POLO_ALTO, punho_frente=(0.5, -5.0, -9.0)), "carrega"),
-        (0.26, dict(torce=16.0, avanco=-2.4, agacha=2.6, empina=30.0, punho_tras=(-3.5, 3.0, -13.0),
-                    garra_tras=(-0.45, 0.55, -0.7), giro_tras=-30.0, polo_tras=POLO_ALTO,
-                    punho_frente=(2.0, -6.0, -5.5), garra_frente=(0.3, -0.3, -0.9), olhar=-9.0, cauda_yaw=-8.0), "solta"),
-        (0.36, dict(torce=22.0, avanco=-2.6, agacha=2.7, empina=31.0, punho_tras=(-5.0, 5.0, -10.5),
-                    garra_tras=(-0.6, 0.6, -0.5), giro_tras=-40.0, polo_tras=POLO_ALTO,
-                    punho_frente=(2.0, -6.0, -5.5), garra_frente=(0.3, -0.3, -0.9), cauda_yaw=-10.0), "solta"),
-        (0.62, {}, "suave"),
-    ], {"golpes_s": [0.26], "garra": "direita"}, False),
-    # Ataque básico 2: corte horizontal da garra da frente, da esquerda para a direita, girando o corpo.
+        (0.10, dict(avanco=1.2, lateral=-1.0, empina=-5.0, inclina=-3.0, apoio_dir=0.0, punho_dir=(4.5, -4.0, -4.0),
+                    garra_dir=(0.6, 0.1, -0.8), curva_dir=0.1, olhar=-8.0, cauda_yaw=-6.0), "suave"),
+        (0.18, dict(avanco=-2.5, lateral=-0.4, empina=2.0, inclina=2.0, torce=10.0, apoio_dir=0.0, punho_dir=(-3.0, -6.5, -13.0),
+                    garra_dir=(-0.6, -0.55, -0.55), curva_dir=0.6, olhar=-6.0, cauda_yaw=8.0), "solta"),
+        (0.26, dict(avanco=-2.8, lateral=-0.2, empina=1.0, torce=14.0, apoio_dir=0.0, punho_dir=(-6.0, -8.0, -10.0),
+                    garra_dir=(-0.7, -0.6, -0.3), curva_dir=0.9, cauda_yaw=10.0), "solta"),
+        (0.42, dict(avanco=-1.0, torce=4.0, apoio_dir=1.0, chao_dir=(10.0, -24.0), curva_dir=0.3, ergue_mao_dir=0.0), "suave"),
+        (0.56, {}, "suave"),
+    ], {"golpes_s": [0.18], "garra": "direita"}, False),
+    # Ataque 2, bote curto: encolhe, pula com as duas garras à frente e cai rasgando o chão; recua com um
+    # pulinho de volta para a guarda.
     "attack_2": ([
         (0.00, {}, "suave"),
-        (0.10, dict(torce=-12.0, agacha=3.3, punho_frente=(-6.0, -2.0, -10.0), garra_frente=(-0.6, 0.1, -0.8),
-                    giro_frente=-40.0, olhar=-10.0, cauda_yaw=-4.0), "suave"),  # recuo para o lado (para trás estoura o ombro)
-        (0.18, dict(torce=-40.0, avanco=-2.0, agacha=2.8, punho_frente=(5.0, -4.5, -12.5), garra_frente=(0.75, -0.1, -0.65),
-                    giro_frente=10.0, cauda_yaw=8.0), "solta"),
-        (0.28, dict(torce=-46.0, avanco=-2.2, agacha=2.9, punho_frente=(8.0, -5.5, -8.0), garra_frente=(0.85, -0.2, -0.45),
-                    giro_frente=20.0, cauda_yaw=9.0), "solta"),
-        (0.56, {}, "suave"),
-    ], {"golpes_s": [0.18], "garra": "esquerda"}, False),
-    # Habilidade 1, parte 1: arremesso de lado da garra do meio da mão direita (ela some no antebraço
-    # no instante de soltar; o jogo cria o projétil que ricocheteia a partir da mão direita).
+        (0.12, dict(agacha=3.4, avanco=1.4, empina=-11.0, olhar=-9.0, curva_esq=0.15, curva_dir=0.15, ponta_esq=10.0, ponta_dir=10.0), "suave"),
+        (0.22, _com(NO_AR, avanco=-3.0), "solta"),
+        (0.30, _com(CRAVA, avanco=-3.5), "carrega"),
+        (0.42, _com(CRAVA, avanco=-3.5, agacha=2.8, empina=-10.0, chao_esq=(-11.0, -28.0), chao_dir=(11.0, -28.0),
+                    curva_esq=0.95, curva_dir=0.95), "suave"),
+        (0.62, dict(salto=1.0, avanco=-1.5, ergue_mao_esq=2.0, ergue_mao_dir=2.0, chao_esq=(-11.5, -25.0), chao_dir=(11.5, -25.0),
+                    ergue_esq=0.6, ergue_dir=0.6), "suave"),
+        (0.86, {}, "suave"),
+    ], {"golpes_s": [0.30], "garra": "as duas"}, False),
+    # Habilidade 1, arremesso: levanta só um pouco nas patas de trás, a pata direita vai para trás e
+    # chicoteia de lado soltando a garra do meio (some no antebraço em 'solta'; o jogo cria o projétil
+    # que ricocheteia a partir da mão direita); volta aos quatro apoios vigiando.
     "skill1_throw": ([
         (0.00, {}, "suave"),
-        # o arremesso sai da bainha (garra guardada atrás do quadril): o corpo enrola mais e o braço só
-        # vai um pouco mais para trás; erguer o braço para trás e para cima estoura o ombro do bloco
-        (0.22, dict(torce=-42.0, agacha=3.6, empina=28.0, punho_tras=(4.5, -11.0, 10.5), garra_tras=(0.3, -0.3, 0.9),
-                    punho_frente=(-1.0, -1.0, -14.0), garra_frente=(0.0, 0.1, -1.0),
-                    olhar=-6.0, cauda_yaw=6.0), "suave"),
-        (0.34, dict(torce=8.0, avanco=-1.6, agacha=2.8, empina=30.0, punho_tras=(-1.5, -1.0, -15.0), garra_tras=(-0.1, 0.0, -1.0),
-                    polo_tras=(0.6, -0.6, 0.5), punho_frente=(1.5, -6.0, -6.0), recolhe=1.0, cauda_yaw=-6.0), "solta"),
-        (0.46, dict(torce=16.0, avanco=-1.8, agacha=2.6, empina=30.0, punho_tras=(-4.0, -6.0, -12.0), garra_tras=(-0.3, -0.4, -0.85),
-                    polo_tras=(0.6, -0.6, 0.5), punho_frente=(1.0, -6.0, -6.0), recolhe=1.0, cauda_yaw=-8.0), "solta"),
-        (0.80, VIGIA, "suave"),
-    ], {"marcas_s": {"solta": 0.34}, "projetil": "sai de hand_right (garra claw_right_2) em 'solta'"}, False),
-    # Habilidade 1, parte 2 (loop): acompanha a garra ricocheteando de inimigo em inimigo.
+        (0.16, dict(empina=14.0, agacha=1.0, avanco=1.0, torce=-10.0, apoio_dir=0.0, punho_dir=(5.0, -5.0, 1.0),
+                    garra_dir=(0.5, 0.0, 0.85), curva_dir=0.2, olhar=-2.0, cauda_yaw=-8.0), "suave"),
+        (0.26, dict(empina=10.0, agacha=1.4, avanco=-1.5, torce=14.0, apoio_dir=0.0, punho_dir=(-3.0, -2.0, -15.0),
+                    garra_dir=(-0.2, 0.0, -1.0), curva_dir=0.1, recolhe=1.0, cauda_yaw=8.0), "solta"),
+        (0.36, dict(empina=4.0, agacha=1.8, avanco=-1.8, torce=16.0, apoio_dir=0.0, punho_dir=(-5.0, -7.0, -12.0),
+                    garra_dir=(-0.4, -0.5, -0.75), recolhe=1.0, cauda_yaw=10.0), "solta"),
+        (0.62, VIGIA, "suave"),
+    ], {"marcas_s": {"solta": 0.26}, "projetil": "sai de hand_right (garra claw_right_2) em 'solta'"}, False),
+    # Habilidade 1, espera (loop): vigia a garra ricocheteando, cabeça indo de um lado para o outro.
     "skill1_wait": ([
         (0.0, VIGIA, "suave"),
-        (0.3, _com(VIGIA, yaw_cabeca=18.0, punho_frente=(1.5, -2.0, -13.5)), "suave"),
-        (0.7, _com(VIGIA, yaw_cabeca=-16.0, punho_frente=(-2.5, -2.0, -13.5)), "suave"),
+        (0.3, _com(VIGIA, yaw_cabeca=18.0, lateral=0.4, cauda_yaw=6.0), "suave"),
+        (0.7, _com(VIGIA, yaw_cabeca=-16.0, lateral=-0.4, cauda_yaw=-6.0), "suave"),
         (1.2, VIGIA, "suave"),
     ], {"nota": "tocar em loop enquanto a garra ricocheteia"}, True),
-    # Habilidade 1, parte 3: a garra volta e ela pega (a garra reaparece na mão em 'pega'); termina
-    # agachada, pronta para sumir no primeiro teleporte.
+    # Habilidade 1, captura: levanta a pata direita e pega a garra no ar (reaparece em 'pega'); encolhe
+    # nos quatro, pronta para sumir no primeiro teleporte.
     "skill1_catch": ([
         (0.00, VIGIA, "suave"),
-        (0.14, _com(VIGIA, torce=-2.0, punho_tras=(-1.0, 1.0, -13.0), garra_tras=(0.0, 0.2, -1.0), polo_tras=(0.6, -0.6, 0.5)), "suave"),
-        (0.18, _com(VIGIA, torce=0.0, punho_tras=(0.5, 0.0, -10.0), garra_tras=(0.05, 0.1, -1.0), polo_tras=(0.6, -0.6, 0.5), recolhe=0.0), "solta"),
-        (0.26, _com(VIGIA, torce=-6.0, agacha=3.2, punho_tras=(2.5, -4.0, -6.0), garra_tras=(0.1, -0.2, -0.97), polo_tras=(0.6, -0.6, 0.5), recolhe=0.0), "solta"),
-        (0.50, PRONTO, "suave"),
-    ], {"marcas_s": {"pega": 0.18}}, False),
-    # Habilidade 1, parte 4: golpe curto em cada marcado (o jogo teleporta antes de cada um). Começa e
-    # termina na pose PRONTO para encadear; a e b alternam as garras.
+        (0.12, _com(VIGIA, empina=10.0, apoio_dir=0.0, punho_dir=(-1.0, 2.0, -13.0), garra_dir=(0.0, 0.3, -0.95), curva_dir=0.0), "suave"),
+        (0.16, _com(VIGIA, empina=8.0, apoio_dir=0.0, punho_dir=(0.0, 0.5, -11.0), garra_dir=(0.05, 0.2, -0.98), curva_dir=0.6, recolhe=0.0), "solta"),
+        (0.24, _com(VIGIA, empina=2.0, apoio_dir=0.4, punho_dir=(2.0, -5.0, -9.0), curva_dir=0.4, recolhe=0.0), "solta"),
+        (0.46, PRONTO, "suave"),
+    ], {"marcas_s": {"pega": 0.16}}, False),
+    # Habilidade 1, golpes de teleporte (o jogo teleporta antes de cada um; começam e terminam em PRONTO):
+    # a) bote curto rasgando de cima com a pata direita; b) gancho rasteiro subindo com a pata esquerda.
     "skill1_strike_a": ([
         (0.00, PRONTO, "suave"),
-        (0.08, _com(PRONTO, salto=1.5, agacha=2.0, torce=-30.0, punho_tras=(3.0, 6.0, 2.0), garra_tras=(0.1, 0.9, -0.4),
-                    polo_tras=POLO_ALTO, cauda_solta=0.5), "solta"),
-        (0.14, _com(PRONTO, salto=0.8, agacha=3.0, torce=10.0, avanco=-1.5, punho_tras=(-4.0, -8.0, -12.0),
-                    garra_tras=(-0.3, -0.7, -0.65), polo_tras=POLO_ALTO, cauda_solta=0.3), "solta"),
-        (0.22, _com(PRONTO, agacha=4.0, torce=14.0, avanco=-1.5, punho_tras=(-5.0, -10.0, -9.0), garra_tras=(-0.35, -0.8, -0.5),
-                    polo_tras=POLO_ALTO), "solta"),
+        (0.07, _com(PRONTO, salto=2.4, agacha=1.0, avanco=-2.0, empina=-4.0, apoio_dir=0.0, punho_dir=(2.0, 3.0, -12.0),
+                    garra_dir=(0.1, 0.6, -0.8), curva_dir=0.1, apoio_esq=0.0, punho_esq=(-1.5, -4.0, -13.0),
+                    passo_esq=4.0, passo_dir=4.0, ergue_esq=1.0, ergue_dir=1.0, ponta_esq=40.0, ponta_dir=40.0), "solta"),
+        (0.14, _com(PRONTO, salto=0.6, agacha=2.4, avanco=-3.0, empina=-10.0, apoio_dir=0.0, punho_dir=(-3.0, -8.0, -13.0),
+                    garra_dir=(-0.4, -0.75, -0.5), curva_dir=0.7, chao_esq=(-12.0, -27.0)), "solta"),
+        (0.22, _com(PRONTO, agacha=3.2, avanco=-3.0, chao_dir=(11.0, -28.0), chao_esq=(-12.0, -27.0), curva_dir=0.9), "suave"),
+        (0.32, _com(PRONTO, avanco=-1.0, salto=0.8, ergue_mao_esq=1.5, ergue_mao_dir=1.5, chao_dir=(11.5, -25.0),
+                    chao_esq=(-12.0, -24.5), ergue_esq=0.5, ergue_dir=0.5), "suave"),
         (0.42, PRONTO, "suave"),
     ], {"golpes_s": [0.14], "teleporte": "o jogo teleporta o modelo antes de tocar; começa e termina em PRONTO"}, False),
     "skill1_strike_b": ([
         (0.00, PRONTO, "suave"),
-        (0.08, _com(PRONTO, agacha=4.6, torce=-6.0, punho_frente=(4.0, -10.0, -6.0), garra_frente=(0.5, -0.5, -0.7)), "carrega"),
-        (0.14, _com(PRONTO, salto=1.2, agacha=2.2, torce=-40.0, avanco=-1.2, punho_frente=(-3.5, 1.5, -12.5),
-                    garra_frente=(-0.4, 0.65, -0.65), giro_frente=-30.0, cauda_solta=0.4), "solta"),
-        (0.22, _com(PRONTO, salto=0.6, agacha=3.0, torce=-44.0, avanco=-1.2, punho_frente=(-4.0, 2.0, -11.0),
-                    garra_frente=(-0.5, 0.7, -0.5), cauda_solta=0.2), "solta"),
+        (0.08, _com(PRONTO, agacha=4.2, empina=-14.0, apoio_esq=0.0, punho_esq=(3.0, -10.0, -8.0), garra_esq=(0.4, -0.7, -0.6),
+                    curva_esq=0.2), "carrega"),
+        (0.14, _com(PRONTO, salto=1.2, agacha=2.0, avanco=-2.0, empina=-2.0, torce=-14.0, apoio_esq=0.0, punho_esq=(-3.5, -1.5, -13.5),
+                    garra_esq=(-0.4, 0.6, -0.7), giro_esq=-20.0, curva_esq=0.6), "solta"),
+        (0.22, _com(PRONTO, salto=0.4, agacha=2.6, avanco=-2.0, torce=-16.0, apoio_esq=0.0, punho_esq=(-4.5, -0.5, -11.0),
+                    garra_esq=(-0.5, 0.7, -0.4), curva_esq=0.9), "solta"),
         (0.42, PRONTO, "suave"),
     ], {"golpes_s": [0.14], "teleporte": "o jogo teleporta o modelo antes de tocar; começa e termina em PRONTO"}, False),
-    # Habilidade 2: sequência no chefe — encolhe, bote com estocada, três cortes alternados, X com as
-    # duas garras, pulo com as garras no alto e golpe de cima para baixo com as duas; segura o impacto e
-    # volta para a guarda.
+    # Habilidade 2, frenesi no chefe: encolhe, bote cravando as duas garras, rasga cavando alternando as
+    # patas (como abrindo um cupinzeiro, o corpo balança de um lado para o outro), empina um pouco com as
+    # duas garras no alto e desce rasgando com as duas; segura o impacto e volta com um pulinho.
     "skill2": ([
         (0.00, {}, "suave"),
-        (0.16, dict(agacha=4.4, empina=22.0, torce=-30.0, olhar=-12.0, punho_frente=(-1.5, -8.0, -9.0),
-                    punho_tras=(4.5, -13.0, 10.0)), "suave"),
-        (0.30, dict(agacha=2.6, torce=-2.0, avanco=-3.2, punho_tras=(-1.0, -3.0, -15.0), garra_tras=(-0.05, 0.0, -1.0),
-                    polo_tras=POLO_ALTO, punho_frente=(1.5, -6.0, -6.0), cauda_yaw=-5.0), "solta"),
-        (0.42, dict(agacha=2.7, torce=-40.0, avanco=-3.4, punho_frente=(5.0, -4.0, -12.0), garra_frente=(0.75, -0.1, -0.65),
-                    giro_frente=10.0, punho_tras=(3.0, -10.0, 4.0), cauda_yaw=7.0), "solta"),
-        (0.54, dict(agacha=2.7, torce=12.0, avanco=-3.4, punho_tras=(-3.5, 2.0, -13.0), garra_tras=(-0.45, 0.55, -0.7),
-                    giro_tras=-30.0, polo_tras=POLO_ALTO, punho_frente=(1.5, -6.0, -6.0), cauda_yaw=-7.0), "solta"),
-        (0.66, dict(agacha=2.6, torce=-36.0, avanco=-3.5, salto=0.6, punho_frente=(-4.0, 3.0, -12.0), garra_frente=(-0.4, 0.7, -0.6),
-                    giro_frente=-30.0, punho_tras=(3.0, -10.0, 4.0), cauda_yaw=6.0, cauda_solta=0.3), "solta"),
-        (0.84, dict(agacha=3.8, torce=-20.0, avanco=-3.0, punho_frente=(-7.0, -2.0, -7.0), garra_frente=(-0.7, 0.0, -0.7),
-                    punho_tras=(7.0, -2.0, -2.0), garra_tras=(0.7, 0.0, -0.7), polo_tras=POLO_ALTO), "suave"),
-        (0.96, dict(agacha=2.6, torce=-20.0, avanco=-3.6, punho_frente=(4.0, -6.0, -12.5), garra_frente=(0.6, -0.2, -0.75),
-                    punho_tras=(-4.0, -6.0, -12.5), garra_tras=(-0.6, -0.2, -0.75), polo_tras=POLO_ALTO), "solta"),
-        (1.20, dict(agacha=4.6, empina=20.0, torce=-16.0, avanco=-3.0, punho_frente=(-1.0, -8.0, -8.0),
-                    punho_tras=(1.0, -8.0, -8.0), garra_tras=(0.05, -0.4, -0.9), polo_tras=POLO_ALTO), "suave"),
-        # chaves do meio na subida e na descida: as garras passam pela frente (direto de baixo para o
-        # alto, o bloco do braço gira demais e a quina do ombro aparece)
-        (1.30, dict(salto=3.0, agacha=2.0, empina=30.0, torce=-12.0, avanco=-3.2, punho_frente=(-1.0, 3.0, -10.0),
-                    garra_frente=(0.0, 0.6, -0.8), punho_tras=(1.0, 3.0, -10.0), garra_tras=(0.0, 0.6, -0.8),
-                    polo_tras=(0.6, -0.4, 0.7), cauda_solta=0.6, olhar=-6.0), "solta"),
-        (1.42, dict(salto=6.0, agacha=1.0, empina=34.0, torce=-10.0, avanco=-3.5, punho_frente=(-1.0, 8.0, -4.0),
-                    garra_frente=(0.0, 0.9, -0.4), punho_tras=(1.0, 8.0, -4.0), garra_tras=(0.0, 0.9, -0.4),
-                    polo_tras=(0.6, -0.4, 0.7), cauda_solta=1.0, olhar=-4.0), "suave"),
-        (1.52, dict(salto=3.0, agacha=2.5, empina=26.0, torce=-12.0, avanco=-3.8, punho_frente=(-1.0, 2.0, -12.0),
-                    garra_frente=(0.0, 0.2, -1.0), punho_tras=(1.0, 2.0, -12.0), garra_tras=(0.0, 0.2, -1.0),
-                    polo_tras=(0.6, -0.4, 0.7), cauda_solta=0.6, olhar=-10.0), "carrega"),
-        (1.62, dict(agacha=4.8, empina=18.0, torce=-12.0, avanco=-4.0, punho_frente=(-1.5, -10.0, -10.0),
-                    garra_frente=(0.0, -0.8, -0.6), punho_tras=(1.5, -10.0, -10.0), garra_tras=(0.0, -0.8, -0.6),
-                    polo_tras=(0.6, -0.4, 0.7), olhar=-14.0), "carrega"),
-        (1.95, dict(agacha=4.6, empina=19.0, torce=-12.0, avanco=-4.0, punho_frente=(-1.5, -9.5, -10.0),
-                    garra_frente=(0.0, -0.8, -0.6), punho_tras=(1.5, -9.5, -10.0), garra_tras=(0.0, -0.8, -0.6),
-                    polo_tras=(0.6, -0.4, 0.7), olhar=-12.0), "suave"),
-        (2.50, {}, "suave"),
-    ], {"golpes_s": [0.30, 0.42, 0.54, 0.66, 0.96, 1.62], "nota": "o último acerto (1,62 s) é o golpe de cima com as duas garras"}, False),
+        (0.16, dict(agacha=3.6, avanco=1.4, empina=-12.0, olhar=-10.0, ponta_esq=12.0, ponta_dir=12.0), "suave"),
+        (0.28, _com(NO_AR, salto=2.6, avanco=-2.5), "solta"),
+        (0.36, _com(CRAVA, avanco=-3.0, chao_esq=(-11.0, -30.0), chao_dir=(11.0, -30.0)), "carrega"),
+        (0.44, {**CAVA, "inclina": 3.0, **LEVANTA_DIR, **RASGA_ESQ, "curva_esq": 0.7}, "solta"),
+        (0.50, dict(CAVA, inclina=-3.0, **RASGA_DIR, **LEVANTA_ESQ), "solta"),
+        (0.58, dict(CAVA, inclina=3.0, **RASGA_ESQ, **LEVANTA_DIR), "solta"),
+        (0.66, dict(CAVA, inclina=-3.0, **RASGA_DIR, **LEVANTA_ESQ), "solta"),
+        (0.74, dict(CAVA, inclina=2.0, **RASGA_ESQ, curva_dir=0.5), "solta"),
+        (0.92, dict(empina=16.0, agacha=1.0, avanco=-1.0, apoio_esq=0.0, apoio_dir=0.0, punho_esq=(-2.0, 4.0, -8.0),
+                    punho_dir=(2.0, 4.0, -8.0), garra_esq=(-0.1, 0.8, -0.6), garra_dir=(0.1, 0.8, -0.6), curva_esq=0.2,
+                    curva_dir=0.2, cauda_livre=(-10.0, -5.0, 0.0, 4.0, 6.0), olhar=-4.0), "suave"),
+        (1.08, _com(CRAVA, empina=-16.0, agacha=3.6, avanco=-3.5, chao_esq=(-10.0, -31.0), chao_dir=(10.0, -31.0),
+                    curva_esq=0.9, curva_dir=0.9, cauda_livre=(-16.0, -9.0, -2.0, 4.0, 6.0), olhar=-12.0), "carrega"),
+        (1.40, _com(CRAVA, empina=-14.0, agacha=3.4, avanco=-3.5, chao_esq=(-10.0, -30.0), chao_dir=(10.0, -30.0),
+                    curva_esq=0.95, curva_dir=0.95, olhar=-11.0), "suave"),
+        (1.62, dict(salto=1.0, avanco=-1.5, ergue_mao_esq=2.0, ergue_mao_dir=2.0, chao_esq=(-11.5, -26.0), chao_dir=(11.5, -26.0),
+                    ergue_esq=0.6, ergue_dir=0.6), "suave"),
+        (1.86, {}, "suave"),
+    ], {"golpes_s": [0.36, 0.50, 0.58, 0.66, 0.74, 1.08], "nota": "o último acerto (1,08 s) é a descida com as duas garras"}, False),
 }

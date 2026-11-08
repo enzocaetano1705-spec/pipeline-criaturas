@@ -99,3 +99,15 @@ chave e trava de braço enterrado por quadro: attack_1 (saque da garra de trás)
 frente), habilidade 1 em partes (arremesso com a garra sumindo no antebraço, espera em loop, captura,
 dois golpes de teleporte alternáveis) e habilidade 2 (sequência no chefe, 6 acertos). Instantes de
 acerto e marcas solta/pega no animacoes.json. 16 clipes, 0 erros, 0 avisos.
+
+## r10 — combate refeito como "fera de quatro"
+
+Retorno: os golpes, as habilidades e até a guarda da r09 "não combinam com a criatura". Diagnóstico:
+linguagem corporal de gente (guarda de lutador, golpes de espada) num bicho que anda nos nós das
+mãos; garras usadas como lâmina em vez de gancho; tronco travado girando como bloco. Folha de poses
+com três conceitos (a preguiça que finge dormir, fera de quatro, ameaça de tamanduá); escolhida a
+fera de quatro. Refeitos nos quatro apoios: guarda, entrar, sair, garrada, bote curto, habilidade 1
+(arremesso, espera, captura, dois golpes de teleporte) e habilidade 2 (frenesi cavando). Máquina:
+mão apoiada × solta por `apoio`, cauda livre baixa, calcanhar subindo sozinho para a canela não
+deitar no chão. Anatomia e chão medidos em todos os quadros; 0 erros, 0 avisos. Lição registrada:
+combate de criatura vem do próprio bicho e passa por folha de poses antes de animar.

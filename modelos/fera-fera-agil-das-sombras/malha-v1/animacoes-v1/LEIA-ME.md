@@ -1,8 +1,23 @@
-# Animações v1 — locomoção e combate da preguiça rogue (06/11/2026)
+# Animações v1 — locomoção e combate da preguiça rogue (06–08/11/2026)
 
-Atual: **r09/fera-sombras-e3-animacoes.bbmodel** (base `rig-v4/base-rig-v4.bbmodel`), 16 clipes.
+Atual: **r10/fera-sombras-e3-animacoes.bbmodel** (base `rig-v4/base-rig-v4.bbmodel`), 16 clipes.
 
-**r09 (garra de trás atrás do quadril, ataque básico e habilidades):** retorno: "o braço direito ainda
+**r10 (combate refeito como "fera de quatro"):** retorno sobre a r09: "ficaram ruins... parece não
+combinar com a criatura, mesmo a postura de combate". Diagnóstico: o walk e o run aprovados são de
+bicho (corpo horizontal, pesado, nos nós das mãos) e o combate era de gente (guarda de lutador em pé,
+golpes de espada); garra de preguiça e de tamanduá é gancho, não lâmina. Folha de poses com três
+ideias (`conceitos-combate/folha-conceitos.png`, `scripts/fera-animacao/conceitos_combate.py`): o
+usuário escolheu a fera de quatro (carcaju, texugo-do-mel). Todo o combate foi refeito nos quatro
+apoios (tabela abaixo). Novo na máquina de poses (`combate.py`): mão apoiada no chão (ponto do chão,
+altura resolvida para as garras encostarem) misturada com a mão solta por `apoio`; cauda livre (sem
+tripé), mantida baixa (erguida vira esquilo); calcanhar sobe sozinho o mínimo preciso quando a
+canela deitaria no chão (ponta dos pés, como bicho agachado). Medido em todos os quadros: a quina do
+ombro fica abaixo de 1,4 na maioria dos clipes (o walk aprovado chega a 1,5), com um quadro em 1,8 na
+garrada; nada entra no chão; partes do braço encostando no corpo até 8%. Validação: 0 erros, 0
+avisos. Conferido no Blockbench (`r10/golpes-blockbench.png`). A r09 (guarda em tripé de lutador)
+foi descartada.
+
+**r09 (descartada; guarda em tripé de lutador, ataque básico e habilidades):** retorno: "o braço direito ainda
 está muito para dentro do tórax, e a ideia de deixar para trás é viável, era só corrigir a anatomia;
 as outras partes ficaram ok; pode já fazer essa correção e seguir para as próximas animações".
 - Anatomia medida, não no olho: `Combate.anatomia_braco` diz o quanto a quina do bloco do braço que
@@ -150,17 +165,17 @@ copia from/to/origin/rotation, leva pivô mudado junto e recusa rotação de rep
 | `run` | 3,3 s | sim | rápida, 1,62 s | 5 passadas de galope rotativo (trás esq., trás dir., frente dir., frente esq., voo recolhido), tudo no ritmo da passada |
 | `run_start` | 0,5 s | não | rápida, 0,06 s | recua, recolhe as garras com estalo e mergulha para os quatro apoios |
 | `run_stop` | 0,7 s | não | normal, 0,12 s | derrapa nos nós das mãos, passa do ponto, assenta e abre as garras |
-| `combat_ready` | 3,2 s | sim | normal, 0,9 s | guarda em tripé de lutador (r08); respira pesado, garra da frente se crispa e estala |
-| `combat_enter` | 0,6 s | não | rápida, 0,04 s | idle → guarda: antecipação, pulinho, cai na base com as garras estalando |
-| `combat_exit` | 0,7 s | não | normal, 0,3 s | guarda → idle: pulinho de volta e solta as garras |
-| `attack_1` | 0,62 s | não | rápida, 0,26 s | saque da garra de trás: sai de trás do quadril e sobe em diagonal pela frente, corpo girando para dentro do golpe; acerto em 0,26 s |
-| `attack_2` | 0,56 s | não | rápida, 0,18 s | corte horizontal da garra da frente, da esquerda para a direita, girando o corpo; acerto em 0,18 s |
-| `skill1_throw` | 0,8 s | não | rápida, 0,36 s | enrola o corpo e arremessa de lado a garra do meio da mão direita (some no antebraço em 0,34 s, marca `solta`); termina vigiando |
-| `skill1_wait` | 1,2 s | sim | normal, 0,55 s | vigia a garra ricocheteando: cabeça acompanha de um lado para o outro, garra da frente apontando |
-| `skill1_catch` | 0,5 s | não | rápida, 0,18 s | pega a garra de volta (reaparece em 0,18 s, marca `pega`) e agacha pronta para sumir |
-| `skill1_strike_a` | 0,42 s | não | rápida, 0,14 s | golpe de teleporte: garra direita no alto e corte de cima para baixo com um pulinho; começa e termina agachada |
-| `skill1_strike_b` | 0,42 s | não | rápida, 0,14 s | golpe de teleporte: gancho subindo com a garra esquerda; começa e termina agachada |
-| `skill2` | 2,5 s | não | normal, 1,64 s | sequência no chefe: bote com estocada, três cortes alternados, X com as duas garras, pulo com as garras no alto e golpe de cima com as duas; acertos em 0,30/0,42/0,54/0,66/0,96/1,62 s |
+| `combat_ready` | 3,2 s | sim | normal, 0,9 s | guarda de quatro: agachada, garras abertas cravadas no chão, cauda baixa; respira pesado, joga o peso de um lado para o outro, a cabeça vasculha e a mão direita cava o chão uma vez por loop |
+| `combat_enter` | 0,6 s | não | rápida, 0,04 s | idle → guarda: encolhe e fecha as garras, cai nas mãos com as garras abrindo no impacto e assenta pesada |
+| `combat_exit` | 0,7 s | não | normal, 0,3 s | guarda → idle: empurra o chão, levanta e solta as garras |
+| `attack_1` | 0,56 s | não | rápida, 0,18 s | garrada: a pata direita sai do chão, abre por fora e rasga para dentro e para baixo (gancho de urso/carcaju), corpo avançando atrás; acerto em 0,18 s |
+| `attack_2` | 0,86 s | não | rápida, 0,3 s | bote curto: encolhe, pula com as duas garras à frente e cai cravando e rasgando o chão; pulinho de volta para a guarda; acerto em 0,30 s |
+| `skill1_throw` | 0,62 s | não | rápida, 0,28 s | levanta só um pouco nas patas de trás e chicoteia de lado a garra do meio da mão direita (some no antebraço em 0,26 s, marca `solta`); volta aos quatro vigiando |
+| `skill1_wait` | 1,2 s | sim | normal, 0,55 s | nos quatro, cabeça alta seguindo a garra ricocheteando de um lado para o outro |
+| `skill1_catch` | 0,46 s | não | rápida, 0,16 s | levanta a pata e pega a garra no ar (reaparece em 0,16 s, marca `pega`); encolhe pronta para sumir |
+| `skill1_strike_a` | 0,42 s | não | rápida, 0,14 s | golpe de teleporte: bote curto rasgando de cima com a pata direita; começa e termina encolhida |
+| `skill1_strike_b` | 0,42 s | não | rápida, 0,14 s | golpe de teleporte: gancho rasteiro subindo com a pata esquerda; começa e termina encolhida |
+| `skill2` | 1,86 s | não | normal, 1,1 s | frenesi no chefe: bote cravando as duas garras, rasga cavando alternando as patas (como num cupinzeiro), empina um pouco com as garras no alto e desce rasgando com as duas; acertos em 0,36/0,50/0,58/0,66/0,74/1,08 s |
 
 Peso sem escala (o Roblox não anima escala de osso): no walk, tronco e pescoço seguem o corpo por
 molas amortecidas (atrasam e passam do ponto); no run não há mola solta (ela tremia no próprio ritmo
@@ -174,7 +189,7 @@ para o jogo mover o modelo sem os pés patinarem, e quando cada clipe pisca. Pr�
 `tiras.png` (8 quadros por clipe).
 
 ```powershell
-uv run python scripts/fera-animacao/gerar.py modelos/fera-fera-agil-das-sombras/malha-v1/animacoes-v1/rig-v4/base-rig-v4.bbmodel modelos/fera-fera-agil-das-sombras/malha-v1/animacoes-v1/r09
+uv run python scripts/fera-animacao/gerar.py modelos/fera-fera-agil-das-sombras/malha-v1/animacoes-v1/rig-v4/base-rig-v4.bbmodel modelos/fera-fera-agil-das-sombras/malha-v1/animacoes-v1/r10
 uv run python scripts/fera-animacao/medir.py modelos/fera-fera-agil-das-sombras/malha-v1/animacoes-v1/rig-v4/base-rig-v4.bbmodel run
 ```
 `medir.py` diz quantos ciclos por passada cada canal faz (tudo deve dar 1 no run), quais ossos

@@ -1,0 +1,70 @@
+{
+  "arquivo": "fera-sombras-e3-animacoes.bbmodel",
+  "chaves": 21628,
+  "validacao_animacoes": {
+    "erros": 0,
+    "avisos": 0,
+    "linhas": []
+  },
+  "ajustes_anatomia": {
+    "attack_1": [
+      [
+        0.1,
+        {
+          "right": [
+            2.66,
+            0.016,
+            1.8,
+            0.004
+          ]
+        }
+      ]
+    ],
+    "skill1_throw": [
+      [
+        0.16,
+        {
+          "right": [
+            3.15,
+            0.04,
+            1.8,
+            0.014
+          ]
+        }
+      ]
+    ],
+    "skill1_strike_b": [
+      [
+        0.22,
+        {
+          "left": [
+            3.17,
+            0.013,
+            1.41,
+            0.003
+          ]
+        }
+      ]
+    ],
+    "skill2": [
+      [
+        0.92,
+        {
+          "left": [
+            2.61,
+            0.009,
+            1.19,
+            0.002
+          ],
+          "right": [
+            2.45,
+            0.009,
+            1.16,
+            0.003
+          ]
+        }
+      ]
+    ]
+  },
+  "segundos": 227.8
+}

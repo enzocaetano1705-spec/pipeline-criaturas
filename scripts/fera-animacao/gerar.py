@@ -38,9 +38,9 @@ PISCADA_POR_CLIPE = {
     "run_start": (0.06, "rapida"), "run_stop": (0.12, "normal"),
     "combat_ready": (0.9, "normal"), "combat_enter": (0.04, "rapida"), "combat_exit": (0.3, "normal"),
     # golpes: aperta os olhos no impacto (dá peso ao golpe)
-    "attack_1": (0.26, "rapida"), "attack_2": (0.18, "rapida"),
-    "skill1_throw": (0.36, "rapida"), "skill1_wait": (0.55, "normal"), "skill1_catch": (0.18, "rapida"),
-    "skill1_strike_a": (0.14, "rapida"), "skill1_strike_b": (0.14, "rapida"), "skill2": (1.64, "normal"),
+    "attack_1": (0.18, "rapida"), "attack_2": (0.30, "rapida"),
+    "skill1_throw": (0.28, "rapida"), "skill1_wait": (0.55, "normal"), "skill1_catch": (0.16, "rapida"),
+    "skill1_strike_a": (0.14, "rapida"), "skill1_strike_b": (0.14, "rapida"), "skill2": (1.10, "normal"),
 }
 
 
