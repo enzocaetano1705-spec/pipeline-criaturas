@@ -622,7 +622,7 @@ GOLPES = {
         (0.46, PRONTO, "suave"),
     ], {"marcas_s": {"pega": 0.16}}, False),
     # Habilidade 1, golpes de teleporte (o jogo teleporta antes de cada um; começam e terminam em PRONTO):
-    # a) bote curto rasgando de cima com a pata direita; b) gancho rasteiro subindo com a pata esquerda.
+    # a) bote curto rasgando de cima com a pata direita; b) garrada lateral com a pata esquerda.
     "skill1_strike_a": ([
         (0.00, PRONTO, "suave"),
         (0.07, _com(PRONTO, salto=2.4, agacha=1.0, avanco=-2.0, empina=-4.0, apoio_dir=0.0, punho_dir=(2.0, 3.0, -12.0),
@@ -635,16 +635,19 @@ GOLPES = {
                     chao_esq=(-12.0, -24.5), ergue_esq=0.5, ergue_dir=0.5), "suave"),
         (0.42, PRONTO, "suave"),
     ], {"golpes_s": [0.14], "teleporte": "o jogo teleporta o modelo antes de tocar; começa e termina em PRONTO"}, False),
+    # b) garrada da esquerda: o espelho da garrada do ataque 1, saindo da pose encolhida (o gancho
+    # rasteiro da r10 encolhia demais para o ombro não estourar e não lia como golpe)
     "skill1_strike_b": ([
         (0.00, PRONTO, "suave"),
-        (0.08, _com(PRONTO, agacha=4.2, empina=-14.0, apoio_esq=0.0, punho_esq=(3.0, -10.0, -8.0), garra_esq=(0.4, -0.7, -0.6),
-                    curva_esq=0.2), "carrega"),
-        (0.14, _com(PRONTO, salto=1.2, agacha=2.0, avanco=-2.0, empina=-2.0, torce=-14.0, apoio_esq=0.0, punho_esq=(-3.5, -1.5, -13.5),
-                    garra_esq=(-0.4, 0.6, -0.7), giro_esq=-20.0, curva_esq=0.6), "solta"),
-        (0.22, _com(PRONTO, salto=0.4, agacha=2.6, avanco=-2.0, torce=-16.0, apoio_esq=0.0, punho_esq=(-4.5, -0.5, -11.0),
-                    garra_esq=(-0.5, 0.7, -0.4), curva_esq=0.9), "solta"),
+        (0.06, _com(PRONTO, avanco=1.6, lateral=1.0, empina=-9.0, inclina=3.0, apoio_esq=0.0, punho_esq=(-4.5, -4.0, -4.0),
+                    garra_esq=(-0.6, 0.1, -0.8), curva_esq=0.1, olhar=-12.0, cauda_yaw=6.0), "suave"),
+        (0.14, _com(PRONTO, avanco=-2.5, lateral=0.4, empina=-6.0, inclina=-2.0, torce=-10.0, apoio_esq=0.0,
+                    punho_esq=(3.0, -6.5, -13.0), garra_esq=(0.6, -0.55, -0.55), curva_esq=0.6, olhar=-10.0, cauda_yaw=-8.0), "solta"),
+        (0.22, _com(PRONTO, avanco=-2.8, lateral=0.2, empina=-7.0, torce=-14.0, apoio_esq=0.0, punho_esq=(6.0, -8.0, -10.0),
+                    garra_esq=(0.7, -0.6, -0.3), curva_esq=0.9, cauda_yaw=-10.0), "solta"),
+        (0.32, _com(PRONTO, avanco=-1.0, torce=-4.0, apoio_esq=1.0, chao_esq=(-10.0, -24.0), curva_esq=0.3), "suave"),
         (0.42, PRONTO, "suave"),
-    ], {"golpes_s": [0.14], "teleporte": "o jogo teleporta o modelo antes de tocar; começa e termina em PRONTO"}, False),
+    ], {"golpes_s": [0.14], "garra": "esquerda", "teleporte": "o jogo teleporta o modelo antes de tocar; começa e termina em PRONTO"}, False),
     # Habilidade 2, frenesi no chefe: encolhe, bote cravando as duas garras, rasga cavando alternando as
     # patas (como abrindo um cupinzeiro, o corpo balança de um lado para o outro), empina um pouco com as
     # duas garras no alto e desce rasgando com as duas; segura o impacto e volta com um pulinho.

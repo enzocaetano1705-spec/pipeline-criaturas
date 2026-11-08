@@ -1,6 +1,13 @@
 # Animações v1 — locomoção e combate da preguiça rogue (06–08/11/2026)
 
-Atual: **r10/fera-sombras-e3-animacoes.bbmodel** (base `rig-v4/base-rig-v4.bbmodel`), 16 clipes.
+Atual: **r11/fera-sombras-e3-animacoes.bbmodel** (base `rig-v4/base-rig-v4.bbmodel`), 16 clipes.
+
+**r11 (strike b):** a fera de quatro foi aprovada ("ficou boa"); só o `skill1_strike_b` não estava
+claro. Era um gancho rasteiro subindo com a pata esquerda que, baixado para o ombro do bloco não
+estourar, encolheu e não lia como golpe. Virou a garrada da esquerda: o espelho da garrada do ataque
+1, saindo da pose encolhida (pata abre para o lado, varre pela frente com o corpo girando e volta a
+apoiar). Os teleportes alternam pata direita de cima (a) e pata esquerda de lado (b). Medido: quina do
+ombro abaixo de 1,0, 2% encostando no corpo, nada no chão. Validação: 0 erros, 0 avisos.
 
 **r10 (combate refeito como "fera de quatro"):** retorno sobre a r09: "ficaram ruins... parece não
 combinar com a criatura, mesmo a postura de combate". Diagnóstico: o walk e o run aprovados são de
@@ -174,7 +181,7 @@ copia from/to/origin/rotation, leva pivô mudado junto e recusa rotação de rep
 | `skill1_wait` | 1,2 s | sim | normal, 0,55 s | nos quatro, cabeça alta seguindo a garra ricocheteando de um lado para o outro |
 | `skill1_catch` | 0,46 s | não | rápida, 0,16 s | levanta a pata e pega a garra no ar (reaparece em 0,16 s, marca `pega`); encolhe pronta para sumir |
 | `skill1_strike_a` | 0,42 s | não | rápida, 0,14 s | golpe de teleporte: bote curto rasgando de cima com a pata direita; começa e termina encolhida |
-| `skill1_strike_b` | 0,42 s | não | rápida, 0,14 s | golpe de teleporte: gancho rasteiro subindo com a pata esquerda; começa e termina encolhida |
+| `skill1_strike_b` | 0,42 s | não | rápida, 0,14 s | golpe de teleporte: garrada da esquerda (a pata abre para o lado e varre pela frente, corpo girando junto); começa e termina encolhida |
 | `skill2` | 1,86 s | não | normal, 1,1 s | frenesi no chefe: bote cravando as duas garras, rasga cavando alternando as patas (como num cupinzeiro), empina um pouco com as garras no alto e desce rasgando com as duas; acertos em 0,36/0,50/0,58/0,66/0,74/1,08 s |
 
 Peso sem escala (o Roblox não anima escala de osso): no walk, tronco e pescoço seguem o corpo por
@@ -189,7 +196,7 @@ para o jogo mover o modelo sem os pés patinarem, e quando cada clipe pisca. Pr�
 `tiras.png` (8 quadros por clipe).
 
 ```powershell
-uv run python scripts/fera-animacao/gerar.py modelos/fera-fera-agil-das-sombras/malha-v1/animacoes-v1/rig-v4/base-rig-v4.bbmodel modelos/fera-fera-agil-das-sombras/malha-v1/animacoes-v1/r10
+uv run python scripts/fera-animacao/gerar.py modelos/fera-fera-agil-das-sombras/malha-v1/animacoes-v1/rig-v4/base-rig-v4.bbmodel modelos/fera-fera-agil-das-sombras/malha-v1/animacoes-v1/r11
 uv run python scripts/fera-animacao/medir.py modelos/fera-fera-agil-das-sombras/malha-v1/animacoes-v1/rig-v4/base-rig-v4.bbmodel run
 ```
 `medir.py` diz quantos ciclos por passada cada canal faz (tudo deve dar 1 no run), quais ossos

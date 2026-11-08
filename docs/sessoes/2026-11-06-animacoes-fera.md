@@ -111,3 +111,9 @@ fera de quatro. Refeitos nos quatro apoios: guarda, entrar, sair, garrada, bote 
 mão apoiada × solta por `apoio`, cauda livre baixa, calcanhar subindo sozinho para a canela não
 deitar no chão. Anatomia e chão medidos em todos os quadros; 0 erros, 0 avisos. Lição registrada:
 combate de criatura vem do próprio bicho e passa por folha de poses antes de animar.
+
+## r11 — strike b
+
+Fera de quatro aprovada. Único golpe não entendido: o strike b (gancho rasteiro que, reduzido pela
+anatomia do ombro, não lia como golpe). Virou a garrada da esquerda, espelho da garrada do ataque 1;
+os teleportes alternam pata direita de cima e pata esquerda de lado. 0 erros, 0 avisos.
